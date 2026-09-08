@@ -47,10 +47,22 @@ def main():
     keying=shot.config.get('keying') or {}
     hint_cfg=shot.key_hint
     despill_mode=keying.get('despill_mode','edge_only')
+    # CorridorKey's own despill defaults to 1.0; the proof of concept disables it (0.0) only
+    # because that plate has a green costume the model would eat. A plate without green
+    # wardrobe should use the engine's despill, which is what it is for.
     engine_despill=float(keying.get('engine_despill_strength',0))
+    despill_offset_abs=float(keying.get('despill_offset_abs',0.08))
+    despill_offset_rel=float(keying.get('despill_offset_rel',0.0))
+    # NOTE: CorridorKey's despill_strength does NOT affect result['fg'], which is documented in
+    # inference_engine.py as "sRGB, Raw Prediction (Straight)". Only result['processed'] is
+    # despilled, and that is linear, premultiplied and garbage-matted, so this pipeline cannot
+    # use it without losing the original-core blend. ALL despill here is the manual pass below.
+    despill_gain=float(keying.get('despill_gain',2.0))
+    despill_max=float(keying.get('despill_max',0.8))
     total=shot.frame_count
-    print(json.dumps({'shot':shot.name,'frames':total,'hint':hint_cfg,
-                      'despill_mode':despill_mode,'engine_despill_strength':engine_despill}),flush=True)
+    print(json.dumps({'shot':shot.name,'frames':total,'hint':hint_cfg,'despill_mode':despill_mode,
+                      'engine_despill_strength':engine_despill,'despill_offset_abs':despill_offset_abs,
+                      'despill_offset_rel':despill_offset_rel}),flush=True)
     engine=CorridorKeyEngine(str(ROOT/'dependencies/CorridorKey/CorridorKeyModule/checkpoints/CorridorKey_v1.0.safetensors'),device='cuda',img_size=2048)
     ids=test_frames(total) if args.test else range(total)
     report=[];start=time.time()
@@ -73,7 +85,18 @@ def main():
         if despill_mode!='off':
             # Green-excess removal. edge_only protects green wardrobe by restricting the
             # correction to antialias/hair pixels outside the opaque core.
-            excess=np.clip((fg[...,1]-np.maximum(fg[...,0],fg[...,2])-.08)*2,0,.8)
+            # The offset must scale with brightness. A purely absolute threshold spares dim
+            # partial-alpha rim pixels, where a cast of ~0.1x luminance is plainly visible but
+            # measures well under it: on the reporter plate 20% of edge pixels stayed
+            # green-positive at a median 0.019 excess against a 0.08 threshold.
+            # offset_rel=0 with offset_abs=0.08 reproduces the proof-of-concept exactly.
+            luma=fg@np.array([.2126,.7152,.0722],np.float32)
+            offset=despill_offset_abs+despill_offset_rel*luma
+            # weight 1.0 == the "average" limit (G driven to the mean of R and B), the same
+            # operation the library performs. The legacy gain of 2 only reaches a meaningful
+            # weight for excesses around 0.5; subtle rim spill of ~0.018 got a weight of 0.014,
+            # i.e. 1.4% of the correction it needed.
+            excess=np.clip((fg[...,1]-np.maximum(fg[...,0],fg[...,2])-offset)*despill_gain,0,despill_max)
             weight=(1-core[...,0])*excess if despill_mode=='edge_only' else excess
             fg[...,1]-=weight*(fg[...,1]-.5*(fg[...,0]+fg[...,2]))
         fg=linear(np.clip(fg,0,1)).astype(np.float32)

@@ -77,6 +77,11 @@
     "note": "Inherited proof-of-concept thresholds as a STARTING POINT only. This plate has a brighter, more saturated backing and, critically, no green wardrobe (dark suit, white shirt), so despill may be applied globally here unlike the proof of concept. Verify on the test frames before the full run.",
     "hint_source": "Derived by scripts/calibrate_key.py from the plate border; see logs/key_calibration.json",
     "despill_mode": "global",
-    "despill_note": "Global green-excess removal is safe on this plate: the subject wears a dark suit and white shirt, so no green wardrobe needs protecting. Skin (r>g) and neutral fabric (r~g~b) have zero green excess and are untouched; only genuinely spill-contaminated pixels are corrected. The proof-of-concept plate has a green costume and must stay on edge_only."
+    "despill_note": "All despill is the manual pass: CorridorKey's despill_strength affects only result['processed'], not the result['fg'] this pipeline reads. Gain 100 with max 1.0 reaches the full average-limit correction on subtle rim spill; the legacy gain of 2 was calibrated for the proof-of-concept plate's ~0.5 excesses and left 20% of edge pixels green-positive here. Safe to be aggressive because the excess metric self-gates: skin is red-dominant (negative excess) and neutral fabric is near zero.",
+    "engine_despill_strength": 0.0,
+    "despill_offset_abs": 0.003,
+    "despill_offset_rel": 0.01,
+    "despill_gain": 100.0,
+    "despill_max": 1.0
   }
 }
