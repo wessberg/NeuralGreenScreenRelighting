@@ -72,5 +72,48 @@
     "KEY AT NATIVE 6K, THEN DOWNSCALE. With 2.48x linear oversampling, a matte computed at 5952x3968 and then downscaled to delivery is effectively supersampled: partial coverage at hair edges becomes real fractional alpha rather than a hard decision. Downscaling first throws that away.",
     "The 200 Mbps figure is moderate for 6K Long GOP. Expect visible artefacts on a large flat green area; light the screen evenly and expose it properly rather than relying on the keyer to recover.",
     "Thresholds from this camera will NOT transfer to the reporter test plate or vice versa, in either direction. Run scripts/calibrate_key.py per shot."
-  ]
+  ],
+  "recording_mode_options": {
+    "_comment": "Evaluated 2026-09-08. Numbers derived in scripts/anamorphic.py terms; recompute there rather than retyping any factor of 1.6.",
+    "open_gate_6k": {
+      "resolution": [
+        5952,
+        3968
+      ],
+      "aspect": "3:2 (1.5000)",
+      "codec": "HEVC 10-bit 4:2:0 Long GOP 200 Mbps",
+      "desqueezed_aspect": 2.4,
+      "crop_needed_for_delivery": "none - it IS 2.40:1",
+      "oversampling_over_3840x1600": 2.48,
+      "sensor_used_mm": [
+        36.0,
+        24.0
+      ],
+      "hfov_deg": 78.9,
+      "vfov_deg": 37.8,
+      "storage_gb_per_min": 1.5,
+      "verdict": "best geometry and most resolution headroom; worst codec for keying"
+    },
+    "c58k_17_9": {
+      "resolution": [
+        5776,
+        3056
+      ],
+      "aspect": "17:9 (1.8901)",
+      "codec": "ProRes 422 HQ 1.6 Gbps all-intra, LPCM, 24P native",
+      "desqueezed_aspect": 3.024,
+      "crop_needed_for_delivery": "79.4% of width; 20.6% of the frame is discarded",
+      "oversampling_over_3840x1600": 1.91,
+      "sensor_used_mm": [
+        27.7,
+        18.5
+      ],
+      "hfov_deg": 64.7,
+      "vfov_deg": 29.6,
+      "storage_gb_per_min": 12.0,
+      "verdict": "RECOMMENDED FOR THIS PIPELINE. All-intra removes Long GOP mosquito noise around the silhouette and every hair, which is what makes a matte crawl; 4:2:2 keeps full vertical chroma resolution and keying is a chroma operation; 8x the bitrate on the flat green area that compresses worst. 1.91x is still comfortable supersampling for the matte. The headroom given up existed mainly to fight compression artefacts in the first place."
+    },
+    "open_question": "Does this body offer OPEN GATE 3:2 in ProRes? That would be strictly better than either and the trade disappears. Internal ProRes is usually limited to 5.8K/C4K with open gate reserved for HEVC, but CONFIRM ON THE CAMERA rather than assuming. ProRes RAW over HDMI to an external recorder is the other route to open gate plus an intra codec.",
+    "cost_of_the_recommendation": "Framing, not quality: 20.6% less width and the 35mm behaves like roughly a 44mm (64.7 deg instead of 78.9 deg). For bust and medium framing that is arguably flattering, but it means standing further back. Storage is 8x."
+  }
 }

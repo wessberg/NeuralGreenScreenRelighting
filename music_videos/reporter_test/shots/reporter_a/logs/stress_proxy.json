@@ -1,9 +1,9 @@
 {
   "shot": "reporter_a",
-  "frames": 1,
+  "frames": 360,
   "fps": "60000/1001",
-  "output_dir": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\stress_tex_test",
-  "samples": 32,
+  "output_dir": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\stress_proxy_textured",
+  "samples": 48,
   "rig": {
     "stations": [
       "front far",
@@ -28,6 +28,7 @@
     "blackouts": 2,
     "bulb_radius_m": 0.04,
     "bulb_visible_to_camera": true,
+    "exposure": 3200.0,
     "fill_size_m": 0.6,
     "demo_lens_mm": 35.0,
     "plate_lens_mm": 50.0,
@@ -46,7 +47,5392 @@
         0.1
       ],
       "bulb_distance_m": 2.402,
-      "bulb_strength": 901.6,
+      "bulb_strength": 3205.6,
+      "hue": 0.0,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 1,
+      "shot_frame": 1,
+      "station": "front far",
+      "bulb_offset_m": [
+        0.0,
+        -2.4,
+        0.1
+      ],
+      "bulb_distance_m": 2.402,
+      "bulb_strength": 2769.4,
+      "hue": 0.003,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 2,
+      "shot_frame": 2,
+      "station": "front far",
+      "bulb_offset_m": [
+        0.0,
+        -2.4,
+        0.1
+      ],
+      "bulb_distance_m": 2.402,
+      "bulb_strength": 2412.3,
+      "hue": 0.006,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 3,
+      "shot_frame": 3,
+      "station": "front far",
+      "bulb_offset_m": [
+        0.0,
+        -2.4,
+        0.1
+      ],
+      "bulb_distance_m": 2.402,
+      "bulb_strength": 2120.0,
+      "hue": 0.008,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 4,
+      "shot_frame": 4,
+      "station": "front far",
+      "bulb_offset_m": [
+        0.0,
+        -2.4,
+        0.1
+      ],
+      "bulb_distance_m": 2.402,
+      "bulb_strength": 1880.8,
+      "hue": 0.011,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 5,
+      "shot_frame": 5,
+      "station": "front far",
+      "bulb_offset_m": [
+        0.0,
+        -2.4,
+        0.1
+      ],
+      "bulb_distance_m": 2.402,
+      "bulb_strength": 1684.9,
+      "hue": 0.014,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 6,
+      "shot_frame": 6,
+      "station": "front far",
+      "bulb_offset_m": [
+        0.0,
+        -2.4,
+        0.1
+      ],
+      "bulb_distance_m": 2.402,
+      "bulb_strength": 1524.6,
+      "hue": 0.017,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 7,
+      "shot_frame": 7,
+      "station": "front far",
+      "bulb_offset_m": [
+        0.0,
+        -2.4,
+        0.1
+      ],
+      "bulb_distance_m": 2.402,
+      "bulb_strength": 1393.4,
+      "hue": 0.019,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 8,
+      "shot_frame": 8,
+      "station": "front far",
+      "bulb_offset_m": [
+        0.0,
+        -2.4,
+        0.1
+      ],
+      "bulb_distance_m": 2.402,
+      "bulb_strength": 1286.0,
+      "hue": 0.022,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 9,
+      "shot_frame": 9,
+      "station": "front far",
+      "bulb_offset_m": [
+        0.0,
+        -2.4,
+        0.1
+      ],
+      "bulb_distance_m": 2.402,
+      "bulb_strength": 1198.1,
+      "hue": 0.025,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 10,
+      "shot_frame": 10,
+      "station": "front far",
+      "bulb_offset_m": [
+        0.0,
+        -2.4,
+        0.1
+      ],
+      "bulb_distance_m": 2.402,
+      "bulb_strength": 1126.1,
+      "hue": 0.028,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 11,
+      "shot_frame": 11,
+      "station": "front far",
+      "bulb_offset_m": [
+        0.0,
+        -2.4,
+        0.1
+      ],
+      "bulb_distance_m": 2.402,
+      "bulb_strength": 1067.2,
+      "hue": 0.031,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 12,
+      "shot_frame": 12,
+      "station": "front far",
+      "bulb_offset_m": [
+        0.0,
+        -2.4,
+        0.1
+      ],
+      "bulb_distance_m": 2.402,
+      "bulb_strength": 1019.0,
+      "hue": 0.033,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 13,
+      "shot_frame": 13,
+      "station": "front far",
+      "bulb_offset_m": [
+        0.0,
+        -2.4,
+        0.1
+      ],
+      "bulb_distance_m": 2.402,
+      "bulb_strength": 979.5,
+      "hue": 0.036,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 14,
+      "shot_frame": 14,
+      "station": "front far",
+      "bulb_offset_m": [
+        0.0,
+        -2.4,
+        0.1
+      ],
+      "bulb_distance_m": 2.402,
+      "bulb_strength": 947.2,
+      "hue": 0.039,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 15,
+      "shot_frame": 15,
+      "station": "front far",
+      "bulb_offset_m": [
+        0.0,
+        -2.4,
+        0.1
+      ],
+      "bulb_distance_m": 2.402,
+      "bulb_strength": 920.7,
+      "hue": 0.042,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 16,
+      "shot_frame": 16,
+      "station": "front far",
+      "bulb_offset_m": [
+        0.0,
+        -2.4,
+        0.1
+      ],
+      "bulb_distance_m": 2.402,
+      "bulb_strength": 899.1,
+      "hue": 0.045,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 17,
+      "shot_frame": 17,
+      "station": "front far",
+      "bulb_offset_m": [
+        0.0,
+        -2.39,
+        0.1
+      ],
+      "bulb_distance_m": 2.392,
+      "bulb_strength": 873.9,
+      "hue": 0.047,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 18,
+      "shot_frame": 18,
+      "station": "front far",
+      "bulb_offset_m": [
+        0.0,
+        -2.353,
+        0.099
+      ],
+      "bulb_distance_m": 2.355,
+      "bulb_strength": 833.5,
+      "hue": 0.05,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 19,
+      "shot_frame": 19,
+      "station": "front far",
+      "bulb_offset_m": [
+        0.0,
+        -2.293,
+        0.097
+      ],
+      "bulb_distance_m": 2.295,
+      "bulb_strength": 780.5,
+      "hue": 0.053,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 20,
+      "shot_frame": 20,
+      "station": "front far",
+      "bulb_offset_m": [
+        0.0,
+        -2.212,
+        0.095
+      ],
+      "bulb_distance_m": 2.214,
+      "bulb_strength": 718.0,
+      "hue": 0.056,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 21,
+      "shot_frame": 21,
+      "station": "front far",
+      "bulb_offset_m": [
+        0.0,
+        -2.113,
+        0.092
+      ],
+      "bulb_distance_m": 2.115,
+      "bulb_strength": 649.1,
+      "hue": 0.058,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 22,
+      "shot_frame": 22,
+      "station": "front far",
+      "bulb_offset_m": [
+        0.0,
+        -1.999,
+        0.089
+      ],
+      "bulb_distance_m": 2.001,
+      "bulb_strength": 576.6,
+      "hue": 0.061,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 23,
+      "shot_frame": 23,
+      "station": "front far",
+      "bulb_offset_m": [
+        0.0,
+        -1.873,
+        0.086
+      ],
+      "bulb_distance_m": 1.875,
+      "bulb_strength": 503.1,
+      "hue": 0.064,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 24,
+      "shot_frame": 24,
+      "station": "front far",
+      "bulb_offset_m": [
+        0.0,
+        -1.739,
+        0.083
+      ],
+      "bulb_distance_m": 1.74,
+      "bulb_strength": 431.1,
+      "hue": 0.067,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 25,
+      "shot_frame": 25,
+      "station": "front far",
+      "bulb_offset_m": [
+        0.0,
+        -1.598,
+        0.079
+      ],
+      "bulb_distance_m": 1.6,
+      "bulb_strength": 362.6,
+      "hue": 0.07,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 26,
+      "shot_frame": 26,
+      "station": "front far",
+      "bulb_offset_m": [
+        0.0,
+        -1.454,
+        0.075
+      ],
+      "bulb_distance_m": 1.456,
+      "bulb_strength": 299.2,
+      "hue": 0.072,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 27,
+      "shot_frame": 27,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -1.31,
+        0.071
+      ],
+      "bulb_distance_m": 1.312,
+      "bulb_strength": 242.3,
+      "hue": 0.075,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 28,
+      "shot_frame": 28,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -1.169,
+        0.068
+      ],
+      "bulb_distance_m": 1.171,
+      "bulb_strength": 192.6,
+      "hue": 0.078,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 29,
+      "shot_frame": 29,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -1.034,
+        0.064
+      ],
+      "bulb_distance_m": 1.036,
+      "bulb_strength": 150.4,
+      "hue": 0.081,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 30,
+      "shot_frame": 30,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -0.908,
+        0.061
+      ],
+      "bulb_distance_m": 0.91,
+      "bulb_strength": 457.6,
+      "hue": 0.084,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 31,
+      "shot_frame": 31,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -0.793,
+        0.058
+      ],
+      "bulb_distance_m": 0.795,
+      "bulb_strength": 302.1,
+      "hue": 0.086,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 32,
+      "shot_frame": 32,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -0.693,
+        0.055
+      ],
+      "bulb_distance_m": 0.695,
+      "bulb_strength": 201.3,
+      "hue": 0.089,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 33,
+      "shot_frame": 33,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -0.611,
+        0.053
+      ],
+      "bulb_distance_m": 0.613,
+      "bulb_strength": 137.6,
+      "hue": 0.092,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 34,
+      "shot_frame": 34,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -0.549,
+        0.051
+      ],
+      "bulb_distance_m": 0.552,
+      "bulb_strength": 98.9,
+      "hue": 0.095,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 35,
+      "shot_frame": 35,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -0.511,
+        0.05
+      ],
+      "bulb_distance_m": 0.514,
+      "bulb_strength": 76.9,
+      "hue": 0.097,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 36,
+      "shot_frame": 36,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -0.5,
+        0.05
+      ],
+      "bulb_distance_m": 0.502,
+      "bulb_strength": 66.5,
+      "hue": 0.1,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 37,
+      "shot_frame": 37,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -0.5,
+        0.05
+      ],
+      "bulb_distance_m": 0.502,
+      "bulb_strength": 60.8,
+      "hue": 0.103,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 38,
+      "shot_frame": 38,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -0.5,
+        0.05
+      ],
+      "bulb_distance_m": 0.502,
+      "bulb_strength": 56.1,
+      "hue": 0.106,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 39,
+      "shot_frame": 39,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -0.5,
+        0.05
+      ],
+      "bulb_distance_m": 0.502,
+      "bulb_strength": 52.3,
+      "hue": 0.109,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 40,
+      "shot_frame": 40,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -0.5,
+        0.05
+      ],
+      "bulb_distance_m": 0.502,
+      "bulb_strength": 49.2,
+      "hue": 0.111,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 41,
+      "shot_frame": 41,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -0.5,
+        0.05
+      ],
+      "bulb_distance_m": 0.502,
+      "bulb_strength": 46.6,
+      "hue": 0.114,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 42,
+      "shot_frame": 42,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -0.5,
+        0.05
+      ],
+      "bulb_distance_m": 0.502,
+      "bulb_strength": 44.5,
+      "hue": 0.117,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 43,
+      "shot_frame": 43,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -0.5,
+        0.05
+      ],
+      "bulb_distance_m": 0.502,
+      "bulb_strength": 42.8,
+      "hue": 0.12,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 44,
+      "shot_frame": 44,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -0.5,
+        0.05
+      ],
+      "bulb_distance_m": 0.502,
+      "bulb_strength": 41.4,
+      "hue": 0.123,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 45,
+      "shot_frame": 45,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -0.5,
+        0.05
+      ],
+      "bulb_distance_m": 0.502,
+      "bulb_strength": 40.3,
+      "hue": 0.125,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 46,
+      "shot_frame": 46,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -0.5,
+        0.05
+      ],
+      "bulb_distance_m": 0.502,
+      "bulb_strength": 39.3,
+      "hue": 0.128,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 47,
+      "shot_frame": 47,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -0.5,
+        0.05
+      ],
+      "bulb_distance_m": 0.502,
+      "bulb_strength": 38.5,
+      "hue": 0.131,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 48,
+      "shot_frame": 48,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -0.5,
+        0.05
+      ],
+      "bulb_distance_m": 0.502,
+      "bulb_strength": 37.9,
+      "hue": 0.134,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 49,
+      "shot_frame": 49,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -0.5,
+        0.05
+      ],
+      "bulb_distance_m": 0.502,
+      "bulb_strength": 37.4,
+      "hue": 0.136,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 50,
+      "shot_frame": 50,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -0.5,
+        0.05
+      ],
+      "bulb_distance_m": 0.502,
+      "bulb_strength": 37.0,
+      "hue": 0.139,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 51,
+      "shot_frame": 51,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -0.5,
+        0.05
+      ],
+      "bulb_distance_m": 0.502,
+      "bulb_strength": 36.6,
+      "hue": 0.142,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 52,
+      "shot_frame": 52,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -0.5,
+        0.05
+      ],
+      "bulb_distance_m": 0.502,
+      "bulb_strength": 36.3,
+      "hue": 0.145,
+      "blackout": false,
+      "fill_scale": 1.0
+    },
+    {
+      "out_frame": 53,
+      "shot_frame": 53,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -0.5,
+        0.046
+      ],
+      "bulb_distance_m": 0.502,
+      "bulb_strength": 36.0,
+      "hue": 0.148,
+      "blackout": false,
+      "fill_scale": 0.997
+    },
+    {
+      "out_frame": 54,
+      "shot_frame": 54,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -0.499,
+        0.034
+      ],
+      "bulb_distance_m": 0.5,
+      "bulb_strength": 35.5,
+      "hue": 0.15,
+      "blackout": false,
+      "fill_scale": 0.989
+    },
+    {
+      "out_frame": 55,
+      "shot_frame": 55,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -0.497,
+        0.014
+      ],
+      "bulb_distance_m": 0.497,
+      "bulb_strength": 35.0,
+      "hue": 0.153,
+      "blackout": false,
+      "fill_scale": 0.976
+    },
+    {
+      "out_frame": 56,
+      "shot_frame": 56,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -0.495,
+        -0.012
+      ],
+      "bulb_distance_m": 0.495,
+      "bulb_strength": 34.6,
+      "hue": 0.156,
+      "blackout": false,
+      "fill_scale": 0.958
+    },
+    {
+      "out_frame": 57,
+      "shot_frame": 57,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -0.492,
+        -0.044
+      ],
+      "bulb_distance_m": 0.494,
+      "bulb_strength": 34.4,
+      "hue": 0.159,
+      "blackout": false,
+      "fill_scale": 0.937
+    },
+    {
+      "out_frame": 58,
+      "shot_frame": 58,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -0.489,
+        -0.08
+      ],
+      "bulb_distance_m": 0.496,
+      "bulb_strength": 34.5,
+      "hue": 0.162,
+      "blackout": false,
+      "fill_scale": 0.913
+    },
+    {
+      "out_frame": 59,
+      "shot_frame": 59,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -0.486,
+        -0.12
+      ],
+      "bulb_distance_m": 0.501,
+      "bulb_strength": 35.1,
+      "hue": 0.164,
+      "blackout": false,
+      "fill_scale": 0.886
+    },
+    {
+      "out_frame": 60,
+      "shot_frame": 60,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -0.482,
+        -0.163
+      ],
+      "bulb_distance_m": 0.509,
+      "bulb_strength": 142.7,
+      "hue": 0.167,
+      "blackout": false,
+      "fill_scale": 0.858
+    },
+    {
+      "out_frame": 61,
+      "shot_frame": 61,
+      "station": "front close",
+      "bulb_offset_m": [
+        0.0,
+        -0.479,
+        -0.208
+      ],
+      "bulb_distance_m": 0.522,
+      "bulb_strength": 129.5,
+      "hue": 0.17,
+      "blackout": false,
+      "fill_scale": 0.828
+    },
+    {
+      "out_frame": 62,
+      "shot_frame": 62,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.475,
+        -0.253
+      ],
+      "bulb_distance_m": 0.538,
+      "bulb_strength": 120.1,
+      "hue": 0.173,
+      "blackout": false,
+      "fill_scale": 0.798
+    },
+    {
+      "out_frame": 63,
+      "shot_frame": 63,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.471,
+        -0.299
+      ],
+      "bulb_distance_m": 0.558,
+      "bulb_strength": 113.4,
+      "hue": 0.175,
+      "blackout": false,
+      "fill_scale": 0.768
+    },
+    {
+      "out_frame": 64,
+      "shot_frame": 64,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.467,
+        -0.343
+      ],
+      "bulb_distance_m": 0.58,
+      "bulb_strength": 108.8,
+      "hue": 0.178,
+      "blackout": false,
+      "fill_scale": 0.738
+    },
+    {
+      "out_frame": 65,
+      "shot_frame": 65,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.464,
+        -0.386
+      ],
+      "bulb_distance_m": 0.603,
+      "bulb_strength": 105.5,
+      "hue": 0.181,
+      "blackout": false,
+      "fill_scale": 0.71
+    },
+    {
+      "out_frame": 66,
+      "shot_frame": 66,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.46,
+        -0.425
+      ],
+      "bulb_distance_m": 0.627,
+      "bulb_strength": 103.2,
+      "hue": 0.184,
+      "blackout": false,
+      "fill_scale": 0.683
+    },
+    {
+      "out_frame": 67,
+      "shot_frame": 67,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.457,
+        -0.461
+      ],
+      "bulb_distance_m": 0.649,
+      "bulb_strength": 101.3,
+      "hue": 0.187,
+      "blackout": false,
+      "fill_scale": 0.659
+    },
+    {
+      "out_frame": 68,
+      "shot_frame": 68,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.455,
+        -0.492
+      ],
+      "bulb_distance_m": 0.67,
+      "bulb_strength": 99.6,
+      "hue": 0.189,
+      "blackout": false,
+      "fill_scale": 0.639
+    },
+    {
+      "out_frame": 69,
+      "shot_frame": 69,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.453,
+        -0.517
+      ],
+      "bulb_distance_m": 0.687,
+      "bulb_strength": 97.7,
+      "hue": 0.192,
+      "blackout": false,
+      "fill_scale": 0.622
+    },
+    {
+      "out_frame": 70,
+      "shot_frame": 70,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.451,
+        -0.536
+      ],
+      "bulb_distance_m": 0.701,
+      "bulb_strength": 95.5,
+      "hue": 0.195,
+      "blackout": false,
+      "fill_scale": 0.609
+    },
+    {
+      "out_frame": 71,
+      "shot_frame": 71,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.45,
+        -0.547
+      ],
+      "bulb_distance_m": 0.709,
+      "bulb_strength": 92.6,
+      "hue": 0.198,
+      "blackout": false,
+      "fill_scale": 0.602
+    },
+    {
+      "out_frame": 72,
+      "shot_frame": 72,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.45,
+        -0.55
+      ],
+      "bulb_distance_m": 0.711,
+      "bulb_strength": 89.0,
+      "hue": 0.201,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 73,
+      "shot_frame": 73,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.45,
+        -0.55
+      ],
+      "bulb_distance_m": 0.711,
+      "bulb_strength": 85.5,
+      "hue": 0.203,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 74,
+      "shot_frame": 74,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.45,
+        -0.55
+      ],
+      "bulb_distance_m": 0.711,
+      "bulb_strength": 82.7,
+      "hue": 0.206,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 75,
+      "shot_frame": 75,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.45,
+        -0.55
+      ],
+      "bulb_distance_m": 0.711,
+      "bulb_strength": 80.5,
+      "hue": 0.209,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 76,
+      "shot_frame": 76,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.45,
+        -0.55
+      ],
+      "bulb_distance_m": 0.711,
+      "bulb_strength": 78.6,
+      "hue": 0.212,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 77,
+      "shot_frame": 77,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.45,
+        -0.55
+      ],
+      "bulb_distance_m": 0.711,
+      "bulb_strength": 77.1,
+      "hue": 0.214,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 78,
+      "shot_frame": 78,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.45,
+        -0.55
+      ],
+      "bulb_distance_m": 0.711,
+      "bulb_strength": 75.8,
+      "hue": 0.217,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 79,
+      "shot_frame": 79,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.45,
+        -0.55
+      ],
+      "bulb_distance_m": 0.711,
+      "bulb_strength": 74.8,
+      "hue": 0.22,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 80,
+      "shot_frame": 80,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.45,
+        -0.55
+      ],
+      "bulb_distance_m": 0.711,
+      "bulb_strength": 73.9,
+      "hue": 0.223,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 81,
+      "shot_frame": 81,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.45,
+        -0.55
+      ],
+      "bulb_distance_m": 0.711,
+      "bulb_strength": 73.2,
+      "hue": 0.226,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 82,
+      "shot_frame": 82,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.45,
+        -0.55
+      ],
+      "bulb_distance_m": 0.711,
+      "bulb_strength": 72.7,
+      "hue": 0.228,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 83,
+      "shot_frame": 83,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.45,
+        -0.55
+      ],
+      "bulb_distance_m": 0.711,
+      "bulb_strength": 72.2,
+      "hue": 0.231,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 84,
+      "shot_frame": 84,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.45,
+        -0.55
+      ],
+      "bulb_distance_m": 0.711,
+      "bulb_strength": 71.8,
+      "hue": 0.234,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 85,
+      "shot_frame": 85,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.45,
+        -0.55
+      ],
+      "bulb_distance_m": 0.711,
+      "bulb_strength": 71.5,
+      "hue": 0.237,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 86,
+      "shot_frame": 86,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.45,
+        -0.55
+      ],
+      "bulb_distance_m": 0.711,
+      "bulb_strength": 71.3,
+      "hue": 0.24,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 87,
+      "shot_frame": 87,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.45,
+        -0.55
+      ],
+      "bulb_distance_m": 0.711,
+      "bulb_strength": 71.1,
+      "hue": 0.242,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 88,
+      "shot_frame": 88,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.45,
+        -0.55
+      ],
+      "bulb_distance_m": 0.711,
+      "bulb_strength": 70.9,
+      "hue": 0.245,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 89,
+      "shot_frame": 89,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.449,
+        -0.539
+      ],
+      "bulb_distance_m": 0.702,
+      "bulb_strength": 69.1,
+      "hue": 0.248,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 90,
+      "shot_frame": 90,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.447,
+        -0.511
+      ],
+      "bulb_distance_m": 0.679,
+      "bulb_strength": 252.7,
+      "hue": 0.251,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 91,
+      "shot_frame": 91,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.444,
+        -0.467
+      ],
+      "bulb_distance_m": 0.644,
+      "bulb_strength": 196.5,
+      "hue": 0.253,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 92,
+      "shot_frame": 92,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.439,
+        -0.409
+      ],
+      "bulb_distance_m": 0.6,
+      "bulb_strength": 148.7,
+      "hue": 0.256,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 93,
+      "shot_frame": 93,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.434,
+        -0.339
+      ],
+      "bulb_distance_m": 0.55,
+      "bulb_strength": 110.1,
+      "hue": 0.259,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 94,
+      "shot_frame": 94,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.428,
+        -0.259
+      ],
+      "bulb_distance_m": 0.5,
+      "bulb_strength": 80.6,
+      "hue": 0.262,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 95,
+      "shot_frame": 95,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.421,
+        -0.172
+      ],
+      "bulb_distance_m": 0.455,
+      "bulb_strength": 59.8,
+      "hue": 0.265,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 96,
+      "shot_frame": 96,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.414,
+        -0.078
+      ],
+      "bulb_distance_m": 0.421,
+      "bulb_strength": 46.5,
+      "hue": 0.267,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 97,
+      "shot_frame": 97,
+      "station": "below chin",
+      "bulb_offset_m": [
+        0.0,
+        -0.406,
+        0.018
+      ],
+      "bulb_distance_m": 0.407,
+      "bulb_strength": 39.6,
+      "hue": 0.27,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 98,
+      "shot_frame": 98,
+      "station": "above head",
+      "bulb_offset_m": [
+        0.0,
+        -0.399,
+        0.117
+      ],
+      "bulb_distance_m": 0.416,
+      "bulb_strength": 38.2,
+      "hue": 0.273,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 99,
+      "shot_frame": 99,
+      "station": "above head",
+      "bulb_offset_m": [
+        0.0,
+        -0.391,
+        0.215
+      ],
+      "bulb_distance_m": 0.446,
+      "bulb_strength": 41.1,
+      "hue": 0.276,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 100,
+      "shot_frame": 100,
+      "station": "above head",
+      "bulb_offset_m": [
+        0.0,
+        -0.384,
+        0.311
+      ],
+      "bulb_distance_m": 0.494,
+      "bulb_strength": 47.4,
+      "hue": 0.279,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 101,
+      "shot_frame": 101,
+      "station": "above head",
+      "bulb_offset_m": [
+        0.0,
+        -0.377,
+        0.403
+      ],
+      "bulb_distance_m": 0.551,
+      "bulb_strength": 56.0,
+      "hue": 0.281,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 102,
+      "shot_frame": 102,
+      "station": "above head",
+      "bulb_offset_m": [
+        0.0,
+        -0.37,
+        0.488
+      ],
+      "bulb_distance_m": 0.612,
+      "bulb_strength": 65.9,
+      "hue": 0.284,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 103,
+      "shot_frame": 103,
+      "station": "above head",
+      "bulb_offset_m": [
+        0.0,
+        -0.364,
+        0.564
+      ],
+      "bulb_distance_m": 0.672,
+      "bulb_strength": 76.3,
+      "hue": 0.287,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 104,
+      "shot_frame": 104,
+      "station": "above head",
+      "bulb_offset_m": [
+        0.0,
+        -0.359,
+        0.63
+      ],
+      "bulb_distance_m": 0.725,
+      "bulb_strength": 86.1,
+      "hue": 0.29,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 105,
+      "shot_frame": 105,
+      "station": "above head",
+      "bulb_offset_m": [
+        0.0,
+        -0.355,
+        0.684
+      ],
+      "bulb_distance_m": 0.77,
+      "bulb_strength": 94.5,
+      "hue": 0.292,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 106,
+      "shot_frame": 106,
+      "station": "above head",
+      "bulb_offset_m": [
+        0.0,
+        -0.352,
+        0.723
+      ],
+      "bulb_distance_m": 0.804,
+      "bulb_strength": 100.5,
+      "hue": 0.295,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 107,
+      "shot_frame": 107,
+      "station": "above head",
+      "bulb_offset_m": [
+        0.0,
+        -0.35,
+        0.745
+      ],
+      "bulb_distance_m": 0.823,
+      "bulb_strength": 103.4,
+      "hue": 0.298,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 108,
+      "shot_frame": 108,
+      "station": "above head",
+      "bulb_offset_m": [
+        0.0,
+        -0.35,
+        0.75
+      ],
+      "bulb_distance_m": 0.828,
+      "bulb_strength": 102.8,
+      "hue": 0.301,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 109,
+      "shot_frame": 109,
+      "station": "above head",
+      "bulb_offset_m": [
+        0.0,
+        -0.35,
+        0.75
+      ],
+      "bulb_distance_m": 0.828,
+      "bulb_strength": 101.4,
+      "hue": 0.304,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 110,
+      "shot_frame": 110,
+      "station": "above head",
+      "bulb_offset_m": [
+        0.0,
+        -0.35,
+        0.75
+      ],
+      "bulb_distance_m": 0.828,
+      "bulb_strength": 100.3,
+      "hue": 0.306,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 111,
+      "shot_frame": 111,
+      "station": "above head",
+      "bulb_offset_m": [
+        0.0,
+        -0.35,
+        0.75
+      ],
+      "bulb_distance_m": 0.828,
+      "bulb_strength": 99.3,
+      "hue": 0.309,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 112,
+      "shot_frame": 112,
+      "station": "above head",
+      "bulb_offset_m": [
+        0.0,
+        -0.35,
+        0.75
+      ],
+      "bulb_distance_m": 0.828,
+      "bulb_strength": 98.6,
+      "hue": 0.312,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 113,
+      "shot_frame": 113,
+      "station": "above head",
+      "bulb_offset_m": [
+        0.0,
+        -0.35,
+        0.75
+      ],
+      "bulb_distance_m": 0.828,
+      "bulb_strength": 97.9,
+      "hue": 0.315,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 114,
+      "shot_frame": 114,
+      "station": "above head",
+      "bulb_offset_m": [
+        0.0,
+        -0.35,
+        0.75
+      ],
+      "bulb_distance_m": 0.828,
+      "bulb_strength": 97.4,
+      "hue": 0.318,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 115,
+      "shot_frame": 115,
+      "station": "above head",
+      "bulb_offset_m": [
+        0.0,
+        -0.35,
+        0.75
+      ],
+      "bulb_distance_m": 0.828,
+      "bulb_strength": 97.0,
+      "hue": 0.32,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 116,
+      "shot_frame": 116,
+      "station": "above head",
+      "bulb_offset_m": [
+        0.0,
+        -0.35,
+        0.75
+      ],
+      "bulb_distance_m": 0.828,
+      "bulb_strength": 96.7,
+      "hue": 0.323,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 117,
+      "shot_frame": 117,
+      "station": "above head",
+      "bulb_offset_m": [
+        0.0,
+        -0.35,
+        0.75
+      ],
+      "bulb_distance_m": 0.828,
+      "bulb_strength": 96.4,
+      "hue": 0.326,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 118,
+      "shot_frame": 118,
+      "station": "above head",
+      "bulb_offset_m": [
+        0.0,
+        -0.35,
+        0.75
+      ],
+      "bulb_distance_m": 0.828,
+      "bulb_strength": 96.2,
+      "hue": 0.329,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 119,
+      "shot_frame": 119,
+      "station": "above head",
+      "bulb_offset_m": [
+        0.0,
+        -0.35,
+        0.75
+      ],
+      "bulb_distance_m": 0.828,
+      "bulb_strength": 96.0,
+      "hue": 0.331,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 120,
+      "shot_frame": 120,
+      "station": "above head",
+      "bulb_offset_m": [
+        0.0,
+        -0.35,
+        0.75
+      ],
+      "bulb_distance_m": 0.828,
+      "bulb_strength": 373.8,
+      "hue": 0.334,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 121,
+      "shot_frame": 121,
+      "station": "above head",
+      "bulb_offset_m": [
+        0.0,
+        -0.35,
+        0.75
+      ],
+      "bulb_distance_m": 0.828,
+      "bulb_strength": 323.2,
+      "hue": 0.337,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 122,
+      "shot_frame": 122,
+      "station": "above head",
+      "bulb_offset_m": [
+        0.0,
+        -0.35,
+        0.75
+      ],
+      "bulb_distance_m": 0.828,
+      "bulb_strength": 281.8,
+      "hue": 0.34,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 123,
+      "shot_frame": 123,
+      "station": "above head",
+      "bulb_offset_m": [
+        0.0,
+        -0.35,
+        0.75
+      ],
+      "bulb_distance_m": 0.828,
+      "bulb_strength": 248.0,
+      "hue": 0.343,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 124,
+      "shot_frame": 124,
+      "station": "above head",
+      "bulb_offset_m": [
+        -0.0,
+        -0.35,
+        0.75
+      ],
+      "bulb_distance_m": 0.828,
+      "bulb_strength": 220.2,
+      "hue": 0.345,
+      "blackout": false,
+      "fill_scale": 0.6
+    },
+    {
+      "out_frame": 125,
+      "shot_frame": 125,
+      "station": "above head",
+      "bulb_offset_m": [
+        -0.008,
+        -0.35,
+        0.744
+      ],
+      "bulb_distance_m": 0.822,
+      "bulb_strength": 194.7,
+      "hue": 0.348,
+      "blackout": false,
+      "fill_scale": 0.599
+    },
+    {
+      "out_frame": 126,
+      "shot_frame": 126,
+      "station": "above head",
+      "bulb_offset_m": [
+        -0.026,
+        -0.348,
+        0.729
+      ],
+      "bulb_distance_m": 0.808,
+      "bulb_strength": 170.6,
+      "hue": 0.351,
+      "blackout": false,
+      "fill_scale": 0.597
+    },
+    {
+      "out_frame": 127,
+      "shot_frame": 127,
+      "station": "above head",
+      "bulb_offset_m": [
+        -0.054,
+        -0.347,
+        0.706
+      ],
+      "bulb_distance_m": 0.788,
+      "bulb_strength": 148.5,
+      "hue": 0.354,
+      "blackout": false,
+      "fill_scale": 0.593
+    },
+    {
+      "out_frame": 128,
+      "shot_frame": 128,
+      "station": "above head",
+      "bulb_offset_m": [
+        -0.091,
+        -0.344,
+        0.676
+      ],
+      "bulb_distance_m": 0.764,
+      "bulb_strength": 129.0,
+      "hue": 0.357,
+      "blackout": false,
+      "fill_scale": 0.589
+    },
+    {
+      "out_frame": 129,
+      "shot_frame": 129,
+      "station": "above head",
+      "bulb_offset_m": [
+        -0.135,
+        -0.342,
+        0.641
+      ],
+      "bulb_distance_m": 0.738,
+      "bulb_strength": 112.3,
+      "hue": 0.359,
+      "blackout": false,
+      "fill_scale": 0.583
+    },
+    {
+      "out_frame": 130,
+      "shot_frame": 130,
+      "station": "above head",
+      "bulb_offset_m": [
+        -0.184,
+        -0.338,
+        0.6
+      ],
+      "bulb_distance_m": 0.713,
+      "bulb_strength": 98.6,
+      "hue": 0.362,
+      "blackout": false,
+      "fill_scale": 0.577
+    },
+    {
+      "out_frame": 131,
+      "shot_frame": 131,
+      "station": "above head",
+      "bulb_offset_m": [
+        -0.238,
+        -0.335,
+        0.556
+      ],
+      "bulb_distance_m": 0.692,
+      "bulb_strength": 88.0,
+      "hue": 0.365,
+      "blackout": false,
+      "fill_scale": 0.57
+    },
+    {
+      "out_frame": 132,
+      "shot_frame": 132,
+      "station": "above head",
+      "bulb_offset_m": [
+        -0.296,
+        -0.331,
+        0.509
+      ],
+      "bulb_distance_m": 0.676,
+      "bulb_strength": 80.3,
+      "hue": 0.368,
+      "blackout": false,
+      "fill_scale": 0.563
+    },
+    {
+      "out_frame": 133,
+      "shot_frame": 133,
+      "station": "above head",
+      "bulb_offset_m": [
+        -0.356,
+        -0.328,
+        0.461
+      ],
+      "bulb_distance_m": 0.668,
+      "bulb_strength": 75.5,
+      "hue": 0.37,
+      "blackout": false,
+      "fill_scale": 0.556
+    },
+    {
+      "out_frame": 134,
+      "shot_frame": 134,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.417,
+        -0.324,
+        0.412
+      ],
+      "bulb_distance_m": 0.669,
+      "bulb_strength": 73.2,
+      "hue": 0.373,
+      "blackout": false,
+      "fill_scale": 0.548
+    },
+    {
+      "out_frame": 135,
+      "shot_frame": 135,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.477,
+        -0.32,
+        0.363
+      ],
+      "bulb_distance_m": 0.679,
+      "bulb_strength": 73.4,
+      "hue": 0.376,
+      "blackout": false,
+      "fill_scale": 0.54
+    },
+    {
+      "out_frame": 136,
+      "shot_frame": 136,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.536,
+        -0.317,
+        0.315
+      ],
+      "bulb_distance_m": 0.697,
+      "bulb_strength": 75.6,
+      "hue": 0.379,
+      "blackout": false,
+      "fill_scale": 0.533
+    },
+    {
+      "out_frame": 137,
+      "shot_frame": 137,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.592,
+        -0.313,
+        0.269
+      ],
+      "bulb_distance_m": 0.721,
+      "bulb_strength": 79.3,
+      "hue": 0.382,
+      "blackout": false,
+      "fill_scale": 0.526
+    },
+    {
+      "out_frame": 138,
+      "shot_frame": 138,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.643,
+        -0.31,
+        0.227
+      ],
+      "bulb_distance_m": 0.749,
+      "bulb_strength": 84.2,
+      "hue": 0.384,
+      "blackout": false,
+      "fill_scale": 0.52
+    },
+    {
+      "out_frame": 139,
+      "shot_frame": 139,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.69,
+        -0.307,
+        0.189
+      ],
+      "bulb_distance_m": 0.779,
+      "bulb_strength": 89.7,
+      "hue": 0.387,
+      "blackout": false,
+      "fill_scale": 0.514
+    },
+    {
+      "out_frame": 140,
+      "shot_frame": 140,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.73,
+        -0.304,
+        0.157
+      ],
+      "bulb_distance_m": 0.806,
+      "bulb_strength": 95.1,
+      "hue": 0.39,
+      "blackout": false,
+      "fill_scale": 0.509
+    },
+    {
+      "out_frame": 141,
+      "shot_frame": 141,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.762,
+        -0.302,
+        0.131
+      ],
+      "bulb_distance_m": 0.83,
+      "bulb_strength": 99.9,
+      "hue": 0.393,
+      "blackout": false,
+      "fill_scale": 0.505
+    },
+    {
+      "out_frame": 142,
+      "shot_frame": 142,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.785,
+        -0.301,
+        0.112
+      ],
+      "bulb_distance_m": 0.848,
+      "bulb_strength": 103.5,
+      "hue": 0.396,
+      "blackout": false,
+      "fill_scale": 0.502
+    },
+    {
+      "out_frame": 143,
+      "shot_frame": 143,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.798,
+        -0.3,
+        0.102
+      ],
+      "bulb_distance_m": 0.858,
+      "bulb_strength": 105.4,
+      "hue": 0.398,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 144,
+      "shot_frame": 144,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.8,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 105.2,
+      "hue": 0.401,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 145,
+      "shot_frame": 145,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.8,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 104.8,
+      "hue": 0.404,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 146,
+      "shot_frame": 146,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.8,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 104.4,
+      "hue": 0.407,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 147,
+      "shot_frame": 147,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.8,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 104.1,
+      "hue": 0.409,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 148,
+      "shot_frame": 148,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.8,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 103.9,
+      "hue": 0.412,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 149,
+      "shot_frame": 149,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.8,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 103.7,
+      "hue": 0.415,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 150,
+      "shot_frame": 148,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.8,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 402.0,
+      "hue": 0.418,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 151,
+      "shot_frame": 147,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.8,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 347.7,
+      "hue": 0.421,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 152,
+      "shot_frame": 146,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.8,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 303.3,
+      "hue": 0.423,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 153,
+      "shot_frame": 145,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.8,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 266.9,
+      "hue": 0.426,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 154,
+      "shot_frame": 144,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.8,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 237.1,
+      "hue": 0.429,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 155,
+      "shot_frame": 143,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.8,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 212.7,
+      "hue": 0.432,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 156,
+      "shot_frame": 142,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.8,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 192.8,
+      "hue": 0.435,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 157,
+      "shot_frame": 141,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.8,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 176.5,
+      "hue": 0.437,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 158,
+      "shot_frame": 140,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.8,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 163.1,
+      "hue": 0.44,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 159,
+      "shot_frame": 139,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.8,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 152.1,
+      "hue": 0.443,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 160,
+      "shot_frame": 138,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.799,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 143.0,
+      "hue": 0.446,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 161,
+      "shot_frame": 137,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.782,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.843,
+      "bulb_strength": 130.6,
+      "hue": 0.448,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 162,
+      "shot_frame": 136,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.743,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.807,
+      "bulb_strength": 114.3,
+      "hue": 0.451,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 163,
+      "shot_frame": 135,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.685,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.754,
+      "bulb_strength": 96.0,
+      "hue": 0.454,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 164,
+      "shot_frame": 134,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.61,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.687,
+      "bulb_strength": 77.1,
+      "hue": 0.457,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 165,
+      "shot_frame": 133,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.521,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.61,
+      "bulb_strength": 59.1,
+      "hue": 0.46,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 166,
+      "shot_frame": 132,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.421,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.527,
+      "bulb_strength": 43.1,
+      "hue": 0.462,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 167,
+      "shot_frame": 131,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.312,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.444,
+      "bulb_strength": 30.0,
+      "hue": 0.465,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 168,
+      "shot_frame": 130,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.196,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.372,
+      "bulb_strength": 20.8,
+      "hue": 0.468,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 169,
+      "shot_frame": 129,
+      "station": "camera left",
+      "bulb_offset_m": [
+        -0.076,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.325,
+      "bulb_strength": 15.6,
+      "hue": 0.471,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 170,
+      "shot_frame": 128,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.045,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.319,
+      "bulb_strength": 14.9,
+      "hue": 0.474,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 171,
+      "shot_frame": 127,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.166,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.357,
+      "bulb_strength": 18.5,
+      "hue": 0.476,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 172,
+      "shot_frame": 126,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.283,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.424,
+      "bulb_strength": 25.9,
+      "hue": 0.479,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 173,
+      "shot_frame": 125,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.394,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.505,
+      "bulb_strength": 36.5,
+      "hue": 0.482,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 174,
+      "shot_frame": 124,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.497,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.589,
+      "bulb_strength": 49.3,
+      "hue": 0.485,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 175,
+      "shot_frame": 123,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.589,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.668,
+      "bulb_strength": 63.2,
+      "hue": 0.487,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 176,
+      "shot_frame": 122,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.667,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.738,
+      "bulb_strength": 76.9,
+      "hue": 0.49,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 177,
+      "shot_frame": 121,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.73,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.795,
+      "bulb_strength": 89.0,
+      "hue": 0.493,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 178,
+      "shot_frame": 120,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.774,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.836,
+      "bulb_strength": 98.1,
+      "hue": 0.496,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 179,
+      "shot_frame": 119,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.797,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.857,
+      "bulb_strength": 103.0,
+      "hue": 0.499,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 180,
+      "shot_frame": 118,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.8,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 400.2,
+      "hue": 0.501,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 181,
+      "shot_frame": 117,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.8,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 346.2,
+      "hue": 0.504,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 182,
+      "shot_frame": 116,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.8,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 302.1,
+      "hue": 0.507,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 183,
+      "shot_frame": 115,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.8,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 265.9,
+      "hue": 0.51,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 184,
+      "shot_frame": 114,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.8,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 236.3,
+      "hue": 0.513,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 185,
+      "shot_frame": 113,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.8,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 212.1,
+      "hue": 0.515,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 186,
+      "shot_frame": 112,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.8,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 192.3,
+      "hue": 0.518,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 187,
+      "shot_frame": 111,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.8,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 176.0,
+      "hue": 0.521,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 188,
+      "shot_frame": 110,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.8,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 162.7,
+      "hue": 0.524,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 189,
+      "shot_frame": 109,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.8,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 151.9,
+      "hue": 0.526,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 190,
+      "shot_frame": 108,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.8,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 143.0,
+      "hue": 0.529,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 191,
+      "shot_frame": 107,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.8,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 135.7,
+      "hue": 0.532,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 192,
+      "shot_frame": 106,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.8,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 129.7,
+      "hue": 0.535,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 193,
+      "shot_frame": 105,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.8,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 124.8,
+      "hue": 0.538,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 194,
+      "shot_frame": 104,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.8,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 120.8,
+      "hue": 0.54,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 195,
+      "shot_frame": 103,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.8,
+        -0.3,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 117.5,
+      "hue": 0.543,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 196,
+      "shot_frame": 102,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.8,
+        -0.299,
+        0.1
+      ],
+      "bulb_distance_m": 0.86,
+      "bulb_strength": 114.7,
+      "hue": 0.546,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 197,
+      "shot_frame": 101,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.797,
+        -0.285,
+        0.105
+      ],
+      "bulb_distance_m": 0.852,
+      "bulb_strength": 110.6,
+      "hue": 0.549,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 198,
+      "shot_frame": 100,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.79,
+        -0.255,
+        0.114
+      ],
+      "bulb_distance_m": 0.838,
+      "bulb_strength": 105.3,
+      "hue": 0.552,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 199,
+      "shot_frame": 99,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.781,
+        -0.212,
+        0.127
+      ],
+      "bulb_distance_m": 0.819,
+      "bulb_strength": 99.2,
+      "hue": 0.554,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 200,
+      "shot_frame": 98,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.769,
+        -0.157,
+        0.143
+      ],
+      "bulb_distance_m": 0.798,
+      "bulb_strength": 108.0,
+      "hue": 0.557,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 201,
+      "shot_frame": 97,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.755,
+        -0.093,
+        0.163
+      ],
+      "bulb_distance_m": 0.778,
+      "bulb_strength": 122.9,
+      "hue": 0.56,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 202,
+      "shot_frame": 96,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.739,
+        -0.02,
+        0.185
+      ],
+      "bulb_distance_m": 0.762,
+      "bulb_strength": 139.9,
+      "hue": 0.563,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 203,
+      "shot_frame": 95,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.722,
+        0.059,
+        0.209
+      ],
+      "bulb_distance_m": 0.754,
+      "bulb_strength": 160.2,
+      "hue": 0.565,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 204,
+      "shot_frame": 94,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.704,
+        0.143,
+        0.235
+      ],
+      "bulb_distance_m": 0.755,
+      "bulb_strength": 185.4,
+      "hue": 0.568,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 205,
+      "shot_frame": 93,
+      "station": "camera right",
+      "bulb_offset_m": [
+        0.685,
+        0.229,
+        0.261
+      ],
+      "bulb_distance_m": 0.768,
+      "bulb_strength": 217.8,
+      "hue": 0.571,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 206,
+      "shot_frame": 92,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.666,
+        0.316,
+        0.288
+      ],
+      "bulb_distance_m": 0.791,
+      "bulb_strength": 259.4,
+      "hue": 0.574,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 207,
+      "shot_frame": 91,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.647,
+        0.403,
+        0.314
+      ],
+      "bulb_distance_m": 0.824,
+      "bulb_strength": 311.7,
+      "hue": 0.577,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 208,
+      "shot_frame": 90,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.629,
+        0.486,
+        0.339
+      ],
+      "bulb_distance_m": 0.865,
+      "bulb_strength": 375.0,
+      "hue": 0.579,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 209,
+      "shot_frame": 89,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.612,
+        0.566,
+        0.364
+      ],
+      "bulb_distance_m": 0.909,
+      "bulb_strength": 448.4,
+      "hue": 0.582,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 210,
+      "shot_frame": 88,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.596,
+        0.639,
+        0.386
+      ],
+      "bulb_distance_m": 0.955,
+      "bulb_strength": 1964.6,
+      "hue": 0.585,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 211,
+      "shot_frame": 87,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.582,
+        0.704,
+        0.406
+      ],
+      "bulb_distance_m": 0.999,
+      "bulb_strength": 1861.3,
+      "hue": 0.588,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 212,
+      "shot_frame": 86,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.57,
+        0.759,
+        0.422
+      ],
+      "bulb_distance_m": 1.039,
+      "bulb_strength": 1756.1,
+      "hue": 0.591,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 213,
+      "shot_frame": 85,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.56,
+        0.803,
+        0.436
+      ],
+      "bulb_distance_m": 1.072,
+      "bulb_strength": 1645.1,
+      "hue": 0.593,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 214,
+      "shot_frame": 84,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.554,
+        0.833,
+        0.445
+      ],
+      "bulb_distance_m": 1.095,
+      "bulb_strength": 1526.6,
+      "hue": 0.596,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 215,
+      "shot_frame": 83,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.55,
+        0.849,
+        0.45
+      ],
+      "bulb_distance_m": 1.107,
+      "bulb_strength": 1400.1,
+      "hue": 0.599,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 216,
+      "shot_frame": 82,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.55,
+        0.85,
+        0.45
+      ],
+      "bulb_distance_m": 1.108,
+      "bulb_strength": 1272.1,
+      "hue": 0.602,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 217,
+      "shot_frame": 81,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.55,
+        0.85,
+        0.45
+      ],
+      "bulb_distance_m": 1.108,
+      "bulb_strength": 1165.0,
+      "hue": 0.604,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 218,
+      "shot_frame": 80,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.55,
+        0.85,
+        0.45
+      ],
+      "bulb_distance_m": 1.108,
+      "bulb_strength": 1077.4,
+      "hue": 0.607,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 219,
+      "shot_frame": 79,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.55,
+        0.85,
+        0.45
+      ],
+      "bulb_distance_m": 1.108,
+      "bulb_strength": 1005.6,
+      "hue": 0.61,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 220,
+      "shot_frame": 78,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.55,
+        0.85,
+        0.45
+      ],
+      "bulb_distance_m": 1.108,
+      "bulb_strength": 946.9,
+      "hue": 0.613,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 221,
+      "shot_frame": 77,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.55,
+        0.85,
+        0.45
+      ],
+      "bulb_distance_m": 1.108,
+      "bulb_strength": 898.8,
+      "hue": 0.616,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 222,
+      "shot_frame": 76,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.55,
+        0.85,
+        0.45
+      ],
+      "bulb_distance_m": 1.108,
+      "bulb_strength": 859.5,
+      "hue": 0.618,
+      "blackout": false,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 223,
+      "shot_frame": 75,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.55,
+        0.85,
+        0.45
+      ],
+      "bulb_distance_m": 1.108,
+      "bulb_strength": 49.6,
+      "hue": 0.621,
+      "blackout": true,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 224,
+      "shot_frame": 74,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.55,
+        0.85,
+        0.45
+      ],
+      "bulb_distance_m": 1.108,
+      "bulb_strength": 48.1,
+      "hue": 0.624,
+      "blackout": true,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 225,
+      "shot_frame": 73,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.55,
+        0.85,
+        0.45
+      ],
+      "bulb_distance_m": 1.108,
+      "bulb_strength": 46.8,
+      "hue": 0.627,
+      "blackout": true,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 226,
+      "shot_frame": 72,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.55,
+        0.85,
+        0.45
+      ],
+      "bulb_distance_m": 1.108,
+      "bulb_strength": 45.7,
+      "hue": 0.63,
+      "blackout": true,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 227,
+      "shot_frame": 71,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.55,
+        0.85,
+        0.45
+      ],
+      "bulb_distance_m": 1.108,
+      "bulb_strength": 44.8,
+      "hue": 0.632,
+      "blackout": true,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 228,
+      "shot_frame": 70,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.55,
+        0.85,
+        0.45
+      ],
+      "bulb_distance_m": 1.108,
+      "bulb_strength": 44.1,
+      "hue": 0.635,
+      "blackout": true,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 229,
+      "shot_frame": 69,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.55,
+        0.85,
+        0.45
+      ],
+      "bulb_distance_m": 1.108,
+      "bulb_strength": 43.5,
+      "hue": 0.638,
+      "blackout": true,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 230,
+      "shot_frame": 68,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.55,
+        0.85,
+        0.45
+      ],
+      "bulb_distance_m": 1.108,
+      "bulb_strength": 43.1,
+      "hue": 0.641,
+      "blackout": true,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 231,
+      "shot_frame": 67,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.55,
+        0.85,
+        0.45
+      ],
+      "bulb_distance_m": 1.108,
+      "bulb_strength": 42.7,
+      "hue": 0.643,
+      "blackout": true,
+      "fill_scale": 0.5
+    },
+    {
+      "out_frame": 232,
+      "shot_frame": 66,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.55,
+        0.85,
+        0.45
+      ],
+      "bulb_distance_m": 1.108,
+      "bulb_strength": 706.1,
+      "hue": 0.646,
+      "blackout": false,
+      "fill_scale": 0.499
+    },
+    {
+      "out_frame": 233,
+      "shot_frame": 65,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.553,
+        0.849,
+        0.452
+      ],
+      "bulb_distance_m": 1.109,
+      "bulb_strength": 703.5,
+      "hue": 0.649,
+      "blackout": false,
+      "fill_scale": 0.492
+    },
+    {
+      "out_frame": 234,
+      "shot_frame": 64,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.558,
+        0.848,
+        0.454
+      ],
+      "bulb_distance_m": 1.112,
+      "bulb_strength": 703.5,
+      "hue": 0.652,
+      "blackout": false,
+      "fill_scale": 0.479
+    },
+    {
+      "out_frame": 235,
+      "shot_frame": 63,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.566,
+        0.846,
+        0.458
+      ],
+      "bulb_distance_m": 1.116,
+      "bulb_strength": 705.6,
+      "hue": 0.655,
+      "blackout": false,
+      "fill_scale": 0.46
+    },
+    {
+      "out_frame": 236,
+      "shot_frame": 62,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.576,
+        0.844,
+        0.463
+      ],
+      "bulb_distance_m": 1.121,
+      "bulb_strength": 709.6,
+      "hue": 0.657,
+      "blackout": false,
+      "fill_scale": 0.435
+    },
+    {
+      "out_frame": 237,
+      "shot_frame": 61,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.587,
+        0.841,
+        0.469
+      ],
+      "bulb_distance_m": 1.127,
+      "bulb_strength": 715.4,
+      "hue": 0.66,
+      "blackout": false,
+      "fill_scale": 0.407
+    },
+    {
+      "out_frame": 238,
+      "shot_frame": 60,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.6,
+        0.837,
+        0.475
+      ],
+      "bulb_distance_m": 1.134,
+      "bulb_strength": 722.6,
+      "hue": 0.663,
+      "blackout": false,
+      "fill_scale": 0.375
+    },
+    {
+      "out_frame": 239,
+      "shot_frame": 59,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.614,
+        0.834,
+        0.482
+      ],
+      "bulb_distance_m": 1.142,
+      "bulb_strength": 731.1,
+      "hue": 0.666,
+      "blackout": false,
+      "fill_scale": 0.34
+    },
+    {
+      "out_frame": 240,
+      "shot_frame": 58,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.628,
+        0.83,
+        0.489
+      ],
+      "bulb_distance_m": 1.151,
+      "bulb_strength": 2838.5,
+      "hue": 0.669,
+      "blackout": false,
+      "fill_scale": 0.304
+    },
+    {
+      "out_frame": 241,
+      "shot_frame": 57,
+      "station": "behind rim",
+      "bulb_offset_m": [
+        0.644,
+        0.827,
+        0.497
+      ],
+      "bulb_distance_m": 1.159,
+      "bulb_strength": 2494.6,
+      "hue": 0.671,
+      "blackout": false,
+      "fill_scale": 0.266
+    },
+    {
+      "out_frame": 242,
+      "shot_frame": 56,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.659,
+        0.823,
+        0.504
+      ],
+      "bulb_distance_m": 1.168,
+      "bulb_strength": 2211.7,
+      "hue": 0.674,
+      "blackout": false,
+      "fill_scale": 0.228
+    },
+    {
+      "out_frame": 243,
+      "shot_frame": 55,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.674,
+        0.819,
+        0.512
+      ],
+      "bulb_distance_m": 1.178,
+      "bulb_strength": 1978.7,
+      "hue": 0.677,
+      "blackout": false,
+      "fill_scale": 0.191
+    },
+    {
+      "out_frame": 244,
+      "shot_frame": 54,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.688,
+        0.815,
+        0.519
+      ],
+      "bulb_distance_m": 1.187,
+      "bulb_strength": 1786.5,
+      "hue": 0.68,
+      "blackout": false,
+      "fill_scale": 0.154
+    },
+    {
+      "out_frame": 245,
+      "shot_frame": 53,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.702,
+        0.812,
+        0.526
+      ],
+      "bulb_distance_m": 1.195,
+      "bulb_strength": 1627.8,
+      "hue": 0.682,
+      "blackout": false,
+      "fill_scale": 0.12
+    },
+    {
+      "out_frame": 246,
+      "shot_frame": 52,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.715,
+        0.809,
+        0.532
+      ],
+      "bulb_distance_m": 1.203,
+      "bulb_strength": 1496.5,
+      "hue": 0.685,
+      "blackout": false,
+      "fill_scale": 0.089
+    },
+    {
+      "out_frame": 247,
+      "shot_frame": 51,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.726,
+        0.806,
+        0.538
+      ],
+      "bulb_distance_m": 1.211,
+      "bulb_strength": 1387.6,
+      "hue": 0.688,
+      "blackout": false,
+      "fill_scale": 0.061
+    },
+    {
+      "out_frame": 248,
+      "shot_frame": 50,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.735,
+        0.804,
+        0.543
+      ],
+      "bulb_distance_m": 1.217,
+      "bulb_strength": 1296.8,
+      "hue": 0.691,
+      "blackout": false,
+      "fill_scale": 0.037
+    },
+    {
+      "out_frame": 249,
+      "shot_frame": 49,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.742,
+        0.802,
+        0.546
+      ],
+      "bulb_distance_m": 1.222,
+      "bulb_strength": 1220.5,
+      "hue": 0.694,
+      "blackout": false,
+      "fill_scale": 0.019
+    },
+    {
+      "out_frame": 250,
+      "shot_frame": 48,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.748,
+        0.801,
+        0.549
+      ],
+      "bulb_distance_m": 1.225,
+      "bulb_strength": 1155.9,
+      "hue": 0.696,
+      "blackout": false,
+      "fill_scale": 0.006
+    },
+    {
+      "out_frame": 251,
+      "shot_frame": 47,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.75,
+        0.8,
+        0.55
+      ],
+      "bulb_distance_m": 1.227,
+      "bulb_strength": 1100.3,
+      "hue": 0.699,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 252,
+      "shot_frame": 46,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.75,
+        0.8,
+        0.55
+      ],
+      "bulb_distance_m": 1.227,
+      "bulb_strength": 1052.5,
+      "hue": 0.702,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 253,
+      "shot_frame": 45,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.75,
+        0.8,
+        0.55
+      ],
+      "bulb_distance_m": 1.227,
+      "bulb_strength": 1013.2,
+      "hue": 0.705,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 254,
+      "shot_frame": 44,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.75,
+        0.8,
+        0.55
+      ],
+      "bulb_distance_m": 1.227,
+      "bulb_strength": 981.1,
+      "hue": 0.708,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 255,
+      "shot_frame": 43,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.75,
+        0.8,
+        0.55
+      ],
+      "bulb_distance_m": 1.227,
+      "bulb_strength": 954.8,
+      "hue": 0.71,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 256,
+      "shot_frame": 42,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.75,
+        0.8,
+        0.55
+      ],
+      "bulb_distance_m": 1.227,
+      "bulb_strength": 933.3,
+      "hue": 0.713,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 257,
+      "shot_frame": 41,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.75,
+        0.8,
+        0.55
+      ],
+      "bulb_distance_m": 1.227,
+      "bulb_strength": 915.6,
+      "hue": 0.716,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 258,
+      "shot_frame": 40,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.75,
+        0.8,
+        0.55
+      ],
+      "bulb_distance_m": 1.227,
+      "bulb_strength": 901.2,
+      "hue": 0.719,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 259,
+      "shot_frame": 39,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.75,
+        0.8,
+        0.55
+      ],
+      "bulb_distance_m": 1.227,
+      "bulb_strength": 889.4,
+      "hue": 0.721,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 260,
+      "shot_frame": 38,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.75,
+        0.8,
+        0.55
+      ],
+      "bulb_distance_m": 1.227,
+      "bulb_strength": 879.7,
+      "hue": 0.724,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 261,
+      "shot_frame": 37,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.75,
+        0.8,
+        0.55
+      ],
+      "bulb_distance_m": 1.227,
+      "bulb_strength": 871.8,
+      "hue": 0.727,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 262,
+      "shot_frame": 36,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.75,
+        0.8,
+        0.55
+      ],
+      "bulb_distance_m": 1.227,
+      "bulb_strength": 865.3,
+      "hue": 0.73,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 263,
+      "shot_frame": 35,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.75,
+        0.8,
+        0.55
+      ],
+      "bulb_distance_m": 1.227,
+      "bulb_strength": 860.0,
+      "hue": 0.733,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 264,
+      "shot_frame": 34,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.75,
+        0.8,
+        0.55
+      ],
+      "bulb_distance_m": 1.227,
+      "bulb_strength": 855.7,
+      "hue": 0.735,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 265,
+      "shot_frame": 33,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.75,
+        0.8,
+        0.55
+      ],
+      "bulb_distance_m": 1.227,
+      "bulb_strength": 852.1,
+      "hue": 0.738,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 266,
+      "shot_frame": 32,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.75,
+        0.8,
+        0.55
+      ],
+      "bulb_distance_m": 1.227,
+      "bulb_strength": 849.2,
+      "hue": 0.741,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 267,
+      "shot_frame": 31,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.75,
+        0.8,
+        0.55
+      ],
+      "bulb_distance_m": 1.227,
+      "bulb_strength": 846.9,
+      "hue": 0.744,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 268,
+      "shot_frame": 30,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.747,
+        0.8,
+        0.55
+      ],
+      "bulb_distance_m": 1.225,
+      "bulb_strength": 841.8,
+      "hue": 0.747,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 269,
+      "shot_frame": 29,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.724,
+        0.8,
+        0.547
+      ],
+      "bulb_distance_m": 1.209,
+      "bulb_strength": 819.6,
+      "hue": 0.749,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 270,
+      "shot_frame": 28,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.682,
+        0.8,
+        0.541
+      ],
+      "bulb_distance_m": 1.182,
+      "bulb_strength": 2982.5,
+      "hue": 0.752,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 271,
+      "shot_frame": 27,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.622,
+        0.8,
+        0.533
+      ],
+      "bulb_distance_m": 1.145,
+      "bulb_strength": 2423.5,
+      "hue": 0.755,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 272,
+      "shot_frame": 26,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.548,
+        0.8,
+        0.523
+      ],
+      "bulb_distance_m": 1.102,
+      "bulb_strength": 1959.1,
+      "hue": 0.758,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 273,
+      "shot_frame": 25,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.462,
+        0.8,
+        0.512
+      ],
+      "bulb_distance_m": 1.056,
+      "bulb_strength": 1584.7,
+      "hue": 0.76,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 274,
+      "shot_frame": 24,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.365,
+        0.8,
+        0.499
+      ],
+      "bulb_distance_m": 1.011,
+      "bulb_strength": 1292.0,
+      "hue": 0.763,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 275,
+      "shot_frame": 23,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.26,
+        0.8,
+        0.485
+      ],
+      "bulb_distance_m": 0.971,
+      "bulb_strength": 1070.8,
+      "hue": 0.766,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 276,
+      "shot_frame": 22,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.15,
+        0.8,
+        0.47
+      ],
+      "bulb_distance_m": 0.94,
+      "bulb_strength": 910.6,
+      "hue": 0.769,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 277,
+      "shot_frame": 21,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        0.037,
+        0.8,
+        0.455
+      ],
+      "bulb_distance_m": 0.921,
+      "bulb_strength": 801.2,
+      "hue": 0.772,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 278,
+      "shot_frame": 20,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.077,
+        0.8,
+        0.44
+      ],
+      "bulb_distance_m": 0.916,
+      "bulb_strength": 733.4,
+      "hue": 0.774,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 279,
+      "shot_frame": 19,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.189,
+        0.8,
+        0.425
+      ],
+      "bulb_distance_m": 0.925,
+      "bulb_strength": 698.7,
+      "hue": 0.777,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 280,
+      "shot_frame": 18,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.297,
+        0.8,
+        0.41
+      ],
+      "bulb_distance_m": 0.947,
+      "bulb_strength": 689.4,
+      "hue": 0.78,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 281,
+      "shot_frame": 17,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.399,
+        0.8,
+        0.397
+      ],
+      "bulb_distance_m": 0.978,
+      "bulb_strength": 698.6,
+      "hue": 0.783,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 282,
+      "shot_frame": 16,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.493,
+        0.8,
+        0.384
+      ],
+      "bulb_distance_m": 1.015,
+      "bulb_strength": 719.7,
+      "hue": 0.786,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 283,
+      "shot_frame": 15,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.575,
+        0.8,
+        0.373
+      ],
+      "bulb_distance_m": 1.054,
+      "bulb_strength": 746.7,
+      "hue": 0.788,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 284,
+      "shot_frame": 14,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.645,
+        0.8,
+        0.364
+      ],
+      "bulb_distance_m": 1.09,
+      "bulb_strength": 773.8,
+      "hue": 0.791,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 285,
+      "shot_frame": 13,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.698,
+        0.8,
+        0.357
+      ],
+      "bulb_distance_m": 1.12,
+      "bulb_strength": 795.6,
+      "hue": 0.794,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 286,
+      "shot_frame": 12,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.734,
+        0.8,
+        0.352
+      ],
+      "bulb_distance_m": 1.141,
+      "bulb_strength": 807.4,
+      "hue": 0.797,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 287,
+      "shot_frame": 11,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.75,
+        0.8,
+        0.35
+      ],
+      "bulb_distance_m": 1.151,
+      "bulb_strength": 805.3,
+      "hue": 0.799,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 288,
+      "shot_frame": 10,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.75,
+        0.8,
+        0.35
+      ],
+      "bulb_distance_m": 1.151,
+      "bulb_strength": 793.1,
+      "hue": 0.802,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 289,
+      "shot_frame": 9,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.75,
+        0.8,
+        0.35
+      ],
+      "bulb_distance_m": 1.151,
+      "bulb_strength": 782.7,
+      "hue": 0.805,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 290,
+      "shot_frame": 8,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.75,
+        0.8,
+        0.35
+      ],
+      "bulb_distance_m": 1.151,
+      "bulb_strength": 774.3,
+      "hue": 0.808,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 291,
+      "shot_frame": 7,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.75,
+        0.8,
+        0.35
+      ],
+      "bulb_distance_m": 1.151,
+      "bulb_strength": 767.4,
+      "hue": 0.811,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 292,
+      "shot_frame": 6,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.75,
+        0.8,
+        0.35
+      ],
+      "bulb_distance_m": 1.151,
+      "bulb_strength": 761.7,
+      "hue": 0.813,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 293,
+      "shot_frame": 5,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.75,
+        0.8,
+        0.35
+      ],
+      "bulb_distance_m": 1.151,
+      "bulb_strength": 757.0,
+      "hue": 0.816,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 294,
+      "shot_frame": 4,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.75,
+        0.8,
+        0.35
+      ],
+      "bulb_distance_m": 1.151,
+      "bulb_strength": 753.2,
+      "hue": 0.819,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 295,
+      "shot_frame": 3,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.75,
+        0.8,
+        0.35
+      ],
+      "bulb_distance_m": 1.151,
+      "bulb_strength": 750.1,
+      "hue": 0.822,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 296,
+      "shot_frame": 2,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.75,
+        0.8,
+        0.35
+      ],
+      "bulb_distance_m": 1.151,
+      "bulb_strength": 747.6,
+      "hue": 0.825,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 297,
+      "shot_frame": 1,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.75,
+        0.8,
+        0.35
+      ],
+      "bulb_distance_m": 1.151,
+      "bulb_strength": 745.5,
+      "hue": 0.827,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 298,
+      "shot_frame": 0,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.75,
+        0.8,
+        0.35
+      ],
+      "bulb_distance_m": 1.151,
+      "bulb_strength": 743.8,
+      "hue": 0.83,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 299,
+      "shot_frame": 1,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.75,
+        0.8,
+        0.35
+      ],
+      "bulb_distance_m": 1.151,
+      "bulb_strength": 742.4,
+      "hue": 0.833,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 300,
+      "shot_frame": 2,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.75,
+        0.8,
+        0.35
+      ],
+      "bulb_distance_m": 1.151,
+      "bulb_strength": 2815.8,
+      "hue": 0.836,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 301,
+      "shot_frame": 3,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.75,
+        0.8,
+        0.35
+      ],
+      "bulb_distance_m": 1.151,
+      "bulb_strength": 2438.5,
+      "hue": 0.838,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 302,
+      "shot_frame": 4,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.75,
+        0.8,
+        0.35
+      ],
+      "bulb_distance_m": 1.151,
+      "bulb_strength": 2129.6,
+      "hue": 0.841,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 303,
+      "shot_frame": 5,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.75,
+        0.8,
+        0.35
+      ],
+      "bulb_distance_m": 1.151,
+      "bulb_strength": 1876.8,
+      "hue": 0.844,
+      "blackout": false,
+      "fill_scale": 0.0
+    },
+    {
+      "out_frame": 304,
+      "shot_frame": 6,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.75,
+        0.796,
+        0.351
+      ],
+      "bulb_distance_m": 1.148,
+      "bulb_strength": 1661.1,
+      "hue": 0.847,
+      "blackout": false,
+      "fill_scale": 0.003
+    },
+    {
+      "out_frame": 305,
+      "shot_frame": 7,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.747,
+        0.772,
+        0.357
+      ],
+      "bulb_distance_m": 1.132,
+      "bulb_strength": 1451.9,
+      "hue": 0.85,
+      "blackout": false,
+      "fill_scale": 0.016
+    },
+    {
+      "out_frame": 306,
+      "shot_frame": 8,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.743,
+        0.731,
+        0.367
+      ],
+      "bulb_distance_m": 1.105,
+      "bulb_strength": 1255.1,
+      "hue": 0.852,
+      "blackout": false,
+      "fill_scale": 0.039
+    },
+    {
+      "out_frame": 307,
+      "shot_frame": 9,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.737,
+        0.674,
+        0.381
+      ],
+      "bulb_distance_m": 1.069,
+      "bulb_strength": 64.6,
+      "hue": 0.855,
+      "blackout": true,
+      "fill_scale": 0.072
+    },
+    {
+      "out_frame": 308,
+      "shot_frame": 10,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.729,
+        0.604,
+        0.399
+      ],
+      "bulb_distance_m": 1.027,
+      "bulb_strength": 55.2,
+      "hue": 0.858,
+      "blackout": true,
+      "fill_scale": 0.112
+    },
+    {
+      "out_frame": 309,
+      "shot_frame": 11,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.72,
+        0.522,
+        0.419
+      ],
+      "bulb_distance_m": 0.984,
+      "bulb_strength": 43.8,
+      "hue": 0.861,
+      "blackout": true,
+      "fill_scale": 0.159
+    },
+    {
+      "out_frame": 310,
+      "shot_frame": 12,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.71,
+        0.431,
+        0.442
+      ],
+      "bulb_distance_m": 0.941,
+      "bulb_strength": 34.3,
+      "hue": 0.864,
+      "blackout": true,
+      "fill_scale": 0.211
+    },
+    {
+      "out_frame": 311,
+      "shot_frame": 13,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.7,
+        0.333,
+        0.467
+      ],
+      "bulb_distance_m": 0.905,
+      "bulb_strength": 26.8,
+      "hue": 0.866,
+      "blackout": true,
+      "fill_scale": 0.267
+    },
+    {
+      "out_frame": 312,
+      "shot_frame": 14,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.689,
+        0.23,
+        0.493
+      ],
+      "bulb_distance_m": 0.878,
+      "bulb_strength": 21.0,
+      "hue": 0.869,
+      "blackout": true,
+      "fill_scale": 0.326
+    },
+    {
+      "out_frame": 313,
+      "shot_frame": 15,
+      "station": "KEY OFF: back only",
+      "bulb_offset_m": [
+        -0.678,
+        0.124,
+        0.519
+      ],
+      "bulb_distance_m": 0.862,
+      "bulb_strength": 16.6,
+      "hue": 0.872,
+      "blackout": true,
+      "fill_scale": 0.386
+    },
+    {
+      "out_frame": 314,
+      "shot_frame": 16,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.666,
+        0.018,
+        0.545
+      ],
+      "bulb_distance_m": 0.861,
+      "bulb_strength": 13.2,
+      "hue": 0.875,
+      "blackout": true,
+      "fill_scale": 0.447
+    },
+    {
+      "out_frame": 315,
+      "shot_frame": 17,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.655,
+        -0.086,
+        0.572
+      ],
+      "bulb_distance_m": 0.874,
+      "bulb_strength": 172.3,
+      "hue": 0.877,
+      "blackout": false,
+      "fill_scale": 0.507
+    },
+    {
+      "out_frame": 316,
+      "shot_frame": 18,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.644,
+        -0.187,
+        0.597
+      ],
+      "bulb_distance_m": 0.898,
+      "bulb_strength": 130.9,
+      "hue": 0.88,
+      "blackout": false,
+      "fill_scale": 0.564
+    },
+    {
+      "out_frame": 317,
+      "shot_frame": 19,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.634,
+        -0.282,
+        0.62
+      ],
+      "bulb_distance_m": 0.931,
+      "bulb_strength": 131.6,
+      "hue": 0.883,
+      "blackout": false,
+      "fill_scale": 0.618
+    },
+    {
+      "out_frame": 318,
+      "shot_frame": 20,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.625,
+        -0.368,
+        0.642
+      ],
+      "bulb_distance_m": 0.969,
+      "bulb_strength": 140.3,
+      "hue": 0.886,
+      "blackout": false,
+      "fill_scale": 0.667
+    },
+    {
+      "out_frame": 319,
+      "shot_frame": 21,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.617,
+        -0.444,
+        0.661
+      ],
+      "bulb_distance_m": 1.007,
+      "bulb_strength": 149.8,
+      "hue": 0.889,
+      "blackout": false,
+      "fill_scale": 0.711
+    },
+    {
+      "out_frame": 320,
+      "shot_frame": 22,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.61,
+        -0.507,
+        0.677
+      ],
+      "bulb_distance_m": 1.043,
+      "bulb_strength": 158.8,
+      "hue": 0.891,
+      "blackout": false,
+      "fill_scale": 0.747
+    },
+    {
+      "out_frame": 321,
+      "shot_frame": 23,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.605,
+        -0.556,
+        0.689
+      ],
+      "bulb_distance_m": 1.072,
+      "bulb_strength": 166.4,
+      "hue": 0.894,
+      "blackout": false,
+      "fill_scale": 0.775
+    },
+    {
+      "out_frame": 322,
+      "shot_frame": 24,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.601,
+        -0.587,
+        0.697
+      ],
+      "bulb_distance_m": 1.092,
+      "bulb_strength": 171.3,
+      "hue": 0.897,
+      "blackout": false,
+      "fill_scale": 0.793
+    },
+    {
+      "out_frame": 323,
+      "shot_frame": 25,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.6,
+        -0.6,
+        0.7
+      ],
+      "bulb_distance_m": 1.1,
+      "bulb_strength": 172.8,
+      "hue": 0.9,
+      "blackout": false,
+      "fill_scale": 0.8
+    },
+    {
+      "out_frame": 324,
+      "shot_frame": 26,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.6,
+        -0.6,
+        0.7
+      ],
+      "bulb_distance_m": 1.1,
+      "bulb_strength": 171.9,
+      "hue": 0.903,
+      "blackout": false,
+      "fill_scale": 0.8
+    },
+    {
+      "out_frame": 325,
+      "shot_frame": 27,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.6,
+        -0.6,
+        0.7
+      ],
+      "bulb_distance_m": 1.1,
+      "bulb_strength": 171.2,
+      "hue": 0.905,
+      "blackout": false,
+      "fill_scale": 0.8
+    },
+    {
+      "out_frame": 326,
+      "shot_frame": 28,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.6,
+        -0.6,
+        0.7
+      ],
+      "bulb_distance_m": 1.1,
+      "bulb_strength": 170.7,
+      "hue": 0.908,
+      "blackout": false,
+      "fill_scale": 0.8
+    },
+    {
+      "out_frame": 327,
+      "shot_frame": 29,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.6,
+        -0.6,
+        0.7
+      ],
+      "bulb_distance_m": 1.1,
+      "bulb_strength": 170.2,
+      "hue": 0.911,
+      "blackout": false,
+      "fill_scale": 0.8
+    },
+    {
+      "out_frame": 328,
+      "shot_frame": 30,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.6,
+        -0.6,
+        0.7
+      ],
+      "bulb_distance_m": 1.1,
+      "bulb_strength": 169.8,
+      "hue": 0.914,
+      "blackout": false,
+      "fill_scale": 0.8
+    },
+    {
+      "out_frame": 329,
+      "shot_frame": 31,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.6,
+        -0.6,
+        0.7
+      ],
+      "bulb_distance_m": 1.1,
+      "bulb_strength": 169.5,
+      "hue": 0.916,
+      "blackout": false,
+      "fill_scale": 0.8
+    },
+    {
+      "out_frame": 330,
+      "shot_frame": 32,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.6,
+        -0.6,
+        0.7
+      ],
+      "bulb_distance_m": 1.1,
+      "bulb_strength": 640.0,
+      "hue": 0.919,
+      "blackout": false,
+      "fill_scale": 0.8
+    },
+    {
+      "out_frame": 331,
+      "shot_frame": 33,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.6,
+        -0.6,
+        0.7
+      ],
+      "bulb_distance_m": 1.1,
+      "bulb_strength": 554.4,
+      "hue": 0.922,
+      "blackout": false,
+      "fill_scale": 0.8
+    },
+    {
+      "out_frame": 332,
+      "shot_frame": 34,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.6,
+        -0.6,
+        0.7
+      ],
+      "bulb_distance_m": 1.1,
+      "bulb_strength": 484.3,
+      "hue": 0.925,
+      "blackout": false,
+      "fill_scale": 0.8
+    },
+    {
+      "out_frame": 333,
+      "shot_frame": 35,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.6,
+        -0.6,
+        0.7
+      ],
+      "bulb_distance_m": 1.1,
+      "bulb_strength": 426.9,
+      "hue": 0.928,
+      "blackout": false,
+      "fill_scale": 0.8
+    },
+    {
+      "out_frame": 334,
+      "shot_frame": 36,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.6,
+        -0.6,
+        0.7
+      ],
+      "bulb_distance_m": 1.1,
+      "bulb_strength": 380.0,
+      "hue": 0.93,
+      "blackout": false,
+      "fill_scale": 0.8
+    },
+    {
+      "out_frame": 335,
+      "shot_frame": 37,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.6,
+        -0.6,
+        0.7
+      ],
+      "bulb_distance_m": 1.1,
+      "bulb_strength": 341.5,
+      "hue": 0.933,
+      "blackout": false,
+      "fill_scale": 0.8
+    },
+    {
+      "out_frame": 336,
+      "shot_frame": 38,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.6,
+        -0.6,
+        0.7
+      ],
+      "bulb_distance_m": 1.1,
+      "bulb_strength": 310.0,
+      "hue": 0.936,
+      "blackout": false,
+      "fill_scale": 0.8
+    },
+    {
+      "out_frame": 337,
+      "shot_frame": 39,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.6,
+        -0.6,
+        0.7
+      ],
+      "bulb_distance_m": 1.1,
+      "bulb_strength": 284.3,
+      "hue": 0.939,
+      "blackout": false,
+      "fill_scale": 0.8
+    },
+    {
+      "out_frame": 338,
+      "shot_frame": 40,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.6,
+        -0.6,
+        0.7
+      ],
+      "bulb_distance_m": 1.1,
+      "bulb_strength": 263.2,
+      "hue": 0.942,
+      "blackout": false,
+      "fill_scale": 0.8
+    },
+    {
+      "out_frame": 339,
+      "shot_frame": 41,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.6,
+        -0.6,
+        0.7
+      ],
+      "bulb_distance_m": 1.1,
+      "bulb_strength": 245.9,
+      "hue": 0.944,
+      "blackout": false,
+      "fill_scale": 0.8
+    },
+    {
+      "out_frame": 340,
+      "shot_frame": 42,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.598,
+        -0.607,
+        0.698
+      ],
+      "bulb_distance_m": 1.101,
+      "bulb_strength": 232.3,
+      "hue": 0.947,
+      "blackout": false,
+      "fill_scale": 0.801
+    },
+    {
+      "out_frame": 341,
+      "shot_frame": 43,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.587,
+        -0.64,
+        0.687
+      ],
+      "bulb_distance_m": 1.107,
+      "bulb_strength": 223.0,
+      "hue": 0.95,
+      "blackout": false,
+      "fill_scale": 0.804
+    },
+    {
+      "out_frame": 342,
+      "shot_frame": 44,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.568,
+        -0.695,
+        0.668
+      ],
+      "bulb_distance_m": 1.119,
+      "bulb_strength": 218.2,
+      "hue": 0.953,
+      "blackout": false,
+      "fill_scale": 0.811
+    },
+    {
+      "out_frame": 343,
+      "shot_frame": 45,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.543,
+        -0.77,
+        0.643
+      ],
+      "bulb_distance_m": 1.141,
+      "bulb_strength": 218.4,
+      "hue": 0.955,
+      "blackout": false,
+      "fill_scale": 0.819
+    },
+    {
+      "out_frame": 344,
+      "shot_frame": 46,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.513,
+        -0.862,
+        0.613
+      ],
+      "bulb_distance_m": 1.175,
+      "bulb_strength": 224.5,
+      "hue": 0.958,
+      "blackout": false,
+      "fill_scale": 0.829
+    },
+    {
+      "out_frame": 345,
+      "shot_frame": 47,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.477,
+        -0.968,
+        0.577
+      ],
+      "bulb_distance_m": 1.224,
+      "bulb_strength": 237.2,
+      "hue": 0.961,
+      "blackout": false,
+      "fill_scale": 0.841
+    },
+    {
+      "out_frame": 346,
+      "shot_frame": 48,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.438,
+        -1.087,
+        0.538
+      ],
+      "bulb_distance_m": 1.289,
+      "bulb_strength": 257.1,
+      "hue": 0.964,
+      "blackout": false,
+      "fill_scale": 0.854
+    },
+    {
+      "out_frame": 347,
+      "shot_frame": 49,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.395,
+        -1.214,
+        0.495
+      ],
+      "bulb_distance_m": 1.369,
+      "bulb_strength": 284.7,
+      "hue": 0.967,
+      "blackout": false,
+      "fill_scale": 0.868
+    },
+    {
+      "out_frame": 348,
+      "shot_frame": 50,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.351,
+        -1.346,
+        0.451
+      ],
+      "bulb_distance_m": 1.463,
+      "bulb_strength": 319.9,
+      "hue": 0.969,
+      "blackout": false,
+      "fill_scale": 0.883
+    },
+    {
+      "out_frame": 349,
+      "shot_frame": 51,
+      "station": "high three-quarter",
+      "bulb_offset_m": [
+        -0.306,
+        -1.483,
+        0.406
+      ],
+      "bulb_distance_m": 1.567,
+      "bulb_strength": 362.5,
+      "hue": 0.972,
+      "blackout": false,
+      "fill_scale": 0.898
+    },
+    {
+      "out_frame": 350,
+      "shot_frame": 52,
+      "station": "front far",
+      "bulb_offset_m": [
+        -0.26,
+        -1.619,
+        0.36
+      ],
+      "bulb_distance_m": 1.679,
+      "bulb_strength": 411.6,
+      "hue": 0.975,
+      "blackout": false,
+      "fill_scale": 0.913
+    },
+    {
+      "out_frame": 351,
+      "shot_frame": 53,
+      "station": "front far",
+      "bulb_offset_m": [
+        -0.216,
+        -1.753,
+        0.316
+      ],
+      "bulb_distance_m": 1.794,
+      "bulb_strength": 465.8,
+      "hue": 0.978,
+      "blackout": false,
+      "fill_scale": 0.928
+    },
+    {
+      "out_frame": 352,
+      "shot_frame": 54,
+      "station": "front far",
+      "bulb_offset_m": [
+        -0.173,
+        -1.882,
+        0.273
+      ],
+      "bulb_distance_m": 1.909,
+      "bulb_strength": 523.6,
+      "hue": 0.981,
+      "blackout": false,
+      "fill_scale": 0.942
+    },
+    {
+      "out_frame": 353,
+      "shot_frame": 55,
+      "station": "front far",
+      "bulb_offset_m": [
+        -0.133,
+        -2.002,
+        0.233
+      ],
+      "bulb_distance_m": 2.02,
+      "bulb_strength": 582.8,
+      "hue": 0.983,
+      "blackout": false,
+      "fill_scale": 0.956
+    },
+    {
+      "out_frame": 354,
+      "shot_frame": 56,
+      "station": "front far",
+      "bulb_offset_m": [
+        -0.096,
+        -2.112,
+        0.196
+      ],
+      "bulb_distance_m": 2.123,
+      "bulb_strength": 640.6,
+      "hue": 0.986,
+      "blackout": false,
+      "fill_scale": 0.968
+    },
+    {
+      "out_frame": 355,
+      "shot_frame": 57,
+      "station": "front far",
+      "bulb_offset_m": [
+        -0.064,
+        -2.208,
+        0.164
+      ],
+      "bulb_distance_m": 2.215,
+      "bulb_strength": 694.4,
+      "hue": 0.989,
+      "blackout": false,
+      "fill_scale": 0.979
+    },
+    {
+      "out_frame": 356,
+      "shot_frame": 58,
+      "station": "front far",
+      "bulb_offset_m": [
+        -0.037,
+        -2.288,
+        0.137
+      ],
+      "bulb_distance_m": 2.292,
+      "bulb_strength": 741.1,
+      "hue": 0.992,
+      "blackout": false,
+      "fill_scale": 0.988
+    },
+    {
+      "out_frame": 357,
+      "shot_frame": 59,
+      "station": "front far",
+      "bulb_offset_m": [
+        -0.017,
+        -2.348,
+        0.117
+      ],
+      "bulb_distance_m": 2.351,
+      "bulb_strength": 777.6,
+      "hue": 0.994,
+      "blackout": false,
+      "fill_scale": 0.994
+    },
+    {
+      "out_frame": 358,
+      "shot_frame": 60,
+      "station": "front far",
+      "bulb_offset_m": [
+        -0.004,
+        -2.387,
+        0.104
+      ],
+      "bulb_distance_m": 2.389,
+      "bulb_strength": 800.8,
+      "hue": 0.997,
+      "blackout": false,
+      "fill_scale": 0.999
+    },
+    {
+      "out_frame": 359,
+      "shot_frame": 61,
+      "station": "front far",
+      "bulb_offset_m": [
+        -0.0,
+        -2.4,
+        0.1
+      ],
+      "bulb_distance_m": 2.402,
+      "bulb_strength": 808.2,
       "hue": 0.0,
       "blackout": false,
       "fill_scale": 1.0

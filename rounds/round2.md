@@ -162,6 +162,31 @@ exactly; desqueezed by 1.6 that is 2.400:1; delivery is 3840×1600 = 2.40:1. Cam
 squeeze and delivery frame agree with no crop. Desqueezed native is 9523×3968 against a
 3840×1600 delivery — **2.48× linear oversampling**, the biggest quality asset in the chain.
 
+### Recording mode: a real trade, evaluated rather than assumed
+
+The artist asked whether 5.8K 17:9 ProRes 422 HQ would suit the pipeline better than 6K open gate.
+Recorded in `capture_format.json`; the numbers:
+
+| | 6K 3:2 open gate | 5.8K 17:9 |
+|---|---|---|
+| desqueezed aspect | **2.400:1 — the delivery aspect exactly** | 3.024:1 |
+| crop for 2.40:1 | none | **79.4 % of width; 20.6 % discarded** |
+| oversampling over 3840×1600 | **2.48×** | 1.91× |
+| sensor used | 36.0 × 24.0 mm | 27.7 × 18.5 mm |
+| hFOV at 35 mm | 78.9° | 64.7° |
+| codec | HEVC 4:2:0 **Long GOP** 200 Mbps | **ProRes 422 HQ all-intra**, 1.6 Gbps, 24P native, LPCM |
+| storage | 1.5 GB/min | 12 GB/min |
+
+**Recommended: the ProRes mode**, because it deletes two of the three keying problems outright.
+All-intra removes the Long GOP mosquito noise around the silhouette and every hair — the thing
+that makes a matte crawl — and 4:2:2 keeps full vertical chroma resolution, which matters because
+keying *is* a chroma operation. 1.91× is still comfortable supersampling, and the headroom being
+given up existed mainly to fight compression artefacts in the first place. The cost is framing,
+not quality: the 35 mm behaves like roughly a 44 mm.
+
+Open question for the artist: **does the body offer open gate 3:2 in ProRes?** That would be
+strictly better than either and the trade would disappear.
+
 ### Two new red rows this created
 
 **V-Log / V-Gamut decode (constraint 18, red).** Every stage here assumes scene-linear Rec.709:

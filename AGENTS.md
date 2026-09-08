@@ -175,11 +175,13 @@ Every stage takes `--shot`. Interpreter is the pipeline venv unless the row says
 | 4 | depth | `video_depth.py` | `relight/depth/*.npy` | Video Depth Anything; **affine-invariant disparity**, not metric |
 | 5 | face track | `face_track.py` (facetrack venv) | `relight/face_track.json` | mediapipe; needs its own venv |
 | 6 | **normals** | `neural_normals.py` | `relight/normals/*.npz` | see below |
-| 7 | **proxy geometry** | `make_proxy_mesh.py` | `relight/proxy/*.npz` | see below |
+| 7 | **albedo + skin mask** | `make_albedo.py` | `relight/albedo/`, `relight/skin_mask/` | plate ÷ `E_source(normals)`; needed before the plate can be re-lit, or it is lit twice |
+| 7b | **proxy geometry** | `make_proxy_mesh.py` | `relight/proxy/*.npz` | see below; carries UVs |
 | 8 | environment | `build_hdri_scene.py` (Blender) | `scene_library/<env>/` | anamorphic path is opt-in |
 | 9 | light probes | `bake_light_probes.py` (Blender) | `<env>/lighting_sh.json` | SH-L2, Lambertian-convolved |
 | 10 | relight | `relight_sh.py` | `relight/controls/*.npz` | gain map; **has a measured ceiling**, see round 2 |
 | 11 | proxy render | `render_proxy.py` (Blender) | `relight/proxy_render/*.exr` | self-shadows, SSS, glossy passes |
+| 11b | stress demo | `stress_proxy.py` (Blender) | `composite/stress_proxy*/` | lightbulb tour; `--textured` uses the albedo |
 | 12 | composite | `composite_shot.py` | `composite/`, `intermediate/linear_4k/` | loads background **per frame** |
 | 13 | master | `master_export.py` | `master/*.mov` | ProRes 4444 / DNxHR 444, 4:4:4 10-bit |
 | 14 | delivery | `hdr_mux.py` → `validate_final.py` | `final/*.mp4` | HEVC 4:2:0 PQ + HDR10 SEI |
