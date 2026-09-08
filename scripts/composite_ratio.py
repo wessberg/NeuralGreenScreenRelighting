@@ -48,6 +48,82 @@ What this inherits from the proxy, honestly: the *shape* of the shadows, and the
 smoothness at their edges. A nose shadow will land in the right place with roughly the right
 outline, and hair will shadow as a mass rather than as strands. It does not inherit the proxy's
 appearance, which is the entire difference.
+
+ROUND 5, PART 1: THE RATIO MULTIPLIES THE DIFFUSE LAYER, NOT THE PLATE
+----------------------------------------------------------------------
+``plate = D + S``. The ratio is a lighting scale and only D obeys it -- a smooth R can recolour a
+highlight but cannot move or delete one, so every specular in the plate kept reporting where the
+green-screen room's lamps were. ``separate_specular.py`` splits the plate; this multiplies D and
+adds a NEW specular from the actual scene lights:
+
+    out = D x R + S_new
+
+Where no separation exists the loader returns (plate, zeros) and the behaviour is exactly
+round 4's, so this cannot silently change a shot that has not been separated.
+
+ROUND 5, PART 2: E_source AND E_target MUST SHARE A BANDWIDTH
+--------------------------------------------------------------
+``R = E_target / E_source`` divided a SMOOTH numerator by a SHARP one. E_target is rendered on the
+proxy, whose mouth is a smooth swelling; E_source is evaluated on the neural normals, which
+resolve the lip roll, the philtrum, the nostril rims and the teeth. Measured over the face as the
+relative RMS of a log high-pass:
+
+    scale     E_target   E_source   E_source has this much more
+      2 px     0.0098     0.0367      3.75x
+      4 px     0.0306     0.0832      2.72x
+      8 px     0.0837     0.1512      1.81x
+     16 px     0.1860     0.2280      1.23x
+     32 px     0.3318     0.3074      0.93x   <- they cross here
+
+Below the crossover R carries 1/E_source, so it BRIGHTENS whatever the plate's own key had
+shaded and never re-darkens it: the plate's fine shading is removed and nothing puts it back.
+On frame 21 that lifted the lips by 21% relative to the skin around them, compressing the
+photographed lip-to-skin contrast from 0.695 to 0.883 -- which is exactly the "lips are somehow
+lit up more than the skin" the artist reported, and the same mechanism is the strongest candidate
+for "the skin has no pores".
+
+The rule this suggests -- you may only divide out lighting at the resolution at which you can put
+it back -- is implemented as ``--source-detail-sigma`` and is **OFF BY DEFAULT, because it was
+tested and it did not fix the symptom.** Measured on frame 21 against the photographed
+lip-to-skin contrast of 0.8189, with the panel registered to correlation 1.0000:
+
+    band-limit off, plate specular kept       0.8764   +7.0%
+    band-limit 8 px, plate specular kept      0.9133   +11.5%   <- WORSE
+    band-limit off, plate specular REMOVED    0.8259   +0.9%    <- the actual fix
+
+So the bandwidth gap above is real and measured, but it is not what lifted the lips. What lifted
+them was the plate's own lip gloss: a photographed specular band from the green-screen room's
+softbox, which ``plate x R`` could only recolour, so under a warm key it became a bright orange
+wet band sitting on top of lips that had otherwise been relit correctly. Removing it lands the
+lip-to-skin contrast within 0.9% of the photograph.
+
+The flag stays, off, with its measurement recorded, for the same reason ``--extend-edges`` did:
+an unproven idea left on by default is one that ships silently. Whether the bandwidth gap
+explains the artist's separate "the skin has no pores" note is still open -- that needs the
+proxy's own normals, which nothing currently writes.
+
+ROUND 5, PART 3: THE CATCHLIGHT IS RENDERED, NOT PAINTED
+---------------------------------------------------------
+The plate's own corneal reflection leaves with the specular layer, and a new one is added from
+``stress_proxy.py --catchlight``: a dielectric mirror at each measured corneal position, so what
+lands in the eye is whatever the scene actually contains. Presence, size, shape, colour and
+occlusion are all decided by the scene rather than by a rule, which is the whole reason not to
+paint a dot: a bulb 0.5 m away gives a bright disc, a window a soft rectangle, an overcast sky a
+broad wash, an unlit corner nothing at all.
+
+KEEP OR REPLACE IS COMPUTED, NOT SET. A photographed catchlight is better than any synthetic one
+when it happens to fit -- it has the right shape, the right softness and real lash occlusion. It
+fits only when the new key is close to the original, and the glint moves by HALF the angle the
+light moves, so the tolerance looks generous and is not. Both angles are measured: the plate's
+from its own catchlights (``eye_geometry.py``: 54.6 deg off the camera axis on this shot) and the
+scene's from the L1 moment of the rendered irradiance field. Below ``--catchlight-keep-deg`` the
+plate's own reflection is put back instead; above it the rendered one is used. Relighting into a
+different environment is exactly the case where the answer is "replace", so replace is what
+normally happens -- but the decision is a measured angle, not a preference.
+
+The added pass is masked to the corneal cap, because the mirror is a sphere of the corneal radius
+and only the cap within the limbus is really cornea. Beyond it the model is wrong and the sclera
+is doing something else.
 """
 import os
 os.environ['OPENCV_IO_ENABLE_OPENEXR'] = '1'
@@ -60,6 +136,7 @@ from shot_paths import add_shot_argument, from_args
 from color_pipeline import linear_to_srgb
 import gpu_image
 from ratio_edges import extend_irradiance
+from separate_specular import load_layers, specular_dir
 
 LUMA = np.array([.2126, .7152, .0722], np.float32)
 # Must match scripts/stress_proxy.py --ratio and scripts/make_albedo.py.
@@ -160,6 +237,38 @@ def specular_term(normals, light_dir, view_dir, roughness, ndl_gate):
     return np.clip(D, 0.0, 1.0) * F * ndl_gate
 
 
+def detail_sigma(E_t, E_s, mask, scales=(2, 4, 8, 16, 32, 64)):
+    """Scale at which the rendered irradiance stops resolving what the neural normals resolve.
+
+    Both fields are compared as the relative RMS of a log-domain high-pass, over the matte core.
+    The crossover is where the proxy stops being the less detailed of the two; below it, dividing
+    by E_source removes shading the renderer has no way to restore. Measuring it per shot rather
+    than fixing a pixel count matters because it moves with the mesh stride, the depth smoothing
+    and how large the subject is in frame.
+    """
+    if not mask.any():
+        return 0.0, []
+    lt = np.log2(np.maximum(E_t, 1e-6))
+    ls = np.log2(np.maximum(E_s, 1e-6))
+    table, cross = [], 0.0
+    prev = None
+    for sc in scales:
+        a = float((lt - cv2.GaussianBlur(lt, (0, 0), sc))[mask].std())
+        b = float((ls - cv2.GaussianBlur(ls, (0, 0), sc))[mask].std())
+        ratio = b / max(a, 1e-9)
+        table.append({'scale_px': sc, 'e_target_rms': round(a, 4),
+                      'e_source_rms': round(b, 4), 'source_over_target': round(ratio, 3)})
+        if prev is not None and prev[1] > 1.0 >= ratio:
+            # Log-linear interpolation between the bracketing scales.
+            s0, r0 = prev
+            t = (r0 - 1.0) / max(r0 - ratio, 1e-9)
+            cross = float(np.exp(np.log(s0) + t * (np.log(sc) - np.log(s0))))
+        prev = (sc, ratio)
+    if cross == 0.0 and table and table[-1]['source_over_target'] > 1.0:
+        cross = float(scales[-1])
+    return cross, table
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     add_shot_argument(ap)
@@ -179,6 +288,36 @@ def main():
                          'E_source, for comparison only')
     ap.add_argument('--specular', type=float, default=1.0,
                     help='gain on the additive specular term; 0 disables it')
+    ap.add_argument('--plate-specular', choices=('remove', 'keep'), default='remove',
+                    help="'remove' multiplies the DIFFUSE layer from separate_specular.py, so "
+                         "the green-screen room's own highlights leave with it. 'keep' is the "
+                         'round-4 behaviour, kept as a control. With no separation on disk both '
+                         'behave identically')
+    ap.add_argument('--source-detail-sigma', type=float, default=-1.0,
+                    help='EXPERIMENT, off by default: low-pass on E_source before the division, '
+                         'in plate px. 0 measures the crossover from this shot; negative '
+                         'disables it. Tested against the lip contrast it made things WORSE '
+                         '(+11.5%% vs +7.0%%), so it is not the fix and does not ship on')
+    ap.add_argument('--catchlight', type=float, default=1.0,
+                    help='gain on the rendered corneal reflection; 0 disables it')
+    ap.add_argument('--catchlight-dir', default='',
+                    help='EXR catchlight renders; default composite/catchlight_render')
+    ap.add_argument('--catchlight-cap', type=float, default=0.8,
+                    help='corneal cap radius as a fraction of the iris radius. Below 1.0 because '
+                         'the proxy has no eye sockets, so near the limbus the sphere reflects a '
+                         'room that a real brow and lid would hide')
+    ap.add_argument('--catchlight-baseline-pct', type=float, default=70.0,
+                    help='percentile of the corneal reflection treated as the broad ambient '
+                         'wash and NOT added. It is already in the diffuse layer: '
+                         'separate_specular.py only removes what stands above the local diffuse '
+                         'level, so the plate keeps its dim corneal reflection of the original '
+                         'room and adding a full new one on top double-counts it')
+    ap.add_argument('--catchlight-keep-deg', type=float, default=15.0,
+                    help="if the scene's dominant light is within this angle of the key measured "
+                         "from the PLATE's own catchlights, the photographed reflection is put "
+                         'back instead of the rendered one -- it has the right shape, softness '
+                         'and lash occlusion for free. The glint moves by HALF the angle the '
+                         'light moves, which makes this tolerance tighter than it looks')
     ap.add_argument('--roughness-skin', type=float, default=0.30)
     ap.add_argument('--roughness-other', type=float, default=0.80,
                     help='wool, hair and foam are rough; only skin is tight-specular')
@@ -232,7 +371,22 @@ def main():
         selected = {int(x) for x in args.only_output.split(',')}
         order = [order[0]] + [r for r in order[1:] if int(r.stem) in selected]
 
+    # Corneal geometry and the plate's own measured key. Both optional: without them the
+    # catchlight stage simply does not run, and the composite is unchanged.
+    eye_geo, plate_key = {}, None
+    egp = shot.relight / 'eye_geometry.json'
+    if egp.exists():
+        _eg = json.loads(egp.read_text())
+        eye_geo = {r['frame']: r for r in _eg['per_frame']}
+        pk = _eg.get('plate_key_light') or {}
+        if pk.get('mean_direction_world'):
+            plate_key = np.array(pk['mean_direction_world'], np.float32)
+    cdir = Path(args.catchlight_dir) if args.catchlight_dir else (shot.composite /
+                                                                  'catchlight_render')
+
     anchor, stats = None, []
+    sigma = None if args.source_detail_sigma >= 0 else 0.0
+    sigma_table = []
     for r in order:
         n = int(r.stem)
         fi = pf[n]['shot_frame'] if n in pf else n
@@ -243,7 +397,10 @@ def main():
         E_t = img[..., 2::-1].astype(np.float32) / RATIO_ALBEDO      # BGRA -> RGB, undo albedo
         cov = img[..., 3].astype(np.float32) if img.shape[2] == 4 else np.ones(img.shape[:2], np.float32)
 
-        fg = cv2.imread(str(shot.fg(fi)), -1)[..., ::-1].astype(np.float32)
+        # D and S. Without a separation on disk this returns (plate, zeros), so an unseparated
+        # shot composites exactly as it did in round 4.
+        D_plate, S_plate = load_layers(shot, fi)
+        fg = D_plate if args.plate_specular == 'remove' else (D_plate + S_plate)
         alpha = cv2.imread(str(shot.alpha(fi)), -1)
         if alpha.ndim == 3:
             alpha = alpha[..., 0]
@@ -262,6 +419,20 @@ def main():
         else:
             E_s = cv2.resize(source_irradiance(nrm), (w, h),
                              interpolation=cv2.INTER_LINEAR)[..., None]
+        # Band-limit E_source to what the proxy can put back. See the module docstring: below the
+        # crossover the division removes the plate's own fine shading and nothing restores it,
+        # which is what lifted the lips off the skin around them.
+        if sigma is None:
+            core0 = (alpha > 0.99) & (cov > 0.5)
+            measured, sigma_table = detail_sigma(E_t @ LUMA, E_s[..., 0], core0)
+            sigma = (measured if args.source_detail_sigma == 0 else args.source_detail_sigma)
+            print('E_source band-limit: sigma %.1f px (%s)' % (
+                sigma, 'MEASURED crossover' if args.source_detail_sigma == 0
+                else 'from --source-detail-sigma'), flush=True)
+        if sigma > 0:
+            # In log space, so the low-pass is on the ratio rather than on the level.
+            lo = np.log2(np.maximum(E_s, 1e-6))
+            E_s = np.exp2(cv2.GaussianBlur(lo[..., 0], (0, 0), sigma))[..., None]
         # Specular needs normals at plate resolution, and a per-material roughness.
         nrm_full = cv2.resize(nrm, (w, h), interpolation=cv2.INTER_LINEAR)
         nrm_full /= np.maximum(np.linalg.norm(nrm_full, axis=-1, keepdims=True), 1e-6)
@@ -313,9 +484,13 @@ def main():
                                            anchor * args.exposure, args.max_stops, args.floor, 1.5)
 
         spec_energy = 0.0
+        # The scene's dominant light direction is needed by the catchlight decision too, so it
+        # is estimated whether or not the additive specular term is enabled.
+        core = (alpha > 0.99) & valid
+        ldir_c, conc_c = dominant_light(E_t, nrm_full, core)
+        conc_ok = conc_c > 1e-4
         if args.specular > 0:
-            core = (alpha > 0.99) & valid
-            ldir, conc = dominant_light(E_t, nrm_full, core)
+            ldir, conc = ldir_c, conc_c
             # The plate camera looks along +Y, so the view direction from any surface point back
             # to the camera is -Y. Exact enough at this field of view, and it avoids needing a
             # per-pixel world position.
@@ -338,6 +513,94 @@ def main():
             G = np.minimum(G, 3.0 * np.maximum(lit, 1e-4))
             lit = lit + G
             spec_energy = float(np.mean(G[core] @ LUMA) / max(float(np.mean(lit[core] @ LUMA)), 1e-9)) if core.any() else 0.0
+        # ---- corneal reflection -------------------------------------------------------------
+        cl_log = None
+        if args.catchlight > 0 and eye_geo:
+            rec = eye_geo.get(fi) or {}
+            eyes = {k: v for k, v in (rec.get('eyes') or {}).items() if v.get('visible')}
+            if eyes:
+                # Corneal cap mask. The mirror is a sphere of the corneal radius, but only the
+                # cap inside the limbus is cornea; beyond it the sphere is not the real surface.
+                cap = np.zeros((h, w), np.float32)
+                yy, xx = np.mgrid[0:h, 0:w]
+                yy = yy.astype(np.float32); xx = xx.astype(np.float32)
+                for d in eyes.values():
+                    cx, cy = d['iris_centre_px']
+                    # The cap stops at the LIMBUS, which is the iris radius -- not at the
+                    # sphere's silhouette. The cornea is a 7.8 mm sphere but only the cap within
+                    # 5.85 mm of the axis is cornea, i.e. 48.6 deg, and Fresnel there is still a
+                    # few per cent. Masking out to the silhouette instead put the GRAZING rim,
+                    # where a dielectric reflects ~100%, right on the iris edge and drew a bright
+                    # ring around each eye.
+                    # The cap stops well inside the limbus, and the reason is a PROXY limitation
+                    # rather than optics: make_proxy_mesh.py builds a displaced silhouette shell
+                    # with NO EYE SOCKETS, so the corneal sphere sees the whole room from the
+                    # sides, where a real brow, lid and lash occlude nearly all of it. A sphere
+                    # also compresses an entire hemisphere into its last few rim pixels, so
+                    # those directions arrive concentrated as well as unoccluded. Left at the
+                    # limbus it drew a bright arc around each iris. Near the axis, where the
+                    # geometry is trustworthy, the reflection is right.
+                    rr = max(d['iris_radius_px_desqueezed'], 1.0) * args.catchlight_cap
+                    dist = np.sqrt((xx - cx) ** 2 + (yy - cy) ** 2)
+                    cap = np.maximum(cap, np.clip((rr - dist) / max(rr * 0.45, 1.0), 0.0, 1.0))
+                # Keep or replace, from the two measured angles.
+                keep = False
+                ang = None
+                if plate_key is not None and conc_ok:
+                    ang = float(np.degrees(np.arccos(np.clip(
+                        float(plate_key @ ldir_c), -1.0, 1.0))))
+                    keep = ang <= args.catchlight_keep_deg
+                if keep:
+                    add = S_plate * cap[..., None] * args.catchlight
+                    src = 'plate (kept: scene key %.1f deg from the measured original)' % ang
+                else:
+                    cp = cdir / ('%06d.exr' % n)
+                    if cp.exists():
+                        cimg = cv2.imread(str(cp), -1)
+                        cr = cimg[..., 2::-1].astype(np.float32)
+                        if cr.shape[:2] != (h, w):
+                            cr = cv2.resize(cr, (w, h), interpolation=cv2.INTER_LINEAR)
+                        # ONLY THE COMPACT PART, and this is not a cosmetic choice -- it is what
+                        # makes the addition balance the removal. separate_specular.py takes only
+                        # what stands above the LOCAL DIFFUSE BASELINE, so the plate's broad,
+                        # dim corneal reflection of the room was never removed; it is still in D
+                        # and is relit with it. Adding the full mirror wash on top double-counts
+                        # it, and it looked exactly like that: a pale disc over the whole iris,
+                        # a contact lens rather than a catchlight. Subtracting the render's own
+                        # local baseline leaves the reflections of actual SOURCES, which is what
+                        # a catchlight is. A 4 cm bulb at 0.5 m subtends 4.6 deg and reflects in
+                        # a 7.8 mm cornea as a spot well under a pixel wide -- small and bright
+                        # is correct, and a disc filling the iris never was.
+                        # Per eye, because the two corneas see different parts of the room. An
+                        # opening will not do it: the wash covers the whole corneal disc, so any
+                        # structuring element small enough to preserve the glint also fits
+                        # inside the wash and preserves that too -- which is what happened.
+                        crL = cr @ LUMA
+                        keep = np.zeros_like(crL)
+                        for d in eyes.values():
+                            cx, cy = d['iris_centre_px']
+                            rr = max(d['iris_radius_px_desqueezed'], 1.0)
+                            disc = ((xx - cx) ** 2 + (yy - cy) ** 2) <= rr * rr
+                            if disc.sum() < 8:
+                                continue
+                            b = float(np.percentile(crL[disc], args.catchlight_baseline_pct))
+                            keep[disc] = np.clip(crL[disc] - b, 0.0, None)
+                        cr = cr * (keep / np.maximum(crL, 1e-9))[..., None]
+                        # Same anchor and exposure as the ratio: the render is in scene-linear
+                        # units and the plate has been scaled to sit against them.
+                        add = cr * cap[..., None] * (anchor * args.exposure) * args.catchlight
+                        src = ('rendered' if ang is None else
+                               'rendered (scene key %.1f deg from the measured original)' % ang)
+                    else:
+                        add, src = None, 'MISSING %s -- run stress_proxy.py --catchlight' % cp
+                if add is not None:
+                    lit = lit + add
+                    cl_log = {'source': src, 'eyes': sorted(eyes),
+                              'angle_to_plate_key_deg': ang,
+                              'peak_added': float((add @ LUMA).max())}
+                else:
+                    cl_log = {'source': src, 'eyes': sorted(eyes)}
+
         out_rgb = np.clip(lit * alpha[..., None], 0, None)
         if out_res is not None and (out_res[0], out_res[1]) != (w, h):
             # Downscale AFTER compositing, so the matte's fractional alpha and the ratio's shadow
@@ -349,7 +612,7 @@ def main():
         m = alpha > 0.99
         if m.any():
             rl = R[m] @ LUMA
-            stats.append({'frame': n, 'shot_frame': fi,
+            stats.append({'frame': n, 'shot_frame': fi, 'catchlight': cl_log,
                           'station': pf[n]['station'] if n in pf else None,
                           'ratio_luma_median': float(np.median(rl)),
                           'ratio_luma_p5': float(np.percentile(rl, 5)),
@@ -376,6 +639,23 @@ def main():
                                             'capping the whole map at 2.83:1, which is why it '
                                             'could never produce a terminator'},
         'exposure_anchor': anchor, 'compute': dev,
+        'plate_specular': {
+            'mode': args.plate_specular,
+            'layer': str(specular_dir(shot)),
+            'present': specular_dir(shot).exists(),
+            'why': 'a smooth R can recolour a highlight but cannot move or delete one, so with '
+                   'the plate specular left in, every shot keeps reporting where the ORIGINAL '
+                   "room's lamps were -- the crown sheen, the lip gloss, and the corneal "
+                   'catchlight most of all'},
+        'source_band_limit': {
+            'sigma_px': sigma,
+            'source': ('MEASURED crossover' if args.source_detail_sigma == 0
+                       else ('disabled -- round 4 behaviour' if args.source_detail_sigma < 0
+                             else 'explicit --source-detail-sigma')),
+            'bandwidth_table': sigma_table,
+            'rule': 'you may only divide out lighting at the resolution at which you can put it '
+                    'back. Below the crossover E_target cannot restore what E_source removes, so '
+                    'R carries 1/E_source and brightens whatever the original key had shaded'},
         'output_resolution': list(out_res) if out_res else 'plate resolution',
         'specular': {'gain': args.specular, 'mean_fraction_of_image': None,
                      'model': 'GGX + Schlick Fresnel on the NEURAL normals, added not multiplied',
@@ -386,6 +666,28 @@ def main():
                      'clamped_to': '3x the local diffuse level',
                      'roughness': {'skin': args.roughness_skin, 'other': args.roughness_other},
                      'weight': {'skin': 1.0, 'other': args.specular_other}},
+        'catchlight': {
+            'gain': args.catchlight,
+            'render_dir': str(cdir), 'render_present': cdir.exists(),
+            'eye_geometry': str(egp), 'eye_geometry_present': egp.exists(),
+            'plate_key_direction_world': (None if plate_key is None
+                                          else plate_key.round(4).tolist()),
+            'keep_threshold_deg': args.catchlight_keep_deg,
+            'model': 'a dielectric mirror (IOR 1.376) at the measured corneal position, rendered '
+                     'with the plate camera, masked to the corneal cap, reduced to its compact '
+                     'part and added',
+            'compact_only': 'the render minus its own local baseline. separate_specular.py only '
+                            'removes what stands above the local diffuse level, so the broad dim '
+                            'corneal reflection of the original room is STILL IN D. Adding the '
+                            'full mirror wash on top double-counts it and reads as a contact '
+                            'lens over the whole iris',
+            'why_not_painted': 'presence, size, shape, colour and occlusion all come from the '
+                               'scene. A distance rule would get sunlight backwards: a mirror '
+                               'shows RADIANCE, which does not fall off with distance, so the '
+                               'sun makes a tiny brilliant spark rather than nothing',
+            'keep_or_replace': 'computed from two MEASURED angles -- the plate key from its own '
+                               'catchlights, the scene key from the L1 moment of the rendered '
+                               'irradiance. Not an artist setting'},
         'result': {'mean_dynamic_range_stops': float(dr.mean()),
                    'max_dynamic_range_stops': float(dr.max())},
         'per_frame': stats}

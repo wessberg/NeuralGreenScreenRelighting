@@ -56,6 +56,13 @@ ap.add_argument('--exposure', type=float, default=0.0,
                      'far darker than the clay stand-in (a dark suit and hair dominate it), so '
                      'the textured render needs several times the level to sit at the same '
                      'exposure')
+ap.add_argument('--catchlight', action='store_true',
+                help='render ONLY the corneal reflections: a mirror sphere at each eye, the '
+                     'plate camera, everything else hidden from camera but still visible to '
+                     'reflection rays. What lands in the eye is then whatever the scene actually '
+                     'contains -- a bulb 0.5 m away reflects as a bright disc, a window as a soft '
+                     'rectangle, an overcast sky as a broad wash, an unlit corner as nothing. '
+                     'No threshold decides whether to draw a catchlight; the scene does')
 ap.add_argument('--ratio', action='store_true',
                 help='render the IRRADIANCE FIELD for the ratio composite instead of a picture '
                      'of her: neutral albedo, linear EXR out. composite_ratio.py turns it into '
@@ -134,7 +141,8 @@ cam_data = bpy.data.cameras.new('cam')
 # Demonstration framing: wider than the plate camera so the bulb is visible at the extremes.
 # The ratio pass must use the PLATE's own camera, or the multiplier will not line up with the
 # photograph it multiplies. The wider demo lens exists only to keep the bulb in frame.
-cam_data.lens = LENS if args.ratio else (args.demo_lens if args.demo_lens > 0 else LENS)
+cam_data.lens = LENS if (args.ratio or args.catchlight) else (
+    args.demo_lens if args.demo_lens > 0 else LENS)
 cam_data.sensor_width = SENSOR
 cam_data.sensor_fit = 'HORIZONTAL'
 cam = bpy.data.objects.new('cam', cam_data)
@@ -297,12 +305,14 @@ def station_at(t):
             fa + (fb - fa) * f)
 
 
-# Ratio pass renders at the plate's own resolution so the multiplier is pixel-aligned with it.
-_w = SRC_W if args.ratio else args.width
+# The ratio and catchlight passes render at the plate's own resolution, so what they produce is
+# pixel-aligned with the photograph they will be combined with.
+_linear_pass = args.ratio or args.catchlight
+_w = SRC_W if _linear_pass else args.width
 scn.render.resolution_x = _w
 scn.render.resolution_y = int(round(_w * SRC_H / SRC_W))
 scn.render.image_settings.media_type = 'IMAGE'
-if args.ratio:
+if _linear_pass:
     # Linear half float: the ratio is a division, and an 8-bit sRGB round trip would quantise
     # the shadow end of it into banding exactly where the shadows are.
     scn.render.image_settings.file_format = 'OPEN_EXR'
@@ -313,7 +323,7 @@ else:
     scn.render.image_settings.file_format = 'PNG'
     scn.render.image_settings.color_mode = 'RGB'
     scn.render.image_settings.color_depth = '8'
-if not args.ratio:
+if not _linear_pass:
     scn.render.film_transparent = False
 
 
@@ -323,7 +333,61 @@ def aim(ob, tgt):
                          math.atan2(d[1], d[0]) + math.pi / 2)
 
 
+# --- corneal mirrors -------------------------------------------------------------------------
+# A catchlight is a first-surface mirror image of the source, so the honest way to produce one is
+# to put a mirror where the cornea is and let Cycles find the source. Everything the artist asked
+# to fall out for free does: presence, size, shape, colour and occlusion are all decided by the
+# scene rather than by a rule. The one thing worth stating plainly is that a mirror shows the
+# source's RADIANCE, which does not fall off with distance -- so a distant lamp still makes a
+# catchlight, just a small one. A distance threshold would get sunlight exactly backwards.
+eye_geo, eye_obs = None, []
+if args.catchlight:
+    egp = shot.relight / 'eye_geometry.json'
+    if not egp.exists():
+        raise SystemExit('No %s. Run scripts/eye_geometry.py --shot %s first.' % (egp, shot.name))
+    eye_geo = {r['frame']: r for r in json.loads(egp.read_text())['per_frame']}
+    mirror = bpy.data.materials.new('cornea')
+    mirror.use_nodes = True
+    mnt = mirror.node_tree
+    for _n in list(mnt.nodes):
+        if _n.type != 'OUTPUT_MATERIAL':
+            mnt.nodes.remove(_n)
+    # A DIELECTRIC, not a mirror. The first version used a plain glossy BSDF with a white colour,
+    # i.e. 100% reflectance, and the whole cornea came back at 2.5-4.3 in linear -- it would have
+    # whited out both eyes. The tear film is water on stroma: IOR 1.376, so Fresnel gives about
+    # 2.5% at normal incidence rising toward 100% at grazing, which is why a catchlight is a
+    # small bright dot rather than a mirrored eyeball, and why the limbus edge picks up a rim.
+    # Principled with a BLACK base colour is exactly that lobe and nothing else: the iris
+    # diffuse is photographed and comes from the plate, never from here.
+    gl = mnt.nodes.new('ShaderNodeBsdfPrincipled')
+    gl.inputs['Base Color'].default_value = (0.0, 0.0, 0.0, 1.0)
+    gl.inputs['Metallic'].default_value = 0.0
+    # Smooth, not rough: a rough lobe would smear a window into a blob and lose the shape that
+    # makes a catchlight readable as a particular kind of source.
+    gl.inputs['Roughness'].default_value = 0.02
+    if 'IOR' in gl.inputs:
+        gl.inputs['IOR'].default_value = 1.376
+    for _n, _v in (('Subsurface Weight', 0.0), ('Sheen Weight', 0.0), ('Coat Weight', 0.0),
+                   ('Transmission Weight', 0.0), ('Emission Strength', 0.0)):
+        if _n in gl.inputs:
+            gl.inputs[_n].default_value = _v
+    mnt.links.new(gl.outputs['BSDF'], next(n for n in mnt.nodes
+                                           if n.type == 'OUTPUT_MATERIAL').inputs['Surface'])
+    for _side in ('left', 'right'):
+        _me = bpy.data.meshes.new('cornea_' + _side)
+        _bm = bmesh.new()
+        bmesh.ops.create_uvsphere(_bm, u_segments=48, v_segments=24, radius=1.0)
+        _bm.to_mesh(_me)
+        _bm.free()
+        _ob = bpy.data.objects.new('cornea_' + _side, _me)
+        scn.collection.objects.link(_ob)
+        _ob.data.materials.append(mirror)
+        with bpy.context.temp_override(object=_ob, selected_editable_objects=[_ob]):
+            bpy.ops.object.shade_smooth()
+        eye_obs.append((_side, _ob))
+
 rig_log = []
+catch_log = []
 proxy_ob = None
 only_output = {int(x) for x in args.only_output.split(',')} if args.only_output else set()
 for n, fi in enumerate(frames):
@@ -410,6 +474,25 @@ for n, fi in enumerate(frames):
     fill_em.inputs['Strength'].default_value = 4.0 * (EXPOSURE / 900.0) * blackout * fill_scale
     fill_em.inputs['Color'].default_value = (fr, fg_, fb, 1.0)
 
+    if args.catchlight:
+        # The head stays in the scene as an OCCLUDER -- brow, nose and cheek block part of the
+        # environment from reaching the cornea -- but nothing except the mirrors is allowed to
+        # reach the camera, so the pass contains only the reflections and can be added.
+        proxy_ob.visible_camera = False
+        for _o in (bulb_ob, fill_ob):
+            _o.visible_camera = False
+        rec = eye_geo.get(fi) or {}
+        for _side, _ob in eye_obs:
+            d = ((rec.get('eyes') or {}).get(_side)) or {}
+            if not d.get('visible'):
+                _ob.hide_render = True
+                continue
+            _ob.hide_render = False
+            _ob.location = tuple(d['cornea_centre_world'])
+            _ob.scale = (d['cornea_radius_m'],) * 3
+        catch_log.append({'out_frame': n, 'shot_frame': fi,
+                          'eyes_rendered': [k for k, o in eye_obs if not o.hide_render]})
+
     scn.render.filepath = str(out_dir / ('%06d' % n))
     bpy.ops.render.render(write_still=True)
     rig_log.append({'out_frame': n, 'shot_frame': fi, 'station': station,
@@ -434,8 +517,25 @@ report = {'shot': shot.name, 'frames': len(frames), 'fps': str(shot.frame_rate),
                   'plate_lens_mm': LENS,
                   'key_off_stations': 'fill_scale 0: no front light at all, only a source behind '
                                       'the actor -- near-silhouette with a rim'},
-          'textured': args.textured, 'ratio': args.ratio,
+          'textured': args.textured, 'ratio': args.ratio, 'catchlight': args.catchlight,
           'ratio_albedo': RATIO_ALBEDO if args.ratio else None,
+          'catchlight_pass': ({
+              'model': 'a mirror sphere of the measured corneal radius at each eye, from '
+                       'relight/eye_geometry.json, rendered with the PLATE camera',
+              'roughness': 0.02, 'ior': 1.376,
+              'reflectance': 'dielectric Fresnel, ~2.5% at normal incidence. A 100% mirror '
+                             'returned the whole cornea at 2.5-4.3 linear and would have whited '
+                             'out both eyes',
+              'visible_to_camera': 'the corneal spheres ONLY. The proxy stays in the scene as an '
+                                   'occluder -- brow, nose and cheek block part of the '
+                                   'environment from reaching the cornea -- but is hidden from '
+                                   'camera rays, as are the bulb and the fill, so this pass is '
+                                   'purely additive',
+              'why_no_threshold': 'presence, size, shape, colour and occlusion all come from the '
+                                  'scene. A mirror shows the source RADIANCE, which does not fall '
+                                  'off with distance, so a distant lamp still makes a catchlight '
+                                  '-- a small one. A distance rule would get sunlight backwards',
+              'per_frame': catch_log} if args.catchlight else None),
           'exposure': EXPOSURE,
           'note': ('Albedo projected from the plate: her real skin, hair, suit and microphone, '
                    'with the original studio key divided out and the rig lighting it instead. '
@@ -446,5 +546,9 @@ report = {'shot': shot.name, 'frames': len(frames), 'fps': str(shot.frame_rate),
           'per_frame': rig_log}
 (out_dir / 'render_manifest.json').write_text(json.dumps(report, indent=2))
 if not args.only_output:
-    shot.log('stress_proxy.json').write_text(json.dumps(report, indent=2))
+    # A separate log for the catchlight pass: it shares the tour and therefore the out_frame ->
+    # shot_frame mapping, but overwriting stress_proxy.json would leave the ratio composite
+    # reading a manifest whose 'ratio' flag says False.
+    shot.log('stress_proxy_catchlight.json' if args.catchlight
+             else 'stress_proxy.json').write_text(json.dumps(report, indent=2))
 print(json.dumps({k: report[k] for k in ('frames', 'output_dir', 'rig')}, indent=2))

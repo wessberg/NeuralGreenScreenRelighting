@@ -1,0 +1,186 @@
+{
+  "shot": "reporter_a",
+  "frame": 21,
+  "samples": 256,
+  "throw_m": 1.0,
+  "source_distance_m": 1.2,
+  "tolerance": 0.35,
+  "model": "one 10 cm emissive quad, invisible to camera, moved between five positions; dielectric corneal spheres identical to stress_proxy.py --catchlight",
+  "why_dedicated": "measured off the stress tour instead, corr(bulb dx, glint dx) came out -0.192 over 93 frames, which looks like a mirrored axis and is not: the tour has a fill panel at target - offset*0.6, on the OPPOSITE side from the bulb and 15x its size, so in a mirror the brightest point tracked the fill. With the fill up it reads +0.243 and -0.254, both correct",
+  "what_is_asserted": "the DIRECTION the glint travels when the source moves, and the magnitude against the half-vector prediction -- the glint moves by roughly HALF the angle the light moves, and a model that got that factor wrong would still pass a pure direction test",
+  "checks": [
+    {
+      "axis": "vertical",
+      "eye": "right",
+      "travel_measured_iris_radii": -0.8222,
+      "travel_predicted_iris_radii": -0.8509,
+      "relative_error": 0.0337,
+      "direction_correct": true,
+      "pass": true,
+      "why": "image y is DOWN, so a light moving UP must move the glint to a SMALLER y"
+    },
+    {
+      "axis": "vertical",
+      "eye": "left",
+      "travel_measured_iris_radii": -0.8531,
+      "travel_predicted_iris_radii": -0.8459,
+      "relative_error": 0.0086,
+      "direction_correct": true,
+      "pass": true,
+      "why": "image y is DOWN, so a light moving UP must move the glint to a SMALLER y"
+    },
+    {
+      "axis": "horizontal",
+      "eye": "right",
+      "travel_measured_iris_radii": 0.8452,
+      "travel_predicted_iris_radii": 0.8489,
+      "relative_error": 0.0044,
+      "direction_correct": true,
+      "pass": true,
+      "why": "a light moving to +x must move the glint to +x"
+    },
+    {
+      "axis": "horizontal",
+      "eye": "left",
+      "travel_measured_iris_radii": 0.8144,
+      "travel_predicted_iris_radii": 0.844,
+      "relative_error": 0.0351,
+      "direction_correct": true,
+      "pass": true,
+      "why": "a light moving to +x must move the glint to +x"
+    }
+  ],
+  "pass": true,
+  "per_position": {
+    "centre": {
+      "right": {
+        "measured": [
+          0.3674305923598069,
+          0.2602259846449979
+        ],
+        "predicted": [
+          0.36766209040186,
+          0.2594394494888077
+        ],
+        "peak": 0.00024467677576467395,
+        "area_px": 2
+      },
+      "left": {
+        "measured": [
+          0.04995392841553675,
+          0.29363358313547006
+        ],
+        "predicted": [
+          0.03135309852825728,
+          0.30642612922230317
+        ],
+        "peak": 1.2943266938236775e-06,
+        "area_px": 4
+      }
+    },
+    "up": {
+      "right": {
+        "measured": [
+          0.36615980146575466,
+          -0.16148164818278676
+        ],
+        "predicted": [
+          0.3689000359379562,
+          -0.16257505965210872
+        ],
+        "peak": 1.9120075702667236,
+        "area_px": 3
+      },
+      "left": {
+        "measured": [
+          0.01944256409733355,
+          -0.13563975646629606
+        ],
+        "predicted": [
+          0.03329207694670543,
+          -0.11367318003245817
+        ],
+        "peak": 4.029710292816162,
+        "area_px": 1
+      }
+    },
+    "down": {
+      "right": {
+        "measured": [
+          0.34038994835994413,
+          0.6606705400225152
+        ],
+        "predicted": [
+          0.3690522338365029,
+          0.6882814268989609
+        ],
+        "peak": 2.0686116218566895,
+        "area_px": 1
+      },
+      "left": {
+        "measured": [
+          0.01944256409733355,
+          0.7174598480117541
+        ],
+        "predicted": [
+          0.03363708001504105,
+          0.7321942411726686
+        ],
+        "peak": 4.164612293243408,
+        "area_px": 1
+      }
+    },
+    "left": {
+      "right": {
+        "measured": [
+          -0.060054607017573244,
+          0.2602259846449979
+        ],
+        "predicted": [
+          -0.056441210916158446,
+          0.2701037999728831
+        ],
+        "peak": 1.5630781490472145e-05,
+        "area_px": 1
+      },
+      "left": {
+        "measured": [
+          -0.32967666296108405,
+          0.329688395106122
+        ],
+        "predicted": [
+          -0.3768330957115964,
+          0.31862269908226726
+        ],
+        "peak": 4.525720669334987e-06,
+        "area_px": 2
+      }
+    },
+    "right": {
+      "right": {
+        "measured": [
+          0.7850964716240798,
+          0.260226927051933
+        ],
+        "predicted": [
+          0.7924469112846947,
+          0.27031854058244564
+        ],
+        "peak": 0.00019750601495616138,
+        "area_px": 2
+      },
+      "left": {
+        "measured": [
+          0.4847696210853609,
+          0.28419483277054447
+        ],
+        "predicted": [
+          0.46721213568877923,
+          0.3160065304506963
+        ],
+        "peak": 3.981006557296496e-06,
+        "area_px": 2
+      }
+    }
+  }
+}

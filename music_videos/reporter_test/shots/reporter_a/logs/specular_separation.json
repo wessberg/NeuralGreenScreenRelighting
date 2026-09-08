@@ -1,0 +1,1415 @@
+{
+  "shot": "reporter_a",
+  "frames": 150,
+  "output": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\key\\specular",
+  "model": "I = a*b_hat + s*G_hat, a,s >= 0. b_hat is the LOCAL material chromaticity from an alpha-aware opening; G_hat is the illuminant, measured from the plate.",
+  "illuminant": {
+    "candidates": {
+      "corneal_glints": {
+        "rgb": [
+          1.0,
+          0.9455999732017517,
+          0.9171000123023987
+        ],
+        "samples": 56,
+        "peak_linear_mean": 0.6676897321428571,
+        "clipped_samples": 0,
+        "clipping_note": "a clipped glint has no diffuse underneath to recover; subtraction leaves a flat patch there and this stage reports it rather than filling it"
+      },
+      "neutral_pixels": {
+        "rgb": [
+          1.0,
+          0.9544,
+          0.9128
+        ],
+        "pixels": 38292
+      }
+    },
+    "source": "corneal_glints",
+    "cross_check": {
+      "max_channel_disagreement": 0.008800026798248317,
+      "verdict": "AGREE",
+      "why_it_matters": "the two estimators share no pixels and no mechanism, so agreement is real cross-validation rather than one metric confirming itself"
+    },
+    "rgb": [
+      1.0,
+      0.9455900192260742,
+      0.9170799851417542
+    ]
+  },
+  "window": {
+    "radius_px": 15,
+    "derivation": "ipd 131.0 px x 0.110",
+    "why_face_scaled": "a constant pixel radius is wrong on at least two of: a 1080p bust, a 6K anamorphic macro close-up, a wide shot"
+  },
+  "floor": {
+    "fraction_of_local_diffuse": 0.25,
+    "why": "skin gets MORE saturated as it darkens (subsurface reddening), which mimics the dichromatic specular signature. Measured over 58819 cheek pixels of one material, min/sum spans 0.060 (p2) to 0.216 (p95). Ungated, the separator reads that drift as specular and desaturates the whole face to grey-green.",
+    "consequence": "the low-level sheen below the floor stays in the diffuse layer and is relit as if it were diffuse. That is a real ceiling on constraint 5, not a tuning choice."
+  },
+  "result": {
+    "mean_specular_fraction_of_energy": 0.048180749962727226,
+    "max_specular_fraction_of_energy": 0.05724494904279709,
+    "mean_unseparable_fraction": 0.08773112997365283,
+    "mean_discarded_by_floor": 0.45794336060682933
+  },
+  "identity": "D = plate - s*G_hat. Every diffuse pixel is a plate pixel minus a scalar times a measured colour; no generative model is in the path (constraint 15).",
+  "limits": [
+    "cannot recover texture under a CLIPPED highlight -- none was recorded there",
+    "near-neutral materials (a white shirt, grey foam, metal) are unseparable by ANY dichromatic method; see mean_unseparable_fraction",
+    "the sub-floor sheen on skin is not separable from a single unpolarised image",
+    "on V-Log footage this MUST run after the decode (constraint 18)"
+  ],
+  "per_frame": [
+    {
+      "frame": 0,
+      "specular_fraction_of_energy": 0.04653729498386383,
+      "pixels_over_5pct": 0.14234563186071472,
+      "unseparable_fraction": 0.08618407622760288,
+      "discarded_by_floor_fraction": 0.46817463636398315,
+      "max_specular_luma": 0.9364309310913086,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 1,
+      "specular_fraction_of_energy": 0.04557378590106964,
+      "pixels_over_5pct": 0.14030149794866903,
+      "unseparable_fraction": 0.08407824996956727,
+      "discarded_by_floor_fraction": 0.47044509649276733,
+      "max_specular_luma": 0.7254809141159058,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 2,
+      "specular_fraction_of_energy": 0.04740438982844353,
+      "pixels_over_5pct": 0.14078268098963895,
+      "unseparable_fraction": 0.08640610161248452,
+      "discarded_by_floor_fraction": 0.46703243255615234,
+      "max_specular_luma": 0.9005982279777527,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 3,
+      "specular_fraction_of_energy": 0.04475453495979309,
+      "pixels_over_5pct": 0.1348906097088399,
+      "unseparable_fraction": 0.0897617780930425,
+      "discarded_by_floor_fraction": 0.47526097297668457,
+      "max_specular_luma": 0.830604076385498,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 4,
+      "specular_fraction_of_energy": 0.043791987001895905,
+      "pixels_over_5pct": 0.13738696601184908,
+      "unseparable_fraction": 0.09041077905240182,
+      "discarded_by_floor_fraction": 0.47605276107788086,
+      "max_specular_luma": 0.7661131620407104,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 5,
+      "specular_fraction_of_energy": 0.04403122887015343,
+      "pixels_over_5pct": 0.13590540748830054,
+      "unseparable_fraction": 0.0919640309711441,
+      "discarded_by_floor_fraction": 0.48065850138664246,
+      "max_specular_luma": 0.8781945705413818,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 6,
+      "specular_fraction_of_energy": 0.04295683279633522,
+      "pixels_over_5pct": 0.13771208323155087,
+      "unseparable_fraction": 0.08907946573633396,
+      "discarded_by_floor_fraction": 0.48182210326194763,
+      "max_specular_luma": 0.7520264983177185,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 7,
+      "specular_fraction_of_energy": 0.04318416118621826,
+      "pixels_over_5pct": 0.13712443115500125,
+      "unseparable_fraction": 0.08836441489291944,
+      "discarded_by_floor_fraction": 0.479102224111557,
+      "max_specular_luma": 0.7290093302726746,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 8,
+      "specular_fraction_of_energy": 0.04201197624206543,
+      "pixels_over_5pct": 0.13802876896359645,
+      "unseparable_fraction": 0.08460467249909892,
+      "discarded_by_floor_fraction": 0.4922872483730316,
+      "max_specular_luma": 0.8904281258583069,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 9,
+      "specular_fraction_of_energy": 0.04193033277988434,
+      "pixels_over_5pct": 0.13457609513058666,
+      "unseparable_fraction": 0.08921605410568499,
+      "discarded_by_floor_fraction": 0.4839725196361542,
+      "max_specular_luma": 0.7112342715263367,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 10,
+      "specular_fraction_of_energy": 0.04199598729610443,
+      "pixels_over_5pct": 0.13692116168979016,
+      "unseparable_fraction": 0.08688102999230127,
+      "discarded_by_floor_fraction": 0.4842204749584198,
+      "max_specular_luma": 0.7485789060592651,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 11,
+      "specular_fraction_of_energy": 0.04246234521269798,
+      "pixels_over_5pct": 0.14183138282978303,
+      "unseparable_fraction": 0.07935031611421048,
+      "discarded_by_floor_fraction": 0.488744854927063,
+      "max_specular_luma": 0.8736467361450195,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 12,
+      "specular_fraction_of_energy": 0.041572216898202896,
+      "pixels_over_5pct": 0.1335890055486659,
+      "unseparable_fraction": 0.08764827978250933,
+      "discarded_by_floor_fraction": 0.48693761229515076,
+      "max_specular_luma": 0.8836850523948669,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 13,
+      "specular_fraction_of_energy": 0.042360637336969376,
+      "pixels_over_5pct": 0.1381349738291966,
+      "unseparable_fraction": 0.08499201929789486,
+      "discarded_by_floor_fraction": 0.4835408329963684,
+      "max_specular_luma": 0.7558582425117493,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 14,
+      "specular_fraction_of_energy": 0.04433438181877136,
+      "pixels_over_5pct": 0.13446576635946061,
+      "unseparable_fraction": 0.08717176982823345,
+      "discarded_by_floor_fraction": 0.4811577796936035,
+      "max_specular_luma": 0.8800137639045715,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 15,
+      "specular_fraction_of_energy": 0.042111411690711975,
+      "pixels_over_5pct": 0.132737539445636,
+      "unseparable_fraction": 0.09271344950548341,
+      "discarded_by_floor_fraction": 0.48310208320617676,
+      "max_specular_luma": 0.7642834782600403,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 16,
+      "specular_fraction_of_energy": 0.04428935423493385,
+      "pixels_over_5pct": 0.13128161334822308,
+      "unseparable_fraction": 0.08932043618209289,
+      "discarded_by_floor_fraction": 0.4742177426815033,
+      "max_specular_luma": 0.838761031627655,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 17,
+      "specular_fraction_of_energy": 0.04414914548397064,
+      "pixels_over_5pct": 0.13402561474063268,
+      "unseparable_fraction": 0.09215195363324528,
+      "discarded_by_floor_fraction": 0.48116838932037354,
+      "max_specular_luma": 0.8045852184295654,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 18,
+      "specular_fraction_of_energy": 0.044037796556949615,
+      "pixels_over_5pct": 0.13428618885747787,
+      "unseparable_fraction": 0.0913583536024813,
+      "discarded_by_floor_fraction": 0.4729038178920746,
+      "max_specular_luma": 0.7367443442344666,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 19,
+      "specular_fraction_of_energy": 0.04321561008691788,
+      "pixels_over_5pct": 0.1346475564760089,
+      "unseparable_fraction": 0.08987305749342422,
+      "discarded_by_floor_fraction": 0.4848632514476776,
+      "max_specular_luma": 0.7717139720916748,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 20,
+      "specular_fraction_of_energy": 0.04309532791376114,
+      "pixels_over_5pct": 0.11504995484075815,
+      "unseparable_fraction": 0.08256655847093604,
+      "discarded_by_floor_fraction": 0.49031034111976624,
+      "max_specular_luma": 0.8087952733039856,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 21,
+      "specular_fraction_of_energy": 0.0405128076672554,
+      "pixels_over_5pct": 0.1119236836818375,
+      "unseparable_fraction": 0.0853321959878932,
+      "discarded_by_floor_fraction": 0.4932636618614197,
+      "max_specular_luma": 0.7645182609558105,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 22,
+      "specular_fraction_of_energy": 0.04172275587916374,
+      "pixels_over_5pct": 0.11534527317620355,
+      "unseparable_fraction": 0.08493178213108571,
+      "discarded_by_floor_fraction": 0.4874906539916992,
+      "max_specular_luma": 0.8119150400161743,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 23,
+      "specular_fraction_of_energy": 0.041585300117731094,
+      "pixels_over_5pct": 0.11485376111076348,
+      "unseparable_fraction": 0.08414705233379549,
+      "discarded_by_floor_fraction": 0.4970128536224365,
+      "max_specular_luma": 0.8883654475212097,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 24,
+      "specular_fraction_of_energy": 0.04189136251807213,
+      "pixels_over_5pct": 0.11616363795111552,
+      "unseparable_fraction": 0.08607911067620172,
+      "discarded_by_floor_fraction": 0.4867576062679291,
+      "max_specular_luma": 0.7781606316566467,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 25,
+      "specular_fraction_of_energy": 0.044614456593990326,
+      "pixels_over_5pct": 0.12293139923418109,
+      "unseparable_fraction": 0.08171920412830433,
+      "discarded_by_floor_fraction": 0.47278717160224915,
+      "max_specular_luma": 0.7279393672943115,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 26,
+      "specular_fraction_of_energy": 0.04280264675617218,
+      "pixels_over_5pct": 0.12095767148698383,
+      "unseparable_fraction": 0.08464384676465452,
+      "discarded_by_floor_fraction": 0.4879218637943268,
+      "max_specular_luma": 0.7672973275184631,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 27,
+      "specular_fraction_of_energy": 0.04299924895167351,
+      "pixels_over_5pct": 0.11684762002103521,
+      "unseparable_fraction": 0.09070197592490628,
+      "discarded_by_floor_fraction": 0.4794888198375702,
+      "max_specular_luma": 0.8111980557441711,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 28,
+      "specular_fraction_of_energy": 0.042272262275218964,
+      "pixels_over_5pct": 0.12114130210695584,
+      "unseparable_fraction": 0.08626726590524883,
+      "discarded_by_floor_fraction": 0.48759499192237854,
+      "max_specular_luma": 0.8264787197113037,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 29,
+      "specular_fraction_of_energy": 0.043255385011434555,
+      "pixels_over_5pct": 0.12057710993033571,
+      "unseparable_fraction": 0.0881171508084059,
+      "discarded_by_floor_fraction": 0.4849013090133667,
+      "max_specular_luma": 0.7500804662704468,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 30,
+      "specular_fraction_of_energy": 0.04298510402441025,
+      "pixels_over_5pct": 0.12091226506203105,
+      "unseparable_fraction": 0.09004118894914527,
+      "discarded_by_floor_fraction": 0.48058485984802246,
+      "max_specular_luma": 0.7855951189994812,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 31,
+      "specular_fraction_of_energy": 0.043986912816762924,
+      "pixels_over_5pct": 0.11903617562097106,
+      "unseparable_fraction": 0.08561051624954787,
+      "discarded_by_floor_fraction": 0.4762420058250427,
+      "max_specular_luma": 0.8427388072013855,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 32,
+      "specular_fraction_of_energy": 0.04353562742471695,
+      "pixels_over_5pct": 0.12688456945011126,
+      "unseparable_fraction": 0.08187460045558388,
+      "discarded_by_floor_fraction": 0.4833323657512665,
+      "max_specular_luma": 0.9268046021461487,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 33,
+      "specular_fraction_of_energy": 0.042812082916498184,
+      "pixels_over_5pct": 0.12313325508736549,
+      "unseparable_fraction": 0.0866976344370423,
+      "discarded_by_floor_fraction": 0.48292088508605957,
+      "max_specular_luma": 0.8420870900154114,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 34,
+      "specular_fraction_of_energy": 0.04437613487243652,
+      "pixels_over_5pct": 0.12312375371611678,
+      "unseparable_fraction": 0.08681907016888284,
+      "discarded_by_floor_fraction": 0.4740597605705261,
+      "max_specular_luma": 0.8593697547912598,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 35,
+      "specular_fraction_of_energy": 0.04395376518368721,
+      "pixels_over_5pct": 0.1232197712445316,
+      "unseparable_fraction": 0.08976122531983771,
+      "discarded_by_floor_fraction": 0.48330312967300415,
+      "max_specular_luma": 0.8421370983123779,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 36,
+      "specular_fraction_of_energy": 0.044157952070236206,
+      "pixels_over_5pct": 0.1251571661130008,
+      "unseparable_fraction": 0.08630901173948145,
+      "discarded_by_floor_fraction": 0.47242212295532227,
+      "max_specular_luma": 0.8689345717430115,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 37,
+      "specular_fraction_of_energy": 0.04296978563070297,
+      "pixels_over_5pct": 0.12806032286033875,
+      "unseparable_fraction": 0.08434875270539491,
+      "discarded_by_floor_fraction": 0.480981707572937,
+      "max_specular_luma": 0.7927579879760742,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 38,
+      "specular_fraction_of_energy": 0.043601859360933304,
+      "pixels_over_5pct": 0.1281252016459271,
+      "unseparable_fraction": 0.08599754136740342,
+      "discarded_by_floor_fraction": 0.4839541018009186,
+      "max_specular_luma": 0.8884075284004211,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 39,
+      "specular_fraction_of_energy": 0.045109789818525314,
+      "pixels_over_5pct": 0.12455663854641992,
+      "unseparable_fraction": 0.08748889010263311,
+      "discarded_by_floor_fraction": 0.4693187177181244,
+      "max_specular_luma": 0.8270937204360962,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 40,
+      "specular_fraction_of_energy": 0.04470178484916687,
+      "pixels_over_5pct": 0.12750446931073298,
+      "unseparable_fraction": 0.09114414354763954,
+      "discarded_by_floor_fraction": 0.4695098400115967,
+      "max_specular_luma": 0.8532284498214722,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 41,
+      "specular_fraction_of_energy": 0.04435965418815613,
+      "pixels_over_5pct": 0.12640871649539145,
+      "unseparable_fraction": 0.08632402796906452,
+      "discarded_by_floor_fraction": 0.4786369204521179,
+      "max_specular_luma": 0.87990403175354,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 42,
+      "specular_fraction_of_energy": 0.04401109367609024,
+      "pixels_over_5pct": 0.1303279190827077,
+      "unseparable_fraction": 0.08168413172412993,
+      "discarded_by_floor_fraction": 0.47239455580711365,
+      "max_specular_luma": 0.8335477709770203,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 43,
+      "specular_fraction_of_energy": 0.04327475279569626,
+      "pixels_over_5pct": 0.12277797935917,
+      "unseparable_fraction": 0.09192442851675307,
+      "discarded_by_floor_fraction": 0.47604629397392273,
+      "max_specular_luma": 0.7760069966316223,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 44,
+      "specular_fraction_of_energy": 0.04321736842393875,
+      "pixels_over_5pct": 0.1354188418334709,
+      "unseparable_fraction": 0.08121782824717187,
+      "discarded_by_floor_fraction": 0.48540160059928894,
+      "max_specular_luma": 0.9010643362998962,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 45,
+      "specular_fraction_of_energy": 0.04244333133101463,
+      "pixels_over_5pct": 0.12277133438735441,
+      "unseparable_fraction": 0.09022331864008055,
+      "discarded_by_floor_fraction": 0.4790254831314087,
+      "max_specular_luma": 0.9123741984367371,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 46,
+      "specular_fraction_of_energy": 0.04335113242268562,
+      "pixels_over_5pct": 0.12127861946015395,
+      "unseparable_fraction": 0.09105441121057847,
+      "discarded_by_floor_fraction": 0.47393301129341125,
+      "max_specular_luma": 0.9347077012062073,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 47,
+      "specular_fraction_of_energy": 0.044090621173381805,
+      "pixels_over_5pct": 0.1290465573030201,
+      "unseparable_fraction": 0.090250741699359,
+      "discarded_by_floor_fraction": 0.4796328842639923,
+      "max_specular_luma": 0.9336528182029724,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 48,
+      "specular_fraction_of_energy": 0.042276810854673386,
+      "pixels_over_5pct": 0.1265131320920277,
+      "unseparable_fraction": 0.08525888601570135,
+      "discarded_by_floor_fraction": 0.48247402906417847,
+      "max_specular_luma": 0.8087876439094543,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 49,
+      "specular_fraction_of_energy": 0.04417319968342781,
+      "pixels_over_5pct": 0.1255198456266427,
+      "unseparable_fraction": 0.08374089230462121,
+      "discarded_by_floor_fraction": 0.47048914432525635,
+      "max_specular_luma": 0.8881328701972961,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 50,
+      "specular_fraction_of_energy": 0.044403161853551865,
+      "pixels_over_5pct": 0.13073611379331013,
+      "unseparable_fraction": 0.08465741474491732,
+      "discarded_by_floor_fraction": 0.476797878742218,
+      "max_specular_luma": 0.900222659111023,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 51,
+      "specular_fraction_of_energy": 0.04373420029878616,
+      "pixels_over_5pct": 0.12460767734985008,
+      "unseparable_fraction": 0.08741165444254329,
+      "discarded_by_floor_fraction": 0.46622735261917114,
+      "max_specular_luma": 0.8884081244468689,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 52,
+      "specular_fraction_of_energy": 0.04443848133087158,
+      "pixels_over_5pct": 0.12126558633698734,
+      "unseparable_fraction": 0.08742383308188016,
+      "discarded_by_floor_fraction": 0.4650782644748688,
+      "max_specular_luma": 0.8478352427482605,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 53,
+      "specular_fraction_of_energy": 0.04557031765580177,
+      "pixels_over_5pct": 0.13268241259004543,
+      "unseparable_fraction": 0.07932699145771106,
+      "discarded_by_floor_fraction": 0.4683952033519745,
+      "max_specular_luma": 0.8720857501029968,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 54,
+      "specular_fraction_of_energy": 0.04386318847537041,
+      "pixels_over_5pct": 0.12559931176621517,
+      "unseparable_fraction": 0.08022183129887357,
+      "discarded_by_floor_fraction": 0.46756941080093384,
+      "max_specular_luma": 0.8562296628952026,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 55,
+      "specular_fraction_of_energy": 0.04400842264294624,
+      "pixels_over_5pct": 0.1249004633285063,
+      "unseparable_fraction": 0.08744779574571027,
+      "discarded_by_floor_fraction": 0.4676319658756256,
+      "max_specular_luma": 0.8800137639045715,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 56,
+      "specular_fraction_of_energy": 0.046094365417957306,
+      "pixels_over_5pct": 0.1308974324469803,
+      "unseparable_fraction": 0.08603926687479815,
+      "discarded_by_floor_fraction": 0.4641149342060089,
+      "max_specular_luma": 0.9000340700149536,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 57,
+      "specular_fraction_of_energy": 0.045728716999292374,
+      "pixels_over_5pct": 0.12585869821687395,
+      "unseparable_fraction": 0.09237199582027168,
+      "discarded_by_floor_fraction": 0.45956745743751526,
+      "max_specular_luma": 0.9550970792770386,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 58,
+      "specular_fraction_of_energy": 0.046840596944093704,
+      "pixels_over_5pct": 0.133021857314962,
+      "unseparable_fraction": 0.09683428328457029,
+      "discarded_by_floor_fraction": 0.46399539709091187,
+      "max_specular_luma": 0.8073855042457581,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 59,
+      "specular_fraction_of_energy": 0.052310433238744736,
+      "pixels_over_5pct": 0.1409752095137121,
+      "unseparable_fraction": 0.08607113674272864,
+      "discarded_by_floor_fraction": 0.4449308216571808,
+      "max_specular_luma": 0.8884081244468689,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 60,
+      "specular_fraction_of_energy": 0.05029900744557381,
+      "pixels_over_5pct": 0.13536478468608604,
+      "unseparable_fraction": 0.09210608540270128,
+      "discarded_by_floor_fraction": 0.4488529562950134,
+      "max_specular_luma": 0.9550970792770386,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 61,
+      "specular_fraction_of_energy": 0.04984699934720993,
+      "pixels_over_5pct": 0.13763836953753414,
+      "unseparable_fraction": 0.08979282730098653,
+      "discarded_by_floor_fraction": 0.4525635242462158,
+      "max_specular_luma": 0.9010921120643616,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 62,
+      "specular_fraction_of_energy": 0.05046944320201874,
+      "pixels_over_5pct": 0.14123168991329635,
+      "unseparable_fraction": 0.08786822122892994,
+      "discarded_by_floor_fraction": 0.45632854104042053,
+      "max_specular_luma": 0.8720857501029968,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 63,
+      "specular_fraction_of_energy": 0.04894678294658661,
+      "pixels_over_5pct": 0.13459616279479975,
+      "unseparable_fraction": 0.08841262135106849,
+      "discarded_by_floor_fraction": 0.45661184191703796,
+      "max_specular_luma": 0.9006210565567017,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 64,
+      "specular_fraction_of_energy": 0.048048850148916245,
+      "pixels_over_5pct": 0.13589348259623601,
+      "unseparable_fraction": 0.0920866082351561,
+      "discarded_by_floor_fraction": 0.4552552402019501,
+      "max_specular_luma": 0.6667069792747498,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 65,
+      "specular_fraction_of_energy": 0.05069240182638168,
+      "pixels_over_5pct": 0.14070256014279842,
+      "unseparable_fraction": 0.09023007524326203,
+      "discarded_by_floor_fraction": 0.4484158754348755,
+      "max_specular_luma": 0.7256584763526917,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 66,
+      "specular_fraction_of_energy": 0.05105651915073395,
+      "pixels_over_5pct": 0.13337983350047808,
+      "unseparable_fraction": 0.09669921122144703,
+      "discarded_by_floor_fraction": 0.4378831386566162,
+      "max_specular_luma": 0.6680724024772644,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 67,
+      "specular_fraction_of_energy": 0.05188163369894028,
+      "pixels_over_5pct": 0.1395458491128746,
+      "unseparable_fraction": 0.09079185667372545,
+      "discarded_by_floor_fraction": 0.4366670846939087,
+      "max_specular_luma": 0.6822110414505005,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 68,
+      "specular_fraction_of_energy": 0.05309918150305748,
+      "pixels_over_5pct": 0.1410460510665622,
+      "unseparable_fraction": 0.09149661391662799,
+      "discarded_by_floor_fraction": 0.4386514723300934,
+      "max_specular_luma": 0.688249945640564,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 69,
+      "specular_fraction_of_energy": 0.05205974727869034,
+      "pixels_over_5pct": 0.13539601984755165,
+      "unseparable_fraction": 0.09489278065262793,
+      "discarded_by_floor_fraction": 0.4370081126689911,
+      "max_specular_luma": 0.7628810405731201,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 70,
+      "specular_fraction_of_energy": 0.05380626395344734,
+      "pixels_over_5pct": 0.14208446846104109,
+      "unseparable_fraction": 0.08805709907067738,
+      "discarded_by_floor_fraction": 0.427906334400177,
+      "max_specular_luma": 0.708175539970398,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 71,
+      "specular_fraction_of_energy": 0.05487346276640892,
+      "pixels_over_5pct": 0.14240354899810587,
+      "unseparable_fraction": 0.08731764862260326,
+      "discarded_by_floor_fraction": 0.43041956424713135,
+      "max_specular_luma": 0.7168468832969666,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 72,
+      "specular_fraction_of_energy": 0.052727557718753815,
+      "pixels_over_5pct": 0.13775435563239793,
+      "unseparable_fraction": 0.09491953717249635,
+      "discarded_by_floor_fraction": 0.4328156113624573,
+      "max_specular_luma": 0.7307501435279846,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 73,
+      "specular_fraction_of_energy": 0.055146895349025726,
+      "pixels_over_5pct": 0.14695549085757706,
+      "unseparable_fraction": 0.08596388256596395,
+      "discarded_by_floor_fraction": 0.4279717803001404,
+      "max_specular_luma": 0.729114294052124,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 74,
+      "specular_fraction_of_energy": 0.05673420801758766,
+      "pixels_over_5pct": 0.1461849927250052,
+      "unseparable_fraction": 0.08612429848264394,
+      "discarded_by_floor_fraction": 0.42850935459136963,
+      "max_specular_luma": 0.7485146522521973,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 75,
+      "specular_fraction_of_energy": 0.054884154349565506,
+      "pixels_over_5pct": 0.15042660227554497,
+      "unseparable_fraction": 0.08473800612736329,
+      "discarded_by_floor_fraction": 0.43141159415245056,
+      "max_specular_luma": 0.7085114121437073,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 76,
+      "specular_fraction_of_energy": 0.05270109698176384,
+      "pixels_over_5pct": 0.14444472192393176,
+      "unseparable_fraction": 0.09091226931049122,
+      "discarded_by_floor_fraction": 0.4391082525253296,
+      "max_specular_luma": 0.6997289657592773,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 77,
+      "specular_fraction_of_energy": 0.05724494904279709,
+      "pixels_over_5pct": 0.145943641897607,
+      "unseparable_fraction": 0.09263588350083585,
+      "discarded_by_floor_fraction": 0.42682793736457825,
+      "max_specular_luma": 0.7198617458343506,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 78,
+      "specular_fraction_of_energy": 0.056732043623924255,
+      "pixels_over_5pct": 0.14351922807812512,
+      "unseparable_fraction": 0.09552066743521227,
+      "discarded_by_floor_fraction": 0.42545026540756226,
+      "max_specular_luma": 0.7059119939804077,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 79,
+      "specular_fraction_of_energy": 0.055409323424100876,
+      "pixels_over_5pct": 0.14422315934693034,
+      "unseparable_fraction": 0.09369173632620827,
+      "discarded_by_floor_fraction": 0.429124116897583,
+      "max_specular_luma": 0.6850897073745728,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 80,
+      "specular_fraction_of_energy": 0.055135782808065414,
+      "pixels_over_5pct": 0.15003781304033503,
+      "unseparable_fraction": 0.09410449725314081,
+      "discarded_by_floor_fraction": 0.4379930794239044,
+      "max_specular_luma": 0.8124974370002747,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 81,
+      "specular_fraction_of_energy": 0.052943501621484756,
+      "pixels_over_5pct": 0.14311512716198702,
+      "unseparable_fraction": 0.09407454794438391,
+      "discarded_by_floor_fraction": 0.4411744177341461,
+      "max_specular_luma": 0.7104173898696899,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 82,
+      "specular_fraction_of_energy": 0.05311094596982002,
+      "pixels_over_5pct": 0.14436042638241173,
+      "unseparable_fraction": 0.09628081279147235,
+      "discarded_by_floor_fraction": 0.4384642243385315,
+      "max_specular_luma": 0.7616701722145081,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 83,
+      "specular_fraction_of_energy": 0.05297341197729111,
+      "pixels_over_5pct": 0.1489707755183579,
+      "unseparable_fraction": 0.09347006384271551,
+      "discarded_by_floor_fraction": 0.44332560896873474,
+      "max_specular_luma": 0.7341604232788086,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 84,
+      "specular_fraction_of_energy": 0.05288643762469292,
+      "pixels_over_5pct": 0.1476006220301225,
+      "unseparable_fraction": 0.09281168937121013,
+      "discarded_by_floor_fraction": 0.43892988562583923,
+      "max_specular_luma": 0.7118549942970276,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 85,
+      "specular_fraction_of_energy": 0.05243203416466713,
+      "pixels_over_5pct": 0.14279410907698328,
+      "unseparable_fraction": 0.09369364869252479,
+      "discarded_by_floor_fraction": 0.43964889645576477,
+      "max_specular_luma": 0.6921590566635132,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 86,
+      "specular_fraction_of_energy": 0.052784428000450134,
+      "pixels_over_5pct": 0.1457262587969692,
+      "unseparable_fraction": 0.09286869019850724,
+      "discarded_by_floor_fraction": 0.4444827139377594,
+      "max_specular_luma": 0.7760416865348816,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 87,
+      "specular_fraction_of_energy": 0.05152372643351555,
+      "pixels_over_5pct": 0.14220521933776467,
+      "unseparable_fraction": 0.0943587915812405,
+      "discarded_by_floor_fraction": 0.4480117857456207,
+      "max_specular_luma": 0.68842613697052,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 88,
+      "specular_fraction_of_energy": 0.05196155607700348,
+      "pixels_over_5pct": 0.14604076261233873,
+      "unseparable_fraction": 0.08727896652534961,
+      "discarded_by_floor_fraction": 0.4438769221305847,
+      "max_specular_luma": 0.754833996295929,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 89,
+      "specular_fraction_of_energy": 0.05174580588936806,
+      "pixels_over_5pct": 0.1411267474184538,
+      "unseparable_fraction": 0.09209403561167145,
+      "discarded_by_floor_fraction": 0.44719231128692627,
+      "max_specular_luma": 0.8194392323493958,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 90,
+      "specular_fraction_of_energy": 0.05118681490421295,
+      "pixels_over_5pct": 0.1394582564506388,
+      "unseparable_fraction": 0.09106303324335417,
+      "discarded_by_floor_fraction": 0.4461580216884613,
+      "max_specular_luma": 0.7633601427078247,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 91,
+      "specular_fraction_of_energy": 0.05040793865919113,
+      "pixels_over_5pct": 0.1387208333402912,
+      "unseparable_fraction": 0.09154152256935458,
+      "discarded_by_floor_fraction": 0.4486467242240906,
+      "max_specular_luma": 0.7178291082382202,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 92,
+      "specular_fraction_of_energy": 0.05208273604512215,
+      "pixels_over_5pct": 0.143672225174727,
+      "unseparable_fraction": 0.08906982729518252,
+      "discarded_by_floor_fraction": 0.4467388689517975,
+      "max_specular_luma": 0.8884081244468689,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 93,
+      "specular_fraction_of_energy": 0.05290653184056282,
+      "pixels_over_5pct": 0.14722649973219068,
+      "unseparable_fraction": 0.08893780128548473,
+      "discarded_by_floor_fraction": 0.4401424527168274,
+      "max_specular_luma": 0.7733910083770752,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 94,
+      "specular_fraction_of_energy": 0.05284353345632553,
+      "pixels_over_5pct": 0.14617335011387192,
+      "unseparable_fraction": 0.08764368056870608,
+      "discarded_by_floor_fraction": 0.4409664273262024,
+      "max_specular_luma": 0.8304280042648315,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 95,
+      "specular_fraction_of_energy": 0.05603444203734398,
+      "pixels_over_5pct": 0.1501403886602192,
+      "unseparable_fraction": 0.0827051905226752,
+      "discarded_by_floor_fraction": 0.43261319398880005,
+      "max_specular_luma": 0.9034688472747803,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 96,
+      "specular_fraction_of_energy": 0.05459367111325264,
+      "pixels_over_5pct": 0.14847913627764805,
+      "unseparable_fraction": 0.08375870965359457,
+      "discarded_by_floor_fraction": 0.43466833233833313,
+      "max_specular_luma": 0.7624813318252563,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 97,
+      "specular_fraction_of_energy": 0.053188975900411606,
+      "pixels_over_5pct": 0.14134982840026059,
+      "unseparable_fraction": 0.0925580786202172,
+      "discarded_by_floor_fraction": 0.4392174184322357,
+      "max_specular_luma": 0.7534018754959106,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 98,
+      "specular_fraction_of_energy": 0.05372035875916481,
+      "pixels_over_5pct": 0.1490171977795017,
+      "unseparable_fraction": 0.08122684882006642,
+      "discarded_by_floor_fraction": 0.44092556834220886,
+      "max_specular_luma": 0.6965380907058716,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 99,
+      "specular_fraction_of_energy": 0.05390198156237602,
+      "pixels_over_5pct": 0.14588262556820758,
+      "unseparable_fraction": 0.08661439800642472,
+      "discarded_by_floor_fraction": 0.4338514506816864,
+      "max_specular_luma": 0.7849261164665222,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 100,
+      "specular_fraction_of_energy": 0.053797509521245956,
+      "pixels_over_5pct": 0.1453152339276539,
+      "unseparable_fraction": 0.08862921182282553,
+      "discarded_by_floor_fraction": 0.43659043312072754,
+      "max_specular_luma": 0.8562296628952026,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 101,
+      "specular_fraction_of_energy": 0.055209022015333176,
+      "pixels_over_5pct": 0.14906836470129906,
+      "unseparable_fraction": 0.08022004594365857,
+      "discarded_by_floor_fraction": 0.4324648082256317,
+      "max_specular_luma": 0.8562296628952026,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 102,
+      "specular_fraction_of_energy": 0.0533207431435585,
+      "pixels_over_5pct": 0.14984050407096772,
+      "unseparable_fraction": 0.08033757032015092,
+      "discarded_by_floor_fraction": 0.43662527203559875,
+      "max_specular_luma": 0.8229973316192627,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 103,
+      "specular_fraction_of_energy": 0.05467502772808075,
+      "pixels_over_5pct": 0.14435142928196476,
+      "unseparable_fraction": 0.08417909544901567,
+      "discarded_by_floor_fraction": 0.4311802387237549,
+      "max_specular_luma": 0.8309555649757385,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 104,
+      "specular_fraction_of_energy": 0.054816585034132004,
+      "pixels_over_5pct": 0.14062636557375946,
+      "unseparable_fraction": 0.0888975912119236,
+      "discarded_by_floor_fraction": 0.433354914188385,
+      "max_specular_luma": 0.8720857501029968,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 105,
+      "specular_fraction_of_energy": 0.05304226279258728,
+      "pixels_over_5pct": 0.1438825448613377,
+      "unseparable_fraction": 0.08559055515379829,
+      "discarded_by_floor_fraction": 0.43709349632263184,
+      "max_specular_luma": 0.8720857501029968,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 106,
+      "specular_fraction_of_energy": 0.05341073498129845,
+      "pixels_over_5pct": 0.14381232638625996,
+      "unseparable_fraction": 0.08298631616670957,
+      "discarded_by_floor_fraction": 0.43776002526283264,
+      "max_specular_luma": 0.7725135684013367,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 107,
+      "specular_fraction_of_energy": 0.05195322260260582,
+      "pixels_over_5pct": 0.1451474748290665,
+      "unseparable_fraction": 0.08084148243882491,
+      "discarded_by_floor_fraction": 0.44864463806152344,
+      "max_specular_luma": 0.7988757491111755,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 108,
+      "specular_fraction_of_energy": 0.05405925586819649,
+      "pixels_over_5pct": 0.14386803568422823,
+      "unseparable_fraction": 0.08434102003029793,
+      "discarded_by_floor_fraction": 0.43766751885414124,
+      "max_specular_luma": 0.7308389544487,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 109,
+      "specular_fraction_of_energy": 0.05214029178023338,
+      "pixels_over_5pct": 0.14560594940714655,
+      "unseparable_fraction": 0.08342030312619934,
+      "discarded_by_floor_fraction": 0.4499395191669464,
+      "max_specular_luma": 0.8641576766967773,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 110,
+      "specular_fraction_of_energy": 0.05168112367391586,
+      "pixels_over_5pct": 0.13432813207569405,
+      "unseparable_fraction": 0.07970061765285183,
+      "discarded_by_floor_fraction": 0.4514009654521942,
+      "max_specular_luma": 0.8312336802482605,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 111,
+      "specular_fraction_of_energy": 0.05000844970345497,
+      "pixels_over_5pct": 0.13144107230370486,
+      "unseparable_fraction": 0.08106947440748956,
+      "discarded_by_floor_fraction": 0.4488494098186493,
+      "max_specular_luma": 0.8371549844741821,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 112,
+      "specular_fraction_of_energy": 0.05005135387182236,
+      "pixels_over_5pct": 0.1282818911505751,
+      "unseparable_fraction": 0.0842124050560445,
+      "discarded_by_floor_fraction": 0.4519287645816803,
+      "max_specular_luma": 0.7349463105201721,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 113,
+      "specular_fraction_of_energy": 0.05059056729078293,
+      "pixels_over_5pct": 0.1335240659710535,
+      "unseparable_fraction": 0.07872938404577583,
+      "discarded_by_floor_fraction": 0.4566243588924408,
+      "max_specular_luma": 0.8153682351112366,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 114,
+      "specular_fraction_of_energy": 0.04935023561120033,
+      "pixels_over_5pct": 0.1290547340713788,
+      "unseparable_fraction": 0.08226435671225314,
+      "discarded_by_floor_fraction": 0.45362746715545654,
+      "max_specular_luma": 0.7539823055267334,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 115,
+      "specular_fraction_of_energy": 0.04974828660488129,
+      "pixels_over_5pct": 0.13008370840869896,
+      "unseparable_fraction": 0.08395406553653305,
+      "discarded_by_floor_fraction": 0.4530943036079407,
+      "max_specular_luma": 0.7398736476898193,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 116,
+      "specular_fraction_of_energy": 0.05027744919061661,
+      "pixels_over_5pct": 0.13460186073116978,
+      "unseparable_fraction": 0.08211107185517925,
+      "discarded_by_floor_fraction": 0.45498642325401306,
+      "max_specular_luma": 0.7870044708251953,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 117,
+      "specular_fraction_of_energy": 0.04983177408576012,
+      "pixels_over_5pct": 0.1297381809491593,
+      "unseparable_fraction": 0.08190828170834533,
+      "discarded_by_floor_fraction": 0.4501745402812958,
+      "max_specular_luma": 0.785938560962677,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 118,
+      "specular_fraction_of_energy": 0.049610208719968796,
+      "pixels_over_5pct": 0.13990253919893617,
+      "unseparable_fraction": 0.07974111448698419,
+      "discarded_by_floor_fraction": 0.4521046578884125,
+      "max_specular_luma": 0.9013757705688477,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 119,
+      "specular_fraction_of_energy": 0.05088469013571739,
+      "pixels_over_5pct": 0.1344786610202584,
+      "unseparable_fraction": 0.07857114003137393,
+      "discarded_by_floor_fraction": 0.4490461051464081,
+      "max_specular_luma": 0.7690761089324951,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 120,
+      "specular_fraction_of_energy": 0.04916204884648323,
+      "pixels_over_5pct": 0.1317018142021299,
+      "unseparable_fraction": 0.08618596624152881,
+      "discarded_by_floor_fraction": 0.45331916213035583,
+      "max_specular_luma": 0.7512403130531311,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 121,
+      "specular_fraction_of_energy": 0.04904396831989288,
+      "pixels_over_5pct": 0.1338323383536875,
+      "unseparable_fraction": 0.08481906859130411,
+      "discarded_by_floor_fraction": 0.4557197690010071,
+      "max_specular_luma": 0.7105529308319092,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 122,
+      "specular_fraction_of_energy": 0.052078817039728165,
+      "pixels_over_5pct": 0.1389593492103301,
+      "unseparable_fraction": 0.07865728342778851,
+      "discarded_by_floor_fraction": 0.4478381872177124,
+      "max_specular_luma": 0.7893348336219788,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 123,
+      "specular_fraction_of_energy": 0.0500510148704052,
+      "pixels_over_5pct": 0.13241848503006107,
+      "unseparable_fraction": 0.0821697154129441,
+      "discarded_by_floor_fraction": 0.4510836601257324,
+      "max_specular_luma": 0.8720857501029968,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 124,
+      "specular_fraction_of_energy": 0.05367102101445198,
+      "pixels_over_5pct": 0.14557964149841748,
+      "unseparable_fraction": 0.07369760073497368,
+      "discarded_by_floor_fraction": 0.43842488527297974,
+      "max_specular_luma": 0.8665148615837097,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 125,
+      "specular_fraction_of_energy": 0.05379972234368324,
+      "pixels_over_5pct": 0.14043005579656878,
+      "unseparable_fraction": 0.08073428755502698,
+      "discarded_by_floor_fraction": 0.44040486216545105,
+      "max_specular_luma": 0.8817831873893738,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 126,
+      "specular_fraction_of_energy": 0.050811201333999634,
+      "pixels_over_5pct": 0.13407480162667806,
+      "unseparable_fraction": 0.0804963453562647,
+      "discarded_by_floor_fraction": 0.4446783661842346,
+      "max_specular_luma": 0.8904281258583069,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 127,
+      "specular_fraction_of_energy": 0.0507613904774189,
+      "pixels_over_5pct": 0.13346896569117858,
+      "unseparable_fraction": 0.0815912702082405,
+      "discarded_by_floor_fraction": 0.4461837708950043,
+      "max_specular_luma": 0.8800137639045715,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 128,
+      "specular_fraction_of_energy": 0.051470961421728134,
+      "pixels_over_5pct": 0.13695499474025602,
+      "unseparable_fraction": 0.08124035853641322,
+      "discarded_by_floor_fraction": 0.4486161470413208,
+      "max_specular_luma": 0.8884081244468689,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 129,
+      "specular_fraction_of_energy": 0.04963982477784157,
+      "pixels_over_5pct": 0.13188020788700303,
+      "unseparable_fraction": 0.08475108841582778,
+      "discarded_by_floor_fraction": 0.44929802417755127,
+      "max_specular_luma": 0.7762297987937927,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 130,
+      "specular_fraction_of_energy": 0.05026274174451828,
+      "pixels_over_5pct": 0.12987935778429535,
+      "unseparable_fraction": 0.08600503263823797,
+      "discarded_by_floor_fraction": 0.4391421973705292,
+      "max_specular_luma": 0.8279080986976624,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 131,
+      "specular_fraction_of_energy": 0.04886138066649437,
+      "pixels_over_5pct": 0.13406500477359407,
+      "unseparable_fraction": 0.08689451279977584,
+      "discarded_by_floor_fraction": 0.44979897141456604,
+      "max_specular_luma": 0.8158652782440186,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 132,
+      "specular_fraction_of_energy": 0.04779326543211937,
+      "pixels_over_5pct": 0.1288707823178273,
+      "unseparable_fraction": 0.0884024842721974,
+      "discarded_by_floor_fraction": 0.445209264755249,
+      "max_specular_luma": 0.6890341639518738,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 133,
+      "specular_fraction_of_energy": 0.044981151819229126,
+      "pixels_over_5pct": 0.12671491735620113,
+      "unseparable_fraction": 0.08780276527288174,
+      "discarded_by_floor_fraction": 0.4598403573036194,
+      "max_specular_luma": 0.7407361268997192,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 134,
+      "specular_fraction_of_energy": 0.045739587396383286,
+      "pixels_over_5pct": 0.1266995858978548,
+      "unseparable_fraction": 0.08363229596633837,
+      "discarded_by_floor_fraction": 0.46083542704582214,
+      "max_specular_luma": 0.9009137153625488,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 135,
+      "specular_fraction_of_energy": 0.04416552186012268,
+      "pixels_over_5pct": 0.12190593030717109,
+      "unseparable_fraction": 0.08947991369020902,
+      "discarded_by_floor_fraction": 0.462489515542984,
+      "max_specular_luma": 0.7507742643356323,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 136,
+      "specular_fraction_of_energy": 0.04485953971743584,
+      "pixels_over_5pct": 0.12580883620403888,
+      "unseparable_fraction": 0.09115153082196321,
+      "discarded_by_floor_fraction": 0.45732709765434265,
+      "max_specular_luma": 0.8884081244468689,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 137,
+      "specular_fraction_of_energy": 0.04621545597910881,
+      "pixels_over_5pct": 0.12344638371016792,
+      "unseparable_fraction": 0.09231125214861827,
+      "discarded_by_floor_fraction": 0.45481443405151367,
+      "max_specular_luma": 0.8884081244468689,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 138,
+      "specular_fraction_of_energy": 0.045552484691143036,
+      "pixels_over_5pct": 0.12043647520702055,
+      "unseparable_fraction": 0.09423806538880275,
+      "discarded_by_floor_fraction": 0.4538072943687439,
+      "max_specular_luma": 0.8183540105819702,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 139,
+      "specular_fraction_of_energy": 0.045256324112415314,
+      "pixels_over_5pct": 0.12651912224466064,
+      "unseparable_fraction": 0.09086731214605975,
+      "discarded_by_floor_fraction": 0.4547547399997711,
+      "max_specular_luma": 0.8005903363227844,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 140,
+      "specular_fraction_of_energy": 0.047248050570487976,
+      "pixels_over_5pct": 0.12721632518719658,
+      "unseparable_fraction": 0.09438163416440386,
+      "discarded_by_floor_fraction": 0.45448601245880127,
+      "max_specular_luma": 0.8720857501029968,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 141,
+      "specular_fraction_of_energy": 0.04664289578795433,
+      "pixels_over_5pct": 0.1219342371229729,
+      "unseparable_fraction": 0.09761882814608998,
+      "discarded_by_floor_fraction": 0.4531204104423523,
+      "max_specular_luma": 0.7407063245773315,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 142,
+      "specular_fraction_of_energy": 0.0464014932513237,
+      "pixels_over_5pct": 0.12414539203288018,
+      "unseparable_fraction": 0.09270438138897671,
+      "discarded_by_floor_fraction": 0.4514581561088562,
+      "max_specular_luma": 0.7789243459701538,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 143,
+      "specular_fraction_of_energy": 0.048805560916662216,
+      "pixels_over_5pct": 0.12830400555874802,
+      "unseparable_fraction": 0.09103931793371324,
+      "discarded_by_floor_fraction": 0.4484593868255615,
+      "max_specular_luma": 0.7847294211387634,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 144,
+      "specular_fraction_of_energy": 0.04710440710186958,
+      "pixels_over_5pct": 0.1263520124930402,
+      "unseparable_fraction": 0.09041145986050757,
+      "discarded_by_floor_fraction": 0.45124414563179016,
+      "max_specular_luma": 0.783732533454895,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 145,
+      "specular_fraction_of_energy": 0.0470932312309742,
+      "pixels_over_5pct": 0.12672614781312044,
+      "unseparable_fraction": 0.10010627517856702,
+      "discarded_by_floor_fraction": 0.45043039321899414,
+      "max_specular_luma": 0.7890737652778625,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 146,
+      "specular_fraction_of_energy": 0.04824482277035713,
+      "pixels_over_5pct": 0.12455522465789999,
+      "unseparable_fraction": 0.1004191065104068,
+      "discarded_by_floor_fraction": 0.45023027062416077,
+      "max_specular_luma": 0.7837216854095459,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 147,
+      "specular_fraction_of_energy": 0.046592529863119125,
+      "pixels_over_5pct": 0.1229375686652304,
+      "unseparable_fraction": 0.10215736668635207,
+      "discarded_by_floor_fraction": 0.4507185220718384,
+      "max_specular_luma": 0.794833242893219,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 148,
+      "specular_fraction_of_energy": 0.04599964618682861,
+      "pixels_over_5pct": 0.13016513573625837,
+      "unseparable_fraction": 0.09778855822846887,
+      "discarded_by_floor_fraction": 0.4532397985458374,
+      "max_specular_luma": 0.7435719966888428,
+      "diffuse_negative_pixels": 0
+    },
+    {
+      "frame": 149,
+      "specular_fraction_of_energy": 0.04748088866472244,
+      "pixels_over_5pct": 0.13543337290472773,
+      "unseparable_fraction": 0.09418267434285582,
+      "discarded_by_floor_fraction": 0.4543953835964203,
+      "max_specular_luma": 0.7402269840240479,
+      "diffuse_negative_pixels": 0
+    }
+  ]
+}

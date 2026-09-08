@@ -1,7 +1,7 @@
 {
   "shot": "reporter_a",
   "frames": 150,
-  "output": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r4_ratio_despill",
+  "output": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\ratio_r5",
   "formula": "out = plate x R,  R = E_target(rendered) / E_source(assumed)",
   "why": "the plate keeps every pore, hair strand and eye specular; the renderer supplies only the change in light. Rendering the proxy instead shows the proxy.",
   "E_source": {
@@ -30,6 +30,18 @@
       0
     ]
   },
+  "plate_specular": {
+    "mode": "remove",
+    "layer": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\key\\specular",
+    "present": true,
+    "why": "a smooth R can recolour a highlight but cannot move or delete one, so with the plate specular left in, every shot keeps reporting where the ORIGINAL room's lamps were -- the crown sheen, the lip gloss, and the corneal catchlight most of all"
+  },
+  "source_band_limit": {
+    "sigma_px": 0.0,
+    "source": "disabled -- round 4 behaviour",
+    "bandwidth_table": [],
+    "rule": "you may only divide out lighting at the resolution at which you can put it back. Below the crossover E_target cannot restore what E_source removes, so R carries 1/E_source and brightens whatever the original key had shaded"
+  },
   "output_resolution": "plate resolution",
   "specular": {
     "gain": 1.0,
@@ -47,6 +59,23 @@
       "other": 0.15
     }
   },
+  "catchlight": {
+    "gain": 1.0,
+    "render_dir": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\catchlight_render",
+    "render_present": true,
+    "eye_geometry": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\relight\\eye_geometry.json",
+    "eye_geometry_present": true,
+    "plate_key_direction_world": [
+      -0.7408000230789185,
+      -0.5789999961853027,
+      0.34060001373291016
+    ],
+    "keep_threshold_deg": 15.0,
+    "model": "a dielectric mirror (IOR 1.376) at the measured corneal position, rendered with the plate camera, masked to the corneal cap, reduced to its compact part and added",
+    "compact_only": "the render minus its own local baseline. separate_specular.py only removes what stands above the local diffuse level, so the broad dim corneal reflection of the original room is STILL IN D. Adding the full mirror wash on top double-counts it and reads as a contact lens over the whole iris",
+    "why_not_painted": "presence, size, shape, colour and occlusion all come from the scene. A distance rule would get sunlight backwards: a mirror shows RADIANCE, which does not fall off with distance, so the sun makes a tiny brilliant spark rather than nothing",
+    "keep_or_replace": "computed from two MEASURED angles -- the plate key from its own catchlights, the scene key from the L1 moment of the rendered irradiance. Not an artist setting"
+  },
   "result": {
     "mean_dynamic_range_stops": 5.1927946662902835,
     "max_dynamic_range_stops": 9.094828605651855
@@ -55,6 +84,15 @@
     {
       "frame": 0,
       "shot_frame": 0,
+      "catchlight": {
+        "source": "rendered (scene key 89.4 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 89.42217818637016,
+        "peak_added": 0.7205972671508789
+      },
       "station": "front far",
       "ratio_luma_median": 0.9991422891616821,
       "ratio_luma_p5": 0.3406946659088135,
@@ -64,6 +102,15 @@
     {
       "frame": 1,
       "shot_frame": 1,
+      "catchlight": {
+        "source": "rendered (scene key 90.2 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 90.15837769434981,
+        "peak_added": 0.6077492237091064
+      },
       "station": "front far",
       "ratio_luma_median": 0.8869973421096802,
       "ratio_luma_p5": 0.3013909161090851,
@@ -73,6 +120,15 @@
     {
       "frame": 2,
       "shot_frame": 2,
+      "catchlight": {
+        "source": "rendered (scene key 90.4 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 90.36721199992587,
+        "peak_added": 1.0982944965362549
+      },
       "station": "front far",
       "ratio_luma_median": 0.7932160496711731,
       "ratio_luma_p5": 0.2667924463748932,
@@ -82,6 +138,15 @@
     {
       "frame": 3,
       "shot_frame": 3,
+      "catchlight": {
+        "source": "rendered (scene key 91.1 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 91.14898675753119,
+        "peak_added": 0.9853562712669373
+      },
       "station": "front far",
       "ratio_luma_median": 0.7178107500076294,
       "ratio_luma_p5": 0.2403413951396942,
@@ -91,6 +156,15 @@
     {
       "frame": 4,
       "shot_frame": 4,
+      "catchlight": {
+        "source": "rendered (scene key 91.1 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 91.14090695155063,
+        "peak_added": 1.2827532291412354
+      },
       "station": "front far",
       "ratio_luma_median": 0.6529985070228577,
       "ratio_luma_p5": 0.21859429776668549,
@@ -100,6 +174,15 @@
     {
       "frame": 5,
       "shot_frame": 5,
+      "catchlight": {
+        "source": "rendered (scene key 91.1 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 91.09833511153096,
+        "peak_added": 2.0776994228363037
+      },
       "station": "front far",
       "ratio_luma_median": 0.601966381072998,
       "ratio_luma_p5": 0.19938088953495026,
@@ -109,6 +192,7 @@
     {
       "frame": 6,
       "shot_frame": 6,
+      "catchlight": null,
       "station": "front far",
       "ratio_luma_median": 0.5599601864814758,
       "ratio_luma_p5": 0.18472474813461304,
@@ -118,6 +202,7 @@
     {
       "frame": 7,
       "shot_frame": 7,
+      "catchlight": null,
       "station": "front far",
       "ratio_luma_median": 0.5242465138435364,
       "ratio_luma_p5": 0.17187772691249847,
@@ -127,6 +212,7 @@
     {
       "frame": 8,
       "shot_frame": 8,
+      "catchlight": null,
       "station": "front far",
       "ratio_luma_median": 0.49260014295578003,
       "ratio_luma_p5": 0.16173267364501953,
@@ -136,6 +222,7 @@
     {
       "frame": 9,
       "shot_frame": 9,
+      "catchlight": null,
       "station": "front far",
       "ratio_luma_median": 0.46528127789497375,
       "ratio_luma_p5": 0.1520376205444336,
@@ -145,6 +232,7 @@
     {
       "frame": 10,
       "shot_frame": 10,
+      "catchlight": null,
       "station": "front far",
       "ratio_luma_median": 0.44174841046333313,
       "ratio_luma_p5": 0.14330925047397614,
@@ -154,6 +242,7 @@
     {
       "frame": 11,
       "shot_frame": 11,
+      "catchlight": null,
       "station": "front close",
       "ratio_luma_median": 0.4180658459663391,
       "ratio_luma_p5": 0.13570864498615265,
@@ -163,6 +252,7 @@
     {
       "frame": 12,
       "shot_frame": 12,
+      "catchlight": null,
       "station": "front close",
       "ratio_luma_median": 0.3941519856452942,
       "ratio_luma_p5": 0.13407282531261444,
@@ -172,6 +262,15 @@
     {
       "frame": 13,
       "shot_frame": 13,
+      "catchlight": {
+        "source": "rendered (scene key 75.4 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 75.4309637240722,
+        "peak_added": 0.5298131704330444
+      },
       "station": "front close",
       "ratio_luma_median": 0.3604171872138977,
       "ratio_luma_p5": 0.14538991451263428,
@@ -181,6 +280,15 @@
     {
       "frame": 14,
       "shot_frame": 14,
+      "catchlight": {
+        "source": "rendered (scene key 41.7 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 41.659587195011184,
+        "peak_added": 0.6338376402854919
+      },
       "station": "front close",
       "ratio_luma_median": 0.3301568925380707,
       "ratio_luma_p5": 0.12735949456691742,
@@ -190,6 +298,15 @@
     {
       "frame": 15,
       "shot_frame": 15,
+      "catchlight": {
+        "source": "plate (kept: scene key 13.8 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 13.78271700252574,
+        "peak_added": 0.306238055229187
+      },
       "station": "front close",
       "ratio_luma_median": 0.3114522695541382,
       "ratio_luma_p5": 0.11726395785808563,
@@ -199,6 +316,15 @@
     {
       "frame": 16,
       "shot_frame": 16,
+      "catchlight": {
+        "source": "rendered (scene key 15.1 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 15.071826442525738,
+        "peak_added": 0.433582603931427
+      },
       "station": "front close",
       "ratio_luma_median": 0.3099786341190338,
       "ratio_luma_p5": 0.11714731901884079,
@@ -208,6 +334,15 @@
     {
       "frame": 17,
       "shot_frame": 17,
+      "catchlight": {
+        "source": "rendered (scene key 18.2 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 18.159810495101894,
+        "peak_added": 0.525822639465332
+      },
       "station": "front close",
       "ratio_luma_median": 0.3080587387084961,
       "ratio_luma_p5": 0.11669688671827316,
@@ -217,6 +352,15 @@
     {
       "frame": 18,
       "shot_frame": 18,
+      "catchlight": {
+        "source": "rendered (scene key 19.4 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 19.415018354366573,
+        "peak_added": 0.4348307251930237
+      },
       "station": "front close",
       "ratio_luma_median": 0.3102041482925415,
       "ratio_luma_p5": 0.11836248636245728,
@@ -226,6 +370,15 @@
     {
       "frame": 19,
       "shot_frame": 19,
+      "catchlight": {
+        "source": "rendered (scene key 20.5 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 20.49298391690472,
+        "peak_added": 0.8234541416168213
+      },
       "station": "front close",
       "ratio_luma_median": 0.31050610542297363,
       "ratio_luma_p5": 0.11886375397443771,
@@ -235,6 +388,15 @@
     {
       "frame": 20,
       "shot_frame": 20,
+      "catchlight": {
+        "source": "rendered (scene key 22.9 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 22.896801024197252,
+        "peak_added": 0.6622263789176941
+      },
       "station": "front close",
       "ratio_luma_median": 0.3126510977745056,
       "ratio_luma_p5": 0.12003906816244125,
@@ -244,6 +406,15 @@
     {
       "frame": 21,
       "shot_frame": 21,
+      "catchlight": {
+        "source": "rendered (scene key 24.0 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 24.01716025975333,
+        "peak_added": 0.5523174405097961
+      },
       "station": "front close",
       "ratio_luma_median": 0.31473350524902344,
       "ratio_luma_p5": 0.1204356923699379,
@@ -253,6 +424,15 @@
     {
       "frame": 22,
       "shot_frame": 22,
+      "catchlight": {
+        "source": "rendered (scene key 27.2 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 27.154364647095317,
+        "peak_added": 0.7415220141410828
+      },
       "station": "front close",
       "ratio_luma_median": 0.3165295720100403,
       "ratio_luma_p5": 0.12068512290716171,
@@ -262,6 +442,15 @@
     {
       "frame": 23,
       "shot_frame": 23,
+      "catchlight": {
+        "source": "rendered (scene key 44.5 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 44.47474005721746,
+        "peak_added": 0.7546120882034302
+      },
       "station": "front close",
       "ratio_luma_median": 0.33418703079223633,
       "ratio_luma_p5": 0.12379933148622513,
@@ -271,6 +460,15 @@
     {
       "frame": 24,
       "shot_frame": 24,
+      "catchlight": {
+        "source": "rendered (scene key 64.0 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 63.98837031125452,
+        "peak_added": 0.9026085734367371
+      },
       "station": "front close",
       "ratio_luma_median": 0.3649510443210602,
       "ratio_luma_p5": 0.12205628305673599,
@@ -280,6 +478,15 @@
     {
       "frame": 25,
       "shot_frame": 25,
+      "catchlight": {
+        "source": "rendered (scene key 79.8 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 79.84043584323916,
+        "peak_added": 0.4021991789340973
+      },
       "station": "front close",
       "ratio_luma_median": 0.41006842255592346,
       "ratio_luma_p5": 0.09861204773187637,
@@ -289,6 +496,15 @@
     {
       "frame": 26,
       "shot_frame": 26,
+      "catchlight": {
+        "source": "rendered (scene key 89.0 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 88.99002738871461,
+        "peak_added": 0.4112749397754669
+      },
       "station": "below chin",
       "ratio_luma_median": 0.4325389862060547,
       "ratio_luma_p5": 0.05143576115369797,
@@ -298,6 +514,15 @@
     {
       "frame": 27,
       "shot_frame": 27,
+      "catchlight": {
+        "source": "rendered (scene key 94.3 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 94.26630975927725,
+        "peak_added": 0.16667088866233826
+      },
       "station": "below chin",
       "ratio_luma_median": 0.40825411677360535,
       "ratio_luma_p5": 0.01920819655060768,
@@ -307,6 +532,15 @@
     {
       "frame": 28,
       "shot_frame": 28,
+      "catchlight": {
+        "source": "rendered (scene key 99.8 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 99.79865954287189,
+        "peak_added": 0.26564836502075195
+      },
       "station": "below chin",
       "ratio_luma_median": 0.3498705327510834,
       "ratio_luma_p5": 0.007964815013110638,
@@ -316,6 +550,15 @@
     {
       "frame": 29,
       "shot_frame": 29,
+      "catchlight": {
+        "source": "rendered (scene key 101.2 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 101.19496623913514,
+        "peak_added": 0.3599127531051636
+      },
       "station": "below chin",
       "ratio_luma_median": 0.3005066514015198,
       "ratio_luma_p5": 0.004863128997385502,
@@ -325,6 +568,15 @@
     {
       "frame": 30,
       "shot_frame": 30,
+      "catchlight": {
+        "source": "rendered (scene key 105.3 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 105.33272406488159,
+        "peak_added": 2.579970121383667
+      },
       "station": "below chin",
       "ratio_luma_median": 1.003951907157898,
       "ratio_luma_p5": 0.007563471794128418,
@@ -334,6 +586,15 @@
     {
       "frame": 31,
       "shot_frame": 31,
+      "catchlight": {
+        "source": "rendered (scene key 104.8 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 104.80265927082345,
+        "peak_added": 1.8347890377044678
+      },
       "station": "below chin",
       "ratio_luma_median": 0.8717283606529236,
       "ratio_luma_p5": 0.006559223867952824,
@@ -343,6 +604,15 @@
     {
       "frame": 32,
       "shot_frame": 32,
+      "catchlight": {
+        "source": "rendered (scene key 105.3 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 105.25838403833927,
+        "peak_added": 1.6076210737228394
+      },
       "station": "below chin",
       "ratio_luma_median": 0.7598235607147217,
       "ratio_luma_p5": 0.005909327417612076,
@@ -352,6 +622,15 @@
     {
       "frame": 33,
       "shot_frame": 33,
+      "catchlight": {
+        "source": "rendered (scene key 104.7 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 104.72939703497448,
+        "peak_added": 1.1320431232452393
+      },
       "station": "below chin",
       "ratio_luma_median": 0.6689660549163818,
       "ratio_luma_p5": 0.005382927600294352,
@@ -361,6 +640,15 @@
     {
       "frame": 34,
       "shot_frame": 34,
+      "catchlight": {
+        "source": "rendered (scene key 104.3 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 104.31658315306608,
+        "peak_added": 0.8772487044334412
+      },
       "station": "below chin",
       "ratio_luma_median": 0.6013462543487549,
       "ratio_luma_p5": 0.005105447955429554,
@@ -370,6 +658,15 @@
     {
       "frame": 35,
       "shot_frame": 35,
+      "catchlight": {
+        "source": "rendered (scene key 103.2 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 103.1838371630157,
+        "peak_added": 0.6778520941734314
+      },
       "station": "below chin",
       "ratio_luma_median": 0.5404232740402222,
       "ratio_luma_p5": 0.00498162629082799,
@@ -379,6 +676,15 @@
     {
       "frame": 36,
       "shot_frame": 36,
+      "catchlight": {
+        "source": "rendered (scene key 103.5 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 103.4851975340725,
+        "peak_added": 0.5861861109733582
+      },
       "station": "below chin",
       "ratio_luma_median": 0.493610680103302,
       "ratio_luma_p5": 0.004894026089459658,
@@ -388,6 +694,15 @@
     {
       "frame": 37,
       "shot_frame": 37,
+      "catchlight": {
+        "source": "rendered (scene key 102.9 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 102.93181952120088,
+        "peak_added": 0.5825502276420593
+      },
       "station": "below chin",
       "ratio_luma_median": 0.466447651386261,
       "ratio_luma_p5": 0.0049350871704518795,
@@ -397,6 +712,15 @@
     {
       "frame": 38,
       "shot_frame": 38,
+      "catchlight": {
+        "source": "rendered (scene key 98.4 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 98.43893756059896,
+        "peak_added": 1.07970130443573
+      },
       "station": "below chin",
       "ratio_luma_median": 0.5452497601509094,
       "ratio_luma_p5": 0.011490333825349808,
@@ -406,6 +730,15 @@
     {
       "frame": 39,
       "shot_frame": 39,
+      "catchlight": {
+        "source": "rendered (scene key 87.5 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 87.49676007239718,
+        "peak_added": 1.526133418083191
+      },
       "station": "below chin",
       "ratio_luma_median": 0.5830424427986145,
       "ratio_luma_p5": 0.06505705416202545,
@@ -415,6 +748,15 @@
     {
       "frame": 40,
       "shot_frame": 40,
+      "catchlight": {
+        "source": "rendered (scene key 42.8 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 42.75980643245209,
+        "peak_added": 1.4306886196136475
+      },
       "station": "below chin",
       "ratio_luma_median": 0.41779834032058716,
       "ratio_luma_p5": 0.14641675353050232,
@@ -424,6 +766,15 @@
     {
       "frame": 41,
       "shot_frame": 41,
+      "catchlight": {
+        "source": "rendered (scene key 42.2 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 42.19543288294277,
+        "peak_added": 0.4385063648223877
+      },
       "station": "above head",
       "ratio_luma_median": 0.29413679242134094,
       "ratio_luma_p5": 0.10861468315124512,
@@ -433,6 +784,15 @@
     {
       "frame": 42,
       "shot_frame": 42,
+      "catchlight": {
+        "source": "rendered (scene key 51.2 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 51.212818476737894,
+        "peak_added": 0.12346766144037247
+      },
       "station": "above head",
       "ratio_luma_median": 0.2581295967102051,
       "ratio_luma_p5": 0.07384701818227768,
@@ -442,6 +802,15 @@
     {
       "frame": 43,
       "shot_frame": 43,
+      "catchlight": {
+        "source": "rendered (scene key 52.6 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 52.62339798280478,
+        "peak_added": 0.14962594211101532
+      },
       "station": "above head",
       "ratio_luma_median": 0.251303493976593,
       "ratio_luma_p5": 0.05444669350981712,
@@ -451,6 +820,15 @@
     {
       "frame": 44,
       "shot_frame": 44,
+      "catchlight": {
+        "source": "rendered (scene key 51.0 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 50.95208533744442,
+        "peak_added": 0.20594343543052673
+      },
       "station": "above head",
       "ratio_luma_median": 0.25578027963638306,
       "ratio_luma_p5": 0.04633873701095581,
@@ -460,6 +838,15 @@
     {
       "frame": 45,
       "shot_frame": 45,
+      "catchlight": {
+        "source": "rendered (scene key 51.3 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 51.31105750200387,
+        "peak_added": 0.23428751528263092
+      },
       "station": "above head",
       "ratio_luma_median": 0.25588861107826233,
       "ratio_luma_p5": 0.04400060325860977,
@@ -469,6 +856,15 @@
     {
       "frame": 46,
       "shot_frame": 46,
+      "catchlight": {
+        "source": "rendered (scene key 51.5 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 51.46190552293271,
+        "peak_added": 0.30331695079803467
+      },
       "station": "above head",
       "ratio_luma_median": 0.25496694445610046,
       "ratio_luma_p5": 0.0441708117723465,
@@ -478,6 +874,15 @@
     {
       "frame": 47,
       "shot_frame": 47,
+      "catchlight": {
+        "source": "rendered (scene key 51.3 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 51.30588578688806,
+        "peak_added": 0.06142164394259453
+      },
       "station": "above head",
       "ratio_luma_median": 0.2495591640472412,
       "ratio_luma_p5": 0.04243040084838867,
@@ -487,6 +892,15 @@
     {
       "frame": 48,
       "shot_frame": 48,
+      "catchlight": {
+        "source": "rendered (scene key 50.7 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 50.664472447367686,
+        "peak_added": 0.10729464143514633
+      },
       "station": "above head",
       "ratio_luma_median": 0.24597564339637756,
       "ratio_luma_p5": 0.041708722710609436,
@@ -496,6 +910,15 @@
     {
       "frame": 49,
       "shot_frame": 49,
+      "catchlight": {
+        "source": "rendered (scene key 50.9 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 50.89601840373817,
+        "peak_added": 0.25301334261894226
+      },
       "station": "above head",
       "ratio_luma_median": 0.24086692929267883,
       "ratio_luma_p5": 0.041889533400535583,
@@ -505,6 +928,15 @@
     {
       "frame": 50,
       "shot_frame": 50,
+      "catchlight": {
+        "source": "rendered (scene key 50.7 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 50.66211457344748,
+        "peak_added": 0.2058967649936676
+      },
       "station": "above head",
       "ratio_luma_median": 0.236527681350708,
       "ratio_luma_p5": 0.03977501392364502,
@@ -514,6 +946,15 @@
     {
       "frame": 51,
       "shot_frame": 51,
+      "catchlight": {
+        "source": "rendered (scene key 50.8 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 50.842219106982014,
+        "peak_added": 0.23088382184505463
+      },
       "station": "above head",
       "ratio_luma_median": 0.2282903790473938,
       "ratio_luma_p5": 0.03921615332365036,
@@ -523,6 +964,15 @@
     {
       "frame": 52,
       "shot_frame": 52,
+      "catchlight": {
+        "source": "rendered (scene key 55.6 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 55.64667194419131,
+        "peak_added": 0.03449206426739693
+      },
       "station": "above head",
       "ratio_luma_median": 0.20762069523334503,
       "ratio_luma_p5": 0.03793206438422203,
@@ -532,6 +982,15 @@
     {
       "frame": 53,
       "shot_frame": 53,
+      "catchlight": {
+        "source": "rendered (scene key 134.1 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 134.06909071198183,
+        "peak_added": 0.015749294310808182
+      },
       "station": "above head",
       "ratio_luma_median": 0.17707811295986176,
       "ratio_luma_p5": 0.030396563932299614,
@@ -541,6 +1000,15 @@
     {
       "frame": 54,
       "shot_frame": 54,
+      "catchlight": {
+        "source": "rendered (scene key 141.8 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 141.82211243775663,
+        "peak_added": 0.033878594636917114
+      },
       "station": "above head",
       "ratio_luma_median": 0.21894897520542145,
       "ratio_luma_p5": 0.03090849332511425,
@@ -550,6 +1018,15 @@
     {
       "frame": 55,
       "shot_frame": 55,
+      "catchlight": {
+        "source": "rendered (scene key 139.6 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 139.58984894274795,
+        "peak_added": 0.008693276904523373
+      },
       "station": "above head",
       "ratio_luma_median": 0.24205657839775085,
       "ratio_luma_p5": 0.03325575962662697,
@@ -559,6 +1036,15 @@
     {
       "frame": 56,
       "shot_frame": 56,
+      "catchlight": {
+        "source": "rendered (scene key 140.3 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 140.32784928459427,
+        "peak_added": 0.011235172860324383
+      },
       "station": "camera left",
       "ratio_luma_median": 0.2677769958972931,
       "ratio_luma_p5": 0.03250438719987869,
@@ -568,6 +1054,15 @@
     {
       "frame": 57,
       "shot_frame": 57,
+      "catchlight": {
+        "source": "rendered (scene key 142.5 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 142.52369503226612,
+        "peak_added": 0.04084035009145737
+      },
       "station": "camera left",
       "ratio_luma_median": 0.3175148367881775,
       "ratio_luma_p5": 0.027169112116098404,
@@ -577,6 +1072,15 @@
     {
       "frame": 58,
       "shot_frame": 58,
+      "catchlight": {
+        "source": "rendered (scene key 143.8 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 143.75104353846677,
+        "peak_added": 0.008397700265049934
+      },
       "station": "camera left",
       "ratio_luma_median": 0.3429265022277832,
       "ratio_luma_p5": 0.02153713069856167,
@@ -586,6 +1090,15 @@
     {
       "frame": 59,
       "shot_frame": 59,
+      "catchlight": {
+        "source": "rendered (scene key 143.7 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 143.65617056506994,
+        "peak_added": 0.12516352534294128
+      },
       "station": "camera left",
       "ratio_luma_median": 0.3424395024776459,
       "ratio_luma_p5": 0.018088441342115402,
@@ -595,6 +1108,15 @@
     {
       "frame": 60,
       "shot_frame": 60,
+      "catchlight": {
+        "source": "rendered (scene key 55.5 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 55.514020861750495,
+        "peak_added": 0.5622298121452332
+      },
       "station": "camera left",
       "ratio_luma_median": 0.9538066387176514,
       "ratio_luma_p5": 0.022735269740223885,
@@ -604,6 +1126,15 @@
     {
       "frame": 61,
       "shot_frame": 61,
+      "catchlight": {
+        "source": "rendered (scene key 60.6 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 60.59361545204028,
+        "peak_added": 2.16312575340271
+      },
       "station": "camera left",
       "ratio_luma_median": 0.8768088221549988,
       "ratio_luma_p5": 0.02280629612505436,
@@ -613,6 +1144,15 @@
     {
       "frame": 62,
       "shot_frame": 62,
+      "catchlight": {
+        "source": "rendered (scene key 71.3 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 71.25441190765902,
+        "peak_added": 0.06327033042907715
+      },
       "station": "camera left",
       "ratio_luma_median": 0.8061217665672302,
       "ratio_luma_p5": 0.021994195878505707,
@@ -622,6 +1162,15 @@
     {
       "frame": 63,
       "shot_frame": 63,
+      "catchlight": {
+        "source": "rendered (scene key 85.8 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 85.75105439756645,
+        "peak_added": 0.25118228793144226
+      },
       "station": "camera left",
       "ratio_luma_median": 0.7419833540916443,
       "ratio_luma_p5": 0.022173479199409485,
@@ -631,6 +1180,15 @@
     {
       "frame": 64,
       "shot_frame": 64,
+      "catchlight": {
+        "source": "rendered (scene key 105.6 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 105.63417668916226,
+        "peak_added": 0.04256536811590195
+      },
       "station": "camera left",
       "ratio_luma_median": 0.6808054447174072,
       "ratio_luma_p5": 0.022313248366117477,
@@ -640,6 +1198,15 @@
     {
       "frame": 65,
       "shot_frame": 65,
+      "catchlight": {
+        "source": "rendered (scene key 124.2 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 124.15453340651733,
+        "peak_added": 0.0032715951092541218
+      },
       "station": "camera left",
       "ratio_luma_median": 0.6259030699729919,
       "ratio_luma_p5": 0.02273610606789589,
@@ -649,6 +1216,15 @@
     {
       "frame": 66,
       "shot_frame": 66,
+      "catchlight": {
+        "source": "rendered (scene key 136.4 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 136.38791939370327,
+        "peak_added": 0.024376356974244118
+      },
       "station": "camera left",
       "ratio_luma_median": 0.5846213102340698,
       "ratio_luma_p5": 0.02282342128455639,
@@ -658,6 +1234,15 @@
     {
       "frame": 67,
       "shot_frame": 67,
+      "catchlight": {
+        "source": "rendered (scene key 139.8 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 139.8240960161795,
+        "peak_added": 0.0035338029265403748
+      },
       "station": "camera left",
       "ratio_luma_median": 0.5498169660568237,
       "ratio_luma_p5": 0.023755596950650215,
@@ -667,6 +1252,15 @@
     {
       "frame": 68,
       "shot_frame": 68,
+      "catchlight": {
+        "source": "rendered (scene key 143.9 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 143.86865547605527,
+        "peak_added": 0.001003662240691483
+      },
       "station": "camera left",
       "ratio_luma_median": 0.5419518947601318,
       "ratio_luma_p5": 0.03195279836654663,
@@ -676,6 +1270,15 @@
     {
       "frame": 69,
       "shot_frame": 69,
+      "catchlight": {
+        "source": "rendered (scene key 146.6 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 146.6018678418948,
+        "peak_added": 0.004556483123451471
+      },
       "station": "camera left",
       "ratio_luma_median": 0.4792633652687073,
       "ratio_luma_p5": 0.0572187565267086,
@@ -685,6 +1288,15 @@
     {
       "frame": 70,
       "shot_frame": 70,
+      "catchlight": {
+        "source": "rendered (scene key 153.6 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 153.61923370639602,
+        "peak_added": 0.009606718085706234
+      },
       "station": "camera left",
       "ratio_luma_median": 0.35569652915000916,
       "ratio_luma_p5": 0.0826401636004448,
@@ -694,6 +1306,15 @@
     {
       "frame": 71,
       "shot_frame": 71,
+      "catchlight": {
+        "source": "rendered (scene key 42.6 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 42.62982400558064,
+        "peak_added": 0.8740438222885132
+      },
       "station": "camera right",
       "ratio_luma_median": 0.5621436238288879,
       "ratio_luma_p5": 0.11846949905157089,
@@ -703,6 +1324,15 @@
     {
       "frame": 72,
       "shot_frame": 72,
+      "catchlight": {
+        "source": "rendered (scene key 52.3 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 52.27390058955133,
+        "peak_added": 0.6375249028205872
+      },
       "station": "camera right",
       "ratio_luma_median": 0.696841835975647,
       "ratio_luma_p5": 0.06464191526174545,
@@ -712,6 +1342,15 @@
     {
       "frame": 73,
       "shot_frame": 73,
+      "catchlight": {
+        "source": "rendered (scene key 54.8 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 54.827676793565516,
+        "peak_added": 0.01466427743434906
+      },
       "station": "camera right",
       "ratio_luma_median": 0.6331700682640076,
       "ratio_luma_p5": 0.04076758399605751,
@@ -721,6 +1360,15 @@
     {
       "frame": 74,
       "shot_frame": 74,
+      "catchlight": {
+        "source": "rendered (scene key 55.5 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 55.479322620774475,
+        "peak_added": 0.022654373198747635
+      },
       "station": "camera right",
       "ratio_luma_median": 0.581451952457428,
       "ratio_luma_p5": 0.0328461229801178,
@@ -730,6 +1378,15 @@
     {
       "frame": 75,
       "shot_frame": 75,
+      "catchlight": {
+        "source": "rendered (scene key 55.4 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 55.4302031945485,
+        "peak_added": 0.031972140073776245
+      },
       "station": "camera right",
       "ratio_luma_median": 0.5667121410369873,
       "ratio_luma_p5": 0.031936921179294586,
@@ -739,6 +1396,15 @@
     {
       "frame": 76,
       "shot_frame": 76,
+      "catchlight": {
+        "source": "rendered (scene key 55.4 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 55.420962333828356,
+        "peak_added": 0.04618131369352341
+      },
       "station": "camera right",
       "ratio_luma_median": 0.5517021417617798,
       "ratio_luma_p5": 0.030558904632925987,
@@ -748,6 +1414,15 @@
     {
       "frame": 77,
       "shot_frame": 77,
+      "catchlight": {
+        "source": "rendered (scene key 55.2 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 55.22031299106069,
+        "peak_added": 0.07286383211612701
+      },
       "station": "camera right",
       "ratio_luma_median": 0.5408227443695068,
       "ratio_luma_p5": 0.029989143833518028,
@@ -757,6 +1432,15 @@
     {
       "frame": 78,
       "shot_frame": 78,
+      "catchlight": {
+        "source": "rendered (scene key 54.9 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 54.865807702965036,
+        "peak_added": 0.08252327144145966
+      },
       "station": "camera right",
       "ratio_luma_median": 0.5350748300552368,
       "ratio_luma_p5": 0.029222451150417328,
@@ -766,6 +1450,15 @@
     {
       "frame": 79,
       "shot_frame": 79,
+      "catchlight": {
+        "source": "rendered (scene key 54.7 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 54.70797176206653,
+        "peak_added": 0.13328419625759125
+      },
       "station": "camera right",
       "ratio_luma_median": 0.5334606766700745,
       "ratio_luma_p5": 0.02878451719880104,
@@ -775,6 +1468,15 @@
     {
       "frame": 80,
       "shot_frame": 80,
+      "catchlight": {
+        "source": "rendered (scene key 54.5 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 54.51045675049733,
+        "peak_added": 0.16244253516197205
+      },
       "station": "camera right",
       "ratio_luma_median": 0.521479606628418,
       "ratio_luma_p5": 0.027914732694625854,
@@ -784,6 +1486,15 @@
     {
       "frame": 81,
       "shot_frame": 81,
+      "catchlight": {
+        "source": "rendered (scene key 54.5 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 54.505821907989336,
+        "peak_added": 0.014886531047523022
+      },
       "station": "camera right",
       "ratio_luma_median": 0.5153133273124695,
       "ratio_luma_p5": 0.027241630479693413,
@@ -793,6 +1504,15 @@
     {
       "frame": 82,
       "shot_frame": 82,
+      "catchlight": {
+        "source": "rendered (scene key 53.7 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 53.685150397986355,
+        "peak_added": 0.014524586498737335
+      },
       "station": "camera right",
       "ratio_luma_median": 0.5330880880355835,
       "ratio_luma_p5": 0.026461632922291756,
@@ -802,6 +1522,15 @@
     {
       "frame": 83,
       "shot_frame": 83,
+      "catchlight": {
+        "source": "rendered (scene key 51.5 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 51.487337606034714,
+        "peak_added": 0.06776120513677597
+      },
       "station": "camera right",
       "ratio_luma_median": 0.6505362391471863,
       "ratio_luma_p5": 0.028573444113135338,
@@ -811,6 +1540,15 @@
     {
       "frame": 84,
       "shot_frame": 84,
+      "catchlight": {
+        "source": "rendered (scene key 49.2 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 49.197174063668434,
+        "peak_added": 0.2091771960258484
+      },
       "station": "camera right",
       "ratio_luma_median": 0.9375516176223755,
       "ratio_luma_p5": 0.03716116398572922,
@@ -820,6 +1558,15 @@
     {
       "frame": 85,
       "shot_frame": 85,
+      "catchlight": {
+        "source": "rendered (scene key 47.0 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 47.01905721734318,
+        "peak_added": 0.32639041543006897
+      },
       "station": "camera right",
       "ratio_luma_median": 1.2755892276763916,
       "ratio_luma_p5": 0.06412243843078613,
@@ -829,6 +1576,15 @@
     {
       "frame": 86,
       "shot_frame": 86,
+      "catchlight": {
+        "source": "rendered (scene key 45.9 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 45.908047317613295,
+        "peak_added": 0.41016945242881775
+      },
       "station": "behind rim",
       "ratio_luma_median": 1.7099446058273315,
       "ratio_luma_p5": 0.2132895290851593,
@@ -838,6 +1594,15 @@
     {
       "frame": 87,
       "shot_frame": 87,
+      "catchlight": {
+        "source": "rendered (scene key 45.0 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 45.027397996010826,
+        "peak_added": 0.4929620623588562
+      },
       "station": "behind rim",
       "ratio_luma_median": 2.017345666885376,
       "ratio_luma_p5": 0.38152799010276794,
@@ -847,6 +1612,15 @@
     {
       "frame": 88,
       "shot_frame": 88,
+      "catchlight": {
+        "source": "rendered (scene key 45.2 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 45.18373174056731,
+        "peak_added": 0.4686204791069031
+      },
       "station": "behind rim",
       "ratio_luma_median": 2.0609607696533203,
       "ratio_luma_p5": 0.4497826099395752,
@@ -856,6 +1630,15 @@
     {
       "frame": 89,
       "shot_frame": 89,
+      "catchlight": {
+        "source": "rendered (scene key 44.4 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 44.38405851791511,
+        "peak_added": 0.4992023706436157
+      },
       "station": "behind rim",
       "ratio_luma_median": 2.031111240386963,
       "ratio_luma_p5": 0.47010982036590576,
@@ -865,6 +1648,15 @@
     {
       "frame": 90,
       "shot_frame": 90,
+      "catchlight": {
+        "source": "rendered (scene key 44.0 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 44.04007829718856,
+        "peak_added": 0.4733678102493286
+      },
       "station": "behind rim",
       "ratio_luma_median": 2.1003265380859375,
       "ratio_luma_p5": 0.5663279891014099,
@@ -874,6 +1666,15 @@
     {
       "frame": 91,
       "shot_frame": 91,
+      "catchlight": {
+        "source": "rendered (scene key 44.0 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 43.95282942568327,
+        "peak_added": 0.48205021023750305
+      },
       "station": "behind rim",
       "ratio_luma_median": 2.114348888397217,
       "ratio_luma_p5": 0.5563061237335205,
@@ -883,6 +1684,15 @@
     {
       "frame": 92,
       "shot_frame": 92,
+      "catchlight": {
+        "source": "rendered (scene key 44.5 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 44.54490467662191,
+        "peak_added": 0.4765934348106384
+      },
       "station": "behind rim",
       "ratio_luma_median": 2.1304285526275635,
       "ratio_luma_p5": 0.5534037351608276,
@@ -892,6 +1702,15 @@
     {
       "frame": 93,
       "shot_frame": 93,
+      "catchlight": {
+        "source": "rendered (scene key 44.4 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 44.35947491831838,
+        "peak_added": 0.029035180807113647
+      },
       "station": "behind rim",
       "ratio_luma_median": 0.13207386434078217,
       "ratio_luma_p5": 0.032978978008031845,
@@ -901,6 +1720,15 @@
     {
       "frame": 94,
       "shot_frame": 94,
+      "catchlight": {
+        "source": "rendered (scene key 44.8 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 44.75656988628834,
+        "peak_added": 0.029331661760807037
+      },
       "station": "behind rim",
       "ratio_luma_median": 0.13380871713161469,
       "ratio_luma_p5": 0.033129580318927765,
@@ -910,6 +1738,15 @@
     {
       "frame": 95,
       "shot_frame": 95,
+      "catchlight": {
+        "source": "rendered (scene key 44.7 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 44.66519871816983,
+        "peak_added": 0.032111428678035736
+      },
       "station": "behind rim",
       "ratio_luma_median": 0.13576284050941467,
       "ratio_luma_p5": 0.03288782015442848,
@@ -919,6 +1756,15 @@
     {
       "frame": 96,
       "shot_frame": 96,
+      "catchlight": {
+        "source": "rendered (scene key 44.5 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 44.47788406374692,
+        "peak_added": 0.032663121819496155
+      },
       "station": "behind rim",
       "ratio_luma_median": 0.13731059432029724,
       "ratio_luma_p5": 0.03255757316946983,
@@ -928,6 +1774,15 @@
     {
       "frame": 97,
       "shot_frame": 97,
+      "catchlight": {
+        "source": "rendered (scene key 44.4 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 44.35137569387411,
+        "peak_added": 0.5098897814750671
+      },
       "station": "behind rim",
       "ratio_luma_median": 2.1656789779663086,
       "ratio_luma_p5": 0.5238094925880432,
@@ -937,6 +1792,15 @@
     {
       "frame": 98,
       "shot_frame": 98,
+      "catchlight": {
+        "source": "rendered (scene key 44.3 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 44.294834118319876,
+        "peak_added": 0.4673234522342682
+      },
       "station": "behind rim",
       "ratio_luma_median": 1.9378674030303955,
       "ratio_luma_p5": 0.4476502239704132,
@@ -946,6 +1810,15 @@
     {
       "frame": 99,
       "shot_frame": 99,
+      "catchlight": {
+        "source": "rendered (scene key 44.3 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 44.31169308340715,
+        "peak_added": 0.38330918550491333
+      },
       "station": "behind rim",
       "ratio_luma_median": 1.586687445640564,
       "ratio_luma_p5": 0.34890490770339966,
@@ -955,6 +1828,15 @@
     {
       "frame": 100,
       "shot_frame": 100,
+      "catchlight": {
+        "source": "rendered (scene key 44.7 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 44.73399199060717,
+        "peak_added": 0.29047849774360657
+      },
       "station": "behind rim",
       "ratio_luma_median": 1.1659400463104248,
       "ratio_luma_p5": 0.2505490183830261,
@@ -964,6 +1846,15 @@
     {
       "frame": 101,
       "shot_frame": 101,
+      "catchlight": {
+        "source": "rendered (scene key 44.9 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 44.94288093420238,
+        "peak_added": 0.18716904520988464
+      },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.7645524740219116,
       "ratio_luma_p5": 0.15243275463581085,
@@ -973,6 +1864,15 @@
     {
       "frame": 102,
       "shot_frame": 102,
+      "catchlight": {
+        "source": "rendered (scene key 45.8 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 45.75520257827077,
+        "peak_added": 0.09879237413406372
+      },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.4147590100765228,
       "ratio_luma_p5": 0.07534295320510864,
@@ -982,6 +1882,15 @@
     {
       "frame": 103,
       "shot_frame": 103,
+      "catchlight": {
+        "source": "rendered (scene key 65.4 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 65.4397520015104,
+        "peak_added": 0.03513230383396149
+      },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.1512891948223114,
       "ratio_luma_p5": 0.027270767837762833,
@@ -991,6 +1900,15 @@
     {
       "frame": 104,
       "shot_frame": 104,
+      "catchlight": {
+        "source": "rendered (scene key 137.9 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 137.90540517388646,
+        "peak_added": 0.0014131644275039434
+      },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.01361779309809208,
       "ratio_luma_p5": 0.0059834751300513744,
@@ -1000,6 +1918,15 @@
     {
       "frame": 105,
       "shot_frame": 105,
+      "catchlight": {
+        "source": "rendered (scene key 138.0 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 137.99980474859316,
+        "peak_added": 9.930492524290457e-05
+      },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.004561122972518206,
       "ratio_luma_p5": 0.003999999724328518,
@@ -1009,6 +1936,15 @@
     {
       "frame": 106,
       "shot_frame": 106,
+      "catchlight": {
+        "source": "rendered (scene key 138.1 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 138.1309442144671,
+        "peak_added": 0.00014078355161473155
+      },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.004555745981633663,
       "ratio_luma_p5": 0.003999999724328518,
@@ -1018,6 +1954,15 @@
     {
       "frame": 107,
       "shot_frame": 107,
+      "catchlight": {
+        "source": "rendered (scene key 138.2 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 138.23297699821518,
+        "peak_added": 0.00014995678793638945
+      },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.004565503913909197,
       "ratio_luma_p5": 0.003999999724328518,
@@ -1027,6 +1972,15 @@
     {
       "frame": 108,
       "shot_frame": 108,
+      "catchlight": {
+        "source": "rendered (scene key 137.9 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 137.89248727450604,
+        "peak_added": 5.3759336879011244e-05
+      },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.004543012008070946,
       "ratio_luma_p5": 0.003999999724328518,
@@ -1036,6 +1990,15 @@
     {
       "frame": 109,
       "shot_frame": 109,
+      "catchlight": {
+        "source": "rendered (scene key 137.6 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 137.5854171228051,
+        "peak_added": 7.393792475340888e-05
+      },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.004557862877845764,
       "ratio_luma_p5": 0.003999999724328518,
@@ -1045,6 +2008,15 @@
     {
       "frame": 110,
       "shot_frame": 110,
+      "catchlight": {
+        "source": "rendered (scene key 137.6 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 137.56312343754286,
+        "peak_added": 7.917470065876842e-05
+      },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.004549606703221798,
       "ratio_luma_p5": 0.003999999724328518,
@@ -1054,6 +2026,15 @@
     {
       "frame": 111,
       "shot_frame": 111,
+      "catchlight": {
+        "source": "rendered (scene key 137.7 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 137.71522199206765,
+        "peak_added": 5.593574678641744e-05
+      },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.004581335466355085,
       "ratio_luma_p5": 0.003999999724328518,
@@ -1063,6 +2044,15 @@
     {
       "frame": 112,
       "shot_frame": 112,
+      "catchlight": {
+        "source": "rendered (scene key 137.0 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 137.03319978558747,
+        "peak_added": 0.0001215449083247222
+      },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.0044911750592291355,
       "ratio_luma_p5": 0.003999999724328518,
@@ -1072,6 +2062,15 @@
     {
       "frame": 113,
       "shot_frame": 113,
+      "catchlight": {
+        "source": "rendered (scene key 132.1 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 132.1014903800798,
+        "peak_added": 0.00018956897838506848
+      },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.004258367232978344,
       "ratio_luma_p5": 0.003999999724328518,
@@ -1081,6 +2080,15 @@
     {
       "frame": 114,
       "shot_frame": 114,
+      "catchlight": {
+        "source": "rendered (scene key 116.9 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 116.8716279310537,
+        "peak_added": 0.00031306929304264486
+      },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.004044775385409594,
       "ratio_luma_p5": 0.003999999724328518,
@@ -1090,6 +2098,15 @@
     {
       "frame": 115,
       "shot_frame": 115,
+      "catchlight": {
+        "source": "rendered (scene key 89.1 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 89.05101110872629,
+        "peak_added": 0.0006661899969913065
+      },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.004027064424008131,
       "ratio_luma_p5": 0.003999999724328518,
@@ -1099,6 +2116,15 @@
     {
       "frame": 116,
       "shot_frame": 116,
+      "catchlight": {
+        "source": "rendered (scene key 66.3 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 66.30485094342261,
+        "peak_added": 0.00010061103967018425
+      },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.004350111819803715,
       "ratio_luma_p5": 0.003999999724328518,
@@ -1108,6 +2134,15 @@
     {
       "frame": 117,
       "shot_frame": 117,
+      "catchlight": {
+        "source": "rendered (scene key 56.1 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 56.09066846286,
+        "peak_added": 9.140964539255947e-05
+      },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.005047551356256008,
       "ratio_luma_p5": 0.003999999724328518,
@@ -1117,6 +2152,15 @@
     {
       "frame": 118,
       "shot_frame": 118,
+      "catchlight": {
+        "source": "rendered (scene key 55.1 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 55.08260481359641,
+        "peak_added": 8.860671368893236e-05
+      },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.005827285815030336,
       "ratio_luma_p5": 0.003999999724328518,
@@ -1126,6 +2170,15 @@
     {
       "frame": 119,
       "shot_frame": 119,
+      "catchlight": {
+        "source": "rendered (scene key 54.6 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 54.60079331812553,
+        "peak_added": 0.00018388571334071457
+      },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.006206880323588848,
       "ratio_luma_p5": 0.003999999724328518,
@@ -1135,6 +2188,15 @@
     {
       "frame": 120,
       "shot_frame": 120,
+      "catchlight": {
+        "source": "rendered (scene key 54.7 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 54.69930195187511,
+        "peak_added": 0.001087920623831451
+      },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.006825490854680538,
       "ratio_luma_p5": 0.003999999724328518,
@@ -1144,6 +2206,15 @@
     {
       "frame": 121,
       "shot_frame": 121,
+      "catchlight": {
+        "source": "rendered (scene key 54.7 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 54.675580754022796,
+        "peak_added": 0.001036335714161396
+      },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.006730697117745876,
       "ratio_luma_p5": 0.003999999724328518,
@@ -1153,6 +2224,15 @@
     {
       "frame": 122,
       "shot_frame": 122,
+      "catchlight": {
+        "source": "rendered (scene key 54.6 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 54.58480421154555,
+        "peak_added": 0.000999864307232201
+      },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.006626449525356293,
       "ratio_luma_p5": 0.003999999724328518,
@@ -1162,6 +2242,15 @@
     {
       "frame": 123,
       "shot_frame": 123,
+      "catchlight": {
+        "source": "rendered (scene key 54.7 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 54.72497812782122,
+        "peak_added": 8.270982652902603e-05
+      },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.0066342540085315704,
       "ratio_luma_p5": 0.003999999724328518,
@@ -1171,6 +2260,15 @@
     {
       "frame": 124,
       "shot_frame": 124,
+      "catchlight": {
+        "source": "rendered (scene key 54.7 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 54.68599416189675,
+        "peak_added": 7.638737588422373e-05
+      },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.006552969571202993,
       "ratio_luma_p5": 0.003999999724328518,
@@ -1180,6 +2278,15 @@
     {
       "frame": 125,
       "shot_frame": 125,
+      "catchlight": {
+        "source": "rendered (scene key 54.5 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 54.523160301267495,
+        "peak_added": 6.991050759097561e-05
+      },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.006521238945424557,
       "ratio_luma_p5": 0.003999999724328518,
@@ -1189,6 +2296,15 @@
     {
       "frame": 126,
       "shot_frame": 126,
+      "catchlight": {
+        "source": "rendered (scene key 54.5 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 54.50608616411585,
+        "peak_added": 0.00013722882431466132
+      },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.009035047143697739,
       "ratio_luma_p5": 0.004000003449618816,
@@ -1198,6 +2314,15 @@
     {
       "frame": 127,
       "shot_frame": 127,
+      "catchlight": {
+        "source": "rendered (scene key 60.1 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 60.114773738116114,
+        "peak_added": 0.03593089058995247
+      },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.24928903579711914,
       "ratio_luma_p5": 0.033393796533346176,
@@ -1207,6 +2332,7 @@
     {
       "frame": 128,
       "shot_frame": 128,
+      "catchlight": null,
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.04318494349718094,
       "ratio_luma_p5": 0.00586690241470933,
@@ -1216,6 +2342,7 @@
     {
       "frame": 129,
       "shot_frame": 129,
+      "catchlight": null,
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.057553041726350784,
       "ratio_luma_p5": 0.01048417016863823,
@@ -1225,6 +2352,7 @@
     {
       "frame": 130,
       "shot_frame": 130,
+      "catchlight": null,
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.047576092183589935,
       "ratio_luma_p5": 0.011447420343756676,
@@ -1234,6 +2362,7 @@
     {
       "frame": 131,
       "shot_frame": 131,
+      "catchlight": null,
       "station": "high three-quarter",
       "ratio_luma_median": 0.3970634639263153,
       "ratio_luma_p5": 0.11982133239507675,
@@ -1243,6 +2372,7 @@
     {
       "frame": 132,
       "shot_frame": 132,
+      "catchlight": null,
       "station": "high three-quarter",
       "ratio_luma_median": 0.2335997074842453,
       "ratio_luma_p5": 0.03617088869214058,
@@ -1252,6 +2382,7 @@
     {
       "frame": 133,
       "shot_frame": 133,
+      "catchlight": null,
       "station": "high three-quarter",
       "ratio_luma_median": 0.21334296464920044,
       "ratio_luma_p5": 0.012694728560745716,
@@ -1261,6 +2392,14 @@
     {
       "frame": 134,
       "shot_frame": 134,
+      "catchlight": {
+        "source": "rendered (scene key 135.0 deg from the measured original)",
+        "eyes": [
+          "left"
+        ],
+        "angle_to_plate_key_deg": 134.98653064430246,
+        "peak_added": 0.10027988255023956
+      },
       "station": "high three-quarter",
       "ratio_luma_median": 0.20650959014892578,
       "ratio_luma_p5": 0.011721421033143997,
@@ -1270,6 +2409,15 @@
     {
       "frame": 135,
       "shot_frame": 135,
+      "catchlight": {
+        "source": "rendered (scene key 134.4 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 134.39664944182292,
+        "peak_added": 0.06989177316427231
+      },
       "station": "high three-quarter",
       "ratio_luma_median": 0.19904440641403198,
       "ratio_luma_p5": 0.010705159045755863,
@@ -1279,6 +2427,15 @@
     {
       "frame": 136,
       "shot_frame": 136,
+      "catchlight": {
+        "source": "rendered (scene key 132.0 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 131.99233194344094,
+        "peak_added": 0.0579562745988369
+      },
       "station": "high three-quarter",
       "ratio_luma_median": 0.19263115525245667,
       "ratio_luma_p5": 0.0098392553627491,
@@ -1288,6 +2445,15 @@
     {
       "frame": 137,
       "shot_frame": 137,
+      "catchlight": {
+        "source": "rendered (scene key 132.6 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 132.58700460435412,
+        "peak_added": 0.04345794767141342
+      },
       "station": "high three-quarter",
       "ratio_luma_median": 0.18911665678024292,
       "ratio_luma_p5": 0.009439343586564064,
@@ -1297,6 +2463,15 @@
     {
       "frame": 138,
       "shot_frame": 138,
+      "catchlight": {
+        "source": "rendered (scene key 133.0 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 133.04682638555624,
+        "peak_added": 0.04332772269845009
+      },
       "station": "high three-quarter",
       "ratio_luma_median": 0.18663623929023743,
       "ratio_luma_p5": 0.008662828244268894,
@@ -1306,6 +2481,15 @@
     {
       "frame": 139,
       "shot_frame": 139,
+      "catchlight": {
+        "source": "rendered (scene key 132.9 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 132.92871019513342,
+        "peak_added": 0.0747527927160263
+      },
       "station": "high three-quarter",
       "ratio_luma_median": 0.18442317843437195,
       "ratio_luma_p5": 0.008377589285373688,
@@ -1315,6 +2499,15 @@
     {
       "frame": 140,
       "shot_frame": 140,
+      "catchlight": {
+        "source": "rendered (scene key 132.8 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 132.80761269189685,
+        "peak_added": 0.161625474691391
+      },
       "station": "high three-quarter",
       "ratio_luma_median": 0.18308597803115845,
       "ratio_luma_p5": 0.007778520695865154,
@@ -1324,6 +2517,15 @@
     {
       "frame": 141,
       "shot_frame": 141,
+      "catchlight": {
+        "source": "rendered (scene key 133.1 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 133.0732398497852,
+        "peak_added": 0.10965045541524887
+      },
       "station": "high three-quarter",
       "ratio_luma_median": 0.18174907565116882,
       "ratio_luma_p5": 0.00771815050393343,
@@ -1333,6 +2535,15 @@
     {
       "frame": 142,
       "shot_frame": 142,
+      "catchlight": {
+        "source": "rendered (scene key 112.1 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 112.09430640062396,
+        "peak_added": 0.21066761016845703
+      },
       "station": "high three-quarter",
       "ratio_luma_median": 0.18466098606586456,
       "ratio_luma_p5": 0.009876064024865627,
@@ -1342,6 +2553,15 @@
     {
       "frame": 143,
       "shot_frame": 143,
+      "catchlight": {
+        "source": "rendered (scene key 33.8 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 33.81581037899161,
+        "peak_added": 0.5000689029693604
+      },
       "station": "high three-quarter",
       "ratio_luma_median": 0.19404855370521545,
       "ratio_luma_p5": 0.021448049694299698,
@@ -1351,6 +2571,15 @@
     {
       "frame": 144,
       "shot_frame": 144,
+      "catchlight": {
+        "source": "rendered (scene key 17.4 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 17.43034180520265,
+        "peak_added": 0.32511845231056213
+      },
       "station": "high three-quarter",
       "ratio_luma_median": 0.21281808614730835,
       "ratio_luma_p5": 0.05988568812608719,
@@ -1360,6 +2589,15 @@
     {
       "frame": 145,
       "shot_frame": 145,
+      "catchlight": {
+        "source": "rendered (scene key 20.2 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 20.204609920738694,
+        "peak_added": 0.2391243427991867
+      },
       "station": "front far",
       "ratio_luma_median": 0.23146548867225647,
       "ratio_luma_p5": 0.1001068502664566,
@@ -1369,6 +2607,15 @@
     {
       "frame": 146,
       "shot_frame": 146,
+      "catchlight": {
+        "source": "rendered (scene key 42.8 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 42.78839506351223,
+        "peak_added": 0.5876966118812561
+      },
       "station": "front far",
       "ratio_luma_median": 0.2461138218641281,
       "ratio_luma_p5": 0.10737030953168869,
@@ -1378,6 +2625,15 @@
     {
       "frame": 147,
       "shot_frame": 147,
+      "catchlight": {
+        "source": "rendered (scene key 65.9 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 65.86828504266394,
+        "peak_added": 0.37045425176620483
+      },
       "station": "front far",
       "ratio_luma_median": 0.25164568424224854,
       "ratio_luma_p5": 0.09807439148426056,
@@ -1387,6 +2643,15 @@
     {
       "frame": 148,
       "shot_frame": 148,
+      "catchlight": {
+        "source": "rendered (scene key 78.3 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 78.31866566516759,
+        "peak_added": 0.29290899634361267
+      },
       "station": "front far",
       "ratio_luma_median": 0.25166070461273193,
       "ratio_luma_p5": 0.08977875113487244,
@@ -1396,6 +2661,15 @@
     {
       "frame": 149,
       "shot_frame": 149,
+      "catchlight": {
+        "source": "rendered (scene key 82.7 deg from the measured original)",
+        "eyes": [
+          "left",
+          "right"
+        ],
+        "angle_to_plate_key_deg": 82.66951422176898,
+        "peak_added": 0.44785720109939575
+      },
       "station": "front far",
       "ratio_luma_median": 0.25044509768486023,
       "ratio_luma_p5": 0.08620018512010574,

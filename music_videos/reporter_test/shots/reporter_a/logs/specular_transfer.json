@@ -1,0 +1,209 @@
+{
+  "shot": "reporter_a",
+  "frames": "21,51,79",
+  "before": "composite/ratio",
+  "after": "composite/ratio_r5",
+  "what_each_number_means": {
+    "iris_glint_contrast": "p99.5 / median inside the corneal disc. The PLATE is the reference: a composite with no catchlight at all scores low and is wrong; one that kept the studio catchlight scores like the plate and is also wrong. Read it with glint_offset_iris_radii, which says WHERE the light is",
+    "glint_offset_iris_radii": "brightest point in each iris, in iris radii from its centre. This is the number that distinguishes a studio softbox still sitting in the eye from the scene light having replaced it",
+    "hair_sheen_contrast": "p97 / median over the hair above the brow",
+    "lip_gloss_contrast": "p97 / median inside the vermilion",
+    "lip_over_perioral_luma": "median lip luminance over median perioral skin. The PLATE value is the target: it is what the photograph itself says the lips are worth relative to the skin"
+  },
+  "means": {
+    "plate": {
+      "iris_glint_contrast": 10.0067032178243,
+      "hair_sheen_contrast": 10.0883207321167,
+      "lip_gloss_contrast": 1.7797385056813557,
+      "lip_over_perioral_luma": 0.7798135876655579
+    },
+    "before": {
+      "iris_glint_contrast": 11.811771551767984,
+      "hair_sheen_contrast": 12.372792561848959,
+      "lip_gloss_contrast": 2.8391486008961997,
+      "lip_over_perioral_luma": 0.6604864994684855
+    },
+    "after": {
+      "iris_glint_contrast": 24.559463818868,
+      "hair_sheen_contrast": 8.727067311604818,
+      "lip_gloss_contrast": 2.8866320848464966,
+      "lip_over_perioral_luma": 0.6264586448669434
+    }
+  },
+  "per_frame": [
+    {
+      "frame": 21,
+      "region_px": {
+        "face": 75480,
+        "lips": 3987,
+        "perioral": 3951,
+        "hair_crown": 20423,
+        "iris": 1116
+      },
+      "plate": {
+        "iris_glint_contrast": 7.889855861663818,
+        "glint_offset_iris_radii": {
+          "right": [
+            -0.25,
+            -0.009
+          ],
+          "left": [
+            -0.478,
+            0.021
+          ]
+        },
+        "hair_sheen_contrast": 10.501181602478027,
+        "lip_gloss_contrast": 1.739989995956421,
+        "lip_over_perioral_luma": 0.7422001957893372
+      },
+      "before": {
+        "iris_glint_contrast": 6.93250036239624,
+        "glint_offset_iris_radii": {
+          "right": [
+            0.939,
+            0.369
+          ],
+          "left": [
+            -0.441,
+            -0.079
+          ]
+        },
+        "hair_sheen_contrast": 8.483461380004883,
+        "lip_gloss_contrast": 1.5480378866195679,
+        "lip_over_perioral_luma": 0.9026197195053101
+      },
+      "after": {
+        "iris_glint_contrast": 10.208857536315918,
+        "glint_offset_iris_radii": {
+          "right": [
+            0.432,
+            0.186
+          ],
+          "left": [
+            -0.091,
+            -0.168
+          ]
+        },
+        "hair_sheen_contrast": 6.735785484313965,
+        "lip_gloss_contrast": 1.518953800201416,
+        "lip_over_perioral_luma": 0.84897780418396
+      }
+    },
+    {
+      "frame": 51,
+      "region_px": {
+        "face": 75419,
+        "lips": 3338,
+        "perioral": 3296,
+        "hair_crown": 20740,
+        "iris": 1171
+      },
+      "plate": {
+        "iris_glint_contrast": 11.266558647155762,
+        "glint_offset_iris_radii": {
+          "right": [
+            -0.217,
+            -0.043
+          ],
+          "left": [
+            -0.418,
+            0.018
+          ]
+        },
+        "hair_sheen_contrast": 10.711956024169922,
+        "lip_gloss_contrast": 1.7091416120529175,
+        "lip_over_perioral_luma": 0.8819901347160339
+      },
+      "before": {
+        "iris_glint_contrast": 10.29187297821045,
+        "glint_offset_iris_radii": {
+          "right": [
+            -0.219,
+            -0.043
+          ],
+          "left": [
+            -0.396,
+            0.026
+          ]
+        },
+        "hair_sheen_contrast": 18.579885482788086,
+        "lip_gloss_contrast": 1.9384111166000366,
+        "lip_over_perioral_luma": 0.5171191692352295
+      },
+      "after": {
+        "iris_glint_contrast": 32.00249481201172,
+        "glint_offset_iris_radii": {
+          "right": [
+            -0.01,
+            -0.711
+          ],
+          "left": [
+            -0.28,
+            -0.694
+          ]
+        },
+        "hair_sheen_contrast": 8.302229881286621,
+        "lip_gloss_contrast": 1.8624542951583862,
+        "lip_over_perioral_luma": 0.5013787746429443
+      }
+    },
+    {
+      "frame": 79,
+      "region_px": {
+        "face": 74834,
+        "lips": 4069,
+        "perioral": 4022,
+        "hair_crown": 26988,
+        "iris": 1200
+      },
+      "plate": {
+        "iris_glint_contrast": 10.86369514465332,
+        "glint_offset_iris_radii": {
+          "right": [
+            -0.395,
+            -0.206
+          ],
+          "left": [
+            -0.555,
+            -0.117
+          ]
+        },
+        "hair_sheen_contrast": 9.051824569702148,
+        "lip_gloss_contrast": 1.890083909034729,
+        "lip_over_perioral_luma": 0.7152504324913025
+      },
+      "before": {
+        "iris_glint_contrast": 18.210941314697266,
+        "glint_offset_iris_radii": {
+          "right": [
+            -0.398,
+            -0.206
+          ],
+          "left": [
+            0.944,
+            0.132
+          ]
+        },
+        "hair_sheen_contrast": 10.055030822753906,
+        "lip_gloss_contrast": 5.030996799468994,
+        "lip_over_perioral_luma": 0.561720609664917
+      },
+      "after": {
+        "iris_glint_contrast": 31.467039108276367,
+        "glint_offset_iris_radii": {
+          "right": [
+            -0.501,
+            0.672
+          ],
+          "left": [
+            0.727,
+            0.079
+          ]
+        },
+        "hair_sheen_contrast": 11.143186569213867,
+        "lip_gloss_contrast": 5.2784881591796875,
+        "lip_over_perioral_luma": 0.5290193557739258
+      }
+    }
+  ]
+}

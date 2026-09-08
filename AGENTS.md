@@ -90,7 +90,7 @@ Status is for `reporter_test/reporter_a`, the test bed, as of the end of round 2
 | 2 | **Received shadows** from scene geometry crossing the actor | A window mullion or a passing shape that stops at the actor's edge is an instant giveaway. | 🟡 the proxy is in the scene and occludes; needs an environment render rather than the test lights |
 | 3 | **Cast shadows onto the environment** | Only matters where the actor is near a surface; bust framing usually hides it. Shadow Catcher pass. | 🔴 |
 | 4 | **Subsurface scattering** in skin | Skin is not opaque. Without it, ears, nostrils and lit edges read as painted plastic. Light transport through a volume; no per-pixel multiply can fake it. | 🟡 `RANDOM_WALK_SKIN` + Jensen 2001 radii on the proxy, dedicated SSS passes enabled; not composited |
-| 5 | **Specular response** — roughness, Fresnel, sheen on skin and fabric | A purely diffuse actor under a room full of practicals has no catchlights and no wet look. **And the ratio composite cannot remove the plate's OWN speculars**: `plate × R` with a smooth R recolours a highlight but cannot move or delete it, so the original room's sheen survives every relight — the artist spotted this on sight. Needs specular/diffuse separation on the plate, not a setting. | 🟡 glossy passes render; the additive G term adds new specular; nothing removes the old, so this row has a ceiling below the bar — see `rounds/round5.md` |
+| 5 | **Specular response** — roughness, Fresnel, sheen on skin and fabric | A purely diffuse actor under a room full of practicals has no catchlights and no wet look. **And the ratio composite cannot remove the plate's OWN speculars**: `plate × R` with a smooth R recolours a highlight but cannot move or delete it, so the original room's sheen survives every relight — the artist spotted this on sight. Needs specular/diffuse separation on the plate, not a setting. | 🟡 round 5 built the separation: `separate_specular.py` removes the plate's own highlights and the composite adds new ones from the scene. Ceiling is now the **sub-floor sheen on skin**, which a single unpolarised image cannot separate — see `rounds/round6.md` |
 | 6 | **Light direction, colour, level, falloff** | The baseline match. | 🟡 ratio composite delivers it; `E_source` now MEASURED from the plate rather than guessed (24 % relative RMS correction) |
 | 7 | **Anamorphic lens match** — 1.6× squeeze, oval bokeh, correct FOV | The plate is anamorphic and Blender renders spherically. A silent mismatch here is geometric, not aesthetic. | 🟢 `scripts/anamorphic.py`: geometry exact, bokeh measured at 1.6:1 vertical (error 0.0). Blur *magnitude* still needs matching against a real defocused take |
 | 8 | **Depth of field** matched to the taking lens | Nobody shoots a dim interior deep-focus; a sharp background is the "computer-ey" tell. | 🟡 f/2.0 in the environment render |
@@ -174,6 +174,14 @@ Each of these produces a wrong result with no error message.
    rendering four frames with geometry and lights changing, persistent vs not, diverged by max
    7.55, 12.49, 14.83, 14.81 with mean error reaching 1.335. Confirmed, not inherited.
 9. **`render.fps` is an int16**, so 60000/1001 silently clamps. Use `fps = 60, fps_base = 1.001`.
+10. **`cv2.imwrite` to EXR rejects a float16 ARRAY.** Pass **float32** and let
+    `IMWRITE_EXR_TYPE_HALF` do the conversion. Handing it a `np.float16` array warns
+    *"Unsupported depth image for selected encoder is fallbacked to CV_8U"* and then asserts on
+    `CV_8U` -- which reads like a codec problem rather than a dtype one. It cost a full 150-frame
+    run, and the run reported **exit code 0** because the traceback was downstream of a pipe:
+    check the tail of a background log, not just its status.
+11. **numpy 2.x removed `ndarray.ptp()`.** `np.ptp(a)` is fine; `a.ptp()` raises `AttributeError`.
+    The pipeline venv is numpy 2.4.
 
 ## GPU: what is accelerated, and why the card still looks idle
 
@@ -243,8 +251,10 @@ Every stage takes `--shot`. Interpreter is the pipeline venv unless the row says
 | 1 | ingest / extract frames | `shot_paths.py` resolves everything | `source/frames/` | rates are exact `Fraction`s |
 | 2 | calibrate key | `calibrate_key.py` | `logs/key_calibration.json` | thresholds do **not** transfer between plates |
 | 3 | key + despill | `key_plate.py` | `key/alpha/`, `key/fg/` | despill is the manual pass; CorridorKey's own `despill_strength` never touches `result['fg']` |
+| 3b | **specular / diffuse split** | `separate_specular.py` | `key/specular/*.exr` | diffuse is `fg − specular`, via `load_layers()`; see below |
 | 4 | depth | `video_depth.py` | `relight/depth/*.npy` | Video Depth Anything; **affine-invariant disparity**, not metric |
-| 5 | face track | `face_track.py` (facetrack venv) | `relight/face_track.json` | mediapipe; needs its own venv |
+| 5 | face track | `face_track.py` (facetrack venv) | `relight/face_track.json`, `relight/face_landmarks.npz` + `.json` | mediapipe; needs its own venv. Also stores ALL 478 landmarks, blink, eyelid aperture, head pose |
+| 5b | **corneal geometry** | `eye_geometry.py` | `relight/eye_geometry.json` | corneal sphere per eye, and the PLATE's key light solved from its own catchlights |
 | 6 | **normals** | `neural_normals.py` | `relight/normals/*.npz` | see below |
 | 7 | **albedo + skin mask** | `make_albedo.py` | `relight/albedo/`, `relight/skin_mask/` | plate ÷ `E_source(normals)`; needed before the plate can be re-lit, or it is lit twice |
 | 7b | **proxy geometry** | `make_proxy_mesh.py` | `relight/proxy/*.npz` | see below; carries UVs |
@@ -254,7 +264,8 @@ Every stage takes `--shot`. Interpreter is the pipeline venv unless the row says
 | 11 | proxy render | `render_proxy.py` (Blender) | `relight/proxy_render/*.exr` | self-shadows, SSS, glossy passes |
 | 11b | stress demo | `stress_proxy.py` (Blender) | `composite/stress_proxy*/` | lightbulb tour; `--textured` uses the albedo |
 | 11c | **ratio irradiance** | `stress_proxy.py --ratio` (Blender) | `composite/ratio_render/*.exr` | neutral albedo at PLATE resolution and the PLATE lens |
-| 12 | **ratio composite** | `composite_ratio.py` | `composite/ratio/` | `out = plate × R`; see below |
+| 11d | **catchlight** | `stress_proxy.py --catchlight` (Blender) | `composite/catchlight_render/*.exr` | a dielectric mirror at each cornea; the scene decides what is in the eye |
+| 12 | **ratio composite** | `composite_ratio.py` | `composite/ratio/` | `out = D × R + S_new`; see below |
 | 12b | composite (gain map) | `composite_shot.py` | `composite/`, `intermediate/linear_4k/` | legacy path; loads background **per frame** |
 | 12c | **review video** | `review_video.py` | `final/*.mp4` | what the artist watches; `--compare` puts the before on the LEFT with both halves labelled |
 | 13 | master | `master_export.py` | `master/*.mov` | ProRes 4444 / DNxHR 444, 4:4:4 10-bit |
@@ -346,6 +357,77 @@ Two rules that are easy to get wrong:
 What it still inherits from the proxy: the *shape* of the shadows, so a nose shadow lands in
 roughly the right place with the proxy's smoothness at its edge, and hair shadows as a mass. What
 it does not inherit is the proxy's appearance, which is the whole difference.
+
+### The specular layer (stage 3b), and the three complaints it explains
+
+`plate = D + S`. The ratio is a lighting scale and **only D obeys it** — a smooth `R` can recolour
+a specular highlight but cannot move, reshape or delete one. So before round 5 every highlight in
+the plate kept reporting where the green-screen room's lamps were, no matter where the Blender key
+went. The artist reported this three times, in three places, without connecting them:
+
+* *"I can kind of see the shine in her hair from the original green screen room."*
+* *"the lips are somehow lit up more than the skin around them"*
+* the corneal catchlight, still sitting at 11 o'clock on both irises — a plainly rectangular
+  softbox, in a composite lit by a bulb.
+
+**They are one bug.** `separate_specular.py` splits the plate and `composite_ratio.py` computes
+`out = D × R + S_new`.
+
+Three things about it that are easy to get wrong:
+
+* **The illuminant is measured, not assumed.** From the performer's own corneal glints — the eye
+  is the plate's own chrome ball — cross-checked against the brightest near-neutral pixels. On
+  the reporter plate the two agree to 0.3% while sharing no pixels and no mechanism.
+* **The material colour is LOCAL**, from an alpha-aware opening, so there is no skin mask, no hair
+  mask, and no assumption about skin tone, hair colour or wardrobe. Each pixel is fitted as
+  `I = a·b̂ + s·Ĝ` with `a, s ≥ 0`: a rise in red alone (blood, lipstick) can only be `a`.
+* **There is a floor, and it is physical.** Skin gets *more saturated as it darkens* — subsurface
+  reddening — which mimics the dichromatic specular signature exactly. Measured over 58 819 cheek
+  pixels of one material, `min/sum` runs 0.060 (p2) to 0.216 (p95). Ungated, the separator reads
+  that drift as specular and desaturates the whole face to grey-green. So specular below a
+  fraction of the local diffuse level is **not claimed**, and about 46 % of the fitted specular is
+  discarded by that floor. **That is a real ceiling: a single unpolarised image cannot fully
+  separate diffuse from specular on skin.** Cross-polarised capture can, and the artist will not
+  shoot cross-polarised.
+
+Near-neutral materials — a white shirt, grey foam, metal — are unseparable by *any* dichromatic
+method and are reported as such rather than quietly zeroed.
+
+### Catchlights (stages 5b, 11d)
+
+**Do not paint a dot.** A catchlight is a mirror image of the source, so the honest way to make one
+is to put a mirror where the cornea is and let Cycles find the source. Presence, size, shape,
+colour and occlusion then all come from the scene: a bulb 0.5 m away gives a bright disc, a window
+a soft rectangle, an overcast sky a broad wash, an unlit corner nothing at all.
+
+**A distance threshold would get sunlight exactly backwards.** A mirror shows the source's
+*radiance*, and radiance does not fall off with distance — so a distant lamp still makes a
+catchlight, just a small one, and the sun makes a tiny brilliant spark rather than nothing. What
+distance changes is solid angle, hence size.
+
+**The cornea is a dielectric, not a mirror.** IOR 1.376, so Fresnel gives ~2.5 % at normal
+incidence. A first attempt used a plain glossy BSDF with a white colour, i.e. 100 % reflectance,
+and returned the whole cornea at 2.5–4.3 linear — it would have whited out both eyes.
+
+**Keep or replace is computed, not set.** The plate's own catchlight is better than any synthetic
+one when it fits — right shape, right softness, real lash occlusion. It fits only when the new key
+is near the original. Both angles are measured: the plate's from its own catchlights
+(`eye_geometry.py`, 54.6° off the camera axis on the reporter plate) and the scene's from the L1
+moment of the rendered irradiance. Note the glint moves by **half** the angle the light moves, so
+the tolerance looks generous and is not.
+
+**Gaze estimation is resolution-dependent, and this is measured.** The iris ellipse's minor/major
+ratio reads gaze directly, but needs a big iris: at 12.9 px radius it returned a confident, stable
+**29.3° for a subject looking straight down the lens**, because one pixel of landmark asymmetry on
+a 13 px circle is already 23°. It poisoned the light solve (40° scatter) before it was caught. So
+the ellipse is used only above `--ellipse-min-radius` (the artist's macro close-up case) and head
+pose plus iris displacement is the default below it. On the reporter plate that took the scatter
+from 40° to 18.5°.
+
+**The light POSITION does not come out**, and the gate for that is not the residual. Two corneas
+63 mm apart cannot triangulate a source a metre away: the rays are near parallel and the
+least-squares point collapses onto the corneas themselves *with a small residual*. The direction
+is the usable output.
 
 ### Anamorphic (`scripts/anamorphic.py`)
 

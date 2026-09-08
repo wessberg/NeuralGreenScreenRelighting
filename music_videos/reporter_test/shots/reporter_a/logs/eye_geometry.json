@@ -1,0 +1,501 @@
+{
+  "shot": "reporter_a",
+  "frames": 150,
+  "camera": {
+    "fx": 2666.6666666666665,
+    "src_w": 1920,
+    "src_h": 1080,
+    "dist": 1.3,
+    "cam_h": 1.55,
+    "lens_mm": 50.0,
+    "sensor_width_mm": 36.0
+  },
+  "anamorphic_squeeze": 1.0,
+  "anatomy": {
+    "cornea_radius_mm": 7.8,
+    "iris_radius_mm": 5.85,
+    "status": "ASSUMED anatomical constants, ~5% population spread. Everything that varies with the individual -- px per mm, gaze, aperture -- is measured from the plate."
+  },
+  "world_axes": "+X right, +Y away from camera, +Z up; actor centred at Y=0 (identical to make_proxy_mesh.py, on purpose)",
+  "visible_eye_frames": 273,
+  "proxy_projection_error_px": {
+    "mean": 1.8005843380525342,
+    "max": 3.425434858135299,
+    "meaning": "distance between the iris centre and the projection of the proxy vertex used as the corneal apex. Large values mean the mesh and the landmarks disagree about where the eye is, and the catchlight will sit off it."
+  },
+  "plate_glint": {
+    "measured_on_eye_frames": 271,
+    "mean_area_px": 19.40221402214022,
+    "mean_peak_linear": 0.6716353638145757,
+    "clipped_fraction": 0.0,
+    "mean_contrast_over_iris": 10.405721235099314,
+    "clipping_note": "an unclipped glint still has the iris diffuse recorded underneath it, so separate_specular.py can subtract it and leave real photographed texture. A clipped one cannot be recovered at all."
+  },
+  "plate_key_light": {
+    "samples": 264,
+    "mean_direction_world": [
+      -0.7408,
+      -0.579,
+      0.3406
+    ],
+    "direction_spread_deg": 18.520768763485478,
+    "angle_from_camera_axis_deg": 54.6189592793213,
+    "triangulation": {
+      "status": "DEGENERATE -- do not use",
+      "position_world": null,
+      "raw_position_world": [
+        0.0029,
+        0.017,
+        1.6708
+      ],
+      "residual_m": 0.030651613555623583,
+      "ray_baseline_m": 0.12899432703790825,
+      "solved_reach_over_baseline": 0.002663429036049439,
+      "why": "the two corneas are ~63 mm apart, so for any source beyond a few tens of centimetres the rays are near parallel and the least-squares point collapses onto the corneas themselves WITH A SMALL RESIDUAL. A residual test alone passes on that nonsense; this gate is reach over baseline."
+    },
+    "direction_is_the_usable_output": "mean_direction_world and its spread are the measurement to consume. The spread is not pure noise: both eyes see the same source, so genuine parallax between the two corneas inflates it when the source is near.",
+    "why_it_matters": "This is the only place in the frame where the plate photographed its own light sources directly. estimate_source_light.py fits SH to a surface whose normals all have ny < 0 and its own log warns that the resulting direction is an extrapolation; this is not.",
+    "per_sample": [
+      {
+        "frame": 0,
+        "side": "right",
+        "light_dir_world": [
+          -0.8209,
+          0.2867,
+          0.4939
+        ],
+        "angle_from_camera_axis_deg": 106.66125914932432,
+        "corneal_half_angle_deg": 34.17091951038201
+      },
+      {
+        "frame": 0,
+        "side": "left",
+        "light_dir_world": [
+          -0.8751,
+          -0.3653,
+          0.3173
+        ],
+        "angle_from_camera_axis_deg": 68.57347909087362,
+        "corneal_half_angle_deg": 28.11006634055103
+      },
+      {
+        "frame": 1,
+        "side": "right",
+        "light_dir_world": [
+          -0.7478,
+          -0.0567,
+          0.6615
+        ],
+        "angle_from_camera_axis_deg": 86.74686559917471,
+        "corneal_half_angle_deg": 24.821282814927148
+      },
+      {
+        "frame": 1,
+        "side": "left",
+        "light_dir_world": [
+          -0.9032,
+          -0.2248,
+          0.3655
+        ],
+        "angle_from_camera_axis_deg": 77.00755445705389,
+        "corneal_half_angle_deg": 30.7152761840588
+      },
+      {
+        "frame": 2,
+        "side": "right",
+        "light_dir_world": [
+          -0.6894,
+          -0.6471,
+          0.3256
+        ],
+        "angle_from_camera_axis_deg": 49.67439579717474,
+        "corneal_half_angle_deg": 6.106880979869012
+      },
+      {
+        "frame": 2,
+        "side": "left",
+        "light_dir_world": [
+          -0.8644,
+          -0.0385,
+          0.5013
+        ],
+        "angle_from_camera_axis_deg": 87.79145513240282,
+        "corneal_half_angle_deg": 34.362225700829704
+      },
+      {
+        "frame": 3,
+        "side": "right",
+        "light_dir_world": [
+          -0.5279,
+          -0.7263,
+          0.4403
+        ],
+        "angle_from_camera_axis_deg": 43.422559767655265,
+        "corneal_half_angle_deg": 3.710401471024862
+      },
+      {
+        "frame": 3,
+        "side": "left",
+        "light_dir_world": [
+          -0.7757,
+          0.2253,
+          0.5895
+        ],
+        "angle_from_camera_axis_deg": 103.02294629944092,
+        "corneal_half_angle_deg": 41.0580011243069
+      },
+      {
+        "frame": 4,
+        "side": "left",
+        "light_dir_world": [
+          -0.655,
+          0.596,
+          0.4646
+        ],
+        "angle_from_camera_axis_deg": 126.58251701579229,
+        "corneal_half_angle_deg": 54.75671826115245
+      },
+      {
+        "frame": 14,
+        "side": "right",
+        "light_dir_world": [
+          -0.1007,
+          -0.5444,
+          0.8328
+        ],
+        "angle_from_camera_axis_deg": 57.018158241306345,
+        "corneal_half_angle_deg": 21.640990351230162
+      },
+      {
+        "frame": 15,
+        "side": "right",
+        "light_dir_world": [
+          0.0874,
+          -0.9365,
+          0.3397
+        ],
+        "angle_from_camera_axis_deg": 20.536026833300305,
+        "corneal_half_angle_deg": 22.641601998852828
+      },
+      {
+        "frame": 15,
+        "side": "left",
+        "light_dir_world": [
+          -0.1057,
+          0.9545,
+          0.2789
+        ],
+        "angle_from_camera_axis_deg": 162.64674907810476,
+        "corneal_half_angle_deg": 68.25044380213829
+      },
+      {
+        "frame": 16,
+        "side": "right",
+        "light_dir_world": [
+          -0.0092,
+          -0.9585,
+          0.2848
+        ],
+        "angle_from_camera_axis_deg": 16.555059298230518,
+        "corneal_half_angle_deg": 20.382922072664606
+      },
+      {
+        "frame": 16,
+        "side": "left",
+        "light_dir_world": [
+          -0.5247,
+          -0.1072,
+          0.8445
+        ],
+        "angle_from_camera_axis_deg": 83.84608287984894,
+        "corneal_half_angle_deg": 28.40126418960473
+      },
+      {
+        "frame": 17,
+        "side": "right",
+        "light_dir_world": [
+          -0.4342,
+          -0.8986,
+          0.0633
+        ],
+        "angle_from_camera_axis_deg": 26.02825033990421,
+        "corneal_half_angle_deg": 12.004606209927426
+      },
+      {
+        "frame": 17,
+        "side": "left",
+        "light_dir_world": [
+          -0.6134,
+          -0.2055,
+          0.7626
+        ],
+        "angle_from_camera_axis_deg": 78.14296372556662,
+        "corneal_half_angle_deg": 26.754893124168188
+      },
+      {
+        "frame": 18,
+        "side": "right",
+        "light_dir_world": [
+          -0.5475,
+          -0.8365,
+          -0.021
+        ],
+        "angle_from_camera_axis_deg": 33.223881319974545,
+        "corneal_half_angle_deg": 13.608612070475996
+      },
+      {
+        "frame": 18,
+        "side": "left",
+        "light_dir_world": [
+          -0.524,
+          0.3369,
+          0.7822
+        ],
+        "angle_from_camera_axis_deg": 109.69100052150853,
+        "corneal_half_angle_deg": 41.15243239803223
+      },
+      {
+        "frame": 19,
+        "side": "right",
+        "light_dir_world": [
+          0.0322,
+          -0.9814,
+          -0.1893
+        ],
+        "angle_from_camera_axis_deg": 11.071577235950185,
+        "corneal_half_angle_deg": 26.861456612693733
+      },
+      {
+        "frame": 19,
+        "side": "left",
+        "light_dir_world": [
+          -0.6645,
+          0.2252,
+          0.7125
+        ],
+        "angle_from_camera_axis_deg": 103.01238363626746,
+        "corneal_half_angle_deg": 39.156871329130404
+      },
+      {
+        "frame": 20,
+        "side": "right",
+        "light_dir_world": [
+          -0.1334,
+          -0.9808,
+          0.1426
+        ],
+        "angle_from_camera_axis_deg": 11.2602291410406,
+        "corneal_half_angle_deg": 16.773957666587183
+      },
+      {
+        "frame": 20,
+        "side": "left",
+        "light_dir_world": [
+          -0.7889,
+          0.0487,
+          0.6125
+        ],
+        "angle_from_camera_axis_deg": 92.79266340144953,
+        "corneal_half_angle_deg": 36.24350974320726
+      },
+      {
+        "frame": 21,
+        "side": "right",
+        "light_dir_world": [
+          -0.0265,
+          -0.9927,
+          -0.1175
+        ],
+        "angle_from_camera_axis_deg": 6.918074755769963,
+        "corneal_half_angle_deg": 22.76695179716848
+      },
+      {
+        "frame": 21,
+        "side": "left",
+        "light_dir_world": [
+          -0.436,
+          0.0066,
+          0.8999
+        ],
+        "angle_from_camera_axis_deg": 90.37662174434915,
+        "corneal_half_angle_deg": 31.186660091168044
+      },
+      {
+        "frame": 22,
+        "side": "right",
+        "light_dir_world": [
+          -0.0665,
+          -0.936,
+          0.3457
+        ],
+        "angle_from_camera_axis_deg": 20.61110950862806,
+        "corneal_half_angle_deg": 14.860127991309733
+      },
+      {
+        "frame": 22,
+        "side": "left",
+        "light_dir_world": [
+          -0.5146,
+          -0.2117,
+          0.8309
+        ],
+        "angle_from_camera_axis_deg": 77.77894934941315,
+        "corneal_half_angle_deg": 26.079613385839806
+      },
+      {
+        "frame": 23,
+        "side": "right",
+        "light_dir_world": [
+          -0.2436,
+          -0.9536,
+          0.177
+        ],
+        "angle_from_camera_axis_deg": 17.526927346872633,
+        "corneal_half_angle_deg": 10.871882646921836
+      },
+      {
+        "frame": 23,
+        "side": "left",
+        "light_dir_world": [
+          -0.6702,
+          -0.396,
+          0.6277
+        ],
+        "angle_from_camera_axis_deg": 66.67325302614904,
+        "corneal_half_angle_deg": 23.250359864782475
+      },
+      {
+        "frame": 24,
+        "side": "right",
+        "light_dir_world": [
+          -0.1975,
+          -0.9781,
+          0.0662
+        ],
+        "angle_from_camera_axis_deg": 12.025074878932989,
+        "corneal_half_angle_deg": 13.828366758959728
+      },
+      {
+        "frame": 24,
+        "side": "left",
+        "light_dir_world": [
+          -0.779,
+          -0.3609,
+          0.5127
+        ],
+        "angle_from_camera_axis_deg": 68.84502724669778,
+        "corneal_half_angle_deg": 26.33423287223556
+      },
+      {
+        "frame": 25,
+        "side": "right",
+        "light_dir_world": [
+          -0.3191,
+          -0.9473,
+          -0.0287
+        ],
+        "angle_from_camera_axis_deg": 18.684193614097385,
+        "corneal_half_angle_deg": 13.37474576412808
+      },
+      {
+        "frame": 25,
+        "side": "left",
+        "light_dir_world": [
+          -0.701,
+          0.0139,
+          0.713
+        ],
+        "angle_from_camera_axis_deg": 90.79393490955535,
+        "corneal_half_angle_deg": 34.77163480564095
+      },
+      {
+        "frame": 26,
+        "side": "right",
+        "light_dir_world": [
+          -0.5013,
+          -0.6548,
+          0.5656
+        ],
+        "angle_from_camera_axis_deg": 49.094269733218006,
+        "corneal_half_angle_deg": 7.374771188176424
+      },
+      {
+        "frame": 26,
+        "side": "left",
+        "light_dir_world": [
+          -0.7832,
+          0.0425,
+          0.6203
+        ],
+        "angle_from_camera_axis_deg": 92.43858969155295,
+        "corneal_half_angle_deg": 36.83795530645837
+      },
+      {
+        "frame": 27,
+        "side": "right",
+        "light_dir_world": [
+          -0.0144,
+          -0.9191,
+          0.3936
+        ],
+        "angle_from_camera_axis_deg": 23.19788610711928,
+        "corneal_half_angle_deg": 14.46605535413607
+      },
+      {
+        "frame": 27,
+        "side": "left",
+        "light_dir_world": [
+          -0.8598,
+          -0.023,
+          0.5102
+        ],
+        "angle_from_camera_axis_deg": 88.68380556233228,
+        "corneal_half_angle_deg": 36.405183668142726
+      },
+      {
+        "frame": 28,
+        "side": "right",
+        "light_dir_world": [
+          -0.0879,
+          -0.9006,
+          0.4257
+        ],
+        "angle_from_camera_axis_deg": 25.764409849988255,
+        "corneal_half_angle_deg": 12.105138278422356
+      },
+      {
+        "frame": 28,
+        "side": "left",
+        "light_dir_world": [
+          -0.5815,
+          -0.4505,
+          0.6774
+        ],
+        "angle_from_camera_axis_deg": 63.22170534486415,
+        "corneal_half_angle_deg": 21.0906673343518
+      },
+      {
+        "frame": 29,
+        "side": "right",
+        "light_dir_world": [
+          -0.185,
+          -0.9196,
+          0.3467
+        ],
+        "angle_from_camera_axis_deg": 23.138482606552238,
+        "corneal_half_angle_deg": 9.259623034377535
+      },
+      {
+        "frame": 29,
+        "side": "left",
+        "light_dir_world": [
+          -0.6969,
+          -0.4706,
+          0.5411
+        ],
+        "angle_from_camera_axis_deg": 61.92385061204378,
+        "corneal_half_angle_deg": 21.45314194934781
+      }
+    ]
+  }
+}
