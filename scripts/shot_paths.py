@@ -146,6 +146,26 @@ class Shot:
     def duration_seconds(self):
         return self.frame_count / float(self.frame_rate)
 
+    # ---- working resolution -----------------------------------------------
+    # The estimator stages (normals, depth-derived geometry, albedo, SH relight) run at a
+    # reduced resolution for speed. That size was hardcoded 768x432 in four scripts, which is
+    # 16:9 -- correct only by accident, because the one shot in the workspace was 16:9. On a
+    # 2.40:1 anamorphic plate it would have squashed every normal and every proxy vertex, and
+    # the result would have looked plausible and been wrong.
+    #
+    # Derived from the PLATE's own aspect at a constant pixel budget, so it follows the source
+    # from 1080p 16:9 to 5.8K 17:9 to a desqueezed 2.40:1 without anyone editing a constant.
+    WORKING_PIXELS = 768 * 432
+
+    @property
+    def working_resolution(self):
+        """(width, height) for the estimator stages, matching the plate's aspect ratio."""
+        sw, sh = self.config.get("source_resolution", [1920, 1080])
+        aspect = float(sw) / float(sh)
+        w = int(round((self.WORKING_PIXELS * aspect) ** 0.5 / 4.0)) * 4
+        h = int(round(w / aspect / 4.0)) * 4
+        return max(w, 64), max(h, 64)
+
     @property
     def delivery(self):
         """Shot delivery overrides video delivery overrides source rate."""
@@ -205,6 +225,7 @@ class Shot:
                 "conform": self.conform,
                 "resolution": list(self.resolution),
                 "environment": str(self.environment),
+                "working_resolution": list(self.working_resolution),
                 "key_hint": self.key_hint}
 
 

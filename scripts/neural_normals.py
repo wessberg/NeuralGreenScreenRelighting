@@ -42,7 +42,7 @@ from color_pipeline import linear_to_srgb
 
 MODEL_ID = 'facebook/sapiens2-normal-1b'
 IN_H, IN_W = 1024, 768                  # the checkpoint's native inference resolution
-OUT_W, OUT_H = 768, 432                 # relight_sh.py's working resolution
+OUT_W = OUT_H = None                    # set per shot from the plate aspect
 MID_GREY_SRGB = 0.5                     # neutral, mid-range, and out of the green gamut
 
 
@@ -134,6 +134,8 @@ def main():
     ap.add_argument('--model', default=MODEL_ID)
     args = ap.parse_args()
     shot = from_args(args)
+    global OUT_W, OUT_H
+    OUT_W, OUT_H = shot.working_resolution
 
     M, conv = load_convention(ROOT / 'logs' / 'normals_convention.json')
     out = shot.relight / 'normals'

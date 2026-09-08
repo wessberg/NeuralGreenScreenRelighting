@@ -38,7 +38,7 @@ sys.path.insert(0, str(ROOT / 'scripts'))
 import numpy as np, cv2
 from shot_paths import add_shot_argument, from_args
 
-W, H = 768, 432                     # matches relight_sh.py's working resolution
+W = H = None        # set per shot from the plate aspect; see Shot.working_resolution
 
 
 def depth_calibration(shot, cfg, dist):
@@ -262,6 +262,8 @@ def main():
                     help='metres; below this scale relief comes from the normals, above from depth')
     args = ap.parse_args()
     shot = from_args(args)
+    global W, H
+    W, H = shot.working_resolution
 
     cfg = shot.config
     cam = cfg.get('camera') or {}

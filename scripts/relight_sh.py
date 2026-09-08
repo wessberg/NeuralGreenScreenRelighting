@@ -44,7 +44,7 @@ import numpy as np, cv2
 from shot_paths import add_shot_argument, from_args
 from sh_project import sh_basis
 
-W, H = 768, 432
+W = H = None          # set per shot from the plate aspect; see Shot.working_resolution
 LUMA = np.array([.2126, .7152, .0722], np.float32)
 
 
@@ -112,6 +112,8 @@ def main():
                     help="'auto' uses Sapiens2 normals when relight/normals/ is populated")
     args = ap.parse_args()
     shot = from_args(args)
+    global W, H
+    W, H = shot.working_resolution
     env = shot.environment
     lighting = json.loads((env / 'lighting_sh.json').read_text())
     probe_pos = lighting['probe_positions']

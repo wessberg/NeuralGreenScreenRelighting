@@ -36,7 +36,7 @@ import numpy as np, cv2
 from shot_paths import add_shot_argument, from_args
 from color_pipeline import linear_to_srgb
 
-W, H = 768, 432                       # the normals' working resolution
+W = H = None      # set per shot from the plate aspect; see Shot.working_resolution
 # Same model as relight_sh.py. Kept identical on purpose: two different E_source models would
 # make the proxy render and the gain map disagree about the plate's original lighting.
 SRC_AMBIENT, SRC_KEY = 0.55, 0.45
@@ -55,6 +55,8 @@ def main():
                     help='no real surface reflects more than this; clamps division blowups')
     args = ap.parse_args()
     shot = from_args(args)
+    global W, H
+    W, H = shot.working_resolution
 
     out = shot.relight / 'albedo'
     out.mkdir(parents=True, exist_ok=True)
