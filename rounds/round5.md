@@ -73,10 +73,17 @@ something he can judge.
 
 ### The 150-frame rebuild
 
-`relight/proxy_r4/` (150 meshes, both fixes) → `composite/r4_render/` (128 spp) →
-`composite/r4_ratio_despill/` (the deliverable). Videos in `final/`:
-`r4_round3_vs_round4.mp4` (whole round, before on the left), `r4_despill_before_after.mp4`
-(despill isolated), `r4_geometry_before_after.mp4` (geometry isolated).
+**The fixed data was PROMOTED into the production paths at the end of the round**, so there is no
+stale-default trap left: `relight/proxy/` holds the 150 fixed meshes, `composite/ratio_render/` the
+128 spp render made from them, and `composite/ratio/` the despilled composite that is the
+deliverable. Round 3's versions of all three were deleted — the artist confirmed he does not want
+round 3 reproduced, and it is reproducible from code anyway via `make_proxy_mesh.py
+--no-detail-extension --no-detail-antialias` plus `despill_limit: max`.
+
+Videos in `final/`: `r4_round3_vs_round4.mp4` (whole round, before on the left),
+`r4_despill_before_after.mp4` (despill isolated), `r4_despill_hair_1to1.mp4` (despill at 1:1 on the
+hair crown), `r4_geometry_before_after.mp4` (geometry isolated). **These are now the only record of
+the round-3 look.**
 
 **The re-key left every matte bit-identical** (md5 on frames 0/51/79/149), so the meshes and the
 render stay valid — despill only rewrites `fg`. If you ever re-key for another reason, check this
@@ -182,8 +189,15 @@ full-frame side-by-side is 3840 wide and every player scales it to fit, so judge
    control, so the ridge is reduced rather than gone. Codex's suggestion — extend the final `Yw`
    rather than only `Yd` — is untested. Note some crossing step is physically correct: a real
    surface turns away sharply at a silhouette.
-4. **The 768×432 / 1920×1080 matte mismatch** from §2.
-5. Constraint rows 3, 9, 10, 11, 12, 18 remain 🔴 and untouched by this round.
+5. **Products derived from the PRE-despill plate are now stale.** `relight/albedo/`,
+   `relight/skin_mask/`, `relight/normals/` and the measured `E_source` in
+   `logs/source_light.json` were all computed from the old `fg`, and the delivered composite
+   used that stale `skin_mask` and `E_source`. The despill changed green by a mean of
+   −0.46 % on 8.3 % of subject pixels, so the error is small — but it is real and nobody has
+   quantified it. Regenerate them before any round that leans on albedo or on the
+   source-light fit, and re-measure rather than assuming the change is negligible.
+6. **The 768×432 / 1920×1080 matte mismatch** from §2.
+7. Constraint rows 3, 9, 10, 11, 12, 18 remain 🔴 and untouched by this round.
 
 ---
 
@@ -197,16 +211,22 @@ full-frame side-by-side is 3840 wide and every player scales it to fit, so judge
 * `use_persistent_data` stays off. Samples are nearly free. The PoC shot's key thresholds are
   hand-set and stay that way.
 
-## 6. Housekeeping
+## 6. Housekeeping — done, and what is left
 
-* `key/fg_predespill/` (395 MB) and `key/alpha_predespill/` (12 MB) are round-4 backups, safe to
-  delete once the despill is accepted.
-* `.claude/worktrees/round4-completion/` is an orphaned git worktree from a background Claude
-  session that Codex launched and that never ran — clean, no commits, `git worktree remove` it.
-* `logs/composite_ratio.json` now describes the round-4 sequence; the round-3 values are in git at
-  `d3121e3` if a comparison is ever needed.
+Cleared at the end of the round: the `key/*_predespill` backups, every superseded round-4 test
+directory, the stress-proxy and compare frame dumps whose videos survive in `final/`, the stale
+`relight/proxy_render/`, and the orphaned `.claude/worktrees/round4-completion` worktree left by
+the background Claude session Codex launched that never ran. `reporter_a` went from **4.5 GB to
+3.1 GB**. Kept deliberately: `composite/r4_compare_final/` and `composite/r4_spill/`, the panels
+behind the corrugation and despill findings.
 
----
+`logs/proxy_mesh.json` was re-synced to the promoted meshes; it had been describing the round-3
+build, because a `--output-dir` run writes its summary beside the meshes instead of into `logs/`.
+
+Available if space is ever wanted: `music_videos/proof_of_concept/shots/night_listening_room/`
+`intermediate/` is **6.5 GB** of regenerable linear 4K EXRs for an already-delivered shot. Its
+`master/` and `final/` are separate and must not be touched — that master is the validated
+evidence for constraint 17.
 
 ## 7. Starter prompt for round 5
 
