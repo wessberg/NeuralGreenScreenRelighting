@@ -41,6 +41,17 @@ finds iris/aperture regions admitting sclera/skin, lower-rim false candidates an
 softboxes; `found=True` and zero detected glints do not establish clean iris observations.
 All three original complaints remain unresolved. See `rounds/round10.md`.
 
+**Round 11 artist decisions and scope:** this is an input-agnostic tool; the reporter's
+failed donor search does not rule out temporal reconstruction on other footage or with
+better correspondence. Reconstruct from observations of the same iris where reliable.
+For unreliable iris detection/angles or correspondence, **keep the source keyed eye,
+including any original catchlight**. This fallback is explicitly accepted by the artist.
+`temporal_iris.py` implements a generic pupil/limbus coordinate sampler and exact source
+fallback with a taper inside reliable runs. Its positive reconstruction evidence is
+**synthetic with known geometry/masks only**; the real automatic detector/correspondence
+and compositor integration are not built. All 150 real-frame fallback checks preserve
+the keyed source exactly. Do not present this as a reporter reflection fix. See `rounds/round11.md`.
+
 ---
 
 ## What this project is

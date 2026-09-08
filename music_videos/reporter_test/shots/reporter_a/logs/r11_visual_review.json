@@ -1,0 +1,46 @@
+{
+  "round": 11,
+  "method": "Every decoded frame inspected in fifteen ordered contact sheets; enlarged selected PNGs also inspected. Not real-time playback or artist approval.",
+  "decoded_frames_inspected": 342,
+  "contact_sheet_thumbnail_size": [240, 168],
+  "contact_sheet_limit": "Thumbnail resize distorts aspect and loses fine detail; full PNGs were also inspected.",
+  "videos": [
+    {
+      "file": "final/r11_synthetic_correspondence.mp4",
+      "frames": 144,
+      "sheets": 6,
+      "finding": "Moving-reflection tests reconstruct supported texture with native interpolation loss. Fixed-to-material reflection yields purple unsupported pixels in the correct model. These are synthetic test diagrams, not photorealistic eyes."
+    },
+    {
+      "file": "final/r11_synthetic_fallback.mp4",
+      "frames": 48,
+      "sheets": 2,
+      "finding": "The original reflection remains on rejected frames. Partly weighted reliable frames retain a dimmed reflection. No claim that the taper makes transitions imperceptible."
+    },
+    {
+      "file": "final/r11_native_fallback.mp4",
+      "frames": 150,
+      "sheets": 7,
+      "finding": "Both halves preserve the same reporter eyes, including softbox reflections, blinks and changing head pose. Every real frame deliberately takes fallback; no automatic reliable-view classification or repaired reporter is shown."
+    }
+  ],
+  "full_pngs_inspected": [
+    "composite/r11_atlas/synthetic_correspondence/000051.png",
+    "composite/r11_atlas/synthetic_fallback/000008.png",
+    "composite/r11_atlas/synthetic_fallback/000012.png",
+    "composite/r11_atlas/native_fallback/000079.png"
+  ],
+  "prior_native_source_inspection": {
+    "r10_mask_counterexample": "composite/r10_iris/mask_review/000779.png",
+    "source_survey_frames": [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100],
+    "finding": "Native crops show eye-pose and reflection changes. This inspection does not certify clean donors at covered iris material locations."
+  },
+  "artist_decisions": [
+    "The tool must accept varied input videos; reporter diagnostics do not define its general limits.",
+    "Use other frames of the same iris for reconstruction where reliable.",
+    "Keep original keyed eyes and any catchlight on unreliable frames or angles."
+  ],
+  "real_reflection_repair": "not delivered",
+  "production_compositor": "unchanged; new core not integrated",
+  "artist_verdict": "pending"
+}
