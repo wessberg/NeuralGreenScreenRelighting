@@ -145,6 +145,72 @@ pinning older torch will not produce a working kernel; it fails at runtime, not 
 
 ---
 
+## Blender 5.2.1 traps, verified in this repo
+
+Each of these produces a wrong result with no error message.
+
+1. **`scene.use_nodes = True` does NOT create the compositor node tree.** `scene.node_tree` is
+   gone; `scene.compositing_node_group` stays `None` until you create one yourself:
+   `bpy.data.node_groups.new(name, 'CompositorNodeTree')` and assign it.
+2. **`CompositorNodeMixRGB`, `CompositorNodeMix` and `CompositorNodeMath` do not exist.** The
+   compositor node set was restructured and there are no Mix or Math compositor nodes at all.
+3. **Render Layers pass sockets are named in full words** -- `Diffuse Direct`, not `DiffDir`.
+4. **Cycles has NO subsurface passes, and round 1's note to the contrary is wrong.**
+   `use_pass_subsurface_direct/indirect/color` exist on the ViewLayer and accept `True`, but the
+   Render Layers node exposes only Diffuse and Glossy. **Subsurface is folded into the diffuse
+   passes**, so a diffuse-based ratio carries subsurface response rather than dropping it. The
+   inherited warning said the opposite and would have sent a round chasing a pass that is not
+   there.
+5. **`OPEN_EXR_MULTILAYER` is rejected unless `image_settings.media_type` is
+   `'MULTI_LAYER_IMAGE'` first**, and the error names the very tuple that contains the value.
+6. **opencv cannot read multilayer EXR** -- `cv2.imread` returns `None` with no error, so any
+   preview of a multilayer render must be written from inside Blender.
+7. **Mesh emitters ARE visible to camera rays** -- the exact opposite of light objects, which are
+   invisible even with `visible_camera = True`. Both halves of this bit: a light object threw
+   shadows while staying invisible, and later an emissive bulb rendered a 266x187 disc of solid
+   emission straight into an irradiance pass, which the composite then multiplied into the
+   plate. **Anything an irradiance pass can SEE ends up scaling the photograph.**
+8. **`use_persistent_data = True` serves stale results**, and the error GROWS through a sequence:
+   rendering four frames with geometry and lights changing, persistent vs not, diverged by max
+   7.55, 12.49, 14.83, 14.81 with mean error reaching 1.335. Confirmed, not inherited.
+9. **`render.fps` is an int16**, so 60000/1001 silently clamps. Use `fps = 60, fps_base = 1.001`.
+
+## GPU: what is accelerated, and why the card still looks idle
+
+Measured on the RTX 5080, 2026-09-08. The artist noticed the GPU sitting at 11% and 62 W of a
+400 W limit during a Cycles render and asked whether anything was actually accelerated.
+
+**Already on the GPU:** Cycles through OPTIX, and every neural stage through torch (Sapiens2
+normals in fp16, Video Depth Anything, CorridorKey). **Not on the GPU:** all the numpy/OpenCV
+per-pixel maths, and video encoding. Note `cv2.cuda` reports **0 devices** in the installed
+wheel, so no OpenCV call can be accelerated -- `scripts/gpu_image.py` uses torch instead, with a
+CPU fallback that reports which device it actually used.
+
+**But the idle card is not an acceleration problem, and this is the part that matters.** Cycles
+render time barely depends on sample count:
+
+| samples | persistent off | persistent on |
+|---|---|---|
+| 4 | 2.21 s | 1.89 s |
+| 128 | 4.06 s | 2.90 s |
+
+**About 2 seconds of every frame is fixed Blender overhead** -- scene sync, device upload, film
+init, EXR write -- and only a fraction is ray tracing. A GPU that finishes its work in 0.3 s and
+then waits 2 s reports low utilisation honestly. Confirmed from the other side: GPU 3.29 s vs CPU
+5.01 s on the real proxy scene is only 1.5x, because both pay the same fixed cost.
+
+Consequences, which are the opposite of the intuition:
+
+* **Samples are nearly free. Spend them.** 128 samples costs 1.3 s more per frame than 4.
+  Rendering noisy output to "save time" saves almost nothing.
+* **Moving more work onto the GPU will not speed up rendering.** The GPU is not the constraint.
+* **Fewer, larger renders beat many small ones.** Per-frame overhead is paid per render call.
+* **`use_persistent_data = True` is NOT the way out.** It would save ~20%, and round 1 recorded
+  that it serves stale lighting. That is now measured rather than inherited: rendering the same
+  4-frame sequence with geometry and lights changing, persistent vs not, diverges and the error
+  GROWS through the sequence -- max abs difference 7.55, 12.49, 14.83, 14.81 and mean error
+  0.062, 0.186, 0.157, **1.335**. Do not enable it.
+
 ## House rules
 
 - **Verify conventions, never assume them.** Axis, handedness and sign errors in this domain are
@@ -182,7 +248,9 @@ Every stage takes `--shot`. Interpreter is the pipeline venv unless the row says
 | 10 | relight | `relight_sh.py` | `relight/controls/*.npz` | gain map; **has a measured ceiling**, see round 2 |
 | 11 | proxy render | `render_proxy.py` (Blender) | `relight/proxy_render/*.exr` | self-shadows, SSS, glossy passes |
 | 11b | stress demo | `stress_proxy.py` (Blender) | `composite/stress_proxy*/` | lightbulb tour; `--textured` uses the albedo |
-| 12 | composite | `composite_shot.py` | `composite/`, `intermediate/linear_4k/` | loads background **per frame** |
+| 11c | **ratio irradiance** | `stress_proxy.py --ratio` (Blender) | `composite/ratio_render/*.exr` | neutral albedo at PLATE resolution and the PLATE lens |
+| 12 | **ratio composite** | `composite_ratio.py` | `composite/ratio/` | `out = plate × R`; see below |
+| 12b | composite (gain map) | `composite_shot.py` | `composite/`, `intermediate/linear_4k/` | legacy path; loads background **per frame** |
 | 13 | master | `master_export.py` | `master/*.mov` | ProRes 4444 / DNxHR 444, 4:4:4 10-bit |
 | 14 | delivery | `hdr_mux.py` → `validate_final.py` | `final/*.mp4` | HEVC 4:2:0 PQ + HDR10 SEI |
 
@@ -227,6 +295,35 @@ at Y = 0):
 
 Validate with `validate_proxy_shadows.py`: it renders an uplight and a toplight and requires the
 shadow to *move across the nose*, which is the one thing no per-pixel method can fake.
+
+### The ratio composite, and why it is the delivery path (stage 12)
+
+    out = plate × R,      R = E_target(rendered) / E_source(assumed)
+
+**Never render the performer and show that.** A proxy has no pores, no individual hair strands,
+no fabric weave, no corneal bulge. Rendering it produces exactly what the artist named on sight:
+"a Vision Pro avatar", "a Sims character", "a plastic Barbie doll", "a 90s CGI game trailer". His
+frame-by-frame verdicts mapped precisely onto how much of her the light revealed — heavily
+shadowed frames read as acceptable, broadly lit ones did not — because a broad light exposes the
+detail a smooth shell does not have.
+
+The ratio composite renders the *irradiance field* on a neutral proxy, divides by the plate's own
+assumed lighting, and multiplies the photograph. Every pore, hair and specular in the output is a
+photographed pixel; the renderer contributes only the CHANGE in light, which is smooth almost
+everywhere and sharp exactly where it should be — at a shadow edge.
+
+Two rules that are easy to get wrong:
+
+* **The ratio pass must use the plate's own lens and resolution**, or the multiplier does not
+  line up with the photograph it multiplies. The wider demo lens in `stress_proxy.py` exists only
+  to keep the bulb in frame and must not leak into `--ratio`.
+* **Clamp the top of the ratio, not the bottom.** A shadow going dark is the point. `relight_sh.py`
+  clamped both ends at 1.5 stops, capping the whole map at 2.83:1, which is exactly why it could
+  never produce a terminator.
+
+What it still inherits from the proxy: the *shape* of the shadows, so a nose shadow lands in
+roughly the right place with the proxy's smoothness at its edge, and hair shadows as a mass. What
+it does not inherit is the proxy's appearance, which is the whole difference.
 
 ### Anamorphic (`scripts/anamorphic.py`)
 

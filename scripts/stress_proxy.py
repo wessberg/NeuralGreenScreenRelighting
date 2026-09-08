@@ -56,6 +56,11 @@ ap.add_argument('--exposure', type=float, default=0.0,
                      'far darker than the clay stand-in (a dark suit and hair dominate it), so '
                      'the textured render needs several times the level to sit at the same '
                      'exposure')
+ap.add_argument('--ratio', action='store_true',
+                help='render the IRRADIANCE FIELD for the ratio composite instead of a picture '
+                     'of her: neutral albedo, linear EXR out. composite_ratio.py turns it into '
+                     'a multiplier on the real plate, which is the only path that keeps pores, '
+                     'hair strands and eye speculars')
 ap.add_argument('--textured', action='store_true',
                 help='project the recovered albedo onto the proxy: her real skin, hair, suit '
                      'and microphone, lit by the rig instead of by the plate')
@@ -121,7 +126,9 @@ wbg.inputs['Strength'].default_value = 0.0
 
 cam_data = bpy.data.cameras.new('cam')
 # Demonstration framing: wider than the plate camera so the bulb is visible at the extremes.
-cam_data.lens = args.demo_lens if args.demo_lens > 0 else LENS
+# The ratio pass must use the PLATE's own camera, or the multiplier will not line up with the
+# photograph it multiplies. The wider demo lens exists only to keep the bulb in frame.
+cam_data.lens = LENS if args.ratio else (args.demo_lens if args.demo_lens > 0 else LENS)
 cam_data.sensor_width = SENSOR
 cam_data.sensor_fit = 'HORIZONTAL'
 cam = bpy.data.objects.new('cam', cam_data)
@@ -147,10 +154,29 @@ for _name, _val in (('Subsurface Weight', 0.35),
     if _name in bsdf.inputs:
         bsdf.inputs[_name].default_value = _val
 
+# Ratio pass: a NEUTRAL albedo, so the render IS the irradiance arriving at the surface rather
+# than a picture of her. Albedo cancels in E_target/E_source, so putting her real colour here
+# would only inject texture noise into a field that should be smooth. Per-channel Jensen radii
+# still give the reddish subsurface bleed at a shadow terminator, which is a real lighting cue
+# and belongs in the ratio.
+RATIO_ALBEDO = 0.6
+if args.ratio:
+    bsdf.inputs['Base Color'].default_value = (RATIO_ALBEDO,) * 3 + (1.0,)
+    # SPECULAR MUST BE OFF IN THE RATIO PASS. Combined = diffuse + subsurface + glossy, and a
+    # glossy highlight divided by a diffuse-only E_source is not a lighting ratio: it is a
+    # 455x spike. Measured on frame 40 of the tour, E_target went 0.073 at p90 to 19.17 at p99,
+    # centred on the top of her head, and the upper clamp turned that into a flat blown patch
+    # with a hard edge and no falloff. Specular belongs in the ADDITIVE G term of
+    # out = plate x R_d x S + G, never in the multiplier.
+    for _n, _v in (('Specular IOR Level', 0.0), ('Metallic', 0.0), ('Coat Weight', 0.0),
+                   ('Sheen Weight', 0.0), ('Transmission Weight', 0.0)):
+        if _n in bsdf.inputs:
+            bsdf.inputs[_n].default_value = _v
+
 albedo_dir = shot.relight / 'albedo'
 skin_dir = shot.relight / 'skin_mask'
 tex_nodes = None
-if args.textured:
+if args.textured and not args.ratio:
     if not (albedo_dir / ('%06d.png' % frames[0])).exists():
         raise SystemExit('No albedo. Run scripts/make_albedo.py --shot %s first.' % shot.name)
     # UV-projected albedo, so hair, the suit and the microphone all carry their real colour --
@@ -211,6 +237,13 @@ fill_ob, fill_em = emitter('fill', 0.30)     # 60 cm soft bounce, so the shadow 
 # dominates the shot and hides the very thing being demonstrated. Mesh emitters ARE visible to
 # camera rays (unlike light objects), so this has to be turned off explicitly.
 fill_ob.visible_camera = False
+# THE BULB MUST NOT BE VISIBLE IN THE RATIO PASS EITHER. It is a demonstration prop: fine in a
+# picture of the scene, nonsense inside a multiplier. Rendered into the ratio it contributed a
+# 266x187 disc of solid emission -- coverage alpha 0.999, 458x the median irradiance -- which the
+# composite then multiplied into the plate as a hard-edged blown patch with no falloff. Anything
+# an irradiance pass can SEE ends up scaling the photograph.
+if args.ratio:
+    bulb_ob.visible_camera = False
 
 # A trace of ambient, so the "key off" stations read as a silhouette against something rather
 # than as a black frame. Deliberately far below the rim level.
@@ -218,7 +251,8 @@ AMBIENT = 0.012
 # Clay albedo is ~0.63/0.44/0.34; the recovered plate albedo averages ~0.16/0.08/0.05 because
 # the dark suit and hair dominate it. Same light on both would render the textured version
 # roughly three stops down.
-EXPOSURE = args.exposure if args.exposure > 0 else (3200.0 if args.textured else 900.0)
+EXPOSURE = (args.exposure if args.exposure > 0 else
+            (900.0 if args.ratio else 3200.0 if args.textured else 900.0))
 
 # --- the tour ----------------------------------------------------------------------------
 # Offsets are (x right, y away from camera, z up) RELATIVE to the aim point, in metres, so the
@@ -257,13 +291,24 @@ def station_at(t):
             fa + (fb - fa) * f)
 
 
-scn.render.resolution_x = args.width
-scn.render.resolution_y = int(round(args.width * SRC_H / SRC_W))
+# Ratio pass renders at the plate's own resolution so the multiplier is pixel-aligned with it.
+_w = SRC_W if args.ratio else args.width
+scn.render.resolution_x = _w
+scn.render.resolution_y = int(round(_w * SRC_H / SRC_W))
 scn.render.image_settings.media_type = 'IMAGE'
-scn.render.image_settings.file_format = 'PNG'
-scn.render.image_settings.color_mode = 'RGB'
-scn.render.image_settings.color_depth = '8'
-scn.render.film_transparent = False
+if args.ratio:
+    # Linear half float: the ratio is a division, and an 8-bit sRGB round trip would quantise
+    # the shadow end of it into banding exactly where the shadows are.
+    scn.render.image_settings.file_format = 'OPEN_EXR'
+    scn.render.image_settings.color_mode = 'RGBA'
+    scn.render.image_settings.color_depth = '16'
+    scn.render.film_transparent = True
+else:
+    scn.render.image_settings.file_format = 'PNG'
+    scn.render.image_settings.color_mode = 'RGB'
+    scn.render.image_settings.color_depth = '8'
+if not args.ratio:
+    scn.render.film_transparent = False
 
 
 def aim(ob, tgt):
@@ -370,7 +415,9 @@ report = {'shot': shot.name, 'frames': len(frames), 'fps': str(shot.frame_rate),
                   'plate_lens_mm': LENS,
                   'key_off_stations': 'fill_scale 0: no front light at all, only a source behind '
                                       'the actor -- near-silhouette with a rim'},
-          'textured': args.textured,
+          'textured': args.textured, 'ratio': args.ratio,
+          'ratio_albedo': RATIO_ALBEDO if args.ratio else None,
+          'exposure': EXPOSURE,
           'note': ('Albedo projected from the plate: her real skin, hair, suit and microphone, '
                    'with the original studio key divided out and the rig lighting it instead. '
                    'Every colour is a plate pixel scaled by a renderer value.'

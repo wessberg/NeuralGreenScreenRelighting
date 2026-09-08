@@ -2,8 +2,8 @@
   "shot": "reporter_a",
   "frames": 360,
   "fps": "60000/1001",
-  "output_dir": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\stress_proxy_textured",
-  "samples": 48,
+  "output_dir": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\ratio_render",
+  "samples": 40,
   "rig": {
     "stations": [
       "front far",
@@ -28,14 +28,17 @@
     "blackouts": 2,
     "bulb_radius_m": 0.04,
     "bulb_visible_to_camera": true,
-    "exposure": 3200.0,
+    "exposure": 900.0,
     "fill_size_m": 0.6,
     "demo_lens_mm": 35.0,
     "plate_lens_mm": 50.0,
     "key_off_stations": "fill_scale 0: no front light at all, only a source behind the actor -- near-silhouette with a rim"
   },
-  "textured": true,
-  "note": "Albedo projected from the plate: her real skin, hair, suit and microphone, with the original studio key divided out and the rig lighting it instead. Every colour is a plate pixel scaled by a renderer value.",
+  "textured": false,
+  "ratio": true,
+  "ratio_albedo": 0.6,
+  "exposure": 900.0,
+  "note": "Clay-skin proxy only: no plate texture, so every value on screen is computed geometry and light rather than photography.",
   "per_frame": [
     {
       "out_frame": 0,
@@ -47,7 +50,7 @@
         0.1
       ],
       "bulb_distance_m": 2.402,
-      "bulb_strength": 3205.6,
+      "bulb_strength": 901.6,
       "hue": 0.0,
       "blackout": false,
       "fill_scale": 1.0
@@ -62,7 +65,7 @@
         0.1
       ],
       "bulb_distance_m": 2.402,
-      "bulb_strength": 2769.4,
+      "bulb_strength": 778.9,
       "hue": 0.003,
       "blackout": false,
       "fill_scale": 1.0
@@ -77,7 +80,7 @@
         0.1
       ],
       "bulb_distance_m": 2.402,
-      "bulb_strength": 2412.3,
+      "bulb_strength": 678.5,
       "hue": 0.006,
       "blackout": false,
       "fill_scale": 1.0
@@ -92,7 +95,7 @@
         0.1
       ],
       "bulb_distance_m": 2.402,
-      "bulb_strength": 2120.0,
+      "bulb_strength": 596.3,
       "hue": 0.008,
       "blackout": false,
       "fill_scale": 1.0
@@ -107,7 +110,7 @@
         0.1
       ],
       "bulb_distance_m": 2.402,
-      "bulb_strength": 1880.8,
+      "bulb_strength": 529.0,
       "hue": 0.011,
       "blackout": false,
       "fill_scale": 1.0
@@ -122,7 +125,7 @@
         0.1
       ],
       "bulb_distance_m": 2.402,
-      "bulb_strength": 1684.9,
+      "bulb_strength": 473.9,
       "hue": 0.014,
       "blackout": false,
       "fill_scale": 1.0
@@ -137,7 +140,7 @@
         0.1
       ],
       "bulb_distance_m": 2.402,
-      "bulb_strength": 1524.6,
+      "bulb_strength": 428.8,
       "hue": 0.017,
       "blackout": false,
       "fill_scale": 1.0
@@ -152,7 +155,7 @@
         0.1
       ],
       "bulb_distance_m": 2.402,
-      "bulb_strength": 1393.4,
+      "bulb_strength": 391.9,
       "hue": 0.019,
       "blackout": false,
       "fill_scale": 1.0
@@ -167,7 +170,7 @@
         0.1
       ],
       "bulb_distance_m": 2.402,
-      "bulb_strength": 1286.0,
+      "bulb_strength": 361.7,
       "hue": 0.022,
       "blackout": false,
       "fill_scale": 1.0
@@ -182,7 +185,7 @@
         0.1
       ],
       "bulb_distance_m": 2.402,
-      "bulb_strength": 1198.1,
+      "bulb_strength": 337.0,
       "hue": 0.025,
       "blackout": false,
       "fill_scale": 1.0
@@ -197,7 +200,7 @@
         0.1
       ],
       "bulb_distance_m": 2.402,
-      "bulb_strength": 1126.1,
+      "bulb_strength": 316.7,
       "hue": 0.028,
       "blackout": false,
       "fill_scale": 1.0
@@ -212,7 +215,7 @@
         0.1
       ],
       "bulb_distance_m": 2.402,
-      "bulb_strength": 1067.2,
+      "bulb_strength": 300.1,
       "hue": 0.031,
       "blackout": false,
       "fill_scale": 1.0
@@ -227,7 +230,7 @@
         0.1
       ],
       "bulb_distance_m": 2.402,
-      "bulb_strength": 1019.0,
+      "bulb_strength": 286.6,
       "hue": 0.033,
       "blackout": false,
       "fill_scale": 1.0
@@ -242,7 +245,7 @@
         0.1
       ],
       "bulb_distance_m": 2.402,
-      "bulb_strength": 979.5,
+      "bulb_strength": 275.5,
       "hue": 0.036,
       "blackout": false,
       "fill_scale": 1.0
@@ -257,7 +260,7 @@
         0.1
       ],
       "bulb_distance_m": 2.402,
-      "bulb_strength": 947.2,
+      "bulb_strength": 266.4,
       "hue": 0.039,
       "blackout": false,
       "fill_scale": 1.0
@@ -272,7 +275,7 @@
         0.1
       ],
       "bulb_distance_m": 2.402,
-      "bulb_strength": 920.7,
+      "bulb_strength": 259.0,
       "hue": 0.042,
       "blackout": false,
       "fill_scale": 1.0
@@ -287,7 +290,7 @@
         0.1
       ],
       "bulb_distance_m": 2.402,
-      "bulb_strength": 899.1,
+      "bulb_strength": 252.9,
       "hue": 0.045,
       "blackout": false,
       "fill_scale": 1.0
@@ -302,7 +305,7 @@
         0.1
       ],
       "bulb_distance_m": 2.392,
-      "bulb_strength": 873.9,
+      "bulb_strength": 245.8,
       "hue": 0.047,
       "blackout": false,
       "fill_scale": 1.0
@@ -317,7 +320,7 @@
         0.099
       ],
       "bulb_distance_m": 2.355,
-      "bulb_strength": 833.5,
+      "bulb_strength": 234.4,
       "hue": 0.05,
       "blackout": false,
       "fill_scale": 1.0
@@ -332,7 +335,7 @@
         0.097
       ],
       "bulb_distance_m": 2.295,
-      "bulb_strength": 780.5,
+      "bulb_strength": 219.5,
       "hue": 0.053,
       "blackout": false,
       "fill_scale": 1.0
@@ -347,7 +350,7 @@
         0.095
       ],
       "bulb_distance_m": 2.214,
-      "bulb_strength": 718.0,
+      "bulb_strength": 201.9,
       "hue": 0.056,
       "blackout": false,
       "fill_scale": 1.0
@@ -362,7 +365,7 @@
         0.092
       ],
       "bulb_distance_m": 2.115,
-      "bulb_strength": 649.1,
+      "bulb_strength": 182.6,
       "hue": 0.058,
       "blackout": false,
       "fill_scale": 1.0
@@ -377,7 +380,7 @@
         0.089
       ],
       "bulb_distance_m": 2.001,
-      "bulb_strength": 576.6,
+      "bulb_strength": 162.2,
       "hue": 0.061,
       "blackout": false,
       "fill_scale": 1.0
@@ -392,7 +395,7 @@
         0.086
       ],
       "bulb_distance_m": 1.875,
-      "bulb_strength": 503.1,
+      "bulb_strength": 141.5,
       "hue": 0.064,
       "blackout": false,
       "fill_scale": 1.0
@@ -407,7 +410,7 @@
         0.083
       ],
       "bulb_distance_m": 1.74,
-      "bulb_strength": 431.1,
+      "bulb_strength": 121.2,
       "hue": 0.067,
       "blackout": false,
       "fill_scale": 1.0
@@ -422,7 +425,7 @@
         0.079
       ],
       "bulb_distance_m": 1.6,
-      "bulb_strength": 362.6,
+      "bulb_strength": 102.0,
       "hue": 0.07,
       "blackout": false,
       "fill_scale": 1.0
@@ -437,7 +440,7 @@
         0.075
       ],
       "bulb_distance_m": 1.456,
-      "bulb_strength": 299.2,
+      "bulb_strength": 84.2,
       "hue": 0.072,
       "blackout": false,
       "fill_scale": 1.0
@@ -452,7 +455,7 @@
         0.071
       ],
       "bulb_distance_m": 1.312,
-      "bulb_strength": 242.3,
+      "bulb_strength": 68.1,
       "hue": 0.075,
       "blackout": false,
       "fill_scale": 1.0
@@ -467,7 +470,7 @@
         0.068
       ],
       "bulb_distance_m": 1.171,
-      "bulb_strength": 192.6,
+      "bulb_strength": 54.2,
       "hue": 0.078,
       "blackout": false,
       "fill_scale": 1.0
@@ -482,7 +485,7 @@
         0.064
       ],
       "bulb_distance_m": 1.036,
-      "bulb_strength": 150.4,
+      "bulb_strength": 42.3,
       "hue": 0.081,
       "blackout": false,
       "fill_scale": 1.0
@@ -497,7 +500,7 @@
         0.061
       ],
       "bulb_distance_m": 0.91,
-      "bulb_strength": 457.6,
+      "bulb_strength": 128.7,
       "hue": 0.084,
       "blackout": false,
       "fill_scale": 1.0
@@ -512,7 +515,7 @@
         0.058
       ],
       "bulb_distance_m": 0.795,
-      "bulb_strength": 302.1,
+      "bulb_strength": 85.0,
       "hue": 0.086,
       "blackout": false,
       "fill_scale": 1.0
@@ -527,7 +530,7 @@
         0.055
       ],
       "bulb_distance_m": 0.695,
-      "bulb_strength": 201.3,
+      "bulb_strength": 56.6,
       "hue": 0.089,
       "blackout": false,
       "fill_scale": 1.0
@@ -542,7 +545,7 @@
         0.053
       ],
       "bulb_distance_m": 0.613,
-      "bulb_strength": 137.6,
+      "bulb_strength": 38.7,
       "hue": 0.092,
       "blackout": false,
       "fill_scale": 1.0
@@ -557,7 +560,7 @@
         0.051
       ],
       "bulb_distance_m": 0.552,
-      "bulb_strength": 98.9,
+      "bulb_strength": 27.8,
       "hue": 0.095,
       "blackout": false,
       "fill_scale": 1.0
@@ -572,7 +575,7 @@
         0.05
       ],
       "bulb_distance_m": 0.514,
-      "bulb_strength": 76.9,
+      "bulb_strength": 21.6,
       "hue": 0.097,
       "blackout": false,
       "fill_scale": 1.0
@@ -587,7 +590,7 @@
         0.05
       ],
       "bulb_distance_m": 0.502,
-      "bulb_strength": 66.5,
+      "bulb_strength": 18.7,
       "hue": 0.1,
       "blackout": false,
       "fill_scale": 1.0
@@ -602,7 +605,7 @@
         0.05
       ],
       "bulb_distance_m": 0.502,
-      "bulb_strength": 60.8,
+      "bulb_strength": 17.1,
       "hue": 0.103,
       "blackout": false,
       "fill_scale": 1.0
@@ -617,7 +620,7 @@
         0.05
       ],
       "bulb_distance_m": 0.502,
-      "bulb_strength": 56.1,
+      "bulb_strength": 15.8,
       "hue": 0.106,
       "blackout": false,
       "fill_scale": 1.0
@@ -632,7 +635,7 @@
         0.05
       ],
       "bulb_distance_m": 0.502,
-      "bulb_strength": 52.3,
+      "bulb_strength": 14.7,
       "hue": 0.109,
       "blackout": false,
       "fill_scale": 1.0
@@ -647,7 +650,7 @@
         0.05
       ],
       "bulb_distance_m": 0.502,
-      "bulb_strength": 49.2,
+      "bulb_strength": 13.8,
       "hue": 0.111,
       "blackout": false,
       "fill_scale": 1.0
@@ -662,7 +665,7 @@
         0.05
       ],
       "bulb_distance_m": 0.502,
-      "bulb_strength": 46.6,
+      "bulb_strength": 13.1,
       "hue": 0.114,
       "blackout": false,
       "fill_scale": 1.0
@@ -677,7 +680,7 @@
         0.05
       ],
       "bulb_distance_m": 0.502,
-      "bulb_strength": 44.5,
+      "bulb_strength": 12.5,
       "hue": 0.117,
       "blackout": false,
       "fill_scale": 1.0
@@ -692,7 +695,7 @@
         0.05
       ],
       "bulb_distance_m": 0.502,
-      "bulb_strength": 42.8,
+      "bulb_strength": 12.0,
       "hue": 0.12,
       "blackout": false,
       "fill_scale": 1.0
@@ -707,7 +710,7 @@
         0.05
       ],
       "bulb_distance_m": 0.502,
-      "bulb_strength": 41.4,
+      "bulb_strength": 11.6,
       "hue": 0.123,
       "blackout": false,
       "fill_scale": 1.0
@@ -722,7 +725,7 @@
         0.05
       ],
       "bulb_distance_m": 0.502,
-      "bulb_strength": 40.3,
+      "bulb_strength": 11.3,
       "hue": 0.125,
       "blackout": false,
       "fill_scale": 1.0
@@ -737,7 +740,7 @@
         0.05
       ],
       "bulb_distance_m": 0.502,
-      "bulb_strength": 39.3,
+      "bulb_strength": 11.1,
       "hue": 0.128,
       "blackout": false,
       "fill_scale": 1.0
@@ -752,7 +755,7 @@
         0.05
       ],
       "bulb_distance_m": 0.502,
-      "bulb_strength": 38.5,
+      "bulb_strength": 10.8,
       "hue": 0.131,
       "blackout": false,
       "fill_scale": 1.0
@@ -767,7 +770,7 @@
         0.05
       ],
       "bulb_distance_m": 0.502,
-      "bulb_strength": 37.9,
+      "bulb_strength": 10.7,
       "hue": 0.134,
       "blackout": false,
       "fill_scale": 1.0
@@ -782,7 +785,7 @@
         0.05
       ],
       "bulb_distance_m": 0.502,
-      "bulb_strength": 37.4,
+      "bulb_strength": 10.5,
       "hue": 0.136,
       "blackout": false,
       "fill_scale": 1.0
@@ -797,7 +800,7 @@
         0.05
       ],
       "bulb_distance_m": 0.502,
-      "bulb_strength": 37.0,
+      "bulb_strength": 10.4,
       "hue": 0.139,
       "blackout": false,
       "fill_scale": 1.0
@@ -812,7 +815,7 @@
         0.05
       ],
       "bulb_distance_m": 0.502,
-      "bulb_strength": 36.6,
+      "bulb_strength": 10.3,
       "hue": 0.142,
       "blackout": false,
       "fill_scale": 1.0
@@ -827,7 +830,7 @@
         0.05
       ],
       "bulb_distance_m": 0.502,
-      "bulb_strength": 36.3,
+      "bulb_strength": 10.2,
       "hue": 0.145,
       "blackout": false,
       "fill_scale": 1.0
@@ -842,7 +845,7 @@
         0.046
       ],
       "bulb_distance_m": 0.502,
-      "bulb_strength": 36.0,
+      "bulb_strength": 10.1,
       "hue": 0.148,
       "blackout": false,
       "fill_scale": 0.997
@@ -857,7 +860,7 @@
         0.034
       ],
       "bulb_distance_m": 0.5,
-      "bulb_strength": 35.5,
+      "bulb_strength": 10.0,
       "hue": 0.15,
       "blackout": false,
       "fill_scale": 0.989
@@ -872,7 +875,7 @@
         0.014
       ],
       "bulb_distance_m": 0.497,
-      "bulb_strength": 35.0,
+      "bulb_strength": 9.8,
       "hue": 0.153,
       "blackout": false,
       "fill_scale": 0.976
@@ -887,7 +890,7 @@
         -0.012
       ],
       "bulb_distance_m": 0.495,
-      "bulb_strength": 34.6,
+      "bulb_strength": 9.7,
       "hue": 0.156,
       "blackout": false,
       "fill_scale": 0.958
@@ -902,7 +905,7 @@
         -0.044
       ],
       "bulb_distance_m": 0.494,
-      "bulb_strength": 34.4,
+      "bulb_strength": 9.7,
       "hue": 0.159,
       "blackout": false,
       "fill_scale": 0.937
@@ -917,7 +920,7 @@
         -0.08
       ],
       "bulb_distance_m": 0.496,
-      "bulb_strength": 34.5,
+      "bulb_strength": 9.7,
       "hue": 0.162,
       "blackout": false,
       "fill_scale": 0.913
@@ -932,7 +935,7 @@
         -0.12
       ],
       "bulb_distance_m": 0.501,
-      "bulb_strength": 35.1,
+      "bulb_strength": 9.9,
       "hue": 0.164,
       "blackout": false,
       "fill_scale": 0.886
@@ -947,7 +950,7 @@
         -0.163
       ],
       "bulb_distance_m": 0.509,
-      "bulb_strength": 142.7,
+      "bulb_strength": 40.1,
       "hue": 0.167,
       "blackout": false,
       "fill_scale": 0.858
@@ -962,7 +965,7 @@
         -0.208
       ],
       "bulb_distance_m": 0.522,
-      "bulb_strength": 129.5,
+      "bulb_strength": 36.4,
       "hue": 0.17,
       "blackout": false,
       "fill_scale": 0.828
@@ -977,7 +980,7 @@
         -0.253
       ],
       "bulb_distance_m": 0.538,
-      "bulb_strength": 120.1,
+      "bulb_strength": 33.8,
       "hue": 0.173,
       "blackout": false,
       "fill_scale": 0.798
@@ -992,7 +995,7 @@
         -0.299
       ],
       "bulb_distance_m": 0.558,
-      "bulb_strength": 113.4,
+      "bulb_strength": 31.9,
       "hue": 0.175,
       "blackout": false,
       "fill_scale": 0.768
@@ -1007,7 +1010,7 @@
         -0.343
       ],
       "bulb_distance_m": 0.58,
-      "bulb_strength": 108.8,
+      "bulb_strength": 30.6,
       "hue": 0.178,
       "blackout": false,
       "fill_scale": 0.738
@@ -1022,7 +1025,7 @@
         -0.386
       ],
       "bulb_distance_m": 0.603,
-      "bulb_strength": 105.5,
+      "bulb_strength": 29.7,
       "hue": 0.181,
       "blackout": false,
       "fill_scale": 0.71
@@ -1037,7 +1040,7 @@
         -0.425
       ],
       "bulb_distance_m": 0.627,
-      "bulb_strength": 103.2,
+      "bulb_strength": 29.0,
       "hue": 0.184,
       "blackout": false,
       "fill_scale": 0.683
@@ -1052,7 +1055,7 @@
         -0.461
       ],
       "bulb_distance_m": 0.649,
-      "bulb_strength": 101.3,
+      "bulb_strength": 28.5,
       "hue": 0.187,
       "blackout": false,
       "fill_scale": 0.659
@@ -1067,7 +1070,7 @@
         -0.492
       ],
       "bulb_distance_m": 0.67,
-      "bulb_strength": 99.6,
+      "bulb_strength": 28.0,
       "hue": 0.189,
       "blackout": false,
       "fill_scale": 0.639
@@ -1082,7 +1085,7 @@
         -0.517
       ],
       "bulb_distance_m": 0.687,
-      "bulb_strength": 97.7,
+      "bulb_strength": 27.5,
       "hue": 0.192,
       "blackout": false,
       "fill_scale": 0.622
@@ -1097,7 +1100,7 @@
         -0.536
       ],
       "bulb_distance_m": 0.701,
-      "bulb_strength": 95.5,
+      "bulb_strength": 26.8,
       "hue": 0.195,
       "blackout": false,
       "fill_scale": 0.609
@@ -1112,7 +1115,7 @@
         -0.547
       ],
       "bulb_distance_m": 0.709,
-      "bulb_strength": 92.6,
+      "bulb_strength": 26.0,
       "hue": 0.198,
       "blackout": false,
       "fill_scale": 0.602
@@ -1127,7 +1130,7 @@
         -0.55
       ],
       "bulb_distance_m": 0.711,
-      "bulb_strength": 89.0,
+      "bulb_strength": 25.0,
       "hue": 0.201,
       "blackout": false,
       "fill_scale": 0.6
@@ -1142,7 +1145,7 @@
         -0.55
       ],
       "bulb_distance_m": 0.711,
-      "bulb_strength": 85.5,
+      "bulb_strength": 24.1,
       "hue": 0.203,
       "blackout": false,
       "fill_scale": 0.6
@@ -1157,7 +1160,7 @@
         -0.55
       ],
       "bulb_distance_m": 0.711,
-      "bulb_strength": 82.7,
+      "bulb_strength": 23.3,
       "hue": 0.206,
       "blackout": false,
       "fill_scale": 0.6
@@ -1172,7 +1175,7 @@
         -0.55
       ],
       "bulb_distance_m": 0.711,
-      "bulb_strength": 80.5,
+      "bulb_strength": 22.6,
       "hue": 0.209,
       "blackout": false,
       "fill_scale": 0.6
@@ -1187,7 +1190,7 @@
         -0.55
       ],
       "bulb_distance_m": 0.711,
-      "bulb_strength": 78.6,
+      "bulb_strength": 22.1,
       "hue": 0.212,
       "blackout": false,
       "fill_scale": 0.6
@@ -1202,7 +1205,7 @@
         -0.55
       ],
       "bulb_distance_m": 0.711,
-      "bulb_strength": 77.1,
+      "bulb_strength": 21.7,
       "hue": 0.214,
       "blackout": false,
       "fill_scale": 0.6
@@ -1217,7 +1220,7 @@
         -0.55
       ],
       "bulb_distance_m": 0.711,
-      "bulb_strength": 75.8,
+      "bulb_strength": 21.3,
       "hue": 0.217,
       "blackout": false,
       "fill_scale": 0.6
@@ -1232,7 +1235,7 @@
         -0.55
       ],
       "bulb_distance_m": 0.711,
-      "bulb_strength": 74.8,
+      "bulb_strength": 21.0,
       "hue": 0.22,
       "blackout": false,
       "fill_scale": 0.6
@@ -1247,7 +1250,7 @@
         -0.55
       ],
       "bulb_distance_m": 0.711,
-      "bulb_strength": 73.9,
+      "bulb_strength": 20.8,
       "hue": 0.223,
       "blackout": false,
       "fill_scale": 0.6
@@ -1262,7 +1265,7 @@
         -0.55
       ],
       "bulb_distance_m": 0.711,
-      "bulb_strength": 73.2,
+      "bulb_strength": 20.6,
       "hue": 0.226,
       "blackout": false,
       "fill_scale": 0.6
@@ -1277,7 +1280,7 @@
         -0.55
       ],
       "bulb_distance_m": 0.711,
-      "bulb_strength": 72.7,
+      "bulb_strength": 20.4,
       "hue": 0.228,
       "blackout": false,
       "fill_scale": 0.6
@@ -1292,7 +1295,7 @@
         -0.55
       ],
       "bulb_distance_m": 0.711,
-      "bulb_strength": 72.2,
+      "bulb_strength": 20.3,
       "hue": 0.231,
       "blackout": false,
       "fill_scale": 0.6
@@ -1307,7 +1310,7 @@
         -0.55
       ],
       "bulb_distance_m": 0.711,
-      "bulb_strength": 71.8,
+      "bulb_strength": 20.2,
       "hue": 0.234,
       "blackout": false,
       "fill_scale": 0.6
@@ -1322,7 +1325,7 @@
         -0.55
       ],
       "bulb_distance_m": 0.711,
-      "bulb_strength": 71.5,
+      "bulb_strength": 20.1,
       "hue": 0.237,
       "blackout": false,
       "fill_scale": 0.6
@@ -1337,7 +1340,7 @@
         -0.55
       ],
       "bulb_distance_m": 0.711,
-      "bulb_strength": 71.3,
+      "bulb_strength": 20.0,
       "hue": 0.24,
       "blackout": false,
       "fill_scale": 0.6
@@ -1352,7 +1355,7 @@
         -0.55
       ],
       "bulb_distance_m": 0.711,
-      "bulb_strength": 71.1,
+      "bulb_strength": 20.0,
       "hue": 0.242,
       "blackout": false,
       "fill_scale": 0.6
@@ -1367,7 +1370,7 @@
         -0.55
       ],
       "bulb_distance_m": 0.711,
-      "bulb_strength": 70.9,
+      "bulb_strength": 19.9,
       "hue": 0.245,
       "blackout": false,
       "fill_scale": 0.6
@@ -1382,7 +1385,7 @@
         -0.539
       ],
       "bulb_distance_m": 0.702,
-      "bulb_strength": 69.1,
+      "bulb_strength": 19.4,
       "hue": 0.248,
       "blackout": false,
       "fill_scale": 0.6
@@ -1397,7 +1400,7 @@
         -0.511
       ],
       "bulb_distance_m": 0.679,
-      "bulb_strength": 252.7,
+      "bulb_strength": 71.1,
       "hue": 0.251,
       "blackout": false,
       "fill_scale": 0.6
@@ -1412,7 +1415,7 @@
         -0.467
       ],
       "bulb_distance_m": 0.644,
-      "bulb_strength": 196.5,
+      "bulb_strength": 55.3,
       "hue": 0.253,
       "blackout": false,
       "fill_scale": 0.6
@@ -1427,7 +1430,7 @@
         -0.409
       ],
       "bulb_distance_m": 0.6,
-      "bulb_strength": 148.7,
+      "bulb_strength": 41.8,
       "hue": 0.256,
       "blackout": false,
       "fill_scale": 0.6
@@ -1442,7 +1445,7 @@
         -0.339
       ],
       "bulb_distance_m": 0.55,
-      "bulb_strength": 110.1,
+      "bulb_strength": 31.0,
       "hue": 0.259,
       "blackout": false,
       "fill_scale": 0.6
@@ -1457,7 +1460,7 @@
         -0.259
       ],
       "bulb_distance_m": 0.5,
-      "bulb_strength": 80.6,
+      "bulb_strength": 22.7,
       "hue": 0.262,
       "blackout": false,
       "fill_scale": 0.6
@@ -1472,7 +1475,7 @@
         -0.172
       ],
       "bulb_distance_m": 0.455,
-      "bulb_strength": 59.8,
+      "bulb_strength": 16.8,
       "hue": 0.265,
       "blackout": false,
       "fill_scale": 0.6
@@ -1487,7 +1490,7 @@
         -0.078
       ],
       "bulb_distance_m": 0.421,
-      "bulb_strength": 46.5,
+      "bulb_strength": 13.1,
       "hue": 0.267,
       "blackout": false,
       "fill_scale": 0.6
@@ -1502,7 +1505,7 @@
         0.018
       ],
       "bulb_distance_m": 0.407,
-      "bulb_strength": 39.6,
+      "bulb_strength": 11.1,
       "hue": 0.27,
       "blackout": false,
       "fill_scale": 0.6
@@ -1517,7 +1520,7 @@
         0.117
       ],
       "bulb_distance_m": 0.416,
-      "bulb_strength": 38.2,
+      "bulb_strength": 10.7,
       "hue": 0.273,
       "blackout": false,
       "fill_scale": 0.6
@@ -1532,7 +1535,7 @@
         0.215
       ],
       "bulb_distance_m": 0.446,
-      "bulb_strength": 41.1,
+      "bulb_strength": 11.6,
       "hue": 0.276,
       "blackout": false,
       "fill_scale": 0.6
@@ -1547,7 +1550,7 @@
         0.311
       ],
       "bulb_distance_m": 0.494,
-      "bulb_strength": 47.4,
+      "bulb_strength": 13.3,
       "hue": 0.279,
       "blackout": false,
       "fill_scale": 0.6
@@ -1562,7 +1565,7 @@
         0.403
       ],
       "bulb_distance_m": 0.551,
-      "bulb_strength": 56.0,
+      "bulb_strength": 15.7,
       "hue": 0.281,
       "blackout": false,
       "fill_scale": 0.6
@@ -1577,7 +1580,7 @@
         0.488
       ],
       "bulb_distance_m": 0.612,
-      "bulb_strength": 65.9,
+      "bulb_strength": 18.5,
       "hue": 0.284,
       "blackout": false,
       "fill_scale": 0.6
@@ -1592,7 +1595,7 @@
         0.564
       ],
       "bulb_distance_m": 0.672,
-      "bulb_strength": 76.3,
+      "bulb_strength": 21.5,
       "hue": 0.287,
       "blackout": false,
       "fill_scale": 0.6
@@ -1607,7 +1610,7 @@
         0.63
       ],
       "bulb_distance_m": 0.725,
-      "bulb_strength": 86.1,
+      "bulb_strength": 24.2,
       "hue": 0.29,
       "blackout": false,
       "fill_scale": 0.6
@@ -1622,7 +1625,7 @@
         0.684
       ],
       "bulb_distance_m": 0.77,
-      "bulb_strength": 94.5,
+      "bulb_strength": 26.6,
       "hue": 0.292,
       "blackout": false,
       "fill_scale": 0.6
@@ -1637,7 +1640,7 @@
         0.723
       ],
       "bulb_distance_m": 0.804,
-      "bulb_strength": 100.5,
+      "bulb_strength": 28.3,
       "hue": 0.295,
       "blackout": false,
       "fill_scale": 0.6
@@ -1652,7 +1655,7 @@
         0.745
       ],
       "bulb_distance_m": 0.823,
-      "bulb_strength": 103.4,
+      "bulb_strength": 29.1,
       "hue": 0.298,
       "blackout": false,
       "fill_scale": 0.6
@@ -1667,7 +1670,7 @@
         0.75
       ],
       "bulb_distance_m": 0.828,
-      "bulb_strength": 102.8,
+      "bulb_strength": 28.9,
       "hue": 0.301,
       "blackout": false,
       "fill_scale": 0.6
@@ -1682,7 +1685,7 @@
         0.75
       ],
       "bulb_distance_m": 0.828,
-      "bulb_strength": 101.4,
+      "bulb_strength": 28.5,
       "hue": 0.304,
       "blackout": false,
       "fill_scale": 0.6
@@ -1697,7 +1700,7 @@
         0.75
       ],
       "bulb_distance_m": 0.828,
-      "bulb_strength": 100.3,
+      "bulb_strength": 28.2,
       "hue": 0.306,
       "blackout": false,
       "fill_scale": 0.6
@@ -1712,7 +1715,7 @@
         0.75
       ],
       "bulb_distance_m": 0.828,
-      "bulb_strength": 99.3,
+      "bulb_strength": 27.9,
       "hue": 0.309,
       "blackout": false,
       "fill_scale": 0.6
@@ -1727,7 +1730,7 @@
         0.75
       ],
       "bulb_distance_m": 0.828,
-      "bulb_strength": 98.6,
+      "bulb_strength": 27.7,
       "hue": 0.312,
       "blackout": false,
       "fill_scale": 0.6
@@ -1742,7 +1745,7 @@
         0.75
       ],
       "bulb_distance_m": 0.828,
-      "bulb_strength": 97.9,
+      "bulb_strength": 27.5,
       "hue": 0.315,
       "blackout": false,
       "fill_scale": 0.6
@@ -1757,7 +1760,7 @@
         0.75
       ],
       "bulb_distance_m": 0.828,
-      "bulb_strength": 97.4,
+      "bulb_strength": 27.4,
       "hue": 0.318,
       "blackout": false,
       "fill_scale": 0.6
@@ -1772,7 +1775,7 @@
         0.75
       ],
       "bulb_distance_m": 0.828,
-      "bulb_strength": 97.0,
+      "bulb_strength": 27.3,
       "hue": 0.32,
       "blackout": false,
       "fill_scale": 0.6
@@ -1787,7 +1790,7 @@
         0.75
       ],
       "bulb_distance_m": 0.828,
-      "bulb_strength": 96.7,
+      "bulb_strength": 27.2,
       "hue": 0.323,
       "blackout": false,
       "fill_scale": 0.6
@@ -1802,7 +1805,7 @@
         0.75
       ],
       "bulb_distance_m": 0.828,
-      "bulb_strength": 96.4,
+      "bulb_strength": 27.1,
       "hue": 0.326,
       "blackout": false,
       "fill_scale": 0.6
@@ -1817,7 +1820,7 @@
         0.75
       ],
       "bulb_distance_m": 0.828,
-      "bulb_strength": 96.2,
+      "bulb_strength": 27.0,
       "hue": 0.329,
       "blackout": false,
       "fill_scale": 0.6
@@ -1832,7 +1835,7 @@
         0.75
       ],
       "bulb_distance_m": 0.828,
-      "bulb_strength": 96.0,
+      "bulb_strength": 27.0,
       "hue": 0.331,
       "blackout": false,
       "fill_scale": 0.6
@@ -1847,7 +1850,7 @@
         0.75
       ],
       "bulb_distance_m": 0.828,
-      "bulb_strength": 373.8,
+      "bulb_strength": 105.1,
       "hue": 0.334,
       "blackout": false,
       "fill_scale": 0.6
@@ -1862,7 +1865,7 @@
         0.75
       ],
       "bulb_distance_m": 0.828,
-      "bulb_strength": 323.2,
+      "bulb_strength": 90.9,
       "hue": 0.337,
       "blackout": false,
       "fill_scale": 0.6
@@ -1877,7 +1880,7 @@
         0.75
       ],
       "bulb_distance_m": 0.828,
-      "bulb_strength": 281.8,
+      "bulb_strength": 79.3,
       "hue": 0.34,
       "blackout": false,
       "fill_scale": 0.6
@@ -1892,7 +1895,7 @@
         0.75
       ],
       "bulb_distance_m": 0.828,
-      "bulb_strength": 248.0,
+      "bulb_strength": 69.7,
       "hue": 0.343,
       "blackout": false,
       "fill_scale": 0.6
@@ -1907,7 +1910,7 @@
         0.75
       ],
       "bulb_distance_m": 0.828,
-      "bulb_strength": 220.2,
+      "bulb_strength": 61.9,
       "hue": 0.345,
       "blackout": false,
       "fill_scale": 0.6
@@ -1922,7 +1925,7 @@
         0.744
       ],
       "bulb_distance_m": 0.822,
-      "bulb_strength": 194.7,
+      "bulb_strength": 54.8,
       "hue": 0.348,
       "blackout": false,
       "fill_scale": 0.599
@@ -1937,7 +1940,7 @@
         0.729
       ],
       "bulb_distance_m": 0.808,
-      "bulb_strength": 170.6,
+      "bulb_strength": 48.0,
       "hue": 0.351,
       "blackout": false,
       "fill_scale": 0.597
@@ -1952,7 +1955,7 @@
         0.706
       ],
       "bulb_distance_m": 0.788,
-      "bulb_strength": 148.5,
+      "bulb_strength": 41.8,
       "hue": 0.354,
       "blackout": false,
       "fill_scale": 0.593
@@ -1967,7 +1970,7 @@
         0.676
       ],
       "bulb_distance_m": 0.764,
-      "bulb_strength": 129.0,
+      "bulb_strength": 36.3,
       "hue": 0.357,
       "blackout": false,
       "fill_scale": 0.589
@@ -1982,7 +1985,7 @@
         0.641
       ],
       "bulb_distance_m": 0.738,
-      "bulb_strength": 112.3,
+      "bulb_strength": 31.6,
       "hue": 0.359,
       "blackout": false,
       "fill_scale": 0.583
@@ -1997,7 +2000,7 @@
         0.6
       ],
       "bulb_distance_m": 0.713,
-      "bulb_strength": 98.6,
+      "bulb_strength": 27.7,
       "hue": 0.362,
       "blackout": false,
       "fill_scale": 0.577
@@ -2012,7 +2015,7 @@
         0.556
       ],
       "bulb_distance_m": 0.692,
-      "bulb_strength": 88.0,
+      "bulb_strength": 24.7,
       "hue": 0.365,
       "blackout": false,
       "fill_scale": 0.57
@@ -2027,7 +2030,7 @@
         0.509
       ],
       "bulb_distance_m": 0.676,
-      "bulb_strength": 80.3,
+      "bulb_strength": 22.6,
       "hue": 0.368,
       "blackout": false,
       "fill_scale": 0.563
@@ -2042,7 +2045,7 @@
         0.461
       ],
       "bulb_distance_m": 0.668,
-      "bulb_strength": 75.5,
+      "bulb_strength": 21.2,
       "hue": 0.37,
       "blackout": false,
       "fill_scale": 0.556
@@ -2057,7 +2060,7 @@
         0.412
       ],
       "bulb_distance_m": 0.669,
-      "bulb_strength": 73.2,
+      "bulb_strength": 20.6,
       "hue": 0.373,
       "blackout": false,
       "fill_scale": 0.548
@@ -2072,7 +2075,7 @@
         0.363
       ],
       "bulb_distance_m": 0.679,
-      "bulb_strength": 73.4,
+      "bulb_strength": 20.6,
       "hue": 0.376,
       "blackout": false,
       "fill_scale": 0.54
@@ -2087,7 +2090,7 @@
         0.315
       ],
       "bulb_distance_m": 0.697,
-      "bulb_strength": 75.6,
+      "bulb_strength": 21.3,
       "hue": 0.379,
       "blackout": false,
       "fill_scale": 0.533
@@ -2102,7 +2105,7 @@
         0.269
       ],
       "bulb_distance_m": 0.721,
-      "bulb_strength": 79.3,
+      "bulb_strength": 22.3,
       "hue": 0.382,
       "blackout": false,
       "fill_scale": 0.526
@@ -2117,7 +2120,7 @@
         0.227
       ],
       "bulb_distance_m": 0.749,
-      "bulb_strength": 84.2,
+      "bulb_strength": 23.7,
       "hue": 0.384,
       "blackout": false,
       "fill_scale": 0.52
@@ -2132,7 +2135,7 @@
         0.189
       ],
       "bulb_distance_m": 0.779,
-      "bulb_strength": 89.7,
+      "bulb_strength": 25.2,
       "hue": 0.387,
       "blackout": false,
       "fill_scale": 0.514
@@ -2147,7 +2150,7 @@
         0.157
       ],
       "bulb_distance_m": 0.806,
-      "bulb_strength": 95.1,
+      "bulb_strength": 26.7,
       "hue": 0.39,
       "blackout": false,
       "fill_scale": 0.509
@@ -2162,7 +2165,7 @@
         0.131
       ],
       "bulb_distance_m": 0.83,
-      "bulb_strength": 99.9,
+      "bulb_strength": 28.1,
       "hue": 0.393,
       "blackout": false,
       "fill_scale": 0.505
@@ -2177,7 +2180,7 @@
         0.112
       ],
       "bulb_distance_m": 0.848,
-      "bulb_strength": 103.5,
+      "bulb_strength": 29.1,
       "hue": 0.396,
       "blackout": false,
       "fill_scale": 0.502
@@ -2192,7 +2195,7 @@
         0.102
       ],
       "bulb_distance_m": 0.858,
-      "bulb_strength": 105.4,
+      "bulb_strength": 29.6,
       "hue": 0.398,
       "blackout": false,
       "fill_scale": 0.5
@@ -2207,7 +2210,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 105.2,
+      "bulb_strength": 29.6,
       "hue": 0.401,
       "blackout": false,
       "fill_scale": 0.5
@@ -2222,7 +2225,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 104.8,
+      "bulb_strength": 29.5,
       "hue": 0.404,
       "blackout": false,
       "fill_scale": 0.5
@@ -2237,7 +2240,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 104.4,
+      "bulb_strength": 29.4,
       "hue": 0.407,
       "blackout": false,
       "fill_scale": 0.5
@@ -2252,7 +2255,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 104.1,
+      "bulb_strength": 29.3,
       "hue": 0.409,
       "blackout": false,
       "fill_scale": 0.5
@@ -2267,7 +2270,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 103.9,
+      "bulb_strength": 29.2,
       "hue": 0.412,
       "blackout": false,
       "fill_scale": 0.5
@@ -2282,7 +2285,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 103.7,
+      "bulb_strength": 29.2,
       "hue": 0.415,
       "blackout": false,
       "fill_scale": 0.5
@@ -2297,7 +2300,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 402.0,
+      "bulb_strength": 113.1,
       "hue": 0.418,
       "blackout": false,
       "fill_scale": 0.5
@@ -2312,7 +2315,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 347.7,
+      "bulb_strength": 97.8,
       "hue": 0.421,
       "blackout": false,
       "fill_scale": 0.5
@@ -2327,7 +2330,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 303.3,
+      "bulb_strength": 85.3,
       "hue": 0.423,
       "blackout": false,
       "fill_scale": 0.5
@@ -2342,7 +2345,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 266.9,
+      "bulb_strength": 75.1,
       "hue": 0.426,
       "blackout": false,
       "fill_scale": 0.5
@@ -2357,7 +2360,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 237.1,
+      "bulb_strength": 66.7,
       "hue": 0.429,
       "blackout": false,
       "fill_scale": 0.5
@@ -2372,7 +2375,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 212.7,
+      "bulb_strength": 59.8,
       "hue": 0.432,
       "blackout": false,
       "fill_scale": 0.5
@@ -2387,7 +2390,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 192.8,
+      "bulb_strength": 54.2,
       "hue": 0.435,
       "blackout": false,
       "fill_scale": 0.5
@@ -2402,7 +2405,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 176.5,
+      "bulb_strength": 49.6,
       "hue": 0.437,
       "blackout": false,
       "fill_scale": 0.5
@@ -2417,7 +2420,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 163.1,
+      "bulb_strength": 45.9,
       "hue": 0.44,
       "blackout": false,
       "fill_scale": 0.5
@@ -2432,7 +2435,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 152.1,
+      "bulb_strength": 42.8,
       "hue": 0.443,
       "blackout": false,
       "fill_scale": 0.5
@@ -2447,7 +2450,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 143.0,
+      "bulb_strength": 40.2,
       "hue": 0.446,
       "blackout": false,
       "fill_scale": 0.5
@@ -2462,7 +2465,7 @@
         0.1
       ],
       "bulb_distance_m": 0.843,
-      "bulb_strength": 130.6,
+      "bulb_strength": 36.7,
       "hue": 0.448,
       "blackout": false,
       "fill_scale": 0.5
@@ -2477,7 +2480,7 @@
         0.1
       ],
       "bulb_distance_m": 0.807,
-      "bulb_strength": 114.3,
+      "bulb_strength": 32.2,
       "hue": 0.451,
       "blackout": false,
       "fill_scale": 0.5
@@ -2492,7 +2495,7 @@
         0.1
       ],
       "bulb_distance_m": 0.754,
-      "bulb_strength": 96.0,
+      "bulb_strength": 27.0,
       "hue": 0.454,
       "blackout": false,
       "fill_scale": 0.5
@@ -2507,7 +2510,7 @@
         0.1
       ],
       "bulb_distance_m": 0.687,
-      "bulb_strength": 77.1,
+      "bulb_strength": 21.7,
       "hue": 0.457,
       "blackout": false,
       "fill_scale": 0.5
@@ -2522,7 +2525,7 @@
         0.1
       ],
       "bulb_distance_m": 0.61,
-      "bulb_strength": 59.1,
+      "bulb_strength": 16.6,
       "hue": 0.46,
       "blackout": false,
       "fill_scale": 0.5
@@ -2537,7 +2540,7 @@
         0.1
       ],
       "bulb_distance_m": 0.527,
-      "bulb_strength": 43.1,
+      "bulb_strength": 12.1,
       "hue": 0.462,
       "blackout": false,
       "fill_scale": 0.5
@@ -2552,7 +2555,7 @@
         0.1
       ],
       "bulb_distance_m": 0.444,
-      "bulb_strength": 30.0,
+      "bulb_strength": 8.5,
       "hue": 0.465,
       "blackout": false,
       "fill_scale": 0.5
@@ -2567,7 +2570,7 @@
         0.1
       ],
       "bulb_distance_m": 0.372,
-      "bulb_strength": 20.8,
+      "bulb_strength": 5.8,
       "hue": 0.468,
       "blackout": false,
       "fill_scale": 0.5
@@ -2582,7 +2585,7 @@
         0.1
       ],
       "bulb_distance_m": 0.325,
-      "bulb_strength": 15.6,
+      "bulb_strength": 4.4,
       "hue": 0.471,
       "blackout": false,
       "fill_scale": 0.5
@@ -2597,7 +2600,7 @@
         0.1
       ],
       "bulb_distance_m": 0.319,
-      "bulb_strength": 14.9,
+      "bulb_strength": 4.2,
       "hue": 0.474,
       "blackout": false,
       "fill_scale": 0.5
@@ -2612,7 +2615,7 @@
         0.1
       ],
       "bulb_distance_m": 0.357,
-      "bulb_strength": 18.5,
+      "bulb_strength": 5.2,
       "hue": 0.476,
       "blackout": false,
       "fill_scale": 0.5
@@ -2627,7 +2630,7 @@
         0.1
       ],
       "bulb_distance_m": 0.424,
-      "bulb_strength": 25.9,
+      "bulb_strength": 7.3,
       "hue": 0.479,
       "blackout": false,
       "fill_scale": 0.5
@@ -2642,7 +2645,7 @@
         0.1
       ],
       "bulb_distance_m": 0.505,
-      "bulb_strength": 36.5,
+      "bulb_strength": 10.3,
       "hue": 0.482,
       "blackout": false,
       "fill_scale": 0.5
@@ -2657,7 +2660,7 @@
         0.1
       ],
       "bulb_distance_m": 0.589,
-      "bulb_strength": 49.3,
+      "bulb_strength": 13.9,
       "hue": 0.485,
       "blackout": false,
       "fill_scale": 0.5
@@ -2672,7 +2675,7 @@
         0.1
       ],
       "bulb_distance_m": 0.668,
-      "bulb_strength": 63.2,
+      "bulb_strength": 17.8,
       "hue": 0.487,
       "blackout": false,
       "fill_scale": 0.5
@@ -2687,7 +2690,7 @@
         0.1
       ],
       "bulb_distance_m": 0.738,
-      "bulb_strength": 76.9,
+      "bulb_strength": 21.6,
       "hue": 0.49,
       "blackout": false,
       "fill_scale": 0.5
@@ -2702,7 +2705,7 @@
         0.1
       ],
       "bulb_distance_m": 0.795,
-      "bulb_strength": 89.0,
+      "bulb_strength": 25.0,
       "hue": 0.493,
       "blackout": false,
       "fill_scale": 0.5
@@ -2717,7 +2720,7 @@
         0.1
       ],
       "bulb_distance_m": 0.836,
-      "bulb_strength": 98.1,
+      "bulb_strength": 27.6,
       "hue": 0.496,
       "blackout": false,
       "fill_scale": 0.5
@@ -2732,7 +2735,7 @@
         0.1
       ],
       "bulb_distance_m": 0.857,
-      "bulb_strength": 103.0,
+      "bulb_strength": 29.0,
       "hue": 0.499,
       "blackout": false,
       "fill_scale": 0.5
@@ -2747,7 +2750,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 400.2,
+      "bulb_strength": 112.6,
       "hue": 0.501,
       "blackout": false,
       "fill_scale": 0.5
@@ -2762,7 +2765,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 346.2,
+      "bulb_strength": 97.4,
       "hue": 0.504,
       "blackout": false,
       "fill_scale": 0.5
@@ -2777,7 +2780,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 302.1,
+      "bulb_strength": 85.0,
       "hue": 0.507,
       "blackout": false,
       "fill_scale": 0.5
@@ -2792,7 +2795,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 265.9,
+      "bulb_strength": 74.8,
       "hue": 0.51,
       "blackout": false,
       "fill_scale": 0.5
@@ -2807,7 +2810,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 236.3,
+      "bulb_strength": 66.5,
       "hue": 0.513,
       "blackout": false,
       "fill_scale": 0.5
@@ -2822,7 +2825,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 212.1,
+      "bulb_strength": 59.6,
       "hue": 0.515,
       "blackout": false,
       "fill_scale": 0.5
@@ -2837,7 +2840,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 192.3,
+      "bulb_strength": 54.1,
       "hue": 0.518,
       "blackout": false,
       "fill_scale": 0.5
@@ -2852,7 +2855,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 176.0,
+      "bulb_strength": 49.5,
       "hue": 0.521,
       "blackout": false,
       "fill_scale": 0.5
@@ -2867,7 +2870,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 162.7,
+      "bulb_strength": 45.8,
       "hue": 0.524,
       "blackout": false,
       "fill_scale": 0.5
@@ -2882,7 +2885,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 151.9,
+      "bulb_strength": 42.7,
       "hue": 0.526,
       "blackout": false,
       "fill_scale": 0.5
@@ -2897,7 +2900,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 143.0,
+      "bulb_strength": 40.2,
       "hue": 0.529,
       "blackout": false,
       "fill_scale": 0.5
@@ -2912,7 +2915,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 135.7,
+      "bulb_strength": 38.2,
       "hue": 0.532,
       "blackout": false,
       "fill_scale": 0.5
@@ -2927,7 +2930,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 129.7,
+      "bulb_strength": 36.5,
       "hue": 0.535,
       "blackout": false,
       "fill_scale": 0.5
@@ -2942,7 +2945,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 124.8,
+      "bulb_strength": 35.1,
       "hue": 0.538,
       "blackout": false,
       "fill_scale": 0.5
@@ -2957,7 +2960,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 120.8,
+      "bulb_strength": 34.0,
       "hue": 0.54,
       "blackout": false,
       "fill_scale": 0.5
@@ -2972,7 +2975,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 117.5,
+      "bulb_strength": 33.1,
       "hue": 0.543,
       "blackout": false,
       "fill_scale": 0.5
@@ -2987,7 +2990,7 @@
         0.1
       ],
       "bulb_distance_m": 0.86,
-      "bulb_strength": 114.7,
+      "bulb_strength": 32.3,
       "hue": 0.546,
       "blackout": false,
       "fill_scale": 0.5
@@ -3002,7 +3005,7 @@
         0.105
       ],
       "bulb_distance_m": 0.852,
-      "bulb_strength": 110.6,
+      "bulb_strength": 31.1,
       "hue": 0.549,
       "blackout": false,
       "fill_scale": 0.5
@@ -3017,7 +3020,7 @@
         0.114
       ],
       "bulb_distance_m": 0.838,
-      "bulb_strength": 105.3,
+      "bulb_strength": 29.6,
       "hue": 0.552,
       "blackout": false,
       "fill_scale": 0.5
@@ -3032,7 +3035,7 @@
         0.127
       ],
       "bulb_distance_m": 0.819,
-      "bulb_strength": 99.2,
+      "bulb_strength": 27.9,
       "hue": 0.554,
       "blackout": false,
       "fill_scale": 0.5
@@ -3047,7 +3050,7 @@
         0.143
       ],
       "bulb_distance_m": 0.798,
-      "bulb_strength": 108.0,
+      "bulb_strength": 30.4,
       "hue": 0.557,
       "blackout": false,
       "fill_scale": 0.5
@@ -3062,7 +3065,7 @@
         0.163
       ],
       "bulb_distance_m": 0.778,
-      "bulb_strength": 122.9,
+      "bulb_strength": 34.6,
       "hue": 0.56,
       "blackout": false,
       "fill_scale": 0.5
@@ -3077,7 +3080,7 @@
         0.185
       ],
       "bulb_distance_m": 0.762,
-      "bulb_strength": 139.9,
+      "bulb_strength": 39.4,
       "hue": 0.563,
       "blackout": false,
       "fill_scale": 0.5
@@ -3092,7 +3095,7 @@
         0.209
       ],
       "bulb_distance_m": 0.754,
-      "bulb_strength": 160.2,
+      "bulb_strength": 45.0,
       "hue": 0.565,
       "blackout": false,
       "fill_scale": 0.5
@@ -3107,7 +3110,7 @@
         0.235
       ],
       "bulb_distance_m": 0.755,
-      "bulb_strength": 185.4,
+      "bulb_strength": 52.1,
       "hue": 0.568,
       "blackout": false,
       "fill_scale": 0.5
@@ -3122,7 +3125,7 @@
         0.261
       ],
       "bulb_distance_m": 0.768,
-      "bulb_strength": 217.8,
+      "bulb_strength": 61.3,
       "hue": 0.571,
       "blackout": false,
       "fill_scale": 0.5
@@ -3137,7 +3140,7 @@
         0.288
       ],
       "bulb_distance_m": 0.791,
-      "bulb_strength": 259.4,
+      "bulb_strength": 73.0,
       "hue": 0.574,
       "blackout": false,
       "fill_scale": 0.5
@@ -3152,7 +3155,7 @@
         0.314
       ],
       "bulb_distance_m": 0.824,
-      "bulb_strength": 311.7,
+      "bulb_strength": 87.7,
       "hue": 0.577,
       "blackout": false,
       "fill_scale": 0.5
@@ -3167,7 +3170,7 @@
         0.339
       ],
       "bulb_distance_m": 0.865,
-      "bulb_strength": 375.0,
+      "bulb_strength": 105.5,
       "hue": 0.579,
       "blackout": false,
       "fill_scale": 0.5
@@ -3182,7 +3185,7 @@
         0.364
       ],
       "bulb_distance_m": 0.909,
-      "bulb_strength": 448.4,
+      "bulb_strength": 126.1,
       "hue": 0.582,
       "blackout": false,
       "fill_scale": 0.5
@@ -3197,7 +3200,7 @@
         0.386
       ],
       "bulb_distance_m": 0.955,
-      "bulb_strength": 1964.6,
+      "bulb_strength": 552.5,
       "hue": 0.585,
       "blackout": false,
       "fill_scale": 0.5
@@ -3212,7 +3215,7 @@
         0.406
       ],
       "bulb_distance_m": 0.999,
-      "bulb_strength": 1861.3,
+      "bulb_strength": 523.5,
       "hue": 0.588,
       "blackout": false,
       "fill_scale": 0.5
@@ -3227,7 +3230,7 @@
         0.422
       ],
       "bulb_distance_m": 1.039,
-      "bulb_strength": 1756.1,
+      "bulb_strength": 493.9,
       "hue": 0.591,
       "blackout": false,
       "fill_scale": 0.5
@@ -3242,7 +3245,7 @@
         0.436
       ],
       "bulb_distance_m": 1.072,
-      "bulb_strength": 1645.1,
+      "bulb_strength": 462.7,
       "hue": 0.593,
       "blackout": false,
       "fill_scale": 0.5
@@ -3257,7 +3260,7 @@
         0.445
       ],
       "bulb_distance_m": 1.095,
-      "bulb_strength": 1526.6,
+      "bulb_strength": 429.4,
       "hue": 0.596,
       "blackout": false,
       "fill_scale": 0.5
@@ -3272,7 +3275,7 @@
         0.45
       ],
       "bulb_distance_m": 1.107,
-      "bulb_strength": 1400.1,
+      "bulb_strength": 393.8,
       "hue": 0.599,
       "blackout": false,
       "fill_scale": 0.5
@@ -3287,7 +3290,7 @@
         0.45
       ],
       "bulb_distance_m": 1.108,
-      "bulb_strength": 1272.1,
+      "bulb_strength": 357.8,
       "hue": 0.602,
       "blackout": false,
       "fill_scale": 0.5
@@ -3302,7 +3305,7 @@
         0.45
       ],
       "bulb_distance_m": 1.108,
-      "bulb_strength": 1165.0,
+      "bulb_strength": 327.7,
       "hue": 0.604,
       "blackout": false,
       "fill_scale": 0.5
@@ -3317,7 +3320,7 @@
         0.45
       ],
       "bulb_distance_m": 1.108,
-      "bulb_strength": 1077.4,
+      "bulb_strength": 303.0,
       "hue": 0.607,
       "blackout": false,
       "fill_scale": 0.5
@@ -3332,7 +3335,7 @@
         0.45
       ],
       "bulb_distance_m": 1.108,
-      "bulb_strength": 1005.6,
+      "bulb_strength": 282.8,
       "hue": 0.61,
       "blackout": false,
       "fill_scale": 0.5
@@ -3347,7 +3350,7 @@
         0.45
       ],
       "bulb_distance_m": 1.108,
-      "bulb_strength": 946.9,
+      "bulb_strength": 266.3,
       "hue": 0.613,
       "blackout": false,
       "fill_scale": 0.5
@@ -3362,7 +3365,7 @@
         0.45
       ],
       "bulb_distance_m": 1.108,
-      "bulb_strength": 898.8,
+      "bulb_strength": 252.8,
       "hue": 0.616,
       "blackout": false,
       "fill_scale": 0.5
@@ -3377,7 +3380,7 @@
         0.45
       ],
       "bulb_distance_m": 1.108,
-      "bulb_strength": 859.5,
+      "bulb_strength": 241.7,
       "hue": 0.618,
       "blackout": false,
       "fill_scale": 0.5
@@ -3392,7 +3395,7 @@
         0.45
       ],
       "bulb_distance_m": 1.108,
-      "bulb_strength": 49.6,
+      "bulb_strength": 14.0,
       "hue": 0.621,
       "blackout": true,
       "fill_scale": 0.5
@@ -3407,7 +3410,7 @@
         0.45
       ],
       "bulb_distance_m": 1.108,
-      "bulb_strength": 48.1,
+      "bulb_strength": 13.5,
       "hue": 0.624,
       "blackout": true,
       "fill_scale": 0.5
@@ -3422,7 +3425,7 @@
         0.45
       ],
       "bulb_distance_m": 1.108,
-      "bulb_strength": 46.8,
+      "bulb_strength": 13.2,
       "hue": 0.627,
       "blackout": true,
       "fill_scale": 0.5
@@ -3437,7 +3440,7 @@
         0.45
       ],
       "bulb_distance_m": 1.108,
-      "bulb_strength": 45.7,
+      "bulb_strength": 12.9,
       "hue": 0.63,
       "blackout": true,
       "fill_scale": 0.5
@@ -3452,7 +3455,7 @@
         0.45
       ],
       "bulb_distance_m": 1.108,
-      "bulb_strength": 44.8,
+      "bulb_strength": 12.6,
       "hue": 0.632,
       "blackout": true,
       "fill_scale": 0.5
@@ -3467,7 +3470,7 @@
         0.45
       ],
       "bulb_distance_m": 1.108,
-      "bulb_strength": 44.1,
+      "bulb_strength": 12.4,
       "hue": 0.635,
       "blackout": true,
       "fill_scale": 0.5
@@ -3482,7 +3485,7 @@
         0.45
       ],
       "bulb_distance_m": 1.108,
-      "bulb_strength": 43.5,
+      "bulb_strength": 12.2,
       "hue": 0.638,
       "blackout": true,
       "fill_scale": 0.5
@@ -3497,7 +3500,7 @@
         0.45
       ],
       "bulb_distance_m": 1.108,
-      "bulb_strength": 43.1,
+      "bulb_strength": 12.1,
       "hue": 0.641,
       "blackout": true,
       "fill_scale": 0.5
@@ -3512,7 +3515,7 @@
         0.45
       ],
       "bulb_distance_m": 1.108,
-      "bulb_strength": 42.7,
+      "bulb_strength": 12.0,
       "hue": 0.643,
       "blackout": true,
       "fill_scale": 0.5
@@ -3527,7 +3530,7 @@
         0.45
       ],
       "bulb_distance_m": 1.108,
-      "bulb_strength": 706.1,
+      "bulb_strength": 198.6,
       "hue": 0.646,
       "blackout": false,
       "fill_scale": 0.499
@@ -3542,7 +3545,7 @@
         0.452
       ],
       "bulb_distance_m": 1.109,
-      "bulb_strength": 703.5,
+      "bulb_strength": 197.9,
       "hue": 0.649,
       "blackout": false,
       "fill_scale": 0.492
@@ -3557,7 +3560,7 @@
         0.454
       ],
       "bulb_distance_m": 1.112,
-      "bulb_strength": 703.5,
+      "bulb_strength": 197.8,
       "hue": 0.652,
       "blackout": false,
       "fill_scale": 0.479
@@ -3572,7 +3575,7 @@
         0.458
       ],
       "bulb_distance_m": 1.116,
-      "bulb_strength": 705.6,
+      "bulb_strength": 198.4,
       "hue": 0.655,
       "blackout": false,
       "fill_scale": 0.46
@@ -3587,7 +3590,7 @@
         0.463
       ],
       "bulb_distance_m": 1.121,
-      "bulb_strength": 709.6,
+      "bulb_strength": 199.6,
       "hue": 0.657,
       "blackout": false,
       "fill_scale": 0.435
@@ -3602,7 +3605,7 @@
         0.469
       ],
       "bulb_distance_m": 1.127,
-      "bulb_strength": 715.4,
+      "bulb_strength": 201.2,
       "hue": 0.66,
       "blackout": false,
       "fill_scale": 0.407
@@ -3617,7 +3620,7 @@
         0.475
       ],
       "bulb_distance_m": 1.134,
-      "bulb_strength": 722.6,
+      "bulb_strength": 203.2,
       "hue": 0.663,
       "blackout": false,
       "fill_scale": 0.375
@@ -3632,7 +3635,7 @@
         0.482
       ],
       "bulb_distance_m": 1.142,
-      "bulb_strength": 731.1,
+      "bulb_strength": 205.6,
       "hue": 0.666,
       "blackout": false,
       "fill_scale": 0.34
@@ -3647,7 +3650,7 @@
         0.489
       ],
       "bulb_distance_m": 1.151,
-      "bulb_strength": 2838.5,
+      "bulb_strength": 798.3,
       "hue": 0.669,
       "blackout": false,
       "fill_scale": 0.304
@@ -3662,7 +3665,7 @@
         0.497
       ],
       "bulb_distance_m": 1.159,
-      "bulb_strength": 2494.6,
+      "bulb_strength": 701.6,
       "hue": 0.671,
       "blackout": false,
       "fill_scale": 0.266
@@ -3677,7 +3680,7 @@
         0.504
       ],
       "bulb_distance_m": 1.168,
-      "bulb_strength": 2211.7,
+      "bulb_strength": 622.0,
       "hue": 0.674,
       "blackout": false,
       "fill_scale": 0.228
@@ -3692,7 +3695,7 @@
         0.512
       ],
       "bulb_distance_m": 1.178,
-      "bulb_strength": 1978.7,
+      "bulb_strength": 556.5,
       "hue": 0.677,
       "blackout": false,
       "fill_scale": 0.191
@@ -3707,7 +3710,7 @@
         0.519
       ],
       "bulb_distance_m": 1.187,
-      "bulb_strength": 1786.5,
+      "bulb_strength": 502.4,
       "hue": 0.68,
       "blackout": false,
       "fill_scale": 0.154
@@ -3722,7 +3725,7 @@
         0.526
       ],
       "bulb_distance_m": 1.195,
-      "bulb_strength": 1627.8,
+      "bulb_strength": 457.8,
       "hue": 0.682,
       "blackout": false,
       "fill_scale": 0.12
@@ -3737,7 +3740,7 @@
         0.532
       ],
       "bulb_distance_m": 1.203,
-      "bulb_strength": 1496.5,
+      "bulb_strength": 420.9,
       "hue": 0.685,
       "blackout": false,
       "fill_scale": 0.089
@@ -3752,7 +3755,7 @@
         0.538
       ],
       "bulb_distance_m": 1.211,
-      "bulb_strength": 1387.6,
+      "bulb_strength": 390.3,
       "hue": 0.688,
       "blackout": false,
       "fill_scale": 0.061
@@ -3767,7 +3770,7 @@
         0.543
       ],
       "bulb_distance_m": 1.217,
-      "bulb_strength": 1296.8,
+      "bulb_strength": 364.7,
       "hue": 0.691,
       "blackout": false,
       "fill_scale": 0.037
@@ -3782,7 +3785,7 @@
         0.546
       ],
       "bulb_distance_m": 1.222,
-      "bulb_strength": 1220.5,
+      "bulb_strength": 343.3,
       "hue": 0.694,
       "blackout": false,
       "fill_scale": 0.019
@@ -3797,7 +3800,7 @@
         0.549
       ],
       "bulb_distance_m": 1.225,
-      "bulb_strength": 1155.9,
+      "bulb_strength": 325.1,
       "hue": 0.696,
       "blackout": false,
       "fill_scale": 0.006
@@ -3812,7 +3815,7 @@
         0.55
       ],
       "bulb_distance_m": 1.227,
-      "bulb_strength": 1100.3,
+      "bulb_strength": 309.5,
       "hue": 0.699,
       "blackout": false,
       "fill_scale": 0.0
@@ -3827,7 +3830,7 @@
         0.55
       ],
       "bulb_distance_m": 1.227,
-      "bulb_strength": 1052.5,
+      "bulb_strength": 296.0,
       "hue": 0.702,
       "blackout": false,
       "fill_scale": 0.0
@@ -3842,7 +3845,7 @@
         0.55
       ],
       "bulb_distance_m": 1.227,
-      "bulb_strength": 1013.2,
+      "bulb_strength": 285.0,
       "hue": 0.705,
       "blackout": false,
       "fill_scale": 0.0
@@ -3857,7 +3860,7 @@
         0.55
       ],
       "bulb_distance_m": 1.227,
-      "bulb_strength": 981.1,
+      "bulb_strength": 275.9,
       "hue": 0.708,
       "blackout": false,
       "fill_scale": 0.0
@@ -3872,7 +3875,7 @@
         0.55
       ],
       "bulb_distance_m": 1.227,
-      "bulb_strength": 954.8,
+      "bulb_strength": 268.5,
       "hue": 0.71,
       "blackout": false,
       "fill_scale": 0.0
@@ -3887,7 +3890,7 @@
         0.55
       ],
       "bulb_distance_m": 1.227,
-      "bulb_strength": 933.3,
+      "bulb_strength": 262.5,
       "hue": 0.713,
       "blackout": false,
       "fill_scale": 0.0
@@ -3902,7 +3905,7 @@
         0.55
       ],
       "bulb_distance_m": 1.227,
-      "bulb_strength": 915.6,
+      "bulb_strength": 257.5,
       "hue": 0.716,
       "blackout": false,
       "fill_scale": 0.0
@@ -3917,7 +3920,7 @@
         0.55
       ],
       "bulb_distance_m": 1.227,
-      "bulb_strength": 901.2,
+      "bulb_strength": 253.5,
       "hue": 0.719,
       "blackout": false,
       "fill_scale": 0.0
@@ -3932,7 +3935,7 @@
         0.55
       ],
       "bulb_distance_m": 1.227,
-      "bulb_strength": 889.4,
+      "bulb_strength": 250.1,
       "hue": 0.721,
       "blackout": false,
       "fill_scale": 0.0
@@ -3947,7 +3950,7 @@
         0.55
       ],
       "bulb_distance_m": 1.227,
-      "bulb_strength": 879.7,
+      "bulb_strength": 247.4,
       "hue": 0.724,
       "blackout": false,
       "fill_scale": 0.0
@@ -3962,7 +3965,7 @@
         0.55
       ],
       "bulb_distance_m": 1.227,
-      "bulb_strength": 871.8,
+      "bulb_strength": 245.2,
       "hue": 0.727,
       "blackout": false,
       "fill_scale": 0.0
@@ -3977,7 +3980,7 @@
         0.55
       ],
       "bulb_distance_m": 1.227,
-      "bulb_strength": 865.3,
+      "bulb_strength": 243.4,
       "hue": 0.73,
       "blackout": false,
       "fill_scale": 0.0
@@ -3992,7 +3995,7 @@
         0.55
       ],
       "bulb_distance_m": 1.227,
-      "bulb_strength": 860.0,
+      "bulb_strength": 241.9,
       "hue": 0.733,
       "blackout": false,
       "fill_scale": 0.0
@@ -4007,7 +4010,7 @@
         0.55
       ],
       "bulb_distance_m": 1.227,
-      "bulb_strength": 855.7,
+      "bulb_strength": 240.7,
       "hue": 0.735,
       "blackout": false,
       "fill_scale": 0.0
@@ -4022,7 +4025,7 @@
         0.55
       ],
       "bulb_distance_m": 1.227,
-      "bulb_strength": 852.1,
+      "bulb_strength": 239.7,
       "hue": 0.738,
       "blackout": false,
       "fill_scale": 0.0
@@ -4037,7 +4040,7 @@
         0.55
       ],
       "bulb_distance_m": 1.227,
-      "bulb_strength": 849.2,
+      "bulb_strength": 238.8,
       "hue": 0.741,
       "blackout": false,
       "fill_scale": 0.0
@@ -4052,7 +4055,7 @@
         0.55
       ],
       "bulb_distance_m": 1.227,
-      "bulb_strength": 846.9,
+      "bulb_strength": 238.2,
       "hue": 0.744,
       "blackout": false,
       "fill_scale": 0.0
@@ -4067,7 +4070,7 @@
         0.55
       ],
       "bulb_distance_m": 1.225,
-      "bulb_strength": 841.8,
+      "bulb_strength": 236.8,
       "hue": 0.747,
       "blackout": false,
       "fill_scale": 0.0
@@ -4082,7 +4085,7 @@
         0.547
       ],
       "bulb_distance_m": 1.209,
-      "bulb_strength": 819.6,
+      "bulb_strength": 230.5,
       "hue": 0.749,
       "blackout": false,
       "fill_scale": 0.0
@@ -4097,7 +4100,7 @@
         0.541
       ],
       "bulb_distance_m": 1.182,
-      "bulb_strength": 2982.5,
+      "bulb_strength": 838.8,
       "hue": 0.752,
       "blackout": false,
       "fill_scale": 0.0
@@ -4112,7 +4115,7 @@
         0.533
       ],
       "bulb_distance_m": 1.145,
-      "bulb_strength": 2423.5,
+      "bulb_strength": 681.6,
       "hue": 0.755,
       "blackout": false,
       "fill_scale": 0.0
@@ -4127,7 +4130,7 @@
         0.523
       ],
       "bulb_distance_m": 1.102,
-      "bulb_strength": 1959.1,
+      "bulb_strength": 551.0,
       "hue": 0.758,
       "blackout": false,
       "fill_scale": 0.0
@@ -4142,7 +4145,7 @@
         0.512
       ],
       "bulb_distance_m": 1.056,
-      "bulb_strength": 1584.7,
+      "bulb_strength": 445.7,
       "hue": 0.76,
       "blackout": false,
       "fill_scale": 0.0
@@ -4157,7 +4160,7 @@
         0.499
       ],
       "bulb_distance_m": 1.011,
-      "bulb_strength": 1292.0,
+      "bulb_strength": 363.4,
       "hue": 0.763,
       "blackout": false,
       "fill_scale": 0.0
@@ -4172,7 +4175,7 @@
         0.485
       ],
       "bulb_distance_m": 0.971,
-      "bulb_strength": 1070.8,
+      "bulb_strength": 301.2,
       "hue": 0.766,
       "blackout": false,
       "fill_scale": 0.0
@@ -4187,7 +4190,7 @@
         0.47
       ],
       "bulb_distance_m": 0.94,
-      "bulb_strength": 910.6,
+      "bulb_strength": 256.1,
       "hue": 0.769,
       "blackout": false,
       "fill_scale": 0.0
@@ -4202,7 +4205,7 @@
         0.455
       ],
       "bulb_distance_m": 0.921,
-      "bulb_strength": 801.2,
+      "bulb_strength": 225.3,
       "hue": 0.772,
       "blackout": false,
       "fill_scale": 0.0
@@ -4217,7 +4220,7 @@
         0.44
       ],
       "bulb_distance_m": 0.916,
-      "bulb_strength": 733.4,
+      "bulb_strength": 206.3,
       "hue": 0.774,
       "blackout": false,
       "fill_scale": 0.0
@@ -4232,7 +4235,7 @@
         0.425
       ],
       "bulb_distance_m": 0.925,
-      "bulb_strength": 698.7,
+      "bulb_strength": 196.5,
       "hue": 0.777,
       "blackout": false,
       "fill_scale": 0.0
@@ -4247,7 +4250,7 @@
         0.41
       ],
       "bulb_distance_m": 0.947,
-      "bulb_strength": 689.4,
+      "bulb_strength": 193.9,
       "hue": 0.78,
       "blackout": false,
       "fill_scale": 0.0
@@ -4262,7 +4265,7 @@
         0.397
       ],
       "bulb_distance_m": 0.978,
-      "bulb_strength": 698.6,
+      "bulb_strength": 196.5,
       "hue": 0.783,
       "blackout": false,
       "fill_scale": 0.0
@@ -4277,7 +4280,7 @@
         0.384
       ],
       "bulb_distance_m": 1.015,
-      "bulb_strength": 719.7,
+      "bulb_strength": 202.4,
       "hue": 0.786,
       "blackout": false,
       "fill_scale": 0.0
@@ -4292,7 +4295,7 @@
         0.373
       ],
       "bulb_distance_m": 1.054,
-      "bulb_strength": 746.7,
+      "bulb_strength": 210.0,
       "hue": 0.788,
       "blackout": false,
       "fill_scale": 0.0
@@ -4307,7 +4310,7 @@
         0.364
       ],
       "bulb_distance_m": 1.09,
-      "bulb_strength": 773.8,
+      "bulb_strength": 217.6,
       "hue": 0.791,
       "blackout": false,
       "fill_scale": 0.0
@@ -4322,7 +4325,7 @@
         0.357
       ],
       "bulb_distance_m": 1.12,
-      "bulb_strength": 795.6,
+      "bulb_strength": 223.8,
       "hue": 0.794,
       "blackout": false,
       "fill_scale": 0.0
@@ -4337,7 +4340,7 @@
         0.352
       ],
       "bulb_distance_m": 1.141,
-      "bulb_strength": 807.4,
+      "bulb_strength": 227.1,
       "hue": 0.797,
       "blackout": false,
       "fill_scale": 0.0
@@ -4352,7 +4355,7 @@
         0.35
       ],
       "bulb_distance_m": 1.151,
-      "bulb_strength": 805.3,
+      "bulb_strength": 226.5,
       "hue": 0.799,
       "blackout": false,
       "fill_scale": 0.0
@@ -4367,7 +4370,7 @@
         0.35
       ],
       "bulb_distance_m": 1.151,
-      "bulb_strength": 793.1,
+      "bulb_strength": 223.1,
       "hue": 0.802,
       "blackout": false,
       "fill_scale": 0.0
@@ -4382,7 +4385,7 @@
         0.35
       ],
       "bulb_distance_m": 1.151,
-      "bulb_strength": 782.7,
+      "bulb_strength": 220.1,
       "hue": 0.805,
       "blackout": false,
       "fill_scale": 0.0
@@ -4397,7 +4400,7 @@
         0.35
       ],
       "bulb_distance_m": 1.151,
-      "bulb_strength": 774.3,
+      "bulb_strength": 217.8,
       "hue": 0.808,
       "blackout": false,
       "fill_scale": 0.0
@@ -4412,7 +4415,7 @@
         0.35
       ],
       "bulb_distance_m": 1.151,
-      "bulb_strength": 767.4,
+      "bulb_strength": 215.8,
       "hue": 0.811,
       "blackout": false,
       "fill_scale": 0.0
@@ -4427,7 +4430,7 @@
         0.35
       ],
       "bulb_distance_m": 1.151,
-      "bulb_strength": 761.7,
+      "bulb_strength": 214.2,
       "hue": 0.813,
       "blackout": false,
       "fill_scale": 0.0
@@ -4442,7 +4445,7 @@
         0.35
       ],
       "bulb_distance_m": 1.151,
-      "bulb_strength": 757.0,
+      "bulb_strength": 212.9,
       "hue": 0.816,
       "blackout": false,
       "fill_scale": 0.0
@@ -4457,7 +4460,7 @@
         0.35
       ],
       "bulb_distance_m": 1.151,
-      "bulb_strength": 753.2,
+      "bulb_strength": 211.9,
       "hue": 0.819,
       "blackout": false,
       "fill_scale": 0.0
@@ -4472,7 +4475,7 @@
         0.35
       ],
       "bulb_distance_m": 1.151,
-      "bulb_strength": 750.1,
+      "bulb_strength": 211.0,
       "hue": 0.822,
       "blackout": false,
       "fill_scale": 0.0
@@ -4487,7 +4490,7 @@
         0.35
       ],
       "bulb_distance_m": 1.151,
-      "bulb_strength": 747.6,
+      "bulb_strength": 210.3,
       "hue": 0.825,
       "blackout": false,
       "fill_scale": 0.0
@@ -4502,7 +4505,7 @@
         0.35
       ],
       "bulb_distance_m": 1.151,
-      "bulb_strength": 745.5,
+      "bulb_strength": 209.7,
       "hue": 0.827,
       "blackout": false,
       "fill_scale": 0.0
@@ -4517,7 +4520,7 @@
         0.35
       ],
       "bulb_distance_m": 1.151,
-      "bulb_strength": 743.8,
+      "bulb_strength": 209.2,
       "hue": 0.83,
       "blackout": false,
       "fill_scale": 0.0
@@ -4532,7 +4535,7 @@
         0.35
       ],
       "bulb_distance_m": 1.151,
-      "bulb_strength": 742.4,
+      "bulb_strength": 208.8,
       "hue": 0.833,
       "blackout": false,
       "fill_scale": 0.0
@@ -4547,7 +4550,7 @@
         0.35
       ],
       "bulb_distance_m": 1.151,
-      "bulb_strength": 2815.8,
+      "bulb_strength": 792.0,
       "hue": 0.836,
       "blackout": false,
       "fill_scale": 0.0
@@ -4562,7 +4565,7 @@
         0.35
       ],
       "bulb_distance_m": 1.151,
-      "bulb_strength": 2438.5,
+      "bulb_strength": 685.8,
       "hue": 0.838,
       "blackout": false,
       "fill_scale": 0.0
@@ -4577,7 +4580,7 @@
         0.35
       ],
       "bulb_distance_m": 1.151,
-      "bulb_strength": 2129.6,
+      "bulb_strength": 599.0,
       "hue": 0.841,
       "blackout": false,
       "fill_scale": 0.0
@@ -4592,7 +4595,7 @@
         0.35
       ],
       "bulb_distance_m": 1.151,
-      "bulb_strength": 1876.8,
+      "bulb_strength": 527.9,
       "hue": 0.844,
       "blackout": false,
       "fill_scale": 0.0
@@ -4607,7 +4610,7 @@
         0.351
       ],
       "bulb_distance_m": 1.148,
-      "bulb_strength": 1661.1,
+      "bulb_strength": 467.2,
       "hue": 0.847,
       "blackout": false,
       "fill_scale": 0.003
@@ -4622,7 +4625,7 @@
         0.357
       ],
       "bulb_distance_m": 1.132,
-      "bulb_strength": 1451.9,
+      "bulb_strength": 408.4,
       "hue": 0.85,
       "blackout": false,
       "fill_scale": 0.016
@@ -4637,7 +4640,7 @@
         0.367
       ],
       "bulb_distance_m": 1.105,
-      "bulb_strength": 1255.1,
+      "bulb_strength": 353.0,
       "hue": 0.852,
       "blackout": false,
       "fill_scale": 0.039
@@ -4652,7 +4655,7 @@
         0.381
       ],
       "bulb_distance_m": 1.069,
-      "bulb_strength": 64.6,
+      "bulb_strength": 18.2,
       "hue": 0.855,
       "blackout": true,
       "fill_scale": 0.072
@@ -4667,7 +4670,7 @@
         0.399
       ],
       "bulb_distance_m": 1.027,
-      "bulb_strength": 55.2,
+      "bulb_strength": 15.5,
       "hue": 0.858,
       "blackout": true,
       "fill_scale": 0.112
@@ -4682,7 +4685,7 @@
         0.419
       ],
       "bulb_distance_m": 0.984,
-      "bulb_strength": 43.8,
+      "bulb_strength": 12.3,
       "hue": 0.861,
       "blackout": true,
       "fill_scale": 0.159
@@ -4697,7 +4700,7 @@
         0.442
       ],
       "bulb_distance_m": 0.941,
-      "bulb_strength": 34.3,
+      "bulb_strength": 9.7,
       "hue": 0.864,
       "blackout": true,
       "fill_scale": 0.211
@@ -4712,7 +4715,7 @@
         0.467
       ],
       "bulb_distance_m": 0.905,
-      "bulb_strength": 26.8,
+      "bulb_strength": 7.5,
       "hue": 0.866,
       "blackout": true,
       "fill_scale": 0.267
@@ -4727,7 +4730,7 @@
         0.493
       ],
       "bulb_distance_m": 0.878,
-      "bulb_strength": 21.0,
+      "bulb_strength": 5.9,
       "hue": 0.869,
       "blackout": true,
       "fill_scale": 0.326
@@ -4742,7 +4745,7 @@
         0.519
       ],
       "bulb_distance_m": 0.862,
-      "bulb_strength": 16.6,
+      "bulb_strength": 4.7,
       "hue": 0.872,
       "blackout": true,
       "fill_scale": 0.386
@@ -4757,7 +4760,7 @@
         0.545
       ],
       "bulb_distance_m": 0.861,
-      "bulb_strength": 13.2,
+      "bulb_strength": 3.7,
       "hue": 0.875,
       "blackout": true,
       "fill_scale": 0.447
@@ -4772,7 +4775,7 @@
         0.572
       ],
       "bulb_distance_m": 0.874,
-      "bulb_strength": 172.3,
+      "bulb_strength": 48.5,
       "hue": 0.877,
       "blackout": false,
       "fill_scale": 0.507
@@ -4787,7 +4790,7 @@
         0.597
       ],
       "bulb_distance_m": 0.898,
-      "bulb_strength": 130.9,
+      "bulb_strength": 36.8,
       "hue": 0.88,
       "blackout": false,
       "fill_scale": 0.564
@@ -4802,7 +4805,7 @@
         0.62
       ],
       "bulb_distance_m": 0.931,
-      "bulb_strength": 131.6,
+      "bulb_strength": 37.0,
       "hue": 0.883,
       "blackout": false,
       "fill_scale": 0.618
@@ -4817,7 +4820,7 @@
         0.642
       ],
       "bulb_distance_m": 0.969,
-      "bulb_strength": 140.3,
+      "bulb_strength": 39.5,
       "hue": 0.886,
       "blackout": false,
       "fill_scale": 0.667
@@ -4832,7 +4835,7 @@
         0.661
       ],
       "bulb_distance_m": 1.007,
-      "bulb_strength": 149.8,
+      "bulb_strength": 42.1,
       "hue": 0.889,
       "blackout": false,
       "fill_scale": 0.711
@@ -4847,7 +4850,7 @@
         0.677
       ],
       "bulb_distance_m": 1.043,
-      "bulb_strength": 158.8,
+      "bulb_strength": 44.7,
       "hue": 0.891,
       "blackout": false,
       "fill_scale": 0.747
@@ -4862,7 +4865,7 @@
         0.689
       ],
       "bulb_distance_m": 1.072,
-      "bulb_strength": 166.4,
+      "bulb_strength": 46.8,
       "hue": 0.894,
       "blackout": false,
       "fill_scale": 0.775
@@ -4877,7 +4880,7 @@
         0.697
       ],
       "bulb_distance_m": 1.092,
-      "bulb_strength": 171.3,
+      "bulb_strength": 48.2,
       "hue": 0.897,
       "blackout": false,
       "fill_scale": 0.793
@@ -4892,7 +4895,7 @@
         0.7
       ],
       "bulb_distance_m": 1.1,
-      "bulb_strength": 172.8,
+      "bulb_strength": 48.6,
       "hue": 0.9,
       "blackout": false,
       "fill_scale": 0.8
@@ -4907,7 +4910,7 @@
         0.7
       ],
       "bulb_distance_m": 1.1,
-      "bulb_strength": 171.9,
+      "bulb_strength": 48.4,
       "hue": 0.903,
       "blackout": false,
       "fill_scale": 0.8
@@ -4922,7 +4925,7 @@
         0.7
       ],
       "bulb_distance_m": 1.1,
-      "bulb_strength": 171.2,
+      "bulb_strength": 48.2,
       "hue": 0.905,
       "blackout": false,
       "fill_scale": 0.8
@@ -4937,7 +4940,7 @@
         0.7
       ],
       "bulb_distance_m": 1.1,
-      "bulb_strength": 170.7,
+      "bulb_strength": 48.0,
       "hue": 0.908,
       "blackout": false,
       "fill_scale": 0.8
@@ -4952,7 +4955,7 @@
         0.7
       ],
       "bulb_distance_m": 1.1,
-      "bulb_strength": 170.2,
+      "bulb_strength": 47.9,
       "hue": 0.911,
       "blackout": false,
       "fill_scale": 0.8
@@ -4967,7 +4970,7 @@
         0.7
       ],
       "bulb_distance_m": 1.1,
-      "bulb_strength": 169.8,
+      "bulb_strength": 47.8,
       "hue": 0.914,
       "blackout": false,
       "fill_scale": 0.8
@@ -4982,7 +4985,7 @@
         0.7
       ],
       "bulb_distance_m": 1.1,
-      "bulb_strength": 169.5,
+      "bulb_strength": 47.7,
       "hue": 0.916,
       "blackout": false,
       "fill_scale": 0.8
@@ -4997,7 +5000,7 @@
         0.7
       ],
       "bulb_distance_m": 1.1,
-      "bulb_strength": 640.0,
+      "bulb_strength": 180.0,
       "hue": 0.919,
       "blackout": false,
       "fill_scale": 0.8
@@ -5012,7 +5015,7 @@
         0.7
       ],
       "bulb_distance_m": 1.1,
-      "bulb_strength": 554.4,
+      "bulb_strength": 155.9,
       "hue": 0.922,
       "blackout": false,
       "fill_scale": 0.8
@@ -5027,7 +5030,7 @@
         0.7
       ],
       "bulb_distance_m": 1.1,
-      "bulb_strength": 484.3,
+      "bulb_strength": 136.2,
       "hue": 0.925,
       "blackout": false,
       "fill_scale": 0.8
@@ -5042,7 +5045,7 @@
         0.7
       ],
       "bulb_distance_m": 1.1,
-      "bulb_strength": 426.9,
+      "bulb_strength": 120.1,
       "hue": 0.928,
       "blackout": false,
       "fill_scale": 0.8
@@ -5057,7 +5060,7 @@
         0.7
       ],
       "bulb_distance_m": 1.1,
-      "bulb_strength": 380.0,
+      "bulb_strength": 106.9,
       "hue": 0.93,
       "blackout": false,
       "fill_scale": 0.8
@@ -5072,7 +5075,7 @@
         0.7
       ],
       "bulb_distance_m": 1.1,
-      "bulb_strength": 341.5,
+      "bulb_strength": 96.0,
       "hue": 0.933,
       "blackout": false,
       "fill_scale": 0.8
@@ -5087,7 +5090,7 @@
         0.7
       ],
       "bulb_distance_m": 1.1,
-      "bulb_strength": 310.0,
+      "bulb_strength": 87.2,
       "hue": 0.936,
       "blackout": false,
       "fill_scale": 0.8
@@ -5102,7 +5105,7 @@
         0.7
       ],
       "bulb_distance_m": 1.1,
-      "bulb_strength": 284.3,
+      "bulb_strength": 80.0,
       "hue": 0.939,
       "blackout": false,
       "fill_scale": 0.8
@@ -5117,7 +5120,7 @@
         0.7
       ],
       "bulb_distance_m": 1.1,
-      "bulb_strength": 263.2,
+      "bulb_strength": 74.0,
       "hue": 0.942,
       "blackout": false,
       "fill_scale": 0.8
@@ -5132,7 +5135,7 @@
         0.7
       ],
       "bulb_distance_m": 1.1,
-      "bulb_strength": 245.9,
+      "bulb_strength": 69.2,
       "hue": 0.944,
       "blackout": false,
       "fill_scale": 0.8
@@ -5147,7 +5150,7 @@
         0.698
       ],
       "bulb_distance_m": 1.101,
-      "bulb_strength": 232.3,
+      "bulb_strength": 65.3,
       "hue": 0.947,
       "blackout": false,
       "fill_scale": 0.801
@@ -5162,7 +5165,7 @@
         0.687
       ],
       "bulb_distance_m": 1.107,
-      "bulb_strength": 223.0,
+      "bulb_strength": 62.7,
       "hue": 0.95,
       "blackout": false,
       "fill_scale": 0.804
@@ -5177,7 +5180,7 @@
         0.668
       ],
       "bulb_distance_m": 1.119,
-      "bulb_strength": 218.2,
+      "bulb_strength": 61.4,
       "hue": 0.953,
       "blackout": false,
       "fill_scale": 0.811
@@ -5192,7 +5195,7 @@
         0.643
       ],
       "bulb_distance_m": 1.141,
-      "bulb_strength": 218.4,
+      "bulb_strength": 61.4,
       "hue": 0.955,
       "blackout": false,
       "fill_scale": 0.819
@@ -5207,7 +5210,7 @@
         0.613
       ],
       "bulb_distance_m": 1.175,
-      "bulb_strength": 224.5,
+      "bulb_strength": 63.1,
       "hue": 0.958,
       "blackout": false,
       "fill_scale": 0.829
@@ -5222,7 +5225,7 @@
         0.577
       ],
       "bulb_distance_m": 1.224,
-      "bulb_strength": 237.2,
+      "bulb_strength": 66.7,
       "hue": 0.961,
       "blackout": false,
       "fill_scale": 0.841
@@ -5237,7 +5240,7 @@
         0.538
       ],
       "bulb_distance_m": 1.289,
-      "bulb_strength": 257.1,
+      "bulb_strength": 72.3,
       "hue": 0.964,
       "blackout": false,
       "fill_scale": 0.854
@@ -5252,7 +5255,7 @@
         0.495
       ],
       "bulb_distance_m": 1.369,
-      "bulb_strength": 284.7,
+      "bulb_strength": 80.1,
       "hue": 0.967,
       "blackout": false,
       "fill_scale": 0.868
@@ -5267,7 +5270,7 @@
         0.451
       ],
       "bulb_distance_m": 1.463,
-      "bulb_strength": 319.9,
+      "bulb_strength": 90.0,
       "hue": 0.969,
       "blackout": false,
       "fill_scale": 0.883
@@ -5282,7 +5285,7 @@
         0.406
       ],
       "bulb_distance_m": 1.567,
-      "bulb_strength": 362.5,
+      "bulb_strength": 102.0,
       "hue": 0.972,
       "blackout": false,
       "fill_scale": 0.898
@@ -5297,7 +5300,7 @@
         0.36
       ],
       "bulb_distance_m": 1.679,
-      "bulb_strength": 411.6,
+      "bulb_strength": 115.7,
       "hue": 0.975,
       "blackout": false,
       "fill_scale": 0.913
@@ -5312,7 +5315,7 @@
         0.316
       ],
       "bulb_distance_m": 1.794,
-      "bulb_strength": 465.8,
+      "bulb_strength": 131.0,
       "hue": 0.978,
       "blackout": false,
       "fill_scale": 0.928
@@ -5327,7 +5330,7 @@
         0.273
       ],
       "bulb_distance_m": 1.909,
-      "bulb_strength": 523.6,
+      "bulb_strength": 147.3,
       "hue": 0.981,
       "blackout": false,
       "fill_scale": 0.942
@@ -5342,7 +5345,7 @@
         0.233
       ],
       "bulb_distance_m": 2.02,
-      "bulb_strength": 582.8,
+      "bulb_strength": 163.9,
       "hue": 0.983,
       "blackout": false,
       "fill_scale": 0.956
@@ -5357,7 +5360,7 @@
         0.196
       ],
       "bulb_distance_m": 2.123,
-      "bulb_strength": 640.6,
+      "bulb_strength": 180.2,
       "hue": 0.986,
       "blackout": false,
       "fill_scale": 0.968
@@ -5372,7 +5375,7 @@
         0.164
       ],
       "bulb_distance_m": 2.215,
-      "bulb_strength": 694.4,
+      "bulb_strength": 195.3,
       "hue": 0.989,
       "blackout": false,
       "fill_scale": 0.979
@@ -5387,7 +5390,7 @@
         0.137
       ],
       "bulb_distance_m": 2.292,
-      "bulb_strength": 741.1,
+      "bulb_strength": 208.4,
       "hue": 0.992,
       "blackout": false,
       "fill_scale": 0.988
@@ -5402,7 +5405,7 @@
         0.117
       ],
       "bulb_distance_m": 2.351,
-      "bulb_strength": 777.6,
+      "bulb_strength": 218.7,
       "hue": 0.994,
       "blackout": false,
       "fill_scale": 0.994
@@ -5417,7 +5420,7 @@
         0.104
       ],
       "bulb_distance_m": 2.389,
-      "bulb_strength": 800.8,
+      "bulb_strength": 225.2,
       "hue": 0.997,
       "blackout": false,
       "fill_scale": 0.999
@@ -5432,7 +5435,7 @@
         0.1
       ],
       "bulb_distance_m": 2.402,
-      "bulb_strength": 808.2,
+      "bulb_strength": 227.3,
       "hue": 0.0,
       "blackout": false,
       "fill_scale": 1.0
