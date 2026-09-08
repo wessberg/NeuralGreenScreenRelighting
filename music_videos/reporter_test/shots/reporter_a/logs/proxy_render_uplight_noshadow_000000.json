@@ -1,0 +1,64 @@
+{
+  "shot": "reporter_a",
+  "frame": 0,
+  "mode": "uplight_noshadow",
+  "preview": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\relight\\proxy_render\\000000_uplight_noshadow_preview.png",
+  "blender": "5.2.1 LTS",
+  "proxy": {
+    "verts": 51932,
+    "faces": 51932,
+    "extent_m": [
+      0.527,
+      0.6836,
+      0.5331
+    ]
+  },
+  "subsurface": {
+    "method": "RANDOM_WALK_SKIN",
+    "Subsurface Weight": 0.35,
+    "Subsurface Radius": [
+      0.00367,
+      0.0013700000000000001,
+      0.00068
+    ],
+    "Subsurface Scale": 1.0
+  },
+  "jensen_2001_skin1_radius_mm": [
+    3.67,
+    1.37,
+    0.68
+  ],
+  "passes": {
+    "use_pass_combined": true,
+    "use_pass_z": true,
+    "use_pass_normal": true,
+    "use_pass_diffuse_direct": true,
+    "use_pass_diffuse_indirect": true,
+    "use_pass_diffuse_color": true,
+    "use_pass_glossy_direct": true,
+    "use_pass_glossy_indirect": true,
+    "use_pass_glossy_color": true,
+    "use_pass_subsurface_direct": true,
+    "use_pass_subsurface_indirect": true,
+    "use_pass_subsurface_color": true,
+    "use_pass_shadow_catcher": true
+  },
+  "lighting": [
+    {
+      "test": "uplight",
+      "location": [
+        0.04255213402211666,
+        -0.35127269476652145,
+        1.2356146097183227
+      ],
+      "size_m": 0.12,
+      "emission_strength": 120.0
+    }
+  ],
+  "samples": 96,
+  "resolution": [
+    960,
+    540
+  ],
+  "output": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\relight\\proxy_render\\000000_uplight_noshadow.exr"
+}

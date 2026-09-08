@@ -234,31 +234,39 @@ def build(alpha, depth, cal, fx_small, cam_h, dist, step, thickness, smooth,
     r, c = np.where(ok)
     a, b = idx[r, c], idx[r, c + 1]
     cc, dd = idx[r + 1, c + 1], idx[r + 1, c]
-    quads.append(np.stack([a, b, cc, dd], -1))                       # front, facing -Y
-    quads.append(np.stack([dd, cc, b, a], -1) + n_front)             # back, reversed winding
+    # WINDING. Columns increase world X and rows DECREASE world Z (Zw = cam_h - (row-...)*...),
+    # so traversing a->b->cc->dd goes +X then -Z, whose cross product is +Y -- AWAY from the
+    # camera. The front cap was therefore back-facing and the back cap inside-out, which leaves
+    # a RANDOM_WALK_SKIN volume inverted. Reversed so the front faces -Y, toward the camera.
+    quads.append(np.stack([dd, cc, b, a], -1))                       # front, facing -Y
+    quads.append(np.stack([a, b, cc, dd], -1) + n_front)             # back, opposite winding
 
-    # Stitch the silhouette: every grid edge with the matte on one side only becomes a side wall.
+    # Stitch the silhouette. A wall must join TWO ADJACENT boundary vertices front-to-back, so it
+    # needs four distinct indices. The previous version emitted [i, i+n, i+n, i] -- two distinct
+    # vertices and therefore zero area, which blocks nothing however thick the shell is. The
+    # review measured 96 such degenerate walls and 184 unpaired boundary edges on a test case.
+    #
+    # A grid edge is on the silhouette when exactly ONE of the two cells sharing it produced a
+    # quad. Both its endpoints are inside, so the wall is a real quad.
+    okp = np.zeros((h + 1, w + 1), bool)
+    okp[1:h, 1:w] = ok
     walls = []
-    for (dr, dc) in ((0, 1), (1, 0)):
-        m0 = Ms[:h - dr, :w - dc]
-        m1 = Ms[dr:, dc:]
-        rr, ccc = np.where(m0 ^ m1)
-        if not len(rr):
-            continue
-        i0 = idx[rr, ccc]
-        i1 = idx[rr + dr, ccc + dc]
-        # Whichever side is inside supplies both vertices; the wall joins front to back there.
-        inside = np.where(i0 >= 0, i0, i1)
-        other = np.where(i0 >= 0, i1, i0)
-        keep = other < 0
-        inside = inside[keep]
-        if not len(inside):
-            continue
-        # A degenerate one-vertex-wide wall still blocks rays; it is a zero-area quad only if
-        # the two ends coincide, which they cannot, being separated by `thickness` in Y.
-        walls.append(np.stack([inside, inside + n_front,
-                               inside + n_front, inside], -1))
+    # Horizontal edges (r,c)-(r,c+1): shared by the cells above and below.
+    both = Ms[:, :-1] & Ms[:, 1:]
+    bnd = both & (okp[:h, 1:w] ^ okp[1:h + 1, 1:w])
+    rr, ccc = np.where(bnd)
+    if len(rr):
+        i0, i1 = idx[rr, ccc], idx[rr, ccc + 1]
+        walls.append(np.stack([i0, i1, i1 + n_front, i0 + n_front], -1))
+    # Vertical edges (r,c)-(r+1,c): shared by the cells left and right.
+    both = Ms[:-1, :] & Ms[1:, :]
+    bnd = both & (okp[1:h, :w] ^ okp[1:h, 1:w + 1])
+    rr, ccc = np.where(bnd)
+    if len(rr):
+        i0, i1 = idx[rr, ccc], idx[rr + 1, ccc]
+        walls.append(np.stack([i1, i0, i0 + n_front, i1 + n_front], -1))
     faces = np.concatenate(quads + ([np.concatenate(walls, 0)] if walls else []), 0)
+    n_walls = int(sum(len(x) for x in walls))
     in_matte = matte[sub][Ms]
     ref = front[in_matte, 1] if in_matte.any() else front[:, 1]
     p1, p99 = np.percentile(ref, [1, 99])
@@ -269,7 +277,7 @@ def build(alpha, depth, cal, fx_small, cam_h, dist, step, thickness, smooth,
             'depth_relief_m': float(front[:, 1].max() - front[:, 1].min()),
             'depth_relief_p1_99_m': float(p99 - p1),
             'relief_scale': float(s_rel), 'face_depth_measured_m': float(measured),
-            'detail_p95_m': detail_amp}
+            'detail_p95_m': detail_amp, 'n_walls': n_walls}
 
 
 def main():
@@ -346,7 +354,8 @@ def main():
                       'depth_relief_p1_99_m': round(mesh['depth_relief_p1_99_m'], 4),
                       'relief_scale': round(mesh['relief_scale'], 4),
                       'face_depth_before_scale_m': round(mesh['face_depth_measured_m'], 4),
-                      'normal_detail_p95_m': round(mesh['detail_p95_m'], 5)})
+                      'normal_detail_p95_m': round(mesh['detail_p95_m'], 5),
+                      'side_wall_quads': mesh['n_walls']})
         if i % 25 == 0:
             print(json.dumps(stats[-1]), flush=True)
 

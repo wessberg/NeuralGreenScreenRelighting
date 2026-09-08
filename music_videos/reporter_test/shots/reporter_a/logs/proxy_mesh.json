@@ -1,6 +1,6 @@
 {
   "shot": "reporter_a",
-  "frames": 3,
+  "frames": 1,
   "depth_calibration": {
     "a": 0.03680176625959877,
     "b": 0.44142250103929004,
@@ -17,20 +17,20 @@
   "face_surface_depth_target_m": 0.085,
   "relief_scale_applied": 0.4547803712501262,
   "result": {
-    "mean_depth_relief_p1_99_m": 0.26086666666666664,
-    "mean_depth_relief_m": 0.3816,
+    "mean_depth_relief_p1_99_m": 0.2604,
+    "mean_depth_relief_m": 0.3836,
     "mean_extent_m": [
-      0.5257,
-      0.3816,
-      0.5317
+      0.527,
+      0.3836,
+      0.5331
     ],
-    "verts_per_frame": 51970
+    "verts_per_frame": 51932
   },
   "per_frame": [
     {
       "frame": 0,
       "verts": 51932,
-      "faces": 51728,
+      "faces": 51932,
       "n_front": 25966,
       "extent_m": [
         0.527,
@@ -41,39 +41,8 @@
       "depth_relief_p1_99_m": 0.2604,
       "relief_scale": 0.4548,
       "face_depth_before_scale_m": 0.1869,
-      "normal_detail_p95_m": 0.03221
-    },
-    {
-      "frame": 1,
-      "verts": 51964,
-      "faces": 51760,
-      "n_front": 25982,
-      "extent_m": [
-        0.5248,
-        0.3805,
-        0.5298
-      ],
-      "depth_relief_m": 0.3805,
-      "depth_relief_p1_99_m": 0.2606,
-      "relief_scale": 0.4548,
-      "face_depth_before_scale_m": 0.1942,
-      "normal_detail_p95_m": 0.03226
-    },
-    {
-      "frame": 2,
-      "verts": 52016,
-      "faces": 51812,
-      "n_front": 26008,
-      "extent_m": [
-        0.5252,
-        0.3807,
-        0.5323
-      ],
-      "depth_relief_m": 0.3807,
-      "depth_relief_p1_99_m": 0.2616,
-      "relief_scale": 0.4548,
-      "face_depth_before_scale_m": 0.1934,
-      "normal_detail_p95_m": 0.03232
+      "normal_detail_p95_m": 0.03221,
+      "side_wall_quads": 860
     }
   ]
 }

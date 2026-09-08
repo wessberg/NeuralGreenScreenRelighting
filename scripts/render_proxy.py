@@ -37,6 +37,10 @@ ap.add_argument('--test', default='', choices=('', 'uplight', 'toplight', 'sidel
                 help='controlled light instead of the environment, to prove occlusion')
 ap.add_argument('--width', type=int, default=960)
 ap.add_argument('--out', default='')
+ap.add_argument('--no-cast-shadow', action='store_true',
+                help='CONTROL render: the proxy still receives light and shades normally, but '
+                     'casts no shadow. The difference against a normal render is the pure '
+                     'occlusion contribution, which is the only thing that proves self-shadowing')
 args = ap.parse_args(argv)
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -92,6 +96,11 @@ scn.collection.objects.link(proxy)
 # quad a visible facet in the shadow terminator.
 with bpy.context.temp_override(object=proxy, selected_editable_objects=[proxy]):
     bpy.ops.object.shade_smooth()
+if args.no_cast_shadow:
+    # Shading is unchanged; only the shadow ray contribution disappears. Subtracting this from a
+    # normal render isolates occlusion from dot(n,l), which a threshold on the image alone
+    # cannot do -- a shading-only hemisphere passes a naive centroid test with no shadows at all.
+    proxy.visible_shadow = False
 
 # --- skin: subsurface by literature ------------------------------------------------------
 # Jensen et al. 2001 skin1 scattering radii, mm -> metres. No released model estimates
@@ -219,6 +228,7 @@ scn.render.film_transparent = True
 out_dir = Path(args.out) if args.out else (shot.relight / 'proxy_render')
 out_dir.mkdir(parents=True, exist_ok=True)
 tag = args.test or 'environment'
+tag = tag + ('_noshadow' if args.no_cast_shadow else '')
 scn.render.filepath = str(out_dir / ('%06d_%s' % (args.frame, tag)))
 bpy.ops.render.render(write_still=True)
 

@@ -97,15 +97,22 @@ def dominant_light(E, normals, mask):
         return np.array([0.0, -1.0, 0.0], np.float32), 0.0
     lum = (E[mask] @ LUMA).astype(np.float32)
     n = normals[mask]
-    v = (n * lum[:, None]).sum(0)
+    # The sample is the camera-VISIBLE surface, not a uniform sphere, so its mean normal already
+    # points at the camera. Taking sum(E * n) raw therefore reports a frontal light even under
+    # perfectly flat ambient -- the review measured concentration 0.678 for a constant field,
+    # which invented a frontal highlight out of nothing. Subtracting the mean-weighted normal
+    # removes the sampling bias and leaves only the part of E that actually VARIES with
+    # orientation, which is what a directional source produces.
+    mean_n = n.mean(0)
+    v = ((lum[:, None] * (n - mean_n))).sum(0)
     mag = float(np.linalg.norm(v))
     if mag < 1e-8:
         return np.array([0.0, -1.0, 0.0], np.float32), 0.0
     d = v / mag
-    # Directionality: how concentrated the field is. A flat ambient gives ~0, a single hard
-    # source ~1. Used to fade specular out under diffuse light, where it would not be visible.
+    # Directionality: the anisotropic energy as a fraction of the total. A flat ambient now gives
+    # ~0 because the bias is gone; a single hard source stays high.
     conc = float(mag / max(lum.sum(), 1e-8))
-    return d.astype(np.float32), conc
+    return d.astype(np.float32), min(conc, 1.0)
 
 
 def specular_term(normals, light_dir, view_dir, roughness, ndl_gate):
@@ -135,7 +142,7 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     add_shot_argument(ap)
     ap.add_argument('--render-dir', default='',
-                    help='EXR irradiance renders; default relight/ratio_render')
+                    help='EXR irradiance renders; default composite/ratio_render')
     ap.add_argument('--name', default='ratio')
     ap.add_argument('--max-stops', type=float, default=4.0,
                     help='upper clamp on the ratio, in stops. The lower end is NOT clamped: a '
@@ -158,7 +165,9 @@ def main():
     args = ap.parse_args()
     shot = from_args(args)
 
-    rdir = Path(args.render_dir) if args.render_dir else (shot.relight / 'ratio_render')
+    # stress_proxy.py --ratio --name X writes to composite/X, so that is where this looks by
+    # default. They previously disagreed and the documented command found nothing.
+    rdir = Path(args.render_dir) if args.render_dir else (shot.composite / 'ratio_render')
     renders = sorted(rdir.glob('*.exr'))
     if not renders:
         raise SystemExit('No irradiance renders in %s. Run stress_proxy.py --ratio first.' % rdir)
@@ -176,8 +185,14 @@ def main():
     elif tuple(shot.resolution) != (3840, 2160):
         out_res = tuple(shot.resolution)
 
+    # The anchor frame is chosen, not just the first one on disk: an atypically dark or bright
+    # opening frame would otherwise set the exposure for the whole sequence. --anchor-frame was
+    # parsed and never read until the review pointed it out.
+    anchor_idx = min(max(args.anchor_frame, 0), len(renders) - 1)
+    order = [renders[anchor_idx]] + [r for i, r in enumerate(renders) if i != anchor_idx]
+
     anchor, stats = None, []
-    for r in renders:
+    for r in order:
         n = int(r.stem)
         fi = pf[n]['shot_frame'] if n in pf else n
 
@@ -205,9 +220,15 @@ def main():
         nrm_full /= np.maximum(np.linalg.norm(nrm_full, axis=-1, keepdims=True), 1e-6)
         skin_p = shot.relight / 'skin_mask' / ('%06d.png' % fi)
         if skin_p.exists():
-            sk = cv2.imread(str(skin_p), cv2.IMREAD_UNCHANGED).astype(np.float32)
-            skin = cv2.resize(sk / (65535.0 if sk.dtype != np.float32 else 1.0), (w, h),
-                              interpolation=cv2.INTER_LINEAR)
+            raw = cv2.imread(str(skin_p), cv2.IMREAD_UNCHANGED)
+            # Test the dtype BEFORE casting. Casting first made the check always false, so the
+            # 16-bit mask was used at 0..65535 instead of 0..1: roughness reached -32766 and the
+            # specular weight 55704. Found by the gpt-6-astra review.
+            scale = {np.dtype(np.uint16): 65535.0, np.dtype(np.uint8): 255.0}.get(raw.dtype, 1.0)
+            sk = raw.astype(np.float32) / scale
+            if sk.ndim == 3:
+                sk = sk[..., 0]
+            skin = np.clip(cv2.resize(sk, (w, h), interpolation=cv2.INTER_LINEAR), 0.0, 1.0)
         else:
             skin = np.zeros((h, w), np.float32)
 
@@ -289,6 +310,7 @@ def main():
         if n % 40 == 0 and stats:
             print(json.dumps(stats[-1]), flush=True)
 
+    stats.sort(key=lambda x: x['frame'])
     dr = np.array([s['dynamic_range_stops'] for s in stats])
     dev = gpu_image.describe()
     summary = {

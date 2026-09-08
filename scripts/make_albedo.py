@@ -86,8 +86,14 @@ def main():
         # not fringe to black where bilinear sampling reaches just past the silhouette.
         m = (alpha > 0.02).astype(np.uint8)
         if m.any():
-            albedo = cv2.inpaint((np.clip(albedo, 0, 1) * 255).astype(np.uint8),
+            # Inpaint ONLY the outside-matte border, and keep the foreground in floating point.
+            # Round-tripping the whole image through uint8 to use cv2.inpaint quantised valid
+            # foreground too: on frame 0 that turned 8.9% of positive foreground samples to
+            # zero, which no amount of 16-bit output could recover. cv2.inpaint has no float
+            # path, so the quantised result is used only where there was nothing to preserve.
+            filled = cv2.inpaint((np.clip(albedo, 0, 1) * 255).astype(np.uint8),
                                  (1 - m) * 255, 3, cv2.INPAINT_TELEA).astype(np.float32) / 255.0
+            albedo = np.where(m[..., None].astype(bool), albedo, filled)
 
         srgb = np.clip(linear_to_srgb(albedo), 0, 1)
         cv2.imwrite(str(out / ('%06d.png' % i)),

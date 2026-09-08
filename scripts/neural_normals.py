@@ -47,44 +47,49 @@ MID_GREY_SRGB = 0.5                     # neutral, mid-range, and out of the gre
 
 
 def matte_bbox(alpha, thresh=0.05, pad=0.08):
-    """Bounding box of the matte, padded, then expanded to the model's 3:4 aspect.
+    """The matte bbox, padded and expanded to the model's 3:4 aspect. MAY EXTEND OFF FRAME.
 
-    Padded before the aspect fit so hair and shoulder edges are not clipped: the model has no
-    way to infer a normal for geometry that was cropped away, and an edge-of-frame subject
-    produces a visible seam in the normal field.
+    The box is deliberately NOT clamped into the frame. Clamping meant that whenever the 3:4
+    expansion was taller than the plate -- which is every frame of a 16:9 bust -- the width was
+    shrunk to compensate, and that shrunk box cut the performer: measured at 17-20% of matte
+    pixels on the reporter shot, all of which then received constant camera-facing normals.
+    Those normals feed the proxy geometry and the relight, so a fifth of her was being lit as a
+    flat plane.
+
+    ``prepare`` pads the missing region with mid-grey instead, which costs nothing: the model
+    sees the whole performer, and padding is out-of-frame background it would have ignored.
     """
     ys, xs = np.where(alpha > thresh)
     if not len(ys):
         return 0, 0, alpha.shape[1], alpha.shape[0]
-    H, W = alpha.shape
     x0, x1, y0, y1 = xs.min(), xs.max() + 1, ys.min(), ys.max() + 1
     cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
     w, h = (x1 - x0) * (1 + 2 * pad), (y1 - y0) * (1 + 2 * pad)
-    # Grow the short side to reach 3:4; never shrink, or padded content is lost again.
+    # Grow the short side to reach 3:4. Never shrink: shrinking is what cut the performer.
     if w / h > IN_W / IN_H:
         h = w * IN_H / IN_W
     else:
         w = h * IN_W / IN_H
-    x0, y0 = cx - w / 2, cy - h / 2
-    # Clamp into frame without changing the aspect ratio, shrinking only if genuinely too big.
-    w, h = min(w, W), min(h, H)
-    if w / h > IN_W / IN_H:
-        w = h * IN_W / IN_H
-    else:
-        h = w * IN_H / IN_W
-    x0 = int(round(min(max(x0, 0), W - w)))
-    y0 = int(round(min(max(y0, 0), H - h)))
-    return x0, y0, int(round(w)), int(round(h))
+    return int(round(cx - w / 2)), int(round(cy - h / 2)), int(round(w)), int(round(h))
 
 
 def prepare(fg_linear, alpha, box):
-    """Crop, composite onto mid-grey, convert to sRGB, resize to the model's input."""
+    """Crop, composite onto mid-grey, convert to sRGB, resize to the model's input.
+
+    The box may extend beyond the plate; the missing region is filled with the same mid-grey the
+    matte is composited onto, so the padding is indistinguishable from ordinary background.
+    """
     x0, y0, w, h = box
-    fg = fg_linear[y0:y0 + h, x0:x0 + w]
-    a = alpha[y0:y0 + h, x0:x0 + w][..., None]
-    srgb = np.clip(linear_to_srgb(np.clip(fg, 0, None)), 0, 1)
-    over = srgb * a + MID_GREY_SRGB * (1 - a)
-    return cv2.resize(over, (IN_W, IN_H), interpolation=cv2.INTER_AREA).astype(np.float32)
+    H, W = alpha.shape
+    canvas = np.full((h, w, 3), MID_GREY_SRGB, np.float32)
+    sx0, sy0 = max(x0, 0), max(y0, 0)
+    sx1, sy1 = min(x0 + w, W), min(y0 + h, H)
+    if sx1 > sx0 and sy1 > sy0:
+        fg = fg_linear[sy0:sy1, sx0:sx1]
+        a = alpha[sy0:sy1, sx0:sx1][..., None]
+        srgb = np.clip(linear_to_srgb(np.clip(fg, 0, None)), 0, 1)
+        canvas[sy0 - y0:sy1 - y0, sx0 - x0:sx1 - x0] = srgb * a + MID_GREY_SRGB * (1 - a)
+    return cv2.resize(canvas, (IN_W, IN_H), interpolation=cv2.INTER_AREA).astype(np.float32)
 
 
 class Sapiens2Normals:
@@ -118,6 +123,14 @@ def load_convention(path):
             "mapping is inherited and undocumented upstream, and a sign error in it is invisible\n"
             "in a single frame and ungradeable afterwards." % path)
     c = json.loads(path.read_text())
+    # The validator writes its report whichever way the verdict goes. Accepting any file that
+    # merely EXISTS meant a failed validation still licensed a full run on an unvalidated
+    # mapping, which is exactly the situation the file was created to prevent.
+    if c.get('verdict') != 'PASS':
+        raise SystemExit(
+            '%s records verdict %r, not PASS.\nRe-run scripts/validate_normals_convention.py '
+            'and resolve the failure. Normals must not be generated from an unvalidated '
+            'camera-to-world mapping.' % (path, c.get('verdict')))
     return np.array(c['matrix'], np.float32), c
 
 
@@ -163,9 +176,15 @@ def main():
 
         # Back into full-frame layout, then down to the relighter's working resolution.
         x0, y0, w, h = box
-        full = np.zeros((alpha.shape[0], alpha.shape[1], 3), np.float32)
+        H0, W0 = alpha.shape
+        full = np.zeros((H0, W0, 3), np.float32)
         full[..., 1] = -1.0                                  # outside the matte: face camera
-        full[y0:y0 + h, x0:x0 + w] = cv2.resize(n_world, (w, h), interpolation=cv2.INTER_LINEAR)
+        big = cv2.resize(n_world, (w, h), interpolation=cv2.INTER_LINEAR)
+        # The box can hang off the plate, so intersect before writing back.
+        sx0, sy0 = max(x0, 0), max(y0, 0)
+        sx1, sy1 = min(x0 + w, W0), min(y0 + h, H0)
+        if sx1 > sx0 and sy1 > sy0:
+            full[sy0:sy1, sx0:sx1] = big[sy0 - y0:sy1 - y0, sx0 - x0:sx1 - x0]
         small = cv2.resize(full, (OUT_W, OUT_H), interpolation=cv2.INTER_AREA)
         small /= np.maximum(np.linalg.norm(small, axis=-1, keepdims=True), 1e-6)
         np.savez_compressed(out / ('%06d.npz' % i), normal=small.astype(np.float16),

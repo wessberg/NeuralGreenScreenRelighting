@@ -1,54 +1,56 @@
 {
   "shot": "reporter_a",
   "frame": 0,
-  "constraint": "CLAUDE.md hard constraint 1: self-shadowing",
-  "method": "shadow centroid inside the face box, as a fraction of face height, under an uplight and a toplight",
+  "constraint": "AGENTS.md hard constraint 1: self-shadowing",
+  "method": "DIFFERENCE between a normal render and one with the proxy casting no shadow. Shading is identical in both, so the difference is pure occlusion.",
+  "why_the_old_test_was_invalid": "It thresholded the image below the face median, which a shading-only hemisphere with no shadows at all passes (centroids 0.291 / 0.705, contrast > 0.86). It measured shading, not shadowing.",
   "measurements": {
     "uplight": {
-      "centroid_frac_of_face_height": 0.49938406595369667,
-      "dark_fraction": 0.49986642920748,
-      "face_median_luma": 0.5667686462402344,
-      "contrast_p10_p90": 0.5638628602027893,
-      "preview": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\relight\\proxy_render\\000000_uplight_preview.png"
+      "occlusion_energy_fraction": 0.10881,
+      "occluded_centroid_frac_of_face_height": 0.8587,
+      "render": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\relight\\proxy_render\\000000_uplight_preview.png",
+      "control": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\relight\\proxy_render\\000000_uplight_noshadow_preview.png"
     },
     "toplight": {
-      "centroid_frac_of_face_height": 0.6439967271758289,
-      "dark_fraction": 0.4997328584149599,
-      "face_median_luma": 0.36284705996513367,
-      "contrast_p10_p90": 0.5921851992607117,
-      "preview": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\relight\\proxy_render\\000000_toplight_preview.png"
-    }
+      "occlusion_energy_fraction": 0.13086,
+      "occluded_centroid_frac_of_face_height": 0.7348,
+      "render": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\relight\\proxy_render\\000000_toplight_preview.png",
+      "control": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\relight\\proxy_render\\000000_toplight_noshadow_preview.png"
+    },
+    "pattern_overlap_iou": 0.3594,
+    "pattern_correlation": 0.6619
   },
-  "shadow_travel_frac_of_face_height": 0.1446,
+  "centroid_shift_frac_of_face_height": 0.1239,
+  "note_on_direction": "The occlusion centroid sits LOW under both lights because the chin shadowing the neck covers far more area than the nose shadow. A direction assertion here would be an overclaim; what distinguishes occlusion from shading is that the PATTERN changes.",
   "checks": [
     {
-      "test": "uplight throws the shadow into the upper face",
-      "value": 0.4994,
-      "requires": "< 0.55",
+      "test": "uplight casts a measurable shadow",
+      "value": 0.10881,
+      "requires": "> 0.01",
       "pass": true
     },
     {
-      "test": "toplight throws the shadow into the lower face",
-      "value": 0.644,
-      "requires": "> 0.45",
+      "test": "toplight casts a measurable shadow",
+      "value": 0.13086,
+      "requires": "> 0.01",
       "pass": true
     },
     {
-      "test": "the shadow MOVES when the light moves",
-      "value": 0.1446,
-      "requires": "> 0.10",
+      "test": "the shadow PATTERN changes with the light (IoU)",
+      "value": 0.35945,
+      "requires": "< 0.70",
       "pass": true
     },
     {
-      "test": "uplight actually has shadow",
-      "value": 0.5639,
-      "requires": "> 0.05",
+      "test": "the two shadow maps are not the same picture (corr)",
+      "value": 0.6619,
+      "requires": "< 0.90",
       "pass": true
     },
     {
-      "test": "toplight actually has shadow",
-      "value": 0.5922,
-      "requires": "> 0.05",
+      "test": "shadow centroid also shifts",
+      "value": 0.1239,
+      "requires": "> 0.02",
       "pass": true
     }
   ],

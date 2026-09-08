@@ -12,6 +12,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'dependencies/VideoDepthAnything'))
 sys.path.insert(0,str(ROOT/'scripts'))
 import numpy as np, cv2, torch
+WORK = None   # working resolution, set per shot from the plate aspect
 import torch.nn.functional as F
 from video_depth_anything.video_depth import VideoDepthAnything
 from video_depth_anything.dinov2_layers.attention import Attention, MemEffAttention
@@ -29,6 +30,12 @@ def main():
     add_shot_argument(p)
     a=p.parse_args()
     shot=from_args(a)
+    global WORK
+    # Depth must be produced at the SAME working resolution its consumers read, and that is
+    # now derived from the plate aspect. A hardcoded 768x432 meant a non-16:9 shot raised a
+    # broadcasting error against differently shaped masks, or silently stretched. Found by
+    # the gpt-6-astra review.
+    WORK = shot.working_resolution
     torch.set_num_threads(8);cv2.setNumThreads(8)
     # Same scaled dot-product calculation, using CUDA kernels supporting RTX 5080.
     Attention.forward=sdpa;MemEffAttention.forward=sdpa
@@ -49,13 +56,13 @@ def main():
         rgb=f[...,::-1].astype(np.float32)/255
         bg=(rgb[...,1]>hint['green_min'])&((rgb[...,1]-np.maximum(rgb[...,0],rgb[...,2]))>hint['green_dominance_min'])
         rgb[bg]=.20
-        frames.append(cv2.resize((rgb*255).astype(np.uint8),(768,432),interpolation=cv2.INTER_AREA))
+        frames.append(cv2.resize((rgb*255).astype(np.uint8),WORK,interpolation=cv2.INTER_AREA))
     start=time.time()
     depths,out_fps=model.infer_video_depth(np.stack(frames),fps,input_size=392,device='cuda',fp32=False)
     shot.depth.mkdir(parents=True,exist_ok=True)
     for i,d in enumerate(depths):np.save(shot.depth_npy(i),d.astype(np.float32))
     shot.logs.mkdir(parents=True,exist_ok=True)
-    shot.log('depth.json').write_text(json.dumps({'shot':shot.name,'model':'Video Depth Anything Small','frames':n,'source_fps':str(shot.frame_rate),'input_short_side':392,'output':[768,432],'seconds':time.time()-start,'temporal_window':32,'overlap':10,'aligned_blend_frames':8,'max_vram_GB':torch.cuda.max_memory_allocated()/1e9},indent=2))
+    shot.log('depth.json').write_text(json.dumps({'shot':shot.name,'model':'Video Depth Anything Small','frames':n,'source_fps':str(shot.frame_rate),'input_short_side':392,'output':list(WORK),'seconds':time.time()-start,'temporal_window':32,'overlap':10,'aligned_blend_frames':8,'max_vram_GB':torch.cuda.max_memory_allocated()/1e9},indent=2))
     print(shot.log('depth.json').read_text(),flush=True)
 
 if __name__=='__main__':main()

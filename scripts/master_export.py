@@ -90,10 +90,37 @@ def ffmpeg_path():
     return found
 
 
+def source_index_map(shot, frames):
+    """Which source frame each delivery frame draws from, per the shot's conform policy.
+
+    Streaming source-indexed frames at the delivery rate is only correct when the rates match.
+    A 150-frame 59.94 shot emitted at 24 fps becomes 6.25 s instead of 2.5025 s -- silent slow
+    motion presented as a conform. `Shot.conform` already refuses an unrecorded policy; this
+    makes the exporter actually honour the one it returns.
+    """
+    policy = shot.conform
+    if policy == 'preserve' or shot.delivery_frame_rate == shot.frame_rate:
+        return list(range(frames)), 'preserve'
+    dur = frames / float(shot.frame_rate)
+    n_out = int(round(dur * float(shot.delivery_frame_rate)))
+    if policy in ('resample_nearest', 'resample_blend'):
+        # Nearest for both: a blend needs motion-compensated interpolation to be worth the name,
+        # and silently averaging neighbours would look like a defect rather than a conform.
+        idx = [min(int(round(i * float(shot.frame_rate) / float(shot.delivery_frame_rate))),
+                   frames - 1) for i in range(n_out)]
+        return idx, ('resample_nearest' if policy == 'resample_nearest'
+                     else 'resample_nearest (blend not implemented; nearest used)')
+    if policy == 'retime_slowmo':
+        return list(range(frames)), 'retime_slowmo'
+    raise SystemExit('%s: unsupported conform policy %r. Use preserve, resample_nearest, '
+                     'resample_blend or retime_slowmo.' % (shot.name, policy))
+
+
 def encode(shot, codec, frames, exposure, out_dir, dry_run=False):
     spec = CODECS[codec]
     rate = shot.delivery_frame_rate
     w, h = shot.resolution
+    index_map, conform_used = source_index_map(shot, frames)
     out = out_dir / ('%s_%s.%s' % (shot.name, codec, spec['ext']))
     cmd = [ffmpeg_path(), '-y', '-hide_banner', '-loglevel', 'error',
            '-f', 'rawvideo', '-pix_fmt', 'rgb48le', '-s', '%dx%d' % (w, h),
@@ -108,11 +135,13 @@ def encode(shot, codec, frames, exposure, out_dir, dry_run=False):
            '-video_track_timescale', str(rate.numerator),
            str(out)]
     if dry_run:
-        return {'codec': codec, 'output': str(out), 'command': ' '.join(cmd), 'skipped': 'dry run'}
+        return {'codec': codec, 'output': str(out), 'command': ' '.join(cmd),
+                'conform': conform_used, 'source_frames': frames,
+                'delivery_frames': len(index_map), 'skipped': 'dry run'}
 
     proc = subprocess.Popen(cmd, stdin=subprocess.PIPE)
     peak_nits, frame_avg = 0.0, []
-    for i in range(frames):
+    for i in index_map:
         src = shot.master_exr(i)
         if not src.exists():
             proc.stdin.close(); proc.wait()
@@ -129,6 +158,9 @@ def encode(shot, codec, frames, exposure, out_dir, dry_run=False):
     if proc.wait() != 0:
         raise SystemExit('%s encode failed' % codec)
     return {'codec': codec, 'label': spec['label'], 'output': str(out),
+            'conform': conform_used, 'source_frames': frames,
+            'delivery_frames': len(index_map),
+            'duration_seconds': len(index_map) / float(rate),
             'size_bytes': out.stat().st_size,
             'size_mb': round(out.stat().st_size / 1e6, 1),
             'max_cll_nits': round(peak_nits, 1),
