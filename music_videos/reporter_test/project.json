@@ -1,0 +1,13 @@
+{
+  "video_id": "reporter_test",
+  "title": "Relighting and grounding test bed",
+  "status": "technical, not a creative deliverable",
+  "purpose": "Compare relighting approaches on a clean, easily-keyed plate before applying a chosen method to the artist's own performance footage. Chosen because the subject wears a dark suit rather than green wardrobe, so keying is not the confounding variable.",
+  "song": null,
+  "audio": null,
+  "lyrics": null,
+  "creative_brief": {"status": "not applicable; technical test"},
+  "shots": [{"shot_id": "reporter_a", "path": "shots/reporter_a", "source_frame_rate": "60000/1001", "status": "ingested"}],
+  "delivery": {"resolution": [3840, 2160], "codec": "HEVC Main10", "primaries": "Rec2020", "transfer": "ST2084 PQ", "mastering_peak_nits": 1000},
+  "environments": [{"scene": "blender/listening_room.blend", "status": "shared with proof_of_concept; visual quality iteration pending"}]
+}

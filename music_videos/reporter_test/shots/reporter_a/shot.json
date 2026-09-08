@@ -1,0 +1,49 @@
+{
+  "shot_id": "reporter_a",
+  "video_id": "reporter_test",
+  "purpose": "Technical test bed for relighting and grounding. Stock footage, not the artist's own performance, so identity-drift risk is acceptable here and generative relighting may be evaluated freely before it is trusted on the artist's own footage.",
+  "source": "source/plate.mp4",
+  "source_original_name": "mixkit-female-reporter-reporting-with-microphone-in-hand-on-a-chroma-28293-full-hd.mp4",
+  "source_frame_rate": "60000/1001",
+  "source_frame_rate_decimal": 59.94006,
+  "source_frame_rate_is_fractional": true,
+  "source_resolution": [1920, 1080],
+  "source_bit_depth": 8,
+  "source_frame_count": 1200,
+  "source_duration_seconds": 20.02,
+  "source_transfer": "bt709",
+  "source_primaries": "bt709",
+  "source_matrix": "bt709",
+  "source_color_range": "tv",
+  "source_color_tagging": "TAGGED, unlike the proof-of-concept plate which was untagged and assumed sRGB. Limited-range bt709 must be expanded on decode; do not reuse the untagged full-range assumption.",
+  "source_audio": null,
+  "source_audio_note": "No audio stream at all. Music-timeline sync for this shot cannot come from camera audio and must be defined against the song, or the shot must be treated as free-timed.",
+  "source_shutter": {"seconds": null, "angle_degrees": null, "status": "not present in metadata; preserve photographed blur"},
+  "source_white_balance": {"kelvin": null, "status": "not in metadata; plate reads neutral-to-slightly-cool flat frontal studio light"},
+  "framing": {
+    "type": "medium close-up / bust",
+    "visible_extent": "head to approximately mid-chest",
+    "ground_contact_visible": false,
+    "grounding_note": "No feet, legs, seat or floor contact appear in frame. Contact shadow and floor interaction are UNAVAILABLE as grounding cues for this shot. Believability must come from lighting direction and colour match, perspective and scale match, depth of field, and edge integration."
+  },
+  "camera": {
+    "motion": "locked",
+    "status": "NOT YET ESTIMATED",
+    "warning": "Do not inherit the proof-of-concept values (52 mm, 4.3 m, height 1.02 m). Those were solved for a seated full figure at a wide framing. This is a standing bust shot and requires its own lens, height, distance and horizon estimate."
+  },
+  "selection": {"status": "not yet chosen", "note": "Contact sheet at logs/contact_sheet.jpg samples every 100th frame across all 1200. A ~150 frame range is enough for the relighting comparison; commit to the full 20 s only after a method is chosen."},
+  "creative_brief": {"status": "awaiting direction", "environment": null, "mood": null, "lighting": null},
+  "delivery": {
+    "note": "Inherits the video-level delivery spec unless overridden. At 60000/1001 the mov timescale must be 60000 with 1001 ticks per frame; hdr_mux.py derives this from source_frame_rate.",
+    "conform_decision": "PENDING. 59.94 fps may be preserved, conformed to 29.97, or retimed for slow motion. This is a creative choice and must not be applied silently."
+  },
+  "pipeline_status": {
+    "ingested": true,
+    "frames_extracted": false,
+    "keyed": false,
+    "camera_matched": false,
+    "depth": false,
+    "relit": false,
+    "composited": false
+  }
+}
