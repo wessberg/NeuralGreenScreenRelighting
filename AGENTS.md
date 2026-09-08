@@ -91,7 +91,7 @@ Status is for `reporter_test/reporter_a`, the test bed, as of the end of round 2
 | 3 | **Cast shadows onto the environment** | Only matters where the actor is near a surface; bust framing usually hides it. Shadow Catcher pass. | 🔴 |
 | 4 | **Subsurface scattering** in skin | Skin is not opaque. Without it, ears, nostrils and lit edges read as painted plastic. Light transport through a volume; no per-pixel multiply can fake it. | 🟡 `RANDOM_WALK_SKIN` + Jensen 2001 radii on the proxy, dedicated SSS passes enabled; not composited |
 | 5 | **Specular response** — roughness, Fresnel, sheen on skin and fabric | A purely diffuse actor under a room full of practicals has no catchlights and no wet look. | 🟡 glossy passes rendering; no per-material roughness yet (needs `sapiens2-seg-1b`) |
-| 6 | **Light direction, colour, level, falloff** | The baseline match. | 🟡 level and colour track; direction has a ceiling — see round 2 |
+| 6 | **Light direction, colour, level, falloff** | The baseline match. | 🟡 ratio composite delivers it; `E_source` now MEASURED from the plate rather than guessed (24 % relative RMS correction) |
 | 7 | **Anamorphic lens match** — 1.6× squeeze, oval bokeh, correct FOV | The plate is anamorphic and Blender renders spherically. A silent mismatch here is geometric, not aesthetic. | 🟢 `scripts/anamorphic.py`: geometry exact, bokeh measured at 1.6:1 vertical (error 0.0). Blur *magnitude* still needs matching against a real defocused take |
 | 8 | **Depth of field** matched to the taking lens | Nobody shoots a dim interior deep-focus; a sharp background is the "computer-ey" tell. | 🟡 f/2.0 in the environment render |
 | 9 | **MTF / sharpness match** | The CG background is ~2× sharper than the plate. Measured blur on the background, not the actor. | 🔴 |
@@ -219,6 +219,11 @@ Consequences, which are the opposite of the intuition:
   `scripts/validate_sh_convention.py` is the pattern.
 - **Measure before and after.** Every claim in `rounds/` is backed by a number from the repo.
   Prefer a control (relight off) over an unanchored figure.
+- **No on-set reference is ever a requirement.** No chrome ball, no grey card, no colour chart
+  as a precondition. The artist will not do it, and this is meant to run on other people's
+  footage where no reference exists. If something needs measuring, infer it from the plate:
+  `estimate_source_light.py` is the pattern -- it replaced the pipeline's last hand-written
+  constant by fitting SH lighting to skin radiance against the neural normals.
 - **State assumptions as assumptions.** The reporter camera match and `E_source` are both
   assumed and labelled so in `shot.json`. Do not let an assumption harden into a fact.
 - **Never recalibrate the proof-of-concept shot's keying thresholds.** They are hand-set because

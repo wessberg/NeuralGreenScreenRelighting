@@ -26,9 +26,8 @@
     "external_recorder_note": "None. ProRes RAW over HDMI is therefore NOT available, which is what makes the two modes below the complete set of options."
   },
   "recording_mode": {
-    "status": "NOT YET CHOSEN by the artist.",
-    "why_it_is_still_open": "Open gate 3:2 is Long GOP / MOV only on this body, so the mode with the best geometry has the worst codec for keying, and the mode with the best codec costs 20.6% of the frame. There is no option that wins both.",
-    "consequence_for_the_pipeline": "Every stage must read the mode from the shot rather than assuming one. scripts/capture_profile.py exists for exactly this: a shot names a profile and the stage asks what ingest steps that profile requires.",
+    "status": "CHOSEN by the artist on 2026-09-08: c58k_17_9.",
+    "consequence_for_the_pipeline": "Ingest must handle 5776x3056 17:9 ProRes 422 HQ, all-intra, 4:2:2, V-Log/V-Gamut, 24p, and crop to 79.4% of width to reach 2.40:1. All-intra means NO transcode is needed before keying; 4:2:2 still needs chroma upsampled. capture_profile.py derives both from the profile, so a future shot on a different camera changes one field, not the code.",
     "candidates": {
       "open_gate_6k": {
         "profile_id": "s5iix_6k_open_gate",
@@ -103,7 +102,8 @@
         "trade": "Best codec for keying: all-intra removes the Long GOP mosquito noise that makes a matte crawl, 4:2:2 keeps full vertical chroma resolution, and the bitrate is 8x. Costs 20.6% of the frame width and narrows the 35 mm to roughly a 44 mm equivalent. 1.91x is still comfortable supersampling for the matte."
       }
     },
-    "recommendation": "c58k_17_9, on keying grounds. All-intra and 4:2:2 remove two of the three ingest hazards outright, and the resolution headroom given up existed mainly to fight the compression artefacts that the better codec does not produce. This is a recommendation, not a decision."
+    "recommendation": "Taken. All-intra and 4:2:2 remove two of the three ingest hazards; the 1.91x oversampling that remains is still comfortable supersampling for the matte.",
+    "chosen": "c58k_17_9"
   },
   "derived": {
     "_comment": "Computed by scripts/capture_profile.py for a 3840x1600 delivery at 1.6x squeeze and a 35 mm taking lens. There are deliberately NO mode-independent field-of-view numbers here: field of view depends on which mode is chosen, and an earlier version of this file carried a single stale vertical FOV that was simply wrong.",
@@ -121,10 +121,15 @@
     "keying": "MODE-DEPENDENT: see recording_mode.candidates[].ingest_steps_required rather than assuming. Both candidate modes are subsampled, so chroma must be upsampled before keying -- a green-screen key is a chroma operation. Only the open-gate mode is Long GOP and therefore only that mode needs the all-intra transcode, without which mosquito noise around the silhouette and every hair makes the matte crawl. Both modes oversample the delivery frame, so key at native resolution and downscale afterwards: the matte comes out effectively supersampled and hair edges get real fractional alpha instead of a hard decision. Keying thresholds never transfer between plates in either direction; run scripts/calibrate_key.py per shot."
   },
   "still_to_record": [
-    "CHOOSE THE RECORDING MODE. Until then the pipeline must support both.",
     "A ColorChecker and an 18% grey card at the head of a take, to verify the V-Log/V-Gamut decode rather than inheriting its constants.",
-    "A chrome ball and an 18% grey ball on a slate at the head of every take, which converts E_source from the pipeline's weakest assumption into a measurement.",
     "The artist's own interocular distance, measured once with a ruler, to remove the 63 mm adult prior from every camera solve.",
     "The exact open-gate active sensor area, if a precise camera solve ever depends on it. The nominal 36 x 24 mm is used throughout; the 3:2 aspect that the anamorphic arithmetic depends on is exact either way."
-  ]
+  ],
+  "e_source": {
+    "status": "MUST BE INFERRED FROM THE FOOTAGE. Decided 2026-09-08.",
+    "decision": "The artist will NOT shoot a chrome ball or grey card at the head of takes, and this is intended to become a generic tool usable by other artists. Any method that depends on an on-set reference is therefore out of scope. Do not propose one again.",
+    "why_it_matters": "Every ratio in the pipeline divides by a model of how the plate was originally lit. Until now that model was a hand-written guess (a soft frontal key), shared by relight_sh.py, make_albedo.py and composite_ratio.py. It is the single weakest link in an otherwise measured chain.",
+    "approach": "Estimate spherical-harmonic lighting directly from the plate, by regressing the observed skin radiance against the neural normals. Skin albedo is close enough to uniform within one performer that the fit is well conditioned, and the albedo/lighting scale degeneracy is harmless here because E_source only ever appears as the denominator of a ratio against the same albedo. See scripts/estimate_source_light.py.",
+    "generality": "Requires only the plate, the matte and the neural normals -- all of which every shot already has. No on-set procedure, no per-artist calibration."
+  }
 }

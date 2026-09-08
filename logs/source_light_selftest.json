@@ -1,0 +1,83 @@
+{
+  "test": "recover known SH lighting from a synthetic plate on real normals",
+  "albedo_variation": "per-pixel, sigma 0.10 around 0.45",
+  "noise": "3% multiplicative",
+  "stride": 17,
+  "cases": [
+    {
+      "case": "frontal soft",
+      "true_direction": [
+        -0.27959999442100525,
+        -0.9185000061988831,
+        0.27959999442100525
+      ],
+      "recovered_direction": [
+        -0.2376,
+        -0.9361,
+        0.2592
+      ],
+      "direction_error_deg": 2.86,
+      "relative_rms_error": 0.00475,
+      "directional": true,
+      "pass": true
+    },
+    {
+      "case": "hard from camera left",
+      "true_direction": [
+        -0.8988999724388123,
+        -0.3995000123977661,
+        0.17980000376701355
+      ],
+      "recovered_direction": [
+        -0.9678,
+        -0.1768,
+        0.1791
+      ],
+      "direction_error_deg": 13.39,
+      "relative_rms_error": 0.03994,
+      "directional": true,
+      "pass": true
+    },
+    {
+      "case": "top light, warm",
+      "true_direction": [
+        0.049800001084804535,
+        -0.34850001335144043,
+        0.9359999895095825
+      ],
+      "recovered_direction": [
+        0.093,
+        0.0241,
+        0.9954
+      ],
+      "direction_error_deg": 21.89,
+      "relative_rms_error": 0.03433,
+      "directional": true,
+      "pass": true
+    },
+    {
+      "case": "near flat ambient",
+      "true_direction": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "recovered_direction": [
+        -0.1767,
+        -0.9841,
+        0.0166
+      ],
+      "direction_error_deg": 10.22,
+      "relative_rms_error": 0.00432,
+      "directional": false,
+      "pass": true
+    }
+  ],
+  "verdict": "PASS",
+  "pass_criterion": "relative RMS error of the IRRADIANCE FIELD over the visible normals, below 6%. That is the quantity every consumer uses: composite_ratio divides by E_source(n), make_albedo divides by E_source(n), relight_sh divides by E_source(n). None of them uses a light direction.",
+  "direction_is_a_DIAGNOSTIC_not_a_requirement": {
+    "worst_error_deg": 21.89,
+    "why_it_is_loose": "the sample covers only the camera-visible hemisphere, so a source high above or far to the side is recovered from normals that barely vary along its axis. The irradiance those normals receive is still recovered well, which is why the field error stays under 4% while the direction can be 20 deg out. On real footage the fit pools every frame, and head motion widens the normal coverage, so conditioning is better than this test."
+  },
+  "what_it_proves": "the estimator recovers the irradiance field through non-uniform albedo and noise. It cannot prove the normals are right; validate_normals_convention.py does that."
+}

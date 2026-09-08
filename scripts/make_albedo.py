@@ -44,6 +44,27 @@ L_SRC = np.array([-0.28, -0.92, 0.28], np.float32)
 L_SRC /= np.linalg.norm(L_SRC)
 
 
+def load_source_light(shot):
+    """The MEASURED E_source for this shot, or None if it has not been estimated yet.
+
+    scripts/estimate_source_light.py fits SH-L2 lighting to the plate's own skin radiance against
+    the neural normals. It replaces a hand-written frontal-key guess that differed from the
+    measurement by 24% relative RMS over the visible normals, mostly because the real plate is
+    about 2.3x more directionally lit than the guess allowed.
+    """
+    p = shot.log('source_light.json')
+    if not p.exists():
+        return None
+    return np.array(json.loads(p.read_text())['sh_coefficients_rgb'], np.float32)
+
+
+def source_irradiance_measured(normals, C):
+    """E_source(n) from the fitted SH coefficients."""
+    from sh_project import sh_basis
+    Y = sh_basis(normals[..., 0], normals[..., 1], normals[..., 2])
+    return np.maximum(np.einsum('hwk,kc->hwc', Y, C), 1e-4)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     add_shot_argument(ap)
@@ -58,6 +79,8 @@ def main():
     global W, H
     W, H = shot.working_resolution
 
+    src_C = load_source_light(shot)
+    print('E_source: %s' % ('MEASURED' if src_C is not None else 'assumed frontal key'), flush=True)
     out = shot.relight / 'albedo'
     out.mkdir(parents=True, exist_ok=True)
     skin_dir = shot.relight / 'skin_mask'
@@ -78,8 +101,13 @@ def main():
         alpha = np.clip(alpha, 0, 1)
         fh, fw = alpha.shape
 
-        E = SRC_AMBIENT + SRC_KEY * np.maximum(np.sum(nrm * L_SRC, -1), 0)
-        E = cv2.resize(E, (fw, fh), interpolation=cv2.INTER_LINEAR)[..., None]
+        if src_C is not None:
+            E = cv2.resize(source_irradiance_measured(nrm, src_C), (fw, fh),
+                           interpolation=cv2.INTER_LINEAR)
+            E = (E @ np.array([.2126, .7152, .0722], np.float32))[..., None]
+        else:
+            E = SRC_AMBIENT + SRC_KEY * np.maximum(np.sum(nrm * L_SRC, -1), 0)
+            E = cv2.resize(E, (fw, fh), interpolation=cv2.INTER_LINEAR)[..., None]
         albedo = np.clip(fg / np.maximum(E, 1e-3) * args.gain, 0, args.max_albedo)
 
         # Outside the matte the divisor is meaningless; hold the edge colour so the texture does
@@ -122,7 +150,8 @@ def main():
     a = np.array([s['albedo_mean'] for s in stats])
     summary = {'shot': shot.name, 'frames': len(stats), 'output': str(out),
                'method': 'albedo = keyed foreground / E_source(neural normals)',
-               'E_source': {'model': 'soft frontal studio key (ASSUMED, not measured)',
+               'E_source': {'model': ('MEASURED by estimate_source_light.py' if src_C is not None
+                                     else 'soft frontal studio key (ASSUMED, not measured)'),
                             'direction': L_SRC.tolist(),
                             'ambient': SRC_AMBIENT, 'key': SRC_KEY,
                             'shared_with': 'scripts/relight_sh.py, deliberately identical',

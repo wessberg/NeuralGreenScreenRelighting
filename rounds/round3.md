@@ -172,7 +172,10 @@ WB 5600 K · delivering 3840×1600.**
 lens squeeze and delivery frame agree with no crop, and there is 2.48× linear oversampling in
 hand.
 
-**The recording mode is still the artist's to choose**, and there is no option that wins both:
+**The recording mode is CHOSEN: `c58k_17_9`** — 5.8K 17:9, ProRes 422 HQ, all-intra, 4:2:2,
+24p native, LPCM. Decided on keying grounds, accepting a 79.4 % width crop and 1.91× oversampling
+in exchange for a codec that does not fight the matte. Open gate is Long GOP only on this body and
+there is no external recorder, so ProRes RAW was never available. The trade, for the record:
 
 | | 6K 3:2 open gate | 5.8K 17:9 |
 |---|---|---|
@@ -182,15 +185,73 @@ hand.
 | codec | 4:2:0 **Long GOP** | **ProRes 422 HQ, all-intra** |
 | storage | 1.5 GB/min | 12 GB/min |
 
-Recommended: **the ProRes mode**, on keying grounds — all-intra and 4:2:2 remove two of the three
-ingest hazards outright, and open gate is Long GOP only on this body with no external recorder
-available. `scripts/capture_profile.py` supports both and derives each one's ingest requirements
-rather than assuming a mode.
+**Consequence for ingest:** all-intra means **no transcode is needed before keying**, which
+removes one of the three blocking steps outright. 4:2:2 still needs chroma upsampled, and the
+1.6× desqueeze still has to happen before any estimator. `capture_profile.py` derives all of this
+from the profile, so a different camera later changes one field rather than any code.
 
 `capture_format.json` was rebuilt after the artist caught it contradicting itself: a stale
 vertical FOV of 27°, mode-independent FOV scalars that cannot exist, a recording mode asserted as
 chosen while another key said it was open, and keying implications written for one mode presented
 as universal. It now separates **stated facts** from **generated derivations**.
+
+---
+
+## 6b. `E_source` is now MEASURED, and the reference ball is retired for good
+
+**Decision, and it is final: the artist will not shoot a chrome ball or a grey card**, and this is
+intended to become a generic tool other artists can use on footage where no such reference exists
+and never will. Every method that depends on an on-set procedure is out of scope. Do not propose
+one again — it has been raised three times and answered.
+
+So `E_source` is inferred from what every shot already has: the plate, the matte and the neural
+normals. `scripts/estimate_source_light.py` fits SH-L2 lighting by robustly regressing skin
+radiance against the measured normals. Lambertian irradiance is band-limited to SH-L2, so nine
+coefficients per channel capture it; skin is used because its albedo is near-uniform within one
+performer, and a Huber loss stops a forehead specular or a dark brow from dragging the fit.
+
+**The albedo/lighting scale degeneracy is harmless here and should not be apologised for.** The
+fit recovers `albedo × L`, not `L` — and `E_source` only ever appears as the denominator of a
+ratio against a plate carrying the *same* albedo, so it cancels. What survives is relative albedo,
+which is exactly what should survive.
+
+`--selftest` recovers known lighting from a synthetic plate built on this shot's real normals,
+through per-pixel albedo variation and 3 % noise. **4/4 PASS**, relative irradiance error 0.4–4.0 %.
+
+### Two honest caveats, both measured rather than assumed
+
+**The pass criterion is the irradiance field, not the light direction — and that is not a lowered
+bar.** `composite_ratio`, `make_albedo` and `relight_sh` all evaluate `E_source(n)` at the visible
+normals and divide by it. **None of them uses a light direction anywhere.** The field is what is
+consumed, so the field is what is tested.
+
+**The direction really is unreliable, and the report now says so loudly.** On this shot the
+sampled normals span `ny` from −1.000 to −0.0599, and **0.00 %** face away from camera. The fit has
+*no data at all* about light arriving from behind, so the direction it extrapolates there is an
+artefact. It reported a source behind the performer at 133° from the old guess — that number is
+meaningless and has been removed from the report rather than presented as a finding. It would have
+been an easy and impressive-sounding thing to claim.
+
+### What the measurement actually shows
+
+Compared over the visible normals, both mean-normalised:
+
+| measured vs the old hand-written guess | |
+|---|---|
+| relative RMS difference | **24.1 %** |
+| correlation | 0.753 |
+| spread p5–p95, measured | **0.973** |
+| spread p5–p95, assumed | 0.432 |
+
+**The real plate is about 2.3× more directionally lit than "ambient 0.55 + key 0.45" allowed.**
+That is the substantive error in rounds 2 and 3: not a wrong direction, a wrong *amount of
+directionality*, and it biased every ratio by roughly a quarter.
+
+Wired into `composite_ratio.py` and `make_albedo.py`, which now print which model they used and
+fall back to the guess only via an explicit `--assumed-source` flag kept for comparison. Albedo
+has been regenerated for all 150 frames against the measured model. **The ratio composite has not
+been re-run against it yet** — that is round 4's first measurement, and the current
+`stress_ratio_composite.mp4` still uses the old assumption.
 
 ---
 
@@ -203,14 +264,29 @@ a test that a flat card fails; additive specular with per-material weight; proxy
 projects correctly and is closed; V-Log decode with self-checks; plate-derived working resolution
 throughout; capture profiles for both candidate modes.
 
+**Edges, raised by the artist at the end of the round:** the silhouette reads as slightly
+aliased or ragged. Measured before guessing, and the two obvious explanations are both ruled out:
+the matte carries **12 294 partial-coverage pixels** with a reasonably flat distribution across
+alpha, so it is genuinely antialiased; and the proxy covers **99.5 %** of the rim, with only 0.6 %
+of rim pixels missing geometry. Two live hypotheses for round 4, in order:
+
+1. **The side walls I added this round are the prime suspect.** Fixing the degenerate walls put
+   860 real quads exactly at the silhouette, nearly edge-on to camera. Grazing-angle geometry
+   renders dark and noisy, and multiplying the plate by a dark ragged rim would look exactly like
+   this. Test by rendering the ratio pass with walls suppressed and comparing the rim.
+2. **The artist's own hypothesis: the chroma key needs a little feather.** Cheap to test —
+   the alpha distribution is mildly U-shaped, so a small feather before compositing may be all it
+   needs.
+
 **Still not done, and not pretended otherwise:** the composite runs against a black void rather
 than an environment, so there is no bounce and no background integration. Eyes get no catchlight.
 Hair shadows as a mass. `E_source` is still assumed. Rows 9–12 — MTF, grain, chroma, motion blur —
 are untouched. The artist's own footage cannot be ingested at all yet: no desqueeze stage, no
 all-intra transcode, no chroma upsample.
 
-His current read of the best frames: **"much better… but not quite outside the uncanny valley."**
-That is the correct assessment and it should not be rounded up.
+His current read: **"the render is much better now"**, and of the best frames earlier,
+**"much better… but not quite outside the uncanny valley."** That is the correct assessment and it
+should not be rounded up.
 
 ---
 
@@ -226,27 +302,29 @@ Everything in round 1 §5 and round 2 §9 still stands. Added:
   The artist asked for this explicitly and it is the right default for a look.
 - **Get the external review.** `codex review -c model="gpt-6-astra"` found three live bugs and one
   false claim in about an hour. Do it again before the next handoff.
+- **No on-set reference, ever.** No chrome ball, no grey card, no colour chart as a *requirement*.
+  This is a generic tool for other artists' footage as well, so anything that needs a procedure on
+  the day is out of scope. `E_source` is inferred; if something else needs measuring, infer it.
+- **Recording mode is `c58k_17_9`.** Build ingest for that first.
 
 ---
 
 ## 9. Open questions for the artist
 
-Round 1's and round 2's still stand. The one that matters most, repeated because it is now the
-single weakest link in a chain that otherwise works: **`E_source` is assumed.** Every ratio in
-this pipeline divides by a *guess* at how the plate was originally lit. A chrome ball and an 18 %
-grey ball on a slate at the head of every take converts it from inference into measurement, and
-costs about 30 seconds.
+**`E_source` is answered** (§6b) and **the recording mode is chosen** (§6). What remains needs
+nothing on set beyond information the artist already has:
 
-New:
-
-1. **Choose the recording mode** (§6). The pipeline supports both, but the ingest stages that
-   round 4 must build differ between them.
-2. **Shoot a ColorChecker and an 18 % grey card**, to verify the V-Log constants rather than
-   inheriting them. `vlog.py --selftest` proves the transcription is self-consistent; it cannot
-   prove it matches this body.
-3. **A defocused test take**, to match anamorphic bokeh magnitude. The oval shape is measured
-   (`aperture_ratio` 1.6 → 1.6:1); the blur *amount* depends on the taking T-stop, which is not
-   recorded.
+1. **His own interocular distance, measured once with a ruler.** Removes the 63 mm adult prior
+   from every camera solve, permanently. This is the one remaining physical measurement, it is
+   taken once rather than per take, and there is no way to infer it from footage.
+2. **The T-stop he shoots at**, so anamorphic bokeh magnitude can be matched. The oval *shape* is
+   already measured (`aperture_ratio` 1.6 → 1.6:1); the blur *amount* depends on the taking stop.
+   If he would rather not record it, round 4 can fit it from a defocused background in his own
+   footage — worth trying before asking.
+3. **Whether V-Log constants can be verified without a chart.** `vlog.py --selftest` proves the
+   transcription is self-consistent but cannot prove it matches this body. Given the no-reference
+   rule, the fallback is to validate against the known black floor (V-Log 0 IRE sits at 0.125) and
+   a skin-tone prior rather than a shot chart.
 
 ---
 
@@ -275,18 +353,28 @@ New:
 > put geometry between a practical and the actor and confirm the shadow lands on her and stops at
 > her silhouette.
 >
-> **3. Ingest for his own footage**, which currently cannot be processed at all. All three are
-> declared as blocking in `capture_profile.py` and none exists:
-> `scripts/desqueeze.py` (1.6×, before any estimator — `anamorphic.py` has the maths and nothing
-> calls it on a plate), the all-intra transcode, and chroma upsampling before keying. Autodetect
-> what can be autodetected: ffprobe gives resolution, chroma, GOP structure and colour tags
-> directly, and log-vs-linear can be inferred from the black floor sitting at V-Log's 0.125 rather
-> than 0 when tags are absent. **Squeeze cannot be detected and must stay declared.**
+> **3. Ingest for `c58k_17_9`**, his chosen mode, which currently cannot be processed at all.
+> Being all-intra, the transcode step is NOT needed — build `scripts/desqueeze.py` (1.6×, before
+> any estimator; `anamorphic.py` has the maths and nothing calls it on a plate), chroma upsampling
+> before keying, and the 79.4 % width crop to reach 2.40:1. **Autodetect everything detectable**,
+> because this is meant to work on other artists' footage: ffprobe gives resolution, chroma, GOP
+> structure and colour tags directly, and log-vs-linear can be inferred from the black floor
+> sitting at V-Log's 0.125 rather than 0 when tags are absent. **Squeeze cannot be detected and
+> must stay declared** — that is the one field a user has to supply.
 >
 > **4. Per-material properties from `facebook/sapiens2-seg-1b`**, replacing the red-dominance skin
 > mask heuristic in `make_albedo.py`. Its 29-class taxonomy splits lips/teeth/tongue, which gives
 > wet-surface shading for free and would let hair, wool and skin each take their own roughness and
 > specular weight instead of a two-way lerp.
+>
+> **5. The ragged silhouette** (§7): test the side-wall hypothesis first by rendering the ratio
+> pass with walls suppressed, then the artist's feather hypothesis. Measurements are in §7 so the
+> ruled-out causes are not re-investigated.
+>
+> **6. Re-run the ratio composite against the MEASURED `E_source`** and compare. It is wired but
+> the current video still uses the old assumption, which differs by 24 % relative RMS over the
+> visible normals. Expect the biggest change on strongly shaded areas, because the real plate is
+> about 2.3× more directionally lit than the guess allowed.
 >
 > Then the plate-matching group (rows 9–12): measured MTF blur, 4:2:0 chroma match, measured grain
 > before quantisation, and 180° motion blur on the CG.

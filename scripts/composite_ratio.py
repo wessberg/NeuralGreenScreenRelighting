@@ -77,6 +77,27 @@ def source_irradiance(normals):
     return SRC_AMBIENT + SRC_KEY * np.maximum(np.sum(normals * L_SRC, -1), 0)
 
 
+def load_source_light(shot):
+    """The MEASURED E_source for this shot, or None if it has not been estimated yet.
+
+    scripts/estimate_source_light.py fits SH-L2 lighting to the plate's own skin radiance against
+    the neural normals. It replaces a hand-written frontal-key guess that differed from the
+    measurement by 24% relative RMS over the visible normals, mostly because the real plate is
+    about 2.3x more directionally lit than the guess allowed.
+    """
+    p = shot.log('source_light.json')
+    if not p.exists():
+        return None
+    return np.array(json.loads(p.read_text())['sh_coefficients_rgb'], np.float32)
+
+
+def source_irradiance_measured(normals, C):
+    """E_source(n) from the fitted SH coefficients."""
+    from sh_project import sh_basis
+    Y = sh_basis(normals[..., 0], normals[..., 1], normals[..., 2])
+    return np.maximum(np.einsum('hwk,kc->hwc', Y, C), 1e-4)
+
+
 def ldir_colour(E, mask):
     """Colour of the dominant light, normalised to unit luminance, so G carries its hue."""
     if not mask.any():
@@ -152,6 +173,9 @@ def main():
                          'texture instead of becoming pure black')
     ap.add_argument('--anchor-frame', type=int, default=0)
     ap.add_argument('--exposure', type=float, default=1.0)
+    ap.add_argument('--assumed-source', action='store_true',
+                    help='fall back to the old hand-written frontal key instead of the measured '
+                         'E_source, for comparison only')
     ap.add_argument('--specular', type=float, default=1.0,
                     help='gain on the additive specular term; 0 disables it')
     ap.add_argument('--roughness-skin', type=float, default=0.30)
@@ -188,6 +212,10 @@ def main():
     # The anchor frame is chosen, not just the first one on disk: an atypically dark or bright
     # opening frame would otherwise set the exposure for the whole sequence. --anchor-frame was
     # parsed and never read until the review pointed it out.
+    src_C = None if args.assumed_source else load_source_light(shot)
+    print('E_source: %s' % ('MEASURED from the plate (logs/source_light.json)' if src_C is not None
+                            else 'assumed frontal key -- run estimate_source_light.py'), flush=True)
+
     anchor_idx = min(max(args.anchor_frame, 0), len(renders) - 1)
     order = [renders[anchor_idx]] + [r for i, r in enumerate(renders) if i != anchor_idx]
 
@@ -214,7 +242,13 @@ def main():
 
         nrm = np.load(shot.relight / 'normals' / ('%06d.npz' % fi))['normal'].astype(np.float32)
         nrm /= np.maximum(np.linalg.norm(nrm, axis=-1, keepdims=True), 1e-6)
-        E_s = cv2.resize(source_irradiance(nrm), (w, h), interpolation=cv2.INTER_LINEAR)[..., None]
+        if src_C is not None:
+            E_s = cv2.resize(source_irradiance_measured(nrm, src_C), (w, h),
+                             interpolation=cv2.INTER_LINEAR)
+            E_s = (E_s @ LUMA)[..., None]
+        else:
+            E_s = cv2.resize(source_irradiance(nrm), (w, h),
+                             interpolation=cv2.INTER_LINEAR)[..., None]
         # Specular needs normals at plate resolution, and a per-material roughness.
         nrm_full = cv2.resize(nrm, (w, h), interpolation=cv2.INTER_LINEAR)
         nrm_full /= np.maximum(np.linalg.norm(nrm_full, axis=-1, keepdims=True), 1e-6)
@@ -318,7 +352,8 @@ def main():
         'formula': 'out = plate x R,  R = E_target(rendered) / E_source(assumed)',
         'why': 'the plate keeps every pore, hair strand and eye specular; the renderer supplies '
                'only the change in light. Rendering the proxy instead shows the proxy.',
-        'E_source': {'model': 'soft frontal studio key (ASSUMED, not measured)',
+        'E_source': {'model': ('MEASURED by estimate_source_light.py' if src_C is not None
+                              else 'soft frontal studio key (ASSUMED, not measured)'),
                      'direction': L_SRC.tolist(), 'ambient': SRC_AMBIENT, 'key': SRC_KEY,
                      'shared_with': 'relight_sh.py and make_albedo.py, deliberately identical'},
         'clamp': {'upper_stops': args.max_stops, 'lower': 'unclamped down to floor %.4f' % args.floor,
