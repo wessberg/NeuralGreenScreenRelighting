@@ -1,0 +1,116 @@
+{
+  "crops_xywh": {
+    "teeth": [
+      882,
+      301,
+      226,
+      264
+    ],
+    "sclera": [
+      830,
+      197,
+      306,
+      196
+    ],
+    "eyelid": [
+      822,
+      189,
+      322,
+      212
+    ],
+    "hair": [
+      780,
+      32,
+      460,
+      236
+    ]
+  },
+  "zoom": 1,
+  "decoded": [
+    {
+      "video": "r7_teeth_1to1.mp4",
+      "frames_decoded": 150,
+      "fps": 24.0,
+      "sequence_sheets": [
+        "composite\\r7_audit\\r7_teeth_1to1_000.png",
+        "composite\\r7_audit\\r7_teeth_1to1_030.png",
+        "composite\\r7_audit\\r7_teeth_1to1_060.png",
+        "composite\\r7_audit\\r7_teeth_1to1_090.png",
+        "composite\\r7_audit\\r7_teeth_1to1_120.png"
+      ]
+    },
+    {
+      "video": "r7_sclera_1to1.mp4",
+      "frames_decoded": 150,
+      "fps": 24.0,
+      "sequence_sheets": [
+        "composite\\r7_audit\\r7_sclera_1to1_000.png",
+        "composite\\r7_audit\\r7_sclera_1to1_030.png",
+        "composite\\r7_audit\\r7_sclera_1to1_060.png",
+        "composite\\r7_audit\\r7_sclera_1to1_090.png",
+        "composite\\r7_audit\\r7_sclera_1to1_120.png"
+      ]
+    },
+    {
+      "video": "r7_eyelid_1to1.mp4",
+      "frames_decoded": 150,
+      "fps": 24.0,
+      "sequence_sheets": [
+        "composite\\r7_audit\\r7_eyelid_1to1_000.png",
+        "composite\\r7_audit\\r7_eyelid_1to1_030.png",
+        "composite\\r7_audit\\r7_eyelid_1to1_060.png",
+        "composite\\r7_audit\\r7_eyelid_1to1_090.png",
+        "composite\\r7_audit\\r7_eyelid_1to1_120.png"
+      ]
+    },
+    {
+      "video": "r7_hair_1to1.mp4",
+      "frames_decoded": 150,
+      "fps": 24.0,
+      "sequence_sheets": [
+        "composite\\r7_audit\\r7_hair_1to1_000.png",
+        "composite\\r7_audit\\r7_hair_1to1_030.png",
+        "composite\\r7_audit\\r7_hair_1to1_060.png",
+        "composite\\r7_audit\\r7_hair_1to1_090.png",
+        "composite\\r7_audit\\r7_hair_1to1_120.png"
+      ]
+    },
+    {
+      "video": "r5_eyes_1to1.mp4",
+      "frames_decoded": 150,
+      "fps": 24.0,
+      "sequence_sheets": [
+        "composite\\r7_audit\\r5_eyes_1to1_000.png",
+        "composite\\r7_audit\\r5_eyes_1to1_030.png",
+        "composite\\r7_audit\\r5_eyes_1to1_060.png",
+        "composite\\r7_audit\\r5_eyes_1to1_090.png",
+        "composite\\r7_audit\\r5_eyes_1to1_120.png"
+      ]
+    },
+    {
+      "video": "r5_hair_1to1.mp4",
+      "frames_decoded": 150,
+      "fps": 24.0,
+      "sequence_sheets": [
+        "composite\\r7_audit\\r5_hair_1to1_000.png",
+        "composite\\r7_audit\\r5_hair_1to1_030.png",
+        "composite\\r7_audit\\r5_hair_1to1_060.png",
+        "composite\\r7_audit\\r5_hair_1to1_090.png",
+        "composite\\r7_audit\\r5_hair_1to1_120.png"
+      ]
+    },
+    {
+      "video": "r5_mouth_1to1.mp4",
+      "frames_decoded": 150,
+      "fps": 24.0,
+      "sequence_sheets": [
+        "composite\\r7_audit\\r5_mouth_1to1_000.png",
+        "composite\\r7_audit\\r5_mouth_1to1_030.png",
+        "composite\\r7_audit\\r5_mouth_1to1_060.png",
+        "composite\\r7_audit\\r5_mouth_1to1_090.png",
+        "composite\\r7_audit\\r5_mouth_1to1_120.png"
+      ]
+    }
+  ],
+  "inspection": "Consecutive-frame sheets; no real-time playback tool available."
+}

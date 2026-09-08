@@ -1,4 +1,9 @@
-"""Split the plate into a DIFFUSE layer and a SPECULAR layer, so the two can be relit differently.
+"""EXPERIMENTAL, REJECTED: split the plate into estimated diffuse and specular layers.
+
+Round-5 playback exposed damaged teeth, sclera and unstable hair patches. The model below
+does not establish that its subtraction is specular, or that photographed detail survives.
+The composite defaults to keeping the original plate and disabling replacement catchlights.
+Historical rationale below is not a validation claim; see the round6 rejection addendum.
 
     dependencies/CorridorKey/.venv/Scripts/python.exe scripts/separate_specular.py --shot <dir>
 

@@ -288,18 +288,20 @@ def main():
                          'E_source, for comparison only')
     ap.add_argument('--specular', type=float, default=1.0,
                     help='gain on the additive specular term; 0 disables it')
-    ap.add_argument('--plate-specular', choices=('remove', 'keep'), default='remove',
+    ap.add_argument('--plate-specular', choices=('remove', 'keep'), default='keep',
                     help="'remove' multiplies the DIFFUSE layer from separate_specular.py, so "
                          "the green-screen room's own highlights leave with it. 'keep' is the "
-                         'round-4 behaviour, kept as a control. With no separation on disk both '
+                         'default round-4 behaviour. Removal is experimental and damages teeth, '
+                         'sclera and hair (round6 rejection addendum). With no separation both '
                          'behave identically')
     ap.add_argument('--source-detail-sigma', type=float, default=-1.0,
                     help='EXPERIMENT, off by default: low-pass on E_source before the division, '
                          'in plate px. 0 measures the crossover from this shot; negative '
                          'disables it. Tested against the lip contrast it made things WORSE '
                          '(+11.5%% vs +7.0%%), so it is not the fix and does not ship on')
-    ap.add_argument('--catchlight', type=float, default=1.0,
-                    help='gain on the rendered corneal reflection; 0 disables it')
+    ap.add_argument('--catchlight', type=float, default=0.0,
+                    help='EXPERIMENT: gain on the rendered corneal reflection; off by default. '
+                         'The cap lacks eyelid occlusion and replacement depends on an unsafe split')
     ap.add_argument('--catchlight-dir', default='',
                     help='EXR catchlight renders; default composite/catchlight_render')
     ap.add_argument('--catchlight-cap', type=float, default=0.8,
@@ -337,6 +339,10 @@ def main():
                     help='with --extend-edges: unreliable proxy rim in plate pixels')
     args = ap.parse_args()
     shot = from_args(args)
+    if args.plate_specular == 'remove' or args.catchlight > 0:
+        print('EXPERIMENTAL round-5 path: rejected for damaged teeth/sclera, unstable hair '
+              'and catchlights over eyelids. See rounds/round6.md rejection addendum.',
+              file=sys.stderr, flush=True)
 
     # stress_proxy.py --ratio --name X writes to composite/X, so that is where this looks by
     # default. They previously disagreed and the documented command found nothing.
@@ -399,8 +405,14 @@ def main():
 
         # D and S. Without a separation on disk this returns (plate, zeros), so an unseparated
         # shot composites exactly as it did in round 4.
-        D_plate, S_plate = load_layers(shot, fi)
-        fg = D_plate if args.plate_specular == 'remove' else (D_plate + S_plate)
+        if args.plate_specular == 'remove':
+            D_plate, S_plate = load_layers(shot, fi)
+            fg = D_plate
+        else:
+            # Read the photograph directly: an old, corrupt or overshooting experimental
+            # cache must never affect keep mode, even through a subtract/add round trip.
+            fg = cv2.imread(str(shot.fg(fi)), -1)[..., ::-1].astype(np.float32)
+            S_plate = np.zeros_like(fg)
         alpha = cv2.imread(str(shot.alpha(fi)), -1)
         if alpha.ndim == 3:
             alpha = alpha[..., 0]

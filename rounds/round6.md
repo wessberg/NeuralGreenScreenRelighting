@@ -222,3 +222,120 @@ unremoved highlight stand out. **Round 4's geometry fix is what exposed the spec
 > frame-51 interior corrugation lead. Measure before and after, produce 1:1 comparison videos with
 > `review_video.py --compare --crop --zoom`, and write `rounds/round7.md`. State ceilings plainly
 > and do not report a constraint row as green while a row it depends on is red.
+
+---
+
+## 7. Rejection addendum — round 5 was broken; rollback reviewed in round 7
+
+**2026-09-08, Codex. This addendum supersedes the success implications and starter prompt
+above. The original account is preserved as the record of what shipped.** The artist rejected
+all of round 5. Its author acknowledged judging one still and never watching the review videos.
+The teeth, sclera, dark hair and eyelid defects are real. Neither specular separation nor
+replacement catchlights is ready for use. No photorealism constraint has become green.
+
+### What was verified, including corrections to the proposed diagnosis
+
+`scripts/audit_r5_defects.py` measures all 150 output frames against the original plate and
+round 4. It uses the stress-tour output-to-shot frame mapping. Bright, eroded inner-mouth
+pixels are tooth candidates; bright eyelid-opening pixels outside the expanded iris discs
+are sclera candidates. These masks are chosen from the original plate, never the altered
+result. Saved overlays make their limitations reviewable: these are anatomical candidate
+regions, not ground-truth material segmentation. Empty regions are excluded, not counted as
+zero-error frames.
+
+1. **The separator removes tooth/sclera radiance and dark hair detail.** The local opening is
+   not a trustworthy material-colour estimator. The suggested explanation that tooth/sclera
+   bases sit *just outside* the 1.8-degree neutral cone is not supported: at frame 0 their
+   median base-to-illuminant angles are **36.61 and 28.85 degrees**, respectively. Across the
+   eight inspected frames, no sampled tooth or sclera candidate is protected by the guard.
+   This is consistent with the opening mixing different materials and channels; widening a
+   small neutral cone alone is not a demonstrated fix.
+2. **Kernel sensitivity is verified; a literal kernel-shaped footprint is not.** The code's
+   `radius=15` is actually a **15x15 kernel width**, followed by blur. At frame 51, using widths
+   7/15/31 changes mean removed fraction in dark hair to **11.54/16.67/9.35%**. The median
+   connected patch widths/heights above 25% removal are **5x4/7x4/6x4 px**. Thus the estimate
+   strongly depends on the opening, but the measured blocks are not simply 15x15 stamps.
+   Recomputing width 15 matches the saved removal fraction within **0.0000219 mean absolute
+   error** in that region (the cache is half-float). Noise-floor amplification remains a
+   plausible contributor, not a separately established cause.
+3. **The catchlight cap never intersects the eyelid polygon.** An iris-disc cap reconstructed
+   from the stored landmarks puts **5.81% of its weight outside the eye openings**, averaged
+   over the sequence. This is a mask diagnostic, not a claim about rendered energy. Decoded
+   review frames show silver arcs during reopening, notably frames 13–22, and coloured arcs
+   around frames 45–52 and 134–140. A 2D lid intersection would address overpainting, but
+   would not fix incorrect source occlusion or destructive removal of the old reflection.
+4. **Useful infrastructure remains.** The saved catchlight validation has four passing
+   direction/magnitude checks, with errors **0.44–3.51%**. This run inspected that report and
+   its test code; it did not rerender Cycles. The illuminant estimator is preserved, but the
+   actual saved separation log reports **0.88% maximum channel disagreement**, 56 glint
+   samples and 38,292 neutral pixels, not the 0.3%/88/903 figures above. Agreement between
+   estimators does not validate the separator's local material model.
+
+### What changed and what was measured
+
+`composite_ratio.py` now defaults to **`--plate-specular keep --catchlight 0`**. Keep mode
+reads `key/fg` directly; cached separation files cannot change it through a subtract/add
+round trip. The experimental options remain available explicitly and print their rejected
+status. `separate_specular.py` is marked experimental/rejected. Its algorithm and cached
+outputs are preserved for diagnosis, not promoted as corrected. The corneal renderer,
+illuminant estimator, landmarks, eye geometry and review panels were retained.
+
+Freshly computed `composite/ratio_r7` matches `composite/ratio` in **every channel of every
+one of 150 1920x1080 PNGs: maximum difference 0, changed channels 0**. It is a measured
+rollback, not a copied folder and not a new relighting success.
+
+| Diagnostic (mean of valid frames) | Rejected round 5 | Rollback |
+|---|---:|---:|
+| Tooth-candidate energy removed from plate | 26.88% | 0% |
+| Sclera-candidate energy removed from plate | 52.66% | 0% |
+| Tooth-candidate pixels losing over 25% of radiance | 47.19% | 0% |
+| Sclera-candidate pixels losing over 25% of radiance | 75.94% | 0% |
+| Dark-hair energy removed | 19.62% | 0% |
+| Teeth mean absolute display-channel error against round 4 (0–255) | 13.26 | 0 |
+| Sclera mean absolute display-channel error against round 4 (0–255) | 32.02 | 0 |
+| Hair adjacent-frame change in removed fraction, motion compensated | 6.30 percentage points | 0 |
+
+The hair metric uses **149 adjacent pairs**, optical flow from the original plate, and
+warps the previous removal fraction into the current frame. Its residual includes flow
+error and appearance changes; it does not isolate algorithmic flicker perfectly. Zero
+rollback removal follows from the disabled stage, and is independently checked by equality
+of the actual full-frame output. This does **not** mean the relight or normals are temporally
+perfect. `logs/r7_defect_audit.json` contains per-frame results, masks/crop definitions,
+kernel experiments, method limitations and the saved illuminant record.
+
+### Videos and visual inspection
+
+Four native-pixel, 24 fps, CRF 12 comparisons, **round 4 left / rollback right**, under
+`music_videos/reporter_test/shots/reporter_a/final/`:
+
+- `r7_teeth_1to1.mp4`
+- `r7_hair_1to1.mp4`
+- `r7_sclera_1to1.mp4`
+- `r7_eyelid_1to1.mp4`
+
+`scripts/review_r5_rollback.py --shot music_videos/reporter_test/shots/reporter_a` reproduces
+the four encodes via `review_video.py`. Mouth/eye crops span the landmark motion over the
+whole sequence; hair uses a recorded reporter-specific crown crop. Each encode now has
+its own JSON sidecar rather than relying solely on an overwritten latest-run log.
+
+All **1,050 encoded frames** were decoded: 150 in each of the four new and three rejected
+videos. Consecutive-frame sheets of all three rejected videos were visually inspected,
+alongside new-video sheets at the defect intervals and source panels at **0, 21, 40, 51,
+79, 100, 120 and 149**. The tool interface has no real-time playback facility; this was
+ordered-frame inspection, not a claim to have watched real-time playback. The artist's
+playback verdict remains the acceptance authority. Decode counts, rates and sheet paths
+are in `logs/r7_video_review.json`; the sheets and mask overlays are in `composite/r7_audit/`.
+
+The new videos preserve photographed teeth and eye whites, omit the added eyelid arcs, and
+restore hair detail. They also preserve **round 4's original studio sheen, lip highlights
+and softbox catchlights**. Those original problems remain unsolved. The earlier request to
+regenerate albedo/normals/source-light from the estimated diffuse layer is withdrawn: doing
+so now would propagate a rejected decomposition into the rest of the pipeline.
+
+### Next step
+
+Read `round7.md`. Keep both stages off until a new approach proves material integrity and
+temporal behaviour across an entire review sequence. Do not tune against a single still or
+substitute lower global specular energy for visual correctness. Eyelid masking, lash/brow
+occlusion and non-destructive removal of the original reflection are all prerequisites for
+re-enabling replacement catchlights. No on-set reference is required or requested.

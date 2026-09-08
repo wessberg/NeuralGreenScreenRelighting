@@ -154,6 +154,8 @@ def main():
                'source': str(src), 'compare': str(cmp_dir) if cmp_dir else None,
                'purpose': 'REVIEW ONLY, display-referred sRGB. Delivery is master_export + hdr_mux.'}
     shot.log('review_video.json').write_text(json.dumps(summary, indent=2))
+    # Keep provenance per encode; the shared latest-run log cannot describe four defect videos.
+    out.with_suffix('.json').write_text(json.dumps(summary, indent=2))
     print(json.dumps(summary, indent=2))
 
 
