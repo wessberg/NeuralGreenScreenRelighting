@@ -1,13 +1,13 @@
 {
   "shot": "reporter_a",
-  "output": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\final\\r8_iris_tracking_evidence.mp4",
+  "output": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\final\\r9_iris_withheld_comparison.mp4",
   "frames": 150,
   "fps": 59.94005994005994,
   "crf": 12,
-  "bytes": 1355973,
+  "bytes": 2288476,
   "crop": null,
   "zoom": 1,
-  "source": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r8_audit\\iris_tracking",
+  "source": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r9_iris\\holdout_review",
   "compare": null,
   "purpose": "REVIEW ONLY, display-referred sRGB. Delivery is master_export + hdr_mux."
 }

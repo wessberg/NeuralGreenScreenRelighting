@@ -9,7 +9,7 @@ any model starts from the same state.
 **Before doing anything else in this repo, read the most recent file in `rounds/`.**
 
 ```powershell
-Get-ChildItem rounds/round*.md | Sort-Object Name | Select-Object -Last 1
+Get-ChildItem rounds/round*.md | Sort-Object { [int]($_.BaseName -replace '^round', '') } | Select-Object -Last 1
 ```
 
 Each round is the handoff from the previous working session: what was delivered and verified,
@@ -26,6 +26,13 @@ it is not the lip fix. Simple centre/scale temporal iris recovery fails a withhe
 (median relative RGB error 12.47–14.50%, p95 50.10–64.59%). Unclipped reflections are unresolved
 sums, not automatically recoverable iris texture. `audit_r8_reflections.py` is an isolated
 reporter diagnostic, not a production repair or validated removal mask. See `rounds/round8.md`.
+
+**Round 9 correspondence findings:** masked affine iris alignment improves withheld-pixel
+error on matched samples (median relative RGB 11.67% → 7.27% left, 10.45% → 6.09% right),
+but provides **zero confident pixels at the detected original catchlights**. The new test
+excludes shared native interpolation footprints, uses identical controls, and reports
+abstentions. `audit_r9_iris.py` is diagnostic only. Original catchlights, hair sheen and lip
+gloss remain unresolved; production defaults are unchanged. See `rounds/round9.md`.
 
 ---
 
