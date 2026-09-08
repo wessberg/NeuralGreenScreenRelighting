@@ -1,0 +1,30 @@
+{
+  "geometry": {
+    "angles": 4,
+    "pixel_aspects": [
+      1.0,
+      1.6
+    ],
+    "max_limbus_radial_error": 1.3322676295501878e-15
+  },
+  "search_isolation": {
+    "synthetic_known_geometry": true,
+    "training_pixels": 428,
+    "searched_native_footprints": 223,
+    "changed_validation_mae": 144.92591857910156,
+    "selected_angle_and_training_exact": true
+  },
+  "hidden_rgb_exact_cases": 100,
+  "hidden_rgb_cases_with_support": 19,
+  "real_fit_count": 496,
+  "supplementary_labelled_hidden_rgb_exact_cases": 6,
+  "protected_hashes_unchanged": 304,
+  "exact_keyed_eye_fallbacks": 300,
+  "video": {
+    "file": "final\\r14_neural.mp4",
+    "decoded_frames": 50,
+    "fps": 59.94005994005994,
+    "visual_inspection": "pending",
+    "artist_approval": false
+  }
+}

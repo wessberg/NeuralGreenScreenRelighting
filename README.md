@@ -16,7 +16,13 @@ Run `scripts/iris_observations.py --shot <dir> --review` after keying and face t
 It derives native eye crops, orientation and pixel aspect from that shot, and preserves
 source eyes while its masks remain unvalidated. It does not yet remove or replace
 reflections. See [eye-reflection architecture and neural prior art](docs/iris-prior-art.md)
-and [round 12](rounds/round12.md) for measured limits and the next component comparison.
+and [round 14](rounds/round14.md) for current measured limits. Released EllSeg and
+RITnet run in the isolated neural environment; setup is recorded in
+[the neural evaluation](docs/neural-eye-evaluation.md). The experimental
+`neural_iris_correspondence.py` samples original donor pixels and excludes fitting
+and query interpolation footprints across its entire search. Its reporter audit
+earns no reflection repairs; candidate masks and their abstention thresholds remain
+unvalidated. The source-keyed fallback and production defaults remain unchanged.
 
 ## Running without per-frame AI credits
 

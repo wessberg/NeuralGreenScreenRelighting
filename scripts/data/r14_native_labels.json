@@ -1,0 +1,13 @@
+{
+  "provenance": "Assistant sparse labels on source-only native nearest-neighbour grids, before round 14 neural overlays/results. Fresh coordinates, same reporter footage previously used in earlier rounds; not independent human ground truth or dense material validation.",
+  "boundary_uncertainty_native_px": 1.5,
+  "scope": "Only unequivocal lower/lateral iris and noniris samples. Bright reflection points do not reveal the underlying material. All six highlights overlap or approach the obscured pupil boundary, so an iris-only repair cannot be certified complete. No thresholds fitted using these labels.",
+  "frames": [
+    {"frame":959,"side":"left","view":"open","iris":[[21,38],[25,41],[30,41],[35,39],[38,35]],"noniris":[[15,38],[45,38],[30,48],[30,23],[29,33]],"reflection":[[23,32],[24,34]],"pupil_crossing":"cannot_exclude"},
+    {"frame":959,"side":"right","view":"open","iris":[[23,38],[27,40],[32,40],[36,37],[39,33]],"noniris":[[16,39],[46,35],[30,47],[30,22],[30,32]],"reflection":[[26,30],[26,32]],"pupil_crossing":"cannot_exclude"},
+    {"frame":977,"side":"left","view":"narrowed","iris":[[23,37],[27,39],[31,39],[35,37],[38,35]],"noniris":[[16,36],[45,37],[30,45],[30,26],[29,33]],"reflection":[[24,32],[25,32]],"pupil_crossing":"cannot_exclude"},
+    {"frame":977,"side":"right","view":"narrowed","iris":[[23,37],[27,38],[32,38],[37,36],[39,33]],"noniris":[[17,38],[45,34],[30,44],[30,25],[30,33]],"reflection":[[26,31],[27,31]],"pupil_crossing":"cannot_exclude"},
+    {"frame":995,"side":"left","view":"open","iris":[[26,37],[30,40],[35,41],[39,38],[42,34]],"noniris":[[20,37],[49,36],[35,47],[35,22],[35,31]],"reflection":[[30,30],[31,31]],"pupil_crossing":"cannot_exclude"},
+    {"frame":995,"side":"right","view":"open","iris":[[27,36],[31,39],[36,39],[40,36],[43,32]],"noniris":[[21,37],[50,33],[35,46],[35,21],[36,30]],"reflection":[[32,28],[32,30]],"pupil_crossing":"cannot_exclude"}
+  ]
+}

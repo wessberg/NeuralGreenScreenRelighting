@@ -3,6 +3,12 @@
 Both author checkpoints were downloaded and executed on the RTX 5080. This is
 geometry/segmentation evaluation, **not reflection removal or replacement**.
 
+The follow-on [round 14 correspondence evaluation](../rounds/round14.md) uses fresh
+source-only sparse labels and a frozen donor/target split. It earns zero reliable
+real repairs and exposes a nearly closed eye passing the experimental candidate
+gate. Its reusable sampler retains the distinct geometry/visibility semantics and
+exact source fallback described here.
+
 | Model | Author source / pinned commit | Checkpoint SHA-256 |
 |---|---|---|
 | EllSeg DenseElNet, all datasets | [RSKothari/EllSeg](https://github.com/RSKothari/EllSeg/tree/8f1ea13336fa9c662403bd5823ac13cc6a6dd632) | `0b8d3f4c2c936de3950150d302f3608679874317862942e1ec53b21c33a03a1a` |

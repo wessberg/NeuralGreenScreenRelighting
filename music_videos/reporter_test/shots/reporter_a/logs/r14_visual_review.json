@@ -1,0 +1,22 @@
+{
+  "reviewer": "coding assistant",
+  "method": "Native source-only annotation boards, full diagnostic stills, and an ordered contact sheet of every decoded video frame; not real-time playback.",
+  "source_only_annotation_frames": [959, 977, 995],
+  "fresh_full_overlay_frames": [959, 977, 995],
+  "additional_post_hoc_full_overlay_frames": [982, 984, 985],
+  "ordered_video_thumbnail_frames": {"source_start": 950, "source_end": 999, "count": 50},
+  "observations": [
+    "The original reflection remains on both source and fallback panels throughout.",
+    "Combined proposal masks cover only portions of visibly exposed iris and vary abruptly through the blink.",
+    "Source 977 left has almost no candidate iris and is rejected; right retains a lower crescent candidate.",
+    "Source 982 has no combined candidate on either nearly closed eye and is rejected.",
+    "Source 984 left is nearly closed but passes the experimental candidate gate: 51 iris pixels, 27 pupil pixels, offset 0.569603 px, pupil ratio 0.201855. This view cannot certify visible iris material.",
+    "Source 985 left/right retain small candidate regions but reject under the minimum iris area rule.",
+    "All six freshly marked reflections approach or overlap obscured pupil boundaries; underlying material and full reflection extent are not independently known."
+  ],
+  "post_hoc_scope": "Blink findings at 982/984/985 were inspected after model outputs. They were not used to change frozen thresholds or relabel the primary evaluation.",
+  "limitations": "Sparse assistant labels and contact-sheet review do not establish dense visibility, temporal tracking accuracy, clean donor support, or generalization to independent footage.",
+  "production_repairs": 0,
+  "scene_reflection_allowed": false,
+  "artist_approval": false
+}

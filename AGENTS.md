@@ -64,6 +64,17 @@ clarified that **tracking plus scene-light-based replacement remains the full ta
 Evaluate pretrained eye segmentation/tracking before further custom fitting; see
 `docs/iris-prior-art.md` and `rounds/round12.md`. No neural model was run this round.
 
+**Round 14 neural correspondence:** a frozen donor/target split and fresh sparse
+source-only annotations now exercise EllSeg/RITnet proposals through masked
+correspondence. The fixed-hole test has 500 attempted native pixels, 57 paired
+supported pixels, and **zero passing the combined context/agreement gates**.
+Paired median display error worsens from 4.2344 to 4.3501 with fitted torsion.
+These are candidate-region scores, not certified clean-iris accuracy. The candidate
+gate also accepts the nearly closed left eye at source 984. All six sparse real
+reflection probes have zero donor support; pupil crossing cannot be excluded.
+Search-wide native-footprint exclusions and exact keyed fallback are verified.
+No production repair or scene reflection was enabled. See `rounds/round14.md`.
+
 ## What this project is
 
 **Round 13 neural evaluation:** released EllSeg and RITnet weights now run in
