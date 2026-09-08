@@ -7,7 +7,10 @@
   "source_frame_rate": "60000/1001",
   "source_frame_rate_decimal": 59.94006,
   "source_frame_rate_is_fractional": true,
-  "source_resolution": [1920, 1080],
+  "source_resolution": [
+    1920,
+    1080
+  ],
   "source_bit_depth": 8,
   "source_frame_count": 1200,
   "source_duration_seconds": 20.02,
@@ -18,8 +21,15 @@
   "source_color_tagging": "TAGGED, unlike the proof-of-concept plate which was untagged and assumed sRGB. Limited-range bt709 must be expanded on decode; do not reuse the untagged full-range assumption.",
   "source_audio": null,
   "source_audio_note": "No audio stream at all. Music-timeline sync for this shot cannot come from camera audio and must be defined against the song, or the shot must be treated as free-timed.",
-  "source_shutter": {"seconds": null, "angle_degrees": null, "status": "not present in metadata; preserve photographed blur"},
-  "source_white_balance": {"kelvin": null, "status": "not in metadata; plate reads neutral-to-slightly-cool flat frontal studio light"},
+  "source_shutter": {
+    "seconds": null,
+    "angle_degrees": null,
+    "status": "not present in metadata; preserve photographed blur"
+  },
+  "source_white_balance": {
+    "kelvin": null,
+    "status": "not in metadata; plate reads neutral-to-slightly-cool flat frontal studio light"
+  },
   "framing": {
     "type": "medium close-up / bust",
     "visible_extent": "head to approximately mid-chest",
@@ -31,19 +41,42 @@
     "status": "NOT YET ESTIMATED",
     "warning": "Do not inherit the proof-of-concept values (52 mm, 4.3 m, height 1.02 m). Those were solved for a seated full figure at a wide framing. This is a standing bust shot and requires its own lens, height, distance and horizon estimate."
   },
-  "selection": {"status": "not yet chosen", "note": "Contact sheet at logs/contact_sheet.jpg samples every 100th frame across all 1200. A ~150 frame range is enough for the relighting comparison; commit to the full 20 s only after a method is chosen."},
-  "creative_brief": {"status": "awaiting direction", "environment": null, "mood": null, "lighting": null},
+  "selection": {
+    "start_frame": 700,
+    "frame_count": 150,
+    "duration_seconds": 2.5025,
+    "reason": "Chosen for the relighting comparison: covers the hand-to-ear/hair gesture, giving self-occlusion and moving hair, which stresses temporal stability. A static bust would flatter a bad method.",
+    "local_frame_zero_is_source_frame": 700
+  },
+  "creative_brief": {
+    "status": "awaiting direction",
+    "environment": null,
+    "mood": null,
+    "lighting": null
+  },
   "delivery": {
     "note": "Inherits the video-level delivery spec unless overridden. At 60000/1001 the mov timescale must be 60000 with 1001 ticks per frame; hdr_mux.py derives this from source_frame_rate.",
-    "conform_decision": "PENDING. 59.94 fps may be preserved, conformed to 29.97, or retimed for slow motion. This is a creative choice and must not be applied silently."
+    "conform_decision": "Resolved: preserve native 59.94 for this shot. It is a technical test bed for relighting, not a creative deliverable, so no retime is applied and no resampling artefacts are introduced into the comparison. The 24/1 project default does not apply here. NOTE 59.94 -> 24 is not an integer ratio (2.4975:1) and would require frame resampling at 1:1 speed; the artist shoots 24 natively so his own footage is unaffected.",
+    "frame_rate": "60000/1001",
+    "conform": "preserve"
   },
   "pipeline_status": {
     "ingested": true,
-    "frames_extracted": false,
+    "frames_extracted": true,
     "keyed": false,
     "camera_matched": false,
     "depth": false,
     "relit": false,
     "composited": false
+  },
+  "keying": {
+    "hint": {
+      "green_min": 0.6871,
+      "green_dominance_min": 0.3733
+    },
+    "note": "Inherited proof-of-concept thresholds as a STARTING POINT only. This plate has a brighter, more saturated backing and, critically, no green wardrobe (dark suit, white shirt), so despill may be applied globally here unlike the proof of concept. Verify on the test frames before the full run.",
+    "hint_source": "Derived by scripts/calibrate_key.py from the plate border; see logs/key_calibration.json",
+    "despill_mode": "global",
+    "despill_note": "Global green-excess removal is safe on this plate: the subject wears a dark suit and white shirt, so no green wardrobe needs protecting. Skin (r>g) and neutral fabric (r~g~b) have zero green excess and are untouched; only genuinely spill-contaminated pixels are corrected. The proof-of-concept plate has a green costume and must stay on edge_only."
   }
 }

@@ -1,0 +1,11 @@
+{
+  "source_frame_range": [
+    700,
+    849
+  ],
+  "frame_count": 150,
+  "source_frame_rate": "60000/1001",
+  "range_expansion": "in_range=limited out_range=full in_color_matrix=bt709 (source is TAGGED bt709 tv, unlike the untagged proof-of-concept plate)",
+  "pixel_format": "rgb48be",
+  "note": "select= is frame-exact; no seek rounding at fractional frame rate. Local frame 000000 == source frame 700."
+}

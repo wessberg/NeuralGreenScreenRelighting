@@ -1,0 +1,69 @@
+{
+  "shot": "proof_of_concept (project root)",
+  "sampled_frames": [
+    0,
+    75,
+    150,
+    225,
+    299
+  ],
+  "margin": 0.2,
+  "derived": {
+    "green_min": 0.8,
+    "green_dominance_min": 0.7435
+  },
+  "previous": {
+    "green_min": 0.68,
+    "green_dominance_min": 0.48
+  },
+  "per_frame": [
+    {
+      "frame": 0,
+      "border_backing_pixels": 131720,
+      "backing_green_p01": 1.0,
+      "backing_green_median": 1.0,
+      "backing_dominance_p01": 0.9294,
+      "backing_dominance_median": 0.9294
+    },
+    {
+      "frame": 75,
+      "border_backing_pixels": 131464,
+      "backing_green_p01": 1.0,
+      "backing_green_median": 1.0,
+      "backing_dominance_p01": 0.9294,
+      "backing_dominance_median": 0.9294
+    },
+    {
+      "frame": 150,
+      "border_backing_pixels": 131108,
+      "backing_green_p01": 1.0,
+      "backing_green_median": 1.0,
+      "backing_dominance_p01": 0.9294,
+      "backing_dominance_median": 0.9294
+    },
+    {
+      "frame": 225,
+      "border_backing_pixels": 131268,
+      "backing_green_p01": 1.0,
+      "backing_green_median": 1.0,
+      "backing_dominance_p01": 0.9294,
+      "backing_dominance_median": 0.9294
+    },
+    {
+      "frame": 299,
+      "border_backing_pixels": 131583,
+      "backing_green_p01": 1.0,
+      "backing_green_median": 1.0,
+      "backing_dominance_p01": 0.9294,
+      "backing_dominance_median": 0.9294
+    }
+  ],
+  "sanity_checks": {
+    "frame_classified_background_pct": 80.66,
+    "border_classified_background_pct": 92.52,
+    "darkest_decile_misclassified_pct": 0.0,
+    "skin_like_misclassified_pct": 0.0
+  },
+  "problems": [],
+  "method": "Border ring split at the midpoint of its dominance range to isolate the backing cluster; thresholds set 20% below the lowest 1st-percentile backing value across sampled frames."
+}

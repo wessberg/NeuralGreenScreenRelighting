@@ -1,0 +1,45 @@
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'music_videos/reporter_test/shots/reporter_a/source/plate.mp4':
+  Metadata:
+    major_brand     : M4V 
+    minor_version   : 1
+    compatible_brands: isomavc1mp42
+    creation_time   : 2020-08-24T17:14:14.000000Z
+  Duration: 00:00:20.02, start: 0.000000, bitrate: 24489 kb/s
+  Stream #0:0[0x1](und): Video: h264 (Main) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1920x1080 [SAR 1:1 DAR 16:9], 24482 kb/s, 59.94 fps, 59.94 tbr, 60k tbn (default)
+    Metadata:
+      creation_time   : 2020-08-24T17:14:14.000000Z
+      handler_name    : ETI ISO Video Media Handler
+      encoder         : Elemental H.264
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> png (native))
+Press [q] to stop, [?] for help
+[swscaler @ 000001e51ffded80] No accelerated colorspace conversion found from yuv420p to rgb48be.
+[swscaler @ 000001e51ffded80] [swscaler @ 000001e51efb5c00] No accelerated colorspace conversion found from yuv420p to rgb48be.
+[swscaler @ 000001e51ffded80] [swscaler @ 000001e51ffacb80] No accelerated colorspace conversion found from yuv420p to rgb48be.
+[swscaler @ 000001e51ffded80] [swscaler @ 000001e521f78740] No accelerated colorspace conversion found from yuv420p to rgb48be.
+[swscaler @ 000001e51ffded80] [swscaler @ 000001e5214a3dc0] No accelerated colorspace conversion found from yuv420p to rgb48be.
+[swscaler @ 000001e51ffded80] [swscaler @ 000001e5214b0e40] No accelerated colorspace conversion found from yuv420p to rgb48be.
+[swscaler @ 000001e51ffded80] [swscaler @ 000001e521fab8c0] No accelerated colorspace conversion found from yuv420p to rgb48be.
+[swscaler @ 000001e51ffded80] [swscaler @ 000001e521fb8940] No accelerated colorspace conversion found from yuv420p to rgb48be.
+[swscaler @ 000001e51ffded80] [swscaler @ 000001e51ef7ca40] No accelerated colorspace conversion found from yuv420p to rgb48be.
+[swscaler @ 000001e51ffded80] [swscaler @ 000001e51ef89ac0] No accelerated colorspace conversion found from yuv420p to rgb48be.
+[swscaler @ 000001e51ffded80] [swscaler @ 000001e51ef96b80] No accelerated colorspace conversion found from yuv420p to rgb48be.
+[swscaler @ 000001e51ffded80] [swscaler @ 000001e521be4240] No accelerated colorspace conversion found from yuv420p to rgb48be.
+[swscaler @ 000001e51ffded80] [swscaler @ 000001e521bf1300] No accelerated colorspace conversion found from yuv420p to rgb48be.
+[swscaler @ 000001e51ffded80] [swscaler @ 000001e521bfe380] No accelerated colorspace conversion found from yuv420p to rgb48be.
+[swscaler @ 000001e51ffded80] [swscaler @ 000001e521c0b440] No accelerated colorspace conversion found from yuv420p to rgb48be.
+[swscaler @ 000001e51ffded80] [swscaler @ 000001e521c184c0] No accelerated colorspace conversion found from yuv420p to rgb48be.
+[swscaler @ 000001e51ffded80] [swscaler @ 000001e521c25580] No accelerated colorspace conversion found from yuv420p to rgb48be.
+Output #0, image2, to 'music_videos/reporter_test/shots/reporter_a/source/frames/%06d.png':
+  Metadata:
+    major_brand     : M4V 
+    minor_version   : 1
+    compatible_brands: isomavc1mp42
+    encoder         : Lavf63.1.101
+  Stream #0:0(und): Video: png, rgb48be(pc, gbr/bt709/bt709, progressive), 1920x1080 [SAR 1:1 DAR 16:9], q=2-31, 200 kb/s, 59.94 fps, 59.94 tbn (default)
+    Metadata:
+      encoder         : Lavc63.1.101 png
+      creation_time   : 2020-08-24T17:14:14.000000Z
+      handler_name    : ETI ISO Video Media Handler
+frame=   33 fps=0.0 q=-0.0 size=N/A time=00:00:12.22 bitrate=N/A speed=23.9x elapsed=0:00:00.51    [out#0/image2 @ 000001e51c62cf00] video:145696KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
+frame=  150 fps=0.0 q=-0.0 Lsize=N/A time=00:00:14.18 bitrate=N/A speed=14.6x elapsed=0:00:00.97    
