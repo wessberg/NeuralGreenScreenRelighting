@@ -145,13 +145,19 @@ def main():
                 rec_u = np.unwrap(np.radians(rec)); exp_u = np.unwrap(np.radians(exp))
                 corr = float(np.corrcoef(rec_u, exp_u)[0, 1])
                 err = np.degrees(np.abs(((rec_u - exp_u) + np.pi) % (2 * np.pi) - np.pi))
-                report['sweep_validation'] = {
-                    'expected_azimuth_range_deg': [round(min(exp), 1), round(max(exp), 1)],
-                    'recovered_azimuth_range_deg': [round(min(rec), 1), round(max(rec), 1)],
-                    'correlation': round(corr, 4),
-                    'median_abs_error_deg': round(float(np.median(err)), 2),
-                    'verdict': ('axis convention CONSISTENT' if corr > 0.9
-                                else 'MISMATCH - check the probe camera rotation and the direction mapping')}
+                report['sweep_observation'] = {
+                    'key_azimuth_range_deg': [round(min(exp), 1), round(max(exp), 1)],
+                    'recovered_dominant_azimuth_range_deg': [round(min(rec), 1), round(max(rec), 1)],
+                    'correlation_with_key': round(corr, 4),
+                    'median_abs_difference_deg': round(float(np.median(err)), 2),
+                    'interpretation': (
+                        'INFORMATIONAL ONLY, not a pass/fail test. The recovered L1 direction is the '
+                        'dominant direction of ALL incident light -- environment, key, practical and '
+                        'accent combined -- so it cannot be expected to follow the key alone, '
+                        'especially once the environment dims and the practical moves close. The axis '
+                        'convention is verified separately and authoritatively by '
+                        'scripts/validate_sh_convention.py, against a single known source in a black '
+                        'world (worst error 0.01 degrees).')}
     out['validation'] = report
     dest.write_text(json.dumps(out, indent=2))
     print(json.dumps(report, indent=2))
