@@ -1,0 +1,16 @@
+{
+  "review": "final/r15_dense.mp4",
+  "video_sha256": "6ba4bc22165457b39cad12046e9d107b5404135501f6955b7346e6cadd71297d",
+  "method": "Assistant visual inspection of all 50 ordered decoded-video thumbnails and full-resolution source/overlay/fallback boards; not real-time playback",
+  "ordered_contact_sheets": ["composite/r15_dense/contact_0.jpg", "composite/r15_dense/contact_25.jpg"],
+  "full_boards_source_frames": [980, 981, 982, 984, 985],
+  "observations": [
+    "Original rectangular reflections persist in open-eye source and fallback panels.",
+    "Tracks continue onto the closed-lid region during the blink.",
+    "Source 981 left reports four of five points passing the cycle threshold despite a nearly closed eye; no candidate material footprints pass.",
+    "Source 984 left remains a false accepted neural eye candidate, while all five cycle tests reject.",
+    "The visible output is labelled as exact source fallback and no removal/replacement. It is not a repaired reflection preview."
+  ],
+  "artist_approval": false,
+  "photorealistic_repair_demonstrated": false
+}

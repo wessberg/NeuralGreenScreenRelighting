@@ -75,6 +75,17 @@ reflection probes have zero donor support; pupil crossing cannot be excluded.
 Search-wide native-footprint exclusions and exact keyed fallback are verified.
 No production repair or scene reflection was enabled. See `rounds/round14.md`.
 
+**Round 15 dense correspondence:** released RAFT large now runs in the existing
+isolated neural runtime. With six nearby donors, all 30 reused hidden iris points
+have raw support; paired median display error improves from 5.8333 (fixed tracked
+crops) to 2.6596 (RAFT). This is seen-data observed-pixel evidence, not clean-material
+certification or a comparison with round 14's distant donors. Candidate support is
+13/30 for RAFT, but all-arm context exclusions leave at most three context pixels,
+so the eight-pixel gate is unevaluable and zero repairs are earned. All 12 real
+reflection points have zero candidate donor support. At nearly closed source 981
+left, 4/5 points pass round-trip consistency: this is not visibility. Hidden RGB,
+native footprints and exact keyed fallback are verified. See `rounds/round15.md`.
+
 ## What this project is
 
 **Round 13 neural evaluation:** released EllSeg and RITnet weights now run in

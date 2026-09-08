@@ -10,6 +10,14 @@ and run in an isolated CUDA-compatible environment. See
 ellipse proposals; RITnet supplies visible-part proposals with observed failures.
 Neither is validated for reflection removal. Other neural models below remain unrun.
 
+**Round 15 update:** pretrained torchvision RAFT large was evaluated as a coordinate
+estimator, with original donor RGB sampled separately. Nearby-donor hidden-pixel
+error improves on 30 reused iris labels, but source-reflection support remains zero
+and round-trip consistency passes points during a blink. See
+[round 15](../rounds/round15.md) and its
+[frozen protocol](r15-evaluation-protocol.md). This does not validate visible material
+tracking or clean reconstruction. CoTracker3 remains unrun.
+
 The intended product is **tracking + source-reflection removal + scene-reflection
 rendering**, on arbitrary prepared shots. The reporter is an evaluation clip, not
 the specification. A failed reporter experiment must not become a claim that
@@ -20,6 +28,8 @@ temporal reconstruction is generally impossible.
 | Component | Available prior art | What it supplies | What remains to establish here |
 |---|---|---|---|
 | Eye tracking and segmentation | [EllSeg](https://github.com/RSKothari/EllSeg), [RITnet paper](https://arxiv.org/abs/1910.00694) | Learned pupil/iris localization; EllSeg links pretrained checkpoints and a video inference path. | Visible-light performance footage, small irises, blinks, lashes and oblique views. An inferred full ellipse is not a mask of **visible** iris material. |
+| Dense correspondence | [torchvision RAFT large](https://docs.pytorch.org/vision/0.23/models/generated/torchvision.models.optical_flow.raft_large.html) | Released flow weights; tested in round 15 using explicit C_T_SKHT_V2, 12 updates and native coordinate conversion. | Flow and low forward/backward error do not certify iris identity, visibility or absence of source reflection. |
+| Temporal points and visibility | [CoTracker3 authors' repository](https://github.com/facebookresearch/co-tracker) | Released offline/online trackers return point trajectories and predicted visibility. | Not run here. Needs explicit occluded-eye negatives and same-iris correspondence validation; predicted visibility is not automatically material truth. |
 | Temporal removal baseline | [ProPainter](https://github.com/sczhou/ProPainter) | Released weights for flow propagation and Transformer video inpainting from frames and masks. | Whether repaired iris detail agrees with independent observations of that same eye; temporal consistency alone does not establish this. Its complete inpainting output is not guaranteed to consist of photographed donor pixels. The repo declares noncommercial use, so do not silently adopt it as a commercial production dependency. |
 | Highlight separation baseline | [TSHRNet](https://github.com/fu123456/TSHRNet) | ICCV 2023 three-stage RGB specular removal; README links pretrained models. | Eye-specific detail, pupil/sclera preservation and temporal behaviour; this is single-image estimation, not a tracked-eye relighting system. |
 | Multi-view corneal/iris decomposition | [Seeing the World through Your Eyes](https://world-from-eyes.github.io/), [CVPR 2024 paper](https://openaccess.thecvf.com/content/CVPR2024/papers/Alzayer_Seeing_the_World_through_Your_Eyes_CVPR_2024_paper.pdf) | Joint optimization of corneal poses, reflected scene and a shared iris texture field; public code is linked by the authors. | The paper evaluates the reflected scene reconstruction. Its radial iris regularizer may alter texture; it does not validate exact photographic iris restoration for our use. Small motion is a documented failure case. |

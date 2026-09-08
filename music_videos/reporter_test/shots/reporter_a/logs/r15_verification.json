@@ -1,0 +1,184 @@
+{
+  "conventions": {
+    "analytic_sample_max_error": 0.0,
+    "native_mapping": [
+      {
+        "pixel_aspect": 1.0,
+        "shift": [
+          3,
+          0
+        ],
+        "native_error": 0.0
+      },
+      {
+        "pixel_aspect": 1.0,
+        "shift": [
+          -3,
+          0
+        ],
+        "native_error": 0.0
+      },
+      {
+        "pixel_aspect": 1.0,
+        "shift": [
+          0,
+          3
+        ],
+        "native_error": 0.0
+      },
+      {
+        "pixel_aspect": 1.0,
+        "shift": [
+          0,
+          -3
+        ],
+        "native_error": 0.0
+      },
+      {
+        "pixel_aspect": 1.6,
+        "shift": [
+          3,
+          0
+        ],
+        "native_error": 0.0
+      },
+      {
+        "pixel_aspect": 1.6,
+        "shift": [
+          -3,
+          0
+        ],
+        "native_error": 0.0
+      },
+      {
+        "pixel_aspect": 1.6,
+        "shift": [
+          0,
+          3
+        ],
+        "native_error": 0.0
+      },
+      {
+        "pixel_aspect": 1.6,
+        "shift": [
+          0,
+          -3
+        ],
+        "native_error": 0.0
+      }
+    ],
+    "learned_known_translation": [
+      {
+        "pixel_aspect": 1.0,
+        "shift": [
+          3,
+          0
+        ],
+        "median_native_endpoint_error": 0.018342810416741524,
+        "p95_native_endpoint_error": 0.0418397528458798
+      },
+      {
+        "pixel_aspect": 1.0,
+        "shift": [
+          -3,
+          0
+        ],
+        "median_native_endpoint_error": 0.016074964197947038,
+        "p95_native_endpoint_error": 0.024139034753979237
+      },
+      {
+        "pixel_aspect": 1.0,
+        "shift": [
+          0,
+          3
+        ],
+        "median_native_endpoint_error": 0.03456027674373727,
+        "p95_native_endpoint_error": 0.04035589071203134
+      },
+      {
+        "pixel_aspect": 1.0,
+        "shift": [
+          0,
+          -3
+        ],
+        "median_native_endpoint_error": 0.03545088485488476,
+        "p95_native_endpoint_error": 0.04623612823636588
+      },
+      {
+        "pixel_aspect": 1.6,
+        "shift": [
+          3,
+          0
+        ],
+        "median_native_endpoint_error": 0.014583273240879581,
+        "p95_native_endpoint_error": 0.022729696863376142
+      },
+      {
+        "pixel_aspect": 1.6,
+        "shift": [
+          -3,
+          0
+        ],
+        "median_native_endpoint_error": 0.009838705023559935,
+        "p95_native_endpoint_error": 0.014585254998448035
+      },
+      {
+        "pixel_aspect": 1.6,
+        "shift": [
+          0,
+          3
+        ],
+        "median_native_endpoint_error": 0.019203484007036333,
+        "p95_native_endpoint_error": 0.0308869775862574
+      },
+      {
+        "pixel_aspect": 1.6,
+        "shift": [
+          0,
+          -3
+        ],
+        "median_native_endpoint_error": 0.03116245823115396,
+        "p95_native_endpoint_error": 0.04836290672715342
+      }
+    ],
+    "pre_resize_hidden_rgb_exact": true,
+    "donor_query_poison_context_exact": true,
+    "model": {
+      "model": "torchvision RAFT large",
+      "weights": "C_T_SKHT_V2",
+      "url": "https://download.pytorch.org/models/raft_large_C_T_SKHT_V2-ff5fadd5.pth",
+      "sha256": "ff5fadd56d26b40647388883af1547351ea17868b765c05b27231e72dd16a322",
+      "torch": "2.8.0+cu128",
+      "device": "cuda",
+      "updates": 12,
+      "dtype": "float32"
+    }
+  },
+  "r14_search_isolation": {
+    "synthetic_known_geometry": true,
+    "training_pixels": 428,
+    "searched_native_footprints": 223,
+    "changed_validation_mae": 144.92591857910156,
+    "selected_angle_and_training_exact": true
+  },
+  "recorded_pairs_verified": 72,
+  "hidden_rgb_exact_cases": 12,
+  "hidden_rgb_substitutions": 24,
+  "fallback": {
+    "exact_keyed_eye_fallbacks": 300,
+    "protected_hashes_unchanged": 304
+  },
+  "video": {
+    "file": "final\\r15_dense.mp4",
+    "frames": 50,
+    "fps": 59.94005994005994,
+    "visual_review": "pending",
+    "artist_approval": false,
+    "sha256": "6ba4bc22165457b39cad12046e9d107b5404135501f6955b7346e6cadd71297d"
+  },
+  "source_hashes": {
+    "dense_iris_flow.py": "6b0bc6de22f011489fc5995c1bf19e90e85d4cbee81fbb07ca62bd4a5cc1ed7f",
+    "audit_r15_dense.py": "d234b065b9877072c19127cb0396434559cc65e05192b4137946f65fcaf2fd67",
+    "verify_r15.py": "a33c33e4292d1c6a95d152d96832c0cba2efd99a018ea35d602d230b9d2d139f"
+  }
+}
