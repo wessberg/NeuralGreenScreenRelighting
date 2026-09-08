@@ -88,6 +88,17 @@ native footprints and exact keyed fallback are verified. See `rounds/round15.md`
 
 ## What this project is
 
+**Round 16 temporal visibility:** released CoTracker3 scaled offline rejects all
+20 reused iris queries at source-labelled closure frames 981/982 (both eyes);
+RAFT cycle alone accepts 5/20, while RAFT plus its proposal also rejects all 20.
+New source-only region annotations are independent of predictions, not independent
+human truth or certified clean radiance. Across 80 attempts, CoTracker marks 36
+visible: seven footprints fit conservative iris interiors, 29 remain unknown.
+At narrowed 985 left it accepts 2/5; those materials remain unresolved. Controlled
+opaque-occlusion tests reject 128/128 hidden samples and recover 128/128 afterward;
+these are synthetic geometry tests on observed RGB. Exact source fallback remains
+verified. No reflection removal or scene replacement was enabled. See `rounds/round16.md`.
+
 **Round 13 neural evaluation:** released EllSeg and RITnet weights now run in
 `dependencies/ellseg-runtime/.venv` with torch 2.8/cu128. Reusable
 `neural_iris_observations.py --shot` stores separate complete-ellipse and visible-part
