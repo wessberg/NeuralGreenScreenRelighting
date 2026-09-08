@@ -42,9 +42,9 @@ The glint moves by HALF the angle the light moves, because it tracks the half-ve
 halving is the whole reason a photographed catchlight is ever reusable. It is not enough here:
 keeping the plate's own catchlight is only defensible while the new key is within roughly 15 deg
 of the measured original, and relighting into a different environment is precisely the case where
-it is not. So the composite REPLACES by default and keeps only when the measured angle
-difference says keeping is free. That decision is computed from this file and the rendered
-lighting, not set by hand.
+it is not. The rejected experiment used that angle to choose replacement. Replacement is now
+OFF by default: angle alone cannot validate source shape, occlusion or removal of the old
+reflection.
 
 Shape matters as well as angle. This plate's glint is a visibly rectangular softbox; a bare
 practical in the target scene should read as a small round disc. Keeping a rectangle under a
@@ -522,8 +522,10 @@ def main():
             'mean_contrast_over_iris': float(np.mean(
                 [g['contrast_over_iris_median'] for g in glints])) if glints else None,
             'clipping_note': 'an unclipped glint still has the iris diffuse recorded underneath '
-                             'it, so separate_specular.py can subtract it and leave real '
-                             'photographed texture. A clipped one cannot be recovered at all.'},
+                             'it as an unresolved sum, NOT a separately recoverable layer. '
+                             'Non-clipping does not validate subtraction. Temporal donors need '
+                             'independent correspondence and withheld-pixel validation; clipped '
+                             'pixels contain no recoverable single-frame value above saturation.'},
         'plate_key_light': light,
         'per_frame': rows}
     (shot.relight / 'eye_geometry.json').write_text(json.dumps(out, indent=2))

@@ -49,6 +49,12 @@ smoothness at their edges. A nose shadow will land in the right place with rough
 outline, and hair will shadow as a mass rather than as strands. It does not inherit the proxy's
 appearance, which is the entire difference.
 
+REJECTED ROUND 5 EXPERIMENTS (historical rationale, not validated behaviour)
+------------------------------------------------------------------------
+The following experiments damaged teeth, sclera, hair and eyelids. Defaults keep the plate
+and disable catchlight replacement. The apparent lip improvement below did not validate the
+separation: see rounds/round6.md's rejection addendum and rounds/round7.md.
+
 ROUND 5, PART 1: THE RATIO MULTIPLIES THE DIFFUSE LAYER, NOT THE PLATE
 ----------------------------------------------------------------------
 ``plate = D + S``. The ratio is a lighting scale and only D obeys it -- a smooth R can recolour a
@@ -89,7 +95,7 @@ lip-to-skin contrast of 0.8189, with the panel registered to correlation 1.0000:
 
     band-limit off, plate specular kept       0.8764   +7.0%
     band-limit 8 px, plate specular kept      0.9133   +11.5%   <- WORSE
-    band-limit off, plate specular REMOVED    0.8259   +0.9%    <- the actual fix
+    band-limit off, plate specular REMOVED    0.8259   +0.9%    <- REJECTED; damages anatomy
 
 So the bandwidth gap above is real and measured, but it is not what lifted the lips. What lifted
 them was the plate's own lip gloss: a photographed specular band from the green-screen room's
@@ -432,8 +438,8 @@ def main():
             E_s = cv2.resize(source_irradiance(nrm), (w, h),
                              interpolation=cv2.INTER_LINEAR)[..., None]
         # Band-limit E_source to what the proxy can put back. See the module docstring: below the
-        # crossover the division removes the plate's own fine shading and nothing restores it,
-        # which is what lifted the lips off the skin around them.
+        # crossover the division can remove fine shading the numerator cannot restore. This
+        # was tested and did NOT resolve the lip complaint; the experiment remains off.
         if sigma is None:
             core0 = (alpha > 0.99) & (cov > 0.5)
             measured, sigma_table = detail_sigma(E_t @ LUMA, E_s[..., 0], core0)

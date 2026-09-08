@@ -1,0 +1,1585 @@
+{
+  "shot": "reporter_a",
+  "frames": 150,
+  "output": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\ratio_r8_no_added_specular",
+  "formula": "out = plate x R,  R = E_target(rendered) / E_source(assumed)",
+  "why": "the plate keeps every pore, hair strand and eye specular; the renderer supplies only the change in light. Rendering the proxy instead shows the proxy.",
+  "E_source": {
+    "model": "MEASURED by estimate_source_light.py",
+    "direction": [
+      -0.279553085565567,
+      -0.9185315370559692,
+      0.279553085565567
+    ],
+    "ambient": 0.55,
+    "key": 0.45,
+    "shared_with": "relight_sh.py and make_albedo.py, deliberately identical"
+  },
+  "clamp": {
+    "upper_stops": 4.0,
+    "lower": "unclamped down to floor 0.0040",
+    "contrast_with_gain_map": "relight_sh.py clamped BOTH ends at 1.5 stops, capping the whole map at 2.83:1, which is why it could never produce a terminator"
+  },
+  "exposure_anchor": 10.224953391950688,
+  "compute": {
+    "backend": "torch",
+    "device": "cuda",
+    "gpu": "NVIDIA GeForce RTX 5080",
+    "capability": [
+      12,
+      0
+    ]
+  },
+  "plate_specular": {
+    "mode": "keep",
+    "layer": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\key\\specular",
+    "present": true,
+    "why": "a smooth R can recolour a highlight but cannot move or delete one, so with the plate specular left in, every shot keeps reporting where the ORIGINAL room's lamps were -- the crown sheen, the lip gloss, and the corneal catchlight most of all"
+  },
+  "source_band_limit": {
+    "sigma_px": 0.0,
+    "source": "disabled -- round 4 behaviour",
+    "bandwidth_table": [],
+    "rule": "you may only divide out lighting at the resolution at which you can put it back. Below the crossover E_target cannot restore what E_source removes, so R carries 1/E_source and brightens whatever the original key had shaded"
+  },
+  "output_resolution": "plate resolution",
+  "specular": {
+    "gain": 0.0,
+    "mean_fraction_of_image": null,
+    "model": "GGX + Schlick Fresnel on the NEURAL normals, added not multiplied",
+    "light_direction": "estimated per frame from the L1 moment of the rendered irradiance field, so it also works for environments",
+    "magnitude": "normalised GGX lobe (peak 1) x the rendered irradiance, so it carries the real light level, colour AND occlusion",
+    "clamped_to": "3x the local diffuse level",
+    "roughness": {
+      "skin": 0.3,
+      "other": 0.8
+    },
+    "weight": {
+      "skin": 1.0,
+      "other": 0.15
+    }
+  },
+  "catchlight": {
+    "gain": 0.0,
+    "render_dir": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\catchlight_render",
+    "render_present": true,
+    "eye_geometry": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\relight\\eye_geometry.json",
+    "eye_geometry_present": true,
+    "plate_key_direction_world": [
+      -0.7408000230789185,
+      -0.5789999961853027,
+      0.34060001373291016
+    ],
+    "keep_threshold_deg": 15.0,
+    "model": "a dielectric mirror (IOR 1.376) at the measured corneal position, rendered with the plate camera, masked to the corneal cap, reduced to its compact part and added",
+    "compact_only": "the render minus its own local baseline. separate_specular.py only removes what stands above the local diffuse level, so the broad dim corneal reflection of the original room is STILL IN D. Adding the full mirror wash on top double-counts it and reads as a contact lens over the whole iris",
+    "why_not_painted": "presence, size, shape, colour and occlusion all come from the scene. A distance rule would get sunlight backwards: a mirror shows RADIANCE, which does not fall off with distance, so the sun makes a tiny brilliant spark rather than nothing",
+    "keep_or_replace": "computed from two MEASURED angles -- the plate key from its own catchlights, the scene key from the L1 moment of the rendered irradiance. Not an artist setting"
+  },
+  "result": {
+    "mean_dynamic_range_stops": 5.1927946662902835,
+    "max_dynamic_range_stops": 9.094828605651855
+  },
+  "per_frame": [
+    {
+      "frame": 0,
+      "shot_frame": 0,
+      "catchlight": null,
+      "station": "front far",
+      "ratio_luma_median": 0.9991422891616821,
+      "ratio_luma_p5": 0.3406946659088135,
+      "ratio_luma_p95": 1.8309390544891357,
+      "dynamic_range_stops": 2.426032543182373
+    },
+    {
+      "frame": 1,
+      "shot_frame": 1,
+      "catchlight": null,
+      "station": "front far",
+      "ratio_luma_median": 0.8869973421096802,
+      "ratio_luma_p5": 0.3013909161090851,
+      "ratio_luma_p95": 1.6379157304763794,
+      "dynamic_range_stops": 2.442153215408325
+    },
+    {
+      "frame": 2,
+      "shot_frame": 2,
+      "catchlight": null,
+      "station": "front far",
+      "ratio_luma_median": 0.7932160496711731,
+      "ratio_luma_p5": 0.2667924463748932,
+      "ratio_luma_p95": 1.4725699424743652,
+      "dynamic_range_stops": 2.4645464420318604
+    },
+    {
+      "frame": 3,
+      "shot_frame": 3,
+      "catchlight": null,
+      "station": "front far",
+      "ratio_luma_median": 0.7178107500076294,
+      "ratio_luma_p5": 0.2403413951396942,
+      "ratio_luma_p95": 1.337143063545227,
+      "dynamic_range_stops": 2.475996732711792
+    },
+    {
+      "frame": 4,
+      "shot_frame": 4,
+      "catchlight": null,
+      "station": "front far",
+      "ratio_luma_median": 0.6529985070228577,
+      "ratio_luma_p5": 0.21859429776668549,
+      "ratio_luma_p95": 1.2189126014709473,
+      "dynamic_range_stops": 2.479267120361328
+    },
+    {
+      "frame": 5,
+      "shot_frame": 5,
+      "catchlight": null,
+      "station": "front far",
+      "ratio_luma_median": 0.601966381072998,
+      "ratio_luma_p5": 0.19938088953495026,
+      "ratio_luma_p95": 1.1167926788330078,
+      "dynamic_range_stops": 2.485762357711792
+    },
+    {
+      "frame": 6,
+      "shot_frame": 6,
+      "catchlight": null,
+      "station": "front far",
+      "ratio_luma_median": 0.5599601864814758,
+      "ratio_luma_p5": 0.18472474813461304,
+      "ratio_luma_p95": 1.0394248962402344,
+      "dynamic_range_stops": 2.4923365116119385
+    },
+    {
+      "frame": 7,
+      "shot_frame": 7,
+      "catchlight": null,
+      "station": "front far",
+      "ratio_luma_median": 0.5242465138435364,
+      "ratio_luma_p5": 0.17187772691249847,
+      "ratio_luma_p95": 0.9705293774604797,
+      "dynamic_range_stops": 2.497389316558838
+    },
+    {
+      "frame": 8,
+      "shot_frame": 8,
+      "catchlight": null,
+      "station": "front far",
+      "ratio_luma_median": 0.49260014295578003,
+      "ratio_luma_p5": 0.16173267364501953,
+      "ratio_luma_p95": 0.9167500734329224,
+      "dynamic_range_stops": 2.5029172897338867
+    },
+    {
+      "frame": 9,
+      "shot_frame": 9,
+      "catchlight": null,
+      "station": "front far",
+      "ratio_luma_median": 0.46528127789497375,
+      "ratio_luma_p5": 0.1520376205444336,
+      "ratio_luma_p95": 0.8626852035522461,
+      "dynamic_range_stops": 2.504405975341797
+    },
+    {
+      "frame": 10,
+      "shot_frame": 10,
+      "catchlight": null,
+      "station": "front far",
+      "ratio_luma_median": 0.44174841046333313,
+      "ratio_luma_p5": 0.14330925047397614,
+      "ratio_luma_p95": 0.8234863877296448,
+      "dynamic_range_stops": 2.522613048553467
+    },
+    {
+      "frame": 11,
+      "shot_frame": 11,
+      "catchlight": null,
+      "station": "front close",
+      "ratio_luma_median": 0.4180658459663391,
+      "ratio_luma_p5": 0.13570864498615265,
+      "ratio_luma_p95": 0.7844976186752319,
+      "dynamic_range_stops": 2.5312564373016357
+    },
+    {
+      "frame": 12,
+      "shot_frame": 12,
+      "catchlight": null,
+      "station": "front close",
+      "ratio_luma_median": 0.3941519856452942,
+      "ratio_luma_p5": 0.13407282531261444,
+      "ratio_luma_p95": 0.7454464435577393,
+      "dynamic_range_stops": 2.475087881088257
+    },
+    {
+      "frame": 13,
+      "shot_frame": 13,
+      "catchlight": null,
+      "station": "front close",
+      "ratio_luma_median": 0.3604171872138977,
+      "ratio_luma_p5": 0.14538991451263428,
+      "ratio_luma_p95": 0.6941252946853638,
+      "dynamic_range_stops": 2.2552690505981445
+    },
+    {
+      "frame": 14,
+      "shot_frame": 14,
+      "catchlight": null,
+      "station": "front close",
+      "ratio_luma_median": 0.3301568925380707,
+      "ratio_luma_p5": 0.12735949456691742,
+      "ratio_luma_p95": 0.6550853252410889,
+      "dynamic_range_stops": 2.362776279449463
+    },
+    {
+      "frame": 15,
+      "shot_frame": 15,
+      "catchlight": null,
+      "station": "front close",
+      "ratio_luma_median": 0.3114522695541382,
+      "ratio_luma_p5": 0.11726395785808563,
+      "ratio_luma_p95": 0.6516866087913513,
+      "dynamic_range_stops": 2.4744186401367188
+    },
+    {
+      "frame": 16,
+      "shot_frame": 16,
+      "catchlight": null,
+      "station": "front close",
+      "ratio_luma_median": 0.3099786341190338,
+      "ratio_luma_p5": 0.11714731901884079,
+      "ratio_luma_p95": 0.6469087600708008,
+      "dynamic_range_stops": 2.465238332748413
+    },
+    {
+      "frame": 17,
+      "shot_frame": 17,
+      "catchlight": null,
+      "station": "front close",
+      "ratio_luma_median": 0.3080587387084961,
+      "ratio_luma_p5": 0.11669688671827316,
+      "ratio_luma_p95": 0.6495386362075806,
+      "dynamic_range_stops": 2.476649284362793
+    },
+    {
+      "frame": 18,
+      "shot_frame": 18,
+      "catchlight": null,
+      "station": "front close",
+      "ratio_luma_median": 0.3102041482925415,
+      "ratio_luma_p5": 0.11836248636245728,
+      "ratio_luma_p95": 0.6485017538070679,
+      "dynamic_range_stops": 2.4538986682891846
+    },
+    {
+      "frame": 19,
+      "shot_frame": 19,
+      "catchlight": null,
+      "station": "front close",
+      "ratio_luma_median": 0.31050610542297363,
+      "ratio_luma_p5": 0.11886375397443771,
+      "ratio_luma_p95": 0.6487893462181091,
+      "dynamic_range_stops": 2.44844126701355
+    },
+    {
+      "frame": 20,
+      "shot_frame": 20,
+      "catchlight": null,
+      "station": "front close",
+      "ratio_luma_median": 0.3126510977745056,
+      "ratio_luma_p5": 0.12003906816244125,
+      "ratio_luma_p95": 0.6519685387611389,
+      "dynamic_range_stops": 2.441298246383667
+    },
+    {
+      "frame": 21,
+      "shot_frame": 21,
+      "catchlight": null,
+      "station": "front close",
+      "ratio_luma_median": 0.31473350524902344,
+      "ratio_luma_p5": 0.1204356923699379,
+      "ratio_luma_p95": 0.6579916477203369,
+      "dynamic_range_stops": 2.4498062133789062
+    },
+    {
+      "frame": 22,
+      "shot_frame": 22,
+      "catchlight": null,
+      "station": "front close",
+      "ratio_luma_median": 0.3165295720100403,
+      "ratio_luma_p5": 0.12068512290716171,
+      "ratio_luma_p95": 0.660035252571106,
+      "dynamic_range_stops": 2.4512953758239746
+    },
+    {
+      "frame": 23,
+      "shot_frame": 23,
+      "catchlight": null,
+      "station": "front close",
+      "ratio_luma_median": 0.33418703079223633,
+      "ratio_luma_p5": 0.12379933148622513,
+      "ratio_luma_p95": 0.6940708756446838,
+      "dynamic_range_stops": 2.487079381942749
+    },
+    {
+      "frame": 24,
+      "shot_frame": 24,
+      "catchlight": null,
+      "station": "front close",
+      "ratio_luma_median": 0.3649510443210602,
+      "ratio_luma_p5": 0.12205628305673599,
+      "ratio_luma_p95": 0.7664914131164551,
+      "dynamic_range_stops": 2.6507229804992676
+    },
+    {
+      "frame": 25,
+      "shot_frame": 25,
+      "catchlight": null,
+      "station": "front close",
+      "ratio_luma_median": 0.41006842255592346,
+      "ratio_luma_p5": 0.09861204773187637,
+      "ratio_luma_p95": 0.8939698934555054,
+      "dynamic_range_stops": 3.1803903579711914
+    },
+    {
+      "frame": 26,
+      "shot_frame": 26,
+      "catchlight": null,
+      "station": "below chin",
+      "ratio_luma_median": 0.4325389862060547,
+      "ratio_luma_p5": 0.05143576115369797,
+      "ratio_luma_p95": 1.0369737148284912,
+      "dynamic_range_stops": 4.333463668823242
+    },
+    {
+      "frame": 27,
+      "shot_frame": 27,
+      "catchlight": null,
+      "station": "below chin",
+      "ratio_luma_median": 0.40825411677360535,
+      "ratio_luma_p5": 0.01920819655060768,
+      "ratio_luma_p95": 1.1645325422286987,
+      "dynamic_range_stops": 5.921885013580322
+    },
+    {
+      "frame": 28,
+      "shot_frame": 28,
+      "catchlight": null,
+      "station": "below chin",
+      "ratio_luma_median": 0.3498705327510834,
+      "ratio_luma_p5": 0.007964815013110638,
+      "ratio_luma_p95": 1.2112152576446533,
+      "dynamic_range_stops": 7.248598575592041
+    },
+    {
+      "frame": 29,
+      "shot_frame": 29,
+      "catchlight": null,
+      "station": "below chin",
+      "ratio_luma_median": 0.3005066514015198,
+      "ratio_luma_p5": 0.004863128997385502,
+      "ratio_luma_p95": 1.1878687143325806,
+      "dynamic_range_stops": 7.93227481842041
+    },
+    {
+      "frame": 30,
+      "shot_frame": 30,
+      "catchlight": null,
+      "station": "below chin",
+      "ratio_luma_median": 1.003951907157898,
+      "ratio_luma_p5": 0.007563471794128418,
+      "ratio_luma_p95": 3.9299912452697754,
+      "dynamic_range_stops": 9.021262168884277
+    },
+    {
+      "frame": 31,
+      "shot_frame": 31,
+      "catchlight": null,
+      "station": "below chin",
+      "ratio_luma_median": 0.8717283606529236,
+      "ratio_luma_p5": 0.006559223867952824,
+      "ratio_luma_p95": 3.5089476108551025,
+      "dynamic_range_stops": 9.063297271728516
+    },
+    {
+      "frame": 32,
+      "shot_frame": 32,
+      "catchlight": null,
+      "station": "below chin",
+      "ratio_luma_median": 0.7598235607147217,
+      "ratio_luma_p5": 0.005909327417612076,
+      "ratio_luma_p95": 3.1449227333068848,
+      "dynamic_range_stops": 9.055814743041992
+    },
+    {
+      "frame": 33,
+      "shot_frame": 33,
+      "catchlight": null,
+      "station": "below chin",
+      "ratio_luma_median": 0.6689660549163818,
+      "ratio_luma_p5": 0.005382927600294352,
+      "ratio_luma_p95": 2.8075296878814697,
+      "dynamic_range_stops": 9.026694297790527
+    },
+    {
+      "frame": 34,
+      "shot_frame": 34,
+      "catchlight": null,
+      "station": "below chin",
+      "ratio_luma_median": 0.6013462543487549,
+      "ratio_luma_p5": 0.005105447955429554,
+      "ratio_luma_p95": 2.5219013690948486,
+      "dynamic_range_stops": 8.948258399963379
+    },
+    {
+      "frame": 35,
+      "shot_frame": 35,
+      "catchlight": null,
+      "station": "below chin",
+      "ratio_luma_median": 0.5404232740402222,
+      "ratio_luma_p5": 0.00498162629082799,
+      "ratio_luma_p95": 2.2560720443725586,
+      "dynamic_range_stops": 8.822980880737305
+    },
+    {
+      "frame": 36,
+      "shot_frame": 36,
+      "catchlight": null,
+      "station": "below chin",
+      "ratio_luma_median": 0.493610680103302,
+      "ratio_luma_p5": 0.004894026089459658,
+      "ratio_luma_p95": 2.0661234855651855,
+      "dynamic_range_stops": 8.721689224243164
+    },
+    {
+      "frame": 37,
+      "shot_frame": 37,
+      "catchlight": null,
+      "station": "below chin",
+      "ratio_luma_median": 0.466447651386261,
+      "ratio_luma_p5": 0.0049350871704518795,
+      "ratio_luma_p95": 1.9114584922790527,
+      "dynamic_range_stops": 8.597382545471191
+    },
+    {
+      "frame": 38,
+      "shot_frame": 38,
+      "catchlight": null,
+      "station": "below chin",
+      "ratio_luma_median": 0.5452497601509094,
+      "ratio_luma_p5": 0.011490333825349808,
+      "ratio_luma_p95": 1.8399714231491089,
+      "dynamic_range_stops": 7.323118686676025
+    },
+    {
+      "frame": 39,
+      "shot_frame": 39,
+      "catchlight": null,
+      "station": "below chin",
+      "ratio_luma_median": 0.5830424427986145,
+      "ratio_luma_p5": 0.06505705416202545,
+      "ratio_luma_p95": 1.481926679611206,
+      "dynamic_range_stops": 4.50962495803833
+    },
+    {
+      "frame": 40,
+      "shot_frame": 40,
+      "catchlight": null,
+      "station": "below chin",
+      "ratio_luma_median": 0.41779834032058716,
+      "ratio_luma_p5": 0.14641675353050232,
+      "ratio_luma_p95": 0.9176815748214722,
+      "dynamic_range_stops": 2.6479129791259766
+    },
+    {
+      "frame": 41,
+      "shot_frame": 41,
+      "catchlight": null,
+      "station": "above head",
+      "ratio_luma_median": 0.29413679242134094,
+      "ratio_luma_p5": 0.10861468315124512,
+      "ratio_luma_p95": 0.7906237244606018,
+      "dynamic_range_stops": 2.86377215385437
+    },
+    {
+      "frame": 42,
+      "shot_frame": 42,
+      "catchlight": null,
+      "station": "above head",
+      "ratio_luma_median": 0.2581295967102051,
+      "ratio_luma_p5": 0.07384701818227768,
+      "ratio_luma_p95": 0.8766762018203735,
+      "dynamic_range_stops": 3.569432497024536
+    },
+    {
+      "frame": 43,
+      "shot_frame": 43,
+      "catchlight": null,
+      "station": "above head",
+      "ratio_luma_median": 0.251303493976593,
+      "ratio_luma_p5": 0.05444669350981712,
+      "ratio_luma_p95": 0.9376638531684875,
+      "dynamic_range_stops": 4.106154441833496
+    },
+    {
+      "frame": 44,
+      "shot_frame": 44,
+      "catchlight": null,
+      "station": "above head",
+      "ratio_luma_median": 0.25578027963638306,
+      "ratio_luma_p5": 0.04633873701095581,
+      "ratio_luma_p95": 1.051077961921692,
+      "dynamic_range_stops": 4.503507137298584
+    },
+    {
+      "frame": 45,
+      "shot_frame": 45,
+      "catchlight": null,
+      "station": "above head",
+      "ratio_luma_median": 0.25588861107826233,
+      "ratio_luma_p5": 0.04400060325860977,
+      "ratio_luma_p95": 1.0733668804168701,
+      "dynamic_range_stops": 4.608476161956787
+    },
+    {
+      "frame": 46,
+      "shot_frame": 46,
+      "catchlight": null,
+      "station": "above head",
+      "ratio_luma_median": 0.25496694445610046,
+      "ratio_luma_p5": 0.0441708117723465,
+      "ratio_luma_p95": 1.08427095413208,
+      "dynamic_range_stops": 4.617488384246826
+    },
+    {
+      "frame": 47,
+      "shot_frame": 47,
+      "catchlight": null,
+      "station": "above head",
+      "ratio_luma_median": 0.2495591640472412,
+      "ratio_luma_p5": 0.04243040084838867,
+      "ratio_luma_p95": 1.0685498714447021,
+      "dynamic_range_stops": 4.654412269592285
+    },
+    {
+      "frame": 48,
+      "shot_frame": 48,
+      "catchlight": null,
+      "station": "above head",
+      "ratio_luma_median": 0.24597564339637756,
+      "ratio_luma_p5": 0.041708722710609436,
+      "ratio_luma_p95": 1.0647289752960205,
+      "dynamic_range_stops": 4.673993110656738
+    },
+    {
+      "frame": 49,
+      "shot_frame": 49,
+      "catchlight": null,
+      "station": "above head",
+      "ratio_luma_median": 0.24086692929267883,
+      "ratio_luma_p5": 0.041889533400535583,
+      "ratio_luma_p95": 1.043150782585144,
+      "dynamic_range_stops": 4.638214111328125
+    },
+    {
+      "frame": 50,
+      "shot_frame": 50,
+      "catchlight": null,
+      "station": "above head",
+      "ratio_luma_median": 0.236527681350708,
+      "ratio_luma_p5": 0.03977501392364502,
+      "ratio_luma_p95": 1.034850001335144,
+      "dynamic_range_stops": 4.701415538787842
+    },
+    {
+      "frame": 51,
+      "shot_frame": 51,
+      "catchlight": null,
+      "station": "above head",
+      "ratio_luma_median": 0.2282903790473938,
+      "ratio_luma_p5": 0.03921615332365036,
+      "ratio_luma_p95": 0.9923582077026367,
+      "dynamic_range_stops": 4.661341190338135
+    },
+    {
+      "frame": 52,
+      "shot_frame": 52,
+      "catchlight": null,
+      "station": "above head",
+      "ratio_luma_median": 0.20762069523334503,
+      "ratio_luma_p5": 0.03793206438422203,
+      "ratio_luma_p95": 0.8310611844062805,
+      "dynamic_range_stops": 4.453464984893799
+    },
+    {
+      "frame": 53,
+      "shot_frame": 53,
+      "catchlight": null,
+      "station": "above head",
+      "ratio_luma_median": 0.17707811295986176,
+      "ratio_luma_p5": 0.030396563932299614,
+      "ratio_luma_p95": 0.9628490805625916,
+      "dynamic_range_stops": 4.985329627990723
+    },
+    {
+      "frame": 54,
+      "shot_frame": 54,
+      "catchlight": null,
+      "station": "above head",
+      "ratio_luma_median": 0.21894897520542145,
+      "ratio_luma_p5": 0.03090849332511425,
+      "ratio_luma_p95": 2.218588352203369,
+      "dynamic_range_stops": 6.165494918823242
+    },
+    {
+      "frame": 55,
+      "shot_frame": 55,
+      "catchlight": null,
+      "station": "above head",
+      "ratio_luma_median": 0.24205657839775085,
+      "ratio_luma_p5": 0.03325575962662697,
+      "ratio_luma_p95": 3.1423847675323486,
+      "dynamic_range_stops": 6.562111854553223
+    },
+    {
+      "frame": 56,
+      "shot_frame": 56,
+      "catchlight": null,
+      "station": "camera left",
+      "ratio_luma_median": 0.2677769958972931,
+      "ratio_luma_p5": 0.03250438719987869,
+      "ratio_luma_p95": 3.53387188911438,
+      "dynamic_range_stops": 6.764471530914307
+    },
+    {
+      "frame": 57,
+      "shot_frame": 57,
+      "catchlight": null,
+      "station": "camera left",
+      "ratio_luma_median": 0.3175148367881775,
+      "ratio_luma_p5": 0.027169112116098404,
+      "ratio_luma_p95": 3.560783863067627,
+      "dynamic_range_stops": 7.034083366394043
+    },
+    {
+      "frame": 58,
+      "shot_frame": 58,
+      "catchlight": null,
+      "station": "camera left",
+      "ratio_luma_median": 0.3429265022277832,
+      "ratio_luma_p5": 0.02153713069856167,
+      "ratio_luma_p95": 3.4108238220214844,
+      "dynamic_range_stops": 7.307150363922119
+    },
+    {
+      "frame": 59,
+      "shot_frame": 59,
+      "catchlight": null,
+      "station": "camera left",
+      "ratio_luma_median": 0.3424395024776459,
+      "ratio_luma_p5": 0.018088441342115402,
+      "ratio_luma_p95": 3.2416112422943115,
+      "dynamic_range_stops": 7.485499382019043
+    },
+    {
+      "frame": 60,
+      "shot_frame": 60,
+      "catchlight": null,
+      "station": "camera left",
+      "ratio_luma_median": 0.9538066387176514,
+      "ratio_luma_p5": 0.022735269740223885,
+      "ratio_luma_p95": 3.2957582473754883,
+      "dynamic_range_stops": 7.179534435272217
+    },
+    {
+      "frame": 61,
+      "shot_frame": 61,
+      "catchlight": null,
+      "station": "camera left",
+      "ratio_luma_median": 0.8768088221549988,
+      "ratio_luma_p5": 0.02280629612505436,
+      "ratio_luma_p95": 3.227135181427002,
+      "dynamic_range_stops": 7.144678115844727
+    },
+    {
+      "frame": 62,
+      "shot_frame": 62,
+      "catchlight": null,
+      "station": "camera left",
+      "ratio_luma_median": 0.8061217665672302,
+      "ratio_luma_p5": 0.021994195878505707,
+      "ratio_luma_p95": 3.2093045711517334,
+      "dynamic_range_stops": 7.18899393081665
+    },
+    {
+      "frame": 63,
+      "shot_frame": 63,
+      "catchlight": null,
+      "station": "camera left",
+      "ratio_luma_median": 0.7419833540916443,
+      "ratio_luma_p5": 0.022173479199409485,
+      "ratio_luma_p95": 3.2039661407470703,
+      "dynamic_range_stops": 7.174880027770996
+    },
+    {
+      "frame": 64,
+      "shot_frame": 64,
+      "catchlight": null,
+      "station": "camera left",
+      "ratio_luma_median": 0.6808054447174072,
+      "ratio_luma_p5": 0.022313248366117477,
+      "ratio_luma_p95": 3.1204872131347656,
+      "dynamic_range_stops": 7.127727031707764
+    },
+    {
+      "frame": 65,
+      "shot_frame": 65,
+      "catchlight": null,
+      "station": "camera left",
+      "ratio_luma_median": 0.6259030699729919,
+      "ratio_luma_p5": 0.02273610606789589,
+      "ratio_luma_p95": 3.138932228088379,
+      "dynamic_range_stops": 7.109144687652588
+    },
+    {
+      "frame": 66,
+      "shot_frame": 66,
+      "catchlight": null,
+      "station": "camera left",
+      "ratio_luma_median": 0.5846213102340698,
+      "ratio_luma_p5": 0.02282342128455639,
+      "ratio_luma_p95": 3.124927282333374,
+      "dynamic_range_stops": 7.097163677215576
+    },
+    {
+      "frame": 67,
+      "shot_frame": 67,
+      "catchlight": null,
+      "station": "camera left",
+      "ratio_luma_median": 0.5498169660568237,
+      "ratio_luma_p5": 0.023755596950650215,
+      "ratio_luma_p95": 3.1112265586853027,
+      "dynamic_range_stops": 7.033072471618652
+    },
+    {
+      "frame": 68,
+      "shot_frame": 68,
+      "catchlight": null,
+      "station": "camera left",
+      "ratio_luma_median": 0.5419518947601318,
+      "ratio_luma_p5": 0.03195279836654663,
+      "ratio_luma_p95": 3.2810869216918945,
+      "dynamic_range_stops": 6.6820878982543945
+    },
+    {
+      "frame": 69,
+      "shot_frame": 69,
+      "catchlight": null,
+      "station": "camera left",
+      "ratio_luma_median": 0.4792633652687073,
+      "ratio_luma_p5": 0.0572187565267086,
+      "ratio_luma_p95": 3.252349853515625,
+      "dynamic_range_stops": 5.828850746154785
+    },
+    {
+      "frame": 70,
+      "shot_frame": 70,
+      "catchlight": null,
+      "station": "camera left",
+      "ratio_luma_median": 0.35569652915000916,
+      "ratio_luma_p5": 0.0826401636004448,
+      "ratio_luma_p95": 2.171018123626709,
+      "dynamic_range_stops": 4.7153849601745605
+    },
+    {
+      "frame": 71,
+      "shot_frame": 71,
+      "catchlight": null,
+      "station": "camera right",
+      "ratio_luma_median": 0.5621436238288879,
+      "ratio_luma_p5": 0.11846949905157089,
+      "ratio_luma_p95": 3.3966619968414307,
+      "dynamic_range_stops": 4.8415303230285645
+    },
+    {
+      "frame": 72,
+      "shot_frame": 72,
+      "catchlight": null,
+      "station": "camera right",
+      "ratio_luma_median": 0.696841835975647,
+      "ratio_luma_p5": 0.06464191526174545,
+      "ratio_luma_p95": 3.044351577758789,
+      "dynamic_range_stops": 5.557521343231201
+    },
+    {
+      "frame": 73,
+      "shot_frame": 73,
+      "catchlight": null,
+      "station": "camera right",
+      "ratio_luma_median": 0.6331700682640076,
+      "ratio_luma_p5": 0.04076758399605751,
+      "ratio_luma_p95": 2.780972480773926,
+      "dynamic_range_stops": 6.0920233726501465
+    },
+    {
+      "frame": 74,
+      "shot_frame": 74,
+      "catchlight": null,
+      "station": "camera right",
+      "ratio_luma_median": 0.581451952457428,
+      "ratio_luma_p5": 0.0328461229801178,
+      "ratio_luma_p95": 2.5167758464813232,
+      "dynamic_range_stops": 6.25970983505249
+    },
+    {
+      "frame": 75,
+      "shot_frame": 75,
+      "catchlight": null,
+      "station": "camera right",
+      "ratio_luma_median": 0.5667121410369873,
+      "ratio_luma_p5": 0.031936921179294586,
+      "ratio_luma_p95": 2.4986929893493652,
+      "dynamic_range_stops": 6.289804458618164
+    },
+    {
+      "frame": 76,
+      "shot_frame": 76,
+      "catchlight": null,
+      "station": "camera right",
+      "ratio_luma_median": 0.5517021417617798,
+      "ratio_luma_p5": 0.030558904632925987,
+      "ratio_luma_p95": 2.529529333114624,
+      "dynamic_range_stops": 6.3711323738098145
+    },
+    {
+      "frame": 77,
+      "shot_frame": 77,
+      "catchlight": null,
+      "station": "camera right",
+      "ratio_luma_median": 0.5408227443695068,
+      "ratio_luma_p5": 0.029989143833518028,
+      "ratio_luma_p95": 2.5839040279388428,
+      "dynamic_range_stops": 6.42896842956543
+    },
+    {
+      "frame": 78,
+      "shot_frame": 78,
+      "catchlight": null,
+      "station": "camera right",
+      "ratio_luma_median": 0.5350748300552368,
+      "ratio_luma_p5": 0.029222451150417328,
+      "ratio_luma_p95": 2.628272533416748,
+      "dynamic_range_stops": 6.490893840789795
+    },
+    {
+      "frame": 79,
+      "shot_frame": 79,
+      "catchlight": null,
+      "station": "camera right",
+      "ratio_luma_median": 0.5334606766700745,
+      "ratio_luma_p5": 0.02878451719880104,
+      "ratio_luma_p95": 2.6856045722961426,
+      "dynamic_range_stops": 6.54380989074707
+    },
+    {
+      "frame": 80,
+      "shot_frame": 80,
+      "catchlight": null,
+      "station": "camera right",
+      "ratio_luma_median": 0.521479606628418,
+      "ratio_luma_p5": 0.027914732694625854,
+      "ratio_luma_p95": 2.7192673683166504,
+      "dynamic_range_stops": 6.606047630310059
+    },
+    {
+      "frame": 81,
+      "shot_frame": 81,
+      "catchlight": null,
+      "station": "camera right",
+      "ratio_luma_median": 0.5153133273124695,
+      "ratio_luma_p5": 0.027241630479693413,
+      "ratio_luma_p95": 2.782963991165161,
+      "dynamic_range_stops": 6.674665451049805
+    },
+    {
+      "frame": 82,
+      "shot_frame": 82,
+      "catchlight": null,
+      "station": "camera right",
+      "ratio_luma_median": 0.5330880880355835,
+      "ratio_luma_p5": 0.026461632922291756,
+      "ratio_luma_p95": 2.97275447845459,
+      "dynamic_range_stops": 6.81175422668457
+    },
+    {
+      "frame": 83,
+      "shot_frame": 83,
+      "catchlight": null,
+      "station": "camera right",
+      "ratio_luma_median": 0.6505362391471863,
+      "ratio_luma_p5": 0.028573444113135338,
+      "ratio_luma_p95": 3.5955183506011963,
+      "dynamic_range_stops": 6.975380897521973
+    },
+    {
+      "frame": 84,
+      "shot_frame": 84,
+      "catchlight": null,
+      "station": "camera right",
+      "ratio_luma_median": 0.9375516176223755,
+      "ratio_luma_p5": 0.03716116398572922,
+      "ratio_luma_p95": 4.308258056640625,
+      "dynamic_range_stops": 6.857165336608887
+    },
+    {
+      "frame": 85,
+      "shot_frame": 85,
+      "catchlight": null,
+      "station": "camera right",
+      "ratio_luma_median": 1.2755892276763916,
+      "ratio_luma_p5": 0.06412243843078613,
+      "ratio_luma_p95": 4.754148483276367,
+      "dynamic_range_stops": 6.21221399307251
+    },
+    {
+      "frame": 86,
+      "shot_frame": 86,
+      "catchlight": null,
+      "station": "behind rim",
+      "ratio_luma_median": 1.7099446058273315,
+      "ratio_luma_p5": 0.2132895290851593,
+      "ratio_luma_p95": 4.433925628662109,
+      "dynamic_range_stops": 4.377699375152588
+    },
+    {
+      "frame": 87,
+      "shot_frame": 87,
+      "catchlight": null,
+      "station": "behind rim",
+      "ratio_luma_median": 2.017345666885376,
+      "ratio_luma_p5": 0.38152799010276794,
+      "ratio_luma_p95": 3.9431943893432617,
+      "dynamic_range_stops": 3.369503974914551
+    },
+    {
+      "frame": 88,
+      "shot_frame": 88,
+      "catchlight": null,
+      "station": "behind rim",
+      "ratio_luma_median": 2.0609607696533203,
+      "ratio_luma_p5": 0.4497826099395752,
+      "ratio_luma_p95": 3.5339221954345703,
+      "dynamic_range_stops": 2.973970413208008
+    },
+    {
+      "frame": 89,
+      "shot_frame": 89,
+      "catchlight": null,
+      "station": "behind rim",
+      "ratio_luma_median": 2.031111240386963,
+      "ratio_luma_p5": 0.47010982036590576,
+      "ratio_luma_p95": 3.3598620891571045,
+      "dynamic_range_stops": 2.837332248687744
+    },
+    {
+      "frame": 90,
+      "shot_frame": 90,
+      "catchlight": null,
+      "station": "behind rim",
+      "ratio_luma_median": 2.1003265380859375,
+      "ratio_luma_p5": 0.5663279891014099,
+      "ratio_luma_p95": 3.3970465660095215,
+      "dynamic_range_stops": 2.584571361541748
+    },
+    {
+      "frame": 91,
+      "shot_frame": 91,
+      "catchlight": null,
+      "station": "behind rim",
+      "ratio_luma_median": 2.114348888397217,
+      "ratio_luma_p5": 0.5563061237335205,
+      "ratio_luma_p95": 3.4344089031219482,
+      "dynamic_range_stops": 2.6261110305786133
+    },
+    {
+      "frame": 92,
+      "shot_frame": 92,
+      "catchlight": null,
+      "station": "behind rim",
+      "ratio_luma_median": 2.1304285526275635,
+      "ratio_luma_p5": 0.5534037351608276,
+      "ratio_luma_p95": 3.463000774383545,
+      "dynamic_range_stops": 2.645618438720703
+    },
+    {
+      "frame": 93,
+      "shot_frame": 93,
+      "catchlight": null,
+      "station": "behind rim",
+      "ratio_luma_median": 0.13207386434078217,
+      "ratio_luma_p5": 0.032978978008031845,
+      "ratio_luma_p95": 0.23463143408298492,
+      "dynamic_range_stops": 2.830777645111084
+    },
+    {
+      "frame": 94,
+      "shot_frame": 94,
+      "catchlight": null,
+      "station": "behind rim",
+      "ratio_luma_median": 0.13380871713161469,
+      "ratio_luma_p5": 0.033129580318927765,
+      "ratio_luma_p95": 0.23843328654766083,
+      "dynamic_range_stops": 2.847393751144409
+    },
+    {
+      "frame": 95,
+      "shot_frame": 95,
+      "catchlight": null,
+      "station": "behind rim",
+      "ratio_luma_median": 0.13576284050941467,
+      "ratio_luma_p5": 0.03288782015442848,
+      "ratio_luma_p95": 0.2429075539112091,
+      "dynamic_range_stops": 2.884782075881958
+    },
+    {
+      "frame": 96,
+      "shot_frame": 96,
+      "catchlight": null,
+      "station": "behind rim",
+      "ratio_luma_median": 0.13731059432029724,
+      "ratio_luma_p5": 0.03255757316946983,
+      "ratio_luma_p95": 0.24664266407489777,
+      "dynamic_range_stops": 2.9213573932647705
+    },
+    {
+      "frame": 97,
+      "shot_frame": 97,
+      "catchlight": null,
+      "station": "behind rim",
+      "ratio_luma_median": 2.1656789779663086,
+      "ratio_luma_p5": 0.5238094925880432,
+      "ratio_luma_p95": 3.5836925506591797,
+      "dynamic_range_stops": 2.7743327617645264
+    },
+    {
+      "frame": 98,
+      "shot_frame": 98,
+      "catchlight": null,
+      "station": "behind rim",
+      "ratio_luma_median": 1.9378674030303955,
+      "ratio_luma_p5": 0.4476502239704132,
+      "ratio_luma_p95": 3.2837421894073486,
+      "dynamic_range_stops": 2.874897003173828
+    },
+    {
+      "frame": 99,
+      "shot_frame": 99,
+      "catchlight": null,
+      "station": "behind rim",
+      "ratio_luma_median": 1.586687445640564,
+      "ratio_luma_p5": 0.34890490770339966,
+      "ratio_luma_p95": 2.767310619354248,
+      "dynamic_range_stops": 2.987578868865967
+    },
+    {
+      "frame": 100,
+      "shot_frame": 100,
+      "catchlight": null,
+      "station": "behind rim",
+      "ratio_luma_median": 1.1659400463104248,
+      "ratio_luma_p5": 0.2505490183830261,
+      "ratio_luma_p95": 2.0979409217834473,
+      "dynamic_range_stops": 3.0658092498779297
+    },
+    {
+      "frame": 101,
+      "shot_frame": 101,
+      "catchlight": null,
+      "station": "KEY OFF: back only",
+      "ratio_luma_median": 0.7645524740219116,
+      "ratio_luma_p5": 0.15243275463581085,
+      "ratio_luma_p95": 1.3839797973632812,
+      "dynamic_range_stops": 3.1825780868530273
+    },
+    {
+      "frame": 102,
+      "shot_frame": 102,
+      "catchlight": null,
+      "station": "KEY OFF: back only",
+      "ratio_luma_median": 0.4147590100765228,
+      "ratio_luma_p5": 0.07534295320510864,
+      "ratio_luma_p95": 0.8347289562225342,
+      "dynamic_range_stops": 3.4697632789611816
+    },
+    {
+      "frame": 103,
+      "shot_frame": 103,
+      "catchlight": null,
+      "station": "KEY OFF: back only",
+      "ratio_luma_median": 0.1512891948223114,
+      "ratio_luma_p5": 0.027270767837762833,
+      "ratio_luma_p95": 0.5728601217269897,
+      "dynamic_range_stops": 4.392755508422852
+    },
+    {
+      "frame": 104,
+      "shot_frame": 104,
+      "catchlight": null,
+      "station": "KEY OFF: back only",
+      "ratio_luma_median": 0.01361779309809208,
+      "ratio_luma_p5": 0.0059834751300513744,
+      "ratio_luma_p95": 0.5812314748764038,
+      "dynamic_range_stops": 6.601985454559326
+    },
+    {
+      "frame": 105,
+      "shot_frame": 105,
+      "catchlight": null,
+      "station": "KEY OFF: back only",
+      "ratio_luma_median": 0.004561122972518206,
+      "ratio_luma_p5": 0.003999999724328518,
+      "ratio_luma_p95": 0.5683555006980896,
+      "dynamic_range_stops": 7.1506500244140625
+    },
+    {
+      "frame": 106,
+      "shot_frame": 106,
+      "catchlight": null,
+      "station": "KEY OFF: back only",
+      "ratio_luma_median": 0.004555745981633663,
+      "ratio_luma_p5": 0.003999999724328518,
+      "ratio_luma_p95": 0.5640072822570801,
+      "dynamic_range_stops": 7.139570236206055
+    },
+    {
+      "frame": 107,
+      "shot_frame": 107,
+      "catchlight": null,
+      "station": "KEY OFF: back only",
+      "ratio_luma_median": 0.004565503913909197,
+      "ratio_luma_p5": 0.003999999724328518,
+      "ratio_luma_p95": 0.5629792213439941,
+      "dynamic_range_stops": 7.136938095092773
+    },
+    {
+      "frame": 108,
+      "shot_frame": 108,
+      "catchlight": null,
+      "station": "KEY OFF: back only",
+      "ratio_luma_median": 0.004543012008070946,
+      "ratio_luma_p5": 0.003999999724328518,
+      "ratio_luma_p95": 0.5520565509796143,
+      "dynamic_range_stops": 7.108672142028809
+    },
+    {
+      "frame": 109,
+      "shot_frame": 109,
+      "catchlight": null,
+      "station": "KEY OFF: back only",
+      "ratio_luma_median": 0.004557862877845764,
+      "ratio_luma_p5": 0.003999999724328518,
+      "ratio_luma_p95": 0.5473418831825256,
+      "dynamic_range_stops": 7.096298694610596
+    },
+    {
+      "frame": 110,
+      "shot_frame": 110,
+      "catchlight": null,
+      "station": "KEY OFF: back only",
+      "ratio_luma_median": 0.004549606703221798,
+      "ratio_luma_p5": 0.003999999724328518,
+      "ratio_luma_p95": 0.541669487953186,
+      "dynamic_range_stops": 7.081269264221191
+    },
+    {
+      "frame": 111,
+      "shot_frame": 111,
+      "catchlight": null,
+      "station": "KEY OFF: back only",
+      "ratio_luma_median": 0.004581335466355085,
+      "ratio_luma_p5": 0.003999999724328518,
+      "ratio_luma_p95": 0.5441524386405945,
+      "dynamic_range_stops": 7.087867259979248
+    },
+    {
+      "frame": 112,
+      "shot_frame": 112,
+      "catchlight": null,
+      "station": "KEY OFF: back only",
+      "ratio_luma_median": 0.0044911750592291355,
+      "ratio_luma_p5": 0.003999999724328518,
+      "ratio_luma_p95": 0.46256324648857117,
+      "dynamic_range_stops": 6.853507041931152
+    },
+    {
+      "frame": 113,
+      "shot_frame": 113,
+      "catchlight": null,
+      "station": "KEY OFF: back only",
+      "ratio_luma_median": 0.004258367232978344,
+      "ratio_luma_p5": 0.003999999724328518,
+      "ratio_luma_p95": 0.20011959969997406,
+      "dynamic_range_stops": 5.644718647003174
+    },
+    {
+      "frame": 114,
+      "shot_frame": 114,
+      "catchlight": null,
+      "station": "KEY OFF: back only",
+      "ratio_luma_median": 0.004044775385409594,
+      "ratio_luma_p5": 0.003999999724328518,
+      "ratio_luma_p95": 0.01245939638465643,
+      "dynamic_range_stops": 1.6391624212265015
+    },
+    {
+      "frame": 115,
+      "shot_frame": 115,
+      "catchlight": null,
+      "station": "KEY OFF: back only",
+      "ratio_luma_median": 0.004027064424008131,
+      "ratio_luma_p5": 0.003999999724328518,
+      "ratio_luma_p95": 0.010188066400587559,
+      "dynamic_range_stops": 1.3488085269927979
+    },
+    {
+      "frame": 116,
+      "shot_frame": 116,
+      "catchlight": null,
+      "station": "KEY OFF: back only",
+      "ratio_luma_median": 0.004350111819803715,
+      "ratio_luma_p5": 0.003999999724328518,
+      "ratio_luma_p95": 0.047760795801877975,
+      "dynamic_range_stops": 3.5777549743652344
+    },
+    {
+      "frame": 117,
+      "shot_frame": 117,
+      "catchlight": null,
+      "station": "KEY OFF: back only",
+      "ratio_luma_median": 0.005047551356256008,
+      "ratio_luma_p5": 0.003999999724328518,
+      "ratio_luma_p95": 0.307559072971344,
+      "dynamic_range_stops": 6.2647199630737305
+    },
+    {
+      "frame": 118,
+      "shot_frame": 118,
+      "catchlight": null,
+      "station": "KEY OFF: back only",
+      "ratio_luma_median": 0.005827285815030336,
+      "ratio_luma_p5": 0.003999999724328518,
+      "ratio_luma_p95": 0.49524015188217163,
+      "dynamic_range_stops": 6.951984405517578
+    },
+    {
+      "frame": 119,
+      "shot_frame": 119,
+      "catchlight": null,
+      "station": "KEY OFF: back only",
+      "ratio_luma_median": 0.006206880323588848,
+      "ratio_luma_p5": 0.003999999724328518,
+      "ratio_luma_p95": 0.5843217968940735,
+      "dynamic_range_stops": 7.190619468688965
+    },
+    {
+      "frame": 120,
+      "shot_frame": 120,
+      "catchlight": null,
+      "station": "KEY OFF: back only",
+      "ratio_luma_median": 0.006825490854680538,
+      "ratio_luma_p5": 0.003999999724328518,
+      "ratio_luma_p95": 2.187138080596924,
+      "dynamic_range_stops": 9.094828605651855
+    },
+    {
+      "frame": 121,
+      "shot_frame": 121,
+      "catchlight": null,
+      "station": "KEY OFF: back only",
+      "ratio_luma_median": 0.006730697117745876,
+      "ratio_luma_p5": 0.003999999724328518,
+      "ratio_luma_p95": 1.9381698369979858,
+      "dynamic_range_stops": 8.920479774475098
+    },
+    {
+      "frame": 122,
+      "shot_frame": 122,
+      "catchlight": null,
+      "station": "KEY OFF: back only",
+      "ratio_luma_median": 0.006626449525356293,
+      "ratio_luma_p5": 0.003999999724328518,
+      "ratio_luma_p95": 1.7197076082229614,
+      "dynamic_range_stops": 8.747947692871094
+    },
+    {
+      "frame": 123,
+      "shot_frame": 123,
+      "catchlight": null,
+      "station": "KEY OFF: back only",
+      "ratio_luma_median": 0.0066342540085315704,
+      "ratio_luma_p5": 0.003999999724328518,
+      "ratio_luma_p95": 1.5293140411376953,
+      "dynamic_range_stops": 8.578668594360352
+    },
+    {
+      "frame": 124,
+      "shot_frame": 124,
+      "catchlight": null,
+      "station": "KEY OFF: back only",
+      "ratio_luma_median": 0.006552969571202993,
+      "ratio_luma_p5": 0.003999999724328518,
+      "ratio_luma_p95": 1.3794180154800415,
+      "dynamic_range_stops": 8.42984390258789
+    },
+    {
+      "frame": 125,
+      "shot_frame": 125,
+      "catchlight": null,
+      "station": "KEY OFF: back only",
+      "ratio_luma_median": 0.006521238945424557,
+      "ratio_luma_p5": 0.003999999724328518,
+      "ratio_luma_p95": 1.25248384475708,
+      "dynamic_range_stops": 8.290575981140137
+    },
+    {
+      "frame": 126,
+      "shot_frame": 126,
+      "catchlight": null,
+      "station": "KEY OFF: back only",
+      "ratio_luma_median": 0.009035047143697739,
+      "ratio_luma_p5": 0.004000003449618816,
+      "ratio_luma_p95": 1.1461018323898315,
+      "dynamic_range_stops": 8.162518501281738
+    },
+    {
+      "frame": 127,
+      "shot_frame": 127,
+      "catchlight": null,
+      "station": "KEY OFF: back only",
+      "ratio_luma_median": 0.24928903579711914,
+      "ratio_luma_p5": 0.033393796533346176,
+      "ratio_luma_p95": 1.159563660621643,
+      "dynamic_range_stops": 5.117857933044434
+    },
+    {
+      "frame": 128,
+      "shot_frame": 128,
+      "catchlight": null,
+      "station": "KEY OFF: back only",
+      "ratio_luma_median": 0.04318494349718094,
+      "ratio_luma_p5": 0.00586690241470933,
+      "ratio_luma_p95": 0.14430829882621765,
+      "dynamic_range_stops": 4.620411396026611
+    },
+    {
+      "frame": 129,
+      "shot_frame": 129,
+      "catchlight": null,
+      "station": "KEY OFF: back only",
+      "ratio_luma_median": 0.057553041726350784,
+      "ratio_luma_p5": 0.01048417016863823,
+      "ratio_luma_p95": 0.33794206380844116,
+      "dynamic_range_stops": 5.010491371154785
+    },
+    {
+      "frame": 130,
+      "shot_frame": 130,
+      "catchlight": null,
+      "station": "KEY OFF: back only",
+      "ratio_luma_median": 0.047576092183589935,
+      "ratio_luma_p5": 0.011447420343756676,
+      "ratio_luma_p95": 0.5200694799423218,
+      "dynamic_range_stops": 5.50560998916626
+    },
+    {
+      "frame": 131,
+      "shot_frame": 131,
+      "catchlight": null,
+      "station": "high three-quarter",
+      "ratio_luma_median": 0.3970634639263153,
+      "ratio_luma_p5": 0.11982133239507675,
+      "ratio_luma_p95": 5.761157989501953,
+      "dynamic_range_stops": 5.58740234375
+    },
+    {
+      "frame": 132,
+      "shot_frame": 132,
+      "catchlight": null,
+      "station": "high three-quarter",
+      "ratio_luma_median": 0.2335997074842453,
+      "ratio_luma_p5": 0.03617088869214058,
+      "ratio_luma_p95": 4.202821731567383,
+      "dynamic_range_stops": 6.860385417938232
+    },
+    {
+      "frame": 133,
+      "shot_frame": 133,
+      "catchlight": null,
+      "station": "high three-quarter",
+      "ratio_luma_median": 0.21334296464920044,
+      "ratio_luma_p5": 0.012694728560745716,
+      "ratio_luma_p95": 2.607940435409546,
+      "dynamic_range_stops": 7.68253755569458
+    },
+    {
+      "frame": 134,
+      "shot_frame": 134,
+      "catchlight": null,
+      "station": "high three-quarter",
+      "ratio_luma_median": 0.20650959014892578,
+      "ratio_luma_p5": 0.011721421033143997,
+      "ratio_luma_p95": 1.8179523944854736,
+      "dynamic_range_stops": 7.2770233154296875
+    },
+    {
+      "frame": 135,
+      "shot_frame": 135,
+      "catchlight": null,
+      "station": "high three-quarter",
+      "ratio_luma_median": 0.19904440641403198,
+      "ratio_luma_p5": 0.010705159045755863,
+      "ratio_luma_p95": 1.6897164583206177,
+      "dynamic_range_stops": 7.30233097076416
+    },
+    {
+      "frame": 136,
+      "shot_frame": 136,
+      "catchlight": null,
+      "station": "high three-quarter",
+      "ratio_luma_median": 0.19263115525245667,
+      "ratio_luma_p5": 0.0098392553627491,
+      "ratio_luma_p95": 1.5658894777297974,
+      "dynamic_range_stops": 7.314217567443848
+    },
+    {
+      "frame": 137,
+      "shot_frame": 137,
+      "catchlight": null,
+      "station": "high three-quarter",
+      "ratio_luma_median": 0.18911665678024292,
+      "ratio_luma_p5": 0.009439343586564064,
+      "ratio_luma_p95": 1.529538631439209,
+      "dynamic_range_stops": 7.340194225311279
+    },
+    {
+      "frame": 138,
+      "shot_frame": 138,
+      "catchlight": null,
+      "station": "high three-quarter",
+      "ratio_luma_median": 0.18663623929023743,
+      "ratio_luma_p5": 0.008662828244268894,
+      "ratio_luma_p95": 1.475019097328186,
+      "dynamic_range_stops": 7.411679744720459
+    },
+    {
+      "frame": 139,
+      "shot_frame": 139,
+      "catchlight": null,
+      "station": "high three-quarter",
+      "ratio_luma_median": 0.18442317843437195,
+      "ratio_luma_p5": 0.008377589285373688,
+      "ratio_luma_p95": 1.48283052444458,
+      "dynamic_range_stops": 7.467602729797363
+    },
+    {
+      "frame": 140,
+      "shot_frame": 140,
+      "catchlight": null,
+      "station": "high three-quarter",
+      "ratio_luma_median": 0.18308597803115845,
+      "ratio_luma_p5": 0.007778520695865154,
+      "ratio_luma_p95": 1.504234790802002,
+      "dynamic_range_stops": 7.59531831741333
+    },
+    {
+      "frame": 141,
+      "shot_frame": 141,
+      "catchlight": null,
+      "station": "high three-quarter",
+      "ratio_luma_median": 0.18174907565116882,
+      "ratio_luma_p5": 0.00771815050393343,
+      "ratio_luma_p95": 1.5029536485671997,
+      "dynamic_range_stops": 7.605329513549805
+    },
+    {
+      "frame": 142,
+      "shot_frame": 142,
+      "catchlight": null,
+      "station": "high three-quarter",
+      "ratio_luma_median": 0.18466098606586456,
+      "ratio_luma_p5": 0.009876064024865627,
+      "ratio_luma_p95": 0.7538166046142578,
+      "dynamic_range_stops": 6.254133701324463
+    },
+    {
+      "frame": 143,
+      "shot_frame": 143,
+      "catchlight": null,
+      "station": "high three-quarter",
+      "ratio_luma_median": 0.19404855370521545,
+      "ratio_luma_p5": 0.021448049694299698,
+      "ratio_luma_p95": 0.3784344494342804,
+      "dynamic_range_stops": 4.141125202178955
+    },
+    {
+      "frame": 144,
+      "shot_frame": 144,
+      "catchlight": null,
+      "station": "high three-quarter",
+      "ratio_luma_median": 0.21281808614730835,
+      "ratio_luma_p5": 0.05988568812608719,
+      "ratio_luma_p95": 0.36733680963516235,
+      "dynamic_range_stops": 2.6168203353881836
+    },
+    {
+      "frame": 145,
+      "shot_frame": 145,
+      "catchlight": null,
+      "station": "front far",
+      "ratio_luma_median": 0.23146548867225647,
+      "ratio_luma_p5": 0.1001068502664566,
+      "ratio_luma_p95": 0.3991418182849884,
+      "dynamic_range_stops": 1.9953607320785522
+    },
+    {
+      "frame": 146,
+      "shot_frame": 146,
+      "catchlight": null,
+      "station": "front far",
+      "ratio_luma_median": 0.2461138218641281,
+      "ratio_luma_p5": 0.10737030953168869,
+      "ratio_luma_p95": 0.4202239513397217,
+      "dynamic_range_stops": 1.9685633182525635
+    },
+    {
+      "frame": 147,
+      "shot_frame": 147,
+      "catchlight": null,
+      "station": "front far",
+      "ratio_luma_median": 0.25164568424224854,
+      "ratio_luma_p5": 0.09807439148426056,
+      "ratio_luma_p95": 0.4319665729999542,
+      "dynamic_range_stops": 2.1389713287353516
+    },
+    {
+      "frame": 148,
+      "shot_frame": 148,
+      "catchlight": null,
+      "station": "front far",
+      "ratio_luma_median": 0.25166070461273193,
+      "ratio_luma_p5": 0.08977875113487244,
+      "ratio_luma_p95": 0.4390142261981964,
+      "dynamic_range_stops": 2.2898218631744385
+    },
+    {
+      "frame": 149,
+      "shot_frame": 149,
+      "catchlight": null,
+      "station": "front far",
+      "ratio_luma_median": 0.25044509768486023,
+      "ratio_luma_p5": 0.08620018512010574,
+      "ratio_luma_p95": 0.43902167677879333,
+      "dynamic_range_stops": 2.34852933883667
+    }
+  ]
+}

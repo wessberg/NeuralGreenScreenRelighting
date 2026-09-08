@@ -20,6 +20,13 @@ README wherever they disagree.
 At the end of a working session, write the next `rounds/roundN.md` in the same shape, ending
 with a starter prompt for round N+1.
 
+**Round 8 reflection findings:** the original catchlights, crown sheen and lip gloss are still
+unresolved. Disabling added GGX changes lip pixels by only 0.00955 display levels on average;
+it is not the lip fix. Simple centre/scale temporal iris recovery fails a withheld-pixel test
+(median relative RGB error 12.47–14.50%, p95 50.10–64.59%). Unclipped reflections are unresolved
+sums, not automatically recoverable iris texture. `audit_r8_reflections.py` is an isolated
+reporter diagnostic, not a production repair or validated removal mask. See `rounds/round8.md`.
+
 ---
 
 ## What this project is

@@ -1,0 +1,5 @@
+{
+  "withheld_rgb_never_changes_prediction_or_donor_selection": true,
+  "missing_observations_produce_no_support": true,
+  "syntax_checked": 3
+}
