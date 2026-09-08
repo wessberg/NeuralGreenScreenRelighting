@@ -3,900 +3,900 @@
     "frame": 0,
     "alpha_mean_interior": 0.9999951124191284,
     "interior_below_0.9": 5,
-    "seconds": 2.01
+    "seconds": 2.07
   },
   {
     "frame": 1,
     "alpha_mean_interior": 0.9999929070472717,
     "interior_below_0.9": 10,
-    "seconds": 3.16
+    "seconds": 3.24
   },
   {
     "frame": 2,
     "alpha_mean_interior": 0.9999921917915344,
     "interior_below_0.9": 10,
-    "seconds": 4.29
+    "seconds": 4.39
   },
   {
     "frame": 3,
     "alpha_mean_interior": 0.9999924302101135,
     "interior_below_0.9": 10,
-    "seconds": 5.43
+    "seconds": 5.52
   },
   {
     "frame": 4,
     "alpha_mean_interior": 0.9999929666519165,
     "interior_below_0.9": 11,
-    "seconds": 6.56
+    "seconds": 6.69
   },
   {
     "frame": 5,
     "alpha_mean_interior": 0.9999920129776001,
     "interior_below_0.9": 13,
-    "seconds": 7.69
+    "seconds": 7.86
   },
   {
     "frame": 6,
     "alpha_mean_interior": 0.9999961853027344,
     "interior_below_0.9": 0,
-    "seconds": 8.82
+    "seconds": 9.03
   },
   {
     "frame": 7,
     "alpha_mean_interior": 0.9999945163726807,
     "interior_below_0.9": 5,
-    "seconds": 9.95
+    "seconds": 10.2
   },
   {
     "frame": 8,
     "alpha_mean_interior": 0.9999934434890747,
     "interior_below_0.9": 8,
-    "seconds": 11.08
+    "seconds": 11.36
   },
   {
     "frame": 9,
     "alpha_mean_interior": 0.9999955892562866,
     "interior_below_0.9": 2,
-    "seconds": 12.22
+    "seconds": 12.51
   },
   {
     "frame": 10,
     "alpha_mean_interior": 0.9999921917915344,
     "interior_below_0.9": 11,
-    "seconds": 13.35
+    "seconds": 13.65
   },
   {
     "frame": 11,
     "alpha_mean_interior": 0.9999951720237732,
     "interior_below_0.9": 6,
-    "seconds": 14.47
+    "seconds": 14.82
   },
   {
     "frame": 12,
     "alpha_mean_interior": 0.9999955892562866,
     "interior_below_0.9": 3,
-    "seconds": 15.62
+    "seconds": 15.99
   },
   {
     "frame": 13,
     "alpha_mean_interior": 0.9999964237213135,
     "interior_below_0.9": 0,
-    "seconds": 16.77
+    "seconds": 17.15
   },
   {
     "frame": 14,
     "alpha_mean_interior": 0.9999957084655762,
     "interior_below_0.9": 6,
-    "seconds": 17.91
+    "seconds": 18.32
   },
   {
     "frame": 15,
     "alpha_mean_interior": 0.9999963045120239,
     "interior_below_0.9": 1,
-    "seconds": 19.04
+    "seconds": 19.49
   },
   {
     "frame": 16,
     "alpha_mean_interior": 0.9999956488609314,
     "interior_below_0.9": 2,
-    "seconds": 20.17
+    "seconds": 20.74
   },
   {
     "frame": 17,
     "alpha_mean_interior": 0.999994695186615,
     "interior_below_0.9": 7,
-    "seconds": 21.3
+    "seconds": 21.96
   },
   {
     "frame": 18,
     "alpha_mean_interior": 0.9999942779541016,
     "interior_below_0.9": 9,
-    "seconds": 22.47
+    "seconds": 23.21
   },
   {
     "frame": 19,
     "alpha_mean_interior": 0.9999909400939941,
     "interior_below_0.9": 16,
-    "seconds": 23.59
+    "seconds": 24.36
   },
   {
     "frame": 20,
     "alpha_mean_interior": 0.999994158744812,
     "interior_below_0.9": 8,
-    "seconds": 24.72
+    "seconds": 25.49
   },
   {
     "frame": 21,
     "alpha_mean_interior": 0.9999961853027344,
     "interior_below_0.9": 2,
-    "seconds": 25.82
+    "seconds": 26.65
   },
   {
     "frame": 22,
     "alpha_mean_interior": 0.9999926090240479,
     "interior_below_0.9": 12,
-    "seconds": 26.94
+    "seconds": 27.86
   },
   {
     "frame": 23,
     "alpha_mean_interior": 0.9999942779541016,
     "interior_below_0.9": 8,
-    "seconds": 28.06
+    "seconds": 29.1
   },
   {
     "frame": 24,
     "alpha_mean_interior": 0.9999911189079285,
     "interior_below_0.9": 16,
-    "seconds": 29.19
+    "seconds": 30.27
   },
   {
     "frame": 25,
     "alpha_mean_interior": 0.9999923706054688,
     "interior_below_0.9": 13,
-    "seconds": 30.32
+    "seconds": 31.41
   },
   {
     "frame": 26,
     "alpha_mean_interior": 0.9999968409538269,
     "interior_below_0.9": 0,
-    "seconds": 31.44
+    "seconds": 32.56
   },
   {
     "frame": 27,
     "alpha_mean_interior": 0.9999960064888,
     "interior_below_0.9": 2,
-    "seconds": 32.56
+    "seconds": 33.7
   },
   {
     "frame": 28,
     "alpha_mean_interior": 0.999995768070221,
     "interior_below_0.9": 1,
-    "seconds": 33.69
+    "seconds": 34.86
   },
   {
     "frame": 29,
     "alpha_mean_interior": 0.9999954700469971,
     "interior_below_0.9": 1,
-    "seconds": 34.81
+    "seconds": 35.99
   },
   {
     "frame": 30,
     "alpha_mean_interior": 0.9999956488609314,
     "interior_below_0.9": 2,
-    "seconds": 35.91
+    "seconds": 37.12
   },
   {
     "frame": 31,
     "alpha_mean_interior": 0.9999959468841553,
     "interior_below_0.9": 2,
-    "seconds": 37.03
+    "seconds": 38.26
   },
   {
     "frame": 32,
     "alpha_mean_interior": 0.9999963045120239,
     "interior_below_0.9": 0,
-    "seconds": 38.16
+    "seconds": 39.39
   },
   {
     "frame": 33,
     "alpha_mean_interior": 0.9999951124191284,
     "interior_below_0.9": 3,
-    "seconds": 39.28
+    "seconds": 40.53
   },
   {
     "frame": 34,
     "alpha_mean_interior": 0.999993085861206,
     "interior_below_0.9": 12,
-    "seconds": 40.41
+    "seconds": 41.67
   },
   {
     "frame": 35,
     "alpha_mean_interior": 0.9999963641166687,
     "interior_below_0.9": 2,
-    "seconds": 41.53
+    "seconds": 42.84
   },
   {
     "frame": 36,
     "alpha_mean_interior": 0.9999959468841553,
     "interior_below_0.9": 0,
-    "seconds": 42.65
+    "seconds": 44.0
   },
   {
     "frame": 37,
     "alpha_mean_interior": 0.9999964833259583,
     "interior_below_0.9": 0,
-    "seconds": 43.78
+    "seconds": 45.16
   },
   {
     "frame": 38,
     "alpha_mean_interior": 0.999995768070221,
     "interior_below_0.9": 0,
-    "seconds": 44.9
+    "seconds": 46.29
   },
   {
     "frame": 39,
     "alpha_mean_interior": 0.9999944567680359,
     "interior_below_0.9": 6,
-    "seconds": 46.02
+    "seconds": 47.49
   },
   {
     "frame": 40,
     "alpha_mean_interior": 0.9999923706054688,
     "interior_below_0.9": 11,
-    "seconds": 47.15
+    "seconds": 48.7
   },
   {
     "frame": 41,
     "alpha_mean_interior": 0.9999908804893494,
     "interior_below_0.9": 17,
-    "seconds": 48.27
+    "seconds": 49.83
   },
   {
     "frame": 42,
     "alpha_mean_interior": 0.9999956488609314,
     "interior_below_0.9": 0,
-    "seconds": 49.39
+    "seconds": 50.97
   },
   {
     "frame": 43,
     "alpha_mean_interior": 0.9999940395355225,
     "interior_below_0.9": 5,
-    "seconds": 50.52
+    "seconds": 52.1
   },
   {
     "frame": 44,
     "alpha_mean_interior": 0.9999933838844299,
     "interior_below_0.9": 10,
-    "seconds": 51.64
+    "seconds": 53.24
   },
   {
     "frame": 45,
     "alpha_mean_interior": 0.9999964833259583,
     "interior_below_0.9": 1,
-    "seconds": 52.77
+    "seconds": 54.37
   },
   {
     "frame": 46,
     "alpha_mean_interior": 0.9999957084655762,
     "interior_below_0.9": 3,
-    "seconds": 53.89
+    "seconds": 55.51
   },
   {
     "frame": 47,
     "alpha_mean_interior": 0.999993622303009,
     "interior_below_0.9": 6,
-    "seconds": 55.01
+    "seconds": 56.65
   },
   {
     "frame": 48,
     "alpha_mean_interior": 0.9999925494194031,
     "interior_below_0.9": 10,
-    "seconds": 56.14
+    "seconds": 57.79
   },
   {
     "frame": 49,
     "alpha_mean_interior": 0.9999951124191284,
     "interior_below_0.9": 5,
-    "seconds": 57.26
+    "seconds": 58.94
   },
   {
     "frame": 50,
     "alpha_mean_interior": 0.9999927282333374,
     "interior_below_0.9": 11,
-    "seconds": 58.38
+    "seconds": 60.07
   },
   {
     "frame": 51,
     "alpha_mean_interior": 0.9999946355819702,
     "interior_below_0.9": 6,
-    "seconds": 59.51
+    "seconds": 61.23
   },
   {
     "frame": 52,
     "alpha_mean_interior": 0.9999964833259583,
     "interior_below_0.9": 0,
-    "seconds": 60.63
+    "seconds": 62.38
   },
   {
     "frame": 53,
     "alpha_mean_interior": 0.9999974370002747,
     "interior_below_0.9": 0,
-    "seconds": 61.76
+    "seconds": 63.52
   },
   {
     "frame": 54,
     "alpha_mean_interior": 0.9999954700469971,
     "interior_below_0.9": 2,
-    "seconds": 62.88
+    "seconds": 64.66
   },
   {
     "frame": 55,
     "alpha_mean_interior": 0.9999909400939941,
     "interior_below_0.9": 11,
-    "seconds": 64.01
+    "seconds": 65.82
   },
   {
     "frame": 56,
     "alpha_mean_interior": 0.9999909400939941,
     "interior_below_0.9": 11,
-    "seconds": 65.12
+    "seconds": 66.98
   },
   {
     "frame": 57,
     "alpha_mean_interior": 0.9999902844429016,
     "interior_below_0.9": 16,
-    "seconds": 66.24
+    "seconds": 68.14
   },
   {
     "frame": 58,
     "alpha_mean_interior": 0.9999896287918091,
     "interior_below_0.9": 11,
-    "seconds": 67.37
+    "seconds": 69.3
   },
   {
     "frame": 59,
     "alpha_mean_interior": 0.999993085861206,
     "interior_below_0.9": 6,
-    "seconds": 68.49
+    "seconds": 70.46
   },
   {
     "frame": 60,
     "alpha_mean_interior": 0.999992847442627,
     "interior_below_0.9": 9,
-    "seconds": 69.61
+    "seconds": 71.63
   },
   {
     "frame": 61,
     "alpha_mean_interior": 0.999983549118042,
     "interior_below_0.9": 20,
-    "seconds": 70.74
+    "seconds": 72.78
   },
   {
     "frame": 62,
     "alpha_mean_interior": 0.9999874830245972,
     "interior_below_0.9": 13,
-    "seconds": 71.86
+    "seconds": 73.93
   },
   {
     "frame": 63,
     "alpha_mean_interior": 0.9999945163726807,
     "interior_below_0.9": 7,
-    "seconds": 72.98
+    "seconds": 75.1
   },
   {
     "frame": 64,
     "alpha_mean_interior": 0.9999914169311523,
     "interior_below_0.9": 9,
-    "seconds": 74.1
+    "seconds": 76.26
   },
   {
     "frame": 65,
     "alpha_mean_interior": 0.999983012676239,
     "interior_below_0.9": 30,
-    "seconds": 75.22
+    "seconds": 77.42
   },
   {
     "frame": 66,
     "alpha_mean_interior": 0.9999805092811584,
     "interior_below_0.9": 44,
-    "seconds": 76.34
+    "seconds": 78.58
   },
   {
     "frame": 67,
     "alpha_mean_interior": 0.999984622001648,
     "interior_below_0.9": 26,
-    "seconds": 77.46
+    "seconds": 79.74
   },
   {
     "frame": 68,
     "alpha_mean_interior": 0.999984085559845,
     "interior_below_0.9": 33,
-    "seconds": 78.58
+    "seconds": 80.89
   },
   {
     "frame": 69,
     "alpha_mean_interior": 0.9999818801879883,
     "interior_below_0.9": 34,
-    "seconds": 79.71
+    "seconds": 82.04
   },
   {
     "frame": 70,
     "alpha_mean_interior": 0.9999873042106628,
     "interior_below_0.9": 29,
-    "seconds": 80.83
+    "seconds": 83.19
   },
   {
     "frame": 71,
     "alpha_mean_interior": 0.9999828338623047,
     "interior_below_0.9": 35,
-    "seconds": 81.95
+    "seconds": 84.35
   },
   {
     "frame": 72,
     "alpha_mean_interior": 0.9999801516532898,
     "interior_below_0.9": 36,
-    "seconds": 83.08
+    "seconds": 85.5
   },
   {
     "frame": 73,
     "alpha_mean_interior": 0.9999896287918091,
     "interior_below_0.9": 20,
-    "seconds": 84.2
+    "seconds": 86.65
   },
   {
     "frame": 74,
     "alpha_mean_interior": 0.9999858736991882,
     "interior_below_0.9": 28,
-    "seconds": 85.32
+    "seconds": 87.8
   },
   {
     "frame": 75,
     "alpha_mean_interior": 0.9999818205833435,
     "interior_below_0.9": 35,
-    "seconds": 86.45
+    "seconds": 88.96
   },
   {
     "frame": 76,
     "alpha_mean_interior": 0.9999867677688599,
     "interior_below_0.9": 25,
-    "seconds": 87.57
+    "seconds": 90.17
   },
   {
     "frame": 77,
     "alpha_mean_interior": 0.9999842643737793,
     "interior_below_0.9": 32,
-    "seconds": 88.69
+    "seconds": 91.37
   },
   {
     "frame": 78,
     "alpha_mean_interior": 0.999989926815033,
     "interior_below_0.9": 18,
-    "seconds": 89.81
+    "seconds": 92.57
   },
   {
     "frame": 79,
     "alpha_mean_interior": 0.9999887943267822,
     "interior_below_0.9": 19,
-    "seconds": 90.93
+    "seconds": 93.77
   },
   {
     "frame": 80,
     "alpha_mean_interior": 0.9999858736991882,
     "interior_below_0.9": 31,
-    "seconds": 92.05
+    "seconds": 94.92
   },
   {
     "frame": 81,
     "alpha_mean_interior": 0.9999924898147583,
     "interior_below_0.9": 11,
-    "seconds": 93.17
+    "seconds": 96.11
   },
   {
     "frame": 82,
     "alpha_mean_interior": 0.9999904632568359,
     "interior_below_0.9": 18,
-    "seconds": 94.3
+    "seconds": 97.31
   },
   {
     "frame": 83,
     "alpha_mean_interior": 0.9999886751174927,
     "interior_below_0.9": 20,
-    "seconds": 95.42
+    "seconds": 98.47
   },
   {
     "frame": 84,
     "alpha_mean_interior": 0.9999873042106628,
     "interior_below_0.9": 28,
-    "seconds": 96.56
+    "seconds": 99.67
   },
   {
     "frame": 85,
     "alpha_mean_interior": 0.9999864101409912,
     "interior_below_0.9": 31,
-    "seconds": 97.69
+    "seconds": 100.87
   },
   {
     "frame": 86,
     "alpha_mean_interior": 0.9999936819076538,
     "interior_below_0.9": 8,
-    "seconds": 98.81
+    "seconds": 102.02
   },
   {
     "frame": 87,
     "alpha_mean_interior": 0.999992311000824,
     "interior_below_0.9": 14,
-    "seconds": 99.93
+    "seconds": 103.22
   },
   {
     "frame": 88,
     "alpha_mean_interior": 0.999991238117218,
     "interior_below_0.9": 15,
-    "seconds": 101.05
+    "seconds": 104.42
   },
   {
     "frame": 89,
     "alpha_mean_interior": 0.9999892711639404,
     "interior_below_0.9": 23,
-    "seconds": 102.18
+    "seconds": 105.56
   },
   {
     "frame": 90,
     "alpha_mean_interior": 0.9999865293502808,
     "interior_below_0.9": 25,
-    "seconds": 103.31
+    "seconds": 106.69
   },
   {
     "frame": 91,
     "alpha_mean_interior": 0.9999924898147583,
     "interior_below_0.9": 12,
-    "seconds": 104.43
+    "seconds": 107.83
   },
   {
     "frame": 92,
     "alpha_mean_interior": 0.9999905824661255,
     "interior_below_0.9": 15,
-    "seconds": 105.56
+    "seconds": 108.97
   },
   {
     "frame": 93,
     "alpha_mean_interior": 0.999988853931427,
     "interior_below_0.9": 23,
-    "seconds": 106.68
+    "seconds": 110.11
   },
   {
     "frame": 94,
     "alpha_mean_interior": 0.9999876022338867,
     "interior_below_0.9": 26,
-    "seconds": 107.81
+    "seconds": 111.24
   },
   {
     "frame": 95,
     "alpha_mean_interior": 0.9999870657920837,
     "interior_below_0.9": 28,
-    "seconds": 108.93
+    "seconds": 112.38
   },
   {
     "frame": 96,
     "alpha_mean_interior": 0.9999861717224121,
     "interior_below_0.9": 30,
-    "seconds": 110.05
+    "seconds": 113.52
   },
   {
     "frame": 97,
     "alpha_mean_interior": 0.9999873638153076,
     "interior_below_0.9": 27,
-    "seconds": 111.17
+    "seconds": 114.67
   },
   {
     "frame": 98,
     "alpha_mean_interior": 0.9999874830245972,
     "interior_below_0.9": 27,
-    "seconds": 112.29
+    "seconds": 115.87
   },
   {
     "frame": 99,
     "alpha_mean_interior": 0.9999879002571106,
     "interior_below_0.9": 27,
-    "seconds": 113.42
+    "seconds": 117.07
   },
   {
     "frame": 100,
     "alpha_mean_interior": 0.9999883770942688,
     "interior_below_0.9": 26,
-    "seconds": 114.54
+    "seconds": 118.2
   },
   {
     "frame": 101,
     "alpha_mean_interior": 0.9999874830245972,
     "interior_below_0.9": 28,
-    "seconds": 115.66
+    "seconds": 119.34
   },
   {
     "frame": 102,
     "alpha_mean_interior": 0.9999877214431763,
     "interior_below_0.9": 28,
-    "seconds": 116.79
+    "seconds": 120.48
   },
   {
     "frame": 103,
     "alpha_mean_interior": 0.9999870657920837,
     "interior_below_0.9": 29,
-    "seconds": 117.91
+    "seconds": 121.61
   },
   {
     "frame": 104,
     "alpha_mean_interior": 0.999988317489624,
     "interior_below_0.9": 26,
-    "seconds": 119.04
+    "seconds": 122.75
   },
   {
     "frame": 105,
     "alpha_mean_interior": 0.999988853931427,
     "interior_below_0.9": 24,
-    "seconds": 120.17
+    "seconds": 123.89
   },
   {
     "frame": 106,
     "alpha_mean_interior": 0.9999886751174927,
     "interior_below_0.9": 25,
-    "seconds": 121.29
+    "seconds": 125.02
   },
   {
     "frame": 107,
     "alpha_mean_interior": 0.9999890923500061,
     "interior_below_0.9": 23,
-    "seconds": 122.41
+    "seconds": 126.15
   },
   {
     "frame": 108,
     "alpha_mean_interior": 0.9999900460243225,
     "interior_below_0.9": 20,
-    "seconds": 123.51
+    "seconds": 127.29
   },
   {
     "frame": 109,
     "alpha_mean_interior": 0.9999916553497314,
     "interior_below_0.9": 14,
-    "seconds": 124.63
+    "seconds": 128.43
   },
   {
     "frame": 110,
     "alpha_mean_interior": 0.99998539686203,
     "interior_below_0.9": 27,
-    "seconds": 125.75
+    "seconds": 129.56
   },
   {
     "frame": 111,
     "alpha_mean_interior": 0.9999880790710449,
     "interior_below_0.9": 23,
-    "seconds": 126.87
+    "seconds": 130.69
   },
   {
     "frame": 112,
     "alpha_mean_interior": 0.9999915957450867,
     "interior_below_0.9": 15,
-    "seconds": 127.99
+    "seconds": 131.82
   },
   {
     "frame": 113,
     "alpha_mean_interior": 0.9999933242797852,
     "interior_below_0.9": 9,
-    "seconds": 129.11
+    "seconds": 132.96
   },
   {
     "frame": 114,
     "alpha_mean_interior": 0.9999865889549255,
     "interior_below_0.9": 26,
-    "seconds": 130.22
+    "seconds": 134.09
   },
   {
     "frame": 115,
     "alpha_mean_interior": 0.9999889731407166,
     "interior_below_0.9": 21,
-    "seconds": 131.33
+    "seconds": 135.24
   },
   {
     "frame": 116,
     "alpha_mean_interior": 0.9999908208847046,
     "interior_below_0.9": 15,
-    "seconds": 132.45
+    "seconds": 136.38
   },
   {
     "frame": 117,
     "alpha_mean_interior": 0.9999921917915344,
     "interior_below_0.9": 13,
-    "seconds": 133.57
+    "seconds": 137.53
   },
   {
     "frame": 118,
     "alpha_mean_interior": 0.9999909996986389,
     "interior_below_0.9": 15,
-    "seconds": 134.7
+    "seconds": 138.68
   },
   {
     "frame": 119,
     "alpha_mean_interior": 0.9999900460243225,
     "interior_below_0.9": 19,
-    "seconds": 135.82
+    "seconds": 139.83
   },
   {
     "frame": 120,
     "alpha_mean_interior": 0.9999916553497314,
     "interior_below_0.9": 15,
-    "seconds": 136.94
+    "seconds": 140.96
   },
   {
     "frame": 121,
     "alpha_mean_interior": 0.999993085861206,
     "interior_below_0.9": 10,
-    "seconds": 138.06
+    "seconds": 142.09
   },
   {
     "frame": 122,
     "alpha_mean_interior": 0.9999865889549255,
     "interior_below_0.9": 25,
-    "seconds": 139.18
+    "seconds": 143.24
   },
   {
     "frame": 123,
     "alpha_mean_interior": 0.9999885559082031,
     "interior_below_0.9": 24,
-    "seconds": 140.3
+    "seconds": 144.38
   },
   {
     "frame": 124,
     "alpha_mean_interior": 0.9999904632568359,
     "interior_below_0.9": 16,
-    "seconds": 141.42
+    "seconds": 145.54
   },
   {
     "frame": 125,
     "alpha_mean_interior": 0.9999924302101135,
     "interior_below_0.9": 12,
-    "seconds": 142.55
+    "seconds": 146.72
   },
   {
     "frame": 126,
     "alpha_mean_interior": 0.999993085861206,
     "interior_below_0.9": 7,
-    "seconds": 143.67
+    "seconds": 147.86
   },
   {
     "frame": 127,
     "alpha_mean_interior": 0.999987781047821,
     "interior_below_0.9": 22,
-    "seconds": 144.8
+    "seconds": 149.01
   },
   {
     "frame": 128,
     "alpha_mean_interior": 0.9999902844429016,
     "interior_below_0.9": 16,
-    "seconds": 145.93
+    "seconds": 150.16
   },
   {
     "frame": 129,
     "alpha_mean_interior": 0.9999915957450867,
     "interior_below_0.9": 14,
-    "seconds": 147.05
+    "seconds": 151.31
   },
   {
     "frame": 130,
     "alpha_mean_interior": 0.9999933242797852,
     "interior_below_0.9": 13,
-    "seconds": 148.17
+    "seconds": 152.45
   },
   {
     "frame": 131,
     "alpha_mean_interior": 0.9999945163726807,
     "interior_below_0.9": 7,
-    "seconds": 149.3
+    "seconds": 153.6
   },
   {
     "frame": 132,
     "alpha_mean_interior": 0.9999555349349976,
     "interior_below_0.9": 54,
-    "seconds": 150.43
+    "seconds": 154.75
   },
   {
     "frame": 133,
     "alpha_mean_interior": 0.9999648332595825,
     "interior_below_0.9": 50,
-    "seconds": 151.55
+    "seconds": 155.88
   },
   {
     "frame": 134,
     "alpha_mean_interior": 0.9999740123748779,
     "interior_below_0.9": 40,
-    "seconds": 152.67
+    "seconds": 157.03
   },
   {
     "frame": 135,
     "alpha_mean_interior": 0.9999717473983765,
     "interior_below_0.9": 44,
-    "seconds": 153.81
+    "seconds": 158.19
   },
   {
     "frame": 136,
     "alpha_mean_interior": 0.9999711513519287,
     "interior_below_0.9": 45,
-    "seconds": 154.93
+    "seconds": 159.33
   },
   {
     "frame": 137,
     "alpha_mean_interior": 0.9999763369560242,
     "interior_below_0.9": 38,
-    "seconds": 156.05
+    "seconds": 160.47
   },
   {
     "frame": 138,
     "alpha_mean_interior": 0.9999825954437256,
     "interior_below_0.9": 30,
-    "seconds": 157.18
+    "seconds": 161.63
   },
   {
     "frame": 139,
     "alpha_mean_interior": 0.999971330165863,
     "interior_below_0.9": 44,
-    "seconds": 158.31
+    "seconds": 162.77
   },
   {
     "frame": 140,
     "alpha_mean_interior": 0.9999853372573853,
     "interior_below_0.9": 23,
-    "seconds": 159.43
+    "seconds": 163.93
   },
   {
     "frame": 141,
     "alpha_mean_interior": 0.9999821782112122,
     "interior_below_0.9": 29,
-    "seconds": 160.56
+    "seconds": 165.07
   },
   {
     "frame": 142,
     "alpha_mean_interior": 0.9999827146530151,
     "interior_below_0.9": 32,
-    "seconds": 161.68
+    "seconds": 166.21
   },
   {
     "frame": 143,
     "alpha_mean_interior": 0.9999818801879883,
     "interior_below_0.9": 28,
-    "seconds": 162.81
+    "seconds": 167.36
   },
   {
     "frame": 144,
     "alpha_mean_interior": 0.9999914169311523,
     "interior_below_0.9": 15,
-    "seconds": 163.93
+    "seconds": 168.57
   },
   {
     "frame": 145,
     "alpha_mean_interior": 0.9999910593032837,
     "interior_below_0.9": 15,
-    "seconds": 165.06
+    "seconds": 169.71
   },
   {
     "frame": 146,
     "alpha_mean_interior": 0.9999943971633911,
     "interior_below_0.9": 7,
-    "seconds": 166.18
+    "seconds": 170.95
   },
   {
     "frame": 147,
     "alpha_mean_interior": 0.9999889731407166,
     "interior_below_0.9": 17,
-    "seconds": 167.31
+    "seconds": 172.09
   },
   {
     "frame": 148,
     "alpha_mean_interior": 0.9999911785125732,
     "interior_below_0.9": 13,
-    "seconds": 168.44
+    "seconds": 173.3
   },
   {
     "frame": 149,
     "alpha_mean_interior": 0.999966561794281,
     "interior_below_0.9": 54,
-    "seconds": 169.57
+    "seconds": 174.58
   }
 ]

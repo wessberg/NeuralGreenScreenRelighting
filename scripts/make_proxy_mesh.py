@@ -143,7 +143,7 @@ def highpass(field, mask, sigma_px):
 
 def build(alpha, depth, cal, fx_small, cam_h, dist, step, thickness, smooth,
           face_box=None, scale=None, normals=None, detail=1.0, detail_cutoff_m=0.05,
-          antialias=True):
+          antialias=True, extend_detail=True):
     """Front shell from depth, flat-capped back shell, stitched along the silhouette.
 
     Returns vertices (N,3) in Blender world axes and quad faces, plus diagnostics.
@@ -199,8 +199,9 @@ def build(alpha, depth, cal, fx_small, cam_h, dist, step, thickness, smooth,
         # there makes a depth step at the matte boundary, whose grid faces light as a dotted
         # ridge. Continue the nearest measured detail into the padding; preserve every real
         # matte sample exactly, including the fine facial relief used for self-shadows.
-        nearest = distance_transform_edt(~matte, return_distances=False, return_indices=True)
-        Yd = Yd[nearest[0], nearest[1]]
+        if extend_detail:
+            nearest = distance_transform_edt(~matte, return_distances=False, return_indices=True)
+            Yd = Yd[nearest[0], nearest[1]]
         # Normalise so `detail` is a plain multiplier on a physically-scaled relief rather than
         # an arbitrary gain: the integrated field's units are already metres.
         Yw = Yw + detail * Yd
@@ -316,6 +317,8 @@ def main():
                     help='override the face-anchored depth relief scale')
     ap.add_argument('--detail', type=float, default=1.0,
                     help='weight on normal-integrated fine relief; 0 disables it')
+    ap.add_argument('--no-detail-extension', action='store_true',
+                    help='leave relief at zero outside the matte, to isolate the extension fix')
     ap.add_argument('--no-detail-antialias', action='store_true',
                     help='skip the pre-decimation low-pass, to reproduce the aliased build')
     ap.add_argument('--detail-cutoff', type=float, default=0.05,
@@ -367,7 +370,8 @@ def main():
         mesh = build(alpha, depth, cal, fx_small, cam_h, dist, args.step, args.thickness,
                      args.smooth, face_box=boxes.get(i), scale=fixed_scale,
                      normals=nrm, detail=args.detail, detail_cutoff_m=args.detail_cutoff,
-                     antialias=not args.no_detail_antialias)
+                     antialias=not args.no_detail_antialias,
+                     extend_detail=not args.no_detail_extension)
         if mesh is None:
             continue
         if fixed_scale is None and mesh['relief_scale'] != 1.0:

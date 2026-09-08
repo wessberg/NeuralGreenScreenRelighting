@@ -90,7 +90,7 @@ Status is for `reporter_test/reporter_a`, the test bed, as of the end of round 2
 | 2 | **Received shadows** from scene geometry crossing the actor | A window mullion or a passing shape that stops at the actor's edge is an instant giveaway. | 🟡 the proxy is in the scene and occludes; needs an environment render rather than the test lights |
 | 3 | **Cast shadows onto the environment** | Only matters where the actor is near a surface; bust framing usually hides it. Shadow Catcher pass. | 🔴 |
 | 4 | **Subsurface scattering** in skin | Skin is not opaque. Without it, ears, nostrils and lit edges read as painted plastic. Light transport through a volume; no per-pixel multiply can fake it. | 🟡 `RANDOM_WALK_SKIN` + Jensen 2001 radii on the proxy, dedicated SSS passes enabled; not composited |
-| 5 | **Specular response** — roughness, Fresnel, sheen on skin and fabric | A purely diffuse actor under a room full of practicals has no catchlights and no wet look. | 🟡 glossy passes rendering; no per-material roughness yet (needs `sapiens2-seg-1b`) |
+| 5 | **Specular response** — roughness, Fresnel, sheen on skin and fabric | A purely diffuse actor under a room full of practicals has no catchlights and no wet look. **And the ratio composite cannot remove the plate's OWN speculars**: `plate × R` with a smooth R recolours a highlight but cannot move or delete it, so the original room's sheen survives every relight — the artist spotted this on sight. Needs specular/diffuse separation on the plate, not a setting. | 🟡 glossy passes render; the additive G term adds new specular; nothing removes the old, so this row has a ceiling below the bar — see `rounds/round5.md` |
 | 6 | **Light direction, colour, level, falloff** | The baseline match. | 🟡 ratio composite delivers it; `E_source` now MEASURED from the plate rather than guessed (24 % relative RMS correction) |
 | 7 | **Anamorphic lens match** — 1.6× squeeze, oval bokeh, correct FOV | The plate is anamorphic and Blender renders spherically. A silent mismatch here is geometric, not aesthetic. | 🟢 `scripts/anamorphic.py`: geometry exact, bokeh measured at 1.6:1 vertical (error 0.0). Blur *magnitude* still needs matching against a real defocused take |
 | 8 | **Depth of field** matched to the taking lens | Nobody shoots a dim interior deep-focus; a sharp background is the "computer-ey" tell. | 🟡 f/2.0 in the environment render |
@@ -256,8 +256,25 @@ Every stage takes `--shot`. Interpreter is the pipeline venv unless the row says
 | 11c | **ratio irradiance** | `stress_proxy.py --ratio` (Blender) | `composite/ratio_render/*.exr` | neutral albedo at PLATE resolution and the PLATE lens |
 | 12 | **ratio composite** | `composite_ratio.py` | `composite/ratio/` | `out = plate × R`; see below |
 | 12b | composite (gain map) | `composite_shot.py` | `composite/`, `intermediate/linear_4k/` | legacy path; loads background **per frame** |
+| 12c | **review video** | `review_video.py` | `final/*.mp4` | what the artist watches; `--compare` puts the before on the LEFT with both halves labelled |
 | 13 | master | `master_export.py` | `master/*.mov` | ProRes 4444 / DNxHR 444, 4:4:4 10-bit |
 | 14 | delivery | `hdr_mux.py` → `validate_final.py` | `final/*.mp4` | HEVC 4:2:0 PQ + HDR10 SEI |
+
+### Showing work to the artist (stage 12c)
+
+**A round is not shown until there is a video.** Frames on disk are not a result he can judge —
+the artefacts that matter here are temporal, and his eye is the acceptance bar. Rounds 1–4 each
+re-derived the same ffmpeg line and re-probed the previous round's file for its settings; that is
+what `review_video.py` exists to stop.
+
+* Review encodes run at **24 fps regardless of the shot's rate**. The stress tour is 150 rendered
+  frames, not 150 frames of a 59.94 fps performance. Pass `--fps shot` when judging real motion.
+* They are **review only** — display-referred sRGB, `crf 12` because a normal crf hides the
+  sub-pixel detail a round is usually arguing about. Delivery stays `master_export` → `hdr_mux`;
+  never hand a review file to a grade.
+* `--compare <dir>` puts the before on the LEFT and burns a label into each half. Do that by
+  default when a round claims an improvement: a claim of "the dots are gone" is worth far less
+  than two halves moving side by side.
 
 ### How normals are computed (stage 6)
 

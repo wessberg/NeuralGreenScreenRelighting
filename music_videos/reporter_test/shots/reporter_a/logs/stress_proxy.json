@@ -2,8 +2,8 @@
   "shot": "reporter_a",
   "frames": 150,
   "fps": "60000/1001",
-  "output_dir": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\ratio_render",
-  "samples": 64,
+  "output_dir": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r4_render",
+  "samples": 128,
   "rig": {
     "stations": [
       "front far",

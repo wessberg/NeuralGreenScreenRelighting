@@ -85,12 +85,13 @@
     "note": "Inherited proof-of-concept thresholds as a STARTING POINT only. This plate has a brighter, more saturated backing and, critically, no green wardrobe (dark suit, white shirt), so despill may be applied globally here unlike the proof of concept. Verify on the test frames before the full run.",
     "hint_source": "Derived by scripts/calibrate_key.py from the plate border; see logs/key_calibration.json",
     "despill_mode": "global",
-    "despill_note": "All despill is the manual pass: CorridorKey's despill_strength affects only result['processed'], not the result['fg'] this pipeline reads. Gain 100 with max 1.0 reaches the full average-limit correction on subtle rim spill; the legacy gain of 2 was calibrated for the proof-of-concept plate's ~0.5 excesses and left 20% of edge pixels green-positive here. Safe to be aggressive because the excess metric self-gates: skin is red-dominant (negative excess) and neutral fabric is near zero.",
+    "despill_note": "All despill is the manual pass: CorridorKey's despill_strength affects only result['processed'], not the result['fg'] this pipeline reads. Round 4: the gate was max(R,B), so despill only fired where green beat RED. Her hair is dark brown (R .141 G .113 B .070), so green sat 8% above (R+B)/2 and read plainly olive while never approaching red -- 0.0% of subject pixels around her ear tripped the gate and 11.8% were green-leaning, and the artist saw it before any measurement did. despill_limit 'average' is the standard green-limit gate; it corrects 8.3% of subject pixels here for a mean green change of -0.46%, leaving skin and the neutral suit untouched because both are fixed points of it. Gain 1000 reaches the full cap on any green-leaning pixel; the correction cannot push green past (R+B)/2, so it cannot overshoot into magenta.",
     "engine_despill_strength": 0.0,
     "despill_offset_abs": 0.003,
     "despill_offset_rel": 0.01,
-    "despill_gain": 100.0,
-    "despill_max": 1.0
+    "despill_gain": 1000.0,
+    "despill_max": 1.0,
+    "despill_limit": "average"
   },
   "environment": {
     "dir": "scene_library/night_restaurant",

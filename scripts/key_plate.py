@@ -57,10 +57,14 @@ def main():
     # inference_engine.py as "sRGB, Raw Prediction (Straight)". Only result['processed'] is
     # despilled, and that is linear, premultiplied and garbage-matted, so this pipeline cannot
     # use it without losing the original-core blend. ALL despill here is the manual pass below.
+    # The GATE and the LIMIT are separate choices, and shipping max(R,B) as the gate while
+    # correcting to the average is what let spill through on dark hair. 'max' keeps that
+    # behaviour for every existing shot; 'average' is the standard green-limit gate.
+    despill_limit=keying.get('despill_limit','max')
     despill_gain=float(keying.get('despill_gain',2.0))
     despill_max=float(keying.get('despill_max',0.8))
     total=shot.frame_count
-    print(json.dumps({'shot':shot.name,'frames':total,'hint':hint_cfg,'despill_mode':despill_mode,
+    print(json.dumps({'shot':shot.name,'frames':total,'hint':hint_cfg,'despill_mode':despill_mode,'despill_limit':despill_limit,
                       'engine_despill_strength':engine_despill,'despill_offset_abs':despill_offset_abs,
                       'despill_offset_rel':despill_offset_rel}),flush=True)
     engine=CorridorKeyEngine(str(ROOT/'dependencies/CorridorKey/CorridorKeyModule/checkpoints/CorridorKey_v1.0.safetensors'),device='cuda',img_size=2048)
@@ -96,7 +100,17 @@ def main():
             # operation the library performs. The legacy gain of 2 only reaches a meaningful
             # weight for excesses around 0.5; subtle rim spill of ~0.018 got a weight of 0.014,
             # i.e. 1.4% of the correction it needed.
-            excess=np.clip((fg[...,1]-np.maximum(fg[...,0],fg[...,2])-offset)*despill_gain,0,despill_max)
+            # Green only has to beat the AVERAGE of red and blue to read as a cast. Her dark
+            # brown hair sits at R .141 G .113 B .070: green is 8% above (R+B)/2 and plainly
+            # olive, while never coming close to red. Measured around her ear on frame 79,
+            # 0.0% of subject pixels tripped the max(R,B) gate and 11.8% were green-leaning,
+            # so the despill did nothing at all exactly where the artist could see it.
+            # Gating on the average cannot overcorrect: a neutral pixel has G == (R+B)/2 and
+            # is a fixed point, skin is red-dominant and stays negative, and the correction
+            # below can never drive green past that same average.
+            ref=(np.maximum(fg[...,0],fg[...,2]) if despill_limit=='max'
+                 else .5*(fg[...,0]+fg[...,2]))
+            excess=np.clip((fg[...,1]-ref-offset)*despill_gain,0,despill_max)
             weight=(1-core[...,0])*excess if despill_mode=='edge_only' else excess
             fg[...,1]-=weight*(fg[...,1]-.5*(fg[...,0]+fg[...,2]))
         fg=linear(np.clip(fg,0,1)).astype(np.float32)
