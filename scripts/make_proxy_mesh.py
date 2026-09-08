@@ -146,11 +146,24 @@ def build(alpha, depth, cal, fx_small, cam_h, dist, step, thickness, smooth,
 
     Returns vertices (N,3) in Blender world axes and quad faces, plus diagnostics.
     """
-    mask = alpha > 0.5
-    if not mask.any():
+    # DILATE the mesh mask beyond the matte. A quad only forms where all four grid corners are
+    # inside, so an un-dilated shell loses a one-cell rim around the whole silhouette -- and the
+    # composite then has to inpaint a ratio it never rendered. Measured on frame 1 that rim was
+    # 6.8% of the matte, 77% of it along the bottom edge where the matte runs off frame, and it
+    # showed as dark patches and a vertical seam. Growing the mesh past the matte costs nothing:
+    # the extra geometry falls outside the alpha and is never composited.
+    matte = alpha > 0.5
+    if not matte.any():
         return None
-    # Same normalised convolution as the normals, so proxy and normals share a surface.
-    m = mask.astype(np.float32)
+    # Two masks, deliberately. `matte` decides where the DEPTH is trustworthy; `mask` decides
+    # where geometry exists. Dilating a single mask pulled background depth into the shell and
+    # re-inflated the relief from 0.21 m to 0.42 m -- about twice a real bust, which throws
+    # exaggerated shadows between the fingers of a hand held toward camera.
+    mask = cv2.dilate(matte.astype(np.uint8), np.ones((9, 9), np.uint8), iterations=1) > 0
+    # Same normalised convolution as the normals, so proxy and normals share a surface. Weighted
+    # by the MATTE, never the dilated mask, so the extra rim is a smooth extrapolation of real
+    # subject depth rather than a sample of the background behind her.
+    m = matte.astype(np.float32)
     d = cv2.GaussianBlur(depth * m, (0, 0), smooth) / np.maximum(cv2.GaussianBlur(m, (0, 0), smooth), 1e-6)
     Zc = 1.0 / np.maximum(cal['a'] * d + cal['b'], 1e-4)
     Zc = np.clip(Zc, dist - 1.0, dist + 1.0)
@@ -164,10 +177,10 @@ def build(alpha, depth, cal, fx_small, cam_h, dist, step, thickness, smooth,
     # and an over-deep proxy casts over-long shadows.
     measured = 0.0
     if face_box is not None:
-        s_rel, measured = relief_scale(Yw, mask, face_box)
+        s_rel, measured = relief_scale(Yw, matte, face_box)
         if scale is not None:
             s_rel = scale
-        anchor = float(np.median(Yw[mask]))
+        anchor = float(np.median(Yw[matte]))
         Yw = anchor + (Yw - anchor) * s_rel
     else:
         s_rel = 1.0
@@ -175,15 +188,27 @@ def build(alpha, depth, cal, fx_small, cam_h, dist, step, thickness, smooth,
     # Fine relief from the normals, high-passed and added to the depth shell.
     detail_amp = 0.0
     if normals is not None and detail > 0:
-        Yn = integrate_normals(normals, mask, X, Zw, detail_cutoff_m)
+        Yn = integrate_normals(normals, matte, X, Zw, detail_cutoff_m)
         # Cutoff in pixels: how many pixels span `detail_cutoff_m` at this distance.
-        px_per_m = fx_small / max(float(np.median(Zc[mask])), 1e-3)
+        px_per_m = fx_small / max(float(np.median(Zc[matte])), 1e-3)
         sigma_px = max(detail_cutoff_m * px_per_m, 1.0)
-        Yd = highpass(Yn, mask, sigma_px)
+        Yd = highpass(Yn, matte, sigma_px)
         # Normalise so `detail` is a plain multiplier on a physically-scaled relief rather than
         # an arbitrary gain: the integrated field's units are already metres.
         Yw = Yw + detail * Yd
         detail_amp = float(np.percentile(np.abs(Yd[mask]), 95))
+
+    # REPROJECT. X and Zw above were back-projected from the ORIGINAL depth, and everything
+    # since has changed that depth: the relief rescale (x0.455) and the normal-integrated detail.
+    # A vertex whose depth moves but whose X and Z do not no longer projects to the pixel it came
+    # from. Measured, the shell landed 38 px too high, which left the bottom of the matte
+    # uncovered -- the dark patches along the bottom edge -- and the composite inpainted that gap
+    # differently every frame, which is the flicker along her arm.
+    #
+    # Re-derive X and Z from the FINAL depth so every vertex still lands on its source pixel.
+    Zc_final = np.maximum(Yw + dist, 1e-3)
+    X = (xx + .5 - W / 2) * Zc_final / fx_small
+    Zw = cam_h - (yy + .5 - H / 2) * Zc_final / fx_small
 
     sub = (slice(None, None, step), slice(None, None, step))
     Xs, Ys, Zs, Ms = X[sub], Yw[sub], Zw[sub], mask[sub]
@@ -234,7 +259,9 @@ def build(alpha, depth, cal, fx_small, cam_h, dist, step, thickness, smooth,
         walls.append(np.stack([inside, inside + n_front,
                                inside + n_front, inside], -1))
     faces = np.concatenate(quads + ([np.concatenate(walls, 0)] if walls else []), 0)
-    p1, p99 = np.percentile(front[:, 1], [1, 99])
+    in_matte = matte[sub][Ms]
+    ref = front[in_matte, 1] if in_matte.any() else front[:, 1]
+    p1, p99 = np.percentile(ref, [1, 99])
     return {'verts': verts.astype(np.float32), 'faces': faces.astype(np.int64),
             'uv': np.concatenate([uv_front, uv_front], 0).astype(np.float32),
             'n_front': n_front, 'grid': (h, w),

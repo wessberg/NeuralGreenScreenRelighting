@@ -109,21 +109,26 @@ def dominant_light(E, normals, mask):
 
 
 def specular_term(normals, light_dir, view_dir, roughness, ndl_gate):
-    """GGX highlight with a Schlick Fresnel, for a dielectric. Returns a scalar field.
+    """A GGX lobe NORMALISED TO PEAK 1, times Schlick Fresnel and N.L. Dimensionless, in [0,1].
 
-    Deliberately simple: the plate already carries the real micro-detail, so this only has to put
-    a plausible lobe in the right place with the right tightness.
+    The un-normalised GGX D is a probability density per steradian, not an image quantity: it
+    peaks at 1/(pi*a^2), which for skin roughness reaches ~39. Added straight to a plate whose
+    mean is 0.089 it produced a washed-out slab across half the frame -- the artist spotted it
+    immediately as "vertical stripes". Dividing by that peak makes the term a dimensionless
+    fraction, so the CALLER supplies the physical magnitude by multiplying it with the actual
+    irradiance.
     """
     h = light_dir + view_dir
     h = h / max(float(np.linalg.norm(h)), 1e-8)
     ndh = np.clip(np.sum(normals * h, -1), 0.0, 1.0)
     ndv = np.clip(np.sum(normals * view_dir, -1), 0.0, 1.0)
-    a = max(roughness, 1e-3) ** 2
+    a = np.maximum(roughness, 1e-3) ** 2       # roughness is a per-pixel field, not a scalar
     a2 = a * a
     denom = ndh * ndh * (a2 - 1.0) + 1.0
     D = a2 / np.maximum(np.pi * denom * denom, 1e-8)
+    D = D * (np.pi * a2)                       # peak of D is 1/(pi*a2); normalise it away
     F = 0.04 + 0.96 * (1.0 - ndv) ** 5
-    return D * F * ndl_gate
+    return np.clip(D, 0.0, 1.0) * F * ndl_gate
 
 
 def main():
@@ -143,7 +148,11 @@ def main():
     ap.add_argument('--specular', type=float, default=1.0,
                     help='gain on the additive specular term; 0 disables it')
     ap.add_argument('--roughness-skin', type=float, default=0.30)
-    ap.add_argument('--roughness-other', type=float, default=0.55)
+    ap.add_argument('--roughness-other', type=float, default=0.80,
+                    help='wool, hair and foam are rough; only skin is tight-specular')
+    ap.add_argument('--specular-other', type=float, default=0.15,
+                    help='specular weight for non-skin, as a fraction of skin. Specular does not '
+                         'scale with albedo, so a dark jacket needs this or it reads as wet')
     ap.add_argument('--resolution', default='',
                     help='WxH output; defaults to the shot delivery resolution, then the plate')
     args = ap.parse_args()
@@ -243,14 +252,22 @@ def main():
             vdir = np.array([0.0, -1.0, 0.0], np.float32)
             ndl = np.clip(np.sum(nrm_full * ldir, -1), 0.0, 1.0)
             rough = args.roughness_other + (args.roughness_skin - args.roughness_other) * skin
+            # Specular does NOT scale with albedo, so without a per-material weight a dark wool
+            # jacket receives the same highlight as skin and reads as wet plastic -- which is
+            # exactly how it looked. Wool is rough and its specular is weak and broad; skin is
+            # the only strongly specular surface here.
+            spec_w = args.specular_other + (1.0 - args.specular_other) * skin
             spec = specular_term(nrm_full, ldir, vdir, rough, ndl)
-            # Gate by the diffuse ratio: a point the renderer put in shadow must not receive a
-            # highlight. Specular without occlusion is exactly what makes CG skin look like wet
-            # plastic, and the rendered R already knows where the shadows are.
-            gate = np.clip((R @ LUMA) / max(float(np.median((R @ LUMA)[core])) if core.any() else 1.0, 1e-6), 0, 1)
-            G = (spec * gate * conc * args.specular)[..., None] * ldir_colour(E_t, core)
+            # G = normalised lobe x THE ACTUAL IRRADIANCE x gain. E_t already carries both the
+            # magnitude and the colour of the light AND the renderer's occlusion, so a point in
+            # shadow gets no highlight for free -- no separate gate, and no unit mismatch. The
+            # first version normalised the colour to unit luminance and so discarded the
+            # magnitude entirely, which is why it blew out.
+            G = (spec * spec_w * conc * args.specular)[..., None] * E_t * (anchor * args.exposure)
+            # A highlight brighter than a few times the local diffuse level is a bug, not a look.
+            G = np.minimum(G, 3.0 * np.maximum(lit, 1e-4))
             lit = lit + G
-            spec_energy = float(np.mean(G[core])) if core.any() else 0.0
+            spec_energy = float(np.mean(G[core] @ LUMA) / max(float(np.mean(lit[core] @ LUMA)), 1e-9)) if core.any() else 0.0
         out_rgb = np.clip(lit * alpha[..., None], 0, None)
         if out_res is not None and (out_res[0], out_res[1]) != (w, h):
             # Downscale AFTER compositing, so the matte's fractional alpha and the ratio's shadow
@@ -288,12 +305,15 @@ def main():
                                             'could never produce a terminator'},
         'exposure_anchor': anchor, 'compute': dev,
         'output_resolution': list(out_res) if out_res else 'plate resolution',
-        'specular': {'gain': args.specular,
+        'specular': {'gain': args.specular, 'mean_fraction_of_image': None,
                      'model': 'GGX + Schlick Fresnel on the NEURAL normals, added not multiplied',
                      'light_direction': 'estimated per frame from the L1 moment of the rendered '
                                         'irradiance field, so it also works for environments',
-                     'gated_by': 'the diffuse ratio, so a shadowed point gets no highlight',
-                     'roughness': {'skin': args.roughness_skin, 'other': args.roughness_other}},
+                     'magnitude': 'normalised GGX lobe (peak 1) x the rendered irradiance, '
+                                  'so it carries the real light level, colour AND occlusion',
+                     'clamped_to': '3x the local diffuse level',
+                     'roughness': {'skin': args.roughness_skin, 'other': args.roughness_other},
+                     'weight': {'skin': 1.0, 'other': args.specular_other}},
         'result': {'mean_dynamic_range_stops': float(dr.mean()),
                    'max_dynamic_range_stops': float(dr.max())},
         'per_frame': stats}
