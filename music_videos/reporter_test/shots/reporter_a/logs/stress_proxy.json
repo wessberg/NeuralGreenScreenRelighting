@@ -1,0 +1,55 @@
+{
+  "shot": "reporter_a",
+  "frames": 1,
+  "fps": "60000/1001",
+  "output_dir": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\stress_tex_test",
+  "samples": 32,
+  "rig": {
+    "stations": [
+      "front far",
+      "front close",
+      "below chin",
+      "above head",
+      "camera left",
+      "camera right",
+      "behind rim",
+      "KEY OFF: back only",
+      "KEY OFF: back only",
+      "high three-quarter",
+      "front far"
+    ],
+    "distance_m": [
+      0.5,
+      2.4
+    ],
+    "inverse_square_ratio": 23.0,
+    "hue_sweep": "full wheel",
+    "bpm": 120.0,
+    "blackouts": 2,
+    "bulb_radius_m": 0.04,
+    "bulb_visible_to_camera": true,
+    "fill_size_m": 0.6,
+    "demo_lens_mm": 35.0,
+    "plate_lens_mm": 50.0,
+    "key_off_stations": "fill_scale 0: no front light at all, only a source behind the actor -- near-silhouette with a rim"
+  },
+  "textured": true,
+  "note": "Albedo projected from the plate: her real skin, hair, suit and microphone, with the original studio key divided out and the rig lighting it instead. Every colour is a plate pixel scaled by a renderer value.",
+  "per_frame": [
+    {
+      "out_frame": 0,
+      "shot_frame": 0,
+      "station": "front far",
+      "bulb_offset_m": [
+        0.0,
+        -2.4,
+        0.1
+      ],
+      "bulb_distance_m": 2.402,
+      "bulb_strength": 901.6,
+      "hue": 0.0,
+      "blackout": false,
+      "fill_scale": 1.0
+    }
+  ]
+}

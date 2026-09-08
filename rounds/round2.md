@@ -135,8 +135,9 @@ and casts correct shadows; nothing yet applies them to the plate. That is round 
 
 ## 4. The artist's capture format, now recorded — `capture_format.json`
 
-**SIRUI Saturn 35 mm Full-Frame Anamorphic, 1.6× squeeze, 180° shutter at 24 fps, WB 5600 K,
-delivering 3840×1600 (2.40:1).**
+**Panasonic LUMIX S5 IIX, 6K 3:2 open gate 5952×3968, HEVC 10-bit 4:2:0 Long GOP 200 Mbps,
+V-Log / V-Gamut · SIRUI Saturn 35 mm Full-Frame Anamorphic, 1.6× squeeze · 180° shutter at
+24 fps · WB 5600 K · delivering 3840×1600 (2.40:1).** Given by the artist across this session.
 
 `scripts/anamorphic.py` holds all the arithmetic so no factor of 1.6 is ever retyped. The
 geometry works out exactly, which is worth stating because it looks like it should not:
@@ -156,6 +157,29 @@ Shape: `dof.aperture_ratio`, and its direction was **measured, not assumed** —
 Wired into `build_hdri_scene.py` behind `camera.anamorphic` in `shot.json`, opt-in per shot: the
 reporter plate is 16:9 spherical stock footage and must not inherit it.
 
+**The camera spec confirms the geometry rather than merely permitting it.** 5952/3968 = 1.5000
+exactly; desqueezed by 1.6 that is 2.400:1; delivery is 3840×1600 = 2.40:1. Camera mode, lens
+squeeze and delivery frame agree with no crop. Desqueezed native is 9523×3968 against a
+3840×1600 delivery — **2.48× linear oversampling**, the biggest quality asset in the chain.
+
+### Two new red rows this created
+
+**V-Log / V-Gamut decode (constraint 18, red).** Every stage here assumes scene-linear Rec.709:
+keyer thresholds, depth and normal estimators, the SH irradiance ratio, the PQ grade. Feed V-Log
+in undecoded and all of them are wrong while still producing a picture. Decode on ingest, before
+keying, and never apply a creative display LUT first — it is not invertible and discards the
+highlight range the HDR grade exists for. The transfer and gamut constants must be **verified
+against Panasonic documentation and a shot ColorChecker**, not inherited; they are recorded as
+unverified in `capture_format.json`.
+
+**4:2:0 Long GOP keying.** Chroma is stored at half resolution (2976×1984) and a green-screen key
+is a chroma operation, so chroma must be upsampled before keying or every matte edge inherits a
+blocky staircase. Long GOP puts mosquito noise around exactly the high-contrast edges that matter
+— the silhouette and every hair — so transcode to an all-intra intermediate **before** keying or
+the matte will crawl. And key at native 6K, downscaling afterwards: at 2.48× oversampling the
+matte comes out effectively supersampled and hair edges get real fractional alpha instead of a
+hard decision.
+
 ---
 
 ## 5. Editorial masters for Resolve — `scripts/master_export.py`
@@ -172,8 +196,70 @@ half float, scene-linear and unquantised, and Resolve imports EXR sequences nati
 better than any ProRes. `--report` prints that path. The mov timescale is the frame-rate
 numerator, per round 1's hard-won lesson.
 
-Written and syntax-clean; **not yet exercised end to end**, because the reporter shot has no
-`intermediate/linear_4k/` sequence. Run it against `proof_of_concept` to prove it.
+**Exercised end to end against `proof_of_concept`, and probing the output caught a real bug the
+command line hid.** Colour tagging does not survive the obvious flags:
+
+| encoder settings | resulting tags |
+|---|---|
+| prores + `prores_metadata` bsf, no `write_colr` | bt2020 / smpte2084 / bt2020nc — **correct** |
+| prores + bsf + `write_colr` | unknown / unknown / bt2020nc |
+| prores, no bsf | unknown / unknown / bt2020nc |
+| dnxhr, no `write_colr` | unknown / unknown / **bt709** |
+| dnxhr + `write_colr` | unknown / unknown / bt2020nc |
+
+ProRes needs the bitstream filter and must **not** get `+write_colr`, which downgrades the colr
+atom to a legacy form that cannot express PQ — and my first fix, adding `write_colr` for DNxHR's
+sake, silently broke the ProRes path that was already working. **DNxHR cannot be fully tagged
+through this muxer at all.** Prefer `prores4444`. Untagged, Resolve reads a PQ HDR master as SDR:
+a whole-image error that looks like a grading mistake.
+
+Verified output: `prores 4444, yuv444p12le, bt2020nc / smpte2084 / bt2020`. The container is
+12-bit and carries 10 bits of real data, because ffmpeg's *encoder* accepts only 10-bit input.
+
+---
+
+## 5b. Seeing it: the lightbulb stress test — `scripts/stress_proxy.py`
+
+The artist asked to see the geometry working under hard, changing light, then specified the setups
+he wanted. A visible 4 cm emissive bulb flies a tour of eleven named stations — front far, front
+close, below chin, above head, camera left, camera right, behind rim, **key off with only a source
+behind him** (twice), high three-quarter, front far — holding at each so it reads, with a full hue
+sweep, a 120 BPM strobe and two hard blackouts throughout. 360 frames at 24 fps (the 150-frame
+shot ping-pongs so the tour has time to play): `final/stress_proxy_clay.mp4`.
+
+Three bugs the first render exposed, all worth recording:
+
+1. **The fill panel was in shot.** Mesh emitters *are* visible to camera rays — the exact opposite
+   of round 1's light-object trap — and a 60 cm white panel dominated the frame. Fixed with
+   `visible_camera = False`.
+2. **The "key off" stations rendered pure black.** With the bulb directly behind her it was
+   occluded by her own body: physically correct and useless. Fixed by moving it well off-axis,
+   raising backlight level (only a grazing sliver of silhouette returns any light), and adding a
+   trace of ambient so she reads as a silhouette rather than an empty frame.
+3. **The subject was too small** on the 28 mm demo lens; now 35 mm.
+
+### Textured: her actual skin, hair, suit and microphone — `scripts/make_albedo.py`
+
+The clay render proves the shadows are computed rather than photographed, but the artist wanted to
+see real materials. That needs the plate's *own* lighting removed first, or it is lit twice:
+
+    albedo = plate / E_source(neural normals)
+
+`E_source` is the same assumed soft frontal key `relight_sh.py` uses — deliberately identical, so
+proxy and gain map cannot disagree about the original light — and evaluating it against the neural
+normals means brow, nose and cheeks each get the divisor their orientation earns. The proxy carries
+UVs equal to each vertex's own image position, exact by construction because the shell *is* a
+back-projected pixel grid, so the plate lands back on the geometry it came from at full plate
+resolution rather than at vertex density.
+
+A **red-dominance skin mask** gates subsurface and roughness, because a skin shader on a wool suit
+or a foam windshield makes them glow like wax. A deliberate stand-in for
+`facebook/sapiens2-seg-1b`, whose 29-class taxonomy is the real answer.
+
+**This is a preview of the target architecture, not the composite path.** Every pixel is still a
+plate pixel scaled by a renderer-computed value, so identity cannot drift — but it renders the
+proxy's *geometry*, so it inherits the proxy's silhouette and softness. The real composite leaves
+the plate's own pixels in place and only multiplies them by a ratio. Still round 3's job.
 
 ---
 
@@ -283,11 +369,23 @@ take with real depth movement). New:
 > 3. **Then constraint 2**: put something between a light and the actor in the environment render
 >    and confirm the shadow lands on her and stops at her silhouette.
 >
-> Also worth doing, in rough order of value: per-material roughness from `facebook/sapiens2-seg-1b`
+> Also worth doing, in rough order of value: per-material roughness and a real skin mask from
+> `facebook/sapiens2-seg-1b`, replacing the red-dominance heuristic in `make_albedo.py`
 > (constraint 5, and its 29-class taxonomy splits lips/teeth/tongue for free); temporal smoothing
 > of the normals and the proxy, since neither is temporally controlled; and the plate-matching
 > group (9–12) — measured MTF blur, 4:2:0 chroma match, measured grain before quantisation, and
 > 180° motion blur on the CG.
+>
+> **Before the artist's own footage arrives, two things must exist that do not yet.** Both are new
+> red rows from his capture spec, and both fail silently rather than erroring:
+>
+> - **`scripts/vlog.py`: V-Log → linear and V-Gamut → Rec.709, applied on ingest before keying.**
+>   Verify the constants against Panasonic documentation and a shot ColorChecker rather than
+>   inheriting them — `validate_sh_convention.py` is the pattern. Undecoded V-Log makes every
+>   downstream stage wrong while still producing a picture.
+> - **A 4:2:0 Long GOP ingest path**: chroma upsampled before keying, an all-intra intermediate so
+>   the matte does not crawl on mosquito noise, and keying at native 6K with the downscale to
+>   3840×1600 applied afterwards, so the 2.48× oversampling is spent on the matte.
 >
 > Do not spend the round improving the gain map. It has a measured ceiling and round 2 established
 > where it is.

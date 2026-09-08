@@ -27,6 +27,9 @@ music_videos/**/relight/proxy_render/
 music_videos/**/intermediate/
 music_videos/**/composite/
 music_videos/**/final/
+music_videos/**/master/
+music_videos/**/relight/albedo/
+music_videos/**/relight/skin_mask/
 
 # Raw tool spew; structured JSON evidence is kept
 **/logs/*.log

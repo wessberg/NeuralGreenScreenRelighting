@@ -35,18 +35,42 @@ feet or floor contact in shot.
 
 ### His capture rig — `capture_format.json`
 
-**SIRUI Saturn 35 mm Full-Frame Anamorphic, 180° shutter at 24 fps, white balance 5600 K.**
-Full detail and pipeline consequences are in `capture_format.json`; read it before writing any
-stage that touches camera geometry.
+**Panasonic LUMIX S5 IIX, 6K 3:2 open gate 5952×3968, HEVC 10-bit 4:2:0 Long GOP 200 Mbps,
+V-Log / V-Gamut · SIRUI Saturn 35 mm Full-Frame Anamorphic, 1.6× squeeze · 180° shutter at
+24 fps · WB 5600 K · delivering 3840×1600 (2.40:1).**
+Full detail and consequences are in `capture_format.json`; read it before writing any stage that
+touches camera geometry or colour.
 
-The one that will bite: **the plate is anamorphically squeezed (1.6×) and Blender renders
-spherically**, so plate and CG do not share a projection until a shot records which space it
-works in. Depth and normal estimators must see the *desqueezed* plate or they infer a face 1.6×
-too narrow — plausible-looking and wrong. Defocus is oval, not round.
+**Two things will bite, and both are silent.**
+
+1. **V-Log is not linear and V-Gamut is not Rec.709.** Every stage here assumes scene-linear
+   Rec.709 — keyer thresholds, depth and normal estimators, the SH irradiance ratio, the PQ
+   grade. Feed V-Log in raw and all of them are wrong while still producing a picture: lifted
+   midtones, crushed saturation, and every number in `rounds/` quietly invalid. Decode on
+   ingest, before keying, and never apply a creative display LUT first — it is not invertible
+   and throws away the highlight range the HDR grade exists for.
+2. **The plate is anamorphically squeezed (1.6×) and Blender renders spherically.** Depth and
+   normal estimators must see the *desqueezed* plate, or they infer a face 1.6× too narrow —
+   plausible-looking and wrong. Defocus is an oval, not a circle. `scripts/anamorphic.py` holds
+   every factor of 1.6; never retype one.
+
+**A third that will bite the keyer: the plate is 4:2:0 Long GOP.** Chroma is stored at half
+resolution (2976×1984) and a green-screen key is a *chroma* operation, so upsample chroma
+properly before keying or every matte edge inherits a blocky staircase no threshold will fix.
+Long GOP puts mosquito noise around exactly the high-contrast edges that matter — the silhouette
+and every hair — so transcode to an all-intra intermediate **before** keying, or the matte will
+crawl. Key at native 6K and downscale afterwards: with 2.48× linear oversampling the matte comes
+out effectively supersampled, and hair edges get real fractional alpha instead of a hard
+decision. Downscaling first throws that away.
+
+The numbers all agree with no crop, which is worth noting because it is not a coincidence to be
+re-derived each time: 5952/3968 = 1.5000 exactly, desqueezed by 1.6 that is 2.400:1, and the
+delivery frame is 3840×1600 = 2.40:1. Shoot open gate — a 16:9 mode desqueezes to 2.84:1 and
+forces a crop.
 
 These values describe **his** footage only. `reporter_test/reporter_a` is online stock footage
-shot by someone else at 59.94 fps on an unknown spherical lens; its camera block in `shot.json`
-is the authority there, and it must not inherit the rig above.
+shot by someone else at 59.94 fps, Rec.709, on an unknown spherical lens; its camera block in
+`shot.json` is the authority there, and it must not inherit the rig above.
 
 ---
 
@@ -72,13 +96,14 @@ Status is for `reporter_test/reporter_a`, the test bed, as of the end of round 2
 | 8 | **Depth of field** matched to the taking lens | Nobody shoots a dim interior deep-focus; a sharp background is the "computer-ey" tell. | 🟡 f/2.0 in the environment render |
 | 9 | **MTF / sharpness match** | The CG background is ~2× sharper than the plate. Measured blur on the background, not the actor. | 🔴 |
 | 10 | **Grain match**, generated before quantisation | Also dithers 8-bit banding. σ ≈ 0.0042 sRGB, generated at 1080p and upscaled 2× because the plate is. | 🔴 |
-| 11 | **Chroma subsampling match** (4:2:0 behaviour on the plate) | Sharp CG chroma against subsampled plate chroma separates the two layers. | 🔴 |
+| 11 | **Chroma subsampling match** (4:2:0 behaviour on the plate) | Sharp CG chroma against subsampled plate chroma separates the two layers. His own footage is 4:2:0 Long GOP, so this also governs the keyer: upsample chroma and de-Long-GOP before keying. | 🔴 |
 | 12 | **Motion blur match** — 180° shutter at 24 fps | CG rendered without matching blur strobes against a correctly blurred plate. | 🔴 |
 | 13 | **Edge integration** — no green fringe, correct edge alpha, no dark halo | Round 2 measured 68 % of hair-fringe pixels going green-positive once a green light was applied. | 🟡 despill works; fringe compounds under coloured light |
 | 14 | **Temporal stability** — no flicker, no crawling normals or matte | A per-frame estimator with no temporal model will crawl. Sapiens2 measures 2.03°/frame. | 🟡 measured, not yet controlled |
 | 15 | **Identity preservation** — the actor's own pixels, never a generative reconstruction | Non-negotiable for the artist's own face. Structurally guaranteed by ratio compositing; broken by any diffusion relighter in the output path. | 🟢 architecture enforces it |
 | 16 | **Perspective and scale match** — lens, distance, height | Wrong focal length reads as a wrong-sized person. | 🟡 ASSUMED for the reporter plate, must be recorded on set |
-| 17 | **Colour pipeline** — 5600 K capture, Rec.2020 / ST2084, 1000-nit master | | 🟢 validated end to end |
+| 17 | **Colour pipeline** — Rec.2020 / ST2084, 1000-nit master, ProRes 4444 / DNxHR 444 for Resolve | | 🟢 validated end to end, including that the ProRes encoder silently drops `-color_trc` and needs the `prores_metadata` bitstream filter |
+| 18 | **V-Log / V-Gamut decode on ingest** | His camera records log over a wide gamut. Undecoded, every downstream stage is wrong in a way that still looks like a picture. | 🔴 not built; constants not yet verified against Panasonic documentation |
 
 Legend: 🟢 done and measured · 🟡 partial, with a known ceiling · 🔴 not built.
 

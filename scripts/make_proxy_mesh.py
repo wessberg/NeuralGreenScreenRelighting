@@ -193,6 +193,11 @@ def build(alpha, depth, cal, fx_small, cam_h, dist, step, thickness, smooth,
     idx[Ms] = np.arange(Ms.sum())
     n_front = int(Ms.sum())
     front = np.stack([Xs[Ms], Ys[Ms], Zs[Ms]], -1)
+    # UVs are the vertex's own image position. The shell IS a back-projected pixel grid, so this
+    # projection is exact by construction -- no unwrap, no seam, and the plate lands back on the
+    # geometry it came from at full plate resolution rather than at vertex density.
+    rows, cols = np.where(Ms)
+    uv_front = np.stack([(cols * step + 0.5) / W, 1.0 - (rows * step + 0.5) / H], -1)
     # Flat back cap: a constant offset behind the deepest front point. It is never seen; it
     # exists so the shell is closed and opaque to rays arriving from behind.
     back = front.copy()
@@ -231,6 +236,7 @@ def build(alpha, depth, cal, fx_small, cam_h, dist, step, thickness, smooth,
     faces = np.concatenate(quads + ([np.concatenate(walls, 0)] if walls else []), 0)
     p1, p99 = np.percentile(front[:, 1], [1, 99])
     return {'verts': verts.astype(np.float32), 'faces': faces.astype(np.int64),
+            'uv': np.concatenate([uv_front, uv_front], 0).astype(np.float32),
             'n_front': n_front, 'grid': (h, w),
             'extent_m': (front.max(0) - front.min(0)).tolist(),
             'depth_relief_m': float(front[:, 1].max() - front[:, 1].min()),
@@ -303,7 +309,7 @@ def main():
         if fixed_scale is None and mesh['relief_scale'] != 1.0:
             fixed_scale = mesh['relief_scale']
         np.savez_compressed(out / ('%06d.npz' % i), verts=mesh['verts'], faces=mesh['faces'],
-                            n_front=mesh['n_front'])
+                            n_front=mesh['n_front'], uv=mesh['uv'])
         stats.append({'frame': i, 'verts': int(len(mesh['verts'])),
                       'faces': int(len(mesh['faces'])), 'n_front': mesh['n_front'],
                       'extent_m': [round(v, 4) for v in mesh['extent_m']],

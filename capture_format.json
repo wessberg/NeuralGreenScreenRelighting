@@ -12,7 +12,7 @@
     "squeeze_factor": 1.6,
     "squeeze_factor_status": "SIRUI Saturn series specification; CONFIRM against the lens barrel before it is used in a camera solve",
     "sensor_width_mm": 36.0,
-    "sensor_width_note": "Full-frame nominal. The recorded sensor width times the squeeze factor gives the effective horizontal field of view; see horizontal_fov_deg."
+    "sensor_width_note": "Full-frame nominal 36.0 mm; the S5 IIX open-gate active area is nearer 35.6 x 23.8 mm. Use the nominal for framing maths and the measured value if a precise camera solve ever depends on it. The 3:2 aspect is what matters for the anamorphic arithmetic and it is exact either way."
   },
   "shutter": {
     "angle_degrees": 180.0,
@@ -38,9 +38,39 @@
   "vertical_fov_deg": 27.0,
   "vertical_fov_derivation": "2*atan(24 / (2*35)) = 37.8 deg for a full 24 mm sensor height; 27.0 deg is quoted for a 2.39:1 desqueezed extraction. Record the actual recording mode per shot rather than relying on either figure.",
   "still_to_record": [
-    "Camera body and recording codec / bit depth / colour profile (log or Rec.709).",
+    "A ColorChecker + 18% grey card at the head of a take, to verify the V-Log/V-Gamut decode rather than inheriting its constants.",
     "Recording mode and sensor readout area, which fixes the vertical field of view.",
     "The artist's own interocular distance, measured once with a ruler, to remove the 63 mm adult prior from every camera solve.",
     "A chrome ball and an 18% grey ball on a slate at the head of every take, which converts E_source from an assumption into a measurement."
+  ],
+  "camera_body": {
+    "model": "Panasonic LUMIX S5 IIX",
+    "sensor": "full frame",
+    "recording": "V-Log / V-Gamut",
+    "bit_depth_status": "RECORDED: 10-bit 4:2:0",
+    "open_gate_note": "5952/3968 = 1.5000 exactly. Desqueezed by 1.6 that is 9523 x 3968 = 2.400:1, which IS the 3840x1600 delivery aspect. The camera mode, the lens squeeze and the delivery frame all agree with no crop, and this is now confirmed rather than derived.",
+    "recording_mode": "6K 3:2 open gate",
+    "resolution": [
+      5952,
+      3968
+    ],
+    "codec": "H.265/HEVC 10-bit 4:2:0 Long GOP, 200 Mbps",
+    "oversampling": "Desqueezed native is 9523x3968 against a 3840x1600 delivery: about 2.48x linear. That headroom is the single biggest quality asset in the chain -- spend it on the matte, not on sharpening."
+  },
+  "colour": {
+    "transfer": "V-Log",
+    "gamut": "V-Gamut",
+    "white_balance_kelvin": 5600,
+    "status": "CONSTANTS NOT YET VERIFIED against Panasonic official documentation",
+    "why_it_matters": "V-Log is a log curve over a wide gamut. Every stage of this pipeline assumes scene-linear Rec.709: the keyer thresholds, the depth and normal estimators, the SH irradiance ratio and the PQ grade. Feeding V-Log straight in makes all of them wrong in a way that still looks like a picture -- midtones lifted, saturation crushed, and every measured number in rounds/ silently invalid.",
+    "required": "Decode V-Log -> linear and V-Gamut -> Rec.709 ON INGEST, before keying. See scripts/vlog.py. Do NOT apply a creative LUT first; a display LUT is not invertible and throws away the highlight range that makes the HDR grade worth doing.",
+    "verification": "Shoot a ColorChecker and an 18% grey card under known light at the head of a take. 18% grey must land at the documented V-Log code value, and the decoded patch colours must match the chart reference. That converts these constants from inherited to measured."
+  },
+  "keying_implications": [
+    "CHROMA IS HALF RESOLUTION. 4:2:0 stores colour at 2976x1984 while luma is 5952x3968, and a green screen key is fundamentally a CHROMA operation. Upsample chroma to full resolution before keying (a good interpolator, not nearest) or every matte edge inherits a 2x2 blocky staircase that no amount of threshold tuning will remove.",
+    "LONG GOP MEANS COMPRESSION NOISE EXACTLY WHERE IT HURTS. Inter-frame prediction puts mosquito noise and blocking around high-contrast edges, which on a green-screen plate means the actor silhouette and every strand of hair. Transcode to an all-intra intermediate (ProRes 4444 or DNxHR) BEFORE keying, so the keyer is not chasing artefacts that change every frame and cause the matte to crawl.",
+    "KEY AT NATIVE 6K, THEN DOWNSCALE. With 2.48x linear oversampling, a matte computed at 5952x3968 and then downscaled to delivery is effectively supersampled: partial coverage at hair edges becomes real fractional alpha rather than a hard decision. Downscaling first throws that away.",
+    "The 200 Mbps figure is moderate for 6K Long GOP. Expect visible artefacts on a large flat green area; light the screen evenly and expose it properly rather than relying on the keyer to recover.",
+    "Thresholds from this camera will NOT transfer to the reporter test plate or vice versa, in either direction. Run scripts/calibrate_key.py per shot."
   ]
 }

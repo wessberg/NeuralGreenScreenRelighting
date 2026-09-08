@@ -11,12 +11,32 @@ Both encoders read the same scene-linear EXR sequence and the same transform cha
 master (``color_pipeline``: Rec.709 linear -> Rec.2020 -> 1000-nit PQ), so the three outputs are
 the same picture at different quantisations rather than three separate grades.
 
-**10-bit is the ceiling here, and it is ffmpeg's, not the format's.** ProRes 4444 and DNxHR 444
-both define 12-bit, but ffmpeg's encoders advertise only ``yuv444p10le`` / ``gbrp10le`` (verified
-against the bundled build, not assumed). If 12 bits genuinely matter, do not use a video codec at
-all: hand Resolve ``intermediate/linear_4k/*.exr`` directly. Those are 16-bit half float,
-scene-linear and unquantised -- strictly better than any ProRes, and Resolve imports EXR
-sequences natively. ``--report`` prints that path.
+**The written file is a 12-bit ProRes 4444 carrying 10 bits of real data**, and that limit is
+ffmpeg's rather than the format's: ProRes 4444 and DNxHR 444 both define 12-bit, ffprobe reports
+the output as ``yuv444p12le``, but ffmpeg's *encoders* accept only ``yuv444p10le`` / ``gbrp10le``
+(verified against the bundled build, not assumed), so the samples are quantised to 10 bits on the
+way in. If 12 bits genuinely matter, do not use a video codec at all: hand Resolve
+``intermediate/linear_4k/*.exr`` directly. Those are 16-bit half float, scene-linear and
+unquantised -- strictly better than any ProRes, and Resolve imports EXR sequences natively.
+``--report`` prints that path.
+
+**Colour tagging needs more than the obvious flags, and the two codecs fail differently.**
+Measured by probing the written file, which is the only way this class of bug surfaces:
+
+===================================  ==========================================
+ encoder settings                     resulting tags
+===================================  ==========================================
+ prores + bsf, no ``write_colr``      bt2020 / smpte2084 / bt2020nc  -- correct
+ prores + bsf + ``write_colr``        unknown / unknown / bt2020nc
+ prores, no bsf                       unknown / unknown / bt2020nc
+ dnxhr, no ``write_colr``             unknown / unknown / **bt709**
+ dnxhr + ``write_colr``               unknown / unknown / bt2020nc
+===================================  ==========================================
+
+So ProRes needs the ``prores_metadata`` bitstream filter and must NOT get ``+write_colr``, which
+downgrades the colr atom to a legacy form that cannot express PQ. **DNxHR cannot be fully tagged
+at all here** -- prefer ``prores4444``, or set the colour space by hand on import. Left untagged,
+Resolve reads a PQ HDR master as SDR.
 
 The mov timescale trap from the HEVC path applies here too and is handled the same way: the
 timescale is the frame rate's numerator, so 60000/1001 is representable exactly and no edit list
@@ -33,16 +53,30 @@ import numpy as np, cv2
 from shot_paths import add_shot_argument, from_args
 from color_pipeline import REC709_TO_2020, grade_nits, pq_encode
 
+# The ProRes encoder does NOT propagate -color_primaries / -color_trc into the stream: ffprobe
+# reports them as "unknown" and only the matrix survives, so Resolve would not know the file is
+# PQ Rec.2020 and would interpret it as SDR. The prores_metadata bitstream filter writes them
+# into the bitstream properly. Caught by verifying the output rather than trusting the flags.
+PRORES_TAG = ['-bsf:v', 'prores_metadata=color_primaries=bt2020:color_trc=smpte2084:'
+                        'colorspace=bt2020nc']
+
 CODECS = {
     'prores4444':   {'args': ['-c:v', 'prores_ks', '-profile:v', '4', '-vendor', 'apl0',
-                              '-bits_per_mb', '8000', '-pix_fmt', 'yuv444p10le'],
-                     'ext': 'mov', 'label': 'Apple ProRes 4444, 4:4:4 10-bit'},
+                              '-bits_per_mb', '8000', '-pix_fmt', 'yuv444p10le'] + PRORES_TAG,
+                     'ext': 'mov', 'label': 'Apple ProRes 4444, 4:4:4'},
     'prores4444xq': {'args': ['-c:v', 'prores_ks', '-profile:v', '5', '-vendor', 'apl0',
-                              '-bits_per_mb', '16000', '-pix_fmt', 'yuv444p10le'],
-                     'ext': 'mov', 'label': 'Apple ProRes 4444 XQ, 4:4:4 10-bit'},
+                              '-bits_per_mb', '16000', '-pix_fmt', 'yuv444p10le'] + PRORES_TAG,
+                     'ext': 'mov', 'label': 'Apple ProRes 4444 XQ, 4:4:4'},
+    # DNxHR cannot be tagged correctly through this muxer: without +write_colr it comes out
+    # claiming bt709, and with it the matrix is right but primaries and transfer stay "unknown".
+    # +write_colr is the lesser evil, and the limitation is reported rather than hidden.
     'dnxhr444':     {'args': ['-c:v', 'dnxhd', '-profile:v', 'dnxhr_444',
                               '-pix_fmt', 'yuv444p10le'],
-                     'ext': 'mov', 'label': 'Avid DNxHR 444, 4:4:4 10-bit'},
+                     'mux': ['-movflags', '+write_colr'],
+                     'ext': 'mov', 'label': 'Avid DNxHR 444, 4:4:4',
+                     'tagging': 'INCOMPLETE: matrix bt2020nc only; primaries and transfer are '
+                                'written as unknown. Set the clip to Rec.2020 / ST2084 by hand '
+                                'in Resolve, or prefer prores4444, which tags fully.'},
 }
 
 
@@ -68,6 +102,7 @@ def encode(shot, codec, frames, exposure, out_dir, dry_run=False):
            # Tagging only: the pixels are already Rec.2020 PQ, so nothing is converted here.
            '-color_primaries', 'bt2020', '-color_trc', 'smpte2084',
            '-colorspace', 'bt2020nc', '-color_range', 'tv',
+           *spec.get('mux', []),
            # The round-1 lesson: a timescale that cannot represent the frame duration pads the
            # track and hides frames behind an edit list.
            '-video_track_timescale', str(rate.numerator),
@@ -146,8 +181,16 @@ def main():
                'frame_rate': str(shot.delivery_frame_rate),
                'transfer': 'Rec.2020 primaries, ST2084 PQ, 1000-nit mastering peak',
                'chroma': '4:4:4', 'bit_depth': 10,
-               'bit_depth_note': 'ffmpeg has no 12-bit ProRes or DNxHR encoder. For more than '
-                                 '10 bits, take intermediate/linear_4k/*.exr into Resolve.',
+               'bit_depth_note': 'ProRes 4444 is a 12-bit container and ffprobe reports '
+                                 'yuv444p12le, but ffmpeg accepts only 10-bit input, so the '
+                                 'samples carry 10 bits. For more, take '
+                                 'intermediate/linear_4k/*.exr into Resolve.',
+               'colour_tagging': {
+                   'prores': 'prores_metadata bitstream filter, and NO +write_colr (it '
+                             'downgrades the colr atom to a legacy form that cannot express PQ)',
+                   'dnxhr': 'cannot be fully tagged through this muxer; primaries and transfer '
+                            'stay unknown. Prefer prores4444.',
+                   'verified_by': 'probing the written file with ffprobe, not by trusting flags'},
                'exports': results}
     shot.log('master_export.json').write_text(json.dumps(summary, indent=2))
 
