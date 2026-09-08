@@ -48,6 +48,66 @@ Future agents should begin each shot by inspecting its own source and creative b
 
 `shot.json` records the active example. `shot_brief.template.json` records the intended per-shot input/creative contract. **The present production scripts are still tuned for this single excerpt.** The template is documentation for future generalization, not a claim that arbitrary clips already run correctly without camera, color, keying and scene adaptation. Those adaptations are the agent's responsibility, not a request for manual user configuration.
 
+## Workspace layout
+
+```text
+music_videos/<video>/                 project.json, audio, lyrics, analysis, edit, final
+  shots/<shot>/                       shot.json + source key relight intermediate composite final logs
+scene_library/<environment>/          .blend, lighting_sh.json, probes/, background/, renders
+assets/hdri/                          downloaded CC0 panoramas + provenance json
+footage/                              authoritative original recordings, never modified
+templates/                            brief templates for new videos and shots
+scripts/                              the pipeline; every stage takes --shot
+logs/                                 project-wide diagnostics only (per-shot logs live in the shot)
+dependencies/                         third-party checkouts and model weights
+```
+
+**Every stage is addressed by `--shot`.** There is no default; running a script without it lists
+the available shots. An environment is named by the shot (`environment.dir` in `shot.json`), so
+several shots can share one, and a shot can be re-lit by pointing it at a different one.
+
+```powershell
+$SHOT = "music_videos/reporter_test/shots/reporter_a"
+$PY   = "dependencies/CorridorKey/.venv/Scripts/python.exe"
+
+& $PY scripts/calibrate_key.py --shot $SHOT --write     # derive screen thresholds from the plate
+& $PY scripts/key_plate.py     --shot $SHOT --test      # then without --test for the full range
+& $PY scripts/video_depth.py   --shot $SHOT
+& dependencies/facetrack/.venv/Scripts/python.exe scripts/face_track.py --shot $SHOT
+
+# Environment: photographic HDRI rather than a modelled room
+& 'C:\Program Files\Blender Foundation\Blender 5.2lender.exe' -b --factory-startup `
+    --python scripts/build_hdri_scene.py -- --shot $SHOT
+& 'C:\Program Files\Blender Foundation\Blender 5.2lender.exe' -b <env>.blend `
+    --python scripts/animate_lights.py -- --shot $SHOT
+& 'C:\Program Files\Blender Foundation\Blender 5.2lender.exe' -b <env>.blend `
+    --python scripts/bake_light_probes.py -- --shot $SHOT --frames 150
+& 'C:\Program Files\Blender Foundation\Blender 5.2lender.exe' -b <env>.blend `
+    --python scripts/render_background.py -- --shot $SHOT --frames 150
+
+& $PY scripts/sh_project.py      --shot $SHOT           # probes -> SH, with axis validation
+& $PY scripts/relight_sh.py      --shot $SHOT
+& $PY scripts/composite_shot.py  --shot $SHOT           # per-frame background, writes preview video
+```
+
+### Traps found the hard way, all now guarded in code
+
+- **Blender light objects are invisible to camera rays.** `visible_camera` defaults to `False`
+  and forcing it `True` still renders nothing, so a panoramic light probe cannot see them.
+  Probe-visible emitters must be **emissive meshes**. Symptom: every probe byte-identical.
+- **The equirect axis convention is not the obvious one.** `x = sin*sin, y = -sin*cos` maps
+  +X to -Y: a reflection across `y = -x`, which leaves the XY diagonal invariant, so a diagonal
+  spot check passes while every axis is 90 degrees out. Run `scripts/validate_sh_convention.py`.
+- **`render.fps` is an int16**, so `60000/1001` is silently clamped to `32767/1001`. Use
+  `fps = 60, fps_base = 1.001`.
+- **`use_persistent_data` serves stale lighting** when stepping frames in one process.
+- **Blender 5.x removed `action.fcurves`** (slotted actions: layers -> strips -> channelbag)
+  and `scene.node_tree`, and `image_settings.media_type` must be set before `file_format`.
+- **CorridorKey's `despill_strength` does not affect `result['fg']`**, only `result['processed']`.
+- **Keying thresholds do not transfer between plates.** Derive them with `calibrate_key.py`.
+- **The 8-bit plate is 4:2:0 and upscaled 2x**, so it carries ~1920 px of real detail across a
+  4K frame. Native CG is about twice as sharp, which alone reads as composited.
+
 ## Source and editorial decision
 
 - Authoritative supplied file: `MongolianThroatSingingmeme(GreenScreen).mp4`. Preserved untouched and copied to `source/plate.mp4`.
