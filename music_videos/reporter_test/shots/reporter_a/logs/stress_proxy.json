@@ -2,8 +2,8 @@
   "shot": "reporter_a",
   "frames": 150,
   "fps": "60000/1001",
-  "output_dir": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\align_check",
-  "samples": 16,
+  "output_dir": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\ratio_render",
+  "samples": 64,
   "rig": {
     "stations": [
       "front far",
@@ -132,7 +132,7 @@
     },
     {
       "out_frame": 6,
-      "shot_frame": 4,
+      "shot_frame": 6,
       "station": "front far",
       "bulb_offset_m": [
         0.0,
@@ -147,7 +147,7 @@
     },
     {
       "out_frame": 7,
-      "shot_frame": 3,
+      "shot_frame": 7,
       "station": "front far",
       "bulb_offset_m": [
         0.0,
@@ -162,7 +162,7 @@
     },
     {
       "out_frame": 8,
-      "shot_frame": 2,
+      "shot_frame": 8,
       "station": "front far",
       "bulb_offset_m": [
         0.0,
@@ -177,7 +177,7 @@
     },
     {
       "out_frame": 9,
-      "shot_frame": 1,
+      "shot_frame": 9,
       "station": "front far",
       "bulb_offset_m": [
         0.0,
@@ -192,7 +192,7 @@
     },
     {
       "out_frame": 10,
-      "shot_frame": 0,
+      "shot_frame": 10,
       "station": "front far",
       "bulb_offset_m": [
         0.0,
@@ -207,7 +207,7 @@
     },
     {
       "out_frame": 11,
-      "shot_frame": 1,
+      "shot_frame": 11,
       "station": "front close",
       "bulb_offset_m": [
         0.0,
@@ -222,7 +222,7 @@
     },
     {
       "out_frame": 12,
-      "shot_frame": 2,
+      "shot_frame": 12,
       "station": "front close",
       "bulb_offset_m": [
         0.0,
@@ -237,7 +237,7 @@
     },
     {
       "out_frame": 13,
-      "shot_frame": 3,
+      "shot_frame": 13,
       "station": "front close",
       "bulb_offset_m": [
         0.0,
@@ -252,7 +252,7 @@
     },
     {
       "out_frame": 14,
-      "shot_frame": 4,
+      "shot_frame": 14,
       "station": "front close",
       "bulb_offset_m": [
         0.0,
@@ -267,7 +267,7 @@
     },
     {
       "out_frame": 15,
-      "shot_frame": 5,
+      "shot_frame": 15,
       "station": "front close",
       "bulb_offset_m": [
         0.0,
@@ -282,7 +282,7 @@
     },
     {
       "out_frame": 16,
-      "shot_frame": 4,
+      "shot_frame": 16,
       "station": "front close",
       "bulb_offset_m": [
         0.0,
@@ -297,7 +297,7 @@
     },
     {
       "out_frame": 17,
-      "shot_frame": 3,
+      "shot_frame": 17,
       "station": "front close",
       "bulb_offset_m": [
         0.0,
@@ -312,7 +312,7 @@
     },
     {
       "out_frame": 18,
-      "shot_frame": 2,
+      "shot_frame": 18,
       "station": "front close",
       "bulb_offset_m": [
         0.0,
@@ -327,7 +327,7 @@
     },
     {
       "out_frame": 19,
-      "shot_frame": 1,
+      "shot_frame": 19,
       "station": "front close",
       "bulb_offset_m": [
         0.0,
@@ -342,7 +342,7 @@
     },
     {
       "out_frame": 20,
-      "shot_frame": 0,
+      "shot_frame": 20,
       "station": "front close",
       "bulb_offset_m": [
         0.0,
@@ -357,7 +357,7 @@
     },
     {
       "out_frame": 21,
-      "shot_frame": 1,
+      "shot_frame": 21,
       "station": "front close",
       "bulb_offset_m": [
         0.0,
@@ -372,7 +372,7 @@
     },
     {
       "out_frame": 22,
-      "shot_frame": 2,
+      "shot_frame": 22,
       "station": "front close",
       "bulb_offset_m": [
         0.0,
@@ -387,7 +387,7 @@
     },
     {
       "out_frame": 23,
-      "shot_frame": 3,
+      "shot_frame": 23,
       "station": "front close",
       "bulb_offset_m": [
         0.0,
@@ -402,7 +402,7 @@
     },
     {
       "out_frame": 24,
-      "shot_frame": 4,
+      "shot_frame": 24,
       "station": "front close",
       "bulb_offset_m": [
         0.0,
@@ -417,7 +417,7 @@
     },
     {
       "out_frame": 25,
-      "shot_frame": 5,
+      "shot_frame": 25,
       "station": "front close",
       "bulb_offset_m": [
         0.0,
@@ -432,7 +432,7 @@
     },
     {
       "out_frame": 26,
-      "shot_frame": 4,
+      "shot_frame": 26,
       "station": "below chin",
       "bulb_offset_m": [
         0.0,
@@ -447,7 +447,7 @@
     },
     {
       "out_frame": 27,
-      "shot_frame": 3,
+      "shot_frame": 27,
       "station": "below chin",
       "bulb_offset_m": [
         0.0,
@@ -462,7 +462,7 @@
     },
     {
       "out_frame": 28,
-      "shot_frame": 2,
+      "shot_frame": 28,
       "station": "below chin",
       "bulb_offset_m": [
         0.0,
@@ -477,7 +477,7 @@
     },
     {
       "out_frame": 29,
-      "shot_frame": 1,
+      "shot_frame": 29,
       "station": "below chin",
       "bulb_offset_m": [
         0.0,
@@ -492,7 +492,7 @@
     },
     {
       "out_frame": 30,
-      "shot_frame": 0,
+      "shot_frame": 30,
       "station": "below chin",
       "bulb_offset_m": [
         0.0,
@@ -507,7 +507,7 @@
     },
     {
       "out_frame": 31,
-      "shot_frame": 1,
+      "shot_frame": 31,
       "station": "below chin",
       "bulb_offset_m": [
         0.0,
@@ -522,7 +522,7 @@
     },
     {
       "out_frame": 32,
-      "shot_frame": 2,
+      "shot_frame": 32,
       "station": "below chin",
       "bulb_offset_m": [
         0.0,
@@ -537,7 +537,7 @@
     },
     {
       "out_frame": 33,
-      "shot_frame": 3,
+      "shot_frame": 33,
       "station": "below chin",
       "bulb_offset_m": [
         0.0,
@@ -552,7 +552,7 @@
     },
     {
       "out_frame": 34,
-      "shot_frame": 4,
+      "shot_frame": 34,
       "station": "below chin",
       "bulb_offset_m": [
         0.0,
@@ -567,7 +567,7 @@
     },
     {
       "out_frame": 35,
-      "shot_frame": 5,
+      "shot_frame": 35,
       "station": "below chin",
       "bulb_offset_m": [
         0.0,
@@ -582,7 +582,7 @@
     },
     {
       "out_frame": 36,
-      "shot_frame": 4,
+      "shot_frame": 36,
       "station": "below chin",
       "bulb_offset_m": [
         0.0,
@@ -597,7 +597,7 @@
     },
     {
       "out_frame": 37,
-      "shot_frame": 3,
+      "shot_frame": 37,
       "station": "below chin",
       "bulb_offset_m": [
         0.0,
@@ -612,7 +612,7 @@
     },
     {
       "out_frame": 38,
-      "shot_frame": 2,
+      "shot_frame": 38,
       "station": "below chin",
       "bulb_offset_m": [
         0.0,
@@ -627,7 +627,7 @@
     },
     {
       "out_frame": 39,
-      "shot_frame": 1,
+      "shot_frame": 39,
       "station": "below chin",
       "bulb_offset_m": [
         0.0,
@@ -642,7 +642,7 @@
     },
     {
       "out_frame": 40,
-      "shot_frame": 0,
+      "shot_frame": 40,
       "station": "below chin",
       "bulb_offset_m": [
         0.0,
@@ -657,7 +657,7 @@
     },
     {
       "out_frame": 41,
-      "shot_frame": 1,
+      "shot_frame": 41,
       "station": "above head",
       "bulb_offset_m": [
         0.0,
@@ -672,7 +672,7 @@
     },
     {
       "out_frame": 42,
-      "shot_frame": 2,
+      "shot_frame": 42,
       "station": "above head",
       "bulb_offset_m": [
         0.0,
@@ -687,7 +687,7 @@
     },
     {
       "out_frame": 43,
-      "shot_frame": 3,
+      "shot_frame": 43,
       "station": "above head",
       "bulb_offset_m": [
         0.0,
@@ -702,7 +702,7 @@
     },
     {
       "out_frame": 44,
-      "shot_frame": 4,
+      "shot_frame": 44,
       "station": "above head",
       "bulb_offset_m": [
         0.0,
@@ -717,7 +717,7 @@
     },
     {
       "out_frame": 45,
-      "shot_frame": 5,
+      "shot_frame": 45,
       "station": "above head",
       "bulb_offset_m": [
         0.0,
@@ -732,7 +732,7 @@
     },
     {
       "out_frame": 46,
-      "shot_frame": 4,
+      "shot_frame": 46,
       "station": "above head",
       "bulb_offset_m": [
         0.0,
@@ -747,7 +747,7 @@
     },
     {
       "out_frame": 47,
-      "shot_frame": 3,
+      "shot_frame": 47,
       "station": "above head",
       "bulb_offset_m": [
         0.0,
@@ -762,7 +762,7 @@
     },
     {
       "out_frame": 48,
-      "shot_frame": 2,
+      "shot_frame": 48,
       "station": "above head",
       "bulb_offset_m": [
         0.0,
@@ -777,7 +777,7 @@
     },
     {
       "out_frame": 49,
-      "shot_frame": 1,
+      "shot_frame": 49,
       "station": "above head",
       "bulb_offset_m": [
         0.0,
@@ -792,7 +792,7 @@
     },
     {
       "out_frame": 50,
-      "shot_frame": 0,
+      "shot_frame": 50,
       "station": "above head",
       "bulb_offset_m": [
         0.0,
@@ -807,7 +807,7 @@
     },
     {
       "out_frame": 51,
-      "shot_frame": 1,
+      "shot_frame": 51,
       "station": "above head",
       "bulb_offset_m": [
         0.0,
@@ -822,7 +822,7 @@
     },
     {
       "out_frame": 52,
-      "shot_frame": 2,
+      "shot_frame": 52,
       "station": "above head",
       "bulb_offset_m": [
         -0.012,
@@ -837,7 +837,7 @@
     },
     {
       "out_frame": 53,
-      "shot_frame": 3,
+      "shot_frame": 53,
       "station": "above head",
       "bulb_offset_m": [
         -0.079,
@@ -852,7 +852,7 @@
     },
     {
       "out_frame": 54,
-      "shot_frame": 4,
+      "shot_frame": 54,
       "station": "above head",
       "bulb_offset_m": [
         -0.19,
@@ -867,7 +867,7 @@
     },
     {
       "out_frame": 55,
-      "shot_frame": 5,
+      "shot_frame": 55,
       "station": "above head",
       "bulb_offset_m": [
         -0.327,
@@ -882,7 +882,7 @@
     },
     {
       "out_frame": 56,
-      "shot_frame": 4,
+      "shot_frame": 56,
       "station": "camera left",
       "bulb_offset_m": [
         -0.472,
@@ -897,7 +897,7 @@
     },
     {
       "out_frame": 57,
-      "shot_frame": 3,
+      "shot_frame": 57,
       "station": "camera left",
       "bulb_offset_m": [
         -0.61,
@@ -912,7 +912,7 @@
     },
     {
       "out_frame": 58,
-      "shot_frame": 2,
+      "shot_frame": 58,
       "station": "camera left",
       "bulb_offset_m": [
         -0.72,
@@ -927,7 +927,7 @@
     },
     {
       "out_frame": 59,
-      "shot_frame": 1,
+      "shot_frame": 59,
       "station": "camera left",
       "bulb_offset_m": [
         -0.788,
@@ -942,7 +942,7 @@
     },
     {
       "out_frame": 60,
-      "shot_frame": 0,
+      "shot_frame": 60,
       "station": "camera left",
       "bulb_offset_m": [
         -0.8,
@@ -957,7 +957,7 @@
     },
     {
       "out_frame": 61,
-      "shot_frame": 1,
+      "shot_frame": 61,
       "station": "camera left",
       "bulb_offset_m": [
         -0.8,
@@ -972,7 +972,7 @@
     },
     {
       "out_frame": 62,
-      "shot_frame": 2,
+      "shot_frame": 62,
       "station": "camera left",
       "bulb_offset_m": [
         -0.8,
@@ -987,7 +987,7 @@
     },
     {
       "out_frame": 63,
-      "shot_frame": 3,
+      "shot_frame": 63,
       "station": "camera left",
       "bulb_offset_m": [
         -0.8,
@@ -1002,7 +1002,7 @@
     },
     {
       "out_frame": 64,
-      "shot_frame": 4,
+      "shot_frame": 64,
       "station": "camera left",
       "bulb_offset_m": [
         -0.8,
@@ -1017,7 +1017,7 @@
     },
     {
       "out_frame": 65,
-      "shot_frame": 5,
+      "shot_frame": 65,
       "station": "camera left",
       "bulb_offset_m": [
         -0.8,
@@ -1032,7 +1032,7 @@
     },
     {
       "out_frame": 66,
-      "shot_frame": 4,
+      "shot_frame": 66,
       "station": "camera left",
       "bulb_offset_m": [
         -0.8,
@@ -1047,7 +1047,7 @@
     },
     {
       "out_frame": 67,
-      "shot_frame": 3,
+      "shot_frame": 67,
       "station": "camera left",
       "bulb_offset_m": [
         -0.767,
@@ -1062,7 +1062,7 @@
     },
     {
       "out_frame": 68,
-      "shot_frame": 2,
+      "shot_frame": 68,
       "station": "camera left",
       "bulb_offset_m": [
         -0.623,
@@ -1077,7 +1077,7 @@
     },
     {
       "out_frame": 69,
-      "shot_frame": 1,
+      "shot_frame": 69,
       "station": "camera left",
       "bulb_offset_m": [
         -0.395,
@@ -1092,7 +1092,7 @@
     },
     {
       "out_frame": 70,
-      "shot_frame": 0,
+      "shot_frame": 70,
       "station": "camera left",
       "bulb_offset_m": [
         -0.117,
@@ -1107,7 +1107,7 @@
     },
     {
       "out_frame": 71,
-      "shot_frame": 1,
+      "shot_frame": 71,
       "station": "camera right",
       "bulb_offset_m": [
         0.174,
@@ -1122,7 +1122,7 @@
     },
     {
       "out_frame": 72,
-      "shot_frame": 2,
+      "shot_frame": 72,
       "station": "camera right",
       "bulb_offset_m": [
         0.444,
@@ -1137,7 +1137,7 @@
     },
     {
       "out_frame": 73,
-      "shot_frame": 3,
+      "shot_frame": 73,
       "station": "camera right",
       "bulb_offset_m": [
         0.659,
@@ -1152,7 +1152,7 @@
     },
     {
       "out_frame": 74,
-      "shot_frame": 4,
+      "shot_frame": 74,
       "station": "camera right",
       "bulb_offset_m": [
         0.783,
@@ -1167,7 +1167,7 @@
     },
     {
       "out_frame": 75,
-      "shot_frame": 5,
+      "shot_frame": 75,
       "station": "camera right",
       "bulb_offset_m": [
         0.8,
@@ -1182,7 +1182,7 @@
     },
     {
       "out_frame": 76,
-      "shot_frame": 4,
+      "shot_frame": 76,
       "station": "camera right",
       "bulb_offset_m": [
         0.8,
@@ -1197,7 +1197,7 @@
     },
     {
       "out_frame": 77,
-      "shot_frame": 3,
+      "shot_frame": 77,
       "station": "camera right",
       "bulb_offset_m": [
         0.8,
@@ -1212,7 +1212,7 @@
     },
     {
       "out_frame": 78,
-      "shot_frame": 2,
+      "shot_frame": 78,
       "station": "camera right",
       "bulb_offset_m": [
         0.8,
@@ -1227,7 +1227,7 @@
     },
     {
       "out_frame": 79,
-      "shot_frame": 1,
+      "shot_frame": 79,
       "station": "camera right",
       "bulb_offset_m": [
         0.8,
@@ -1242,7 +1242,7 @@
     },
     {
       "out_frame": 80,
-      "shot_frame": 0,
+      "shot_frame": 80,
       "station": "camera right",
       "bulb_offset_m": [
         0.8,
@@ -1257,7 +1257,7 @@
     },
     {
       "out_frame": 81,
-      "shot_frame": 1,
+      "shot_frame": 81,
       "station": "camera right",
       "bulb_offset_m": [
         0.8,
@@ -1272,7 +1272,7 @@
     },
     {
       "out_frame": 82,
-      "shot_frame": 2,
+      "shot_frame": 82,
       "station": "camera right",
       "bulb_offset_m": [
         0.793,
@@ -1287,7 +1287,7 @@
     },
     {
       "out_frame": 83,
-      "shot_frame": 3,
+      "shot_frame": 83,
       "station": "camera right",
       "bulb_offset_m": [
         0.769,
@@ -1302,7 +1302,7 @@
     },
     {
       "out_frame": 84,
-      "shot_frame": 4,
+      "shot_frame": 84,
       "station": "camera right",
       "bulb_offset_m": [
         0.733,
@@ -1317,7 +1317,7 @@
     },
     {
       "out_frame": 85,
-      "shot_frame": 5,
+      "shot_frame": 85,
       "station": "camera right",
       "bulb_offset_m": [
         0.689,
@@ -1332,7 +1332,7 @@
     },
     {
       "out_frame": 86,
-      "shot_frame": 4,
+      "shot_frame": 86,
       "station": "behind rim",
       "bulb_offset_m": [
         0.643,
@@ -1347,7 +1347,7 @@
     },
     {
       "out_frame": 87,
-      "shot_frame": 3,
+      "shot_frame": 87,
       "station": "behind rim",
       "bulb_offset_m": [
         0.602,
@@ -1362,7 +1362,7 @@
     },
     {
       "out_frame": 88,
-      "shot_frame": 2,
+      "shot_frame": 88,
       "station": "behind rim",
       "bulb_offset_m": [
         0.569,
@@ -1377,7 +1377,7 @@
     },
     {
       "out_frame": 89,
-      "shot_frame": 1,
+      "shot_frame": 89,
       "station": "behind rim",
       "bulb_offset_m": [
         0.552,
@@ -1392,7 +1392,7 @@
     },
     {
       "out_frame": 90,
-      "shot_frame": 0,
+      "shot_frame": 90,
       "station": "behind rim",
       "bulb_offset_m": [
         0.55,
@@ -1407,7 +1407,7 @@
     },
     {
       "out_frame": 91,
-      "shot_frame": 1,
+      "shot_frame": 91,
       "station": "behind rim",
       "bulb_offset_m": [
         0.55,
@@ -1422,7 +1422,7 @@
     },
     {
       "out_frame": 92,
-      "shot_frame": 2,
+      "shot_frame": 92,
       "station": "behind rim",
       "bulb_offset_m": [
         0.55,
@@ -1437,7 +1437,7 @@
     },
     {
       "out_frame": 93,
-      "shot_frame": 3,
+      "shot_frame": 93,
       "station": "behind rim",
       "bulb_offset_m": [
         0.55,
@@ -1452,7 +1452,7 @@
     },
     {
       "out_frame": 94,
-      "shot_frame": 4,
+      "shot_frame": 94,
       "station": "behind rim",
       "bulb_offset_m": [
         0.55,
@@ -1467,7 +1467,7 @@
     },
     {
       "out_frame": 95,
-      "shot_frame": 5,
+      "shot_frame": 95,
       "station": "behind rim",
       "bulb_offset_m": [
         0.55,
@@ -1482,7 +1482,7 @@
     },
     {
       "out_frame": 96,
-      "shot_frame": 4,
+      "shot_frame": 96,
       "station": "behind rim",
       "bulb_offset_m": [
         0.55,
@@ -1497,7 +1497,7 @@
     },
     {
       "out_frame": 97,
-      "shot_frame": 3,
+      "shot_frame": 97,
       "station": "behind rim",
       "bulb_offset_m": [
         0.557,
@@ -1512,7 +1512,7 @@
     },
     {
       "out_frame": 98,
-      "shot_frame": 2,
+      "shot_frame": 98,
       "station": "behind rim",
       "bulb_offset_m": [
         0.577,
@@ -1527,7 +1527,7 @@
     },
     {
       "out_frame": 99,
-      "shot_frame": 1,
+      "shot_frame": 99,
       "station": "behind rim",
       "bulb_offset_m": [
         0.607,
@@ -1542,7 +1542,7 @@
     },
     {
       "out_frame": 100,
-      "shot_frame": 0,
+      "shot_frame": 100,
       "station": "behind rim",
       "bulb_offset_m": [
         0.643,
@@ -1557,7 +1557,7 @@
     },
     {
       "out_frame": 101,
-      "shot_frame": 1,
+      "shot_frame": 101,
       "station": "KEY OFF: back only",
       "bulb_offset_m": [
         0.679,
@@ -1572,7 +1572,7 @@
     },
     {
       "out_frame": 102,
-      "shot_frame": 2,
+      "shot_frame": 102,
       "station": "KEY OFF: back only",
       "bulb_offset_m": [
         0.712,
@@ -1587,7 +1587,7 @@
     },
     {
       "out_frame": 103,
-      "shot_frame": 3,
+      "shot_frame": 103,
       "station": "KEY OFF: back only",
       "bulb_offset_m": [
         0.736,
@@ -1602,7 +1602,7 @@
     },
     {
       "out_frame": 104,
-      "shot_frame": 4,
+      "shot_frame": 104,
       "station": "KEY OFF: back only",
       "bulb_offset_m": [
         0.749,
@@ -1617,7 +1617,7 @@
     },
     {
       "out_frame": 105,
-      "shot_frame": 5,
+      "shot_frame": 105,
       "station": "KEY OFF: back only",
       "bulb_offset_m": [
         0.75,
@@ -1632,7 +1632,7 @@
     },
     {
       "out_frame": 106,
-      "shot_frame": 4,
+      "shot_frame": 106,
       "station": "KEY OFF: back only",
       "bulb_offset_m": [
         0.75,
@@ -1647,7 +1647,7 @@
     },
     {
       "out_frame": 107,
-      "shot_frame": 3,
+      "shot_frame": 107,
       "station": "KEY OFF: back only",
       "bulb_offset_m": [
         0.75,
@@ -1662,7 +1662,7 @@
     },
     {
       "out_frame": 108,
-      "shot_frame": 2,
+      "shot_frame": 108,
       "station": "KEY OFF: back only",
       "bulb_offset_m": [
         0.75,
@@ -1677,7 +1677,7 @@
     },
     {
       "out_frame": 109,
-      "shot_frame": 1,
+      "shot_frame": 109,
       "station": "KEY OFF: back only",
       "bulb_offset_m": [
         0.75,
@@ -1692,7 +1692,7 @@
     },
     {
       "out_frame": 110,
-      "shot_frame": 0,
+      "shot_frame": 110,
       "station": "KEY OFF: back only",
       "bulb_offset_m": [
         0.75,
@@ -1707,7 +1707,7 @@
     },
     {
       "out_frame": 111,
-      "shot_frame": 1,
+      "shot_frame": 111,
       "station": "KEY OFF: back only",
       "bulb_offset_m": [
         0.75,
@@ -1722,7 +1722,7 @@
     },
     {
       "out_frame": 112,
-      "shot_frame": 2,
+      "shot_frame": 112,
       "station": "KEY OFF: back only",
       "bulb_offset_m": [
         0.689,
@@ -1737,7 +1737,7 @@
     },
     {
       "out_frame": 113,
-      "shot_frame": 3,
+      "shot_frame": 113,
       "station": "KEY OFF: back only",
       "bulb_offset_m": [
         0.527,
@@ -1752,7 +1752,7 @@
     },
     {
       "out_frame": 114,
-      "shot_frame": 4,
+      "shot_frame": 114,
       "station": "KEY OFF: back only",
       "bulb_offset_m": [
         0.295,
@@ -1767,7 +1767,7 @@
     },
     {
       "out_frame": 115,
-      "shot_frame": 5,
+      "shot_frame": 115,
       "station": "KEY OFF: back only",
       "bulb_offset_m": [
         0.028,
@@ -1782,7 +1782,7 @@
     },
     {
       "out_frame": 116,
-      "shot_frame": 4,
+      "shot_frame": 116,
       "station": "KEY OFF: back only",
       "bulb_offset_m": [
         -0.242,
@@ -1797,7 +1797,7 @@
     },
     {
       "out_frame": 117,
-      "shot_frame": 3,
+      "shot_frame": 117,
       "station": "KEY OFF: back only",
       "bulb_offset_m": [
         -0.484,
@@ -1812,7 +1812,7 @@
     },
     {
       "out_frame": 118,
-      "shot_frame": 2,
+      "shot_frame": 118,
       "station": "KEY OFF: back only",
       "bulb_offset_m": [
         -0.663,
@@ -1827,7 +1827,7 @@
     },
     {
       "out_frame": 119,
-      "shot_frame": 1,
+      "shot_frame": 119,
       "station": "KEY OFF: back only",
       "bulb_offset_m": [
         -0.747,
@@ -1842,7 +1842,7 @@
     },
     {
       "out_frame": 120,
-      "shot_frame": 0,
+      "shot_frame": 120,
       "station": "KEY OFF: back only",
       "bulb_offset_m": [
         -0.75,
@@ -1857,7 +1857,7 @@
     },
     {
       "out_frame": 121,
-      "shot_frame": 1,
+      "shot_frame": 121,
       "station": "KEY OFF: back only",
       "bulb_offset_m": [
         -0.75,
@@ -1872,7 +1872,7 @@
     },
     {
       "out_frame": 122,
-      "shot_frame": 2,
+      "shot_frame": 122,
       "station": "KEY OFF: back only",
       "bulb_offset_m": [
         -0.75,
@@ -1887,7 +1887,7 @@
     },
     {
       "out_frame": 123,
-      "shot_frame": 3,
+      "shot_frame": 123,
       "station": "KEY OFF: back only",
       "bulb_offset_m": [
         -0.75,
@@ -1902,7 +1902,7 @@
     },
     {
       "out_frame": 124,
-      "shot_frame": 4,
+      "shot_frame": 124,
       "station": "KEY OFF: back only",
       "bulb_offset_m": [
         -0.75,
@@ -1917,7 +1917,7 @@
     },
     {
       "out_frame": 125,
-      "shot_frame": 5,
+      "shot_frame": 125,
       "station": "KEY OFF: back only",
       "bulb_offset_m": [
         -0.75,
@@ -1932,7 +1932,7 @@
     },
     {
       "out_frame": 126,
-      "shot_frame": 4,
+      "shot_frame": 126,
       "station": "KEY OFF: back only",
       "bulb_offset_m": [
         -0.75,
@@ -1947,7 +1947,7 @@
     },
     {
       "out_frame": 127,
-      "shot_frame": 3,
+      "shot_frame": 127,
       "station": "KEY OFF: back only",
       "bulb_offset_m": [
         -0.743,
@@ -1962,7 +1962,7 @@
     },
     {
       "out_frame": 128,
-      "shot_frame": 2,
+      "shot_frame": 128,
       "station": "KEY OFF: back only",
       "bulb_offset_m": [
         -0.726,
@@ -1977,7 +1977,7 @@
     },
     {
       "out_frame": 129,
-      "shot_frame": 1,
+      "shot_frame": 129,
       "station": "KEY OFF: back only",
       "bulb_offset_m": [
         -0.702,
@@ -1992,7 +1992,7 @@
     },
     {
       "out_frame": 130,
-      "shot_frame": 0,
+      "shot_frame": 130,
       "station": "KEY OFF: back only",
       "bulb_offset_m": [
         -0.675,
@@ -2007,7 +2007,7 @@
     },
     {
       "out_frame": 131,
-      "shot_frame": 1,
+      "shot_frame": 131,
       "station": "high three-quarter",
       "bulb_offset_m": [
         -0.648,
@@ -2022,7 +2022,7 @@
     },
     {
       "out_frame": 132,
-      "shot_frame": 2,
+      "shot_frame": 132,
       "station": "high three-quarter",
       "bulb_offset_m": [
         -0.625,
@@ -2037,7 +2037,7 @@
     },
     {
       "out_frame": 133,
-      "shot_frame": 3,
+      "shot_frame": 133,
       "station": "high three-quarter",
       "bulb_offset_m": [
         -0.607,
@@ -2052,7 +2052,7 @@
     },
     {
       "out_frame": 134,
-      "shot_frame": 4,
+      "shot_frame": 134,
       "station": "high three-quarter",
       "bulb_offset_m": [
         -0.6,
@@ -2067,7 +2067,7 @@
     },
     {
       "out_frame": 135,
-      "shot_frame": 5,
+      "shot_frame": 135,
       "station": "high three-quarter",
       "bulb_offset_m": [
         -0.6,
@@ -2082,7 +2082,7 @@
     },
     {
       "out_frame": 136,
-      "shot_frame": 4,
+      "shot_frame": 136,
       "station": "high three-quarter",
       "bulb_offset_m": [
         -0.6,
@@ -2097,7 +2097,7 @@
     },
     {
       "out_frame": 137,
-      "shot_frame": 3,
+      "shot_frame": 137,
       "station": "high three-quarter",
       "bulb_offset_m": [
         -0.6,
@@ -2112,7 +2112,7 @@
     },
     {
       "out_frame": 138,
-      "shot_frame": 2,
+      "shot_frame": 138,
       "station": "high three-quarter",
       "bulb_offset_m": [
         -0.6,
@@ -2127,7 +2127,7 @@
     },
     {
       "out_frame": 139,
-      "shot_frame": 1,
+      "shot_frame": 139,
       "station": "high three-quarter",
       "bulb_offset_m": [
         -0.6,
@@ -2142,7 +2142,7 @@
     },
     {
       "out_frame": 140,
-      "shot_frame": 0,
+      "shot_frame": 140,
       "station": "high three-quarter",
       "bulb_offset_m": [
         -0.6,
@@ -2157,7 +2157,7 @@
     },
     {
       "out_frame": 141,
-      "shot_frame": 1,
+      "shot_frame": 141,
       "station": "high three-quarter",
       "bulb_offset_m": [
         -0.599,
@@ -2172,7 +2172,7 @@
     },
     {
       "out_frame": 142,
-      "shot_frame": 2,
+      "shot_frame": 142,
       "station": "high three-quarter",
       "bulb_offset_m": [
         -0.565,
@@ -2187,7 +2187,7 @@
     },
     {
       "out_frame": 143,
-      "shot_frame": 3,
+      "shot_frame": 143,
       "station": "high three-quarter",
       "bulb_offset_m": [
         -0.494,
@@ -2202,7 +2202,7 @@
     },
     {
       "out_frame": 144,
-      "shot_frame": 4,
+      "shot_frame": 144,
       "station": "high three-quarter",
       "bulb_offset_m": [
         -0.398,
@@ -2217,7 +2217,7 @@
     },
     {
       "out_frame": 145,
-      "shot_frame": 5,
+      "shot_frame": 145,
       "station": "front far",
       "bulb_offset_m": [
         -0.289,
@@ -2232,7 +2232,7 @@
     },
     {
       "out_frame": 146,
-      "shot_frame": 4,
+      "shot_frame": 146,
       "station": "front far",
       "bulb_offset_m": [
         -0.182,
@@ -2247,7 +2247,7 @@
     },
     {
       "out_frame": 147,
-      "shot_frame": 3,
+      "shot_frame": 147,
       "station": "front far",
       "bulb_offset_m": [
         -0.09,
@@ -2262,7 +2262,7 @@
     },
     {
       "out_frame": 148,
-      "shot_frame": 2,
+      "shot_frame": 148,
       "station": "front far",
       "bulb_offset_m": [
         -0.025,
@@ -2277,7 +2277,7 @@
     },
     {
       "out_frame": 149,
-      "shot_frame": 1,
+      "shot_frame": 149,
       "station": "front far",
       "bulb_offset_m": [
         -0.0,
