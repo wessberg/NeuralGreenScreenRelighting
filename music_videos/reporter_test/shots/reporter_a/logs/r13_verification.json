@@ -1,0 +1,91 @@
+{
+  "unmodified_author_revisions": true,
+  "upstream_preprocessing_max_abs": 2.384185791015625e-07,
+  "author_conic_max_residual": 7.804359869467703e-08,
+  "hidden_rgb_invariance": [
+    {
+      "pixel_aspect": 1.0,
+      "hidden_rgb": [
+        255,
+        0,
+        255
+      ],
+      "exact": true
+    },
+    {
+      "pixel_aspect": 1.0,
+      "hidden_rgb": [
+        0,
+        255,
+        0
+      ],
+      "exact": true
+    },
+    {
+      "pixel_aspect": 1.6,
+      "hidden_rgb": [
+        255,
+        0,
+        255
+      ],
+      "exact": true
+    },
+    {
+      "pixel_aspect": 1.6,
+      "hidden_rgb": [
+        0,
+        255,
+        0
+      ],
+      "exact": true
+    }
+  ],
+  "constant_input_abstention": true,
+  "exact_keyed_eye_fallbacks": 300,
+  "protected_files_unchanged": 304,
+  "videos": [
+    {
+      "file": "r13_ellseg.mp4",
+      "decoded_frames": 1200,
+      "fps": 59.94005994005994,
+      "sheets": [
+        "composite\\r13_ellseg\\r13_ellseg_sheet_0100.jpg",
+        "composite\\r13_ellseg\\r13_ellseg_sheet_0200.jpg",
+        "composite\\r13_ellseg\\r13_ellseg_sheet_0300.jpg",
+        "composite\\r13_ellseg\\r13_ellseg_sheet_0400.jpg",
+        "composite\\r13_ellseg\\r13_ellseg_sheet_0500.jpg",
+        "composite\\r13_ellseg\\r13_ellseg_sheet_0600.jpg",
+        "composite\\r13_ellseg\\r13_ellseg_sheet_0700.jpg",
+        "composite\\r13_ellseg\\r13_ellseg_sheet_0800.jpg",
+        "composite\\r13_ellseg\\r13_ellseg_sheet_0900.jpg",
+        "composite\\r13_ellseg\\r13_ellseg_sheet_1000.jpg",
+        "composite\\r13_ellseg\\r13_ellseg_sheet_1100.jpg",
+        "composite\\r13_ellseg\\r13_ellseg_sheet_1200.jpg"
+      ],
+      "visual_inspection": "pending",
+      "artist_approval": false
+    },
+    {
+      "file": "r13_ritnet.mp4",
+      "decoded_frames": 150,
+      "fps": 59.94005994005994,
+      "sheets": [
+        "composite\\r13_ellseg\\r13_ritnet_sheet_0100.jpg",
+        "composite\\r13_ellseg\\r13_ritnet_sheet_0150.jpg"
+      ],
+      "visual_inspection": "pending",
+      "artist_approval": false
+    },
+    {
+      "file": "r13_neural_observations.mp4",
+      "decoded_frames": 150,
+      "fps": 59.94005994005994,
+      "sheets": [
+        "composite\\r13_ellseg\\r13_neural_observations_sheet_0100.jpg",
+        "composite\\r13_ellseg\\r13_neural_observations_sheet_0150.jpg"
+      ],
+      "visual_inspection": "pending",
+      "artist_approval": false
+    }
+  ]
+}

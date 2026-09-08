@@ -32,6 +32,7 @@ music_videos/**/master/
 music_videos/**/relight/albedo/
 music_videos/**/relight/skin_mask/
 music_videos/**/relight/iris_observations/
+music_videos/**/relight/neural_iris_observations/
 
 # Raw tool spew; structured JSON evidence is kept
 **/logs/*.log

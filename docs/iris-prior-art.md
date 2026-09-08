@@ -4,6 +4,12 @@ Checked against authors' repositories and papers on 2026-09-08. None of the neur
 models below has been installed or evaluated in this project during round 12.
 Repository documentation advertising weights is not a verified download or inference run.
 
+**Round 13 update:** EllSeg and RITnet author checkpoints have now been downloaded
+and run in an isolated CUDA-compatible environment. See
+[the reproducible evaluation](neural-eye-evaluation.md). EllSeg supplies complete
+ellipse proposals; RITnet supplies visible-part proposals with observed failures.
+Neither is validated for reflection removal. Other neural models below remain unrun.
+
 The intended product is **tracking + source-reflection removal + scene-reflection
 rendering**, on arbitrary prepared shots. The reporter is an evaluation clip, not
 the specification. A failed reporter experiment must not become a claim that

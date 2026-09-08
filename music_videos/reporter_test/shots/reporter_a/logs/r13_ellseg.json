@@ -1,0 +1,319 @@
+{
+  "provenance": {
+    "repository": "https://github.com/RSKothari/EllSeg",
+    "expected_revision": "8f1ea13336fa9c662403bd5823ac13cc6a6dd632",
+    "weights": "all.git_ok",
+    "weights_sha256": "0b8d3f4c2c936de3950150d302f3608679874317862942e1ec53b21c33a03a1a",
+    "architecture_sha256": "2a23efe9c45c138d444145f746b2cebb5ed084c3a7d7795ccc7a91fce0cb5bb3",
+    "compatibility": "np.int scalar casts -> int in loaded architecture; integer crop/pad; safe weights-only load",
+    "torch": "2.8.0+cu128",
+    "numpy": "2.4.2",
+    "opencv": "4.13.0",
+    "device": "cuda",
+    "strict_state_dict": true,
+    "mask_semantics": "full inferred iris/pupil, not observed visibility"
+  },
+  "source_frames": 1200,
+  "eye_frames": 2400,
+  "elapsed_seconds_including_io": 96.59306849999848,
+  "annotations_sha256": "cb6755f692250068deebbf4b98da3b1049f4afd39461e303679e71b518c410d5",
+  "annotation_provenance": "Assistant manual sparse annotations on native RGB nearest-neighbour grids, before viewing fitted overlays for these six evaluation frames. Not artist labels, dense segmentation or independent human ground truth.",
+  "boundary_uncertainty_px": 1.5,
+  "preprocessing": "native 64x64 reporter diagnostic ROI; width 320 Lanczos; central 240 rows; grayscale z-score; no tuning",
+  "totals": {
+    "iris_points": 40,
+    "noniris_points": 60,
+    "ellseg_iris_admitted": 40,
+    "ellseg_noniris_admitted": 16,
+    "native_iris_admitted": 26,
+    "native_noniris_admitted": 0
+  },
+  "sparse_scores": [
+    {
+      "frame": 79,
+      "side": "left",
+      "reject_view": true,
+      "iris_points": 0,
+      "noniris_points": 5,
+      "ellseg_iris_admitted": 0,
+      "ellseg_noniris_admitted": 3,
+      "native_iris_admitted": 0,
+      "native_noniris_admitted": 0,
+      "ellseg_pupil_pixels": 22,
+      "ellseg_iris_pixels": 388
+    },
+    {
+      "frame": 79,
+      "side": "right",
+      "reject_view": true,
+      "iris_points": 0,
+      "noniris_points": 5,
+      "ellseg_iris_admitted": 0,
+      "ellseg_noniris_admitted": 3,
+      "native_iris_admitted": 0,
+      "native_noniris_admitted": 0,
+      "ellseg_pupil_pixels": 3,
+      "ellseg_iris_pixels": 228
+    },
+    {
+      "frame": 217,
+      "side": "left",
+      "reject_view": true,
+      "iris_points": 0,
+      "noniris_points": 5,
+      "ellseg_iris_admitted": 0,
+      "ellseg_noniris_admitted": 3,
+      "native_iris_admitted": 0,
+      "native_noniris_admitted": 0,
+      "ellseg_pupil_pixels": 10,
+      "ellseg_iris_pixels": 279
+    },
+    {
+      "frame": 217,
+      "side": "right",
+      "reject_view": true,
+      "iris_points": 0,
+      "noniris_points": 5,
+      "ellseg_iris_admitted": 0,
+      "ellseg_noniris_admitted": 0,
+      "native_iris_admitted": 0,
+      "native_noniris_admitted": 0,
+      "ellseg_pupil_pixels": 20,
+      "ellseg_iris_pixels": 172
+    },
+    {
+      "frame": 521,
+      "side": "left",
+      "reject_view": false,
+      "iris_points": 5,
+      "noniris_points": 5,
+      "ellseg_iris_admitted": 5,
+      "ellseg_noniris_admitted": 0,
+      "native_iris_admitted": 0,
+      "native_noniris_admitted": 0,
+      "ellseg_pupil_pixels": 68,
+      "ellseg_iris_pixels": 398,
+      "pupil_ellseg_distance_p50_p95": [
+        0.9175310867591809,
+        1.6792878768763935
+      ],
+      "pupil_native_distance_p50_p95": [
+        1.8251412625744043,
+        5.023485409102109
+      ],
+      "limbus_ellseg_distance_p50_p95": [
+        1.2315867040425368,
+        1.7812695796114397
+      ],
+      "limbus_native_distance_p50_p95": [
+        0.8062251080994205,
+        3.542214118555818
+      ]
+    },
+    {
+      "frame": 521,
+      "side": "right",
+      "reject_view": false,
+      "iris_points": 5,
+      "noniris_points": 5,
+      "ellseg_iris_admitted": 5,
+      "ellseg_noniris_admitted": 1,
+      "native_iris_admitted": 0,
+      "native_noniris_admitted": 0,
+      "ellseg_pupil_pixels": 48,
+      "ellseg_iris_pixels": 450,
+      "pupil_ellseg_distance_p50_p95": [
+        2.1719553149021924,
+        2.681132116353217
+      ],
+      "pupil_native_distance_p50_p95": [
+        1.469323556655259,
+        4.273129874080542
+      ],
+      "limbus_ellseg_distance_p50_p95": [
+        1.644836264147166,
+        2.121518876278277
+      ],
+      "limbus_native_distance_p50_p95": [
+        2.2402451791838094,
+        7.0812036008712695
+      ]
+    },
+    {
+      "frame": 779,
+      "side": "left",
+      "reject_view": false,
+      "iris_points": 5,
+      "noniris_points": 5,
+      "ellseg_iris_admitted": 5,
+      "ellseg_noniris_admitted": 1,
+      "native_iris_admitted": 5,
+      "native_noniris_admitted": 0,
+      "ellseg_pupil_pixels": 66,
+      "ellseg_iris_pixels": 445,
+      "pupil_ellseg_distance_p50_p95": [
+        1.0291330287500118,
+        1.2708755266264182
+      ],
+      "pupil_native_distance_p50_p95": [
+        0.8609626516864277,
+        3.7217434770149898
+      ],
+      "limbus_ellseg_distance_p50_p95": [
+        1.260557684924863,
+        2.1254526542823156
+      ],
+      "limbus_native_distance_p50_p95": [
+        1.4440015452911723,
+        2.174331978535803
+      ]
+    },
+    {
+      "frame": 779,
+      "side": "right",
+      "reject_view": false,
+      "iris_points": 5,
+      "noniris_points": 5,
+      "ellseg_iris_admitted": 5,
+      "ellseg_noniris_admitted": 1,
+      "native_iris_admitted": 5,
+      "native_noniris_admitted": 0,
+      "ellseg_pupil_pixels": 48,
+      "ellseg_iris_pixels": 465,
+      "pupil_ellseg_distance_p50_p95": [
+        0.8497149174332923,
+        1.738100620725696
+      ],
+      "pupil_native_distance_p50_p95": [
+        0.9608090828229425,
+        2.2986481090996826
+      ],
+      "limbus_ellseg_distance_p50_p95": [
+        1.2325275702834606,
+        2.2644673008367215
+      ],
+      "limbus_native_distance_p50_p95": [
+        0.8468309712047848,
+        1.1579752362933933
+      ]
+    },
+    {
+      "frame": 923,
+      "side": "left",
+      "reject_view": false,
+      "iris_points": 5,
+      "noniris_points": 5,
+      "ellseg_iris_admitted": 5,
+      "ellseg_noniris_admitted": 1,
+      "native_iris_admitted": 2,
+      "native_noniris_admitted": 0,
+      "ellseg_pupil_pixels": 34,
+      "ellseg_iris_pixels": 431,
+      "pupil_ellseg_distance_p50_p95": [
+        1.9295914840137036,
+        2.9374845652003136
+      ],
+      "pupil_native_distance_p50_p95": [
+        2.4696105599319926,
+        5.337740710193562
+      ],
+      "limbus_ellseg_distance_p50_p95": [
+        1.9972105658378068,
+        2.5287668704076913
+      ],
+      "limbus_native_distance_p50_p95": [
+        0.8314988757750177,
+        1.763445705424337
+      ]
+    },
+    {
+      "frame": 923,
+      "side": "right",
+      "reject_view": false,
+      "iris_points": 5,
+      "noniris_points": 5,
+      "ellseg_iris_admitted": 5,
+      "ellseg_noniris_admitted": 1,
+      "native_iris_admitted": 4,
+      "native_noniris_admitted": 0,
+      "ellseg_pupil_pixels": 48,
+      "ellseg_iris_pixels": 488,
+      "pupil_ellseg_distance_p50_p95": [
+        0.8708761471260774,
+        1.9660956429069611
+      ],
+      "pupil_native_distance_p50_p95": [
+        2.6683009529814394,
+        4.010424522972984
+      ],
+      "limbus_ellseg_distance_p50_p95": [
+        0.6822664430082062,
+        1.6111056221687605
+      ],
+      "limbus_native_distance_p50_p95": [
+        0.9430071633370405,
+        1.1672156757007475
+      ]
+    },
+    {
+      "frame": 1115,
+      "side": "left",
+      "reject_view": false,
+      "iris_points": 5,
+      "noniris_points": 5,
+      "ellseg_iris_admitted": 5,
+      "ellseg_noniris_admitted": 1,
+      "native_iris_admitted": 5,
+      "native_noniris_admitted": 0,
+      "ellseg_pupil_pixels": 48,
+      "ellseg_iris_pixels": 418,
+      "pupil_ellseg_distance_p50_p95": [
+        1.1366934081677944,
+        2.4712633340014007
+      ],
+      "pupil_native_distance_p50_p95": [
+        2.5601187856125676,
+        4.530554635145288
+      ],
+      "limbus_ellseg_distance_p50_p95": [
+        1.92942907174927,
+        2.380482895175582
+      ],
+      "limbus_native_distance_p50_p95": [
+        0.8706445878818201,
+        2.159555454056037
+      ]
+    },
+    {
+      "frame": 1115,
+      "side": "right",
+      "reject_view": false,
+      "iris_points": 5,
+      "noniris_points": 5,
+      "ellseg_iris_admitted": 5,
+      "ellseg_noniris_admitted": 1,
+      "native_iris_admitted": 5,
+      "native_noniris_admitted": 0,
+      "ellseg_pupil_pixels": 45,
+      "ellseg_iris_pixels": 454,
+      "pupil_ellseg_distance_p50_p95": [
+        1.2651296011368225,
+        3.3405254569090896
+      ],
+      "pupil_native_distance_p50_p95": [
+        0.7881056072423276,
+        2.307708277528496
+      ],
+      "limbus_ellseg_distance_p50_p95": [
+        0.9418467824050157,
+        1.309135312968161
+      ],
+      "limbus_native_distance_p50_p95": [
+        0.40245959255997477,
+        0.63302657175515
+      ]
+    }
+  ],
+  "limits": "Reused sparse assistant labels on one clip; EllSeg is amodal. Noniris overlap is NOT visible-mask accuracy. No removal/correspondence or tracking validation.",
+  "production_changes": false
+}

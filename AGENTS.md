@@ -66,6 +66,16 @@ Evaluate pretrained eye segmentation/tracking before further custom fitting; see
 
 ## What this project is
 
+**Round 13 neural evaluation:** released EllSeg and RITnet weights now run in
+`dependencies/ellseg-runtime/.venv` with torch 2.8/cu128. Reusable
+`neural_iris_observations.py --shot` stores separate complete-ellipse and visible-part
+proposals, retaining exact source on all 300 keyed eyes. On reused sparse labels,
+EllSeg admits 40/40 iris and 16/60 noniris points; RITnet 30/40 and 0/60, but has a
+small false pupil/iris in one blink and a large pupil-boundary miss on source 923.
+These are not validated material masks, clean donors or repairs. No production
+reflection change was enabled. Read `rounds/round13.md` and
+`docs/neural-eye-evaluation.md` before extending this path.
+
 A virtual-production pipeline that composites green-screen footage of the artist into Blender
 environments, to produce music videos. The stated acceptance bar is **full photorealism** —
 "if it doesn't look 100% authentic and like I was literally there, I don't want it anyway" — so
@@ -168,12 +178,13 @@ templates/  scripts/  logs/  dependencies/
 **Every pipeline stage takes `--shot`.** There is no default; running a script without it lists
 the available shots. A shot names its environment via `environment.dir` in its `shot.json`.
 
-Two Python environments, deliberately separate:
+Three Python environments, deliberately separate:
 
 | purpose | interpreter |
 |---|---|
 | pipeline (torch 2.8+cu128, opencv 4.13, numpy 2.4) | `dependencies/CorridorKey/.venv/Scripts/python.exe` |
 | face landmarks (mediapipe 1.x needs opencv-contrib 5.x) | `dependencies/facetrack/.venv/Scripts/python.exe` |
+| experimental EllSeg/RITnet inference (torch 2.8+cu128) | `dependencies/ellseg-runtime/.venv/Scripts/python.exe` |
 
 Isolate any dependency that would disturb the pipeline's opencv — every EXR read depends on it.
 Use `uv pip install --python <venv>/Scripts/python.exe <pkg>`; there is no `pip` in these venvs.

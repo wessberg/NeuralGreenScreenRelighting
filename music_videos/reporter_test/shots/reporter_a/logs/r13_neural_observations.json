@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "provenance": {
+    "repository": "https://github.com/RSKothari/EllSeg",
+    "expected_revision": "8f1ea13336fa9c662403bd5823ac13cc6a6dd632",
+    "weights": "all.git_ok",
+    "weights_sha256": "0b8d3f4c2c936de3950150d302f3608679874317862942e1ec53b21c33a03a1a",
+    "architecture_sha256": "2a23efe9c45c138d444145f746b2cebb5ed084c3a7d7795ccc7a91fce0cb5bb3",
+    "compatibility": "np.int scalar casts -> int in loaded architecture; integer crop/pad; safe weights-only load",
+    "torch": "2.8.0+cu128",
+    "numpy": "2.4.2",
+    "opencv": "4.13.0",
+    "device": "cuda",
+    "strict_state_dict": true,
+    "mask_semantics": "full inferred iris/pupil, not observed visibility"
+  },
+  "visibility_provenance": {
+    "repository": "https://github.com/AayushKrChaudhary/RITnet",
+    "expected_revision": "6431c57ce7bf0eda935fb6178b926ae9440b50bf",
+    "weights_sha256": "02de259b8fe2e26e825101bb5d3f54b48a13a1a264eb0631c367db4596d0defa",
+    "architecture_sha256": "29c6ab6c0a06811ab83db2155c084b00a797facfa3ff0a74ddef92f6c9886672",
+    "strict_state_dict": true,
+    "torch": "2.8.0+cu128",
+    "device": "cuda",
+    "classes": {
+      "0": "background",
+      "1": "sclera",
+      "2": "iris",
+      "3": "pupil"
+    },
+    "preprocessing": "aspect-preserving fit within 400x640, centered zero pad; PIL grayscale; gamma .8; CLAHE 1.5/8x8; (x/255-.5)/.5",
+    "limits": "trained OpenEDS near-eye images; RGB performance footage domain and padding adaptation unvalidated"
+  },
+  "pixel_aspect": 1.0,
+  "status": "unvalidated geometry and visible-part proposals; exact source fallback throughout",
+  "material_warning": "RITnet iris class can contain original reflections; it is not a clean donor or removal mask",
+  "frames": 150,
+  "eyes": 300,
+  "changed_channels": 0
+}

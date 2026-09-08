@@ -1,0 +1,21 @@
+{
+  "reviewer": "assistant",
+  "method": "native-pixel nearest-neighbour overlays and ordered aspect-preserving decoded contact sheets",
+  "real_time_playback": false,
+  "artist_approval": false,
+  "ellseg_full_boards_source_frames": [79, 779],
+  "ritnet_full_boards_source_frames": [79, 217, 521, 779, 923, 1115],
+  "both_eyes_inspected_on_each_board": true,
+  "ritnet_motion_contact_sheets": ["r13_ritnet_sheet_0100.jpg", "r13_ritnet_sheet_0150.jpg"],
+  "keyed_observation_contact_sheets": ["r13_neural_observations_sheet_0100.jpg", "r13_neural_observations_sheet_0150.jpg"],
+  "ordered_thumbnails_inspected_per_short_video": 150,
+  "full_ellseg_1200_frame_visual_review": false,
+  "findings": [
+    "EllSeg places complete iris/pupil predictions over closed lids; not a visible-material mask.",
+    "RITnet source 79 left retains a small iris/pupil prediction in a rejected blink view.",
+    "RITnet source 217 predicts no iris/pupil in either closed eye.",
+    "RITnet source 923 left misses substantial iris/pupil regions; segmentation is not consistently trustworthy.",
+    "Combined proposal video retains original catchlights in the source-fallback panels, including across blinks.",
+    "These are diagnostic overlays and fallback preservation, not reflection repair or replacement."
+  ]
+}
