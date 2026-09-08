@@ -1,0 +1,343 @@
+{
+  "model": "facebook/sapiens2-normal-1b",
+  "shot": "reporter_a",
+  "tests": {
+    "sphere": {
+      "ground_truth": "analytic unit sphere, image axes +x right / +y down / +z toward camera",
+      "pixels": 228969,
+      "best": {
+        "mapping": "+x -y +z",
+        "mean_angular_error_deg": 6.088
+      },
+      "runner_up": {
+        "mapping": "-y +x +z",
+        "mean_angular_error_deg": 43.958
+      },
+      "margin_deg": 37.871,
+      "worst_deg": 173.912,
+      "all_48": [
+        {
+          "mapping": "+x -y +z",
+          "err_deg": 6.09
+        },
+        {
+          "mapping": "-y +x +z",
+          "err_deg": 43.96
+        },
+        {
+          "mapping": "-x -y +z",
+          "err_deg": 43.97
+        },
+        {
+          "mapping": "+x +y +z",
+          "err_deg": 44.64
+        },
+        {
+          "mapping": "+y -x +z",
+          "err_deg": 44.74
+        },
+        {
+          "mapping": "+y +x +z",
+          "err_deg": 47.33
+        },
+        {
+          "mapping": "-y -x +z",
+          "err_deg": 48.38
+        },
+        {
+          "mapping": "-x +y +z",
+          "err_deg": 71.17
+        },
+        {
+          "mapping": "+x +z -y",
+          "err_deg": 75.11
+        },
+        {
+          "mapping": "-z -y -x",
+          "err_deg": 76.3
+        },
+        {
+          "mapping": "+z -y +x",
+          "err_deg": 76.53
+        },
+        {
+          "mapping": "+x -z -y",
+          "err_deg": 77.47
+        },
+        {
+          "mapping": "+x -z +y",
+          "err_deg": 78.15
+        },
+        {
+          "mapping": "+z -y -x",
+          "err_deg": 79.15
+        },
+        {
+          "mapping": "-z -y +x",
+          "err_deg": 79.44
+        },
+        {
+          "mapping": "+x +z +y",
+          "err_deg": 81.58
+        },
+        {
+          "mapping": "+z +x -y",
+          "err_deg": 86.63
+        },
+        {
+          "mapping": "-z -x -y",
+          "err_deg": 87.62
+        },
+        {
+          "mapping": "-y -z -x",
+          "err_deg": 88.31
+        },
+        {
+          "mapping": "+y -z +x",
+          "err_deg": 88.49
+        },
+        {
+          "mapping": "-z +x -y",
+          "err_deg": 89.03
+        },
+        {
+          "mapping": "+y +z -x",
+          "err_deg": 89.26
+        },
+        {
+          "mapping": "-y +z +x",
+          "err_deg": 89.47
+        },
+        {
+          "mapping": "+z -x -y",
+          "err_deg": 89.72
+        },
+        {
+          "mapping": "-z +x +y",
+          "err_deg": 90.28
+        },
+        {
+          "mapping": "+y -z -x",
+          "err_deg": 90.53
+        },
+        {
+          "mapping": "-y -z +x",
+          "err_deg": 90.74
+        },
+        {
+          "mapping": "+z -x +y",
+          "err_deg": 90.97
+        },
+        {
+          "mapping": "-y +z -x",
+          "err_deg": 91.51
+        },
+        {
+          "mapping": "+y +z +x",
+          "err_deg": 91.69
+        },
+        {
+          "mapping": "+z +x +y",
+          "err_deg": 92.38
+        },
+        {
+          "mapping": "-z -x +y",
+          "err_deg": 93.37
+        },
+        {
+          "mapping": "-x -z -y",
+          "err_deg": 98.42
+        },
+        {
+          "mapping": "+z +y -x",
+          "err_deg": 100.56
+        },
+        {
+          "mapping": "-z +y +x",
+          "err_deg": 100.85
+        },
+        {
+          "mapping": "-x +z -y",
+          "err_deg": 101.85
+        },
+        {
+          "mapping": "-x +z +y",
+          "err_deg": 102.53
+        },
+        {
+          "mapping": "-z +y -x",
+          "err_deg": 103.47
+        },
+        {
+          "mapping": "+z +y +x",
+          "err_deg": 103.7
+        },
+        {
+          "mapping": "-x -z +y",
+          "err_deg": 104.89
+        },
+        {
+          "mapping": "+x -y -z",
+          "err_deg": 108.83
+        },
+        {
+          "mapping": "+y +x -z",
+          "err_deg": 131.62
+        },
+        {
+          "mapping": "-y -x -z",
+          "err_deg": 132.67
+        },
+        {
+          "mapping": "-y +x -z",
+          "err_deg": 135.26
+        },
+        {
+          "mapping": "-x -y -z",
+          "err_deg": 135.36
+        },
+        {
+          "mapping": "+x +y -z",
+          "err_deg": 136.03
+        },
+        {
+          "mapping": "+y -x -z",
+          "err_deg": 136.04
+        },
+        {
+          "mapping": "-x +y -z",
+          "err_deg": 173.91
+        }
+      ]
+    },
+    "horizontal_flip": {
+      "expectation": "exactly the horizontal image axis negates",
+      "per_channel_corr_model_axes": [
+        -0.988,
+        0.99,
+        0.97
+      ],
+      "per_channel_corr_image_axes": [
+        -0.988,
+        0.99,
+        0.97
+      ],
+      "negated_image_axis": "x",
+      "agrees": true,
+      "note": "in distribution: the config ships flip_pairs, so horizontal flip augmentation was part of training"
+    },
+    "vertical_flip": {
+      "expectation": "exactly the vertical image axis negates",
+      "per_channel_corr_model_axes": [
+        0.946,
+        -0.877,
+        0.866
+      ],
+      "per_channel_corr_image_axes": [
+        0.946,
+        -0.877,
+        0.866
+      ],
+      "negated_image_axis": "y",
+      "agrees": true,
+      "note": "OUT of distribution: an upside-down person is unlike anything in the training set, so a weaker correlation here is expected and is not evidence against the mapping"
+    },
+    "anatomy": {
+      "face_bbox_px": [
+        882.952995300293,
+        189.35393571853638,
+        1155.9291458129883,
+        516.6378092765808
+      ],
+      "checks": [
+        {
+          "test": "face left leans left (image -x)",
+          "value": -0.6203,
+          "requires": "< 0.00",
+          "pass": true
+        },
+        {
+          "test": "face right leans right (image +x)",
+          "value": 0.6369,
+          "requires": "> 0.00",
+          "pass": true
+        },
+        {
+          "test": "brow leans up relative to jaw (image -y)",
+          "value": -0.4981,
+          "requires": "< 0.00",
+          "pass": true
+        },
+        {
+          "test": "visible surface faces the camera (image +z)",
+          "value": 0.7429,
+          "requires": "> 0.30",
+          "pass": true
+        }
+      ],
+      "all_pass": true
+    }
+  },
+  "camera": {
+    "rotation_euler_deg": [
+      90.0,
+      0.0,
+      0.0
+    ],
+    "world_right": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "world_up": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "world_toward_camera": [
+      0.0,
+      -1.0,
+      0.0
+    ],
+    "derivation": "from the recorded Euler angles: a Blender camera looks down local -Z with local +Y up"
+  },
+  "model_to_image": {
+    "matrix": [
+      [
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "mapping": "+x -y +z"
+  },
+  "matrix": [
+    [
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ]
+  ],
+  "mapping": "world = (+1*c0, -1*c2, +1*c1)",
+  "verdict": "PASS"
+}

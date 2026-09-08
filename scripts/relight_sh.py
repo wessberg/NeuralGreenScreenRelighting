@@ -19,6 +19,15 @@ at g = 0 so small corrections pass through untouched, and saturates smoothly ins
 a hard edge inside the gain map. The old `0.30 + 0.70*gain` damping is gone -- it compressed
 every correction by 30% and was the main reason the shot only moved 6.1%.
 
+Normals come from ``scripts/neural_normals.py`` (Sapiens2) when that stage has been run, and
+fall back to the depth gradient otherwise. Round 1 predicted this would be the fix for the key
+not visibly sweeping across the face. Measured, it is not: the two normal fields drive the
+shading centroid across 50% and 60% of the face width respectively, so the depth gradient was
+never the thing throwing direction away. Neural normals are still the better input -- they are
+coherent rather than noisy, they extinguish correctly when lit from behind, and they carry real
+facial structure -- but the ceiling on directional modelling is the ratio formulation itself,
+not its normals. See rounds/round2.md.
+
 E_source, the plate's own lighting, is the weak link in any ratio method and is ASSUMED here:
 a soft frontal studio key, which is what the plate looks like. Measuring it properly means
 shooting a chrome ball and an 18% grey ball at the head of the take. The exposure anchor is a
@@ -72,6 +81,21 @@ def normals_from_depth(depth, alpha, cal, fx_small, cam_h, subject_distance):
     return n.astype(np.float32), np.stack([X, Yw, Zw], -1).astype(np.float32)
 
 
+def load_neural_normals(shot, i):
+    """Sapiens2 normals for frame i, already in Blender world axes, or None if not baked.
+
+    Returned at this module's working resolution and re-normalised: the npz is float16, and
+    half precision is not accurate enough to leave a unit vector unit after interpolation.
+    """
+    p = shot.relight / 'normals' / ('%06d.npz' % i)
+    if not p.exists():
+        return None
+    n = np.load(p)['normal'].astype(np.float32)
+    if n.shape[:2] != (H, W):
+        n = cv2.resize(n, (W, H), interpolation=cv2.INTER_LINEAR)
+    return n / np.maximum(np.linalg.norm(n, axis=-1, keepdims=True), 1e-6)
+
+
 def sh_irradiance(normals, coeffs):
     """E(n) = sum_k C[k] Y_k(n); coefficients are already Lambertian-convolved."""
     Y = sh_basis(normals[..., 0], normals[..., 1], normals[..., 2])      # (H,W,9)
@@ -84,6 +108,8 @@ def main():
     ap.add_argument('--anchor-frame', type=int, default=0)
     ap.add_argument('--stops', type=float, default=1.5, help='tanh saturation, in stops')
     ap.add_argument('--frames', type=int, default=0)
+    ap.add_argument('--normals', choices=('auto', 'neural', 'depth'), default='auto',
+                    help="'auto' uses Sapiens2 normals when relight/normals/ is populated")
     args = ap.parse_args()
     shot = from_args(args)
     env = shot.environment
@@ -129,10 +155,23 @@ def main():
     out.mkdir(parents=True, exist_ok=True)
     stats = []
     anchor = None
+    normal_source = 'depth_gradient'
     for i in range(n):
         alpha = np.clip(cv2.resize(cv2.imread(str(shot.alpha(i)), -1), (W, H), interpolation=cv2.INTER_AREA), 0, 1)
         depth = np.load(shot.depth_npy(i))
-        nrm, pos = normals_from_depth(depth, alpha, cal, fx_small, cam_h, dist)
+        nrm_d, pos = normals_from_depth(depth, alpha, cal, fx_small, cam_h, dist)
+        # pos is still needed whichever source wins: the probe height blend reads world Z from
+        # the depth back-projection, which the neural normals do not provide.
+        nrm = nrm_d
+        if args.normals != 'depth':
+            nn = load_neural_normals(shot, i)
+            if nn is not None:
+                nrm = nn
+                normal_source = 'sapiens2'
+            elif args.normals == 'neural':
+                raise SystemExit(
+                    'No %s. Run scripts/neural_normals.py --shot %s first, or pass '
+                    '--normals depth.' % (shot.relight / 'normals', shot.name))
 
         key = str(i) if str(i) in lighting['frames'] else 'static'
         fr = lighting['frames'].get(key) or lighting['frames'][next(iter(lighting['frames']))]
@@ -179,7 +218,7 @@ def main():
     rb = g[:, 0] / np.maximum(g[:, 2], 1e-6)
     summary = {'shot': shot.name, 'frames': len(stats), 'environment': env.name,
                'depth_calibration': cal, 'exposure_anchor': anchor,
-               'tanh_stops': args.stops,
+               'tanh_stops': args.stops, 'normal_source': normal_source,
                'E_source': {'model': 'soft frontal studio key (ASSUMED, not measured)',
                             'direction': l_src.tolist(), 'ambient': SRC_AMBIENT, 'key': SRC_KEY,
                             'how_to_measure': 'chrome ball + 18% grey ball on a slate at the head of the take'},

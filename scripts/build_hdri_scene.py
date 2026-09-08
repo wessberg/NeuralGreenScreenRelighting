@@ -145,6 +145,28 @@ cam_data.dof.focus_distance = SUBJECT_DISTANCE
 # one of the most immediate "this was photographed" cues.
 cam_data.dof.aperture_fstop = float(cam_cfg.get('aperture_fstop', 2.0))
 cam_data.dof.aperture_blades = 0
+
+# --- anamorphic ---------------------------------------------------------------------
+# Opt-in per shot, because the artist shoots anamorphic and the stock reporter plate does not.
+# All the 1.6x arithmetic lives in scripts/anamorphic.py so no factor of 1.6 is ever retyped.
+ANAMORPHIC = bool(cam_cfg.get('anamorphic', False))
+anamorphic_report = None
+if ANAMORPHIC:
+    import anamorphic as ana
+    m = ana.model(focal_mm=float(cam_cfg.get('taking_focal_mm', ana.FOCAL_MM)),
+                  squeeze=float(cam_cfg.get('squeeze_factor', ana.SQUEEZE)),
+                  delivery=tuple(shot.resolution),
+                  taking_fstop=float(cam_cfg.get('aperture_fstop', 2.9)))
+    # 1.6 is the measured value for a vertical oval; see logs/anamorphic_validation.json.
+    ana.apply_to_camera(cam_data, scn, m,
+                        aperture_ratio=float(cam_cfg.get('squeeze_factor', ana.SQUEEZE)),
+                        focus_distance=SUBJECT_DISTANCE)
+    LENS, SENSOR = m['render_focal_mm'], m['render_sensor_width_mm']
+    anamorphic_report = m
+    print('anamorphic: rendering %dx%d at %.3f mm equivalent, hFOV %.2f deg, f/%.3f, bokeh %s'
+          % (m['render_resolution'][0], m['render_resolution'][1], m['render_focal_mm'],
+             m['hfov_deg'], m['render_fstop'], m['bokeh']))
+
 cam = bpy.data.objects.new('Plate camera', cam_data)
 scn.collection.objects.link(cam)
 # Actor stands at the origin; camera looks along +Y toward them, level horizon.
@@ -153,7 +175,12 @@ cam.rotation_euler = (math.radians(90.0), 0.0, 0.0)
 scn.camera = cam
 
 # --- render settings ------------------------------------------------------------------
-res = (960, 540) if args.test else tuple(shot.resolution)
+if args.test:
+    res = (960, 540)
+elif ANAMORPHIC:
+    res = tuple(anamorphic_report['render_resolution'])
+else:
+    res = tuple(shot.resolution)
 scn.render.resolution_x, scn.render.resolution_y = res
 scn.render.resolution_percentage = 100
 scn.render.film_transparent = False          # composite.py composites over an opaque background
@@ -188,7 +215,9 @@ info = {
     'camera': {'lens_mm': LENS, 'sensor_width_mm': SENSOR, 'hfov_deg': round(hfov, 2),
                'location': list(cam.location), 'height_m': CAM_HEIGHT,
                'subject_distance_m': SUBJECT_DISTANCE,
-               'aperture_fstop': cam_data.dof.aperture_fstop},
+               'aperture_fstop': cam_data.dof.aperture_fstop,
+               'rotation_euler_deg': [round(math.degrees(a), 6) for a in cam.rotation_euler],
+               'anamorphic': anamorphic_report},
     'panorama_match': {'visible_px_of_16k': round(16384 * hfov / 360),
                        'plate_real_px': 1920,
                        'pct_of_plate': round(100 * (16384 * hfov / 360) / 1920, 1)},

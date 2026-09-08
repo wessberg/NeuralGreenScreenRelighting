@@ -21,6 +21,9 @@ music_videos/**/source/frames/
 music_videos/**/key/
 music_videos/**/relight/depth/
 music_videos/**/relight/controls/
+music_videos/**/relight/normals/
+music_videos/**/relight/proxy/
+music_videos/**/relight/proxy_render/
 music_videos/**/intermediate/
 music_videos/**/composite/
 music_videos/**/final/

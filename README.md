@@ -139,6 +139,48 @@ $PY   = "dependencies/CorridorKey/.venv/Scripts/python.exe"
 
 The official [LiveLight](https://github.com/mayuelala/LiveLight) repository was cloned and its actual stage-3 interface, configuration and dependencies inspected. It provides released temporal diffusion code and weights, but its default 512×512 output and PyTorch 2.1/xformers pins make it a less direct fit for this already-soft, detailed photographic plate and Blackwell GPU. LiveLight **is not used for the output**, and no claim is made that it was benchmarked locally. Likewise, Relit-LiVE's published recommendation is at least 24 GB VRAM. The chosen approach uses [Video Depth Anything](https://github.com/DepthAnything/Video-Depth-Anything) for temporal geometry and a deterministic photographic relighter, prioritizing exact face, hands, fabric, instrument and timing retention.
 
+## Geometry stages added in round 2
+
+Full detail in `AGENTS.md` and `rounds/round2.md`. The short version: a gain map multiplies the
+plate, so it can never produce a shadow. These stages put real geometry in front of a ray tracer.
+
+```powershell
+$P = "dependencies/CorridorKey/.venv/Scripts/python.exe"
+$B = "C:\Program Files\Blender Foundation\Blender 5.2lender.exe"
+$S = "music_videos/reporter_test/shots/reporter_a"
+
+# Surface normals (Sapiens2). The convention validator MUST run first and pass.
+& $P scripts/validate_normals_convention.py --shot $S
+& $P scripts/neural_normals.py --shot $S
+
+# Proxy geometry: matte silhouette + metric depth + normal-integrated fine relief
+& $P scripts/make_proxy_mesh.py --shot $S
+
+# Ray-trace it, and prove the shadow moves when the light does
+& $B -b --factory-startup --python scripts/render_proxy.py -- --shot $S --frame 0 --test uplight
+& $P scripts/validate_proxy_shadows.py --shot $S
+
+# Lightbulb tour: 11 named stations, hue sweep, 120 BPM strobe, blackouts
+& $B -b --factory-startup --python scripts/stress_proxy.py -- --shot $S
+
+# Anamorphic camera model (the artist's SIRUI Saturn 35mm, 1.6x)
+& $P scripts/anamorphic.py                                    # print the derived model
+& $B -b --factory-startup --python scripts/anamorphic.py -- --validate
+
+# Editorial masters for Resolve
+& $P scripts/master_export.py --shot $S --report
+& $P scripts/master_export.py --shot $S --codec prores4444
+```
+
+Two things in here are load-bearing and easy to get silently wrong:
+
+- **`logs/normals_convention.json` is not optional.** Camera-space normals map to Blender world
+  as `world = (c0, -c2, c1)` — an axis swap, not the sign flip that was predicted. Round 2's
+  validator ranks all 48 signed permutations against a sphere, then corroborates with flip
+  equivariance and anatomy. `neural_normals.py` refuses to run without it.
+- **Monocular depth over-estimates facial relief by ~2.2x.** Unanchored, the proxy came out
+  68 cm deep. The relief scale is anchored on the face at 0.085 m of visible-surface depth.
+
 ## Current files and commands
 
 Run from this project root in PowerShell. Paths are intentionally local to the project except the existing Blender executable.

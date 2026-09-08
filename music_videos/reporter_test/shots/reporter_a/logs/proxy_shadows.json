@@ -1,0 +1,56 @@
+{
+  "shot": "reporter_a",
+  "frame": 0,
+  "constraint": "CLAUDE.md hard constraint 1: self-shadowing",
+  "method": "shadow centroid inside the face box, as a fraction of face height, under an uplight and a toplight",
+  "measurements": {
+    "uplight": {
+      "centroid_frac_of_face_height": 0.49938406595369667,
+      "dark_fraction": 0.49986642920748,
+      "face_median_luma": 0.5667686462402344,
+      "contrast_p10_p90": 0.5638628602027893,
+      "preview": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\relight\\proxy_render\\000000_uplight_preview.png"
+    },
+    "toplight": {
+      "centroid_frac_of_face_height": 0.6439967271758289,
+      "dark_fraction": 0.4997328584149599,
+      "face_median_luma": 0.36284705996513367,
+      "contrast_p10_p90": 0.5921851992607117,
+      "preview": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\relight\\proxy_render\\000000_toplight_preview.png"
+    }
+  },
+  "shadow_travel_frac_of_face_height": 0.1446,
+  "checks": [
+    {
+      "test": "uplight throws the shadow into the upper face",
+      "value": 0.4994,
+      "requires": "< 0.55",
+      "pass": true
+    },
+    {
+      "test": "toplight throws the shadow into the lower face",
+      "value": 0.644,
+      "requires": "> 0.45",
+      "pass": true
+    },
+    {
+      "test": "the shadow MOVES when the light moves",
+      "value": 0.1446,
+      "requires": "> 0.10",
+      "pass": true
+    },
+    {
+      "test": "uplight actually has shadow",
+      "value": 0.5639,
+      "requires": "> 0.05",
+      "pass": true
+    },
+    {
+      "test": "toplight actually has shadow",
+      "value": 0.5922,
+      "requires": "> 0.05",
+      "pass": true
+    }
+  ],
+  "verdict": "PASS"
+}

@@ -1,0 +1,48 @@
+{
+  "model": {
+    "squeeze": 1.6,
+    "taking_focal_mm": 35.0,
+    "render_focal_mm": 21.875,
+    "render_sensor_width_mm": 36.0,
+    "render_resolution": [
+      3840,
+      1600
+    ],
+    "squeezed_aspect": 1.5,
+    "gate_aspect": 1.5,
+    "gate_matches_squeezed_aspect": true,
+    "hfov_deg": 78.899,
+    "vfov_deg": 37.849,
+    "vfov_deg_from_render_camera": 37.849,
+    "vfov_consistent": true,
+    "taking_fstop": 2.9,
+    "render_fstop": 1.1328,
+    "fstop_rule": "blur diameter ~ focal^2 / N, so N scales by (render/taking focal)^2 = 1/squeeze^2",
+    "bokeh": "vertical oval, 1.6:1 in the desqueezed image"
+  },
+  "measurements": {
+    "1.0000": {
+      "width_px": 8,
+      "height_px": 8,
+      "bokeh_height_over_width": 1.0,
+      "render": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\logs\\anamorphic\\bokeh_ratio_1.0000.png"
+    },
+    "1.6000": {
+      "width_px": 5,
+      "height_px": 8,
+      "bokeh_height_over_width": 1.6,
+      "render": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\logs\\anamorphic\\bokeh_ratio_1.6000.png"
+    },
+    "0.6250": {
+      "width_px": 12,
+      "height_px": 8,
+      "bokeh_height_over_width": 0.6667,
+      "render": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\logs\\anamorphic\\bokeh_ratio_0.6250.png"
+    }
+  },
+  "target_bokeh_height_over_width": 1.6,
+  "aperture_ratio_for_vertical_oval": "1.6000",
+  "aperture_ratio_error": 0.0,
+  "verdict": "PASS",
+  "note": "A vertical oval is the empirical signature of anamorphic bokeh in the desqueezed image. The blur MAGNITUDE still has to be matched against a real defocused take: the taking T-stop is not recorded yet."
+}
