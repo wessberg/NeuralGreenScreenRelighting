@@ -1,120 +1,130 @@
 {
-  "_comment": "The artist's own capture rig. Stated by the artist on 2026-09-08. This is a MEASUREMENT of how his footage is shot, not a default for every clip in the workspace: stock and reference plates (reporter_test) carry their own camera block in shot.json and must not inherit these values.",
+  "_comment": "The artist's own capture rig, as STATED BY HIM. Stock and reference plates (reporter_test) carry their own camera block in shot.json and must never inherit these values. Everything under `derived` is COMPUTED by scripts/capture_profile.py from the stated facts plus the delivery frame -- do not hand-edit it, and do not retype a factor of 1.6 anywhere: regenerate instead.",
   "applies_to": "the artist's own performance footage",
   "does_not_apply_to": [
     "music_videos/reporter_test/shots/reporter_a"
   ],
-  "lens": {
-    "model": "SIRUI Saturn 35mm Full-Frame Anamorphic",
+  "stated_facts": {
+    "_comment": "Given by the artist on 2026-09-08. Nothing here is inferred.",
+    "camera_body": "Panasonic LUMIX S5 IIX, full frame",
+    "lens": "SIRUI Saturn 35mm Full-Frame Anamorphic",
     "focal_length_mm": 35.0,
-    "format": "full frame",
-    "anamorphic": true,
     "squeeze_factor": 1.6,
-    "squeeze_factor_status": "CONFIRMED by the artist on 2026-09-08.",
-    "sensor_width_mm": 36.0,
-    "sensor_width_note": "Full-frame nominal 36.0 mm; the S5 IIX open-gate active area is nearer 35.6 x 23.8 mm. Use the nominal for framing maths and the measured value if a precise camera solve ever depends on it. The 3:2 aspect is what matters for the anamorphic arithmetic and it is exact either way."
-  },
-  "shutter": {
-    "angle_degrees": 180.0,
+    "squeeze_factor_status": "CONFIRMED by the artist.",
+    "shutter_angle_degrees": 180.0,
     "frame_rate": "24/1",
-    "exposure_seconds": 0.0208333333,
-    "exposure_note": "180 degrees at 24 fps is 1/48 s. Blender's motion blur must be set to shutter 0.5 (fraction of the frame interval) for CG elements to carry matching blur; the default 0.5 happens to be correct, but set it explicitly rather than inheriting it."
-  },
-  "white_balance": {
-    "kelvin": 5600,
-    "status": "fixed on camera, not auto",
-    "note": "Daylight-balanced. An environment lit warmer or cooler than 5600 K will not match the plate's rendering of skin unless the relight ratio carries the difference; do not neutralise the plate to grey and then relight, or the correction is applied twice."
-  },
-  "frame_rate": "24/1",
-  "pipeline_implications": [
-    "ANAMORPHIC SQUEEZE IS THE BIGGEST ONE. The recorded plate is horizontally squeezed by the squeeze factor. Blender renders spherically, so plate and CG do not share a projection until one of them is converted. Decide the working space explicitly per shot and record it: either desqueeze the plate on ingest and render spherical CG at the desqueezed aspect, or keep the plate squeezed and render CG with a matching horizontal scale. Every geometric stage downstream -- camera solve, depth back-projection, normals, proxy geometry -- reads pixel aspect from that decision, and a silent 1.6x error there is exactly the kind of fault that is invisible in one frame.",
-    "Depth and normal estimators are trained on spherical imagery. Run them on the DESQUEEZED plate, or a face is 1.6x too narrow and the estimated geometry is wrong in a way that looks plausible.",
-    "Defocus is oval, not round: an anamorphic bokeh is stretched vertically by the squeeze factor in the desqueezed image. Blender's circular aperture will not match; the background defocus needs an anisotropic treatment.",
-    "Field of view: at 35 mm with a 1.6x squeeze on a 36 mm full-frame sensor, the horizontal coverage is that of a 21.9 mm spherical lens while the vertical stays that of a 35 mm. Do not feed 35 mm to a spherical camera model.",
-    "Flares and streaks are horizontal and typically blue. If the environment contains practicals in frame, matching this is part of the photorealism bar, not a stylistic extra."
-  ],
-  "horizontal_fov_deg": 79.0,
-  "horizontal_fov_derivation": "2*atan(36 / (2 * 35/1.6)) = 79.0 deg. Equivalent spherical focal length 35/1.6 = 21.9 mm.",
-  "vertical_fov_deg": 27.0,
-  "vertical_fov_derivation": "2*atan(24 / (2*35)) = 37.8 deg for a full 24 mm sensor height; 27.0 deg is quoted for a 2.39:1 desqueezed extraction. Record the actual recording mode per shot rather than relying on either figure.",
-  "still_to_record": [
-    "A ColorChecker + 18% grey card at the head of a take, to verify the V-Log/V-Gamut decode rather than inheriting its constants.",
-    "Recording mode and sensor readout area, which fixes the vertical field of view.",
-    "The artist's own interocular distance, measured once with a ruler, to remove the 63 mm adult prior from every camera solve.",
-    "A chrome ball and an 18% grey ball on a slate at the head of every take, which converts E_source from an assumption into a measurement."
-  ],
-  "camera_body": {
-    "model": "Panasonic LUMIX S5 IIX",
-    "sensor": "full frame",
-    "recording": "V-Log / V-Gamut",
-    "bit_depth_status": "RECORDED: 10-bit 4:2:0",
-    "open_gate_note": "5952/3968 = 1.5000 exactly. Desqueezed by 1.6 that is 9523 x 3968 = 2.400:1, which IS the 3840x1600 delivery aspect. The camera mode, the lens squeeze and the delivery frame all agree with no crop, and this is now confirmed rather than derived.",
-    "recording_mode": "6K 3:2 open gate",
-    "resolution": [
-      5952,
-      3968
-    ],
-    "codec": "H.265/HEVC 10-bit 4:2:0 Long GOP, 200 Mbps",
-    "oversampling": "Desqueezed native is 9523x3968 against a 3840x1600 delivery: about 2.48x linear. That headroom is the single biggest quality asset in the chain -- spend it on the matte, not on sharpening."
-  },
-  "colour": {
+    "white_balance_kelvin": 5600,
+    "white_balance_status": "fixed on camera, not auto",
     "transfer": "V-Log",
     "gamut": "V-Gamut",
-    "white_balance_kelvin": 5600,
-    "status": "CONSTANTS NOT YET VERIFIED against Panasonic official documentation",
-    "why_it_matters": "V-Log is a log curve over a wide gamut. Every stage of this pipeline assumes scene-linear Rec.709: the keyer thresholds, the depth and normal estimators, the SH irradiance ratio and the PQ grade. Feeding V-Log straight in makes all of them wrong in a way that still looks like a picture -- midtones lifted, saturation crushed, and every measured number in rounds/ silently invalid.",
-    "required": "Decode V-Log -> linear and V-Gamut -> Rec.709 ON INGEST, before keying. See scripts/vlog.py. Do NOT apply a creative LUT first; a display LUT is not invertible and throws away the highlight range that makes the HDR grade worth doing.",
-    "verification": "Shoot a ColorChecker and an 18% grey card under known light at the head of a take. 18% grey must land at the documented V-Log code value, and the decoded patch colours must match the chart reference. That converts these constants from inherited to measured."
+    "delivery_resolution": [
+      3840,
+      1600
+    ],
+    "delivery_aspect": "2.40:1",
+    "external_recorder": null,
+    "external_recorder_note": "None. ProRes RAW over HDMI is therefore NOT available, which is what makes the two modes below the complete set of options."
   },
-  "keying_implications": [
-    "CHROMA IS HALF RESOLUTION. 4:2:0 stores colour at 2976x1984 while luma is 5952x3968, and a green screen key is fundamentally a CHROMA operation. Upsample chroma to full resolution before keying (a good interpolator, not nearest) or every matte edge inherits a 2x2 blocky staircase that no amount of threshold tuning will remove.",
-    "LONG GOP MEANS COMPRESSION NOISE EXACTLY WHERE IT HURTS. Inter-frame prediction puts mosquito noise and blocking around high-contrast edges, which on a green-screen plate means the actor silhouette and every strand of hair. Transcode to an all-intra intermediate (ProRes 4444 or DNxHR) BEFORE keying, so the keyer is not chasing artefacts that change every frame and cause the matte to crawl.",
-    "KEY AT NATIVE 6K, THEN DOWNSCALE. With 2.48x linear oversampling, a matte computed at 5952x3968 and then downscaled to delivery is effectively supersampled: partial coverage at hair edges becomes real fractional alpha rather than a hard decision. Downscaling first throws that away.",
-    "The 200 Mbps figure is moderate for 6K Long GOP. Expect visible artefacts on a large flat green area; light the screen evenly and expose it properly rather than relying on the keyer to recover.",
-    "Thresholds from this camera will NOT transfer to the reporter test plate or vice versa, in either direction. Run scripts/calibrate_key.py per shot."
-  ],
-  "recording_mode_options": {
-    "_comment": "Evaluated 2026-09-08. Numbers derived in scripts/anamorphic.py terms; recompute there rather than retyping any factor of 1.6.",
-    "open_gate_6k": {
-      "resolution": [
-        5952,
-        3968
-      ],
-      "aspect": "3:2 (1.5000)",
-      "codec": "HEVC 10-bit 4:2:0 Long GOP 200 Mbps",
-      "desqueezed_aspect": 2.4,
-      "crop_needed_for_delivery": "none - it IS 2.40:1",
-      "oversampling_over_3840x1600": 2.48,
-      "sensor_used_mm": [
-        36.0,
-        24.0
-      ],
-      "hfov_deg": 78.9,
-      "vfov_deg": 37.8,
-      "storage_gb_per_min": 1.5,
-      "verdict": "Best geometry and most resolution headroom, worst codec for keying. Long GOP is only available here, so choosing this mode REQUIRES the all-intra transcode before keying."
+  "recording_mode": {
+    "status": "NOT YET CHOSEN by the artist.",
+    "why_it_is_still_open": "Open gate 3:2 is Long GOP / MOV only on this body, so the mode with the best geometry has the worst codec for keying, and the mode with the best codec costs 20.6% of the frame. There is no option that wins both.",
+    "consequence_for_the_pipeline": "Every stage must read the mode from the shot rather than assuming one. scripts/capture_profile.py exists for exactly this: a shot names a profile and the stage asks what ingest steps that profile requires.",
+    "candidates": {
+      "open_gate_6k": {
+        "profile_id": "s5iix_6k_open_gate",
+        "label": "6K 3:2 open gate, HEVC 10-bit 4:2:0 Long GOP 200 Mbps",
+        "recorded_resolution": [
+          5952,
+          3968
+        ],
+        "recorded_aspect": 1.5,
+        "chroma": "4:2:0",
+        "all_intra": false,
+        "desqueezed_aspect": 2.4,
+        "crop_to_reach_delivery": {
+          "keep_width_pct": 100.0,
+          "keep_height_pct": 100.0,
+          "discarded_pct": 0.0
+        },
+        "oversampling_over_delivery": 2.48,
+        "sensor_used_mm": [
+          36.0,
+          24.0
+        ],
+        "hfov_deg": 78.9,
+        "vfov_deg": 37.85,
+        "ingest_steps_required": [
+          "decode_transfer",
+          "convert_gamut",
+          "transcode_to_all_intra",
+          "upsample_chroma",
+          "desqueeze"
+        ],
+        "ingest_steps_recommended": [
+          "key_before_downscale"
+        ],
+        "storage_gb_per_min": 1.5,
+        "trade": "Perfect geometry and the most resolution headroom, worst codec for keying. Long GOP is the only option in this mode on this body, so the all-intra transcode is mandatory rather than advisable, and 4:2:0 means chroma is quartered in area on a plate whose key is a chroma operation."
+      },
+      "c58k_17_9": {
+        "profile_id": "s5iix_58k_17_9",
+        "label": "5.8K 17:9, ProRes 422 HQ 1.6 Gbps all-intra, LPCM",
+        "recorded_resolution": [
+          5776,
+          3056
+        ],
+        "recorded_aspect": 1.8901,
+        "chroma": "4:2:2",
+        "all_intra": true,
+        "desqueezed_aspect": 3.0241,
+        "crop_to_reach_delivery": {
+          "keep_width_pct": 79.36,
+          "keep_height_pct": 100.0,
+          "discarded_pct": 20.64
+        },
+        "oversampling_over_delivery": 1.91,
+        "sensor_used_mm": [
+          27.73,
+          18.48
+        ],
+        "hfov_deg": 64.73,
+        "vfov_deg": 29.58,
+        "ingest_steps_required": [
+          "decode_transfer",
+          "convert_gamut",
+          "upsample_chroma",
+          "desqueeze"
+        ],
+        "ingest_steps_recommended": [
+          "crop_to_delivery_aspect",
+          "key_before_downscale"
+        ],
+        "storage_gb_per_min": 12.0,
+        "trade": "Best codec for keying: all-intra removes the Long GOP mosquito noise that makes a matte crawl, 4:2:2 keeps full vertical chroma resolution, and the bitrate is 8x. Costs 20.6% of the frame width and narrows the 35 mm to roughly a 44 mm equivalent. 1.91x is still comfortable supersampling for the matte."
+      }
     },
-    "c58k_17_9": {
-      "resolution": [
-        5776,
-        3056
-      ],
-      "aspect": "17:9 (1.8901)",
-      "codec": "ProRes 422 HQ 1.6 Gbps all-intra, LPCM, 24P native",
-      "desqueezed_aspect": 3.024,
-      "crop_needed_for_delivery": "79.4% of width; 20.6% of the frame is discarded",
-      "oversampling_over_3840x1600": 1.91,
-      "sensor_used_mm": [
-        27.7,
-        18.5
-      ],
-      "hfov_deg": 64.7,
-      "vfov_deg": 29.6,
-      "storage_gb_per_min": 12.0,
-      "verdict": "RECOMMENDED FOR THIS PIPELINE. All-intra removes Long GOP mosquito noise around the silhouette and every hair, which is what makes a matte crawl; 4:2:2 keeps full vertical chroma resolution and keying is a chroma operation; 8x the bitrate on the flat green area that compresses worst. 1.91x is still comfortable supersampling for the matte. The headroom given up existed mainly to fight compression artefacts in the first place."
-    },
-    "open_question": "RESOLVED 2026-09-08: open gate 3:2 is Long GOP / MOV only on this body, and the artist has no external recorder, so ProRes RAW over HDMI is not available. The choice is exactly the two modes below and nothing else.",
-    "cost_of_the_recommendation": "Framing, not quality: 20.6% less width and the 35mm behaves like roughly a 44mm (64.7 deg instead of 78.9 deg). For bust and medium framing that is arguably flattering, but it means standing further back. Storage is 8x.",
-    "decision": "NOT YET MADE by the artist. The pipeline must support both: the ingest stage should read the recording mode from shot.json and apply the crop and conform for that mode rather than assuming either."
-  }
+    "recommendation": "c58k_17_9, on keying grounds. All-intra and 4:2:2 remove two of the three ingest hazards outright, and the resolution headroom given up existed mainly to fight the compression artefacts that the better codec does not produce. This is a recommendation, not a decision."
+  },
+  "derived": {
+    "_comment": "Computed by scripts/capture_profile.py for a 3840x1600 delivery at 1.6x squeeze and a 35 mm taking lens. There are deliberately NO mode-independent field-of-view numbers here: field of view depends on which mode is chosen, and an earlier version of this file carried a single stale vertical FOV that was simply wrong.",
+    "regenerate_with": "dependencies/CorridorKey/.venv/Scripts/python.exe scripts/capture_profile.py --compare --delivery 3840x1600",
+    "render_focal_mm": 21.875,
+    "render_focal_note": "Rendering the DESQUEEZED frame with a spherical camera at this focal length on a 36 mm horizontal sensor reproduces both the horizontal and the vertical field of view exactly. See scripts/anamorphic.py."
+  },
+  "pipeline_implications": {
+    "anamorphic": "The recorded plate is horizontally squeezed 1.6x and Blender renders spherically, so plate and CG do not share a projection until a shot records which space it works in. Depth and normal estimators are trained on spherical imagery: run them on the DESQUEEZED plate or a face is 1.6x too narrow and the estimated geometry is plausible and wrong. A silent 1.6x error here is invisible in a single frame.",
+    "defocus": "Anamorphic bokeh is a vertical oval, not a circle, and the depth of field is that of the 35 mm taking lens rather than the 21.875 mm equivalent that sets the field of view. scripts/anamorphic.py carries both; aperture_ratio 1.6 was MEASURED to give a 1.6:1 vertical oval, not assumed.",
+    "motion_blur": "180 degrees at 24 fps is 1/48 s. Set Blender motion blur shutter to 0.5 explicitly rather than inheriting the default, which happens to be the same value.",
+    "white_balance": "Daylight-balanced at 5600 K. An environment lit warmer or cooler will not match the plate's rendering of skin unless the relight ratio carries the difference. Do not neutralise the plate to grey and then relight, or the correction is applied twice.",
+    "flares": "Anamorphic flares and streaks are horizontal and typically blue. If practicals are in frame, matching this is part of the photorealism bar, not a stylistic extra.",
+    "colour": "V-Log over V-Gamut must be decoded to scene-linear Rec.709 ON INGEST, before keying. Every stage downstream assumes that working space: keyer thresholds, depth and normal estimators, the SH irradiance ratio, the PQ grade. Undecoded, all of them are wrong while still producing a picture. NOT IMPLEMENTED YET and the constants are NOT VERIFIED: check them against Panasonic documentation and a shot ColorChecker before trusting any measurement taken from his footage. Never apply a creative display LUT first -- it is not invertible and discards the highlight range the HDR grade exists for.",
+    "keying": "MODE-DEPENDENT: see recording_mode.candidates[].ingest_steps_required rather than assuming. Both candidate modes are subsampled, so chroma must be upsampled before keying -- a green-screen key is a chroma operation. Only the open-gate mode is Long GOP and therefore only that mode needs the all-intra transcode, without which mosquito noise around the silhouette and every hair makes the matte crawl. Both modes oversample the delivery frame, so key at native resolution and downscale afterwards: the matte comes out effectively supersampled and hair edges get real fractional alpha instead of a hard decision. Keying thresholds never transfer between plates in either direction; run scripts/calibrate_key.py per shot."
+  },
+  "still_to_record": [
+    "CHOOSE THE RECORDING MODE. Until then the pipeline must support both.",
+    "A ColorChecker and an 18% grey card at the head of a take, to verify the V-Log/V-Gamut decode rather than inheriting its constants.",
+    "A chrome ball and an 18% grey ball on a slate at the head of every take, which converts E_source from the pipeline's weakest assumption into a measurement.",
+    "The artist's own interocular distance, measured once with a ruler, to remove the 63 mm adult prior from every camera solve.",
+    "The exact open-gate active sensor area, if a precise camera solve ever depends on it. The nominal 36 x 24 mm is used throughout; the 3:2 aspect that the anamorphic arithmetic depends on is exact either way."
+  ]
 }
