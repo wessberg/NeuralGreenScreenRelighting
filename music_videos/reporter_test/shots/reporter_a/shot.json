@@ -38,8 +38,15 @@
   },
   "camera": {
     "motion": "locked",
-    "status": "NOT YET ESTIMATED",
-    "warning": "Do not inherit the proof-of-concept values (52 mm, 4.3 m, height 1.02 m). Those were solved for a seated full figure at a wide framing. This is a standing bust shot and requires its own lens, height, distance and horizon estimate."
+    "status": "ASSUMED, not measured",
+    "lens_mm": 50.0,
+    "sensor_width_mm": 36.0,
+    "actor_distance_m": 1.3,
+    "height_m": 1.55,
+    "aperture_fstop": 2.0,
+    "degeneracy_note": "Apparent facial scale fixes only the RATIO of focal length to distance, not either alone: 35mm/0.91m, 50mm/1.30m and 85mm/2.20m all reproduce the measured 129.7 px IPD. 50mm was chosen because it maximises panorama detail: at 39.6 deg hFOV a 16K equirect shows 1802 px across frame, 94% of the plate real 1920 px, where 85mm would show only 57%. This is a defensible working assumption, not a measurement. Resolve it properly by recording the lens on set.",
+    "derivation": "Z = fx*IPD/ipd_px, fx = 1920*50/36 = 2666.7 px, IPD prior 63 mm, measured ipd_px 129.7",
+    "ipd_source": "adult prior 63 mm (SD 3.5 mm, ~5.5% 1-sigma distance error). Measure the performer with a ruler to remove this."
   },
   "selection": {
     "start_frame": 700,
@@ -83,5 +90,10 @@
     "despill_offset_rel": 0.01,
     "despill_gain": 100.0,
     "despill_max": 1.0
+  },
+  "environment": {
+    "dir": "scene_library/night_restaurant",
+    "hdri_strength": 1.0,
+    "note": "Photographic HDRI environment rather than the modelled listening room."
   }
 }

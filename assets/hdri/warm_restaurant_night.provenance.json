@@ -1,0 +1,24 @@
+{
+  "slug": "warm_restaurant_night",
+  "name": "Warm Restaurant Night",
+  "license": "CC0",
+  "source": "Poly Haven",
+  "source_url": "https://polyhaven.com/a/warm_restaurant_night",
+  "authors": {
+    "Greg Zaal": "Photography",
+    "Jarod Guest": "Processing"
+  },
+  "evs_cap": 15,
+  "whitebalance_K": 5303,
+  "max_resolution": [
+    24576,
+    12288
+  ],
+  "date_published": 1729468800,
+  "commercial_use": "Permitted. Poly Haven assets are CC0: any purpose including commercial, no attribution required.",
+  "files": {
+    "lighting": "warm_restaurant_night_4k.exr",
+    "visible_backdrop": "warm_restaurant_night_16k.hdr"
+  },
+  "why_two_copies": "Light Path Is-Camera-Ray split: lighting rays sample the 4K copy (small importance map, low noise), camera rays see the 16K copy. At 52mm the visible slice is 16384*38.19/360 = 1738 px, i.e. 91% of the plate real 1920 px of detail."
+}

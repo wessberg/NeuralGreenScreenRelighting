@@ -1,0 +1,38 @@
+{
+  "scene": "night_restaurant",
+  "shot": "reporter_a",
+  "hdri": {
+    "lighting": "warm_restaurant_night_4k.exr",
+    "visible": "warm_restaurant_night_16k.hdr",
+    "rotation_deg": 0.0,
+    "strength": 1.0,
+    "licence": "CC0, Poly Haven, Greg Zaal / Jarod Guest"
+  },
+  "camera": {
+    "lens_mm": 50.0,
+    "sensor_width_mm": 36.0,
+    "hfov_deg": 39.6,
+    "location": [
+      0.0,
+      -1.2999999523162842,
+      1.5499999523162842
+    ],
+    "height_m": 1.55,
+    "subject_distance_m": 1.3,
+    "aperture_fstop": 2.0
+  },
+  "panorama_match": {
+    "visible_px_of_16k": 1802,
+    "plate_real_px": 1920,
+    "pct_of_plate": 93.9
+  },
+  "render": {
+    "resolution": [
+      960,
+      540
+    ],
+    "samples": 128,
+    "shadow_catcher_pass": true
+  },
+  "output": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\scene_library\\night_restaurant\\background_test.exr"
+}

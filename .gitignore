@@ -24,3 +24,8 @@ music_videos/**/shots/**/final/
 logs/*.log
 __pycache__/
 *.pyc
+
+# Downloaded CC0 HDRI panoramas (large; refetch via scripts/ + provenance json)
+assets/hdri/*.exr
+assets/hdri/*.hdr
+scene_library/**/*.exr
