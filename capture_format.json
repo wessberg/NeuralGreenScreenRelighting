@@ -10,7 +10,7 @@
     "format": "full frame",
     "anamorphic": true,
     "squeeze_factor": 1.6,
-    "squeeze_factor_status": "SIRUI Saturn series specification; CONFIRM against the lens barrel before it is used in a camera solve",
+    "squeeze_factor_status": "CONFIRMED by the artist on 2026-09-08.",
     "sensor_width_mm": 36.0,
     "sensor_width_note": "Full-frame nominal 36.0 mm; the S5 IIX open-gate active area is nearer 35.6 x 23.8 mm. Use the nominal for framing maths and the measured value if a precise camera solve ever depends on it. The 3:2 aspect is what matters for the anamorphic arithmetic and it is exact either way."
   },
@@ -92,7 +92,7 @@
       "hfov_deg": 78.9,
       "vfov_deg": 37.8,
       "storage_gb_per_min": 1.5,
-      "verdict": "best geometry and most resolution headroom; worst codec for keying"
+      "verdict": "Best geometry and most resolution headroom, worst codec for keying. Long GOP is only available here, so choosing this mode REQUIRES the all-intra transcode before keying."
     },
     "c58k_17_9": {
       "resolution": [
@@ -113,7 +113,8 @@
       "storage_gb_per_min": 12.0,
       "verdict": "RECOMMENDED FOR THIS PIPELINE. All-intra removes Long GOP mosquito noise around the silhouette and every hair, which is what makes a matte crawl; 4:2:2 keeps full vertical chroma resolution and keying is a chroma operation; 8x the bitrate on the flat green area that compresses worst. 1.91x is still comfortable supersampling for the matte. The headroom given up existed mainly to fight compression artefacts in the first place."
     },
-    "open_question": "Does this body offer OPEN GATE 3:2 in ProRes? That would be strictly better than either and the trade disappears. Internal ProRes is usually limited to 5.8K/C4K with open gate reserved for HEVC, but CONFIRM ON THE CAMERA rather than assuming. ProRes RAW over HDMI to an external recorder is the other route to open gate plus an intra codec.",
-    "cost_of_the_recommendation": "Framing, not quality: 20.6% less width and the 35mm behaves like roughly a 44mm (64.7 deg instead of 78.9 deg). For bust and medium framing that is arguably flattering, but it means standing further back. Storage is 8x."
+    "open_question": "RESOLVED 2026-09-08: open gate 3:2 is Long GOP / MOV only on this body, and the artist has no external recorder, so ProRes RAW over HDMI is not available. The choice is exactly the two modes below and nothing else.",
+    "cost_of_the_recommendation": "Framing, not quality: 20.6% less width and the 35mm behaves like roughly a 44mm (64.7 deg instead of 78.9 deg). For bust and medium framing that is arguably flattering, but it means standing further back. Storage is 8x.",
+    "decision": "NOT YET MADE by the artist. The pipeline must support both: the ingest stage should read the recording mode from shot.json and apply the crop and conform for that mode rather than assuming either."
   }
 }
