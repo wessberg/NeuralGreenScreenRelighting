@@ -90,7 +90,7 @@ Status is for `reporter_test/reporter_a`, the test bed, as of the end of round 2
 | 2 | **Received shadows** from scene geometry crossing the actor | A window mullion or a passing shape that stops at the actor's edge is an instant giveaway. | 🟡 the proxy is in the scene and occludes; needs an environment render rather than the test lights |
 | 3 | **Cast shadows onto the environment** | Only matters where the actor is near a surface; bust framing usually hides it. Shadow Catcher pass. | 🔴 |
 | 4 | **Subsurface scattering** in skin | Skin is not opaque. Without it, ears, nostrils and lit edges read as painted plastic. Light transport through a volume; no per-pixel multiply can fake it. | 🟡 `RANDOM_WALK_SKIN` + Jensen 2001 radii on the proxy, dedicated SSS passes enabled; not composited |
-| 5 | **Specular response** — roughness, Fresnel, sheen on skin and fabric | A purely diffuse actor under a room full of practicals has no catchlights and no wet look. **And the ratio composite cannot remove the plate's OWN speculars**: `plate × R` with a smooth R recolours a highlight but cannot move or delete it, so the original room's sheen survives every relight — the artist spotted this on sight. Needs specular/diffuse separation on the plate, not a setting. | 🟡 round 5 built the separation: `separate_specular.py` removes the plate's own highlights and the composite adds new ones from the scene. Ceiling is now the **sub-floor sheen on skin**, which a single unpolarised image cannot separate — see `rounds/round6.md` |
+| 5 | **Specular response** — roughness, Fresnel, sheen on skin and fabric | A purely diffuse actor under a room full of practicals has no catchlights and no wet look. **And the ratio composite cannot remove the plate's OWN speculars**: `plate × R` with a smooth R recolours a highlight but cannot move or delete it, so the original room's sheen survives every relight — the artist spotted this on sight. Needs specular/diffuse separation on the plate, not a setting. | 🟡 **unchanged, and a documented dead end behind it.** Round 5 built a dichromatic separation, claimed it worked, and was rejected on sight: it removed 26.9 % of tooth energy and 52.7 % of sclera energy, blocked up dark hair, and painted reflections over eyelids. Reverted; defaults are round 4's. The original room's sheen, lip gloss and catchlights are all still in the photograph — see the rejection addendum in `rounds/round6.md` and `rounds/round7.md` |
 | 6 | **Light direction, colour, level, falloff** | The baseline match. | 🟡 ratio composite delivers it; `E_source` now MEASURED from the plate rather than guessed (24 % relative RMS correction) |
 | 7 | **Anamorphic lens match** — 1.6× squeeze, oval bokeh, correct FOV | The plate is anamorphic and Blender renders spherically. A silent mismatch here is geometric, not aesthetic. | 🟢 `scripts/anamorphic.py`: geometry exact, bokeh measured at 1.6:1 vertical (error 0.0). Blur *magnitude* still needs matching against a real defocused take |
 | 8 | **Depth of field** matched to the taking lens | Nobody shoots a dim interior deep-focus; a sharp background is the "computer-ey" tell. | 🟡 f/2.0 in the environment render |
@@ -251,7 +251,7 @@ Every stage takes `--shot`. Interpreter is the pipeline venv unless the row says
 | 1 | ingest / extract frames | `shot_paths.py` resolves everything | `source/frames/` | rates are exact `Fraction`s |
 | 2 | calibrate key | `calibrate_key.py` | `logs/key_calibration.json` | thresholds do **not** transfer between plates |
 | 3 | key + despill | `key_plate.py` | `key/alpha/`, `key/fg/` | despill is the manual pass; CorridorKey's own `despill_strength` never touches `result['fg']` |
-| 3b | **specular / diffuse split** | `separate_specular.py` | `key/specular/*.exr` | diffuse is `fg − specular`, via `load_layers()`; see below |
+| 3b | ~~specular / diffuse split~~ | `separate_specular.py` | `key/specular/*.exr` | **EXPERIMENTAL, REJECTED — not in the delivery path.** Kept for diagnosis only; see below |
 | 4 | depth | `video_depth.py` | `relight/depth/*.npy` | Video Depth Anything; **affine-invariant disparity**, not metric |
 | 5 | face track | `face_track.py` (facetrack venv) | `relight/face_track.json`, `relight/face_landmarks.npz` + `.json` | mediapipe; needs its own venv. Also stores ALL 478 landmarks, blink, eyelid aperture, head pose |
 | 5b | **corneal geometry** | `eye_geometry.py` | `relight/eye_geometry.json` | corneal sphere per eye, and the PLATE's key light solved from its own catchlights |
@@ -264,8 +264,8 @@ Every stage takes `--shot`. Interpreter is the pipeline venv unless the row says
 | 11 | proxy render | `render_proxy.py` (Blender) | `relight/proxy_render/*.exr` | self-shadows, SSS, glossy passes |
 | 11b | stress demo | `stress_proxy.py` (Blender) | `composite/stress_proxy*/` | lightbulb tour; `--textured` uses the albedo |
 | 11c | **ratio irradiance** | `stress_proxy.py --ratio` (Blender) | `composite/ratio_render/*.exr` | neutral albedo at PLATE resolution and the PLATE lens |
-| 11d | **catchlight** | `stress_proxy.py --catchlight` (Blender) | `composite/catchlight_render/*.exr` | a dielectric mirror at each cornea; the scene decides what is in the eye |
-| 12 | **ratio composite** | `composite_ratio.py` | `composite/ratio/` | `out = D × R + S_new`; see below |
+| 11d | ~~catchlight~~ | `stress_proxy.py --catchlight` (Blender) | `composite/catchlight_render/*.exr` | renderer looks sound and its validator passes; **the compositing of it is rejected and `--catchlight` defaults to 0** |
+| 12 | **ratio composite** | `composite_ratio.py` | `composite/ratio/` | `out = plate × R` by default. `--plate-specular remove` and `--catchlight` are rejected experiments |
 | 12b | composite (gain map) | `composite_shot.py` | `composite/`, `intermediate/linear_4k/` | legacy path; loads background **per frame** |
 | 12c | **review video** | `review_video.py` | `final/*.mp4` | what the artist watches; `--compare` puts the before on the LEFT with both halves labelled |
 | 13 | master | `master_export.py` | `master/*.mov` | ProRes 4444 / DNxHR 444, 4:4:4 10-bit |
@@ -358,7 +358,7 @@ What it still inherits from the proxy: the *shape* of the shadows, so a nose sha
 roughly the right place with the proxy's smoothness at its edge, and hair shadows as a mass. What
 it does not inherit is the proxy's appearance, which is the whole difference.
 
-### The specular layer (stage 3b), and the three complaints it explains
+### The specular layer (stage 3b) — BUILT, REJECTED, AND OFF. Read this before trying again.
 
 `plate = D + S`. The ratio is a lighting scale and **only D obeys it** — a smooth `R` can recolour
 a specular highlight but cannot move, reshape or delete one. So before round 5 every highlight in
@@ -370,10 +370,27 @@ went. The artist reported this three times, in three places, without connecting 
 * the corneal catchlight, still sitting at 11 o'clock on both irises — a plainly rectangular
   softbox, in a composite lit by a bulb.
 
-**They are one bug.** `separate_specular.py` splits the plate and `composite_ratio.py` computes
-`out = D × R + S_new`.
+**They are one bug** — and round 5's attempt to fix it made the picture much worse. The artist's
+verdict on the result was *"It looks extremely terrible - all of it"*, and the measurements agree:
+**26.9 % of tooth energy and 52.7 % of sclera energy removed**, 75.9 % of sclera pixels losing
+over a quarter of their radiance, dark hair breaking into unstable patches. `--plate-specular`
+defaults to `keep`. The stage is preserved for diagnosis and must not be re-enabled because the
+files exist.
 
-Three things about it that are easy to get wrong:
+**The diagnosis that looked obvious was wrong, and that is the useful part.** It is tempting to
+blame the neutral guard (`--cos-max`, a 1.8° cone) for failing to protect near-neutral teeth and
+sclera. Measured, their local base colours sit **41.4° and 28.6°** from the illuminant — nowhere
+near the guard, and **0 %** of sampled tooth or sclera pixels were inside it. Widening the cone
+fixes nothing. The real fault is that **a local morphological opening is not a valid
+material-colour reference**: it mixes materials across its window, so `b̂` is wrong wherever a
+window straddles a boundary — which is exactly the mouth, the eye and every hair edge. Likewise
+the hair blocks are not literal kernel stamps (measured patches are 5×4–7×4 px on a 15 px
+kernel), though removal does swing 11.5 / 16.7 / 9.4 % across kernel widths 7 / 15 / 31.
+
+If you try again, the bar is: **prove teeth, sclera and hair detail survive, and that the result
+is temporally coherent, BEFORE enabling it.** `scripts/audit_r5_defects.py` is that test.
+
+The parts below are what the attempt got right and are worth keeping:
 
 * **The illuminant is measured, not assumed.** From the performer's own corneal glints — the eye
   is the plate's own chrome ball — cross-checked against the brightest near-neutral pixels. On
@@ -381,19 +398,19 @@ Three things about it that are easy to get wrong:
 * **The material colour is LOCAL**, from an alpha-aware opening, so there is no skin mask, no hair
   mask, and no assumption about skin tone, hair colour or wardrobe. Each pixel is fitted as
   `I = a·b̂ + s·Ĝ` with `a, s ≥ 0`: a rise in red alone (blood, lipstick) can only be `a`.
-* **There is a floor, and it is physical.** Skin gets *more saturated as it darkens* — subsurface
-  reddening — which mimics the dichromatic specular signature exactly. Measured over 58 819 cheek
-  pixels of one material, `min/sum` runs 0.060 (p2) to 0.216 (p95). Ungated, the separator reads
-  that drift as specular and desaturates the whole face to grey-green. So specular below a
-  fraction of the local diffuse level is **not claimed**, and about 46 % of the fitted specular is
-  discarded by that floor. **That is a real ceiling: a single unpolarised image cannot fully
-  separate diffuse from specular on skin.** Cross-polarised capture can, and the artist will not
-  shoot cross-polarised.
+* **Skin gets *more saturated as it darkens*** — subsurface reddening — which mimics the
+  dichromatic specular signature exactly. Measured over 58 819 cheek pixels of one material,
+  `min/sum` runs 0.060 (p2) to 0.216 (p95). That is a genuine obstacle for any dichromatic
+  method here: **a single unpolarised image cannot fully separate diffuse from specular on
+  skin.** Cross-polarised capture can, and the artist will not shoot cross-polarised.
 
 Near-neutral materials — a white shirt, grey foam, metal — are unseparable by *any* dichromatic
-method and are reported as such rather than quietly zeroed.
+method. Round 5 reported that honestly for the wardrobe and then destroyed the teeth and sclera
+anyway, because the failure there was not neutrality at all.
 
-### Catchlights (stages 5b, 11d)
+### Catchlights (stages 5b, 11d) — renderer sound, compositing REJECTED, `--catchlight` = 0
+
+**The corneal geometry and the Blender render are validated** (`validate_catchlight.py`, direction and magnitude within 0.44–3.51 %). **The compositing of it is not.** The cap is a flat 2D disc centred on the iris with **no eyelid intersection**, so 5.8 % of its weight lands outside the eye opening and it painted silver arcs across her upper lids. Fixing the lid mask alone is not enough: source occlusion is still wrong (the proxy has no eye sockets) and it depends on the rejected removal stage to take the old reflection out.
 
 **Do not paint a dot.** A catchlight is a mirror image of the source, so the honest way to make one
 is to put a mirror where the cornea is and let Cycles find the source. Presence, size, shape,

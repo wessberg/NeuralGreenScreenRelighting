@@ -70,3 +70,63 @@ Do not require on-set references, change key thresholds, or enable persistent Cy
 > removal of the original reflection together. Keep experiments separate and off by default.
 > Produce and inspect complete comparison videos, record the actual playback/inspection method,
 > and obtain the artist's verdict without claiming photorealism from statistics alone.
+
+---
+
+## 6. Supplement — the artist's original asks, and where they stand
+
+Added by the Claude session that wrote the rejected round 5, after Codex's review. Section 5's
+starter prompt stands; this records what round 5 was *for*, since none of it was achieved.
+
+He opened the round with three requests. All three are **exactly where they were at the end of
+round 4**:
+
+1. **Eye catchlights**, explicitly noting the green-screen room had almost certainly already put
+   one there. It had: a rectangular softbox reflection at 11 o'clock on both irises. It is still
+   in the delivered composite, unmoved, because a smooth `R` can only recolour it.
+2. **The top-lit hair sheen.** Still in the plate. Worth knowing: round 4 measures *worse* than
+   the plate on this (sheen contrast 12.37 against the plate's 10.09) because its deeper
+   terminators darken everything around a band it cannot touch. That figure is from
+   `measure_specular_transfer.py` and was not disputed by the audit.
+3. **Lips reading as "lit up more than the skin"** in round 4, compared with round 3. Measured on
+   frame 21 with the comparison panel registered to correlation 1.0000, against a photographed
+   lip-to-skin luminance of 0.8189: round 3 **0.9936** (+21.3 %), round 4 **0.8764** (+7.0 %). So
+   round 3 was *further* from the photograph, not closer — what made it read better is that its
+   flatter contrast hid the surviving gloss band. **Round 4's geometry fix is what exposed the
+   specular problem**, which is worth remembering before "improving" contrast again.
+
+### Two things measured in round 5 that survive its rejection
+
+* **The E_source / E_target bandwidth gap is real and is NOT what lifted the lips.** `R = E_t/E_s`
+  divides a smooth numerator (the proxy) by a sharp one (the neural normals): `E_source` carries
+  3.75× more high-pass energy at 2 px, 1.81× at 8 px, crossing at ~32 px. Band-limiting it made
+  the lip metric *worse* (+11.5 % vs +7.0 %). `--source-detail-sigma` ships off. Do not re-run
+  this experiment without reading §2 of `round6.md`.
+* **The plate's own key direction, from its own catchlights: 54.6° off the camera axis**, spread
+  18.5°. The position does **not** come out — two corneas 63 mm apart cannot triangulate a source
+  a metre away, and the least-squares point collapses onto her own head *with a small residual*,
+  so a residual test passes on nonsense. Gated on reach-over-baseline. This matters beyond the
+  eyes because `estimate_source_light.py` fits SH to a surface where every normal has `ny < 0`
+  and its own log warns the direction is an extrapolation.
+
+### Disk left behind, all regenerable
+
+| path | size | keep? |
+|---|---|---|
+| `key/specular/` | 107 MB | rejected stage's output; unused by the default path |
+| `composite/ratio_r5/` | 108 MB | the rejected look — **the only record of what he saw** |
+| `composite/ratio_r7/` | 109 MB | the verified rollback; identical to `composite/ratio` |
+| `composite/catchlight_render/` | 4.8 MB | 25 min of Blender; cheap to keep |
+| `composite/r5_test/`, `composite/panels/`, `composite/r5_defects/` | small | `r5_defects/` holds his four screenshots and the measured neutral-loss note |
+
+Shot is 3.6 GB. `composite/ratio_r7` is redundant with `composite/ratio` (bit-identical) and is
+the obvious deletion if space is wanted.
+
+### A methodological note, because it is the third instance
+
+Round 4's despill bug was confirmed by three metrics that all computed the buggy gate. Round 5's
+catchlight direction looked mirrored because the measurement inherited the stress rig's fill
+light. And round 5 shipped because its author measured hair, iris and lips — and **not teeth,
+sclera, or any temporal quantity** — then wrote it up from one still without watching the videos.
+`audit_r5_defects.py` is the missing test, and it is anatomical rather than aesthetic on purpose.
+**A round is not judged until someone has watched it move.**
