@@ -1,0 +1,22 @@
+{
+  "status": "completed ordered-frame inspection; no repair demonstrated",
+  "method": "Viewed every decoded video frame in consecutive contact sheets using the image-view tool, followed by enlarged PNG and donor-panel inspection. No real-time playback or artist approval.",
+  "videos": [
+    {"file": "final/r10_full_source_masks.mp4", "decoded_frames": 1200, "fps": "60000/1001", "sheets": 20, "frames_per_sheet": 60, "thumbnail_dimensions": [246, 180], "inspected_source_interval_inclusive": [0, 1199]},
+    {"file": "final/r10_iris_withheld_comparison.mp4", "decoded_frames": 150, "fps": "60000/1001", "sheets": 5, "frames_per_sheet": 30, "thumbnail_dimensions": [246, 180], "inspected_local_interval_inclusive": [0, 149]}
+  ],
+  "native_source_crops_inspected": [0, 300, 600, 721, 900, 1199],
+  "enlarged_mask_pngs_inspected_source_frames": [120, 200, 767, 779],
+  "enlarged_hidden_comparison_pngs_inspected_local_frames": [67, 120],
+  "donor_panels_inspected": ["donors_left_0721.jpg", "donors_left_0820.jpg", "donors_right_0721.jpg", "donors_right_0779.jpg", "donors_right_0820.jpg"],
+  "mask_audit_examples": [
+    {"source_frame": 120, "finding": "The nominal iris/aperture region contains extensive bright sclera and adjacent skin. Bright exclusion does not remove all of it. Face-found is not an iris-validity check."},
+    {"source_frame": 200, "finding": "The nominal right iris region is dominated by sclera; the actual iris/reflection is displaced toward the left of the displayed patch. The surviving aperture must not be treated as known iris material."},
+    {"source_frame": 767, "finding": "Right compact candidates lie along the lower sclera/rim instead of the clearly visible upper softbox. Left aperture also clips the upper softbox. Confirms false candidates and omitted reflection extent on a target frame."},
+    {"source_frame": 779, "finding": "Both eyes visibly retain the softbox. The left compact detector produces no candidate despite its visible reflection; the conservative orange exclusion does cover it. A zero candidate count is not a reflection-free frame."}
+  ],
+  "donor_findings": "At source 820 left/right and source 779 right, displayed context-accepted aligned donors visibly retain softbox reflections over the outlined target region. Orange points mark unusable target-region samples. At source 721 neither eye has a donor within the individual <=2 context error gate; blank panels mean abstention.",
+  "hidden_control_findings": "Some additional lower control patches receive support with the wide pool, but no consistent visible improvement is established. Both arms abstain during blinks and around the lower rim; local 67 is an explicit example. The original reflections remain visible, including local 120. These videos substitute only known hidden control pixels, never detected reflections.",
+  "limitations": ["This is a qualitative mask audit with explicit counterexamples, not pixel-labelled ground truth or a detector precision/recall estimate.", "Overview thumbnails were resized and cannot establish subpixel fidelity. Enlarged source panels were inspected for the stated examples.", "No hair, lip, source-occlusion or production-compositor treatment was made."],
+  "artist_verdict": "pending"
+}

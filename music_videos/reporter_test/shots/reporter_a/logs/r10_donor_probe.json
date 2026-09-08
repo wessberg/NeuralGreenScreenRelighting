@@ -1,0 +1,231 @@
+{
+  "target_local_frames_fixed_before_results": [
+    21,
+    79,
+    120
+  ],
+  "eyes": {
+    "left": [
+      {
+        "local_frame": 21,
+        "source_frame": 721,
+        "candidate_pixels": 43,
+        "initial_context_eligible_donors": 995,
+        "bounded_fits": 49,
+        "usable_context_fits": 47,
+        "context_mae_le_2_donors": 0,
+        "candidate_samples_with_1_3_donors": [
+          0,
+          0
+        ],
+        "candidate_samples_with_1_3_outside_donors": [
+          0,
+          0
+        ],
+        "max_donors_at_candidate": 0,
+        "inspection_panel": "composite\\r10_iris\\donors_left_0721.jpg",
+        "shown_donors": []
+      },
+      {
+        "local_frame": 79,
+        "source_frame": 779,
+        "candidate_pixels": 0,
+        "status": "no compact candidate; no invented target mask",
+        "shown_donors": []
+      },
+      {
+        "local_frame": 120,
+        "source_frame": 820,
+        "candidate_pixels": 55,
+        "initial_context_eligible_donors": 836,
+        "bounded_fits": 208,
+        "usable_context_fits": 197,
+        "context_mae_le_2_donors": 26,
+        "candidate_samples_with_1_3_donors": [
+          0,
+          0
+        ],
+        "candidate_samples_with_1_3_outside_donors": [
+          0,
+          0
+        ],
+        "max_donors_at_candidate": 0,
+        "inspection_panel": "composite\\r10_iris\\donors_left_0820.jpg",
+        "shown_donors": [
+          {
+            "source_frame": 816,
+            "context_display_mae": 1.4741597175598145,
+            "candidate_usable_pixels": 0
+          },
+          {
+            "source_frame": 793,
+            "context_display_mae": 1.4746450185775757,
+            "candidate_usable_pixels": 0
+          },
+          {
+            "source_frame": 813,
+            "context_display_mae": 1.6134166717529297,
+            "candidate_usable_pixels": 0
+          },
+          {
+            "source_frame": 814,
+            "context_display_mae": 1.6185107231140137,
+            "candidate_usable_pixels": 0
+          },
+          {
+            "source_frame": 811,
+            "context_display_mae": 1.6949269771575928,
+            "candidate_usable_pixels": 0
+          },
+          {
+            "source_frame": 815,
+            "context_display_mae": 1.7068233489990234,
+            "candidate_usable_pixels": 0
+          },
+          {
+            "source_frame": 812,
+            "context_display_mae": 1.7161322832107544,
+            "candidate_usable_pixels": 0
+          }
+        ]
+      }
+    ],
+    "right": [
+      {
+        "local_frame": 21,
+        "source_frame": 721,
+        "candidate_pixels": 42,
+        "initial_context_eligible_donors": 907,
+        "bounded_fits": 31,
+        "usable_context_fits": 22,
+        "context_mae_le_2_donors": 0,
+        "candidate_samples_with_1_3_donors": [
+          0,
+          0
+        ],
+        "candidate_samples_with_1_3_outside_donors": [
+          0,
+          0
+        ],
+        "max_donors_at_candidate": 0,
+        "inspection_panel": "composite\\r10_iris\\donors_right_0721.jpg",
+        "shown_donors": []
+      },
+      {
+        "local_frame": 79,
+        "source_frame": 779,
+        "candidate_pixels": 42,
+        "initial_context_eligible_donors": 890,
+        "bounded_fits": 169,
+        "usable_context_fits": 160,
+        "context_mae_le_2_donors": 23,
+        "candidate_samples_with_1_3_donors": [
+          0,
+          0
+        ],
+        "candidate_samples_with_1_3_outside_donors": [
+          0,
+          0
+        ],
+        "max_donors_at_candidate": 0,
+        "inspection_panel": "composite\\r10_iris\\donors_right_0779.jpg",
+        "shown_donors": [
+          {
+            "source_frame": 787,
+            "context_display_mae": 1.5523186922073364,
+            "candidate_usable_pixels": 0
+          },
+          {
+            "source_frame": 783,
+            "context_display_mae": 1.5642774105072021,
+            "candidate_usable_pixels": 0
+          },
+          {
+            "source_frame": 784,
+            "context_display_mae": 1.6904853582382202,
+            "candidate_usable_pixels": 0
+          },
+          {
+            "source_frame": 775,
+            "context_display_mae": 1.7229076623916626,
+            "candidate_usable_pixels": 0
+          },
+          {
+            "source_frame": 805,
+            "context_display_mae": 1.7660197019577026,
+            "candidate_usable_pixels": 0
+          },
+          {
+            "source_frame": 799,
+            "context_display_mae": 1.7662948369979858,
+            "candidate_usable_pixels": 0
+          },
+          {
+            "source_frame": 817,
+            "context_display_mae": 1.7671302556991577,
+            "candidate_usable_pixels": 0
+          }
+        ]
+      },
+      {
+        "local_frame": 120,
+        "source_frame": 820,
+        "candidate_pixels": 49,
+        "initial_context_eligible_donors": 822,
+        "bounded_fits": 149,
+        "usable_context_fits": 148,
+        "context_mae_le_2_donors": 11,
+        "candidate_samples_with_1_3_donors": [
+          0,
+          0
+        ],
+        "candidate_samples_with_1_3_outside_donors": [
+          0,
+          0
+        ],
+        "max_donors_at_candidate": 0,
+        "inspection_panel": "composite\\r10_iris\\donors_right_0820.jpg",
+        "shown_donors": [
+          {
+            "source_frame": 824,
+            "context_display_mae": 1.7229523658752441,
+            "candidate_usable_pixels": 0
+          },
+          {
+            "source_frame": 815,
+            "context_display_mae": 1.7230397462844849,
+            "candidate_usable_pixels": 0
+          },
+          {
+            "source_frame": 816,
+            "context_display_mae": 1.7314423322677612,
+            "candidate_usable_pixels": 0
+          },
+          {
+            "source_frame": 812,
+            "context_display_mae": 1.8290910720825195,
+            "candidate_usable_pixels": 0
+          },
+          {
+            "source_frame": 799,
+            "context_display_mae": 1.8357244729995728,
+            "candidate_usable_pixels": 0
+          },
+          {
+            "source_frame": 805,
+            "context_display_mae": 1.9104870557785034,
+            "candidate_usable_pixels": 0
+          },
+          {
+            "source_frame": 813,
+            "context_display_mae": 1.9125053882598877,
+            "candidate_usable_pixels": 0
+          }
+        ]
+      }
+    ]
+  },
+  "method": "all nonadjacent donors; same initial context-overlap requirement, bounded affine and masks; individual context MAE <=2",
+  "limitation": "unmasked observations are not certified clean iris; coverage is not a recovery or confidence result",
+  "inspection": "completed all five donor panels; see logs/r10_visual_review.json"
+}

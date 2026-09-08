@@ -34,6 +34,13 @@ excludes shared native interpolation footprints, uses identical controls, and re
 abstentions. `audit_r9_iris.py` is diagnostic only. Original catchlights, hair sheen and lip
 gloss remain unresolved; production defaults are unchanged. See `rounds/round9.md`.
 
+**Round 10 full-source findings:** expanding the iris donor pool from 150 to all 1,200
+original frames still gives zero confident samples beneath detected reflections. An
+exhaustive donor probe at fixed targets does not rescue coverage. Native-image inspection
+finds iris/aperture regions admitting sclera/skin, lower-rim false candidates and missed
+softboxes; `found=True` and zero detected glints do not establish clean iris observations.
+All three original complaints remain unresolved. See `rounds/round10.md`.
+
 ---
 
 ## What this project is
