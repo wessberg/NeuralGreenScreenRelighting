@@ -1,0 +1,72 @@
+{
+  "shot": "reporter_a",
+  "baseline_render": "music_videos\\reporter_test\\shots\\reporter_a\\composite\\ratio_render",
+  "candidate_render": "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r4_aa",
+  "measures": "RMS of band-passed irradiance around the proxy grid pitch, relative to the local irradiance, inside a rim band around the matte",
+  "reading": "The fix works if rim corrugation falls toward the core control. The plate reference is photographed micro-contrast in the same band, not a floor the composite has to reach.",
+  "per_frame": [
+    {
+      "frame": 0,
+      "grid_pitch_plate_px": 5.0,
+      "rim_px": 34365,
+      "rim_corrugation": {
+        "baseline": 0.18058,
+        "candidate": 0.05175,
+        "plate_reference": 0.35973
+      },
+      "core_control": {
+        "baseline": 0.03582,
+        "candidate": 0.03527
+      },
+      "rim_reduction_pct": 71.3,
+      "crop_xywh": [
+        902,
+        0,
+        360,
+        330
+      ]
+    },
+    {
+      "frame": 51,
+      "grid_pitch_plate_px": 5.0,
+      "rim_px": 33146,
+      "rim_corrugation": {
+        "baseline": 0.29668,
+        "candidate": 0.11199,
+        "plate_reference": 0.34725
+      },
+      "core_control": {
+        "baseline": 0.09331,
+        "candidate": 0.09055
+      },
+      "rim_reduction_pct": 62.3,
+      "crop_xywh": [
+        998,
+        237,
+        360,
+        330
+      ]
+    },
+    {
+      "frame": 79,
+      "grid_pitch_plate_px": 5.0,
+      "rim_px": 33531,
+      "rim_corrugation": {
+        "baseline": 0.24244,
+        "candidate": 0.06365,
+        "plate_reference": 0.36224
+      },
+      "core_control": {
+        "baseline": 0.06237,
+        "candidate": 0.06051
+      },
+      "rim_reduction_pct": 73.7,
+      "crop_xywh": [
+        978,
+        241,
+        360,
+        330
+      ]
+    }
+  ]
+}

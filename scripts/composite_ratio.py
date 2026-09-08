@@ -59,6 +59,7 @@ import numpy as np, cv2
 from shot_paths import add_shot_argument, from_args
 from color_pipeline import linear_to_srgb
 import gpu_image
+from ratio_edges import extend_irradiance
 
 LUMA = np.array([.2126, .7152, .0722], np.float32)
 # Must match scripts/stress_proxy.py --ratio and scripts/make_albedo.py.
@@ -186,6 +187,15 @@ def main():
                          'scale with albedo, so a dark jacket needs this or it reads as wet')
     ap.add_argument('--resolution', default='',
                     help='WxH output; defaults to the shot delivery resolution, then the plate')
+    ap.add_argument('--only-output', default='', help='comma-separated output frames, plus exposure anchor')
+    # Round 4 experiment, OPT-IN on purpose. It replaces the inpainted rim with a nearest
+    # extension of the reliable interior. It does suppress the dotted silhouette, but radius 8
+    # leaves dots and radius 24 flattens real rim light, so it is not the fix -- the fix is the
+    # mesh. Left on by default it would have shipped silently in the next production run.
+    ap.add_argument('--extend-edges', action='store_true',
+                    help='experimental: nearest-extend irradiance from the eroded reliable interior')
+    ap.add_argument('--edge-radius', type=int, default=8,
+                    help='with --extend-edges: unreliable proxy rim in plate pixels')
     args = ap.parse_args()
     shot = from_args(args)
 
@@ -218,6 +228,9 @@ def main():
 
     anchor_idx = min(max(args.anchor_frame, 0), len(renders) - 1)
     order = [renders[anchor_idx]] + [r for i, r in enumerate(renders) if i != anchor_idx]
+    if args.only_output:
+        selected = {int(x) for x in args.only_output.split(',')}
+        order = [order[0]] + [r for r in order[1:] if int(r.stem) in selected]
 
     anchor, stats = None, []
     for r in order:
@@ -275,7 +288,9 @@ def main():
         # plausible, so it is solved at quarter resolution and upsampled: visually identical,
         # about 16x less work.
         valid = (cov > 0.5)
-        if not valid.all():
+        if args.extend_edges:
+            E_t, valid = extend_irradiance(E_t, cov, args.edge_radius)
+        elif not valid.all():
             q = (w // 4, h // 4)
             scale = max(float(np.max(E_t[valid])), 1e-6)
             small = cv2.resize(np.clip(E_t / scale, 0, 1), q, interpolation=cv2.INTER_AREA)
@@ -374,7 +389,9 @@ def main():
         'result': {'mean_dynamic_range_stops': float(dr.mean()),
                    'max_dynamic_range_stops': float(dr.max())},
         'per_frame': stats}
-    shot.log('composite_ratio.json').write_text(json.dumps(summary, indent=2))
+    (out_dir / 'composite_manifest.json').write_text(json.dumps(summary, indent=2))
+    if not args.only_output:
+        shot.log('composite_ratio.json').write_text(json.dumps(summary, indent=2))
     print(json.dumps({k: summary[k] for k in ('frames', 'exposure_anchor', 'result')}, indent=2))
 
 

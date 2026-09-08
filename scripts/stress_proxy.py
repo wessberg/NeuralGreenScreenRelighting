@@ -65,6 +65,12 @@ ap.add_argument('--textured', action='store_true',
                 help='project the recovered albedo onto the proxy: her real skin, hair, suit '
                      'and microphone, lit by the rig instead of by the plate')
 ap.add_argument('--name', default='stress_proxy')
+ap.add_argument('--only-output', default='',
+                help='comma-separated SOURCE FRAME NUMBERS to render, as named by the mesh files '
+                     'and by composite_ratio.py --only-output. The tour still advances across the '
+                     'full length, so a selected frame is lit exactly as it would be in a full run')
+ap.add_argument('--diagnostic-no-walls', action='store_true', help='control only: opens the proxy volume')
+ap.add_argument('--proxy-dir', default='', help='alternate proxy meshes for controlled comparisons')
 args = ap.parse_args(argv)
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -83,8 +89,8 @@ FPS = float(shot.frame_rate)
 
 import numpy as np
 
-proxy_dir = shot.relight / 'proxy'
-frames = sorted(int(p.stem) for p in proxy_dir.glob('*.npz'))
+proxy_dir = Path(args.proxy_dir) if args.proxy_dir else shot.relight / 'proxy'
+frames = sorted(int(p.stem) for p in (shot.relight / 'proxy').glob('*.npz'))
 if not frames:
     raise SystemExit('No proxy meshes. Run scripts/make_proxy_mesh.py --shot %s first.' % shot.name)
 frames = [f for f in frames if f >= args.start]
@@ -319,7 +325,10 @@ def aim(ob, tgt):
 
 rig_log = []
 proxy_ob = None
+only_output = {int(x) for x in args.only_output.split(',')} if args.only_output else set()
 for n, fi in enumerate(frames):
+    if only_output and fi not in only_output:
+        continue
     t = n / max(len(frames) - 1, 1)                 # 0..1 across the shot
     secs = n / FPS
 
@@ -327,8 +336,18 @@ for n, fi in enumerate(frames):
         me_old = proxy_ob.data
         bpy.data.objects.remove(proxy_ob, do_unlink=True)
         bpy.data.meshes.remove(me_old)
-    d = np.load(proxy_dir / ('%06d.npz' % fi))
+    mesh_path = proxy_dir / ('%06d.npz' % fi)
+    # The timeline comes from the production proxy dir so that an alternate mesh set is lit by the
+    # same tour at the same instant. A sparse alternate set therefore only works alongside
+    # --only-output, and saying so beats a bare FileNotFoundError 200 frames in.
+    if not mesh_path.exists():
+        raise SystemExit('No proxy mesh %s. An alternate --proxy-dir that does not cover the whole '
+                         'timeline needs --only-output limited to the frames it has.' % mesh_path)
+    d = np.load(mesh_path)
     verts, faces = d['verts'].astype(float), d['faces'].astype(int)
+    if args.diagnostic_no_walls:
+        nf = int(d['n_front'])
+        faces = faces[np.all(faces < nf, axis=1) | np.all(faces >= nf, axis=1)]
     me = bpy.data.meshes.new('proxy')
     me.from_pydata([tuple(v) for v in verts], [], [tuple(f) for f in faces])
     me.validate(verbose=False)
@@ -425,5 +444,7 @@ report = {'shot': shot.name, 'frames': len(frames), 'fps': str(shot.frame_rate),
                    'Clay-skin proxy only: no plate texture, so every value on screen is computed '
                    'geometry and light rather than photography.'),
           'per_frame': rig_log}
-shot.log('stress_proxy.json').write_text(json.dumps(report, indent=2))
+(out_dir / 'render_manifest.json').write_text(json.dumps(report, indent=2))
+if not args.only_output:
+    shot.log('stress_proxy.json').write_text(json.dumps(report, indent=2))
 print(json.dumps({k: report[k] for k in ('frames', 'output_dir', 'rig')}, indent=2))

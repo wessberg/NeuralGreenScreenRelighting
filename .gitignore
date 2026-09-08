@@ -23,6 +23,7 @@ music_videos/**/relight/depth/
 music_videos/**/relight/controls/
 music_videos/**/relight/normals/
 music_videos/**/relight/proxy/
+music_videos/**/relight/proxy_r4*/
 music_videos/**/relight/proxy_render/
 music_videos/**/intermediate/
 music_videos/**/composite/
@@ -33,6 +34,10 @@ music_videos/**/relight/skin_mask/
 
 # Raw tool spew; structured JSON evidence is kept
 **/logs/*.log
+**/logs/*.txt
 logs/sh_convention/*.exr
 __pycache__/
 *.pyc
+
+# Agent tool state, including worktrees a session may create
+.claude/

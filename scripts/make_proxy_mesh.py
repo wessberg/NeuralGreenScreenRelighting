@@ -36,6 +36,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 import numpy as np, cv2
+from scipy.ndimage import distance_transform_edt
 from shot_paths import add_shot_argument, from_args
 
 W = H = None        # set per shot from the plate aspect; see Shot.working_resolution
@@ -141,7 +142,8 @@ def highpass(field, mask, sigma_px):
 
 
 def build(alpha, depth, cal, fx_small, cam_h, dist, step, thickness, smooth,
-          face_box=None, scale=None, normals=None, detail=1.0, detail_cutoff_m=0.05):
+          face_box=None, scale=None, normals=None, detail=1.0, detail_cutoff_m=0.05,
+          antialias=True):
     """Front shell from depth, flat-capped back shell, stitched along the silhouette.
 
     Returns vertices (N,3) in Blender world axes and quad faces, plus diagnostics.
@@ -193,10 +195,29 @@ def build(alpha, depth, cal, fx_small, cam_h, dist, step, thickness, smooth,
         px_per_m = fx_small / max(float(np.median(Zc[matte])), 1e-3)
         sigma_px = max(detail_cutoff_m * px_per_m, 1.0)
         Yd = highpass(Yn, matte, sigma_px)
+        # Geometry extends beyond the photographic matte. Zeroing its normal-derived detail
+        # there makes a depth step at the matte boundary, whose grid faces light as a dotted
+        # ridge. Continue the nearest measured detail into the padding; preserve every real
+        # matte sample exactly, including the fine facial relief used for self-shadows.
+        nearest = distance_transform_edt(~matte, return_distances=False, return_indices=True)
+        Yd = Yd[nearest[0], nearest[1]]
         # Normalise so `detail` is a plain multiplier on a physically-scaled relief rather than
         # an arbitrary gain: the integrated field's units are already metres.
         Yw = Yw + detail * Yd
         detail_amp = float(np.percentile(np.abs(Yd[mask]), 95))
+
+    # Anti-alias BEFORE decimating. `sub` below samples every `step` depth pixels, so the grid can
+    # only carry wavelengths longer than 2*step px -- but the relief above is high-passed at about
+    # 40 px and therefore holds energy right down to one pixel. Striding that without a low-pass
+    # folds it onto the grid pitch itself, and a corrugation at exactly the facet spacing is what
+    # catches the light as the dotted rim the artist saw. Measured: it is not render noise (4x the
+    # samples changes nothing) and not the depth cliffs, and it sits across the whole subject
+    # rather than only at the silhouette, which is what an aliasing mechanism predicts and a
+    # boundary mechanism does not.
+    #
+    # Nothing real is lost: what this removes is precisely what the vertex grid cannot represent.
+    if antialias and step > 1:
+        Yw = cv2.GaussianBlur(Yw, (0, 0), step * 0.5)
 
     # REPROJECT. X and Zw above were back-projected from the ORIGINAL depth, and everything
     # since has changed that depth: the relief rescale (x0.455) and the normal-integrated detail.
@@ -285,6 +306,8 @@ def main():
     add_shot_argument(ap)
     ap.add_argument('--frames', type=int, default=0)
     ap.add_argument('--start', type=int, default=0)
+    ap.add_argument('--only-frames', default='', help='comma-separated local frames for a diagnostic build')
+    ap.add_argument('--output-dir', default='', help='alternate mesh directory; keeps production meshes and log intact')
     ap.add_argument('--step', type=int, default=2, help='pixel stride; 2 gives a 384x216 grid')
     ap.add_argument('--thickness', type=float, default=0.30,
                     help='metres from the deepest front point to the flat back cap')
@@ -293,6 +316,8 @@ def main():
                     help='override the face-anchored depth relief scale')
     ap.add_argument('--detail', type=float, default=1.0,
                     help='weight on normal-integrated fine relief; 0 disables it')
+    ap.add_argument('--no-detail-antialias', action='store_true',
+                    help='skip the pre-decimation low-pass, to reproduce the aliased build')
     ap.add_argument('--detail-cutoff', type=float, default=0.05,
                     help='metres; below this scale relief comes from the normals, above from depth')
     args = ap.parse_args()
@@ -317,14 +342,15 @@ def main():
                           int(r['bbox_px'][2] * sx), int(r['bbox_px'][3] * sy)]
              for r in track['per_frame'] if r.get('found')}
 
-    out = shot.relight / 'proxy'
+    out = Path(args.output_dir) if args.output_dir else shot.relight / 'proxy'
     out.mkdir(parents=True, exist_ok=True)
     n = args.frames or shot.frame_count
     stats = []
     # One scale for the whole shot, fitted on the anchor frame. Per-frame rescaling would make
     # the actor's depth breathe as the depth model's relative relief wandered.
     fixed_scale = args.scale
-    for i in range(args.start, args.start + n):
+    frames = [int(v) for v in args.only_frames.split(',')] if args.only_frames else range(args.start, args.start + n)
+    for i in frames:
         alpha = np.clip(cv2.resize(cv2.imread(str(shot.alpha(i)), -1), (W, H),
                                    interpolation=cv2.INTER_AREA), 0, 1)
         if alpha.ndim == 3:
@@ -340,7 +366,8 @@ def main():
                 nrm /= np.maximum(np.linalg.norm(nrm, axis=-1, keepdims=True), 1e-6)
         mesh = build(alpha, depth, cal, fx_small, cam_h, dist, args.step, args.thickness,
                      args.smooth, face_box=boxes.get(i), scale=fixed_scale,
-                     normals=nrm, detail=args.detail, detail_cutoff_m=args.detail_cutoff)
+                     normals=nrm, detail=args.detail, detail_cutoff_m=args.detail_cutoff,
+                     antialias=not args.no_detail_antialias)
         if mesh is None:
             continue
         if fixed_scale is None and mesh['relief_scale'] != 1.0:
@@ -377,7 +404,8 @@ def main():
                           'mean_extent_m': ext.mean(0).round(4).tolist(),
                           'verts_per_frame': int(np.mean([s['verts'] for s in stats]))},
                'per_frame': stats}
-    shot.log('proxy_mesh.json').write_text(json.dumps(summary, indent=2))
+    log_path = out / 'proxy_mesh.json' if args.output_dir else shot.log('proxy_mesh.json')
+    log_path.write_text(json.dumps(summary, indent=2))
     print(json.dumps({k: summary[k] for k in ('frames', 'result')}, indent=2))
 
 

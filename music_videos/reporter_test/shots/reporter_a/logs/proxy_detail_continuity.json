@@ -1,0 +1,121 @@
+{
+  "shot": "reporter_a",
+  "baseline_dir": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\relight\\proxy",
+  "candidate_dir": "music_videos\\reporter_test\\shots\\reporter_a\\relight\\proxy_r4_detail_extension",
+  "measures": "depth step in mm between adjacent front-grid samples, +Y = away from camera",
+  "result": {
+    "baseline_crossing_median_mm": 34.18,
+    "candidate_crossing_median_mm": 6.6,
+    "interior_control_median_mm": 1.56,
+    "max_vertex_move_inside_matte_mm": 0.0,
+    "max_move_in_matte_resolution_disagreement_mm": 65.0
+  },
+  "reading": "The fix works if the candidate crossing figure falls toward the interior control, and if no vertex under the matte moved at all.",
+  "per_frame": [
+    {
+      "frame": 0,
+      "baseline": {
+        "crossing_matte": {
+          "edges": 773,
+          "median_mm": 34.03,
+          "p95_mm": 48.95
+        },
+        "interior": {
+          "edges": 48575,
+          "median_mm": 1.55,
+          "p95_mm": 9.72
+        }
+      },
+      "candidate": {
+        "crossing_matte": {
+          "edges": 773,
+          "median_mm": 6.03,
+          "p95_mm": 18.06
+        },
+        "interior": {
+          "edges": 48575,
+          "median_mm": 1.55,
+          "p95_mm": 9.72
+        }
+      },
+      "max_vertex_move_inside_matte_mm": 0.0,
+      "max_vertex_move_in_padding_mm": 59.8,
+      "matte_resolution_disagreement": {
+        "vertices": 17,
+        "max_move_mm": 55.47
+      },
+      "front_verts": 25966,
+      "inside_matte": 24529
+    },
+    {
+      "frame": 51,
+      "baseline": {
+        "crossing_matte": {
+          "edges": 740,
+          "median_mm": 34.9,
+          "p95_mm": 53.95
+        },
+        "interior": {
+          "edges": 47955,
+          "median_mm": 1.61,
+          "p95_mm": 10.28
+        }
+      },
+      "candidate": {
+        "crossing_matte": {
+          "edges": 740,
+          "median_mm": 7.0,
+          "p95_mm": 21.3
+        },
+        "interior": {
+          "edges": 47955,
+          "median_mm": 1.61,
+          "p95_mm": 10.28
+        }
+      },
+      "max_vertex_move_inside_matte_mm": 0.0,
+      "max_vertex_move_in_padding_mm": 69.77,
+      "matte_resolution_disagreement": {
+        "vertices": 16,
+        "max_move_mm": 64.34
+      },
+      "front_verts": 25578,
+      "inside_matte": 24211
+    },
+    {
+      "frame": 79,
+      "baseline": {
+        "crossing_matte": {
+          "edges": 749,
+          "median_mm": 33.6,
+          "p95_mm": 52.21
+        },
+        "interior": {
+          "edges": 47996,
+          "median_mm": 1.51,
+          "p95_mm": 10.22
+        }
+      },
+      "candidate": {
+        "crossing_matte": {
+          "edges": 749,
+          "median_mm": 6.76,
+          "p95_mm": 22.1
+        },
+        "interior": {
+          "edges": 47996,
+          "median_mm": 1.51,
+          "p95_mm": 10.22
+        }
+      },
+      "max_vertex_move_inside_matte_mm": 0.0,
+      "max_vertex_move_in_padding_mm": 79.11,
+      "matte_resolution_disagreement": {
+        "vertices": 19,
+        "max_move_mm": 65.0
+      },
+      "front_verts": 25627,
+      "inside_matte": 24233
+    }
+  ]
+}
