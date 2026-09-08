@@ -10,6 +10,14 @@ Use a hierarchy of **workspace → music video → shot/take**, with explicit re
 
 The target organization is described in `music_videos/README.md`; `music_video_brief.template.json` captures video-level direction. The current example's existing files remain at the project root so the in-progress render is undisturbed; `music_videos/proof_of_concept/project.json` explicitly catalogs that example. New videos/shots should use their own directories and must not overwrite this example.
 
+## Experimental eye observations
+
+Run `scripts/iris_observations.py --shot <dir> --review` after keying and face tracking.
+It derives native eye crops, orientation and pixel aspect from that shot, and preserves
+source eyes while its masks remain unvalidated. It does not yet remove or replace
+reflections. See [eye-reflection architecture and neural prior art](docs/iris-prior-art.md)
+and [round 12](rounds/round12.md) for measured limits and the next component comparison.
+
 ## Running without per-frame AI credits
 
 **All production processing here is local:** CorridorKey, Video Depth Anything, the photographic relighter, Blender/Cycles, audio feature analysis and FFmpeg/NVENC. These scripts contain no paid model API calls and need no API key. After dependencies and weights are installed, running the saved pipeline without a cloud agent consumes no cloud-model tokens; it still uses local compute, electricity and storage.

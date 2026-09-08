@@ -1,0 +1,272 @@
+{
+  "sparse_annotations": [
+    {
+      "frame": 79,
+      "side": "left",
+      "candidate_ok": false,
+      "reject_view": true,
+      "iris_label_count": 0,
+      "iris_labels_admitted": 0,
+      "noniris_label_count": 5,
+      "noniris_labels_admitted": 0
+    },
+    {
+      "frame": 79,
+      "side": "right",
+      "candidate_ok": false,
+      "reject_view": true,
+      "iris_label_count": 0,
+      "iris_labels_admitted": 0,
+      "noniris_label_count": 5,
+      "noniris_labels_admitted": 0
+    },
+    {
+      "frame": 217,
+      "side": "left",
+      "candidate_ok": false,
+      "reject_view": true,
+      "iris_label_count": 0,
+      "iris_labels_admitted": 0,
+      "noniris_label_count": 5,
+      "noniris_labels_admitted": 0
+    },
+    {
+      "frame": 217,
+      "side": "right",
+      "candidate_ok": false,
+      "reject_view": true,
+      "iris_label_count": 0,
+      "iris_labels_admitted": 0,
+      "noniris_label_count": 5,
+      "noniris_labels_admitted": 0
+    },
+    {
+      "frame": 521,
+      "side": "left",
+      "candidate_ok": false,
+      "reject_view": false,
+      "iris_label_count": 5,
+      "iris_labels_admitted": 0,
+      "noniris_label_count": 5,
+      "noniris_labels_admitted": 0,
+      "limbus_distance_p50_p95_px": [
+        0.8062251080994205,
+        3.542214118555818
+      ],
+      "pupil_distance_p50_p95_px": [
+        1.8251412625744043,
+        5.023485409102109
+      ]
+    },
+    {
+      "frame": 521,
+      "side": "right",
+      "candidate_ok": false,
+      "reject_view": false,
+      "iris_label_count": 5,
+      "iris_labels_admitted": 0,
+      "noniris_label_count": 5,
+      "noniris_labels_admitted": 0,
+      "limbus_distance_p50_p95_px": [
+        2.2402451791838094,
+        7.0812036008712695
+      ],
+      "pupil_distance_p50_p95_px": [
+        1.469323556655259,
+        4.273129874080542
+      ]
+    },
+    {
+      "frame": 779,
+      "side": "left",
+      "candidate_ok": false,
+      "reject_view": false,
+      "iris_label_count": 5,
+      "iris_labels_admitted": 5,
+      "noniris_label_count": 5,
+      "noniris_labels_admitted": 0,
+      "limbus_distance_p50_p95_px": [
+        1.4440015452911723,
+        2.174331978535803
+      ],
+      "pupil_distance_p50_p95_px": [
+        0.8609626516864277,
+        3.7217434770149898
+      ]
+    },
+    {
+      "frame": 779,
+      "side": "right",
+      "candidate_ok": false,
+      "reject_view": false,
+      "iris_label_count": 5,
+      "iris_labels_admitted": 5,
+      "noniris_label_count": 5,
+      "noniris_labels_admitted": 0,
+      "limbus_distance_p50_p95_px": [
+        0.8468309712047848,
+        1.1579752362933933
+      ],
+      "pupil_distance_p50_p95_px": [
+        0.9608090828229425,
+        2.2986481090996826
+      ]
+    },
+    {
+      "frame": 923,
+      "side": "left",
+      "candidate_ok": false,
+      "reject_view": false,
+      "iris_label_count": 5,
+      "iris_labels_admitted": 2,
+      "noniris_label_count": 5,
+      "noniris_labels_admitted": 0,
+      "limbus_distance_p50_p95_px": [
+        0.8314988757750177,
+        1.763445705424337
+      ],
+      "pupil_distance_p50_p95_px": [
+        2.4696105599319926,
+        5.337740710193562
+      ]
+    },
+    {
+      "frame": 923,
+      "side": "right",
+      "candidate_ok": false,
+      "reject_view": false,
+      "iris_label_count": 5,
+      "iris_labels_admitted": 4,
+      "noniris_label_count": 5,
+      "noniris_labels_admitted": 0,
+      "limbus_distance_p50_p95_px": [
+        0.9430071633370405,
+        1.1672156757007475
+      ],
+      "pupil_distance_p50_p95_px": [
+        2.6683009529814394,
+        4.010424522972984
+      ]
+    },
+    {
+      "frame": 1115,
+      "side": "left",
+      "candidate_ok": false,
+      "reject_view": false,
+      "iris_label_count": 5,
+      "iris_labels_admitted": 5,
+      "noniris_label_count": 5,
+      "noniris_labels_admitted": 0,
+      "limbus_distance_p50_p95_px": [
+        0.8706445878818201,
+        2.159555454056037
+      ],
+      "pupil_distance_p50_p95_px": [
+        2.5601187856125676,
+        4.530554635145288
+      ]
+    },
+    {
+      "frame": 1115,
+      "side": "right",
+      "candidate_ok": true,
+      "reject_view": false,
+      "iris_label_count": 5,
+      "iris_labels_admitted": 5,
+      "noniris_label_count": 5,
+      "noniris_labels_admitted": 0,
+      "limbus_distance_p50_p95_px": [
+        0.40245959255997477,
+        0.63302657175515
+      ],
+      "pupil_distance_p50_p95_px": [
+        0.7881056072423276,
+        2.307708277528496
+      ]
+    }
+  ],
+  "annotation_provenance": "Assistant manual sparse annotations on native RGB nearest-neighbour grids, before viewing fitted overlays for these six evaluation frames. Not artist labels, dense segmentation or independent human ground truth.",
+  "adapter_contract_checks": [
+    {
+      "scale": 1.0,
+      "requested_pixel_aspect": 1.0,
+      "effective_pixel_aspect": 1.0,
+      "roi_shape": [
+        68,
+        68,
+        3
+      ],
+      "fallback_exact": true
+    },
+    {
+      "scale": 2.0,
+      "requested_pixel_aspect": 1.0,
+      "effective_pixel_aspect": 1.0,
+      "roi_shape": [
+        128,
+        128,
+        3
+      ],
+      "fallback_exact": true
+    },
+    {
+      "scale": 1.0,
+      "requested_pixel_aspect": 1.6,
+      "effective_pixel_aspect": 1.619047619047619,
+      "roi_shape": [
+        68,
+        46,
+        3
+      ],
+      "fallback_exact": true
+    }
+  ],
+  "missing_detection_fallback": true,
+  "native_anisotropic_detector_hidden_rgb_invariant": true,
+  "protected_files_unchanged": 304,
+  "videos": [
+    {
+      "file": "r12_native_source_fallback.mp4",
+      "decoded_frames": 150,
+      "fps": 59.94005994005994,
+      "sheets": [
+        "composite\\r12_native\\r12_native_source_fallback_sheet_0100.jpg",
+        "composite\\r12_native\\r12_native_source_fallback_sheet_0150.jpg"
+      ],
+      "visual_inspection": "pending",
+      "artist_approval": "not requested"
+    },
+    {
+      "file": "r12_native_masks.mp4",
+      "decoded_frames": 1200,
+      "fps": 59.94005994005994,
+      "sheets": [
+        "composite\\r12_native\\r12_native_masks_sheet_0100.jpg",
+        "composite\\r12_native\\r12_native_masks_sheet_0200.jpg",
+        "composite\\r12_native\\r12_native_masks_sheet_0300.jpg",
+        "composite\\r12_native\\r12_native_masks_sheet_0400.jpg",
+        "composite\\r12_native\\r12_native_masks_sheet_0500.jpg",
+        "composite\\r12_native\\r12_native_masks_sheet_0600.jpg",
+        "composite\\r12_native\\r12_native_masks_sheet_0700.jpg",
+        "composite\\r12_native\\r12_native_masks_sheet_0800.jpg",
+        "composite\\r12_native\\r12_native_masks_sheet_0900.jpg",
+        "composite\\r12_native\\r12_native_masks_sheet_1000.jpg",
+        "composite\\r12_native\\r12_native_masks_sheet_1100.jpg",
+        "composite\\r12_native\\r12_native_masks_sheet_1200.jpg"
+      ],
+      "visual_inspection": "pending",
+      "artist_approval": "not requested"
+    },
+    {
+      "file": "r12_native_holdout.mp4",
+      "decoded_frames": 14,
+      "fps": 2.0,
+      "sheets": [
+        "composite\\r12_native\\r12_native_holdout_sheet_0014.jpg"
+      ],
+      "visual_inspection": "pending",
+      "artist_approval": "not requested"
+    }
+  ],
+  "generalization_status": "No second real clip with tracking is available in this workspace; transformed crops only test coordinate/fallback contracts."
+}

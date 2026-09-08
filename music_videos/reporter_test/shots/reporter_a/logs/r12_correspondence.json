@@ -1,0 +1,4097 @@
+{
+  "status": "real held-out observations, NOT a reflection repair",
+  "selection": "every selected source frame; 5 native pixels per hole; coarse seed at 60/120 degrees, 0.7 initial radius; conditional on preliminary material mask",
+  "limits": "Coarse ROI/landmark seed fixed. Invariance includes native detector and correspondence, not upstream face tracking. Sparse 5-pixel holes do not validate large glint footprints or their unobserved material.",
+  "summary": {
+    "fixed": {
+      "all": {
+        "cases": 12,
+        "pixels": 55,
+        "display_mae_p50_p95": [
+          3.272119164466858,
+          6.2397545814514155
+        ],
+        "relative_rgb_error_p50_p95": [
+          0.04691076651215553,
+          0.1124697983264923
+        ]
+      },
+      "paired": {
+        "cases": 12,
+        "pixels": 54,
+        "display_mae_p50_p95": [
+          3.260107398033142,
+          6.2397545814514155
+        ],
+        "relative_rgb_error_p50_p95": [
+          0.04437515139579773,
+          0.1124697983264923
+        ]
+      },
+      "context_and_agreement": {
+        "cases": 0,
+        "pixels": 0,
+        "display_mae_p50_p95": null,
+        "relative_rgb_error_p50_p95": null
+      }
+    },
+    "torsion": {
+      "all": {
+        "cases": 12,
+        "pixels": 56,
+        "display_mae_p50_p95": [
+          3.6148762702941895,
+          7.1897212743759145
+        ],
+        "relative_rgb_error_p50_p95": [
+          0.049934638664126396,
+          0.11807733699679375
+        ]
+      },
+      "paired": {
+        "cases": 12,
+        "pixels": 54,
+        "display_mae_p50_p95": [
+          3.6259236335754395,
+          7.1897212743759145
+        ],
+        "relative_rgb_error_p50_p95": [
+          0.049947310239076614,
+          0.11807733699679375
+        ]
+      },
+      "context_and_agreement": {
+        "cases": 0,
+        "pixels": 0,
+        "display_mae_p50_p95": null,
+        "relative_rgb_error_p50_p95": null
+      }
+    }
+  },
+  "hidden_rgb_invariance": [
+    {
+      "frame": 717,
+      "side": "left",
+      "passed": true,
+      "supported_pixels": 5,
+      "unguarded_detector_centre_change_px": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 733,
+      "side": "left",
+      "passed": true,
+      "supported_pixels": 4,
+      "unguarded_detector_centre_change_px": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 776,
+      "side": "left",
+      "passed": true,
+      "supported_pixels": 4,
+      "unguarded_detector_centre_change_px": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 778,
+      "side": "left",
+      "passed": true,
+      "supported_pixels": 5,
+      "unguarded_detector_centre_change_px": [
+        0.0,
+        0.5
+      ]
+    },
+    {
+      "frame": 780,
+      "side": "left",
+      "passed": true,
+      "supported_pixels": 5,
+      "unguarded_detector_centre_change_px": [
+        0.0,
+        0.5
+      ]
+    },
+    {
+      "frame": 782,
+      "side": "left",
+      "passed": true,
+      "supported_pixels": 0,
+      "unguarded_detector_centre_change_px": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 819,
+      "side": "left",
+      "passed": true,
+      "supported_pixels": 4,
+      "unguarded_detector_centre_change_px": [
+        0.7071067811865476,
+        0.7071067811865476
+      ]
+    },
+    {
+      "frame": 819,
+      "side": "left",
+      "passed": true,
+      "supported_pixels": 0,
+      "unguarded_detector_centre_change_px": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 822,
+      "side": "left",
+      "passed": true,
+      "supported_pixels": 5,
+      "unguarded_detector_centre_change_px": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 719,
+      "side": "right",
+      "passed": true,
+      "supported_pixels": 5,
+      "unguarded_detector_centre_change_px": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 741,
+      "side": "right",
+      "passed": true,
+      "supported_pixels": 5,
+      "unguarded_detector_centre_change_px": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 798,
+      "side": "right",
+      "passed": true,
+      "supported_pixels": 5,
+      "unguarded_detector_centre_change_px": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 798,
+      "side": "right",
+      "passed": true,
+      "supported_pixels": 5,
+      "unguarded_detector_centre_change_px": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 802,
+      "side": "right",
+      "passed": true,
+      "supported_pixels": 4,
+      "unguarded_detector_centre_change_px": [
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "side": "left",
+      "source_frame": 717,
+      "hidden_native_pixels": 5,
+      "centre_native_xy": [
+        36,
+        39
+      ],
+      "fixed": {
+        "all": {
+          "pixels": 5,
+          "display_mae": 2.8707032203674316,
+          "relative_rgb_error": 0.049608923494815826
+        },
+        "paired": {
+          "pixels": 5,
+          "display_mae": 2.8707032203674316,
+          "relative_rgb_error": 0.049608923494815826
+        },
+        "context_and_agreement": null,
+        "info": {
+          "geometry": {
+            "centre": [
+              29.8883056640625,
+              30.744140625
+            ],
+            "axes": [
+              13.045221328735352,
+              13.045221328735352
+            ],
+            "rotation": 0.0,
+            "pupil_ratio": 0.5832821130752563,
+            "texture_rotation": 0.0
+          },
+          "candidate_ok": true,
+          "reasons": [],
+          "fits": [
+            {
+              "frame": 825,
+              "training_mae": 4.310047626495361,
+              "validation_mae": 7.212193012237549,
+              "validation_pixels": 14,
+              "negative_common_pixels": 6,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 231,
+              "training_mae": 4.514626502990723,
+              "validation_mae": 8.367462158203125,
+              "validation_pixels": 19,
+              "negative_common_pixels": 11,
+              "wrong_rotation_margin": 7.994495868682861,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 448,
+              "training_mae": 4.545117378234863,
+              "validation_mae": 6.986063480377197,
+              "validation_pixels": 16,
+              "negative_common_pixels": 8,
+              "wrong_rotation_margin": -0.7252602577209473,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 337,
+              "training_mae": 4.57582426071167,
+              "validation_mae": 8.289958000183105,
+              "validation_pixels": 12,
+              "negative_common_pixels": 5,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 323,
+              "training_mae": 4.994965553283691,
+              "validation_mae": 6.494899749755859,
+              "validation_pixels": 21,
+              "negative_common_pixels": 11,
+              "wrong_rotation_margin": 3.143939733505249,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 147,
+              "training_mae": 5.098002910614014,
+              "validation_mae": 8.00634765625,
+              "validation_pixels": 18,
+              "negative_common_pixels": 9,
+              "wrong_rotation_margin": 3.5648510456085205,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 826,
+              "training_mae": 5.68109130859375,
+              "validation_mae": 9.11418628692627,
+              "validation_pixels": 18,
+              "negative_common_pixels": 11,
+              "wrong_rotation_margin": 5.491684436798096,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 158,
+              "training_mae": 5.828255653381348,
+              "validation_mae": 8.697396278381348,
+              "validation_pixels": 20,
+              "negative_common_pixels": 12,
+              "wrong_rotation_margin": 3.4077959060668945,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 177,
+              "training_mae": 5.97495698928833,
+              "validation_mae": 7.654541015625,
+              "validation_pixels": 16,
+              "negative_common_pixels": 9,
+              "wrong_rotation_margin": 3.0510709285736084,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 733,
+              "training_mae": 6.002061367034912,
+              "validation_mae": 7.382486820220947,
+              "validation_pixels": 16,
+              "negative_common_pixels": 9,
+              "wrong_rotation_margin": 2.0048828125,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 990,
+              "training_mae": 7.027587890625,
+              "validation_mae": 9.644144058227539,
+              "validation_pixels": 16,
+              "negative_common_pixels": 10,
+              "wrong_rotation_margin": 6.069531440734863,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 339,
+              "training_mae": 8.154495239257812,
+              "validation_mae": 13.993727684020996,
+              "validation_pixels": 26,
+              "negative_common_pixels": 17,
+              "wrong_rotation_margin": 6.594497203826904,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            }
+          ],
+          "context_pass": false
+        }
+      },
+      "torsion": {
+        "all": {
+          "pixels": 5,
+          "display_mae": 2.863802194595337,
+          "relative_rgb_error": 0.049489665776491165
+        },
+        "paired": {
+          "pixels": 5,
+          "display_mae": 2.863802194595337,
+          "relative_rgb_error": 0.049489665776491165
+        },
+        "context_and_agreement": null,
+        "info": {
+          "geometry": {
+            "centre": [
+              29.8883056640625,
+              30.744140625
+            ],
+            "axes": [
+              13.045221328735352,
+              13.045221328735352
+            ],
+            "rotation": 0.0,
+            "pupil_ratio": 0.5832821130752563,
+            "texture_rotation": 0.0
+          },
+          "candidate_ok": true,
+          "reasons": [],
+          "fits": [
+            {
+              "frame": 231,
+              "training_mae": 3.312130928039551,
+              "validation_mae": 10.240179061889648,
+              "validation_pixels": 23,
+              "negative_common_pixels": 12,
+              "wrong_rotation_margin": 5.291693210601807,
+              "torsion_radians": -0.06,
+              "context_pass": false
+            },
+            {
+              "frame": 448,
+              "training_mae": 3.7151081562042236,
+              "validation_mae": 7.210458755493164,
+              "validation_pixels": 17,
+              "negative_common_pixels": 8,
+              "wrong_rotation_margin": -0.6304118633270264,
+              "torsion_radians": 0.04000000000000001,
+              "context_pass": false
+            },
+            {
+              "frame": 147,
+              "training_mae": 4.175412654876709,
+              "validation_mae": 8.040916442871094,
+              "validation_pixels": 23,
+              "negative_common_pixels": 12,
+              "wrong_rotation_margin": 1.3221843242645264,
+              "torsion_radians": -0.06,
+              "context_pass": false
+            },
+            {
+              "frame": 825,
+              "training_mae": 4.305946350097656,
+              "validation_mae": 6.94553804397583,
+              "validation_pixels": 13,
+              "negative_common_pixels": 7,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.020000000000000018,
+              "context_pass": false
+            },
+            {
+              "frame": 337,
+              "training_mae": 4.575455665588379,
+              "validation_mae": 8.020258903503418,
+              "validation_pixels": 17,
+              "negative_common_pixels": 9,
+              "wrong_rotation_margin": 2.4743564128875732,
+              "torsion_radians": -0.06,
+              "context_pass": false
+            },
+            {
+              "frame": 323,
+              "training_mae": 4.994965553283691,
+              "validation_mae": 6.494899749755859,
+              "validation_pixels": 21,
+              "negative_common_pixels": 11,
+              "wrong_rotation_margin": 3.143939733505249,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 158,
+              "training_mae": 5.336263656616211,
+              "validation_mae": 8.805415153503418,
+              "validation_pixels": 21,
+              "negative_common_pixels": 12,
+              "wrong_rotation_margin": 2.6661243438720703,
+              "torsion_radians": -0.01999999999999999,
+              "context_pass": false
+            },
+            {
+              "frame": 177,
+              "training_mae": 5.42929744720459,
+              "validation_mae": 8.904816627502441,
+              "validation_pixels": 15,
+              "negative_common_pixels": 9,
+              "wrong_rotation_margin": 1.9227434396743774,
+              "torsion_radians": -0.01999999999999999,
+              "context_pass": false
+            },
+            {
+              "frame": 826,
+              "training_mae": 5.68109130859375,
+              "validation_mae": 9.11418628692627,
+              "validation_pixels": 18,
+              "negative_common_pixels": 11,
+              "wrong_rotation_margin": 5.491684436798096,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 733,
+              "training_mae": 5.8403730392456055,
+              "validation_mae": 7.086863040924072,
+              "validation_pixels": 13,
+              "negative_common_pixels": 8,
+              "wrong_rotation_margin": 1.8520913124084473,
+              "torsion_radians": 0.020000000000000018,
+              "context_pass": false
+            },
+            {
+              "frame": 990,
+              "training_mae": 6.4702043533325195,
+              "validation_mae": 11.548005104064941,
+              "validation_pixels": 17,
+              "negative_common_pixels": 8,
+              "wrong_rotation_margin": 4.861165523529053,
+              "torsion_radians": 0.12,
+              "context_pass": false
+            },
+            {
+              "frame": 266,
+              "training_mae": 7.637125015258789,
+              "validation_mae": 11.609235763549805,
+              "validation_pixels": 28,
+              "negative_common_pixels": 20,
+              "wrong_rotation_margin": 2.879117965698242,
+              "torsion_radians": -0.12,
+              "context_pass": false
+            }
+          ],
+          "context_pass": false
+        }
+      }
+    },
+    {
+      "side": "left",
+      "source_frame": 733,
+      "hidden_native_pixels": 5,
+      "centre_native_xy": [
+        28,
+        40
+      ],
+      "fixed": {
+        "all": {
+          "pixels": 5,
+          "display_mae": 4.435807228088379,
+          "relative_rgb_error": 0.06574813276529312
+        },
+        "paired": {
+          "pixels": 4,
+          "display_mae": 2.9246418476104736,
+          "relative_rgb_error": 0.04453769326210022
+        },
+        "context_and_agreement": null,
+        "info": {
+          "geometry": {
+            "centre": [
+              30.1602783203125,
+              30.475433349609375
+            ],
+            "axes": [
+              12.665384292602539,
+              12.665384292602539
+            ],
+            "rotation": 0.0,
+            "pupil_ratio": 0.4763438105583191,
+            "texture_rotation": 0.0
+          },
+          "candidate_ok": true,
+          "reasons": [],
+          "fits": [
+            {
+              "frame": 687,
+              "training_mae": 2.2190542221069336,
+              "validation_mae": 6.824934959411621,
+              "validation_pixels": 10,
+              "negative_common_pixels": 3,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 777,
+              "training_mae": 4.195601940155029,
+              "validation_mae": 8.271646499633789,
+              "validation_pixels": 16,
+              "negative_common_pixels": 9,
+              "wrong_rotation_margin": 2.157118082046509,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 894,
+              "training_mae": 4.321065425872803,
+              "validation_mae": 6.020941734313965,
+              "validation_pixels": 18,
+              "negative_common_pixels": 10,
+              "wrong_rotation_margin": 0.8282550573348999,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 825,
+              "training_mae": 4.357658863067627,
+              "validation_mae": 6.848238468170166,
+              "validation_pixels": 19,
+              "negative_common_pixels": 9,
+              "wrong_rotation_margin": 4.216580390930176,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 677,
+              "training_mae": 4.404450416564941,
+              "validation_mae": 6.3936848640441895,
+              "validation_pixels": 15,
+              "negative_common_pixels": 6,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 665,
+              "training_mae": 4.5055155754089355,
+              "validation_mae": 5.0312933921813965,
+              "validation_pixels": 15,
+              "negative_common_pixels": 8,
+              "wrong_rotation_margin": 0.5154621601104736,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 771,
+              "training_mae": 4.6801438331604,
+              "validation_mae": 7.998279571533203,
+              "validation_pixels": 14,
+              "negative_common_pixels": 7,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 343,
+              "training_mae": 4.7090864181518555,
+              "validation_mae": 7.361601829528809,
+              "validation_pixels": 19,
+              "negative_common_pixels": 8,
+              "wrong_rotation_margin": 3.0598554611206055,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 814,
+              "training_mae": 4.712392807006836,
+              "validation_mae": 6.187952041625977,
+              "validation_pixels": 18,
+              "negative_common_pixels": 9,
+              "wrong_rotation_margin": 5.928204536437988,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 782,
+              "training_mae": 4.883241176605225,
+              "validation_mae": 6.470395565032959,
+              "validation_pixels": 18,
+              "negative_common_pixels": 8,
+              "wrong_rotation_margin": 5.810872554779053,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 776,
+              "training_mae": 4.892903804779053,
+              "validation_mae": 7.11367654800415,
+              "validation_pixels": 14,
+              "negative_common_pixels": 9,
+              "wrong_rotation_margin": 1.7940897941589355,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 819,
+              "training_mae": 5.011216640472412,
+              "validation_mae": 7.226190567016602,
+              "validation_pixels": 21,
+              "negative_common_pixels": 8,
+              "wrong_rotation_margin": 4.3861083984375,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            }
+          ],
+          "context_pass": false
+        }
+      },
+      "torsion": {
+        "all": {
+          "pixels": 4,
+          "display_mae": 2.2854816913604736,
+          "relative_rgb_error": 0.034804292023181915
+        },
+        "paired": {
+          "pixels": 4,
+          "display_mae": 2.2854816913604736,
+          "relative_rgb_error": 0.034804292023181915
+        },
+        "context_and_agreement": null,
+        "info": {
+          "geometry": {
+            "centre": [
+              30.1602783203125,
+              30.475433349609375
+            ],
+            "axes": [
+              12.665384292602539,
+              12.665384292602539
+            ],
+            "rotation": 0.0,
+            "pupil_ratio": 0.4763438105583191,
+            "texture_rotation": 0.0
+          },
+          "candidate_ok": true,
+          "reasons": [],
+          "fits": [
+            {
+              "frame": 687,
+              "training_mae": 1.8777668476104736,
+              "validation_mae": 7.055534362792969,
+              "validation_pixels": 10,
+              "negative_common_pixels": 4,
+              "wrong_rotation_margin": null,
+              "torsion_radians": -0.01999999999999999,
+              "context_pass": false
+            },
+            {
+              "frame": 677,
+              "training_mae": 2.6426215171813965,
+              "validation_mae": 5.999260425567627,
+              "validation_pixels": 11,
+              "negative_common_pixels": 5,
+              "wrong_rotation_margin": null,
+              "torsion_radians": -0.09999999999999999,
+              "context_pass": false
+            },
+            {
+              "frame": 773,
+              "training_mae": 3.441861867904663,
+              "validation_mae": 7.802509784698486,
+              "validation_pixels": 13,
+              "negative_common_pixels": 6,
+              "wrong_rotation_margin": null,
+              "torsion_radians": -0.07999999999999999,
+              "context_pass": false
+            },
+            {
+              "frame": 777,
+              "training_mae": 4.100757598876953,
+              "validation_mae": 8.169270515441895,
+              "validation_pixels": 16,
+              "negative_common_pixels": 9,
+              "wrong_rotation_margin": 1.8315972089767456,
+              "torsion_radians": -0.01999999999999999,
+              "context_pass": false
+            },
+            {
+              "frame": 826,
+              "training_mae": 4.134822845458984,
+              "validation_mae": 14.842975616455078,
+              "validation_pixels": 21,
+              "negative_common_pixels": 12,
+              "wrong_rotation_margin": 3.041964530944824,
+              "torsion_radians": -0.09999999999999999,
+              "context_pass": false
+            },
+            {
+              "frame": 665,
+              "training_mae": 4.19346809387207,
+              "validation_mae": 6.281005859375,
+              "validation_pixels": 12,
+              "negative_common_pixels": 7,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.04000000000000001,
+              "context_pass": false
+            },
+            {
+              "frame": 825,
+              "training_mae": 4.209995269775391,
+              "validation_mae": 7.4376959800720215,
+              "validation_pixels": 20,
+              "negative_common_pixels": 8,
+              "wrong_rotation_margin": 5.802571773529053,
+              "torsion_radians": -0.01999999999999999,
+              "context_pass": false
+            },
+            {
+              "frame": 894,
+              "training_mae": 4.2786455154418945,
+              "validation_mae": 5.636053562164307,
+              "validation_pixels": 23,
+              "negative_common_pixels": 11,
+              "wrong_rotation_margin": 1.3381863832473755,
+              "torsion_radians": 0.020000000000000018,
+              "context_pass": false
+            },
+            {
+              "frame": 447,
+              "training_mae": 4.3644118309021,
+              "validation_mae": 5.570733547210693,
+              "validation_pixels": 17,
+              "negative_common_pixels": 8,
+              "wrong_rotation_margin": 2.8002524375915527,
+              "torsion_radians": 0.10000000000000003,
+              "context_pass": false
+            },
+            {
+              "frame": 343,
+              "training_mae": 4.53961181640625,
+              "validation_mae": 8.689107894897461,
+              "validation_pixels": 16,
+              "negative_common_pixels": 9,
+              "wrong_rotation_margin": 0.8061702847480774,
+              "torsion_radians": -0.06,
+              "context_pass": false
+            },
+            {
+              "frame": 776,
+              "training_mae": 4.591883659362793,
+              "validation_mae": 7.076460838317871,
+              "validation_pixels": 18,
+              "negative_common_pixels": 10,
+              "wrong_rotation_margin": 2.1573891639709473,
+              "torsion_radians": -0.12,
+              "context_pass": false
+            },
+            {
+              "frame": 782,
+              "training_mae": 4.596224308013916,
+              "validation_mae": 4.915008068084717,
+              "validation_pixels": 21,
+              "negative_common_pixels": 11,
+              "wrong_rotation_margin": 5.424686431884766,
+              "torsion_radians": 0.020000000000000018,
+              "context_pass": false
+            }
+          ],
+          "context_pass": false
+        }
+      }
+    },
+    {
+      "side": "left",
+      "source_frame": 776,
+      "hidden_native_pixels": 5,
+      "centre_native_xy": [
+        28,
+        40
+      ],
+      "fixed": {
+        "all": {
+          "pixels": 4,
+          "display_mae": 6.0699462890625,
+          "relative_rgb_error": 0.08981424570083618
+        },
+        "paired": {
+          "pixels": 4,
+          "display_mae": 6.0699462890625,
+          "relative_rgb_error": 0.08981424570083618
+        },
+        "context_and_agreement": null,
+        "info": {
+          "geometry": {
+            "centre": [
+              29.8402099609375,
+              31.22821044921875
+            ],
+            "axes": [
+              12.170289039611816,
+              12.170289039611816
+            ],
+            "rotation": 0.0,
+            "pupil_ratio": 0.5697529315948486,
+            "texture_rotation": 0.0
+          },
+          "candidate_ok": true,
+          "reasons": [],
+          "fits": [
+            {
+              "frame": 782,
+              "training_mae": 2.4652597904205322,
+              "validation_mae": 4.012087345123291,
+              "validation_pixels": 15,
+              "negative_common_pixels": 7,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 814,
+              "training_mae": 2.5786421298980713,
+              "validation_mae": 4.399179458618164,
+              "validation_pixels": 18,
+              "negative_common_pixels": 10,
+              "wrong_rotation_margin": 4.57412052154541,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 819,
+              "training_mae": 3.0106847286224365,
+              "validation_mae": 3.9737026691436768,
+              "validation_pixels": 14,
+              "negative_common_pixels": 6,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 323,
+              "training_mae": 3.212782382965088,
+              "validation_mae": 5.2743330001831055,
+              "validation_pixels": 20,
+              "negative_common_pixels": 11,
+              "wrong_rotation_margin": 5.231149673461914,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 825,
+              "training_mae": 3.384678840637207,
+              "validation_mae": 4.247846603393555,
+              "validation_pixels": 13,
+              "negative_common_pixels": 6,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 158,
+              "training_mae": 3.481879234313965,
+              "validation_mae": 6.89135217666626,
+              "validation_pixels": 21,
+              "negative_common_pixels": 13,
+              "wrong_rotation_margin": 6.743989944458008,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 174,
+              "training_mae": 3.674804925918579,
+              "validation_mae": 6.694358825683594,
+              "validation_pixels": 14,
+              "negative_common_pixels": 5,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 343,
+              "training_mae": 3.83770751953125,
+              "validation_mae": 2.794097423553467,
+              "validation_pixels": 15,
+              "negative_common_pixels": 6,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 160,
+              "training_mae": 3.947204351425171,
+              "validation_mae": 5.998738765716553,
+              "validation_pixels": 16,
+              "negative_common_pixels": 8,
+              "wrong_rotation_margin": 2.334228754043579,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 234,
+              "training_mae": 3.9612624645233154,
+              "validation_mae": 9.271051406860352,
+              "validation_pixels": 15,
+              "negative_common_pixels": 6,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 337,
+              "training_mae": 4.235911846160889,
+              "validation_mae": 6.113304615020752,
+              "validation_pixels": 14,
+              "negative_common_pixels": 6,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 162,
+              "training_mae": 4.2382612228393555,
+              "validation_mae": 6.91173791885376,
+              "validation_pixels": 14,
+              "negative_common_pixels": 7,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            }
+          ],
+          "context_pass": false
+        }
+      },
+      "torsion": {
+        "all": {
+          "pixels": 4,
+          "display_mae": 4.850057125091553,
+          "relative_rgb_error": 0.07176409661769867
+        },
+        "paired": {
+          "pixels": 4,
+          "display_mae": 4.850057125091553,
+          "relative_rgb_error": 0.07176409661769867
+        },
+        "context_and_agreement": null,
+        "info": {
+          "geometry": {
+            "centre": [
+              29.8402099609375,
+              31.22821044921875
+            ],
+            "axes": [
+              12.170289039611816,
+              12.170289039611816
+            ],
+            "rotation": 0.0,
+            "pupil_ratio": 0.5697529315948486,
+            "texture_rotation": 0.0
+          },
+          "candidate_ok": true,
+          "reasons": [],
+          "fits": [
+            {
+              "frame": 782,
+              "training_mae": 2.4652597904205322,
+              "validation_mae": 4.012087345123291,
+              "validation_pixels": 15,
+              "negative_common_pixels": 7,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 814,
+              "training_mae": 2.5786421298980713,
+              "validation_mae": 4.399179458618164,
+              "validation_pixels": 18,
+              "negative_common_pixels": 10,
+              "wrong_rotation_margin": 4.57412052154541,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 819,
+              "training_mae": 3.0106847286224365,
+              "validation_mae": 3.9737026691436768,
+              "validation_pixels": 14,
+              "negative_common_pixels": 6,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 323,
+              "training_mae": 3.0838396549224854,
+              "validation_mae": 6.509928226470947,
+              "validation_pixels": 18,
+              "negative_common_pixels": 9,
+              "wrong_rotation_margin": 5.311306953430176,
+              "torsion_radians": 0.04000000000000001,
+              "context_pass": false
+            },
+            {
+              "frame": 162,
+              "training_mae": 3.203927755355835,
+              "validation_mae": 7.285834789276123,
+              "validation_pixels": 12,
+              "negative_common_pixels": 5,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.08000000000000002,
+              "context_pass": false
+            },
+            {
+              "frame": 825,
+              "training_mae": 3.384678840637207,
+              "validation_mae": 4.247846603393555,
+              "validation_pixels": 13,
+              "negative_common_pixels": 6,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 158,
+              "training_mae": 3.481879234313965,
+              "validation_mae": 6.89135217666626,
+              "validation_pixels": 21,
+              "negative_common_pixels": 13,
+              "wrong_rotation_margin": 6.743989944458008,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 174,
+              "training_mae": 3.5856730937957764,
+              "validation_mae": 7.740467071533203,
+              "validation_pixels": 14,
+              "negative_common_pixels": 8,
+              "wrong_rotation_margin": 3.6658527851104736,
+              "torsion_radians": 0.04000000000000001,
+              "context_pass": false
+            },
+            {
+              "frame": 343,
+              "training_mae": 3.77044677734375,
+              "validation_mae": 2.6970269680023193,
+              "validation_pixels": 15,
+              "negative_common_pixels": 6,
+              "wrong_rotation_margin": null,
+              "torsion_radians": -0.01999999999999999,
+              "context_pass": false
+            },
+            {
+              "frame": 234,
+              "training_mae": 3.801128625869751,
+              "validation_mae": 8.557573318481445,
+              "validation_pixels": 15,
+              "negative_common_pixels": 8,
+              "wrong_rotation_margin": 7.4901123046875,
+              "torsion_radians": -0.03999999999999998,
+              "context_pass": false
+            },
+            {
+              "frame": 160,
+              "training_mae": 3.9102377891540527,
+              "validation_mae": 5.993408203125,
+              "validation_pixels": 16,
+              "negative_common_pixels": 10,
+              "wrong_rotation_margin": 2.267871141433716,
+              "torsion_radians": -0.01999999999999999,
+              "context_pass": false
+            },
+            {
+              "frame": 231,
+              "training_mae": 3.9389736652374268,
+              "validation_mae": 12.248026847839355,
+              "validation_pixels": 16,
+              "negative_common_pixels": 9,
+              "wrong_rotation_margin": 8.344870567321777,
+              "torsion_radians": 0.04000000000000001,
+              "context_pass": false
+            }
+          ],
+          "context_pass": false
+        }
+      }
+    },
+    {
+      "side": "left",
+      "source_frame": 778,
+      "hidden_native_pixels": 5,
+      "centre_native_xy": [
+        36,
+        39
+      ],
+      "fixed": {
+        "all": {
+          "pixels": 5,
+          "display_mae": 6.447298049926758,
+          "relative_rgb_error": 0.1162373498082161
+        },
+        "paired": {
+          "pixels": 5,
+          "display_mae": 6.447298049926758,
+          "relative_rgb_error": 0.1162373498082161
+        },
+        "context_and_agreement": null,
+        "info": {
+          "geometry": {
+            "centre": [
+              29.44970703125,
+              31.891082763671875
+            ],
+            "axes": [
+              12.17294979095459,
+              12.17294979095459
+            ],
+            "rotation": 0.0,
+            "pupil_ratio": 0.5285974740982056,
+            "texture_rotation": 0.0
+          },
+          "candidate_ok": true,
+          "reasons": [],
+          "fits": [
+            {
+              "frame": 782,
+              "training_mae": 3.67905855178833,
+              "validation_mae": 4.8668212890625,
+              "validation_pixels": 16,
+              "negative_common_pixels": 8,
+              "wrong_rotation_margin": 1.4927164316177368,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 819,
+              "training_mae": 4.0471577644348145,
+              "validation_mae": 4.578624248504639,
+              "validation_pixels": 15,
+              "negative_common_pixels": 7,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 231,
+              "training_mae": 6.037847518920898,
+              "validation_mae": 11.982222557067871,
+              "validation_pixels": 18,
+              "negative_common_pixels": 9,
+              "wrong_rotation_margin": 6.076099395751953,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 158,
+              "training_mae": 6.054253101348877,
+              "validation_mae": 8.721223831176758,
+              "validation_pixels": 20,
+              "negative_common_pixels": 11,
+              "wrong_rotation_margin": 6.528704643249512,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 283,
+              "training_mae": 7.521240234375,
+              "validation_mae": 6.7372283935546875,
+              "validation_pixels": 17,
+              "negative_common_pixels": 8,
+              "wrong_rotation_margin": 2.1709799766540527,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 339,
+              "training_mae": 10.937353134155273,
+              "validation_mae": 15.059203147888184,
+              "validation_pixels": 23,
+              "negative_common_pixels": 14,
+              "wrong_rotation_margin": 6.150437355041504,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 324,
+              "training_mae": 10.948243141174316,
+              "validation_mae": 14.270551681518555,
+              "validation_pixels": 23,
+              "negative_common_pixels": 16,
+              "wrong_rotation_margin": 6.7342329025268555,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 319,
+              "training_mae": 11.14580249786377,
+              "validation_mae": 11.348541259765625,
+              "validation_pixels": 25,
+              "negative_common_pixels": 17,
+              "wrong_rotation_margin": 6.782590389251709,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 816,
+              "training_mae": 11.513547897338867,
+              "validation_mae": 10.088683128356934,
+              "validation_pixels": 23,
+              "negative_common_pixels": 14,
+              "wrong_rotation_margin": 2.9742605686187744,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 266,
+              "training_mae": 12.382108688354492,
+              "validation_mae": 12.495170593261719,
+              "validation_pixels": 24,
+              "negative_common_pixels": 14,
+              "wrong_rotation_margin": 5.192173480987549,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 1075,
+              "training_mae": 13.176020622253418,
+              "validation_mae": 8.042740821838379,
+              "validation_pixels": 23,
+              "negative_common_pixels": 14,
+              "wrong_rotation_margin": 2.8417506217956543,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 886,
+              "training_mae": 13.332743644714355,
+              "validation_mae": 11.78054141998291,
+              "validation_pixels": 23,
+              "negative_common_pixels": 14,
+              "wrong_rotation_margin": 0.5195080041885376,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            }
+          ],
+          "context_pass": false
+        }
+      },
+      "torsion": {
+        "all": {
+          "pixels": 5,
+          "display_mae": 6.535188674926758,
+          "relative_rgb_error": 0.11782191693782806
+        },
+        "paired": {
+          "pixels": 5,
+          "display_mae": 6.535188674926758,
+          "relative_rgb_error": 0.11782191693782806
+        },
+        "context_and_agreement": null,
+        "info": {
+          "geometry": {
+            "centre": [
+              29.44970703125,
+              31.891082763671875
+            ],
+            "axes": [
+              12.17294979095459,
+              12.17294979095459
+            ],
+            "rotation": 0.0,
+            "pupil_ratio": 0.5285974740982056,
+            "texture_rotation": 0.0
+          },
+          "candidate_ok": true,
+          "reasons": [],
+          "fits": [
+            {
+              "frame": 782,
+              "training_mae": 1.9231986999511719,
+              "validation_mae": 5.930488586425781,
+              "validation_pixels": 13,
+              "negative_common_pixels": 7,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.08000000000000002,
+              "context_pass": false
+            },
+            {
+              "frame": 819,
+              "training_mae": 2.920464277267456,
+              "validation_mae": 5.097360134124756,
+              "validation_pixels": 11,
+              "negative_common_pixels": 4,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.10000000000000003,
+              "context_pass": false
+            },
+            {
+              "frame": 231,
+              "training_mae": 4.097590923309326,
+              "validation_mae": 11.651774406433105,
+              "validation_pixels": 16,
+              "negative_common_pixels": 9,
+              "wrong_rotation_margin": 5.058159828186035,
+              "torsion_radians": 0.08000000000000002,
+              "context_pass": false
+            },
+            {
+              "frame": 158,
+              "training_mae": 5.0221781730651855,
+              "validation_mae": 9.369638442993164,
+              "validation_pixels": 17,
+              "negative_common_pixels": 8,
+              "wrong_rotation_margin": 4.133260250091553,
+              "torsion_radians": 0.14,
+              "context_pass": false
+            },
+            {
+              "frame": 283,
+              "training_mae": 5.179483890533447,
+              "validation_mae": 9.142627716064453,
+              "validation_pixels": 13,
+              "negative_common_pixels": 6,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.14,
+              "context_pass": false
+            },
+            {
+              "frame": 816,
+              "training_mae": 8.494379997253418,
+              "validation_mae": 9.358750343322754,
+              "validation_pixels": 25,
+              "negative_common_pixels": 18,
+              "wrong_rotation_margin": 4.142759323120117,
+              "torsion_radians": -0.18,
+              "context_pass": false
+            },
+            {
+              "frame": 339,
+              "training_mae": 9.2960205078125,
+              "validation_mae": 12.932079315185547,
+              "validation_pixels": 26,
+              "negative_common_pixels": 17,
+              "wrong_rotation_margin": 5.599915504455566,
+              "torsion_radians": -0.13999999999999999,
+              "context_pass": false
+            },
+            {
+              "frame": 319,
+              "training_mae": 10.02215576171875,
+              "validation_mae": 9.746894836425781,
+              "validation_pixels": 26,
+              "negative_common_pixels": 20,
+              "wrong_rotation_margin": 5.062027931213379,
+              "torsion_radians": -0.18,
+              "context_pass": false
+            },
+            {
+              "frame": 324,
+              "training_mae": 10.48246955871582,
+              "validation_mae": 14.609177589416504,
+              "validation_pixels": 23,
+              "negative_common_pixels": 12,
+              "wrong_rotation_margin": 6.96546745300293,
+              "torsion_radians": 0.04000000000000001,
+              "context_pass": false
+            },
+            {
+              "frame": 886,
+              "training_mae": 10.79034423828125,
+              "validation_mae": 11.346263885498047,
+              "validation_pixels": 25,
+              "negative_common_pixels": 19,
+              "wrong_rotation_margin": 1.1219333410263062,
+              "torsion_radians": -0.18,
+              "context_pass": false
+            },
+            {
+              "frame": 1075,
+              "training_mae": 10.961506843566895,
+              "validation_mae": 6.847531318664551,
+              "validation_pixels": 26,
+              "negative_common_pixels": 18,
+              "wrong_rotation_margin": 3.698838949203491,
+              "torsion_radians": -0.07999999999999999,
+              "context_pass": false
+            },
+            {
+              "frame": 266,
+              "training_mae": 11.028818130493164,
+              "validation_mae": 9.54645824432373,
+              "validation_pixels": 25,
+              "negative_common_pixels": 16,
+              "wrong_rotation_margin": 4.8341064453125,
+              "torsion_radians": -0.16,
+              "context_pass": false
+            }
+          ],
+          "context_pass": false
+        }
+      }
+    },
+    {
+      "side": "left",
+      "source_frame": 780,
+      "hidden_native_pixels": 5,
+      "centre_native_xy": [
+        36,
+        39
+      ],
+      "fixed": {
+        "all": {
+          "pixels": 5,
+          "display_mae": 5.812109470367432,
+          "relative_rgb_error": 0.10938725620508194
+        },
+        "paired": {
+          "pixels": 5,
+          "display_mae": 5.812109470367432,
+          "relative_rgb_error": 0.10938725620508194
+        },
+        "context_and_agreement": null,
+        "info": {
+          "geometry": {
+            "centre": [
+              29.209228515625,
+              32.539093017578125
+            ],
+            "axes": [
+              11.678658485412598,
+              11.678658485412598
+            ],
+            "rotation": 0.0,
+            "pupil_ratio": 0.4996919333934784,
+            "texture_rotation": 0.0
+          },
+          "candidate_ok": true,
+          "reasons": [],
+          "fits": [
+            {
+              "frame": 147,
+              "training_mae": 4.69085693359375,
+              "validation_mae": 5.754368782043457,
+              "validation_pixels": 19,
+              "negative_common_pixels": 10,
+              "wrong_rotation_margin": 5.929491996765137,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 733,
+              "training_mae": 5.023459434509277,
+              "validation_mae": 7.20643424987793,
+              "validation_pixels": 18,
+              "negative_common_pixels": 11,
+              "wrong_rotation_margin": 2.3663294315338135,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 337,
+              "training_mae": 5.330468654632568,
+              "validation_mae": 6.600390911102295,
+              "validation_pixels": 15,
+              "negative_common_pixels": 7,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 819,
+              "training_mae": 6.279014587402344,
+              "validation_mae": 4.960655212402344,
+              "validation_pixels": 15,
+              "negative_common_pixels": 7,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 339,
+              "training_mae": 9.517144203186035,
+              "validation_mae": 16.504838943481445,
+              "validation_pixels": 22,
+              "negative_common_pixels": 13,
+              "wrong_rotation_margin": 6.496795177459717,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 816,
+              "training_mae": 9.591866493225098,
+              "validation_mae": 11.05850601196289,
+              "validation_pixels": 22,
+              "negative_common_pixels": 12,
+              "wrong_rotation_margin": 3.001763343811035,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 319,
+              "training_mae": 10.044441223144531,
+              "validation_mae": 12.482026100158691,
+              "validation_pixels": 23,
+              "negative_common_pixels": 14,
+              "wrong_rotation_margin": 6.167690277099609,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 324,
+              "training_mae": 10.094673156738281,
+              "validation_mae": 14.213495254516602,
+              "validation_pixels": 21,
+              "negative_common_pixels": 13,
+              "wrong_rotation_margin": 6.162961483001709,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 266,
+              "training_mae": 10.202593803405762,
+              "validation_mae": 12.541281700134277,
+              "validation_pixels": 22,
+              "negative_common_pixels": 15,
+              "wrong_rotation_margin": 5.340559482574463,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 1075,
+              "training_mae": 10.818376541137695,
+              "validation_mae": 9.023383140563965,
+              "validation_pixels": 24,
+              "negative_common_pixels": 14,
+              "wrong_rotation_margin": 2.447498083114624,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 886,
+              "training_mae": 11.371367454528809,
+              "validation_mae": 11.520279884338379,
+              "validation_pixels": 20,
+              "negative_common_pixels": 12,
+              "wrong_rotation_margin": -0.12985579669475555,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            }
+          ],
+          "context_pass": false
+        }
+      },
+      "torsion": {
+        "all": {
+          "pixels": 5,
+          "display_mae": 6.290429592132568,
+          "relative_rgb_error": 0.11838951706886292
+        },
+        "paired": {
+          "pixels": 5,
+          "display_mae": 6.290429592132568,
+          "relative_rgb_error": 0.11838951706886292
+        },
+        "context_and_agreement": null,
+        "info": {
+          "geometry": {
+            "centre": [
+              29.209228515625,
+              32.539093017578125
+            ],
+            "axes": [
+              11.678658485412598,
+              11.678658485412598
+            ],
+            "rotation": 0.0,
+            "pupil_ratio": 0.4996919333934784,
+            "texture_rotation": 0.0
+          },
+          "candidate_ok": true,
+          "reasons": [],
+          "fits": [
+            {
+              "frame": 337,
+              "training_mae": 3.0296661853790283,
+              "validation_mae": 8.285895347595215,
+              "validation_pixels": 11,
+              "negative_common_pixels": 5,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.14,
+              "context_pass": false
+            },
+            {
+              "frame": 819,
+              "training_mae": 3.136596918106079,
+              "validation_mae": 6.597952365875244,
+              "validation_pixels": 11,
+              "negative_common_pixels": 5,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.16000000000000003,
+              "context_pass": false
+            },
+            {
+              "frame": 147,
+              "training_mae": 3.568880319595337,
+              "validation_mae": 6.218912601470947,
+              "validation_pixels": 18,
+              "negative_common_pixels": 9,
+              "wrong_rotation_margin": 6.153067111968994,
+              "torsion_radians": 0.04000000000000001,
+              "context_pass": false
+            },
+            {
+              "frame": 733,
+              "training_mae": 5.013097286224365,
+              "validation_mae": 7.827256679534912,
+              "validation_pixels": 15,
+              "negative_common_pixels": 8,
+              "wrong_rotation_margin": 0.8035888671875,
+              "torsion_radians": 0.14,
+              "context_pass": false
+            },
+            {
+              "frame": 816,
+              "training_mae": 8.356489181518555,
+              "validation_mae": 9.655219078063965,
+              "validation_pixels": 24,
+              "negative_common_pixels": 15,
+              "wrong_rotation_margin": 4.021397590637207,
+              "torsion_radians": -0.13999999999999999,
+              "context_pass": false
+            },
+            {
+              "frame": 339,
+              "training_mae": 8.571743965148926,
+              "validation_mae": 14.968017578125,
+              "validation_pixels": 24,
+              "negative_common_pixels": 15,
+              "wrong_rotation_margin": 5.96610164642334,
+              "torsion_radians": -0.03999999999999998,
+              "context_pass": false
+            },
+            {
+              "frame": 319,
+              "training_mae": 8.8671875,
+              "validation_mae": 10.571627616882324,
+              "validation_pixels": 25,
+              "negative_common_pixels": 18,
+              "wrong_rotation_margin": 4.776185989379883,
+              "torsion_radians": -0.16,
+              "context_pass": false
+            },
+            {
+              "frame": 324,
+              "training_mae": 9.205061912536621,
+              "validation_mae": 15.386842727661133,
+              "validation_pixels": 21,
+              "negative_common_pixels": 12,
+              "wrong_rotation_margin": 5.642849445343018,
+              "torsion_radians": 0.04000000000000001,
+              "context_pass": false
+            },
+            {
+              "frame": 266,
+              "training_mae": 10.152400970458984,
+              "validation_mae": 12.2158203125,
+              "validation_pixels": 23,
+              "negative_common_pixels": 14,
+              "wrong_rotation_margin": 4.710170269012451,
+              "torsion_radians": -0.01999999999999999,
+              "context_pass": false
+            },
+            {
+              "frame": 1075,
+              "training_mae": 10.197916984558105,
+              "validation_mae": 8.677490234375,
+              "validation_pixels": 24,
+              "negative_common_pixels": 15,
+              "wrong_rotation_margin": 2.374630928039551,
+              "torsion_radians": -0.03999999999999998,
+              "context_pass": false
+            },
+            {
+              "frame": 886,
+              "training_mae": 10.944047927856445,
+              "validation_mae": 12.485085487365723,
+              "validation_pixels": 22,
+              "negative_common_pixels": 14,
+              "wrong_rotation_margin": 0.6260696649551392,
+              "torsion_radians": -0.06,
+              "context_pass": false
+            }
+          ],
+          "context_pass": false
+        }
+      }
+    },
+    {
+      "side": "left",
+      "source_frame": 782,
+      "hidden_native_pixels": 5,
+      "centre_native_xy": [
+        28,
+        39
+      ],
+      "fixed": {
+        "all": null,
+        "paired": null,
+        "context_and_agreement": null,
+        "info": {
+          "geometry": {
+            "centre": [
+              29.856201171875,
+              30.783050537109375
+            ],
+            "axes": [
+              12.186646461486816,
+              12.186646461486816
+            ],
+            "rotation": 0.0,
+            "pupil_ratio": 0.24102851748466492,
+            "texture_rotation": 0.0
+          },
+          "candidate_ok": false,
+          "reasons": [
+            "pupil_radius_at_search_boundary"
+          ],
+          "fits": [],
+          "context_pass": false
+        }
+      },
+      "torsion": {
+        "all": null,
+        "paired": null,
+        "context_and_agreement": null,
+        "info": {
+          "geometry": {
+            "centre": [
+              29.856201171875,
+              30.783050537109375
+            ],
+            "axes": [
+              12.186646461486816,
+              12.186646461486816
+            ],
+            "rotation": 0.0,
+            "pupil_ratio": 0.24102851748466492,
+            "texture_rotation": 0.0
+          },
+          "candidate_ok": false,
+          "reasons": [
+            "pupil_radius_at_search_boundary"
+          ],
+          "fits": [],
+          "context_pass": false
+        }
+      }
+    },
+    {
+      "side": "left",
+      "source_frame": 819,
+      "hidden_native_pixels": 5,
+      "centre_native_xy": [
+        37,
+        39
+      ],
+      "fixed": {
+        "all": {
+          "pixels": 3,
+          "display_mae": 2.239637613296509,
+          "relative_rgb_error": 0.03651583194732666
+        },
+        "paired": {
+          "pixels": 3,
+          "display_mae": 2.239637613296509,
+          "relative_rgb_error": 0.03651583194732666
+        },
+        "context_and_agreement": null,
+        "info": {
+          "geometry": {
+            "centre": [
+              31.90087890625,
+              30.75286865234375
+            ],
+            "axes": [
+              12.1204833984375,
+              12.1204833984375
+            ],
+            "rotation": 0.0,
+            "pupil_ratio": 0.4887673854827881,
+            "texture_rotation": 0.0
+          },
+          "candidate_ok": true,
+          "reasons": [],
+          "fits": [
+            {
+              "frame": 782,
+              "training_mae": 2.0590415000915527,
+              "validation_mae": 2.9113361835479736,
+              "validation_pixels": 16,
+              "negative_common_pixels": 7,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 825,
+              "training_mae": 2.107682228088379,
+              "validation_mae": 2.5046658515930176,
+              "validation_pixels": 15,
+              "negative_common_pixels": 8,
+              "wrong_rotation_margin": 4.37939453125,
+              "torsion_radians": 0.0,
+              "context_pass": true
+            },
+            {
+              "frame": 814,
+              "training_mae": 2.553558588027954,
+              "validation_mae": 2.640805721282959,
+              "validation_pixels": 18,
+              "negative_common_pixels": 8,
+              "wrong_rotation_margin": 5.0603837966918945,
+              "torsion_radians": 0.0,
+              "context_pass": true
+            },
+            {
+              "frame": 337,
+              "training_mae": 2.63934326171875,
+              "validation_mae": 4.102756500244141,
+              "validation_pixels": 15,
+              "negative_common_pixels": 6,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 777,
+              "training_mae": 3.3226559162139893,
+              "validation_mae": 2.6192421913146973,
+              "validation_pixels": 16,
+              "negative_common_pixels": 9,
+              "wrong_rotation_margin": 3.2730398178100586,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 780,
+              "training_mae": 3.5621745586395264,
+              "validation_mae": 2.07269287109375,
+              "validation_pixels": 16,
+              "negative_common_pixels": 7,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 159,
+              "training_mae": 4.197526454925537,
+              "validation_mae": 6.6242265701293945,
+              "validation_pixels": 16,
+              "negative_common_pixels": 8,
+              "wrong_rotation_margin": 4.5654296875,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 147,
+              "training_mae": 4.240667819976807,
+              "validation_mae": 4.913690567016602,
+              "validation_pixels": 21,
+              "negative_common_pixels": 12,
+              "wrong_rotation_margin": 4.679172039031982,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 323,
+              "training_mae": 4.441365718841553,
+              "validation_mae": 4.0203375816345215,
+              "validation_pixels": 21,
+              "negative_common_pixels": 12,
+              "wrong_rotation_margin": 5.158664226531982,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 158,
+              "training_mae": 4.464323043823242,
+              "validation_mae": 4.726376056671143,
+              "validation_pixels": 21,
+              "negative_common_pixels": 12,
+              "wrong_rotation_margin": 7.052517414093018,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 231,
+              "training_mae": 4.636809349060059,
+              "validation_mae": 9.463997840881348,
+              "validation_pixels": 20,
+              "negative_common_pixels": 11,
+              "wrong_rotation_margin": 8.678770065307617,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 800,
+              "training_mae": 4.96243143081665,
+              "validation_mae": 4.074929237365723,
+              "validation_pixels": 22,
+              "negative_common_pixels": 7,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            }
+          ],
+          "context_pass": false
+        }
+      },
+      "torsion": {
+        "all": {
+          "pixels": 4,
+          "display_mae": 1.8163655996322632,
+          "relative_rgb_error": 0.030960775911808014
+        },
+        "paired": {
+          "pixels": 3,
+          "display_mae": 2.1969943046569824,
+          "relative_rgb_error": 0.03582055866718292
+        },
+        "context_and_agreement": null,
+        "info": {
+          "geometry": {
+            "centre": [
+              31.90087890625,
+              30.75286865234375
+            ],
+            "axes": [
+              12.1204833984375,
+              12.1204833984375
+            ],
+            "rotation": 0.0,
+            "pupil_ratio": 0.4887673854827881,
+            "texture_rotation": 0.0
+          },
+          "candidate_ok": true,
+          "reasons": [],
+          "fits": [
+            {
+              "frame": 337,
+              "training_mae": 2.00274658203125,
+              "validation_mae": 3.2617390155792236,
+              "validation_pixels": 16,
+              "negative_common_pixels": 9,
+              "wrong_rotation_margin": 7.045464992523193,
+              "torsion_radians": -0.01999999999999999,
+              "context_pass": false
+            },
+            {
+              "frame": 782,
+              "training_mae": 2.0590415000915527,
+              "validation_mae": 2.9113361835479736,
+              "validation_pixels": 16,
+              "negative_common_pixels": 7,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 825,
+              "training_mae": 2.107682228088379,
+              "validation_mae": 2.5046658515930176,
+              "validation_pixels": 15,
+              "negative_common_pixels": 8,
+              "wrong_rotation_margin": 4.37939453125,
+              "torsion_radians": 0.0,
+              "context_pass": true
+            },
+            {
+              "frame": 814,
+              "training_mae": 2.553558588027954,
+              "validation_mae": 2.640805721282959,
+              "validation_pixels": 18,
+              "negative_common_pixels": 8,
+              "wrong_rotation_margin": 5.0603837966918945,
+              "torsion_radians": 0.0,
+              "context_pass": true
+            },
+            {
+              "frame": 777,
+              "training_mae": 2.814018964767456,
+              "validation_mae": 2.57470703125,
+              "validation_pixels": 16,
+              "negative_common_pixels": 8,
+              "wrong_rotation_margin": 3.8262124061584473,
+              "torsion_radians": -0.01999999999999999,
+              "context_pass": true
+            },
+            {
+              "frame": 147,
+              "training_mae": 2.9415690898895264,
+              "validation_mae": 4.38347864151001,
+              "validation_pixels": 21,
+              "negative_common_pixels": 11,
+              "wrong_rotation_margin": 5.163619041442871,
+              "torsion_radians": -0.03999999999999998,
+              "context_pass": false
+            },
+            {
+              "frame": 159,
+              "training_mae": 3.527517557144165,
+              "validation_mae": 6.5909013748168945,
+              "validation_pixels": 16,
+              "negative_common_pixels": 9,
+              "wrong_rotation_margin": 3.719183921813965,
+              "torsion_radians": -0.03999999999999998,
+              "context_pass": false
+            },
+            {
+              "frame": 780,
+              "training_mae": 3.5621745586395264,
+              "validation_mae": 2.07269287109375,
+              "validation_pixels": 16,
+              "negative_common_pixels": 7,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 231,
+              "training_mae": 3.7554380893707275,
+              "validation_mae": 10.105690956115723,
+              "validation_pixels": 19,
+              "negative_common_pixels": 10,
+              "wrong_rotation_margin": 9.524772644042969,
+              "torsion_radians": 0.04000000000000001,
+              "context_pass": false
+            },
+            {
+              "frame": 158,
+              "training_mae": 4.0280961990356445,
+              "validation_mae": 5.571049213409424,
+              "validation_pixels": 19,
+              "negative_common_pixels": 11,
+              "wrong_rotation_margin": 8.254172325134277,
+              "torsion_radians": 0.020000000000000018,
+              "context_pass": false
+            },
+            {
+              "frame": 323,
+              "training_mae": 4.169698238372803,
+              "validation_mae": 3.6729750633239746,
+              "validation_pixels": 21,
+              "negative_common_pixels": 12,
+              "wrong_rotation_margin": 4.420057773590088,
+              "torsion_radians": -0.03999999999999998,
+              "context_pass": false
+            },
+            {
+              "frame": 283,
+              "training_mae": 4.5058979988098145,
+              "validation_mae": 8.522507667541504,
+              "validation_pixels": 14,
+              "negative_common_pixels": 7,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.18,
+              "context_pass": false
+            }
+          ],
+          "context_pass": false
+        }
+      }
+    },
+    {
+      "side": "left",
+      "source_frame": 819,
+      "hidden_native_pixels": 5,
+      "centre_native_xy": [
+        28,
+        39
+      ],
+      "fixed": {
+        "all": null,
+        "paired": null,
+        "context_and_agreement": null,
+        "info": {
+          "geometry": {
+            "centre": [
+              31.90087890625,
+              30.75286865234375
+            ],
+            "axes": [
+              12.1204833984375,
+              12.1204833984375
+            ],
+            "rotation": 0.0,
+            "pupil_ratio": 0.24125249683856964,
+            "texture_rotation": 0.0
+          },
+          "candidate_ok": false,
+          "reasons": [
+            "pupil_radius_at_search_boundary"
+          ],
+          "fits": [],
+          "context_pass": false
+        }
+      },
+      "torsion": {
+        "all": null,
+        "paired": null,
+        "context_and_agreement": null,
+        "info": {
+          "geometry": {
+            "centre": [
+              31.90087890625,
+              30.75286865234375
+            ],
+            "axes": [
+              12.1204833984375,
+              12.1204833984375
+            ],
+            "rotation": 0.0,
+            "pupil_ratio": 0.24125249683856964,
+            "texture_rotation": 0.0
+          },
+          "candidate_ok": false,
+          "reasons": [
+            "pupil_radius_at_search_boundary"
+          ],
+          "fits": [],
+          "context_pass": false
+        }
+      }
+    },
+    {
+      "side": "left",
+      "source_frame": 822,
+      "hidden_native_pixels": 5,
+      "centre_native_xy": [
+        36,
+        39
+      ],
+      "fixed": {
+        "all": {
+          "pixels": 5,
+          "display_mae": 2.5086588859558105,
+          "relative_rgb_error": 0.042233314365148544
+        },
+        "paired": {
+          "pixels": 5,
+          "display_mae": 2.5086588859558105,
+          "relative_rgb_error": 0.042233314365148544
+        },
+        "context_and_agreement": null,
+        "info": {
+          "geometry": {
+            "centre": [
+              31.0438232421875,
+              30.801910400390625
+            ],
+            "axes": [
+              12.615320205688477,
+              12.615320205688477
+            ],
+            "rotation": 0.0,
+            "pupil_ratio": 0.5170748233795166,
+            "texture_rotation": 0.0
+          },
+          "candidate_ok": true,
+          "reasons": [],
+          "fits": [
+            {
+              "frame": 774,
+              "training_mae": 3.6435952186584473,
+              "validation_mae": 3.414783239364624,
+              "validation_pixels": 14,
+              "negative_common_pixels": 7,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 777,
+              "training_mae": 3.7436416149139404,
+              "validation_mae": 2.467792510986328,
+              "validation_pixels": 17,
+              "negative_common_pixels": 9,
+              "wrong_rotation_margin": 2.6895978450775146,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 773,
+              "training_mae": 4.8087968826293945,
+              "validation_mae": 2.7580511569976807,
+              "validation_pixels": 15,
+              "negative_common_pixels": 5,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 323,
+              "training_mae": 4.982790946960449,
+              "validation_mae": 5.775607585906982,
+              "validation_pixels": 21,
+              "negative_common_pixels": 9,
+              "wrong_rotation_margin": 4.120587348937988,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 231,
+              "training_mae": 5.090067386627197,
+              "validation_mae": 10.343406677246094,
+              "validation_pixels": 19,
+              "negative_common_pixels": 11,
+              "wrong_rotation_margin": 5.4509053230285645,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 396,
+              "training_mae": 5.285851001739502,
+              "validation_mae": 4.407400608062744,
+              "validation_pixels": 15,
+              "negative_common_pixels": 7,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 270,
+              "training_mae": 5.463319301605225,
+              "validation_mae": 5.0217695236206055,
+              "validation_pixels": 16,
+              "negative_common_pixels": 6,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 158,
+              "training_mae": 5.482855796813965,
+              "validation_mae": 7.597811222076416,
+              "validation_pixels": 21,
+              "negative_common_pixels": 13,
+              "wrong_rotation_margin": 6.2571868896484375,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 283,
+              "training_mae": 6.66607666015625,
+              "validation_mae": 5.946849822998047,
+              "validation_pixels": 18,
+              "negative_common_pixels": 9,
+              "wrong_rotation_margin": 2.4526548385620117,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 239,
+              "training_mae": 10.71661376953125,
+              "validation_mae": 9.626172065734863,
+              "validation_pixels": 10,
+              "negative_common_pixels": 4,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 339,
+              "training_mae": 10.872892379760742,
+              "validation_mae": 13.973828315734863,
+              "validation_pixels": 25,
+              "negative_common_pixels": 14,
+              "wrong_rotation_margin": 6.6163506507873535,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 816,
+              "training_mae": 11.294361114501953,
+              "validation_mae": 9.954764366149902,
+              "validation_pixels": 26,
+              "negative_common_pixels": 14,
+              "wrong_rotation_margin": 2.849864959716797,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            }
+          ],
+          "context_pass": false
+        }
+      },
+      "torsion": {
+        "all": {
+          "pixels": 5,
+          "display_mae": 2.563248634338379,
+          "relative_rgb_error": 0.0431523360311985
+        },
+        "paired": {
+          "pixels": 5,
+          "display_mae": 2.563248634338379,
+          "relative_rgb_error": 0.0431523360311985
+        },
+        "context_and_agreement": null,
+        "info": {
+          "geometry": {
+            "centre": [
+              31.0438232421875,
+              30.801910400390625
+            ],
+            "axes": [
+              12.615320205688477,
+              12.615320205688477
+            ],
+            "rotation": 0.0,
+            "pupil_ratio": 0.5170748233795166,
+            "texture_rotation": 0.0
+          },
+          "candidate_ok": true,
+          "reasons": [],
+          "fits": [
+            {
+              "frame": 774,
+              "training_mae": 3.6435952186584473,
+              "validation_mae": 3.414783239364624,
+              "validation_pixels": 14,
+              "negative_common_pixels": 7,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 777,
+              "training_mae": 3.7436416149139404,
+              "validation_mae": 2.467792510986328,
+              "validation_pixels": 17,
+              "negative_common_pixels": 9,
+              "wrong_rotation_margin": 2.6895978450775146,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 231,
+              "training_mae": 3.953871726989746,
+              "validation_mae": 10.278141975402832,
+              "validation_pixels": 20,
+              "negative_common_pixels": 11,
+              "wrong_rotation_margin": 6.768465995788574,
+              "torsion_radians": -0.01999999999999999,
+              "context_pass": false
+            },
+            {
+              "frame": 283,
+              "training_mae": 4.5191450119018555,
+              "validation_mae": 7.2341508865356445,
+              "validation_pixels": 16,
+              "negative_common_pixels": 7,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.12,
+              "context_pass": false
+            },
+            {
+              "frame": 323,
+              "training_mae": 4.7077836990356445,
+              "validation_mae": 5.996144771575928,
+              "validation_pixels": 19,
+              "negative_common_pixels": 9,
+              "wrong_rotation_margin": 4.5658278465271,
+              "torsion_radians": -0.01999999999999999,
+              "context_pass": false
+            },
+            {
+              "frame": 773,
+              "training_mae": 4.8087968826293945,
+              "validation_mae": 2.7580511569976807,
+              "validation_pixels": 15,
+              "negative_common_pixels": 5,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 396,
+              "training_mae": 5.285851001739502,
+              "validation_mae": 4.407400608062744,
+              "validation_pixels": 15,
+              "negative_common_pixels": 7,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 158,
+              "training_mae": 5.285980701446533,
+              "validation_mae": 7.394467830657959,
+              "validation_pixels": 21,
+              "negative_common_pixels": 13,
+              "wrong_rotation_margin": 5.9297380447387695,
+              "torsion_radians": -0.03999999999999998,
+              "context_pass": false
+            },
+            {
+              "frame": 270,
+              "training_mae": 5.463319301605225,
+              "validation_mae": 5.0217695236206055,
+              "validation_pixels": 16,
+              "negative_common_pixels": 6,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 339,
+              "training_mae": 8.386491775512695,
+              "validation_mae": 13.127930641174316,
+              "validation_pixels": 29,
+              "negative_common_pixels": 19,
+              "wrong_rotation_margin": 5.434159278869629,
+              "torsion_radians": -0.07999999999999999,
+              "context_pass": false
+            },
+            {
+              "frame": 816,
+              "training_mae": 9.991159439086914,
+              "validation_mae": 7.744675636291504,
+              "validation_pixels": 28,
+              "negative_common_pixels": 17,
+              "wrong_rotation_margin": 3.7677698135375977,
+              "torsion_radians": -0.13999999999999999,
+              "context_pass": false
+            },
+            {
+              "frame": 324,
+              "training_mae": 10.151778221130371,
+              "validation_mae": 12.484049797058105,
+              "validation_pixels": 30,
+              "negative_common_pixels": 20,
+              "wrong_rotation_margin": 5.013426780700684,
+              "torsion_radians": -0.16,
+              "context_pass": false
+            }
+          ],
+          "context_pass": false
+        }
+      }
+    },
+    {
+      "side": "right",
+      "source_frame": 719,
+      "hidden_native_pixels": 5,
+      "centre_native_xy": [
+        36,
+        39
+      ],
+      "fixed": {
+        "all": {
+          "pixels": 5,
+          "display_mae": 2.0029947757720947,
+          "relative_rgb_error": 0.02983606979250908
+        },
+        "paired": {
+          "pixels": 5,
+          "display_mae": 2.0029947757720947,
+          "relative_rgb_error": 0.02983606979250908
+        },
+        "context_and_agreement": null,
+        "info": {
+          "geometry": {
+            "centre": [
+              30.12713623046875,
+              33.74884033203125
+            ],
+            "axes": [
+              12.13457202911377,
+              12.13457202911377
+            ],
+            "rotation": 0.0,
+            "pupil_ratio": 0.40602290630340576,
+            "texture_rotation": 0.0
+          },
+          "candidate_ok": true,
+          "reasons": [],
+          "fits": [
+            {
+              "frame": 700,
+              "training_mae": 2.9892919063568115,
+              "validation_mae": 8.50838565826416,
+              "validation_pixels": 25,
+              "negative_common_pixels": 13,
+              "wrong_rotation_margin": 2.0349059104919434,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 682,
+              "training_mae": 3.132174015045166,
+              "validation_mae": 8.383427619934082,
+              "validation_pixels": 27,
+              "negative_common_pixels": 18,
+              "wrong_rotation_margin": 0.5719401240348816,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 690,
+              "training_mae": 3.2421634197235107,
+              "validation_mae": 7.471004962921143,
+              "validation_pixels": 29,
+              "negative_common_pixels": 19,
+              "wrong_rotation_margin": 1.160584568977356,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 741,
+              "training_mae": 3.2942850589752197,
+              "validation_mae": 9.82335090637207,
+              "validation_pixels": 24,
+              "negative_common_pixels": 15,
+              "wrong_rotation_margin": -0.33489590883255005,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 691,
+              "training_mae": 3.5664193630218506,
+              "validation_mae": 9.043912887573242,
+              "validation_pixels": 31,
+              "negative_common_pixels": 19,
+              "wrong_rotation_margin": -0.5667318105697632,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 686,
+              "training_mae": 3.5947265625,
+              "validation_mae": 8.595135688781738,
+              "validation_pixels": 23,
+              "negative_common_pixels": 15,
+              "wrong_rotation_margin": 1.097222089767456,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 748,
+              "training_mae": 3.676856279373169,
+              "validation_mae": 11.777607917785645,
+              "validation_pixels": 27,
+              "negative_common_pixels": 14,
+              "wrong_rotation_margin": -2.1160948276519775,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 698,
+              "training_mae": 4.194273948669434,
+              "validation_mae": 10.91514778137207,
+              "validation_pixels": 27,
+              "negative_common_pixels": 16,
+              "wrong_rotation_margin": -2.7889809608459473,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 673,
+              "training_mae": 4.2892069816589355,
+              "validation_mae": 9.692831993103027,
+              "validation_pixels": 29,
+              "negative_common_pixels": 18,
+              "wrong_rotation_margin": -1.641113519668579,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 659,
+              "training_mae": 4.306015491485596,
+              "validation_mae": 6.325456142425537,
+              "validation_pixels": 25,
+              "negative_common_pixels": 16,
+              "wrong_rotation_margin": 4.649169921875,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 992,
+              "training_mae": 4.378472328186035,
+              "validation_mae": 4.736431121826172,
+              "validation_pixels": 19,
+              "negative_common_pixels": 11,
+              "wrong_rotation_margin": 11.506155014038086,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 1069,
+              "training_mae": 4.519565105438232,
+              "validation_mae": 13.322128295898438,
+              "validation_pixels": 33,
+              "negative_common_pixels": 19,
+              "wrong_rotation_margin": -1.371504783630371,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            }
+          ],
+          "context_pass": false
+        }
+      },
+      "torsion": {
+        "all": {
+          "pixels": 5,
+          "display_mae": 2.5270183086395264,
+          "relative_rgb_error": 0.03764178231358528
+        },
+        "paired": {
+          "pixels": 5,
+          "display_mae": 2.5270183086395264,
+          "relative_rgb_error": 0.03764178231358528
+        },
+        "context_and_agreement": null,
+        "info": {
+          "geometry": {
+            "centre": [
+              30.12713623046875,
+              33.74884033203125
+            ],
+            "axes": [
+              12.13457202911377,
+              12.13457202911377
+            ],
+            "rotation": 0.0,
+            "pupil_ratio": 0.40602290630340576,
+            "texture_rotation": 0.0
+          },
+          "candidate_ok": true,
+          "reasons": [],
+          "fits": [
+            {
+              "frame": 700,
+              "training_mae": 2.913118839263916,
+              "validation_mae": 9.363410949707031,
+              "validation_pixels": 25,
+              "negative_common_pixels": 17,
+              "wrong_rotation_margin": -0.2990194261074066,
+              "torsion_radians": -0.06,
+              "context_pass": false
+            },
+            {
+              "frame": 682,
+              "training_mae": 3.035435438156128,
+              "validation_mae": 8.287940979003906,
+              "validation_pixels": 27,
+              "negative_common_pixels": 17,
+              "wrong_rotation_margin": 0.9842984676361084,
+              "torsion_radians": 0.020000000000000018,
+              "context_pass": false
+            },
+            {
+              "frame": 741,
+              "training_mae": 3.138063430786133,
+              "validation_mae": 9.673452377319336,
+              "validation_pixels": 26,
+              "negative_common_pixels": 17,
+              "wrong_rotation_margin": -1.7755435705184937,
+              "torsion_radians": -0.03999999999999998,
+              "context_pass": false
+            },
+            {
+              "frame": 690,
+              "training_mae": 3.1515300273895264,
+              "validation_mae": 7.435052871704102,
+              "validation_pixels": 29,
+              "negative_common_pixels": 18,
+              "wrong_rotation_margin": 1.5242332220077515,
+              "torsion_radians": 0.020000000000000018,
+              "context_pass": false
+            },
+            {
+              "frame": 686,
+              "training_mae": 3.1629109382629395,
+              "validation_mae": 7.8925065994262695,
+              "validation_pixels": 23,
+              "negative_common_pixels": 13,
+              "wrong_rotation_margin": 2.820437431335449,
+              "torsion_radians": 0.08000000000000002,
+              "context_pass": false
+            },
+            {
+              "frame": 691,
+              "training_mae": 3.5664193630218506,
+              "validation_mae": 9.043912887573242,
+              "validation_pixels": 31,
+              "negative_common_pixels": 19,
+              "wrong_rotation_margin": -0.5667318105697632,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 748,
+              "training_mae": 3.676856279373169,
+              "validation_mae": 11.777607917785645,
+              "validation_pixels": 27,
+              "negative_common_pixels": 14,
+              "wrong_rotation_margin": -2.1160948276519775,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 992,
+              "training_mae": 3.7019855976104736,
+              "validation_mae": 5.7152838706970215,
+              "validation_pixels": 17,
+              "negative_common_pixels": 9,
+              "wrong_rotation_margin": 15.65603256225586,
+              "torsion_radians": 0.06,
+              "context_pass": false
+            },
+            {
+              "frame": 698,
+              "training_mae": 3.855963945388794,
+              "validation_mae": 12.66154670715332,
+              "validation_pixels": 26,
+              "negative_common_pixels": 17,
+              "wrong_rotation_margin": -4.728017807006836,
+              "torsion_radians": -0.06,
+              "context_pass": false
+            },
+            {
+              "frame": 1069,
+              "training_mae": 3.9130613803863525,
+              "validation_mae": 11.06222915649414,
+              "validation_pixels": 24,
+              "negative_common_pixels": 15,
+              "wrong_rotation_margin": -0.5231988430023193,
+              "torsion_radians": 0.14,
+              "context_pass": false
+            },
+            {
+              "frame": 1087,
+              "training_mae": 3.9578096866607666,
+              "validation_mae": 14.512499809265137,
+              "validation_pixels": 30,
+              "negative_common_pixels": 19,
+              "wrong_rotation_margin": -2.7166428565979004,
+              "torsion_radians": -0.06,
+              "context_pass": false
+            },
+            {
+              "frame": 673,
+              "training_mae": 4.153825283050537,
+              "validation_mae": 9.220441818237305,
+              "validation_pixels": 30,
+              "negative_common_pixels": 19,
+              "wrong_rotation_margin": -1.309107780456543,
+              "torsion_radians": 0.020000000000000018,
+              "context_pass": false
+            }
+          ],
+          "context_pass": false
+        }
+      }
+    },
+    {
+      "side": "right",
+      "source_frame": 741,
+      "hidden_native_pixels": 5,
+      "centre_native_xy": [
+        28,
+        39
+      ],
+      "fixed": {
+        "all": {
+          "pixels": 5,
+          "display_mae": 3.2813477516174316,
+          "relative_rgb_error": 0.041085321456193924
+        },
+        "paired": {
+          "pixels": 5,
+          "display_mae": 3.2813477516174316,
+          "relative_rgb_error": 0.041085321456193924
+        },
+        "context_and_agreement": null,
+        "info": {
+          "geometry": {
+            "centre": [
+              28.77996826171875,
+              30.42474365234375
+            ],
+            "axes": [
+              12.026963233947754,
+              12.026963233947754
+            ],
+            "rotation": 0.0,
+            "pupil_ratio": 0.4078662693500519,
+            "texture_rotation": 0.0
+          },
+          "candidate_ok": true,
+          "reasons": [],
+          "fits": [
+            {
+              "frame": 700,
+              "training_mae": 2.765190839767456,
+              "validation_mae": 3.622178792953491,
+              "validation_pixels": 24,
+              "negative_common_pixels": 15,
+              "wrong_rotation_margin": 6.9208984375,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 682,
+              "training_mae": 3.217470407485962,
+              "validation_mae": 3.729311227798462,
+              "validation_pixels": 27,
+              "negative_common_pixels": 18,
+              "wrong_rotation_margin": 5.659523010253906,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 140,
+              "training_mae": 3.3183813095092773,
+              "validation_mae": 9.019694328308105,
+              "validation_pixels": 18,
+              "negative_common_pixels": 9,
+              "wrong_rotation_margin": 11.794415473937988,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 690,
+              "training_mae": 3.506835699081421,
+              "validation_mae": 2.9030566215515137,
+              "validation_pixels": 21,
+              "negative_common_pixels": 13,
+              "wrong_rotation_margin": 8.347580909729004,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 719,
+              "training_mae": 3.6044530868530273,
+              "validation_mae": 9.879982948303223,
+              "validation_pixels": 26,
+              "negative_common_pixels": 15,
+              "wrong_rotation_margin": 12.120357513427734,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 748,
+              "training_mae": 3.8121745586395264,
+              "validation_mae": 5.247990131378174,
+              "validation_pixels": 29,
+              "negative_common_pixels": 15,
+              "wrong_rotation_margin": 2.502300500869751,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 686,
+              "training_mae": 4.083763599395752,
+              "validation_mae": 4.366811752319336,
+              "validation_pixels": 26,
+              "negative_common_pixels": 16,
+              "wrong_rotation_margin": 5.4335737228393555,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 698,
+              "training_mae": 4.305185794830322,
+              "validation_mae": 4.868255138397217,
+              "validation_pixels": 25,
+              "negative_common_pixels": 17,
+              "wrong_rotation_margin": 3.1576480865478516,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 992,
+              "training_mae": 4.4226884841918945,
+              "validation_mae": 12.471631050109863,
+              "validation_pixels": 20,
+              "negative_common_pixels": 10,
+              "wrong_rotation_margin": 15.981866836547852,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 673,
+              "training_mae": 4.590544700622559,
+              "validation_mae": 5.75394344329834,
+              "validation_pixels": 26,
+              "negative_common_pixels": 14,
+              "wrong_rotation_margin": 6.3180108070373535,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 246,
+              "training_mae": 5.061825275421143,
+              "validation_mae": 8.724226951599121,
+              "validation_pixels": 23,
+              "negative_common_pixels": 14,
+              "wrong_rotation_margin": 9.299525260925293,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 691,
+              "training_mae": 5.094429969787598,
+              "validation_mae": 4.243366241455078,
+              "validation_pixels": 29,
+              "negative_common_pixels": 18,
+              "wrong_rotation_margin": 4.22717809677124,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            }
+          ],
+          "context_pass": false
+        }
+      },
+      "torsion": {
+        "all": {
+          "pixels": 5,
+          "display_mae": 3.387467384338379,
+          "relative_rgb_error": 0.04241403192281723
+        },
+        "paired": {
+          "pixels": 5,
+          "display_mae": 3.387467384338379,
+          "relative_rgb_error": 0.04241403192281723
+        },
+        "context_and_agreement": null,
+        "info": {
+          "geometry": {
+            "centre": [
+              28.77996826171875,
+              30.42474365234375
+            ],
+            "axes": [
+              12.026963233947754,
+              12.026963233947754
+            ],
+            "rotation": 0.0,
+            "pupil_ratio": 0.4078662693500519,
+            "texture_rotation": 0.0
+          },
+          "candidate_ok": true,
+          "reasons": [],
+          "fits": [
+            {
+              "frame": 700,
+              "training_mae": 2.5531413555145264,
+              "validation_mae": 4.3629150390625,
+              "validation_pixels": 24,
+              "negative_common_pixels": 13,
+              "wrong_rotation_margin": 7.400191307067871,
+              "torsion_radians": 0.04000000000000001,
+              "context_pass": false
+            },
+            {
+              "frame": 686,
+              "training_mae": 2.9751038551330566,
+              "validation_mae": 6.265005111694336,
+              "validation_pixels": 21,
+              "negative_common_pixels": 12,
+              "wrong_rotation_margin": 6.661648273468018,
+              "torsion_radians": 0.12,
+              "context_pass": false
+            },
+            {
+              "frame": 690,
+              "training_mae": 3.011383533477783,
+              "validation_mae": 5.008488655090332,
+              "validation_pixels": 26,
+              "negative_common_pixels": 16,
+              "wrong_rotation_margin": 6.5634565353393555,
+              "torsion_radians": 0.06,
+              "context_pass": false
+            },
+            {
+              "frame": 719,
+              "training_mae": 3.21706223487854,
+              "validation_mae": 11.379371643066406,
+              "validation_pixels": 21,
+              "negative_common_pixels": 13,
+              "wrong_rotation_margin": 11.926631927490234,
+              "torsion_radians": 0.06,
+              "context_pass": false
+            },
+            {
+              "frame": 682,
+              "training_mae": 3.217470407485962,
+              "validation_mae": 3.729311227798462,
+              "validation_pixels": 27,
+              "negative_common_pixels": 18,
+              "wrong_rotation_margin": 5.659523010253906,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 140,
+              "training_mae": 3.3183813095092773,
+              "validation_mae": 9.019694328308105,
+              "validation_pixels": 18,
+              "negative_common_pixels": 9,
+              "wrong_rotation_margin": 11.794415473937988,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 992,
+              "training_mae": 3.5677082538604736,
+              "validation_mae": 13.626030921936035,
+              "validation_pixels": 18,
+              "negative_common_pixels": 10,
+              "wrong_rotation_margin": 15.982455253601074,
+              "torsion_radians": 0.10000000000000003,
+              "context_pass": false
+            },
+            {
+              "frame": 748,
+              "training_mae": 3.685716152191162,
+              "validation_mae": 5.451688766479492,
+              "validation_pixels": 29,
+              "negative_common_pixels": 16,
+              "wrong_rotation_margin": 2.5442709922790527,
+              "torsion_radians": -0.01999999999999999,
+              "context_pass": false
+            },
+            {
+              "frame": 141,
+              "training_mae": 3.8243000507354736,
+              "validation_mae": 9.390832901000977,
+              "validation_pixels": 11,
+              "negative_common_pixels": 4,
+              "wrong_rotation_margin": null,
+              "torsion_radians": 0.10000000000000003,
+              "context_pass": false
+            },
+            {
+              "frame": 158,
+              "training_mae": 4.099438667297363,
+              "validation_mae": 11.338016510009766,
+              "validation_pixels": 18,
+              "negative_common_pixels": 8,
+              "wrong_rotation_margin": 9.3778076171875,
+              "torsion_radians": 0.10000000000000003,
+              "context_pass": false
+            },
+            {
+              "frame": 698,
+              "training_mae": 4.154367923736572,
+              "validation_mae": 4.617864608764648,
+              "validation_pixels": 25,
+              "negative_common_pixels": 15,
+              "wrong_rotation_margin": 3.2581381797790527,
+              "torsion_radians": 0.020000000000000018,
+              "context_pass": false
+            },
+            {
+              "frame": 673,
+              "training_mae": 4.532289028167725,
+              "validation_mae": 5.416055202484131,
+              "validation_pixels": 25,
+              "negative_common_pixels": 15,
+              "wrong_rotation_margin": 5.629144668579102,
+              "torsion_radians": 0.020000000000000018,
+              "context_pass": false
+            }
+          ],
+          "context_pass": false
+        }
+      }
+    },
+    {
+      "side": "right",
+      "source_frame": 798,
+      "hidden_native_pixels": 5,
+      "centre_native_xy": [
+        36,
+        40
+      ],
+      "fixed": {
+        "all": {
+          "pixels": 4,
+          "display_mae": 3.25732421875,
+          "relative_rgb_error": 0.04248683899641037
+        },
+        "paired": {
+          "pixels": 4,
+          "display_mae": 3.25732421875,
+          "relative_rgb_error": 0.04248683899641037
+        },
+        "context_and_agreement": null,
+        "info": {
+          "geometry": {
+            "centre": [
+              29.86773681640625,
+              31.85162353515625
+            ],
+            "axes": [
+              13.043511390686035,
+              13.043511390686035
+            ],
+            "rotation": 0.0,
+            "pupil_ratio": 0.3149997293949127,
+            "texture_rotation": 0.0
+          },
+          "candidate_ok": true,
+          "reasons": [],
+          "fits": [
+            {
+              "frame": 802,
+              "training_mae": 2.226412773132324,
+              "validation_mae": 2.715263843536377,
+              "validation_pixels": 38,
+              "negative_common_pixels": 25,
+              "wrong_rotation_margin": 4.66378927230835,
+              "torsion_radians": 0.0,
+              "context_pass": true
+            },
+            {
+              "frame": 889,
+              "training_mae": 2.509281635284424,
+              "validation_mae": 5.794437885284424,
+              "validation_pixels": 41,
+              "negative_common_pixels": 22,
+              "wrong_rotation_margin": 2.239361524581909,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 339,
+              "training_mae": 2.6986141204833984,
+              "validation_mae": 3.988715171813965,
+              "validation_pixels": 39,
+              "negative_common_pixels": 25,
+              "wrong_rotation_margin": 7.988893032073975,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 893,
+              "training_mae": 2.953423261642456,
+              "validation_mae": 4.179923057556152,
+              "validation_pixels": 40,
+              "negative_common_pixels": 22,
+              "wrong_rotation_margin": 2.383744478225708,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 895,
+              "training_mae": 3.215014934539795,
+              "validation_mae": 5.187312126159668,
+              "validation_pixels": 40,
+              "negative_common_pixels": 23,
+              "wrong_rotation_margin": 2.830686569213867,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 869,
+              "training_mae": 3.319526433944702,
+              "validation_mae": 6.388894557952881,
+              "validation_pixels": 35,
+              "negative_common_pixels": 22,
+              "wrong_rotation_margin": 6.181521892547607,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 1000,
+              "training_mae": 3.3413307666778564,
+              "validation_mae": 6.467153072357178,
+              "validation_pixels": 42,
+              "negative_common_pixels": 24,
+              "wrong_rotation_margin": 6.834661960601807,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 894,
+              "training_mae": 3.4043779373168945,
+              "validation_mae": 3.6560022830963135,
+              "validation_pixels": 42,
+              "negative_common_pixels": 24,
+              "wrong_rotation_margin": 3.6473255157470703,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 663,
+              "training_mae": 3.537849187850952,
+              "validation_mae": 5.781498432159424,
+              "validation_pixels": 38,
+              "negative_common_pixels": 24,
+              "wrong_rotation_margin": 6.982163906097412,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 1115,
+              "training_mae": 3.6066622734069824,
+              "validation_mae": 11.101475715637207,
+              "validation_pixels": 34,
+              "negative_common_pixels": 21,
+              "wrong_rotation_margin": 10.625666618347168,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 602,
+              "training_mae": 3.762016773223877,
+              "validation_mae": 9.064051628112793,
+              "validation_pixels": 39,
+              "negative_common_pixels": 25,
+              "wrong_rotation_margin": 10.25196647644043,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 998,
+              "training_mae": 3.7939960956573486,
+              "validation_mae": 5.711167335510254,
+              "validation_pixels": 34,
+              "negative_common_pixels": 19,
+              "wrong_rotation_margin": 7.525218963623047,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            }
+          ],
+          "context_pass": false
+        }
+      },
+      "torsion": {
+        "all": {
+          "pixels": 5,
+          "display_mae": 3.84228515625,
+          "relative_rgb_error": 0.05037961155176163
+        },
+        "paired": {
+          "pixels": 4,
+          "display_mae": 3.8643798828125,
+          "relative_rgb_error": 0.050404954701662064
+        },
+        "context_and_agreement": null,
+        "info": {
+          "geometry": {
+            "centre": [
+              29.86773681640625,
+              31.85162353515625
+            ],
+            "axes": [
+              13.043511390686035,
+              13.043511390686035
+            ],
+            "rotation": 0.0,
+            "pupil_ratio": 0.3149997293949127,
+            "texture_rotation": 0.0
+          },
+          "candidate_ok": true,
+          "reasons": [],
+          "fits": [
+            {
+              "frame": 802,
+              "training_mae": 2.1424756050109863,
+              "validation_mae": 2.951977252960205,
+              "validation_pixels": 38,
+              "negative_common_pixels": 26,
+              "wrong_rotation_margin": 3.9860024452209473,
+              "torsion_radians": -0.01999999999999999,
+              "context_pass": true
+            },
+            {
+              "frame": 889,
+              "training_mae": 2.175260305404663,
+              "validation_mae": 4.884176254272461,
+              "validation_pixels": 37,
+              "negative_common_pixels": 23,
+              "wrong_rotation_margin": 3.084975242614746,
+              "torsion_radians": 0.04000000000000001,
+              "context_pass": false
+            },
+            {
+              "frame": 339,
+              "training_mae": 2.4913783073425293,
+              "validation_mae": 5.119256973266602,
+              "validation_pixels": 42,
+              "negative_common_pixels": 27,
+              "wrong_rotation_margin": 5.87164831161499,
+              "torsion_radians": -0.03999999999999998,
+              "context_pass": false
+            },
+            {
+              "frame": 893,
+              "training_mae": 2.7805607318878174,
+              "validation_mae": 3.41336727142334,
+              "validation_pixels": 37,
+              "negative_common_pixels": 21,
+              "wrong_rotation_margin": 3.514261245727539,
+              "torsion_radians": 0.04000000000000001,
+              "context_pass": false
+            },
+            {
+              "frame": 349,
+              "training_mae": 2.8013830184936523,
+              "validation_mae": 5.002321720123291,
+              "validation_pixels": 38,
+              "negative_common_pixels": 24,
+              "wrong_rotation_margin": 3.838636636734009,
+              "torsion_radians": -0.12,
+              "context_pass": false
+            },
+            {
+              "frame": 869,
+              "training_mae": 2.866814374923706,
+              "validation_mae": 7.3721466064453125,
+              "validation_pixels": 30,
+              "negative_common_pixels": 20,
+              "wrong_rotation_margin": 6.467154502868652,
+              "torsion_radians": 0.06,
+              "context_pass": false
+            },
+            {
+              "frame": 1000,
+              "training_mae": 3.0050220489501953,
+              "validation_mae": 5.769222736358643,
+              "validation_pixels": 39,
+              "negative_common_pixels": 25,
+              "wrong_rotation_margin": 6.7803778648376465,
+              "torsion_radians": -0.03999999999999998,
+              "context_pass": false
+            },
+            {
+              "frame": 252,
+              "training_mae": 3.0506591796875,
+              "validation_mae": 4.813854217529297,
+              "validation_pixels": 44,
+              "negative_common_pixels": 30,
+              "wrong_rotation_margin": 2.1699650287628174,
+              "torsion_radians": -0.12,
+              "context_pass": false
+            },
+            {
+              "frame": 1007,
+              "training_mae": 3.1186416149139404,
+              "validation_mae": 4.636986255645752,
+              "validation_pixels": 39,
+              "negative_common_pixels": 28,
+              "wrong_rotation_margin": 2.606247663497925,
+              "torsion_radians": -0.12,
+              "context_pass": false
+            },
+            {
+              "frame": 895,
+              "training_mae": 3.2107443809509277,
+              "validation_mae": 5.098226070404053,
+              "validation_pixels": 40,
+              "negative_common_pixels": 22,
+              "wrong_rotation_margin": 1.9165927171707153,
+              "torsion_radians": -0.01999999999999999,
+              "context_pass": false
+            },
+            {
+              "frame": 272,
+              "training_mae": 3.2340853214263916,
+              "validation_mae": 5.501574516296387,
+              "validation_pixels": 43,
+              "negative_common_pixels": 30,
+              "wrong_rotation_margin": -0.8455621004104614,
+              "torsion_radians": -0.18,
+              "context_pass": false
+            },
+            {
+              "frame": 894,
+              "training_mae": 3.376148223876953,
+              "validation_mae": 3.4799976348876953,
+              "validation_pixels": 38,
+              "negative_common_pixels": 23,
+              "wrong_rotation_margin": 3.8678946495056152,
+              "torsion_radians": 0.020000000000000018,
+              "context_pass": false
+            }
+          ],
+          "context_pass": false
+        }
+      }
+    },
+    {
+      "side": "right",
+      "source_frame": 798,
+      "hidden_native_pixels": 5,
+      "centre_native_xy": [
+        28,
+        40
+      ],
+      "fixed": {
+        "all": {
+          "pixels": 5,
+          "display_mae": 3.262890577316284,
+          "relative_rgb_error": 0.04421260952949524
+        },
+        "paired": {
+          "pixels": 5,
+          "display_mae": 3.262890577316284,
+          "relative_rgb_error": 0.04421260952949524
+        },
+        "context_and_agreement": null,
+        "info": {
+          "geometry": {
+            "centre": [
+              29.86773681640625,
+              31.85162353515625
+            ],
+            "axes": [
+              13.043511390686035,
+              13.043511390686035
+            ],
+            "rotation": 0.0,
+            "pupil_ratio": 0.3149997293949127,
+            "texture_rotation": 0.0
+          },
+          "candidate_ok": true,
+          "reasons": [],
+          "fits": [
+            {
+              "frame": 802,
+              "training_mae": 2.2520720958709717,
+              "validation_mae": 2.726492404937744,
+              "validation_pixels": 37,
+              "negative_common_pixels": 24,
+              "wrong_rotation_margin": 4.74525260925293,
+              "torsion_radians": 0.0,
+              "context_pass": true
+            },
+            {
+              "frame": 889,
+              "training_mae": 2.4792537689208984,
+              "validation_mae": 5.758121967315674,
+              "validation_pixels": 40,
+              "negative_common_pixels": 21,
+              "wrong_rotation_margin": 2.3015098571777344,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 339,
+              "training_mae": 2.8133544921875,
+              "validation_mae": 3.987835645675659,
+              "validation_pixels": 38,
+              "negative_common_pixels": 24,
+              "wrong_rotation_margin": 8.21157455444336,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 893,
+              "training_mae": 2.920313835144043,
+              "validation_mae": 4.076096534729004,
+              "validation_pixels": 39,
+              "negative_common_pixels": 21,
+              "wrong_rotation_margin": 2.634873867034912,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 895,
+              "training_mae": 3.23909068107605,
+              "validation_mae": 5.111720085144043,
+              "validation_pixels": 39,
+              "negative_common_pixels": 22,
+              "wrong_rotation_margin": 3.0199601650238037,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 1000,
+              "training_mae": 3.3345298767089844,
+              "validation_mae": 6.503952980041504,
+              "validation_pixels": 41,
+              "negative_common_pixels": 23,
+              "wrong_rotation_margin": 6.948143482208252,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 869,
+              "training_mae": 3.3388466835021973,
+              "validation_mae": 6.327990531921387,
+              "validation_pixels": 34,
+              "negative_common_pixels": 21,
+              "wrong_rotation_margin": 6.429299354553223,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 894,
+              "training_mae": 3.4813287258148193,
+              "validation_mae": 3.637544631958008,
+              "validation_pixels": 41,
+              "negative_common_pixels": 23,
+              "wrong_rotation_margin": 3.7733521461486816,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 1115,
+              "training_mae": 3.566255569458008,
+              "validation_mae": 11.207059860229492,
+              "validation_pixels": 33,
+              "negative_common_pixels": 20,
+              "wrong_rotation_margin": 10.954785346984863,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 663,
+              "training_mae": 3.7110517024993896,
+              "validation_mae": 5.82176399230957,
+              "validation_pixels": 37,
+              "negative_common_pixels": 23,
+              "wrong_rotation_margin": 7.200336456298828,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 998,
+              "training_mae": 3.762890100479126,
+              "validation_mae": 5.779513835906982,
+              "validation_pixels": 33,
+              "negative_common_pixels": 18,
+              "wrong_rotation_margin": 7.584418296813965,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 349,
+              "training_mae": 3.788058280944824,
+              "validation_mae": 4.411793231964111,
+              "validation_pixels": 36,
+              "negative_common_pixels": 23,
+              "wrong_rotation_margin": 7.793252468109131,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            }
+          ],
+          "context_pass": false
+        }
+      },
+      "torsion": {
+        "all": {
+          "pixels": 5,
+          "display_mae": 4.095898628234863,
+          "relative_rgb_error": 0.05549997836351395
+        },
+        "paired": {
+          "pixels": 5,
+          "display_mae": 4.095898628234863,
+          "relative_rgb_error": 0.05549997836351395
+        },
+        "context_and_agreement": null,
+        "info": {
+          "geometry": {
+            "centre": [
+              29.86773681640625,
+              31.85162353515625
+            ],
+            "axes": [
+              13.043511390686035,
+              13.043511390686035
+            ],
+            "rotation": 0.0,
+            "pupil_ratio": 0.3149997293949127,
+            "texture_rotation": 0.0
+          },
+          "candidate_ok": true,
+          "reasons": [],
+          "fits": [
+            {
+              "frame": 802,
+              "training_mae": 2.1541380882263184,
+              "validation_mae": 2.9229483604431152,
+              "validation_pixels": 37,
+              "negative_common_pixels": 25,
+              "wrong_rotation_margin": 4.084817886352539,
+              "torsion_radians": -0.01999999999999999,
+              "context_pass": true
+            },
+            {
+              "frame": 889,
+              "training_mae": 2.190009832382202,
+              "validation_mae": 4.836877822875977,
+              "validation_pixels": 36,
+              "negative_common_pixels": 22,
+              "wrong_rotation_margin": 3.1919240951538086,
+              "torsion_radians": 0.04000000000000001,
+              "context_pass": false
+            },
+            {
+              "frame": 339,
+              "training_mae": 2.4600722789764404,
+              "validation_mae": 5.099299907684326,
+              "validation_pixels": 41,
+              "negative_common_pixels": 26,
+              "wrong_rotation_margin": 6.031374931335449,
+              "torsion_radians": -0.03999999999999998,
+              "context_pass": false
+            },
+            {
+              "frame": 349,
+              "training_mae": 2.7912869453430176,
+              "validation_mae": 4.86802339553833,
+              "validation_pixels": 37,
+              "negative_common_pixels": 23,
+              "wrong_rotation_margin": 4.159519672393799,
+              "torsion_radians": -0.12,
+              "context_pass": false
+            },
+            {
+              "frame": 893,
+              "training_mae": 2.807819366455078,
+              "validation_mae": 3.3599987030029297,
+              "validation_pixels": 36,
+              "negative_common_pixels": 20,
+              "wrong_rotation_margin": 3.7525393962860107,
+              "torsion_radians": 0.04000000000000001,
+              "context_pass": false
+            },
+            {
+              "frame": 1000,
+              "training_mae": 3.0167813301086426,
+              "validation_mae": 5.553913593292236,
+              "validation_pixels": 37,
+              "negative_common_pixels": 26,
+              "wrong_rotation_margin": 6.114194869995117,
+              "torsion_radians": -0.07999999999999999,
+              "context_pass": false
+            },
+            {
+              "frame": 869,
+              "training_mae": 3.056572198867798,
+              "validation_mae": 7.383542060852051,
+              "validation_pixels": 29,
+              "negative_common_pixels": 19,
+              "wrong_rotation_margin": 6.7194695472717285,
+              "torsion_radians": 0.06,
+              "context_pass": false
+            },
+            {
+              "frame": 1007,
+              "training_mae": 3.1631436347961426,
+              "validation_mae": 4.866793632507324,
+              "validation_pixels": 38,
+              "negative_common_pixels": 23,
+              "wrong_rotation_margin": 3.4437129497528076,
+              "torsion_radians": -0.07999999999999999,
+              "context_pass": false
+            },
+            {
+              "frame": 895,
+              "training_mae": 3.2232885360717773,
+              "validation_mae": 4.998714923858643,
+              "validation_pixels": 39,
+              "negative_common_pixels": 21,
+              "wrong_rotation_margin": 2.066762924194336,
+              "torsion_radians": -0.01999999999999999,
+              "context_pass": false
+            },
+            {
+              "frame": 1115,
+              "training_mae": 3.3399577140808105,
+              "validation_mae": 10.154967308044434,
+              "validation_pixels": 33,
+              "negative_common_pixels": 23,
+              "wrong_rotation_margin": 10.740516662597656,
+              "torsion_radians": -0.03999999999999998,
+              "context_pass": false
+            },
+            {
+              "frame": 601,
+              "training_mae": 3.342275619506836,
+              "validation_mae": 8.498773574829102,
+              "validation_pixels": 34,
+              "negative_common_pixels": 24,
+              "wrong_rotation_margin": 10.69045639038086,
+              "torsion_radians": -0.09999999999999999,
+              "context_pass": false
+            },
+            {
+              "frame": 894,
+              "training_mae": 3.4813287258148193,
+              "validation_mae": 3.637544631958008,
+              "validation_pixels": 41,
+              "negative_common_pixels": 23,
+              "wrong_rotation_margin": 3.7733521461486816,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            }
+          ],
+          "context_pass": false
+        }
+      }
+    },
+    {
+      "side": "right",
+      "source_frame": 802,
+      "hidden_native_pixels": 5,
+      "centre_native_xy": [
+        27,
+        39
+      ],
+      "fixed": {
+        "all": {
+          "pixels": 4,
+          "display_mae": 5.06298828125,
+          "relative_rgb_error": 0.05802851915359497
+        },
+        "paired": {
+          "pixels": 4,
+          "display_mae": 5.06298828125,
+          "relative_rgb_error": 0.05802851915359497
+        },
+        "context_and_agreement": null,
+        "info": {
+          "geometry": {
+            "centre": [
+              30.00018310546875,
+              29.451202392578125
+            ],
+            "axes": [
+              12.574540138244629,
+              12.574540138244629
+            ],
+            "rotation": 0.0,
+            "pupil_ratio": 0.3192886412143707,
+            "texture_rotation": 0.0
+          },
+          "candidate_ok": true,
+          "reasons": [],
+          "fits": [
+            {
+              "frame": 798,
+              "training_mae": 2.2090320587158203,
+              "validation_mae": 2.6606485843658447,
+              "validation_pixels": 37,
+              "negative_common_pixels": 21,
+              "wrong_rotation_margin": 4.268446445465088,
+              "torsion_radians": 0.0,
+              "context_pass": true
+            },
+            {
+              "frame": 889,
+              "training_mae": 2.843261957168579,
+              "validation_mae": 4.6104021072387695,
+              "validation_pixels": 32,
+              "negative_common_pixels": 19,
+              "wrong_rotation_margin": 3.182446002960205,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 339,
+              "training_mae": 3.0704345703125,
+              "validation_mae": 4.357154369354248,
+              "validation_pixels": 39,
+              "negative_common_pixels": 23,
+              "wrong_rotation_margin": 7.982364177703857,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 893,
+              "training_mae": 3.4135100841522217,
+              "validation_mae": 2.9829862117767334,
+              "validation_pixels": 30,
+              "negative_common_pixels": 19,
+              "wrong_rotation_margin": 3.49958872795105,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 998,
+              "training_mae": 3.7831826210021973,
+              "validation_mae": 5.586325168609619,
+              "validation_pixels": 31,
+              "negative_common_pixels": 18,
+              "wrong_rotation_margin": 8.609556198120117,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 349,
+              "training_mae": 3.789750099182129,
+              "validation_mae": 3.450418710708618,
+              "validation_pixels": 35,
+              "negative_common_pixels": 20,
+              "wrong_rotation_margin": 7.138020992279053,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 1000,
+              "training_mae": 3.8007984161376953,
+              "validation_mae": 5.5533952713012695,
+              "validation_pixels": 33,
+              "negative_common_pixels": 20,
+              "wrong_rotation_margin": 7.454280853271484,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 292,
+              "training_mae": 3.889397621154785,
+              "validation_mae": 7.314276218414307,
+              "validation_pixels": 33,
+              "negative_common_pixels": 19,
+              "wrong_rotation_margin": 8.36862564086914,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 1007,
+              "training_mae": 3.8965704441070557,
+              "validation_mae": 3.5692138671875,
+              "validation_pixels": 32,
+              "negative_common_pixels": 20,
+              "wrong_rotation_margin": 5.8526530265808105,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 663,
+              "training_mae": 4.051608562469482,
+              "validation_mae": 4.966047286987305,
+              "validation_pixels": 33,
+              "negative_common_pixels": 20,
+              "wrong_rotation_margin": 6.647900581359863,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 336,
+              "training_mae": 4.052725315093994,
+              "validation_mae": 4.475388526916504,
+              "validation_pixels": 33,
+              "negative_common_pixels": 19,
+              "wrong_rotation_margin": 7.2598347663879395,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 601,
+              "training_mae": 4.179176330566406,
+              "validation_mae": 9.923198699951172,
+              "validation_pixels": 30,
+              "negative_common_pixels": 20,
+              "wrong_rotation_margin": 12.364225387573242,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            }
+          ],
+          "context_pass": false
+        }
+      },
+      "torsion": {
+        "all": {
+          "pixels": 4,
+          "display_mae": 7.989705562591553,
+          "relative_rgb_error": 0.09157255291938782
+        },
+        "paired": {
+          "pixels": 4,
+          "display_mae": 7.989705562591553,
+          "relative_rgb_error": 0.09157255291938782
+        },
+        "context_and_agreement": null,
+        "info": {
+          "geometry": {
+            "centre": [
+              30.00018310546875,
+              29.451202392578125
+            ],
+            "axes": [
+              12.574540138244629,
+              12.574540138244629
+            ],
+            "rotation": 0.0,
+            "pupil_ratio": 0.3192886412143707,
+            "texture_rotation": 0.0
+          },
+          "candidate_ok": true,
+          "reasons": [],
+          "fits": [
+            {
+              "frame": 798,
+              "training_mae": 2.093322515487671,
+              "validation_mae": 3.0291032791137695,
+              "validation_pixels": 37,
+              "negative_common_pixels": 20,
+              "wrong_rotation_margin": 4.328336238861084,
+              "torsion_radians": 0.020000000000000018,
+              "context_pass": false
+            },
+            {
+              "frame": 889,
+              "training_mae": 2.5629000663757324,
+              "validation_mae": 4.3318376541137695,
+              "validation_pixels": 32,
+              "negative_common_pixels": 19,
+              "wrong_rotation_margin": 3.736721992492676,
+              "torsion_radians": 0.04000000000000001,
+              "context_pass": false
+            },
+            {
+              "frame": 349,
+              "training_mae": 2.905787944793701,
+              "validation_mae": 3.877269744873047,
+              "validation_pixels": 37,
+              "negative_common_pixels": 23,
+              "wrong_rotation_margin": 5.864087104797363,
+              "torsion_radians": -0.09999999999999999,
+              "context_pass": false
+            },
+            {
+              "frame": 339,
+              "training_mae": 3.0704345703125,
+              "validation_mae": 4.357154369354248,
+              "validation_pixels": 39,
+              "negative_common_pixels": 23,
+              "wrong_rotation_margin": 7.982364177703857,
+              "torsion_radians": 0.0,
+              "context_pass": false
+            },
+            {
+              "frame": 893,
+              "training_mae": 3.2419121265411377,
+              "validation_mae": 2.5635664463043213,
+              "validation_pixels": 29,
+              "negative_common_pixels": 17,
+              "wrong_rotation_margin": 4.216969013214111,
+              "torsion_radians": 0.04000000000000001,
+              "context_pass": false
+            },
+            {
+              "frame": 292,
+              "training_mae": 3.421095371246338,
+              "validation_mae": 7.737966060638428,
+              "validation_pixels": 31,
+              "negative_common_pixels": 16,
+              "wrong_rotation_margin": 9.90228271484375,
+              "torsion_radians": 0.08000000000000002,
+              "context_pass": false
+            },
+            {
+              "frame": 1007,
+              "training_mae": 3.505007028579712,
+              "validation_mae": 3.2279295921325684,
+              "validation_pixels": 35,
+              "negative_common_pixels": 22,
+              "wrong_rotation_margin": 5.476858139038086,
+              "torsion_radians": -0.06,
+              "context_pass": false
+            },
+            {
+              "frame": 310,
+              "training_mae": 3.52459454536438,
+              "validation_mae": 6.368703365325928,
+              "validation_pixels": 35,
+              "negative_common_pixels": 24,
+              "wrong_rotation_margin": 8.069809913635254,
+              "torsion_radians": -0.12,
+              "context_pass": false
+            },
+            {
+              "frame": 601,
+              "training_mae": 3.533775568008423,
+              "validation_mae": 9.72900390625,
+              "validation_pixels": 38,
+              "negative_common_pixels": 23,
+              "wrong_rotation_margin": 11.261918067932129,
+              "torsion_radians": -0.09999999999999999,
+              "context_pass": false
+            },
+            {
+              "frame": 252,
+              "training_mae": 3.540334939956665,
+              "validation_mae": 4.088688373565674,
+              "validation_pixels": 40,
+              "negative_common_pixels": 26,
+              "wrong_rotation_margin": 3.125112771987915,
+              "torsion_radians": -0.12,
+              "context_pass": false
+            },
+            {
+              "frame": 336,
+              "training_mae": 3.657463312149048,
+              "validation_mae": 4.761990070343018,
+              "validation_pixels": 36,
+              "negative_common_pixels": 21,
+              "wrong_rotation_margin": 6.037683010101318,
+              "torsion_radians": -0.06,
+              "context_pass": false
+            },
+            {
+              "frame": 1000,
+              "training_mae": 3.6937615871429443,
+              "validation_mae": 5.717896938323975,
+              "validation_pixels": 37,
+              "negative_common_pixels": 26,
+              "wrong_rotation_margin": 4.693497180938721,
+              "torsion_radians": -0.13999999999999999,
+              "context_pass": false
+            }
+          ],
+          "context_pass": false
+        }
+      }
+    }
+  ]
+}

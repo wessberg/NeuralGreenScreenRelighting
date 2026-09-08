@@ -1,0 +1,26 @@
+{
+  "date": "2026-09-08",
+  "mode": "tool image inspection, not real-time video playback or artist approval",
+  "source_fallback": {
+    "video": "r12_native_source_fallback.mp4",
+    "decoded_frames": 150,
+    "ordered_thumbnails_inspected": [0, 149],
+    "sheets": ["r12_native_source_fallback_sheet_0100.jpg", "r12_native_source_fallback_sheet_0150.jpg"],
+    "finding": "Both eyes retain the original reflection and blink appearance. All output eye crops are numerically exact source fallback. Small thumbnails cannot establish subpixel quality."
+  },
+  "native_masks": {
+    "video": "r12_native_masks.mp4",
+    "decoded_frames": 1200,
+    "final_full_frame_inspected": [779],
+    "finding": "False small pupil fits are visibly rejected; candidate material/reflection regions are not validated dense semantic masks. Only selected final frames were inspected, not the full mask sequence. Earlier source survey, pilot and development counterexamples were also inspected."
+  },
+  "holdout": {
+    "video": "r12_native_holdout.mp4",
+    "decoded_frames": 14,
+    "fps": 2,
+    "full_case_inspected": [0],
+    "finding": "Source 717's original reflection remains in every panel. Only small held-out native patches differ; this slideshow is not a removal or temporal-stability demonstration."
+  },
+  "annotation_boards_inspected": [79, 217, 521, 779, 923, 1115],
+  "artist_approval": "not requested; no repaired reflection result exists"
+}

@@ -54,6 +54,16 @@ the keyed source exactly. Do not present this as a reporter reflection fix. See 
 
 ---
 
+**Round 12 findings and steering:** `iris_observations.py --shot` now collects reusable
+native keyed-eye candidates with dynamic crops, roll and pixel-aspect metadata; all
+validation flags remain false and source fallback is exact. On real withheld pixels,
+fitted torsion worsens paired median display error (3.2601 to 3.6259); zero pixels pass
+the combined correspondence/agreement gates. This is not a reflection repair. The
+artist reiterated generic input support, asked for existing neural solutions, and
+clarified that **tracking plus scene-light-based replacement remains the full task**.
+Evaluate pretrained eye segmentation/tracking before further custom fitting; see
+`docs/iris-prior-art.md` and `rounds/round12.md`. No neural model was run this round.
+
 ## What this project is
 
 A virtual-production pipeline that composites green-screen footage of the artist into Blender

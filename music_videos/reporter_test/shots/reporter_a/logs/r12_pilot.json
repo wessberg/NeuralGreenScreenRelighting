@@ -1,0 +1,1332 @@
+{
+  "status": "experimental native boundaries; no reflection repair",
+  "stride": 100,
+  "sides": {
+    "left": [
+      {
+        "frame": 0,
+        "geometry": {
+          "centre": [
+            32.5396728515625,
+            28.80230712890625
+          ],
+          "axes": [
+            12.581932067871094,
+            12.581932067871094
+          ],
+          "rotation": 0.0,
+          "pupil_ratio": 0.517916202545166,
+          "texture_rotation": 0.0
+        },
+        "candidate_ok": false,
+        "reasons": [
+          "nonconcentric_or_unresolved_pupil"
+        ],
+        "metrics": {
+          "limbus": [
+            32.5396728515625,
+            28.80230712890625,
+            12.581932067871094
+          ],
+          "pupil": [
+            33.0396728515625,
+            30.30230712890625,
+            6.51638650894165
+          ],
+          "limbus_sector_contrast": [
+            48.98200225830078,
+            44.37784194946289,
+            48.488670349121094,
+            43.76940155029297,
+            55.55228805541992,
+            76.44380187988281
+          ],
+          "pupil_sector_contrast": [
+            19.951934814453125,
+            19.99039077758789,
+            19.828327178955078,
+            21.404281616210938,
+            21.05734634399414,
+            -1000.0
+          ],
+          "limbus_score": 45.40554904937744,
+          "pupil_score": 19.85922908782959,
+          "concentric_error_px": 1.5811388492584229,
+          "material_pixels": 78,
+          "reflection_pixels": 36,
+          "reflection_crosses_pupil": true,
+          "reflection_outside_visible_material": true
+        }
+      },
+      {
+        "frame": 100,
+        "geometry": {
+          "centre": [
+            31.62744140625,
+            30.382476806640625
+          ],
+          "axes": [
+            13.434569358825684,
+            13.434569358825684
+          ],
+          "rotation": 0.0,
+          "pupil_ratio": 0.5721741914749146,
+          "texture_rotation": 0.0
+        },
+        "candidate_ok": false,
+        "reasons": [
+          "nonconcentric_or_unresolved_pupil"
+        ],
+        "metrics": {
+          "limbus": [
+            31.62744140625,
+            30.382476806640625,
+            13.434569358825684
+          ],
+          "pupil": [
+            30.12744140625,
+            31.882476806640625,
+            7.686913967132568
+          ],
+          "limbus_sector_contrast": [
+            7.4611616134643555,
+            42.90440368652344,
+            41.90018081665039,
+            48.77351379394531,
+            40.65637969970703,
+            86.58197784423828
+          ],
+          "pupil_sector_contrast": [
+            16.229413986206055,
+            17.414173126220703,
+            20.00489044189453,
+            17.04546356201172,
+            19.12075424194336,
+            -1000.0
+          ],
+          "limbus_score": 40.96732997894287,
+          "pupil_score": 16.43342638015747,
+          "concentric_error_px": 2.1213202476501465,
+          "material_pixels": 86,
+          "reflection_pixels": 25,
+          "reflection_crosses_pupil": true,
+          "reflection_outside_visible_material": true
+        }
+      },
+      {
+        "frame": 200,
+        "geometry": {
+          "centre": [
+            30.1630859375,
+            28.709808349609375
+          ],
+          "axes": [
+            6.2155866622924805,
+            6.2155866622924805
+          ],
+          "rotation": 0.0,
+          "pupil_ratio": 0.6826575994491577,
+          "texture_rotation": 0.0
+        },
+        "candidate_ok": false,
+        "reasons": [
+          "nonconcentric_or_unresolved_pupil",
+          "pupil_radius_at_search_boundary",
+          "insufficient_visible_material"
+        ],
+        "metrics": {
+          "limbus": [
+            30.1630859375,
+            28.709808349609375,
+            6.2155866622924805
+          ],
+          "pupil": [
+            30.1630859375,
+            30.209808349609375,
+            4.243117332458496
+          ],
+          "limbus_sector_contrast": [
+            15.108657836914062,
+            29.26702880859375,
+            29.541763305664062,
+            27.888330459594727,
+            17.451221466064453,
+            4.745020866394043
+          ],
+          "pupil_sector_contrast": [
+            64.7066650390625,
+            45.979461669921875,
+            43.34098434448242,
+            40.058589935302734,
+            36.834312438964844,
+            43.23694610595703
+          ],
+          "limbus_score": 15.69429874420166,
+          "pupil_score": 40.85317897796631,
+          "concentric_error_px": 1.5,
+          "material_pixels": 0,
+          "reflection_pixels": 0,
+          "reflection_crosses_pupil": false,
+          "reflection_outside_visible_material": false
+        }
+      },
+      {
+        "frame": 300,
+        "geometry": {
+          "centre": [
+            28.7210693359375,
+            29.430145263671875
+          ],
+          "axes": [
+            10.950281143188477,
+            10.950281143188477
+          ],
+          "rotation": 0.0,
+          "pupil_ratio": 0.7022702097892761,
+          "texture_rotation": 0.0
+        },
+        "candidate_ok": false,
+        "reasons": [
+          "nonconcentric_or_unresolved_pupil",
+          "pupil_radius_at_search_boundary",
+          "insufficient_visible_material"
+        ],
+        "metrics": {
+          "limbus": [
+            28.7210693359375,
+            29.430145263671875,
+            10.950281143188477
+          ],
+          "pupil": [
+            26.7210693359375,
+            31.430145263671875,
+            7.690056324005127
+          ],
+          "limbus_sector_contrast": [
+            3.2317819595336914,
+            46.25298309326172,
+            49.291160583496094,
+            46.11137390136719,
+            77.71675109863281,
+            48.15279006958008
+          ],
+          "pupil_sector_contrast": [
+            10.820515632629395,
+            -4.733184814453125,
+            39.701786041259766,
+            80.02666473388672,
+            87.72561645507812,
+            52.347110748291016
+          ],
+          "limbus_score": 46.14677619934082,
+          "pupil_score": 18.040833234786987,
+          "concentric_error_px": 2.8284270763397217,
+          "material_pixels": 5,
+          "reflection_pixels": 34,
+          "reflection_crosses_pupil": true,
+          "reflection_outside_visible_material": true
+        }
+      },
+      {
+        "frame": 400,
+        "geometry": {
+          "centre": [
+            28.6546630859375,
+            30.9482421875
+          ],
+          "axes": [
+            12.284477233886719,
+            12.284477233886719
+          ],
+          "rotation": 0.0,
+          "pupil_ratio": 0.24070177972316742,
+          "texture_rotation": 0.0
+        },
+        "candidate_ok": false,
+        "reasons": [
+          "nonconcentric_or_unresolved_pupil",
+          "pupil_radius_at_search_boundary"
+        ],
+        "metrics": {
+          "limbus": [
+            28.6546630859375,
+            30.9482421875,
+            12.284477233886719
+          ],
+          "pupil": [
+            28.1546630859375,
+            31.9482421875,
+            2.956895589828491
+          ],
+          "limbus_sector_contrast": [
+            54.66900634765625,
+            52.14388656616211,
+            49.329620361328125,
+            45.16895294189453,
+            56.527931213378906,
+            62.40660095214844
+          ],
+          "pupil_sector_contrast": [
+            21.698991775512695,
+            23.75217628479004,
+            19.762224197387695,
+            20.35266876220703,
+            22.40661403111049,
+            -1000.0
+          ],
+          "limbus_score": 50.03318691253662,
+          "pupil_score": 19.90983533859253,
+          "concentric_error_px": 1.1180340051651,
+          "material_pixels": 131,
+          "reflection_pixels": 30,
+          "reflection_crosses_pupil": true,
+          "reflection_outside_visible_material": true
+        }
+      },
+      {
+        "frame": 500,
+        "geometry": {
+          "centre": [
+            29.399169921875,
+            33.376251220703125
+          ],
+          "axes": [
+            9.18940258026123,
+            9.18940258026123
+          ],
+          "rotation": 0.0,
+          "pupil_ratio": 0.5808735489845276,
+          "texture_rotation": 0.0
+        },
+        "candidate_ok": false,
+        "reasons": [
+          "nonconcentric_or_unresolved_pupil",
+          "insufficient_visible_material"
+        ],
+        "metrics": {
+          "limbus": [
+            29.399169921875,
+            33.376251220703125,
+            9.18940258026123
+          ],
+          "pupil": [
+            28.399169921875,
+            32.876251220703125,
+            5.337881088256836
+          ],
+          "limbus_sector_contrast": [
+            43.394325256347656,
+            52.19308090209961,
+            36.115020751953125,
+            32.220664978027344,
+            33.256309509277344,
+            9.15951919555664
+          ],
+          "pupil_sector_contrast": [
+            19.559532165527344,
+            18.580604553222656,
+            22.8563232421875,
+            18.947317123413086,
+            21.114166259765625,
+            15.828267097473145
+          ],
+          "limbus_score": 32.479576110839844,
+          "pupil_score": 18.672282695770264,
+          "concentric_error_px": 1.1180340051651,
+          "material_pixels": 15,
+          "reflection_pixels": 11,
+          "reflection_crosses_pupil": true,
+          "reflection_outside_visible_material": true
+        }
+      },
+      {
+        "frame": 600,
+        "geometry": {
+          "centre": [
+            29.5430908203125,
+            30.0228271484375
+          ],
+          "axes": [
+            12.577932357788086,
+            12.577932357788086
+          ],
+          "rotation": 0.0,
+          "pupil_ratio": 0.4782651662826538,
+          "texture_rotation": 0.0
+        },
+        "candidate_ok": false,
+        "reasons": [
+          "nonconcentric_or_unresolved_pupil"
+        ],
+        "metrics": {
+          "limbus": [
+            29.5430908203125,
+            30.0228271484375,
+            12.577932357788086
+          ],
+          "pupil": [
+            29.5430908203125,
+            32.0228271484375,
+            6.015586853027344
+          ],
+          "limbus_sector_contrast": [
+            39.75627136230469,
+            55.07644271850586,
+            55.9530143737793,
+            53.56149673461914,
+            84.43987274169922,
+            53.42302703857422
+          ],
+          "pupil_sector_contrast": [
+            19.232736587524414,
+            16.35041618347168,
+            20.333492279052734,
+            16.47443389892578,
+            25.24207305908203,
+            19.70519104003906
+          ],
+          "limbus_score": 53.45764446258545,
+          "pupil_score": 17.16400957107544,
+          "concentric_error_px": 2.0,
+          "material_pixels": 93,
+          "reflection_pixels": 59,
+          "reflection_crosses_pupil": true,
+          "reflection_outside_visible_material": true
+        }
+      },
+      {
+        "frame": 700,
+        "geometry": {
+          "centre": [
+            31.2491455078125,
+            30.42437744140625
+          ],
+          "axes": [
+            12.394344329833984,
+            12.394344329833984
+          ],
+          "rotation": 0.0,
+          "pupil_ratio": 0.643750786781311,
+          "texture_rotation": 0.0
+        },
+        "candidate_ok": false,
+        "reasons": [
+          "nonconcentric_or_unresolved_pupil"
+        ],
+        "metrics": {
+          "limbus": [
+            31.2491455078125,
+            30.42437744140625,
+            12.394344329833984
+          ],
+          "pupil": [
+            30.2491455078125,
+            29.42437744140625,
+            7.9788689613342285
+          ],
+          "limbus_sector_contrast": [
+            36.91492462158203,
+            52.92710876464844,
+            51.852962493896484,
+            50.257659912109375,
+            57.08429718017578,
+            61.450782775878906
+          ],
+          "pupil_sector_contrast": [
+            12.437341690063477,
+            19.331859588623047,
+            20.333335876464844,
+            24.417633056640625,
+            30.544904436383927,
+            27.774226597377233
+          ],
+          "limbus_score": 50.65648555755615,
+          "pupil_score": 19.582228660583496,
+          "concentric_error_px": 1.4142135381698608,
+          "material_pixels": 43,
+          "reflection_pixels": 19,
+          "reflection_crosses_pupil": true,
+          "reflection_outside_visible_material": true
+        }
+      },
+      {
+        "frame": 800,
+        "geometry": {
+          "centre": [
+            29.8824462890625,
+            31.8294677734375
+          ],
+          "axes": [
+            11.642520904541016,
+            11.642520904541016
+          ],
+          "rotation": 0.0,
+          "pupil_ratio": 0.5435682535171509,
+          "texture_rotation": 0.0
+        },
+        "candidate_ok": true,
+        "reasons": [],
+        "metrics": {
+          "limbus": [
+            29.8824462890625,
+            31.8294677734375,
+            11.642520904541016
+          ],
+          "pupil": [
+            30.3824462890625,
+            31.3294677734375,
+            6.32850456237793
+          ],
+          "limbus_sector_contrast": [
+            46.23042297363281,
+            57.22732925415039,
+            56.78007888793945,
+            61.918304443359375,
+            89.26649475097656,
+            70.17415618896484
+          ],
+          "pupil_sector_contrast": [
+            21.669849395751953,
+            18.76219940185547,
+            21.712499618530273,
+            20.536434173583984,
+            22.36817169189453,
+            -1000.0
+          ],
+          "limbus_score": 56.89189147949219,
+          "pupil_score": 19.205758094787598,
+          "concentric_error_px": 0.7071067690849304,
+          "material_pixels": 57,
+          "reflection_pixels": 17,
+          "reflection_crosses_pupil": true,
+          "reflection_outside_visible_material": true
+        }
+      },
+      {
+        "frame": 900,
+        "geometry": {
+          "centre": [
+            32.38134765625,
+            28.8121337890625
+          ],
+          "axes": [
+            11.49690055847168,
+            11.49690055847168
+          ],
+          "rotation": 0.0,
+          "pupil_ratio": 0.5479198694229126,
+          "texture_rotation": 0.0
+        },
+        "candidate_ok": true,
+        "reasons": [],
+        "metrics": {
+          "limbus": [
+            32.38134765625,
+            28.8121337890625,
+            11.49690055847168
+          ],
+          "pupil": [
+            32.38134765625,
+            29.3121337890625,
+            6.299380302429199
+          ],
+          "limbus_sector_contrast": [
+            49.825294494628906,
+            51.19939422607422,
+            54.39665985107422,
+            46.1163330078125,
+            43.21888732910156,
+            25.145004272460938
+          ],
+          "pupil_sector_contrast": [
+            20.538129806518555,
+            19.98740577697754,
+            20.738353729248047,
+            19.737064361572266,
+            24.936126708984375,
+            -1000.0
+          ],
+          "limbus_score": 43.9432487487793,
+          "pupil_score": 19.799649715423584,
+          "concentric_error_px": 0.5,
+          "material_pixels": 54,
+          "reflection_pixels": 17,
+          "reflection_crosses_pupil": true,
+          "reflection_outside_visible_material": true
+        }
+      },
+      {
+        "frame": 1000,
+        "geometry": {
+          "centre": [
+            30.64404296875,
+            28.562835693359375
+          ],
+          "axes": [
+            12.599206924438477,
+            12.599206924438477
+          ],
+          "rotation": 0.0,
+          "pupil_ratio": 0.47779524326324463,
+          "texture_rotation": 0.0
+        },
+        "candidate_ok": false,
+        "reasons": [
+          "nonconcentric_or_unresolved_pupil"
+        ],
+        "metrics": {
+          "limbus": [
+            30.64404296875,
+            28.562835693359375,
+            12.599206924438477
+          ],
+          "pupil": [
+            31.64404296875,
+            30.062835693359375,
+            6.019841194152832
+          ],
+          "limbus_sector_contrast": [
+            50.29107666015625,
+            54.323822021484375,
+            56.62031555175781,
+            58.21757507324219,
+            83.86006164550781,
+            76.9201889038086
+          ],
+          "pupil_sector_contrast": [
+            18.66889190673828,
+            18.857542037963867,
+            20.74904441833496,
+            18.579185485839844,
+            21.035615921020508,
+            -1000.0
+          ],
+          "limbus_score": 54.897945404052734,
+          "pupil_score": 18.601612091064453,
+          "concentric_error_px": 1.8027756214141846,
+          "material_pixels": 94,
+          "reflection_pixels": 29,
+          "reflection_crosses_pupil": true,
+          "reflection_outside_visible_material": true
+        }
+      },
+      {
+        "frame": 1100,
+        "geometry": {
+          "centre": [
+            29.3880615234375,
+            31.46038818359375
+          ],
+          "axes": [
+            8.014126777648926,
+            8.014126777648926
+          ],
+          "rotation": 0.0,
+          "pupil_ratio": 0.6991186141967773,
+          "texture_rotation": 0.0
+        },
+        "candidate_ok": false,
+        "reasons": [
+          "nonconcentric_or_unresolved_pupil",
+          "pupil_radius_at_search_boundary",
+          "insufficient_visible_material"
+        ],
+        "metrics": {
+          "limbus": [
+            29.3880615234375,
+            31.46038818359375,
+            8.014126777648926
+          ],
+          "pupil": [
+            29.8880615234375,
+            33.46038818359375,
+            5.602825164794922
+          ],
+          "limbus_sector_contrast": [
+            22.877748489379883,
+            36.64105224609375,
+            25.354110717773438,
+            36.21371841430664,
+            38.957298278808594,
+            0.35445332527160645
+          ],
+          "pupil_sector_contrast": [
+            28.626611709594727,
+            42.62677764892578,
+            38.14609909057617,
+            40.567039489746094,
+            25.10825538635254,
+            -0.48711633682250977
+          ],
+          "limbus_score": 23.49683904647827,
+          "pupil_score": 25.987844467163086,
+          "concentric_error_px": 2.0615527629852295,
+          "material_pixels": 0,
+          "reflection_pixels": 0,
+          "reflection_crosses_pupil": false,
+          "reflection_outside_visible_material": false
+        }
+      }
+    ],
+    "right": [
+      {
+        "frame": 0,
+        "geometry": {
+          "centre": [
+            30.36370849609375,
+            29.905059814453125
+          ],
+          "axes": [
+            12.495162963867188,
+            12.495162963867188
+          ],
+          "rotation": 0.0,
+          "pupil_ratio": 0.5601394176483154,
+          "texture_rotation": 0.0
+        },
+        "candidate_ok": true,
+        "reasons": [],
+        "metrics": {
+          "limbus": [
+            30.36370849609375,
+            29.905059814453125,
+            12.495162963867188
+          ],
+          "pupil": [
+            30.86370849609375,
+            29.905059814453125,
+            6.999032974243164
+          ],
+          "limbus_sector_contrast": [
+            45.66792678833008,
+            41.6925048828125,
+            10.95230484008789,
+            41.001747131347656,
+            77.58797454833984,
+            54.82556915283203
+          ],
+          "pupil_sector_contrast": [
+            23.643415451049805,
+            21.783327102661133,
+            17.555862426757812,
+            23.728816986083984,
+            25.256018502371653,
+            28.691871643066406
+          ],
+          "limbus_score": 41.17443656921387,
+          "pupil_score": 22.2483491897583,
+          "concentric_error_px": 0.5,
+          "material_pixels": 65,
+          "reflection_pixels": 17,
+          "reflection_crosses_pupil": true,
+          "reflection_outside_visible_material": true
+        }
+      },
+      {
+        "frame": 100,
+        "geometry": {
+          "centre": [
+            31.10418701171875,
+            30.020111083984375
+          ],
+          "axes": [
+            13.057315826416016,
+            13.057315826416016
+          ],
+          "rotation": 0.0,
+          "pupil_ratio": 0.3148781657218933,
+          "texture_rotation": 0.0
+        },
+        "candidate_ok": false,
+        "reasons": [
+          "nonconcentric_or_unresolved_pupil"
+        ],
+        "metrics": {
+          "limbus": [
+            31.10418701171875,
+            30.020111083984375,
+            13.057315826416016
+          ],
+          "pupil": [
+            31.10418701171875,
+            32.020111083984375,
+            4.11146354675293
+          ],
+          "limbus_sector_contrast": [
+            51.672142028808594,
+            49.286827087402344,
+            41.22994613647461,
+            17.905101776123047,
+            50.778236389160156,
+            79.50910949707031
+          ],
+          "pupil_sector_contrast": [
+            21.970218658447266,
+            22.052248001098633,
+            21.182846069335938,
+            21.701679229736328,
+            28.153176879882814,
+            -1000.0
+          ],
+          "limbus_score": 43.24416637420654,
+          "pupil_score": 21.312554359436035,
+          "concentric_error_px": 2.0,
+          "material_pixels": 144,
+          "reflection_pixels": 24,
+          "reflection_crosses_pupil": true,
+          "reflection_outside_visible_material": true
+        }
+      },
+      {
+        "frame": 200,
+        "geometry": {
+          "centre": [
+            28.50360107421875,
+            29.0267333984375
+          ],
+          "axes": [
+            4.755925178527832,
+            4.755925178527832
+          ],
+          "rotation": 0.0,
+          "pupil_ratio": 0.620527982711792,
+          "texture_rotation": 0.0
+        },
+        "candidate_ok": false,
+        "reasons": [
+          "nonconcentric_or_unresolved_pupil",
+          "pupil_radius_at_search_boundary",
+          "insufficient_visible_material"
+        ],
+        "metrics": {
+          "limbus": [
+            28.50360107421875,
+            29.0267333984375,
+            4.755925178527832
+          ],
+          "pupil": [
+            26.50360107421875,
+            31.0267333984375,
+            2.9511847496032715
+          ],
+          "limbus_sector_contrast": [
+            25.502897262573242,
+            42.59739685058594,
+            18.948646545410156,
+            32.421043395996094,
+            36.7553825378418,
+            24.610021591186523
+          ],
+          "pupil_sector_contrast": [
+            -1000.0,
+            34.58557891845703,
+            24.574512481689453,
+            30.746257781982422,
+            26.7365779876709,
+            10.375197410583496
+          ],
+          "limbus_score": 24.833240509033203,
+          "pupil_score": 13.925026178359985,
+          "concentric_error_px": 2.8284270763397217,
+          "material_pixels": 0,
+          "reflection_pixels": 0,
+          "reflection_crosses_pupil": false,
+          "reflection_outside_visible_material": false
+        }
+      },
+      {
+        "frame": 300,
+        "geometry": {
+          "centre": [
+            29.431884765625,
+            28.6087646484375
+          ],
+          "axes": [
+            10.406728744506836,
+            10.406728744506836
+          ],
+          "rotation": 0.0,
+          "pupil_ratio": 0.6804583668708801,
+          "texture_rotation": 0.0
+        },
+        "candidate_ok": false,
+        "reasons": [
+          "nonconcentric_or_unresolved_pupil",
+          "pupil_radius_at_search_boundary",
+          "insufficient_visible_material"
+        ],
+        "metrics": {
+          "limbus": [
+            29.431884765625,
+            28.6087646484375,
+            10.406728744506836
+          ],
+          "pupil": [
+            27.431884765625,
+            30.6087646484375,
+            7.081345558166504
+          ],
+          "limbus_sector_contrast": [
+            25.308319091796875,
+            38.402469635009766,
+            5.677892684936523,
+            25.349740982055664,
+            56.98810577392578,
+            28.991802215576172
+          ],
+          "pupil_sector_contrast": [
+            10.538066864013672,
+            23.348617553710938,
+            60.3990364074707,
+            58.44261169433594,
+            60.49937057495117,
+            25.52732276916504
+          ],
+          "limbus_score": 25.318674564361572,
+          "pupil_score": 23.893293857574463,
+          "concentric_error_px": 2.8284270763397217,
+          "material_pixels": 9,
+          "reflection_pixels": 18,
+          "reflection_crosses_pupil": true,
+          "reflection_outside_visible_material": true
+        }
+      },
+      {
+        "frame": 400,
+        "geometry": {
+          "centre": [
+            29.23272705078125,
+            28.988922119140625
+          ],
+          "axes": [
+            12.953368186950684,
+            12.953368186950684
+          ],
+          "rotation": 0.0,
+          "pupil_ratio": 0.2386000007390976,
+          "texture_rotation": 0.0
+        },
+        "candidate_ok": false,
+        "reasons": [
+          "nonconcentric_or_unresolved_pupil",
+          "pupil_radius_at_search_boundary"
+        ],
+        "metrics": {
+          "limbus": [
+            29.23272705078125,
+            28.988922119140625,
+            12.953368186950684
+          ],
+          "pupil": [
+            29.23272705078125,
+            30.988922119140625,
+            3.0906736850738525
+          ],
+          "limbus_sector_contrast": [
+            39.820858001708984,
+            49.50553512573242,
+            48.451332092285156,
+            65.4075698852539,
+            60.54150390625,
+            57.79961013793945
+          ],
+          "pupil_sector_contrast": [
+            23.30579376220703,
+            24.46015167236328,
+            24.535690307617188,
+            25.404705047607422,
+            26.62550926208496,
+            -1000.0
+          ],
+          "limbus_score": 48.71488285064697,
+          "pupil_score": 23.594383239746094,
+          "concentric_error_px": 2.0,
+          "material_pixels": 151,
+          "reflection_pixels": 23,
+          "reflection_crosses_pupil": true,
+          "reflection_outside_visible_material": true
+        }
+      },
+      {
+        "frame": 500,
+        "geometry": {
+          "centre": [
+            29.4017333984375,
+            29.245849609375
+          ],
+          "axes": [
+            12.73873233795166,
+            12.73873233795166
+          ],
+          "rotation": 0.0,
+          "pupil_ratio": 0.2785007357597351,
+          "texture_rotation": 0.0
+        },
+        "candidate_ok": false,
+        "reasons": [
+          "nonconcentric_or_unresolved_pupil"
+        ],
+        "metrics": {
+          "limbus": [
+            29.4017333984375,
+            29.245849609375,
+            12.73873233795166
+          ],
+          "pupil": [
+            29.4017333984375,
+            31.245849609375,
+            3.547746419906616
+          ],
+          "limbus_sector_contrast": [
+            50.27056884765625,
+            44.9233512878418,
+            36.83100128173828,
+            17.727502822875977,
+            46.73184585571289,
+            66.47535705566406
+          ],
+          "pupil_sector_contrast": [
+            23.083595275878906,
+            23.58844566345215,
+            29.15683937072754,
+            27.752605438232422,
+            32.60868835449219,
+            -1000.0
+          ],
+          "limbus_score": 38.85408878326416,
+          "pupil_score": 23.209807872772217,
+          "concentric_error_px": 2.0,
+          "material_pixels": 139,
+          "reflection_pixels": 29,
+          "reflection_crosses_pupil": true,
+          "reflection_outside_visible_material": true
+        }
+      },
+      {
+        "frame": 600,
+        "geometry": {
+          "centre": [
+            30.337890625,
+            31.0699462890625
+          ],
+          "axes": [
+            12.192599296569824,
+            12.192599296569824
+          ],
+          "rotation": 0.0,
+          "pupil_ratio": 0.5690763592720032,
+          "texture_rotation": 0.0
+        },
+        "candidate_ok": true,
+        "reasons": [],
+        "metrics": {
+          "limbus": [
+            30.337890625,
+            31.0699462890625,
+            12.192599296569824
+          ],
+          "pupil": [
+            30.837890625,
+            30.5699462890625,
+            6.9385199546813965
+          ],
+          "limbus_sector_contrast": [
+            47.348121643066406,
+            45.774200439453125,
+            5.931001663208008,
+            49.34636306762695,
+            75.18363952636719,
+            45.35149383544922
+          ],
+          "pupil_sector_contrast": [
+            25.696813583374023,
+            25.101516723632812,
+            18.325029373168945,
+            22.885841369628906,
+            24.3260498046875,
+            23.13978385925293
+          ],
+          "limbus_score": 45.457170486450195,
+          "pupil_score": 22.949326992034912,
+          "concentric_error_px": 0.7071067690849304,
+          "material_pixels": 55,
+          "reflection_pixels": 15,
+          "reflection_crosses_pupil": true,
+          "reflection_outside_visible_material": true
+        }
+      },
+      {
+        "frame": 700,
+        "geometry": {
+          "centre": [
+            30.275146484375,
+            29.116180419921875
+          ],
+          "axes": [
+            12.054586410522461,
+            12.054586410522461
+          ],
+          "rotation": 0.0,
+          "pupil_ratio": 0.40738993883132935,
+          "texture_rotation": 0.0
+        },
+        "candidate_ok": true,
+        "reasons": [],
+        "metrics": {
+          "limbus": [
+            30.275146484375,
+            29.116180419921875,
+            12.054586410522461
+          ],
+          "pupil": [
+            29.775146484375,
+            28.616180419921875,
+            4.910917282104492
+          ],
+          "limbus_sector_contrast": [
+            65.46265411376953,
+            55.77387237548828,
+            46.46357727050781,
+            58.198692321777344,
+            83.98233795166016,
+            69.10246276855469
+          ],
+          "pupil_sector_contrast": [
+            24.619508743286133,
+            23.883377075195312,
+            32.1900749206543,
+            24.16147232055664,
+            23.945762634277344,
+            15.669362386067709
+          ],
+          "limbus_score": 56.38007736206055,
+          "pupil_score": 23.89897346496582,
+          "concentric_error_px": 0.7071067690849304,
+          "material_pixels": 99,
+          "reflection_pixels": 16,
+          "reflection_crosses_pupil": true,
+          "reflection_outside_visible_material": true
+        }
+      },
+      {
+        "frame": 800,
+        "geometry": {
+          "centre": [
+            29.61236572265625,
+            30.445159912109375
+          ],
+          "axes": [
+            13.052708625793457,
+            13.052708625793457
+          ],
+          "rotation": 0.0,
+          "pupil_ratio": 0.4681435823440552,
+          "texture_rotation": 0.0
+        },
+        "candidate_ok": false,
+        "reasons": [
+          "nonconcentric_or_unresolved_pupil"
+        ],
+        "metrics": {
+          "limbus": [
+            29.61236572265625,
+            30.445159912109375,
+            13.052708625793457
+          ],
+          "pupil": [
+            28.11236572265625,
+            29.445159912109375,
+            6.110541820526123
+          ],
+          "limbus_sector_contrast": [
+            54.97782516479492,
+            51.24248504638672,
+            55.090965270996094,
+            62.39610290527344,
+            81.09927368164062,
+            67.15190124511719
+          ],
+          "pupil_sector_contrast": [
+            22.29146957397461,
+            21.698755264282227,
+            26.150569915771484,
+            25.088647024972097,
+            24.133441925048828,
+            13.040851593017578
+          ],
+          "limbus_score": 55.006110191345215,
+          "pupil_score": 21.846933841705322,
+          "concentric_error_px": 1.8027756214141846,
+          "material_pixels": 107,
+          "reflection_pixels": 16,
+          "reflection_crosses_pupil": true,
+          "reflection_outside_visible_material": true
+        }
+      },
+      {
+        "frame": 900,
+        "geometry": {
+          "centre": [
+            28.898681640625,
+            29.199066162109375
+          ],
+          "axes": [
+            9.613347053527832,
+            9.613347053527832
+          ],
+          "rotation": 0.0,
+          "pupil_ratio": 0.512066125869751,
+          "texture_rotation": 0.0
+        },
+        "candidate_ok": false,
+        "reasons": [
+          "nonconcentric_or_unresolved_pupil"
+        ],
+        "metrics": {
+          "limbus": [
+            28.898681640625,
+            29.199066162109375,
+            9.613347053527832
+          ],
+          "pupil": [
+            30.898681640625,
+            29.199066162109375,
+            4.922669410705566
+          ],
+          "limbus_sector_contrast": [
+            23.895263671875,
+            6.811191082000732,
+            50.46076202392578,
+            56.112308502197266,
+            72.07492065429688,
+            72.02105712890625
+          ],
+          "pupil_sector_contrast": [
+            21.10845947265625,
+            9.850757598876953,
+            20.66212272644043,
+            23.533809661865234,
+            22.20232582092285,
+            24.07245445251465
+          ],
+          "limbus_score": 30.536638259887695,
+          "pupil_score": 20.773706912994385,
+          "concentric_error_px": 2.0,
+          "material_pixels": 35,
+          "reflection_pixels": 18,
+          "reflection_crosses_pupil": true,
+          "reflection_outside_visible_material": true
+        }
+      },
+      {
+        "frame": 1000,
+        "geometry": {
+          "centre": [
+            30.6533203125,
+            29.360137939453125
+          ],
+          "axes": [
+            12.585844039916992,
+            12.585844039916992
+          ],
+          "rotation": 0.0,
+          "pupil_ratio": 0.31918153166770935,
+          "texture_rotation": 0.0
+        },
+        "candidate_ok": true,
+        "reasons": [],
+        "metrics": {
+          "limbus": [
+            30.6533203125,
+            29.360137939453125,
+            12.585844039916992
+          ],
+          "pupil": [
+            31.1533203125,
+            29.860137939453125,
+            4.017168998718262
+          ],
+          "limbus_sector_contrast": [
+            50.99848937988281,
+            46.23662185668945,
+            48.669212341308594,
+            54.21040344238281,
+            70.27236938476562,
+            66.06082153320312
+          ],
+          "pupil_sector_contrast": [
+            23.947593688964844,
+            25.27159881591797,
+            25.276288986206055,
+            28.590320587158203,
+            26.73846435546875,
+            -1000.0
+          ],
+          "limbus_score": 49.25153160095215,
+          "pupil_score": 24.278594970703125,
+          "concentric_error_px": 0.7071067690849304,
+          "material_pixels": 135,
+          "reflection_pixels": 12,
+          "reflection_crosses_pupil": true,
+          "reflection_outside_visible_material": true
+        }
+      },
+      {
+        "frame": 1100,
+        "geometry": {
+          "centre": [
+            30.810791015625,
+            30.45062255859375
+          ],
+          "axes": [
+            8.1146821975708,
+            8.1146821975708
+          ],
+          "rotation": 0.0,
+          "pupil_ratio": 0.6313169002532959,
+          "texture_rotation": 0.0
+        },
+        "candidate_ok": false,
+        "reasons": [
+          "nonconcentric_or_unresolved_pupil",
+          "insufficient_visible_material"
+        ],
+        "metrics": {
+          "limbus": [
+            30.810791015625,
+            30.45062255859375,
+            8.1146821975708
+          ],
+          "pupil": [
+            32.810791015625,
+            32.45062255859375,
+            5.122936248779297
+          ],
+          "limbus_sector_contrast": [
+            16.364646911621094,
+            25.485858917236328,
+            14.17146110534668,
+            32.004600524902344,
+            12.11145305633545,
+            -1.2443327903747559
+          ],
+          "pupil_sector_contrast": [
+            36.60424041748047,
+            28.832462310791016,
+            23.17177963256836,
+            36.5791130065918,
+            11.140676498413086,
+            0.27672704060872394
+          ],
+          "limbus_score": 12.626455068588257,
+          "pupil_score": 14.148452281951904,
+          "concentric_error_px": 2.8284270763397217,
+          "material_pixels": 0,
+          "reflection_pixels": 0,
+          "reflection_crosses_pupil": false,
+          "reflection_outside_visible_material": false
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "shot": "reporter_a",
+  "frame_rate": "60000/1001",
+  "working_space": "scene-linear Rec.709 keyed input; display conversion only for native detector/review",
+  "pixel_aspect": 1.0,
+  "status": "experimental observations; no automatic repair authorized",
+  "scope": "single tracked performer; dynamic native ROIs; any iris colour; pupil/limbus model remains near-circular after pixel-aspect correction",
+  "detail": "relight/iris_observations/manifest.json",
+  "frame_count": 150,
+  "candidate_eyes": 58,
+  "changed_channels": 0,
+  "fallback_reasons": {
+    "insufficient_limbus_arcs,nonconcentric_or_unresolved_pupil": 1,
+    "insufficient_limbus_arcs,nonconcentric_or_unresolved_pupil,pupil_radius_at_search_boundary,insufficient_visible_material": 2,
+    "insufficient_pupil_arcs,nonconcentric_or_unresolved_pupil,insufficient_visible_material": 1,
+    "insufficient_visible_material": 1,
+    "nonconcentric_or_unresolved_pupil": 78,
+    "nonconcentric_or_unresolved_pupil,insufficient_visible_material": 14,
+    "nonconcentric_or_unresolved_pupil,pupil_radius_at_search_boundary": 101,
+    "nonconcentric_or_unresolved_pupil,pupil_radius_at_search_boundary,insufficient_visible_material": 36,
+    "pupil_radius_at_search_boundary": 8,
+    "reflection_crosses_unvalidated_pupil": 58
+  }
+}
