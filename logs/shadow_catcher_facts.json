@@ -1,0 +1,23 @@
+{
+  "object": "Art book 0",
+  "instance_has_is_shadow_catcher": true,
+  "type_has_is_shadow_catcher": false,
+  "value": false,
+  "is_holdout": true,
+  "shadow_catcher_like_attrs": [
+    "holdout_get",
+    "is_holdout",
+    "is_shadow_catcher"
+  ],
+  "visibility_attrs": [
+    "visible_camera",
+    "visible_diffuse",
+    "visible_get",
+    "visible_glossy",
+    "visible_in_viewport_get",
+    "visible_raycast",
+    "visible_shadow",
+    "visible_transmission",
+    "visible_volume_scatter"
+  ]
+}

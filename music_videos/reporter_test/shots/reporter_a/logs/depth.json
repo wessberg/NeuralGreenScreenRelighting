@@ -1,0 +1,16 @@
+{
+  "shot": "reporter_a",
+  "model": "Video Depth Anything Small",
+  "frames": 150,
+  "source_fps": "60000/1001",
+  "input_short_side": 392,
+  "output": [
+    768,
+    432
+  ],
+  "seconds": 2.8278210163116455,
+  "temporal_window": 32,
+  "overlap": 10,
+  "aligned_blend_frames": 8,
+  "max_vram_GB": 1.870665216
+}

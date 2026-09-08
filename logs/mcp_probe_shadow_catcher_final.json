@@ -1,0 +1,16 @@
+{
+  "time": "2026-09-08T12:14:18.891862",
+  "transport": "Blender Lab MCP 1.0.0 TCP bridge",
+  "request": {
+    "type": "execute",
+    "strict_json": true,
+    "code": "import sys\nfrom pathlib import Path\nsys.argv=['C:\\\\Users\\\\Frede\\\\Developer\\\\blender-virtual-production-experiment\\\\scripts\\\\probe_shadow_catcher.py']\nscript=Path('C:\\\\Users\\\\Frede\\\\Developer\\\\blender-virtual-production-experiment\\\\scripts\\\\probe_shadow_catcher.py')\nnamespace={'__file__':str(script),'__name__':'__main__'}\nexec(compile(script.read_text(encoding='utf-8'),str(script),'exec'),namespace)\nresult={'script':str(script),'complete':True}"
+  },
+  "response": {
+    "status": "ok",
+    "result": {
+      "script": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\scripts\\probe_shadow_catcher.py",
+      "complete": true
+    }
+  }
+}
