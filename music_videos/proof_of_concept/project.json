@@ -1,0 +1,10 @@
+{
+  "music_video_id": "proof_of_concept",
+  "title": "Night Listening Room — pipeline proof of concept",
+  "status": "final export in progress",
+  "workspace_relative_shot_root": "../..",
+  "song": {"audio_source": "../../source/plate.mp4", "master_audio_supplied": false, "lyrics_supplied": false},
+  "shots": [{"shot_id": "night_listening_room", "shot_config": "../../shot.json", "source_frame_range_inclusive": [0,299], "music_time_at_source_frame_zero_seconds": 0, "scene": "../../blender/listening_room.blend", "lighting": "steady, no music-driven cues"}],
+  "final_output": "../../final/Night_Listening_Room_4K_HDR10.mp4",
+  "note": "Example footage only. Future music videos should have isolated directories and per-shot creative briefs, source metadata, camera matching and synchronization."
+}

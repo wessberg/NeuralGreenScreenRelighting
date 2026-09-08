@@ -1,0 +1,13 @@
+{
+  "music_video_id": "unique_video_id",
+  "title": null,
+  "song": {"master_audio_path": null, "stems": [], "sample_rate": "discover", "lyrics_path": null, "timecoded_lyrics_path": null, "bpm": null, "meter": null, "sections": []},
+  "creative_direction": {"overall_concept": null, "visual_references": [], "environments": [], "palette": null, "performance_style": null, "lighting_style": null, "edit_rhythm": null, "lyric_visual_relationships": [], "constraints": []},
+  "music_timeline": {"origin_seconds": 0, "onsets_path": null, "beat_grid_path": null, "section_cues_path": null, "lighting_cues_path": null, "automatic_analysis_requires_confidence_notes": true},
+  "shots": [
+    {"shot_id": "shot_001", "take_id": "take_001", "source_path": null, "shot_brief_path": null, "scene_id": null, "music_time_at_source_frame_zero_seconds": null, "synchronization_confidence": null, "source_frame_rate": "discover rational", "camera_angle": null, "selected_ranges": []}
+  ],
+  "edit": {"timeline_path": null, "delivery_frame_rate": null, "audio_master_start_seconds": 0, "transitions": [], "notes": "Different source frame rates may require an explicit editorial conversion for one final music-video timeline."},
+  "delivery": {"resolution": [3840,2160], "hdr_master": "Rec2020 PQ 1000 nits", "sdr_companion": true},
+  "implementation_status": "Template for future multi-video orchestration; current delivered example is a single isolated proof-of-concept shot."
+}

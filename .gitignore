@@ -1,0 +1,26 @@
+# Large third-party checkouts and installers
+dependencies/
+
+# Source footage (authoritative, kept outside git)
+*.mp4
+!music_videos/**/project.json
+
+# Derived caches and renders (reproducible from scripts)
+source/frames/
+key/
+relight/depth/
+relight/controls/
+intermediate/linear_4k/
+intermediate/*.hevc
+composite/
+final/
+music_videos/**/shots/**/source/frames/
+music_videos/**/shots/**/key/
+music_videos/**/shots/**/intermediate/
+music_videos/**/shots/**/composite/
+music_videos/**/shots/**/final/
+
+# Logs: keep structured JSON evidence, drop raw encoder spew
+logs/*.log
+__pycache__/
+*.pyc

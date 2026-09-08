@@ -1,0 +1,17 @@
+{
+  "time": "2026-09-08T11:28:05.450787",
+  "transport": "Blender Lab MCP 1.0.0 TCP bridge",
+  "request": {
+    "type": "execute",
+    "strict_json": true,
+    "code": "import sys\nfrom pathlib import Path\nsys.argv=['C:\\\\Users\\\\Frede\\\\Developer\\\\blender-virtual-production-experiment\\\\scripts\\\\inspect_lights.py']\nscript=Path('C:\\\\Users\\\\Frede\\\\Developer\\\\blender-virtual-production-experiment\\\\scripts\\\\inspect_lights.py')\nnamespace={'__file__':str(script),'__name__':'__main__'}\nexec(compile(script.read_text(encoding='utf-8'),str(script),'exec'),namespace)\nresult={'script':str(script),'complete':True}"
+  },
+  "response": {
+    "status": "ok",
+    "result": {
+      "script": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\scripts\\inspect_lights.py",
+      "complete": true
+    },
+    "stderr": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\scripts\\inspect_lights.py:18: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0\n  if w and w.use_nodes:\nC:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\scripts\\inspect_lights.py:23: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0\n  if not m.use_nodes: continue\n"
+  }
+}

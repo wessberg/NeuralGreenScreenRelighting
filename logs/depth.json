@@ -1,0 +1,14 @@
+{
+  "model": "Video Depth Anything Small",
+  "frames": 300,
+  "input_short_side": 392,
+  "output": [
+    768,
+    432
+  ],
+  "seconds": 6.250935077667236,
+  "temporal_window": 32,
+  "overlap": 10,
+  "aligned_blend_frames": 8,
+  "max_vram_GB": 1.870665216
+}

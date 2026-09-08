@@ -1,0 +1,189 @@
+{
+  "engine": "CYCLES",
+  "film_exposure": 0.0,
+  "view_transform": "AgX",
+  "look": "AgX - Medium High Contrast",
+  "film_transparent": false,
+  "resolution": [
+    3840,
+    2160
+  ],
+  "samples": 384,
+  "lights": [
+    {
+      "name": "Camera soft fill",
+      "type": "AREA",
+      "energy": 36.0,
+      "color": [
+        0.8600000143051147,
+        0.8999999761581421,
+        1.0
+      ],
+      "location": [
+        0.15000000596046448,
+        -3.1500000953674316,
+        2.0
+      ],
+      "size": 2.5,
+      "size_y": 2.0,
+      "shape": "RECTANGLE",
+      "hide_render": false,
+      "visible_camera": false
+    },
+    {
+      "name": "Ceiling bounced fill",
+      "type": "AREA",
+      "energy": 30.0,
+      "color": [
+        0.6899999976158142,
+        0.6499999761581421,
+        0.5699999928474426
+      ],
+      "location": [
+        -0.10000000149011612,
+        1.399999976158142,
+        3.0999999046325684
+      ],
+      "size": 3.0,
+      "size_y": 2.0,
+      "shape": "RECTANGLE",
+      "hide_render": false,
+      "visible_camera": false
+    },
+    {
+      "name": "Cool window key",
+      "type": "AREA",
+      "energy": 230.0,
+      "color": [
+        0.46000000834465027,
+        0.6700000166893005,
+        1.0
+      ],
+      "location": [
+        -2.75,
+        -0.6499999761581421,
+        2.5199999809265137
+      ],
+      "size": 2.4000000953674316,
+      "size_y": 2.0999999046325684,
+      "shape": "RECTANGLE",
+      "hide_render": false,
+      "visible_camera": false
+    },
+    {
+      "name": "Credenza accent",
+      "type": "AREA",
+      "energy": 12.0,
+      "color": [
+        1.0,
+        0.6000000238418579,
+        0.3100000023841858
+      ],
+      "location": [
+        2.1500000953674316,
+        3.5,
+        2.9000000953674316
+      ],
+      "size": 0.800000011920929,
+      "size_y": 0.3499999940395355,
+      "shape": "RECTANGLE",
+      "hide_render": false,
+      "visible_camera": false
+    },
+    {
+      "name": "Warm practical bulb",
+      "type": "POINT",
+      "energy": 72.0,
+      "color": [
+        1.0,
+        0.5,
+        0.23000000417232513
+      ],
+      "location": [
+        1.3799999952316284,
+        1.8300000429153442,
+        1.5399999618530273
+      ],
+      "size": null,
+      "size_y": null,
+      "shape": null,
+      "hide_render": false,
+      "visible_camera": false
+    },
+    {
+      "name": "Warm practical soft bounce",
+      "type": "AREA",
+      "energy": 38.0,
+      "color": [
+        1.0,
+        0.5699999928474426,
+        0.30000001192092896
+      ],
+      "location": [
+        1.5,
+        0.699999988079071,
+        1.75
+      ],
+      "size": 1.149999976158142,
+      "size_y": 1.0,
+      "shape": "RECTANGLE",
+      "hide_render": false,
+      "visible_camera": false
+    },
+    {
+      "name": "Window ambience",
+      "type": "AREA",
+      "energy": 85.0,
+      "color": [
+        0.4000000059604645,
+        0.5899999737739563,
+        1.0
+      ],
+      "location": [
+        -1.899999976158142,
+        3.890000104904175,
+        1.909999966621399
+      ],
+      "size": 2.5,
+      "size_y": 2.0999999046325684,
+      "shape": "RECTANGLE",
+      "hide_render": false,
+      "visible_camera": false
+    }
+  ],
+  "emissive_materials": [
+    {
+      "material": "Bulb emissive",
+      "principled_emission": 14.0
+    },
+    {
+      "material": "City amber",
+      "principled_emission": 3.0
+    },
+    {
+      "material": "City blue white",
+      "principled_emission": 2.5
+    },
+    {
+      "material": "Night sky blue",
+      "principled_emission": 0.3799999952316284
+    },
+    {
+      "material": "Warm linen lampshade",
+      "principled_emission": 0.44999998807907104
+    }
+  ],
+  "world": {
+    "name": "World",
+    "backgrounds": [
+      {
+        "strength": 0.11999999731779099,
+        "color": [
+          0.11999999731779099,
+          0.17000000178813934,
+          0.25999999046325684
+        ]
+      }
+    ]
+  }
+}

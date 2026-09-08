@@ -1,0 +1,11 @@
+{
+  "shot_id": "new_unique_shot",
+  "source_path": null,
+  "source_metadata": {"frame_rate": "discover exact rational", "shutter_seconds": null, "shutter_angle_degrees": null, "white_balance_kelvin": null, "transfer": "discover", "primaries": "discover", "range": "discover", "lens_mm": null, "sensor_width_mm": null},
+  "selection": {"start_time_seconds": 0, "duration_seconds": null, "preserve_original_timing": true},
+  "camera": {"motion": "inspect", "viewing_angle": null, "height_m": null, "horizon": null, "actor_scale": null, "floor_plane": null, "confidence_notes": null},
+  "creative_brief": {"environment": null, "scene_building_direction": null, "time_of_day": null, "mood": null, "lighting_direction": null, "color_palette": null, "composition": null, "references": [], "required_elements": [], "elements_to_avoid": [], "grading_direction": null},
+  "actor_constraints": {"preserve_identity": true, "preserve_clothing_and_props": true, "preserve_motion_and_expression": true, "temporal_stability_required": true, "photographic_foreground": true},
+  "delivery": {"resolution": [3840,2160], "frame_rate": "preserve_source", "hdr": "Rec2020 ST2084 PQ", "mastering_peak_nits": 1000},
+  "agent_notes": "Discover missing technical information, document uncertainty, and make reasonable artistic choices within the supplied brief. This template describes the future per-shot contract; current example scripts need adaptation for a new shot."
+}

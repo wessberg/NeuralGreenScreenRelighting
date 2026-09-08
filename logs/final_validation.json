@@ -1,0 +1,102 @@
+{
+  "file": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\final\\Night_Listening_Room_4K_HDR10.mp4",
+  "bytes": 21266706,
+  "sha256": "c68dcf251292b904a53334b0254d7bd60a7e5c43c1d9bfe1ad9dde81f060fbd1",
+  "video": {
+    "width": 3840,
+    "height": 2160,
+    "r_frame_rate": "30/1",
+    "avg_frame_rate": "30/1",
+    "codec_name": "hevc",
+    "profile": "Main 10",
+    "pix_fmt": "yuv420p10le",
+    "color_range": "tv",
+    "color_space": "bt2020nc",
+    "color_transfer": "smpte2084",
+    "color_primaries": "bt2020",
+    "nb_read_frames": "300"
+  },
+  "duration_seconds": 10.0,
+  "audio": {
+    "codec": "aac",
+    "sample_rate": "48000",
+    "channels": 2
+  },
+  "mastering_display": {
+    "side_data_type": "Mastering display metadata",
+    "red_x": "35400/50000",
+    "red_y": "14600/50000",
+    "green_x": "8500/50000",
+    "green_y": "39850/50000",
+    "blue_x": "6550/50000",
+    "blue_y": "2300/50000",
+    "white_point_x": "15635/50000",
+    "white_point_y": "16450/50000",
+    "min_luminance": "50/10000",
+    "max_luminance": "10000000/10000"
+  },
+  "content_light_level": {
+    "side_data_type": "Content light level metadata",
+    "max_content": 336,
+    "max_average": 22
+  },
+  "full_decode_pass": true,
+  "frames_decoded": 300,
+  "frame_timing_pass": true,
+  "decoded_inspections": [
+    {
+      "frame": 0,
+      "max_decoded_luminance_nits": 342.2121276855469,
+      "average_decoded_luminance_nits": 21.884809494018555,
+      "foreground_max_channel_nits": 173.1884307861328,
+      "mean_absolute_nit_error": 0.23570431768894196,
+      "p99_absolute_nit_error": 2.491424560546875,
+      "pct_pixels_above_203_nits": 2.463179976851852
+    },
+    {
+      "frame": 30,
+      "max_decoded_luminance_nits": 337.36419677734375,
+      "average_decoded_luminance_nits": 21.658342361450195,
+      "foreground_max_channel_nits": 168.6663360595703,
+      "mean_absolute_nit_error": 0.21468521654605865,
+      "p99_absolute_nit_error": 2.25799560546875,
+      "pct_pixels_above_203_nits": 2.4796006944444446
+    },
+    {
+      "frame": 60,
+      "max_decoded_luminance_nits": 337.22198486328125,
+      "average_decoded_luminance_nits": 21.697063446044922,
+      "foreground_max_channel_nits": 158.2258758544922,
+      "mean_absolute_nit_error": 0.21657857298851013,
+      "p99_absolute_nit_error": 2.3189544677734375,
+      "pct_pixels_above_203_nits": 2.502881462191358
+    },
+    {
+      "frame": 150,
+      "max_decoded_luminance_nits": 337.22198486328125,
+      "average_decoded_luminance_nits": 21.409229278564453,
+      "foreground_max_channel_nits": 155.69602966308594,
+      "mean_absolute_nit_error": 0.21604038774967194,
+      "p99_absolute_nit_error": 2.329896926879883,
+      "pct_pixels_above_203_nits": 2.5227382330246915
+    },
+    {
+      "frame": 240,
+      "max_decoded_luminance_nits": 337.22198486328125,
+      "average_decoded_luminance_nits": 21.65273666381836,
+      "foreground_max_channel_nits": 177.3506622314453,
+      "mean_absolute_nit_error": 0.21802999079227448,
+      "p99_absolute_nit_error": 2.30938720703125,
+      "pct_pixels_above_203_nits": 2.5029538001543212
+    },
+    {
+      "frame": 299,
+      "max_decoded_luminance_nits": 336.98583984375,
+      "average_decoded_luminance_nits": 21.84083366394043,
+      "foreground_max_channel_nits": 180.9474334716797,
+      "mean_absolute_nit_error": 0.22248874604701996,
+      "p99_absolute_nit_error": 2.355041742324829,
+      "pct_pixels_above_203_nits": 2.4928264853395063
+    }
+  ]
+}

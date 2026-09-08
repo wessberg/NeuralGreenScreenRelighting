@@ -1,0 +1,32 @@
+[
+  {
+    "frame": 0,
+    "alpha_mean_interior": 0.9999973177909851,
+    "interior_below_0.9": 0,
+    "seconds": 3.38
+  },
+  {
+    "frame": 60,
+    "alpha_mean_interior": 0.9999918937683105,
+    "interior_below_0.9": 8,
+    "seconds": 4.56
+  },
+  {
+    "frame": 150,
+    "alpha_mean_interior": 0.9999971389770508,
+    "interior_below_0.9": 0,
+    "seconds": 5.75
+  },
+  {
+    "frame": 240,
+    "alpha_mean_interior": 0.9999974370002747,
+    "interior_below_0.9": 0,
+    "seconds": 6.92
+  },
+  {
+    "frame": 299,
+    "alpha_mean_interior": 0.9999972581863403,
+    "interior_below_0.9": 0,
+    "seconds": 8.11
+  }
+]
