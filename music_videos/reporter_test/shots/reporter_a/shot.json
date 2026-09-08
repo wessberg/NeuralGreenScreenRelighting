@@ -70,11 +70,12 @@
   "pipeline_status": {
     "ingested": true,
     "frames_extracted": true,
-    "keyed": false,
-    "camera_matched": false,
-    "depth": false,
+    "keyed": true,
+    "camera_matched": "assumed",
+    "depth": true,
     "relit": false,
-    "composited": false
+    "composited": false,
+    "face_tracked": true
   },
   "keying": {
     "hint": {

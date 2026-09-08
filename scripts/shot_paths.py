@@ -3,8 +3,9 @@
 Production scripts previously hardcoded project-root-relative paths (source/frames, key/,
 relight/, intermediate/, composite/, final/, logs/) plus a literal 30 fps and 300 frames.
 That tied the pipeline to the single proof-of-concept example. Scripts now accept
-``--shot <dir>`` and read and write inside that shot directory; omitting it resolves to the
-project root, so the original example keeps running unchanged.
+``--shot <dir>`` and read and write inside that shot directory. There is no default: the
+proof of concept used to sit at the project root and now lives under music_videos/ like every
+other shot, so omitting --shot lists the available shots instead of guessing.
 
 Frame rate, frame count, keying thresholds and the delivery specification are read from the
 shot's ``shot.json`` and its video's ``project.json``. Nothing here assumes a frame rate:
@@ -24,9 +25,18 @@ LEGACY_KEY_HINT = {"green_min": 0.68, "green_dominance_min": 0.48}
 class Shot:
     """Resolves every input and output location for one shot."""
 
+    @staticmethod
+    def available():
+        """Every shot directory in the workspace, as repo-relative paths."""
+        return sorted(str(p.parent.relative_to(ROOT)).replace("\\", "/")
+                      for p in (ROOT / "music_videos").glob("*/shots/*/shot.json"))
+
     def __init__(self, shot=None):
         if shot in (None, "", "."):
-            self.dir = ROOT
+            # The proof of concept used to live at the project root. It now sits under
+            # music_videos/ like every other shot, so there is no default any more.
+            raise SystemExit("--shot is required. Available shots:\n  "
+                             + "\n  ".join(self.available()))
         else:
             p = Path(shot)
             self.dir = p if p.is_absolute() else ROOT / p
@@ -36,10 +46,10 @@ class Shot:
         if ROOT not in self.dir.parents and self.dir != ROOT:
             raise SystemExit("Shot directory must live inside the project: %s" % self.dir)
         self.is_legacy_root = self.dir == ROOT
-        self.name = "proof_of_concept (project root)" if self.is_legacy_root else self.dir.name
+        self.name = self.dir.name
         self.config = self._load(self.dir / "shot.json")
-        self.video_dir = None if self.is_legacy_root else self.dir.parents[1]
-        self.video_config = {} if self.is_legacy_root else self._load(self.video_dir / "project.json")
+        self.video_dir = self.dir.parents[1]
+        self.video_config = self._load(self.video_dir / "project.json")
 
     @staticmethod
     def _load(path):
@@ -79,12 +89,16 @@ class Shot:
 
     def log(self, name):     return self.logs / name
 
-    # The Blender environment is shared across shots and stays at the project root
-    # until a shot names its own, via shot.json {"environment": {"dir": "..."}}.
+    # Environments live in scene_library/ and are shared between shots. Each shot names its
+    # own via shot.json {"environment": {"dir": "scene_library/<name>"}}.
     @property
     def environment(self):
         named = (self.config.get("environment") or {}).get("dir")
-        return (ROOT / named) if named else (ROOT / "blender")
+        if not named:
+            raise SystemExit(
+                "%s does not name an environment; set environment.dir, e.g. "
+                "scene_library/night_restaurant" % (self.dir / "shot.json"))
+        return ROOT / named
 
     @property
     def lighting_json(self):
@@ -195,9 +209,8 @@ class Shot:
 
 
 def add_shot_argument(parser):
-    parser.add_argument("--shot", default=None,
-                        help="Shot directory, e.g. music_videos/reporter_test/shots/reporter_a. "
-                             "Omit for the proof-of-concept example at the project root.")
+    parser.add_argument("--shot", default=None, required=False,
+                        help="Shot directory, e.g. music_videos/reporter_test/shots/reporter_a")
     return parser
 
 

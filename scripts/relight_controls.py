@@ -10,16 +10,18 @@ import json, argparse
 import numpy as np, cv2
 from color_pipeline import LUMA709
 ROOT=Path(__file__).resolve().parents[1]
+import sys as _sys; _sys.path.insert(0,str(ROOT/'scripts'))
+from shot_paths import add_shot_argument, from_args
 W,H=768,432
 cv2.setNumThreads(8)
 
 def blur(x,sigma):return cv2.GaussianBlur(x,(0,0),sigma)
 
 def load_alpha(i):
-    f=ROOT/f'key/alpha/{i:06d}.exr'
+    f=SHOT/f'key/alpha/{i:06d}.exr'
     if f.exists():a=cv2.imread(str(f),-1)
     else:
-        rgb=cv2.imread(str(ROOT/f'source/frames/{i:06d}.png'))[...,::-1]/255
+        rgb=cv2.imread(str(SHOT/f'source/frames/{i:06d}.png'))[...,::-1]/255
         a=1-((rgb[...,1]>.68)&(rgb[...,1]-np.maximum(rgb[...,0],rgb[...,2])>.48)).astype(np.float32)
     return cv2.resize(a,(W,H),interpolation=cv2.INTER_AREA)
 
@@ -89,24 +91,24 @@ def lighting_gain(pos,normals,scene):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--test',action='store_true');args=p.parse_args()
-    scene=json.loads((ROOT/'blender/lighting.json').read_text())
+    scene=json.loads((ENV/'lighting.json').read_text())
     n=44 if args.test else 300
     vals=[]
     for i in range(0,n,10):
-        d=np.load(ROOT/f'relight/depth/{i:06d}.npy');a=load_alpha(i);vals.append(d[a>.99][::16])
+        d=np.load(SHOT/f'relight/depth/{i:06d}.npy');a=load_alpha(i);vals.append(d[a>.99][::16])
     allvals=np.concatenate(vals);q=np.percentile(allvals,[10,50,90])
     cal={'median':float(q[1]),'spread':float(max(q[2]-q[0],1)), 'relief_m':.20}
-    (ROOT/'relight/calibration.json').write_text(json.dumps(cal,indent=2))
-    out=ROOT/'relight/controls';out.mkdir(exist_ok=True)
+    (SHOT/'relight/calibration.json').write_text(json.dumps(cal,indent=2))
+    out=SHOT/'relight/controls';out.mkdir(exist_ok=True)
     flow=cv2.DISOpticalFlow_create(cv2.DISOPTICAL_FLOW_PRESET_MEDIUM)
     prev=None;prevgray=None;stats=[]
     yy,xx=np.indices((H,W),dtype=np.float32)
     for i in range(n):
-        a=load_alpha(i);d=np.load(ROOT/f'relight/depth/{i:06d}.npy')
+        a=load_alpha(i);d=np.load(SHOT/f'relight/depth/{i:06d}.npy')
         pos,normals,smoothed=make_geometry(d,a,cal,scene['camera'])
         gain,spec=lighting_gain(pos,normals,scene)
         gain=blur(gain,2.2)
-        src=cv2.imread(str(ROOT/f'source/frames/{i:06d}.png'))
+        src=cv2.imread(str(SHOT/f'source/frames/{i:06d}.png'))
         gray=cv2.cvtColor(cv2.resize(src,(W,H),interpolation=cv2.INTER_AREA),cv2.COLOR_BGR2GRAY)
         raw=gain.copy()
         if prev is not None:
@@ -123,10 +125,10 @@ def main():
         prev=gain.copy();prevgray=gray
         np.savez_compressed(out/f'{i:06d}.npz',gain=gain.astype(np.float16),specular=spec.astype(np.float16))
         if i in [0,15,30,60,150,240,299]:
-            cv2.imwrite(str(ROOT/f'relight/normals_{i:06d}.jpg'),((normals[...,::-1]*.5+.5)*255).astype(np.uint8))
-            cv2.imwrite(str(ROOT/f'relight/gain_{i:06d}.jpg'),np.clip(gain[...,::-1]/1.5*255,0,255).astype(np.uint8))
+            cv2.imwrite(str(SHOT/f'relight/normals_{i:06d}.jpg'),((normals[...,::-1]*.5+.5)*255).astype(np.uint8))
+            cv2.imwrite(str(SHOT/f'relight/gain_{i:06d}.jpg'),np.clip(gain[...,::-1]/1.5*255,0,255).astype(np.uint8))
         stats.append({'frame':i,'mean_gain':np.mean(gain[a>.99],axis=0).tolist(),'raw_to_stable_mae':float(np.abs(gain-raw)[a>.99].mean())})
         if i%30==0:print(json.dumps(stats[-1]),flush=True)
-    (ROOT/'logs/relight_controls.json').write_text(json.dumps(stats,indent=2))
+    (SHOT/'logs/relight_controls.json').write_text(json.dumps(stats,indent=2))
 
 if __name__=='__main__':main()

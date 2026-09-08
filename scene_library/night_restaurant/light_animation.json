@@ -1,0 +1,108 @@
+{
+  "shot": "reporter_a",
+  "frames": 150,
+  "fps": "60000/1001",
+  "duration_s": 2.5025,
+  "bpm": 120.0,
+  "sweep_degrees": 200.0,
+  "emitters": "EMISSIVE MESHES, not light objects: Blender lights are invisible to camera rays, so a light probe cannot see them",
+  "axes_stressed": {
+    "level": "world strength 1.63 -> 0.03, roughly a 50x environment level change",
+    "direction": "key orbits 200 degrees of azimuth",
+    "proximity": "practical travels 2.40 m -> 0.45 m, about a 28x inverse-square swing",
+    "hue": "accent sweeps the colour wheel",
+    "temporal": "practical pulses exp(-4*phase) once per beat at 120 BPM"
+  },
+  "sampled_cues": [
+    {
+      "frame": 0,
+      "time_s": 0.0,
+      "beat": 0.0,
+      "env_strength": 2.4086,
+      "key_azimuth_deg": -100.0,
+      "key_strength": 6.0,
+      "practical_distance_m": 2.4,
+      "practical_strength": 73.0,
+      "accent_rgb": [
+        1.0,
+        0.15,
+        0.762
+      ]
+    },
+    {
+      "frame": 25,
+      "time_s": 0.4171,
+      "beat": 0.834,
+      "env_strength": 2.1559,
+      "key_azimuth_deg": -66.4,
+      "key_strength": 13.38,
+      "practical_distance_m": 1.907,
+      "practical_strength": 19.96,
+      "accent_rgb": [
+        1.0,
+        0.15,
+        0.291
+      ]
+    },
+    {
+      "frame": 50,
+      "time_s": 0.8342,
+      "beat": 1.668,
+      "env_strength": 1.5222,
+      "key_azimuth_deg": -32.9,
+      "key_strength": 20.77,
+      "practical_distance_m": 0.926,
+      "practical_strength": 21.8,
+      "accent_rgb": [
+        1.0,
+        0.479,
+        0.15
+      ]
+    },
+    {
+      "frame": 75,
+      "time_s": 1.2512,
+      "beat": 2.502,
+      "env_strength": 0.8028,
+      "key_azimuth_deg": 0.7,
+      "key_strength": 27.85,
+      "practical_distance_m": 0.45,
+      "practical_strength": 25.37,
+      "accent_rgb": [
+        1.0,
+        0.95,
+        0.15
+      ]
+    },
+    {
+      "frame": 100,
+      "time_s": 1.6683,
+      "beat": 3.337,
+      "env_strength": 0.2807,
+      "key_azimuth_deg": 34.2,
+      "key_strength": 20.47,
+      "practical_distance_m": 0.961,
+      "practical_strength": 32.31,
+      "accent_rgb": [
+        0.579,
+        1.0,
+        0.15
+      ]
+    },
+    {
+      "frame": 125,
+      "time_s": 2.0854,
+      "beat": 4.171,
+      "env_strength": 0.0603,
+      "key_azimuth_deg": 67.8,
+      "key_strength": 13.09,
+      "practical_distance_m": 1.942,
+      "practical_strength": 45.77,
+      "accent_rgb": [
+        0.15,
+        1.0,
+        0.191
+      ]
+    }
+  ]
+}

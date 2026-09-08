@@ -1,10 +1,40 @@
 {
   "music_video_id": "proof_of_concept",
-  "title": "Night Listening Room — pipeline proof of concept",
-  "status": "final export in progress",
+  "title": "Night listening room proof of concept",
+  "status": "complete; master validated",
   "workspace_relative_shot_root": "../..",
-  "song": {"audio_source": "../../source/plate.mp4", "master_audio_supplied": false, "lyrics_supplied": false},
-  "shots": [{"shot_id": "night_listening_room", "shot_config": "../../shot.json", "source_frame_range_inclusive": [0,299], "music_time_at_source_frame_zero_seconds": 0, "scene": "../../blender/listening_room.blend", "lighting": "steady, no music-driven cues"}],
+  "song": {
+    "audio_source": "../../source/plate.mp4",
+    "master_audio_supplied": false,
+    "lyrics_supplied": false
+  },
+  "shots": [
+    {
+      "shot_id": "night_listening_room",
+      "path": "shots/night_listening_room",
+      "source_frame_rate": "30/1",
+      "status": "delivered",
+      "master": "shots/night_listening_room/final/Night_Listening_Room_4K_HDR10.mp4"
+    }
+  ],
   "final_output": "../../final/Night_Listening_Room_4K_HDR10.mp4",
-  "note": "Example footage only. Future music videos should have isolated directories and per-shot creative briefs, source metadata, camera matching and synchronization."
+  "note": "Example footage only. Future music videos should have isolated directories and per-shot creative briefs, source metadata, camera matching and synchronization.",
+  "video_id": "proof_of_concept",
+  "delivery": {
+    "resolution": [
+      3840,
+      2160
+    ],
+    "frame_rate": "30/1",
+    "codec": "HEVC Main10",
+    "primaries": "Rec2020",
+    "transfer": "ST2084 PQ",
+    "mastering_peak_nits": 1000
+  },
+  "environments": [
+    {
+      "scene": "scene_library/listening_room",
+      "status": "modelled room; superseded by photographic HDRI for new work"
+    }
+  ]
 }

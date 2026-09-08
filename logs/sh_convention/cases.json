@@ -1,0 +1,56 @@
+[
+  {
+    "label": "+X (right)",
+    "expected_direction": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "file": "probe_pX.exr"
+  },
+  {
+    "label": "-X (left)",
+    "expected_direction": [
+      -1.0,
+      0.0,
+      0.0
+    ],
+    "file": "probe_mX.exr"
+  },
+  {
+    "label": "+Y (behind)",
+    "expected_direction": [
+      0.0,
+      1.0,
+      0.0
+    ],
+    "file": "probe_pY.exr"
+  },
+  {
+    "label": "-Y (front)",
+    "expected_direction": [
+      0.0,
+      -1.0,
+      0.0
+    ],
+    "file": "probe_mY.exr"
+  },
+  {
+    "label": "+Z (above)",
+    "expected_direction": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "file": "probe_pZ.exr"
+  },
+  {
+    "label": "diag XY",
+    "expected_direction": [
+      0.7071067811865476,
+      -0.7071067811865476,
+      0.0
+    ],
+    "file": "probe_diag.exr"
+  }
+]

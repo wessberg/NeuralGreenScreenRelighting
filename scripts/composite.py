@@ -13,6 +13,8 @@ import numpy as np, cv2, torch
 import torch.nn.functional as F
 from color_pipeline import sdr_preview,REC709_TO_2020,LUMA2020
 ROOT=Path(__file__).resolve().parents[1]
+import sys as _sys; _sys.path.insert(0,str(ROOT/'scripts'))
+from shot_paths import add_shot_argument, from_args
 FFMPEG=next((ROOT/'dependencies/ffmpeg').rglob('ffmpeg.exe'))
 EXR_FLAGS=[cv2.IMWRITE_EXR_TYPE,cv2.IMWRITE_EXR_TYPE_HALF,cv2.IMWRITE_EXR_COMPRESSION,cv2.IMWRITE_EXR_COMPRESSION_ZIP]
 cv2.setNumThreads(8);torch.set_num_threads(8)
@@ -23,9 +25,9 @@ def load_exr(p):
     return v
 
 def compose_frame(i,bg,size,relight=True):
-    fg=load_exr(ROOT/f'key/fg/{i:06d}.exr')[...,::-1].copy()
-    alpha=np.clip(load_exr(ROOT/f'key/alpha/{i:06d}.exr'),0,1)
-    control=np.load(ROOT/f'relight/controls/{i:06d}.npz')
+    fg=load_exr(SHOT/f'key/fg/{i:06d}.exr')[...,::-1].copy()
+    alpha=np.clip(load_exr(SHOT/f'key/alpha/{i:06d}.exr'),0,1)
+    control=np.load(SHOT/f'relight/controls/{i:06d}.npz')
     gain=cv2.resize(control['gain'].astype(np.float32),fg.shape[1::-1],interpolation=cv2.INTER_LINEAR)
     spec=cv2.resize(control['specular'].astype(np.float32),fg.shape[1::-1],interpolation=cv2.INTER_LINEAR)
     # Shading-only color operations. Nothing warps or synthesizes photographic texture.
@@ -64,26 +66,26 @@ def main():
     # Re-encode from the saved scene-linear masters without recompositing, for encoder changes only.
     p.add_argument('--encode-only',action='store_true');args=p.parse_args()
     size=(3840,2160) if args.final else (1920,1080)
-    path=ROOT/('blender/background_shadow.exr' if args.final else 'blender/test_background_shadow.exr')
+    path=ENV/('background_shadow.exr' if args.final else 'test_background_shadow.exr')
     bg=load_exr(path)[...,:3][...,::-1].copy()
     bg=cv2.resize(bg,size,interpolation=cv2.INTER_LANCZOS4)
     if not args.final:
         ids=[0,15,30] if args.test else [0,60,150,240,299]
         for i in ids:
             comp,a=compose_frame(i,bg,size)
-            cv2.imwrite(str(ROOT/f'composite/test_{i:06d}.jpg'),(sdr_preview(comp)[...,::-1]*255).astype(np.uint8))
+            cv2.imwrite(str(SHOT/f'composite/test_{i:06d}.jpg'),(sdr_preview(comp)[...,::-1]*255).astype(np.uint8))
             plain,_=compose_frame(i,bg,size,False)
             side=np.hstack([sdr_preview(plain),sdr_preview(comp)])
-            cv2.imwrite(str(ROOT/f'composite/comparison_{i:06d}.jpg'),(cv2.resize(side,(1920,540))[...,::-1]*255).astype(np.uint8))
+            cv2.imwrite(str(SHOT/f'composite/comparison_{i:06d}.jpg'),(cv2.resize(side,(1920,540))[...,::-1]*255).astype(np.uint8))
             print('COMPOSITE_TEST',i,'scene max',float(comp.max()),'alpha',float(a.mean()),flush=True)
         return
-    master=ROOT/'intermediate/linear_4k';master.mkdir(exist_ok=True)
-    log=open(ROOT/'logs/nvenc_encode.log','w',encoding='utf-8')
+    master=SHOT/'intermediate/linear_4k';master.mkdir(exist_ok=True)
+    log=open(SHOT/'logs/nvenc_encode.log','w',encoding='utf-8')
     cmd=[str(FFMPEG),'-hide_banner','-y','-f','rawvideo','-pixel_format','rgb48le','-video_size','3840x2160','-framerate','30','-i','pipe:0',
          '-vf','scale=in_range=full:out_range=limited:out_color_matrix=bt2020,format=p010le',
          '-an','-c:v','hevc_nvenc','-profile:v','main10','-preset','p7','-tune','hq','-rc','vbr','-cq','16','-b:v','0','-multipass','fullres','-spatial-aq','1','-temporal-aq','1','-aq-strength','6','-rc-lookahead','32','-bf','0',
-         '-color_range','tv','-colorspace','bt2020nc','-color_primaries','bt2020','-color_trc','smpte2084','-r','30','-f','hevc',str(ROOT/'intermediate/encoded_pq.hevc')]
-    (ROOT/'logs/encode_command.json').write_text(json.dumps(cmd,indent=2))
+         '-color_range','tv','-colorspace','bt2020nc','-color_primaries','bt2020','-color_trc','smpte2084','-r','30','-f','hevc',str(SHOT/'intermediate/encoded_pq.hevc')]
+    (SHOT/'logs/encode_command.json').write_text(json.dumps(cmd,indent=2))
     encoder=subprocess.Popen(cmd,stdin=subprocess.PIPE,stdout=log,stderr=log)
     stats=[];start=time.time()
     try:
@@ -99,13 +101,13 @@ def main():
             encoder.stdin.write(raw.tobytes())
             stats.append({'frame':i,'max_cll_nits':cll,'frame_average_nits':fall})
             if i in [0,30,60,90,150,210,240,270,299]:
-                cv2.imwrite(str(ROOT/f'composite/final_reference_{i:06d}.jpg'),(sdr_preview(comp)[...,::-1]*255).astype(np.uint8))
+                cv2.imwrite(str(SHOT/f'composite/final_reference_{i:06d}.jpg'),(sdr_preview(comp)[...,::-1]*255).astype(np.uint8))
             if i%10==0:print('FINAL_FRAME',i,'seconds',round(time.time()-start,1),'max_nits',round(cll,1),'fall',round(fall,1),flush=True)
         encoder.stdin.close();rc=encoder.wait()
         if rc:raise RuntimeError(f'NVENC failed: {rc}')
     finally:
         log.close()
     report={'frames':stats,'max_cll_nits':max(x['max_cll_nits'] for x in stats),'max_fall_nits':max(x['frame_average_nits'] for x in stats),'seconds':time.time()-start,'encoder':'hevc_nvenc Main10 P7 CQ16'}
-    (ROOT/'logs/hdr_luminance.json').write_text(json.dumps(report,indent=2))
+    (SHOT/'logs/hdr_luminance.json').write_text(json.dumps(report,indent=2))
 
 if __name__=='__main__':main()
