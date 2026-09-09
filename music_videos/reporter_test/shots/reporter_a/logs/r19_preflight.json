@@ -1,0 +1,4787 @@
+{
+  "cases": [
+    {
+      "frame": 959,
+      "side": "left",
+      "category": "iris",
+      "index": 0,
+      "point": [
+        21,
+        38
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            1.0,
+            -2.0
+          ],
+          "context": [
+            [
+              27.0,
+              40.0
+            ]
+          ],
+          "query_union": [
+            [
+              22.0,
+              36.0
+            ],
+            [
+              25.0,
+              36.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            1.0,
+            -1.0
+          ],
+          "context": [
+            [
+              28.0,
+              40.0
+            ]
+          ],
+          "query_union": [
+            [
+              22.0,
+              37.0
+            ],
+            [
+              25.0,
+              37.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            6.0,
+            -2.0
+          ],
+          "context": [
+            [
+              25.0,
+              40.0
+            ],
+            [
+              26.0,
+              40.0
+            ],
+            [
+              27.0,
+              40.0
+            ],
+            [
+              28.0,
+              40.0
+            ],
+            [
+              29.0,
+              40.0
+            ],
+            [
+              26.0,
+              41.0
+            ],
+            [
+              27.0,
+              41.0
+            ]
+          ],
+          "query_union": [
+            [
+              27.0,
+              36.0
+            ],
+            [
+              30.0,
+              36.0
+            ]
+          ],
+          "context_upper_bound": 7,
+          "capacity_eligible": false
+        }
+      ],
+      "eligible_donors": 0
+    },
+    {
+      "frame": 959,
+      "side": "left",
+      "category": "iris",
+      "index": 1,
+      "point": [
+        25,
+        41
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            1.0,
+            -2.0
+          ],
+          "context": [],
+          "query_union": [
+            [
+              26.0,
+              39.0
+            ],
+            [
+              29.0,
+              39.0
+            ]
+          ],
+          "context_upper_bound": 0,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            1.0,
+            -1.0
+          ],
+          "context": [],
+          "query_union": [
+            [
+              26.0,
+              40.0
+            ],
+            [
+              29.0,
+              40.0
+            ]
+          ],
+          "context_upper_bound": 0,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            6.0,
+            -2.0
+          ],
+          "context": [],
+          "query_union": [
+            [
+              31.0,
+              39.0
+            ],
+            [
+              34.0,
+              39.0
+            ]
+          ],
+          "context_upper_bound": 0,
+          "capacity_eligible": false
+        }
+      ],
+      "eligible_donors": 0
+    },
+    {
+      "frame": 959,
+      "side": "left",
+      "category": "iris",
+      "index": 2,
+      "point": [
+        30,
+        41
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            1.0,
+            -2.0
+          ],
+          "context": [],
+          "query_union": [
+            [
+              31.0,
+              39.0
+            ],
+            [
+              34.0,
+              39.0
+            ]
+          ],
+          "context_upper_bound": 0,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            1.0,
+            -1.0
+          ],
+          "context": [],
+          "query_union": [
+            [
+              31.0,
+              40.0
+            ],
+            [
+              34.0,
+              40.0
+            ]
+          ],
+          "context_upper_bound": 0,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            6.0,
+            -2.0
+          ],
+          "context": [
+            [
+              25.0,
+              40.0
+            ]
+          ],
+          "query_union": [
+            [
+              36.0,
+              39.0
+            ],
+            [
+              39.0,
+              39.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        }
+      ],
+      "eligible_donors": 0
+    },
+    {
+      "frame": 959,
+      "side": "left",
+      "category": "iris",
+      "index": 3,
+      "point": [
+        35,
+        39
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            1.0,
+            -2.0
+          ],
+          "context": [
+            [
+              27.0,
+              40.0
+            ]
+          ],
+          "query_union": [
+            [
+              36.0,
+              37.0
+            ],
+            [
+              39.0,
+              37.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            1.0,
+            -1.0
+          ],
+          "context": [
+            [
+              28.0,
+              40.0
+            ]
+          ],
+          "query_union": [
+            [
+              36.0,
+              38.0
+            ],
+            [
+              39.0,
+              38.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            6.0,
+            -2.0
+          ],
+          "context": [
+            [
+              25.0,
+              40.0
+            ],
+            [
+              26.0,
+              40.0
+            ],
+            [
+              27.0,
+              40.0
+            ],
+            [
+              28.0,
+              40.0
+            ],
+            [
+              29.0,
+              40.0
+            ],
+            [
+              26.0,
+              41.0
+            ],
+            [
+              27.0,
+              41.0
+            ]
+          ],
+          "query_union": [
+            [
+              41.0,
+              37.0
+            ],
+            [
+              44.0,
+              37.0
+            ]
+          ],
+          "context_upper_bound": 7,
+          "capacity_eligible": false
+        }
+      ],
+      "eligible_donors": 0
+    },
+    {
+      "frame": 959,
+      "side": "left",
+      "category": "iris",
+      "index": 4,
+      "point": [
+        38,
+        35
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            1.0,
+            -2.0
+          ],
+          "context": [
+            [
+              27.0,
+              40.0
+            ]
+          ],
+          "query_union": [
+            [
+              39.0,
+              33.0
+            ],
+            [
+              42.0,
+              33.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            1.0,
+            -1.0
+          ],
+          "context": [
+            [
+              28.0,
+              40.0
+            ]
+          ],
+          "query_union": [
+            [
+              39.0,
+              34.0
+            ],
+            [
+              42.0,
+              34.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            6.0,
+            -2.0
+          ],
+          "context": [
+            [
+              25.0,
+              40.0
+            ],
+            [
+              26.0,
+              40.0
+            ],
+            [
+              27.0,
+              40.0
+            ],
+            [
+              28.0,
+              40.0
+            ],
+            [
+              29.0,
+              40.0
+            ],
+            [
+              26.0,
+              41.0
+            ],
+            [
+              27.0,
+              41.0
+            ]
+          ],
+          "query_union": [
+            [
+              44.0,
+              33.0
+            ],
+            [
+              47.0,
+              33.0
+            ]
+          ],
+          "context_upper_bound": 7,
+          "capacity_eligible": false
+        }
+      ],
+      "eligible_donors": 0
+    },
+    {
+      "frame": 959,
+      "side": "left",
+      "category": "reflection",
+      "index": 0,
+      "point": [
+        23,
+        32
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            1.0,
+            -2.0
+          ],
+          "context": [
+            [
+              27.0,
+              40.0
+            ]
+          ],
+          "query_union": [
+            [
+              24.0,
+              30.0
+            ],
+            [
+              27.0,
+              30.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            1.0,
+            -1.0
+          ],
+          "context": [
+            [
+              28.0,
+              40.0
+            ]
+          ],
+          "query_union": [
+            [
+              24.0,
+              31.0
+            ],
+            [
+              27.0,
+              31.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            6.0,
+            -2.0
+          ],
+          "context": [
+            [
+              25.0,
+              40.0
+            ],
+            [
+              26.0,
+              40.0
+            ],
+            [
+              27.0,
+              40.0
+            ],
+            [
+              28.0,
+              40.0
+            ],
+            [
+              29.0,
+              40.0
+            ],
+            [
+              26.0,
+              41.0
+            ],
+            [
+              27.0,
+              41.0
+            ]
+          ],
+          "query_union": [
+            [
+              29.0,
+              30.0
+            ],
+            [
+              32.0,
+              30.0
+            ]
+          ],
+          "context_upper_bound": 7,
+          "capacity_eligible": false
+        }
+      ],
+      "eligible_donors": 0
+    },
+    {
+      "frame": 959,
+      "side": "left",
+      "category": "reflection",
+      "index": 1,
+      "point": [
+        24,
+        34
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            1.0,
+            -2.0
+          ],
+          "context": [
+            [
+              27.0,
+              40.0
+            ]
+          ],
+          "query_union": [
+            [
+              25.0,
+              32.0
+            ],
+            [
+              28.0,
+              32.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            1.0,
+            -1.0
+          ],
+          "context": [
+            [
+              28.0,
+              40.0
+            ]
+          ],
+          "query_union": [
+            [
+              25.0,
+              33.0
+            ],
+            [
+              28.0,
+              33.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            6.0,
+            -2.0
+          ],
+          "context": [
+            [
+              25.0,
+              40.0
+            ],
+            [
+              26.0,
+              40.0
+            ],
+            [
+              27.0,
+              40.0
+            ],
+            [
+              28.0,
+              40.0
+            ],
+            [
+              29.0,
+              40.0
+            ],
+            [
+              26.0,
+              41.0
+            ],
+            [
+              27.0,
+              41.0
+            ]
+          ],
+          "query_union": [
+            [
+              30.0,
+              32.0
+            ],
+            [
+              33.0,
+              32.0
+            ]
+          ],
+          "context_upper_bound": 7,
+          "capacity_eligible": false
+        }
+      ],
+      "eligible_donors": 0
+    },
+    {
+      "frame": 959,
+      "side": "right",
+      "category": "iris",
+      "index": 0,
+      "point": [
+        23,
+        38
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            1.0,
+            -1.0
+          ],
+          "context": [
+            [
+              28.0,
+              39.0
+            ]
+          ],
+          "query_union": [
+            [
+              24.0,
+              37.0
+            ],
+            [
+              27.0,
+              37.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            1.0,
+            -2.0
+          ],
+          "context": [
+            [
+              32.0,
+              38.0
+            ],
+            [
+              28.0,
+              39.0
+            ],
+            [
+              29.0,
+              39.0
+            ],
+            [
+              30.0,
+              39.0
+            ],
+            [
+              28.0,
+              40.0
+            ]
+          ],
+          "query_union": [
+            [
+              24.0,
+              36.0
+            ],
+            [
+              27.0,
+              36.0
+            ]
+          ],
+          "context_upper_bound": 5,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            5.0,
+            -3.0
+          ],
+          "context": [
+            [
+              31.0,
+              38.0
+            ],
+            [
+              28.0,
+              39.0
+            ],
+            [
+              29.0,
+              39.0
+            ],
+            [
+              30.0,
+              39.0
+            ],
+            [
+              28.0,
+              40.0
+            ]
+          ],
+          "query_union": [
+            [
+              28.0,
+              35.0
+            ],
+            [
+              31.0,
+              35.0
+            ]
+          ],
+          "context_upper_bound": 5,
+          "capacity_eligible": false
+        }
+      ],
+      "eligible_donors": 0
+    },
+    {
+      "frame": 959,
+      "side": "right",
+      "category": "iris",
+      "index": 1,
+      "point": [
+        27,
+        40
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            1.0,
+            -1.0
+          ],
+          "context": [],
+          "query_union": [
+            [
+              28.0,
+              39.0
+            ],
+            [
+              31.0,
+              39.0
+            ]
+          ],
+          "context_upper_bound": 0,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            1.0,
+            -2.0
+          ],
+          "context": [
+            [
+              32.0,
+              38.0
+            ]
+          ],
+          "query_union": [
+            [
+              28.0,
+              38.0
+            ],
+            [
+              31.0,
+              38.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            5.0,
+            -3.0
+          ],
+          "context": [
+            [
+              31.0,
+              38.0
+            ]
+          ],
+          "query_union": [
+            [
+              32.0,
+              37.0
+            ],
+            [
+              35.0,
+              37.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        }
+      ],
+      "eligible_donors": 0
+    },
+    {
+      "frame": 959,
+      "side": "right",
+      "category": "iris",
+      "index": 2,
+      "point": [
+        32,
+        40
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            1.0,
+            -1.0
+          ],
+          "context": [],
+          "query_union": [
+            [
+              33.0,
+              39.0
+            ],
+            [
+              36.0,
+              39.0
+            ]
+          ],
+          "context_upper_bound": 0,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            1.0,
+            -2.0
+          ],
+          "context": [
+            [
+              32.0,
+              38.0
+            ],
+            [
+              27.0,
+              39.0
+            ]
+          ],
+          "query_union": [
+            [
+              33.0,
+              38.0
+            ],
+            [
+              36.0,
+              38.0
+            ]
+          ],
+          "context_upper_bound": 2,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            5.0,
+            -3.0
+          ],
+          "context": [
+            [
+              31.0,
+              38.0
+            ],
+            [
+              26.0,
+              39.0
+            ],
+            [
+              27.0,
+              39.0
+            ]
+          ],
+          "query_union": [
+            [
+              37.0,
+              37.0
+            ],
+            [
+              40.0,
+              37.0
+            ]
+          ],
+          "context_upper_bound": 3,
+          "capacity_eligible": false
+        }
+      ],
+      "eligible_donors": 0
+    },
+    {
+      "frame": 959,
+      "side": "right",
+      "category": "iris",
+      "index": 3,
+      "point": [
+        36,
+        37
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            1.0,
+            -1.0
+          ],
+          "context": [
+            [
+              28.0,
+              39.0
+            ]
+          ],
+          "query_union": [
+            [
+              37.0,
+              36.0
+            ],
+            [
+              40.0,
+              36.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            1.0,
+            -2.0
+          ],
+          "context": [
+            [
+              27.0,
+              39.0
+            ],
+            [
+              28.0,
+              39.0
+            ],
+            [
+              29.0,
+              39.0
+            ],
+            [
+              30.0,
+              39.0
+            ],
+            [
+              28.0,
+              40.0
+            ]
+          ],
+          "query_union": [
+            [
+              37.0,
+              35.0
+            ],
+            [
+              40.0,
+              35.0
+            ]
+          ],
+          "context_upper_bound": 5,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            5.0,
+            -3.0
+          ],
+          "context": [
+            [
+              31.0,
+              38.0
+            ],
+            [
+              26.0,
+              39.0
+            ],
+            [
+              27.0,
+              39.0
+            ],
+            [
+              28.0,
+              39.0
+            ],
+            [
+              29.0,
+              39.0
+            ],
+            [
+              30.0,
+              39.0
+            ],
+            [
+              28.0,
+              40.0
+            ]
+          ],
+          "query_union": [
+            [
+              41.0,
+              34.0
+            ],
+            [
+              44.0,
+              34.0
+            ]
+          ],
+          "context_upper_bound": 7,
+          "capacity_eligible": false
+        }
+      ],
+      "eligible_donors": 0
+    },
+    {
+      "frame": 959,
+      "side": "right",
+      "category": "iris",
+      "index": 4,
+      "point": [
+        39,
+        33
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            1.0,
+            -1.0
+          ],
+          "context": [
+            [
+              28.0,
+              39.0
+            ]
+          ],
+          "query_union": [
+            [
+              40.0,
+              32.0
+            ],
+            [
+              43.0,
+              32.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            1.0,
+            -2.0
+          ],
+          "context": [
+            [
+              32.0,
+              38.0
+            ],
+            [
+              27.0,
+              39.0
+            ],
+            [
+              28.0,
+              39.0
+            ],
+            [
+              29.0,
+              39.0
+            ],
+            [
+              30.0,
+              39.0
+            ],
+            [
+              28.0,
+              40.0
+            ]
+          ],
+          "query_union": [
+            [
+              40.0,
+              31.0
+            ],
+            [
+              43.0,
+              31.0
+            ]
+          ],
+          "context_upper_bound": 6,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            5.0,
+            -3.0
+          ],
+          "context": [
+            [
+              31.0,
+              38.0
+            ],
+            [
+              26.0,
+              39.0
+            ],
+            [
+              27.0,
+              39.0
+            ],
+            [
+              28.0,
+              39.0
+            ],
+            [
+              29.0,
+              39.0
+            ],
+            [
+              30.0,
+              39.0
+            ],
+            [
+              28.0,
+              40.0
+            ]
+          ],
+          "query_union": [
+            [
+              44.0,
+              30.0
+            ],
+            [
+              47.0,
+              30.0
+            ]
+          ],
+          "context_upper_bound": 7,
+          "capacity_eligible": false
+        }
+      ],
+      "eligible_donors": 0
+    },
+    {
+      "frame": 959,
+      "side": "right",
+      "category": "reflection",
+      "index": 0,
+      "point": [
+        26,
+        30
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            1.0,
+            -1.0
+          ],
+          "context": [
+            [
+              28.0,
+              39.0
+            ]
+          ],
+          "query_union": [
+            [
+              27.0,
+              29.0
+            ],
+            [
+              30.0,
+              29.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            1.0,
+            -2.0
+          ],
+          "context": [
+            [
+              32.0,
+              38.0
+            ],
+            [
+              27.0,
+              39.0
+            ],
+            [
+              28.0,
+              39.0
+            ],
+            [
+              29.0,
+              39.0
+            ],
+            [
+              30.0,
+              39.0
+            ],
+            [
+              28.0,
+              40.0
+            ]
+          ],
+          "query_union": [
+            [
+              27.0,
+              28.0
+            ],
+            [
+              30.0,
+              28.0
+            ]
+          ],
+          "context_upper_bound": 6,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            5.0,
+            -3.0
+          ],
+          "context": [
+            [
+              31.0,
+              38.0
+            ],
+            [
+              26.0,
+              39.0
+            ],
+            [
+              27.0,
+              39.0
+            ],
+            [
+              28.0,
+              39.0
+            ],
+            [
+              29.0,
+              39.0
+            ],
+            [
+              30.0,
+              39.0
+            ],
+            [
+              28.0,
+              40.0
+            ]
+          ],
+          "query_union": [
+            [
+              31.0,
+              27.0
+            ],
+            [
+              34.0,
+              27.0
+            ]
+          ],
+          "context_upper_bound": 7,
+          "capacity_eligible": false
+        }
+      ],
+      "eligible_donors": 0
+    },
+    {
+      "frame": 959,
+      "side": "right",
+      "category": "reflection",
+      "index": 1,
+      "point": [
+        26,
+        32
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            1.0,
+            -1.0
+          ],
+          "context": [
+            [
+              28.0,
+              39.0
+            ]
+          ],
+          "query_union": [
+            [
+              27.0,
+              31.0
+            ],
+            [
+              30.0,
+              31.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            1.0,
+            -2.0
+          ],
+          "context": [
+            [
+              32.0,
+              38.0
+            ],
+            [
+              27.0,
+              39.0
+            ],
+            [
+              28.0,
+              39.0
+            ],
+            [
+              29.0,
+              39.0
+            ],
+            [
+              30.0,
+              39.0
+            ],
+            [
+              28.0,
+              40.0
+            ]
+          ],
+          "query_union": [
+            [
+              27.0,
+              30.0
+            ],
+            [
+              30.0,
+              30.0
+            ]
+          ],
+          "context_upper_bound": 6,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            5.0,
+            -3.0
+          ],
+          "context": [
+            [
+              31.0,
+              38.0
+            ],
+            [
+              26.0,
+              39.0
+            ],
+            [
+              27.0,
+              39.0
+            ],
+            [
+              28.0,
+              39.0
+            ],
+            [
+              29.0,
+              39.0
+            ],
+            [
+              30.0,
+              39.0
+            ],
+            [
+              28.0,
+              40.0
+            ]
+          ],
+          "query_union": [
+            [
+              31.0,
+              29.0
+            ],
+            [
+              34.0,
+              29.0
+            ]
+          ],
+          "context_upper_bound": 7,
+          "capacity_eligible": false
+        }
+      ],
+      "eligible_donors": 0
+    },
+    {
+      "frame": 977,
+      "side": "left",
+      "category": "iris",
+      "index": 0,
+      "point": [
+        23,
+        37
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            1.0,
+            -1.0
+          ],
+          "context": [],
+          "query_union": [
+            [
+              24.0,
+              36.0
+            ],
+            [
+              27.0,
+              36.0
+            ]
+          ],
+          "context_upper_bound": 0,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            -0.0,
+            0.0
+          ],
+          "context": [
+            [
+              28.0,
+              38.0
+            ],
+            [
+              29.0,
+              38.0
+            ],
+            [
+              30.0,
+              38.0
+            ],
+            [
+              29.0,
+              39.0
+            ]
+          ],
+          "query_union": [
+            [
+              23.0,
+              37.0
+            ],
+            [
+              26.0,
+              37.0
+            ]
+          ],
+          "context_upper_bound": 4,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            5.0,
+            -0.0
+          ],
+          "context": [
+            [
+              28.0,
+              38.0
+            ],
+            [
+              29.0,
+              38.0
+            ],
+            [
+              30.0,
+              38.0
+            ]
+          ],
+          "query_union": [
+            [
+              28.0,
+              37.0
+            ],
+            [
+              31.0,
+              37.0
+            ]
+          ],
+          "context_upper_bound": 3,
+          "capacity_eligible": false
+        }
+      ],
+      "eligible_donors": 0
+    },
+    {
+      "frame": 977,
+      "side": "left",
+      "category": "iris",
+      "index": 1,
+      "point": [
+        27,
+        39
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            1.0,
+            -1.0
+          ],
+          "context": [],
+          "query_union": [
+            [
+              28.0,
+              38.0
+            ],
+            [
+              31.0,
+              38.0
+            ]
+          ],
+          "context_upper_bound": 0,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            -0.0,
+            0.0
+          ],
+          "context": [],
+          "query_union": [
+            [
+              27.0,
+              39.0
+            ],
+            [
+              30.0,
+              39.0
+            ]
+          ],
+          "context_upper_bound": 0,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            5.0,
+            -0.0
+          ],
+          "context": [],
+          "query_union": [
+            [
+              32.0,
+              39.0
+            ],
+            [
+              35.0,
+              39.0
+            ]
+          ],
+          "context_upper_bound": 0,
+          "capacity_eligible": false
+        }
+      ],
+      "eligible_donors": 0
+    },
+    {
+      "frame": 977,
+      "side": "left",
+      "category": "iris",
+      "index": 2,
+      "point": [
+        31,
+        39
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            1.0,
+            -1.0
+          ],
+          "context": [],
+          "query_union": [
+            [
+              32.0,
+              38.0
+            ],
+            [
+              35.0,
+              38.0
+            ]
+          ],
+          "context_upper_bound": 0,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            -0.0,
+            0.0
+          ],
+          "context": [],
+          "query_union": [
+            [
+              31.0,
+              39.0
+            ],
+            [
+              34.0,
+              39.0
+            ]
+          ],
+          "context_upper_bound": 0,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            5.0,
+            -0.0
+          ],
+          "context": [],
+          "query_union": [
+            [
+              36.0,
+              39.0
+            ],
+            [
+              39.0,
+              39.0
+            ]
+          ],
+          "context_upper_bound": 0,
+          "capacity_eligible": false
+        }
+      ],
+      "eligible_donors": 0
+    },
+    {
+      "frame": 977,
+      "side": "left",
+      "category": "iris",
+      "index": 3,
+      "point": [
+        35,
+        37
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            1.0,
+            -1.0
+          ],
+          "context": [],
+          "query_union": [
+            [
+              36.0,
+              36.0
+            ],
+            [
+              39.0,
+              36.0
+            ]
+          ],
+          "context_upper_bound": 0,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            -0.0,
+            0.0
+          ],
+          "context": [
+            [
+              27.0,
+              38.0
+            ],
+            [
+              28.0,
+              38.0
+            ],
+            [
+              29.0,
+              38.0
+            ],
+            [
+              30.0,
+              38.0
+            ],
+            [
+              29.0,
+              39.0
+            ]
+          ],
+          "query_union": [
+            [
+              35.0,
+              37.0
+            ],
+            [
+              38.0,
+              37.0
+            ]
+          ],
+          "context_upper_bound": 5,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            5.0,
+            -0.0
+          ],
+          "context": [
+            [
+              27.0,
+              38.0
+            ],
+            [
+              28.0,
+              38.0
+            ],
+            [
+              29.0,
+              38.0
+            ],
+            [
+              30.0,
+              38.0
+            ]
+          ],
+          "query_union": [
+            [
+              40.0,
+              37.0
+            ],
+            [
+              43.0,
+              37.0
+            ]
+          ],
+          "context_upper_bound": 4,
+          "capacity_eligible": false
+        }
+      ],
+      "eligible_donors": 0
+    },
+    {
+      "frame": 977,
+      "side": "left",
+      "category": "iris",
+      "index": 4,
+      "point": [
+        38,
+        35
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            1.0,
+            -1.0
+          ],
+          "context": [],
+          "query_union": [
+            [
+              39.0,
+              34.0
+            ],
+            [
+              42.0,
+              34.0
+            ]
+          ],
+          "context_upper_bound": 0,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            -0.0,
+            0.0
+          ],
+          "context": [
+            [
+              27.0,
+              38.0
+            ],
+            [
+              28.0,
+              38.0
+            ],
+            [
+              29.0,
+              38.0
+            ],
+            [
+              30.0,
+              38.0
+            ],
+            [
+              29.0,
+              39.0
+            ]
+          ],
+          "query_union": [
+            [
+              38.0,
+              35.0
+            ],
+            [
+              41.0,
+              35.0
+            ]
+          ],
+          "context_upper_bound": 5,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            5.0,
+            -0.0
+          ],
+          "context": [
+            [
+              27.0,
+              38.0
+            ],
+            [
+              28.0,
+              38.0
+            ],
+            [
+              29.0,
+              38.0
+            ],
+            [
+              30.0,
+              38.0
+            ]
+          ],
+          "query_union": [
+            [
+              43.0,
+              35.0
+            ],
+            [
+              46.0,
+              35.0
+            ]
+          ],
+          "context_upper_bound": 4,
+          "capacity_eligible": false
+        }
+      ],
+      "eligible_donors": 0
+    },
+    {
+      "frame": 977,
+      "side": "left",
+      "category": "reflection",
+      "index": 0,
+      "point": [
+        24,
+        32
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            1.0,
+            -1.0
+          ],
+          "context": [],
+          "query_union": [
+            [
+              25.0,
+              31.0
+            ],
+            [
+              28.0,
+              31.0
+            ]
+          ],
+          "context_upper_bound": 0,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            -0.0,
+            0.0
+          ],
+          "context": [
+            [
+              27.0,
+              38.0
+            ],
+            [
+              28.0,
+              38.0
+            ],
+            [
+              29.0,
+              38.0
+            ],
+            [
+              30.0,
+              38.0
+            ],
+            [
+              29.0,
+              39.0
+            ]
+          ],
+          "query_union": [
+            [
+              24.0,
+              32.0
+            ],
+            [
+              27.0,
+              32.0
+            ]
+          ],
+          "context_upper_bound": 5,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            5.0,
+            -0.0
+          ],
+          "context": [
+            [
+              27.0,
+              38.0
+            ],
+            [
+              28.0,
+              38.0
+            ],
+            [
+              29.0,
+              38.0
+            ],
+            [
+              30.0,
+              38.0
+            ]
+          ],
+          "query_union": [
+            [
+              29.0,
+              32.0
+            ],
+            [
+              32.0,
+              32.0
+            ]
+          ],
+          "context_upper_bound": 4,
+          "capacity_eligible": false
+        }
+      ],
+      "eligible_donors": 0
+    },
+    {
+      "frame": 977,
+      "side": "left",
+      "category": "reflection",
+      "index": 1,
+      "point": [
+        25,
+        32
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            1.0,
+            -1.0
+          ],
+          "context": [],
+          "query_union": [
+            [
+              26.0,
+              31.0
+            ],
+            [
+              29.0,
+              31.0
+            ]
+          ],
+          "context_upper_bound": 0,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            -0.0,
+            0.0
+          ],
+          "context": [
+            [
+              27.0,
+              38.0
+            ],
+            [
+              28.0,
+              38.0
+            ],
+            [
+              29.0,
+              38.0
+            ],
+            [
+              30.0,
+              38.0
+            ],
+            [
+              29.0,
+              39.0
+            ]
+          ],
+          "query_union": [
+            [
+              25.0,
+              32.0
+            ],
+            [
+              28.0,
+              32.0
+            ]
+          ],
+          "context_upper_bound": 5,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            5.0,
+            -0.0
+          ],
+          "context": [
+            [
+              27.0,
+              38.0
+            ],
+            [
+              28.0,
+              38.0
+            ],
+            [
+              29.0,
+              38.0
+            ],
+            [
+              30.0,
+              38.0
+            ]
+          ],
+          "query_union": [
+            [
+              30.0,
+              32.0
+            ],
+            [
+              33.0,
+              32.0
+            ]
+          ],
+          "context_upper_bound": 4,
+          "capacity_eligible": false
+        }
+      ],
+      "eligible_donors": 0
+    },
+    {
+      "frame": 977,
+      "side": "right",
+      "category": "iris",
+      "index": 0,
+      "point": [
+        23,
+        37
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            -0.0,
+            0.0
+          ],
+          "context": [],
+          "query_union": [
+            [
+              23.0,
+              37.0
+            ],
+            [
+              26.0,
+              37.0
+            ]
+          ],
+          "context_upper_bound": 0,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            0.0,
+            0.0
+          ],
+          "context": [
+            [
+              33.0,
+              36.0
+            ],
+            [
+              28.0,
+              37.0
+            ],
+            [
+              29.0,
+              37.0
+            ],
+            [
+              30.0,
+              37.0
+            ],
+            [
+              31.0,
+              37.0
+            ]
+          ],
+          "query_union": [
+            [
+              23.0,
+              37.0
+            ],
+            [
+              26.0,
+              37.0
+            ]
+          ],
+          "context_upper_bound": 5,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            4.0,
+            -1.0
+          ],
+          "context": [
+            [
+              32.0,
+              36.0
+            ],
+            [
+              28.0,
+              37.0
+            ],
+            [
+              29.0,
+              37.0
+            ],
+            [
+              30.0,
+              37.0
+            ],
+            [
+              31.0,
+              37.0
+            ]
+          ],
+          "query_union": [
+            [
+              27.0,
+              36.0
+            ],
+            [
+              30.0,
+              36.0
+            ]
+          ],
+          "context_upper_bound": 5,
+          "capacity_eligible": false
+        }
+      ],
+      "eligible_donors": 0
+    },
+    {
+      "frame": 977,
+      "side": "right",
+      "category": "iris",
+      "index": 1,
+      "point": [
+        27,
+        38
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            -0.0,
+            0.0
+          ],
+          "context": [],
+          "query_union": [
+            [
+              27.0,
+              38.0
+            ],
+            [
+              30.0,
+              38.0
+            ]
+          ],
+          "context_upper_bound": 0,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            0.0,
+            0.0
+          ],
+          "context": [
+            [
+              33.0,
+              36.0
+            ]
+          ],
+          "query_union": [
+            [
+              27.0,
+              38.0
+            ],
+            [
+              30.0,
+              38.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            4.0,
+            -1.0
+          ],
+          "context": [
+            [
+              32.0,
+              36.0
+            ]
+          ],
+          "query_union": [
+            [
+              31.0,
+              37.0
+            ],
+            [
+              34.0,
+              37.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        }
+      ],
+      "eligible_donors": 0
+    },
+    {
+      "frame": 977,
+      "side": "right",
+      "category": "iris",
+      "index": 2,
+      "point": [
+        32,
+        38
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            -0.0,
+            0.0
+          ],
+          "context": [],
+          "query_union": [
+            [
+              32.0,
+              38.0
+            ],
+            [
+              35.0,
+              38.0
+            ]
+          ],
+          "context_upper_bound": 0,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            0.0,
+            0.0
+          ],
+          "context": [
+            [
+              33.0,
+              36.0
+            ]
+          ],
+          "query_union": [
+            [
+              32.0,
+              38.0
+            ],
+            [
+              35.0,
+              38.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            4.0,
+            -1.0
+          ],
+          "context": [
+            [
+              32.0,
+              36.0
+            ]
+          ],
+          "query_union": [
+            [
+              36.0,
+              37.0
+            ],
+            [
+              39.0,
+              37.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        }
+      ],
+      "eligible_donors": 0
+    },
+    {
+      "frame": 977,
+      "side": "right",
+      "category": "iris",
+      "index": 3,
+      "point": [
+        37,
+        36
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            -0.0,
+            0.0
+          ],
+          "context": [],
+          "query_union": [
+            [
+              37.0,
+              36.0
+            ],
+            [
+              40.0,
+              36.0
+            ]
+          ],
+          "context_upper_bound": 0,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            0.0,
+            0.0
+          ],
+          "context": [
+            [
+              28.0,
+              37.0
+            ],
+            [
+              29.0,
+              37.0
+            ],
+            [
+              30.0,
+              37.0
+            ],
+            [
+              31.0,
+              37.0
+            ]
+          ],
+          "query_union": [
+            [
+              37.0,
+              36.0
+            ],
+            [
+              40.0,
+              36.0
+            ]
+          ],
+          "context_upper_bound": 4,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            4.0,
+            -1.0
+          ],
+          "context": [
+            [
+              32.0,
+              36.0
+            ],
+            [
+              28.0,
+              37.0
+            ],
+            [
+              29.0,
+              37.0
+            ],
+            [
+              30.0,
+              37.0
+            ],
+            [
+              31.0,
+              37.0
+            ]
+          ],
+          "query_union": [
+            [
+              41.0,
+              35.0
+            ],
+            [
+              44.0,
+              35.0
+            ]
+          ],
+          "context_upper_bound": 5,
+          "capacity_eligible": false
+        }
+      ],
+      "eligible_donors": 0
+    },
+    {
+      "frame": 977,
+      "side": "right",
+      "category": "iris",
+      "index": 4,
+      "point": [
+        39,
+        33
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            -0.0,
+            0.0
+          ],
+          "context": [],
+          "query_union": [
+            [
+              39.0,
+              33.0
+            ],
+            [
+              42.0,
+              33.0
+            ]
+          ],
+          "context_upper_bound": 0,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            0.0,
+            0.0
+          ],
+          "context": [
+            [
+              33.0,
+              36.0
+            ],
+            [
+              28.0,
+              37.0
+            ],
+            [
+              29.0,
+              37.0
+            ],
+            [
+              30.0,
+              37.0
+            ],
+            [
+              31.0,
+              37.0
+            ]
+          ],
+          "query_union": [
+            [
+              39.0,
+              33.0
+            ],
+            [
+              42.0,
+              33.0
+            ]
+          ],
+          "context_upper_bound": 5,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            4.0,
+            -1.0
+          ],
+          "context": [
+            [
+              32.0,
+              36.0
+            ],
+            [
+              28.0,
+              37.0
+            ],
+            [
+              29.0,
+              37.0
+            ],
+            [
+              30.0,
+              37.0
+            ],
+            [
+              31.0,
+              37.0
+            ]
+          ],
+          "query_union": [
+            [
+              43.0,
+              32.0
+            ],
+            [
+              46.0,
+              32.0
+            ]
+          ],
+          "context_upper_bound": 5,
+          "capacity_eligible": false
+        }
+      ],
+      "eligible_donors": 0
+    },
+    {
+      "frame": 977,
+      "side": "right",
+      "category": "reflection",
+      "index": 0,
+      "point": [
+        26,
+        31
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            -0.0,
+            0.0
+          ],
+          "context": [],
+          "query_union": [
+            [
+              26.0,
+              31.0
+            ],
+            [
+              29.0,
+              31.0
+            ]
+          ],
+          "context_upper_bound": 0,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            0.0,
+            0.0
+          ],
+          "context": [
+            [
+              33.0,
+              36.0
+            ],
+            [
+              28.0,
+              37.0
+            ],
+            [
+              29.0,
+              37.0
+            ],
+            [
+              30.0,
+              37.0
+            ],
+            [
+              31.0,
+              37.0
+            ]
+          ],
+          "query_union": [
+            [
+              26.0,
+              31.0
+            ],
+            [
+              29.0,
+              31.0
+            ]
+          ],
+          "context_upper_bound": 5,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            4.0,
+            -1.0
+          ],
+          "context": [
+            [
+              32.0,
+              36.0
+            ],
+            [
+              28.0,
+              37.0
+            ],
+            [
+              29.0,
+              37.0
+            ],
+            [
+              30.0,
+              37.0
+            ],
+            [
+              31.0,
+              37.0
+            ]
+          ],
+          "query_union": [
+            [
+              30.0,
+              30.0
+            ],
+            [
+              33.0,
+              30.0
+            ]
+          ],
+          "context_upper_bound": 5,
+          "capacity_eligible": false
+        }
+      ],
+      "eligible_donors": 0
+    },
+    {
+      "frame": 977,
+      "side": "right",
+      "category": "reflection",
+      "index": 1,
+      "point": [
+        27,
+        31
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            -0.0,
+            0.0
+          ],
+          "context": [],
+          "query_union": [
+            [
+              27.0,
+              31.0
+            ],
+            [
+              30.0,
+              31.0
+            ]
+          ],
+          "context_upper_bound": 0,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            0.0,
+            0.0
+          ],
+          "context": [
+            [
+              33.0,
+              36.0
+            ],
+            [
+              28.0,
+              37.0
+            ],
+            [
+              29.0,
+              37.0
+            ],
+            [
+              30.0,
+              37.0
+            ],
+            [
+              31.0,
+              37.0
+            ]
+          ],
+          "query_union": [
+            [
+              27.0,
+              31.0
+            ],
+            [
+              30.0,
+              31.0
+            ]
+          ],
+          "context_upper_bound": 5,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            4.0,
+            -1.0
+          ],
+          "context": [
+            [
+              32.0,
+              36.0
+            ],
+            [
+              28.0,
+              37.0
+            ],
+            [
+              29.0,
+              37.0
+            ],
+            [
+              30.0,
+              37.0
+            ],
+            [
+              31.0,
+              37.0
+            ]
+          ],
+          "query_union": [
+            [
+              31.0,
+              30.0
+            ],
+            [
+              34.0,
+              30.0
+            ]
+          ],
+          "context_upper_bound": 5,
+          "capacity_eligible": false
+        }
+      ],
+      "eligible_donors": 0
+    },
+    {
+      "frame": 995,
+      "side": "left",
+      "category": "iris",
+      "index": 0,
+      "point": [
+        26,
+        37
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            -4.0,
+            -1.0
+          ],
+          "context": [
+            [
+              32.0,
+              39.0
+            ]
+          ],
+          "query_union": [
+            [
+              22.0,
+              36.0
+            ],
+            [
+              25.0,
+              36.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            -5.0,
+            0.0
+          ],
+          "context": [
+            [
+              32.0,
+              38.0
+            ],
+            [
+              33.0,
+              38.0
+            ],
+            [
+              34.0,
+              38.0
+            ],
+            [
+              35.0,
+              38.0
+            ],
+            [
+              34.0,
+              39.0
+            ]
+          ],
+          "query_union": [
+            [
+              21.0,
+              37.0
+            ],
+            [
+              24.0,
+              37.0
+            ]
+          ],
+          "context_upper_bound": 5,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            1.0,
+            -1.0
+          ],
+          "context": [
+            [
+              35.0,
+              38.0
+            ],
+            [
+              30.0,
+              39.0
+            ],
+            [
+              31.0,
+              39.0
+            ],
+            [
+              32.0,
+              39.0
+            ],
+            [
+              33.0,
+              39.0
+            ],
+            [
+              34.0,
+              39.0
+            ],
+            [
+              31.0,
+              40.0
+            ],
+            [
+              32.0,
+              40.0
+            ]
+          ],
+          "query_union": [
+            [
+              27.0,
+              36.0
+            ],
+            [
+              30.0,
+              36.0
+            ]
+          ],
+          "context_upper_bound": 8,
+          "capacity_eligible": true
+        }
+      ],
+      "eligible_donors": 1
+    },
+    {
+      "frame": 995,
+      "side": "left",
+      "category": "iris",
+      "index": 1,
+      "point": [
+        30,
+        40
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            -4.0,
+            -1.0
+          ],
+          "context": [],
+          "query_union": [
+            [
+              26.0,
+              39.0
+            ],
+            [
+              29.0,
+              39.0
+            ]
+          ],
+          "context_upper_bound": 0,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            -5.0,
+            0.0
+          ],
+          "context": [
+            [
+              32.0,
+              38.0
+            ],
+            [
+              33.0,
+              38.0
+            ],
+            [
+              34.0,
+              38.0
+            ],
+            [
+              35.0,
+              38.0
+            ]
+          ],
+          "query_union": [
+            [
+              25.0,
+              40.0
+            ],
+            [
+              28.0,
+              40.0
+            ]
+          ],
+          "context_upper_bound": 4,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            1.0,
+            -1.0
+          ],
+          "context": [
+            [
+              35.0,
+              38.0
+            ]
+          ],
+          "query_union": [
+            [
+              31.0,
+              39.0
+            ],
+            [
+              34.0,
+              39.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        }
+      ],
+      "eligible_donors": 0
+    },
+    {
+      "frame": 995,
+      "side": "left",
+      "category": "iris",
+      "index": 2,
+      "point": [
+        35,
+        41
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            -4.0,
+            -1.0
+          ],
+          "context": [
+            [
+              32.0,
+              39.0
+            ]
+          ],
+          "query_union": [
+            [
+              31.0,
+              40.0
+            ],
+            [
+              34.0,
+              40.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            -5.0,
+            0.0
+          ],
+          "context": [
+            [
+              32.0,
+              38.0
+            ],
+            [
+              33.0,
+              38.0
+            ],
+            [
+              34.0,
+              38.0
+            ],
+            [
+              35.0,
+              38.0
+            ],
+            [
+              34.0,
+              39.0
+            ]
+          ],
+          "query_union": [
+            [
+              30.0,
+              41.0
+            ],
+            [
+              33.0,
+              41.0
+            ]
+          ],
+          "context_upper_bound": 5,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            1.0,
+            -1.0
+          ],
+          "context": [
+            [
+              35.0,
+              38.0
+            ],
+            [
+              30.0,
+              39.0
+            ],
+            [
+              31.0,
+              39.0
+            ],
+            [
+              32.0,
+              39.0
+            ],
+            [
+              33.0,
+              39.0
+            ],
+            [
+              34.0,
+              39.0
+            ]
+          ],
+          "query_union": [
+            [
+              36.0,
+              40.0
+            ],
+            [
+              39.0,
+              40.0
+            ]
+          ],
+          "context_upper_bound": 6,
+          "capacity_eligible": false
+        }
+      ],
+      "eligible_donors": 0
+    },
+    {
+      "frame": 995,
+      "side": "left",
+      "category": "iris",
+      "index": 3,
+      "point": [
+        39,
+        38
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            -4.0,
+            -1.0
+          ],
+          "context": [
+            [
+              32.0,
+              39.0
+            ]
+          ],
+          "query_union": [
+            [
+              35.0,
+              37.0
+            ],
+            [
+              38.0,
+              37.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            -5.0,
+            0.0
+          ],
+          "context": [
+            [
+              32.0,
+              38.0
+            ],
+            [
+              33.0,
+              38.0
+            ],
+            [
+              34.0,
+              38.0
+            ],
+            [
+              34.0,
+              39.0
+            ]
+          ],
+          "query_union": [
+            [
+              34.0,
+              38.0
+            ],
+            [
+              37.0,
+              38.0
+            ]
+          ],
+          "context_upper_bound": 4,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            1.0,
+            -1.0
+          ],
+          "context": [
+            [
+              30.0,
+              39.0
+            ],
+            [
+              31.0,
+              39.0
+            ],
+            [
+              32.0,
+              39.0
+            ],
+            [
+              33.0,
+              39.0
+            ],
+            [
+              34.0,
+              39.0
+            ],
+            [
+              31.0,
+              40.0
+            ],
+            [
+              32.0,
+              40.0
+            ]
+          ],
+          "query_union": [
+            [
+              40.0,
+              37.0
+            ],
+            [
+              43.0,
+              37.0
+            ]
+          ],
+          "context_upper_bound": 7,
+          "capacity_eligible": false
+        }
+      ],
+      "eligible_donors": 0
+    },
+    {
+      "frame": 995,
+      "side": "left",
+      "category": "iris",
+      "index": 4,
+      "point": [
+        42,
+        34
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            -4.0,
+            -1.0
+          ],
+          "context": [
+            [
+              32.0,
+              39.0
+            ]
+          ],
+          "query_union": [
+            [
+              38.0,
+              33.0
+            ],
+            [
+              41.0,
+              33.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            -5.0,
+            0.0
+          ],
+          "context": [
+            [
+              32.0,
+              38.0
+            ],
+            [
+              33.0,
+              38.0
+            ],
+            [
+              34.0,
+              38.0
+            ],
+            [
+              35.0,
+              38.0
+            ],
+            [
+              34.0,
+              39.0
+            ]
+          ],
+          "query_union": [
+            [
+              37.0,
+              34.0
+            ],
+            [
+              40.0,
+              34.0
+            ]
+          ],
+          "context_upper_bound": 5,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            1.0,
+            -1.0
+          ],
+          "context": [
+            [
+              35.0,
+              38.0
+            ],
+            [
+              30.0,
+              39.0
+            ],
+            [
+              31.0,
+              39.0
+            ],
+            [
+              32.0,
+              39.0
+            ],
+            [
+              33.0,
+              39.0
+            ],
+            [
+              34.0,
+              39.0
+            ],
+            [
+              31.0,
+              40.0
+            ],
+            [
+              32.0,
+              40.0
+            ]
+          ],
+          "query_union": [
+            [
+              43.0,
+              33.0
+            ],
+            [
+              46.0,
+              33.0
+            ]
+          ],
+          "context_upper_bound": 8,
+          "capacity_eligible": true
+        }
+      ],
+      "eligible_donors": 1
+    },
+    {
+      "frame": 995,
+      "side": "left",
+      "category": "reflection",
+      "index": 0,
+      "point": [
+        30,
+        30
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            -4.0,
+            -1.0
+          ],
+          "context": [
+            [
+              32.0,
+              39.0
+            ]
+          ],
+          "query_union": [
+            [
+              26.0,
+              29.0
+            ],
+            [
+              29.0,
+              29.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            -5.0,
+            0.0
+          ],
+          "context": [
+            [
+              32.0,
+              38.0
+            ],
+            [
+              33.0,
+              38.0
+            ],
+            [
+              34.0,
+              38.0
+            ],
+            [
+              35.0,
+              38.0
+            ],
+            [
+              34.0,
+              39.0
+            ]
+          ],
+          "query_union": [
+            [
+              25.0,
+              30.0
+            ],
+            [
+              28.0,
+              30.0
+            ]
+          ],
+          "context_upper_bound": 5,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            1.0,
+            -1.0
+          ],
+          "context": [
+            [
+              35.0,
+              38.0
+            ],
+            [
+              30.0,
+              39.0
+            ],
+            [
+              31.0,
+              39.0
+            ],
+            [
+              32.0,
+              39.0
+            ],
+            [
+              33.0,
+              39.0
+            ],
+            [
+              34.0,
+              39.0
+            ],
+            [
+              31.0,
+              40.0
+            ],
+            [
+              32.0,
+              40.0
+            ]
+          ],
+          "query_union": [
+            [
+              31.0,
+              29.0
+            ],
+            [
+              34.0,
+              29.0
+            ]
+          ],
+          "context_upper_bound": 8,
+          "capacity_eligible": true
+        }
+      ],
+      "eligible_donors": 1
+    },
+    {
+      "frame": 995,
+      "side": "left",
+      "category": "reflection",
+      "index": 1,
+      "point": [
+        31,
+        31
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            -4.0,
+            -1.0
+          ],
+          "context": [
+            [
+              32.0,
+              39.0
+            ]
+          ],
+          "query_union": [
+            [
+              27.0,
+              30.0
+            ],
+            [
+              30.0,
+              30.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            -5.0,
+            0.0
+          ],
+          "context": [
+            [
+              32.0,
+              38.0
+            ],
+            [
+              33.0,
+              38.0
+            ],
+            [
+              34.0,
+              38.0
+            ],
+            [
+              35.0,
+              38.0
+            ],
+            [
+              34.0,
+              39.0
+            ]
+          ],
+          "query_union": [
+            [
+              26.0,
+              31.0
+            ],
+            [
+              29.0,
+              31.0
+            ]
+          ],
+          "context_upper_bound": 5,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            1.0,
+            -1.0
+          ],
+          "context": [
+            [
+              35.0,
+              38.0
+            ],
+            [
+              30.0,
+              39.0
+            ],
+            [
+              31.0,
+              39.0
+            ],
+            [
+              32.0,
+              39.0
+            ],
+            [
+              33.0,
+              39.0
+            ],
+            [
+              34.0,
+              39.0
+            ],
+            [
+              31.0,
+              40.0
+            ],
+            [
+              32.0,
+              40.0
+            ]
+          ],
+          "query_union": [
+            [
+              32.0,
+              30.0
+            ],
+            [
+              35.0,
+              30.0
+            ]
+          ],
+          "context_upper_bound": 8,
+          "capacity_eligible": true
+        }
+      ],
+      "eligible_donors": 1
+    },
+    {
+      "frame": 995,
+      "side": "right",
+      "category": "iris",
+      "index": 0,
+      "point": [
+        27,
+        36
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            -4.0,
+            1.0
+          ],
+          "context": [
+            [
+              33.0,
+              37.0
+            ]
+          ],
+          "query_union": [
+            [
+              23.0,
+              37.0
+            ],
+            [
+              26.0,
+              37.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            -3.0,
+            1.0
+          ],
+          "context": [
+            [
+              36.0,
+              35.0
+            ],
+            [
+              32.0,
+              36.0
+            ],
+            [
+              33.0,
+              36.0
+            ],
+            [
+              34.0,
+              36.0
+            ],
+            [
+              32.0,
+              37.0
+            ]
+          ],
+          "query_union": [
+            [
+              24.0,
+              37.0
+            ],
+            [
+              27.0,
+              37.0
+            ]
+          ],
+          "context_upper_bound": 5,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            0.0,
+            -0.0
+          ],
+          "context": [
+            [
+              35.0,
+              35.0
+            ],
+            [
+              36.0,
+              35.0
+            ],
+            [
+              32.0,
+              36.0
+            ],
+            [
+              33.0,
+              36.0
+            ],
+            [
+              34.0,
+              36.0
+            ],
+            [
+              35.0,
+              36.0
+            ],
+            [
+              33.0,
+              37.0
+            ]
+          ],
+          "query_union": [
+            [
+              27.0,
+              36.0
+            ],
+            [
+              30.0,
+              36.0
+            ]
+          ],
+          "context_upper_bound": 7,
+          "capacity_eligible": false
+        }
+      ],
+      "eligible_donors": 0
+    },
+    {
+      "frame": 995,
+      "side": "right",
+      "category": "iris",
+      "index": 1,
+      "point": [
+        31,
+        39
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            -4.0,
+            1.0
+          ],
+          "context": [
+            [
+              33.0,
+              37.0
+            ]
+          ],
+          "query_union": [
+            [
+              27.0,
+              40.0
+            ],
+            [
+              30.0,
+              40.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            -3.0,
+            1.0
+          ],
+          "context": [
+            [
+              36.0,
+              35.0
+            ],
+            [
+              31.0,
+              36.0
+            ],
+            [
+              32.0,
+              36.0
+            ],
+            [
+              33.0,
+              36.0
+            ],
+            [
+              34.0,
+              36.0
+            ],
+            [
+              32.0,
+              37.0
+            ]
+          ],
+          "query_union": [
+            [
+              28.0,
+              40.0
+            ],
+            [
+              31.0,
+              40.0
+            ]
+          ],
+          "context_upper_bound": 6,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            0.0,
+            -0.0
+          ],
+          "context": [
+            [
+              35.0,
+              35.0
+            ],
+            [
+              36.0,
+              35.0
+            ],
+            [
+              31.0,
+              36.0
+            ],
+            [
+              32.0,
+              36.0
+            ],
+            [
+              33.0,
+              36.0
+            ],
+            [
+              34.0,
+              36.0
+            ],
+            [
+              35.0,
+              36.0
+            ],
+            [
+              33.0,
+              37.0
+            ]
+          ],
+          "query_union": [
+            [
+              31.0,
+              39.0
+            ],
+            [
+              34.0,
+              39.0
+            ]
+          ],
+          "context_upper_bound": 8,
+          "capacity_eligible": true
+        }
+      ],
+      "eligible_donors": 1
+    },
+    {
+      "frame": 995,
+      "side": "right",
+      "category": "iris",
+      "index": 2,
+      "point": [
+        36,
+        39
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            -4.0,
+            1.0
+          ],
+          "context": [
+            [
+              33.0,
+              37.0
+            ]
+          ],
+          "query_union": [
+            [
+              32.0,
+              40.0
+            ],
+            [
+              35.0,
+              40.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            -3.0,
+            1.0
+          ],
+          "context": [
+            [
+              36.0,
+              35.0
+            ],
+            [
+              31.0,
+              36.0
+            ],
+            [
+              32.0,
+              36.0
+            ],
+            [
+              33.0,
+              36.0
+            ],
+            [
+              34.0,
+              36.0
+            ],
+            [
+              32.0,
+              37.0
+            ]
+          ],
+          "query_union": [
+            [
+              33.0,
+              40.0
+            ],
+            [
+              36.0,
+              40.0
+            ]
+          ],
+          "context_upper_bound": 6,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            0.0,
+            -0.0
+          ],
+          "context": [
+            [
+              35.0,
+              35.0
+            ],
+            [
+              36.0,
+              35.0
+            ],
+            [
+              31.0,
+              36.0
+            ],
+            [
+              32.0,
+              36.0
+            ],
+            [
+              33.0,
+              36.0
+            ],
+            [
+              34.0,
+              36.0
+            ],
+            [
+              35.0,
+              36.0
+            ],
+            [
+              33.0,
+              37.0
+            ]
+          ],
+          "query_union": [
+            [
+              36.0,
+              39.0
+            ],
+            [
+              39.0,
+              39.0
+            ]
+          ],
+          "context_upper_bound": 8,
+          "capacity_eligible": true
+        }
+      ],
+      "eligible_donors": 1
+    },
+    {
+      "frame": 995,
+      "side": "right",
+      "category": "iris",
+      "index": 3,
+      "point": [
+        40,
+        36
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            -4.0,
+            1.0
+          ],
+          "context": [
+            [
+              33.0,
+              37.0
+            ]
+          ],
+          "query_union": [
+            [
+              36.0,
+              37.0
+            ],
+            [
+              39.0,
+              37.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            -3.0,
+            1.0
+          ],
+          "context": [
+            [
+              31.0,
+              36.0
+            ],
+            [
+              32.0,
+              36.0
+            ],
+            [
+              33.0,
+              36.0
+            ],
+            [
+              34.0,
+              36.0
+            ],
+            [
+              32.0,
+              37.0
+            ]
+          ],
+          "query_union": [
+            [
+              37.0,
+              37.0
+            ],
+            [
+              40.0,
+              37.0
+            ]
+          ],
+          "context_upper_bound": 5,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            0.0,
+            -0.0
+          ],
+          "context": [
+            [
+              35.0,
+              35.0
+            ],
+            [
+              31.0,
+              36.0
+            ],
+            [
+              32.0,
+              36.0
+            ],
+            [
+              33.0,
+              36.0
+            ],
+            [
+              34.0,
+              36.0
+            ],
+            [
+              35.0,
+              36.0
+            ],
+            [
+              33.0,
+              37.0
+            ]
+          ],
+          "query_union": [
+            [
+              40.0,
+              36.0
+            ],
+            [
+              43.0,
+              36.0
+            ]
+          ],
+          "context_upper_bound": 7,
+          "capacity_eligible": false
+        }
+      ],
+      "eligible_donors": 0
+    },
+    {
+      "frame": 995,
+      "side": "right",
+      "category": "iris",
+      "index": 4,
+      "point": [
+        43,
+        32
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            -4.0,
+            1.0
+          ],
+          "context": [
+            [
+              33.0,
+              37.0
+            ]
+          ],
+          "query_union": [
+            [
+              39.0,
+              33.0
+            ],
+            [
+              42.0,
+              33.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            -3.0,
+            1.0
+          ],
+          "context": [
+            [
+              36.0,
+              35.0
+            ],
+            [
+              31.0,
+              36.0
+            ],
+            [
+              32.0,
+              36.0
+            ],
+            [
+              33.0,
+              36.0
+            ],
+            [
+              34.0,
+              36.0
+            ],
+            [
+              32.0,
+              37.0
+            ]
+          ],
+          "query_union": [
+            [
+              40.0,
+              33.0
+            ],
+            [
+              43.0,
+              33.0
+            ]
+          ],
+          "context_upper_bound": 6,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            0.0,
+            -0.0
+          ],
+          "context": [
+            [
+              35.0,
+              35.0
+            ],
+            [
+              36.0,
+              35.0
+            ],
+            [
+              31.0,
+              36.0
+            ],
+            [
+              32.0,
+              36.0
+            ],
+            [
+              33.0,
+              36.0
+            ],
+            [
+              34.0,
+              36.0
+            ],
+            [
+              35.0,
+              36.0
+            ],
+            [
+              33.0,
+              37.0
+            ]
+          ],
+          "query_union": [
+            [
+              43.0,
+              32.0
+            ],
+            [
+              46.0,
+              32.0
+            ]
+          ],
+          "context_upper_bound": 8,
+          "capacity_eligible": true
+        }
+      ],
+      "eligible_donors": 1
+    },
+    {
+      "frame": 995,
+      "side": "right",
+      "category": "reflection",
+      "index": 0,
+      "point": [
+        32,
+        28
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            -4.0,
+            1.0
+          ],
+          "context": [
+            [
+              33.0,
+              37.0
+            ]
+          ],
+          "query_union": [
+            [
+              28.0,
+              29.0
+            ],
+            [
+              31.0,
+              29.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            -3.0,
+            1.0
+          ],
+          "context": [
+            [
+              36.0,
+              35.0
+            ],
+            [
+              31.0,
+              36.0
+            ],
+            [
+              32.0,
+              36.0
+            ],
+            [
+              33.0,
+              36.0
+            ],
+            [
+              34.0,
+              36.0
+            ],
+            [
+              32.0,
+              37.0
+            ]
+          ],
+          "query_union": [
+            [
+              29.0,
+              29.0
+            ],
+            [
+              32.0,
+              29.0
+            ]
+          ],
+          "context_upper_bound": 6,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            0.0,
+            -0.0
+          ],
+          "context": [
+            [
+              35.0,
+              35.0
+            ],
+            [
+              36.0,
+              35.0
+            ],
+            [
+              31.0,
+              36.0
+            ],
+            [
+              32.0,
+              36.0
+            ],
+            [
+              33.0,
+              36.0
+            ],
+            [
+              34.0,
+              36.0
+            ],
+            [
+              35.0,
+              36.0
+            ],
+            [
+              33.0,
+              37.0
+            ]
+          ],
+          "query_union": [
+            [
+              32.0,
+              28.0
+            ],
+            [
+              35.0,
+              28.0
+            ]
+          ],
+          "context_upper_bound": 8,
+          "capacity_eligible": true
+        }
+      ],
+      "eligible_donors": 1
+    },
+    {
+      "frame": 995,
+      "side": "right",
+      "category": "reflection",
+      "index": 1,
+      "point": [
+        32,
+        30
+      ],
+      "pairs": [
+        {
+          "donor": 974,
+          "shift": [
+            -4.0,
+            1.0
+          ],
+          "context": [
+            [
+              33.0,
+              37.0
+            ]
+          ],
+          "query_union": [
+            [
+              28.0,
+              31.0
+            ],
+            [
+              31.0,
+              31.0
+            ]
+          ],
+          "context_upper_bound": 1,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 990,
+          "shift": [
+            -3.0,
+            1.0
+          ],
+          "context": [
+            [
+              36.0,
+              35.0
+            ],
+            [
+              31.0,
+              36.0
+            ],
+            [
+              32.0,
+              36.0
+            ],
+            [
+              33.0,
+              36.0
+            ],
+            [
+              34.0,
+              36.0
+            ],
+            [
+              32.0,
+              37.0
+            ]
+          ],
+          "query_union": [
+            [
+              29.0,
+              31.0
+            ],
+            [
+              32.0,
+              31.0
+            ]
+          ],
+          "context_upper_bound": 6,
+          "capacity_eligible": false
+        },
+        {
+          "donor": 994,
+          "shift": [
+            0.0,
+            -0.0
+          ],
+          "context": [
+            [
+              35.0,
+              35.0
+            ],
+            [
+              36.0,
+              35.0
+            ],
+            [
+              31.0,
+              36.0
+            ],
+            [
+              32.0,
+              36.0
+            ],
+            [
+              33.0,
+              36.0
+            ],
+            [
+              34.0,
+              36.0
+            ],
+            [
+              35.0,
+              36.0
+            ],
+            [
+              33.0,
+              37.0
+            ]
+          ],
+          "query_union": [
+            [
+              32.0,
+              30.0
+            ],
+            [
+              35.0,
+              30.0
+            ]
+          ],
+          "context_upper_bound": 8,
+          "capacity_eligible": true
+        }
+      ],
+      "eligible_donors": 1
+    }
+  ],
+  "attempted_queries": 42,
+  "pairs_with_eight_context_samples": 9,
+  "cases_with_three_capacity_eligible_donors": 0,
+  "max_context_upper_bound": 8,
+  "photometric_scores_computed": 0,
+  "control_discrimination_validated": false,
+  "protocol_sha256": "873817b59b3ab9b25093ad256b5e71d7e134057fcde06c7c3c179fa66b37b910",
+  "labels_sha256": {
+    "r14_native_labels.json": "1f80770e881c7a7bfc6b3d4154bc667b2fb87c5387befbd5ee6d2c1ceb8814fb",
+    "r16_material_labels.json": "acfb75107dab6874a575681d15dda0ea0ca3001366adfc64729e822168a00831",
+    "r17_context_labels.json": "90698b7bdbf89606a46d563e77fbc2a07de66591382218fa1a08610bbdd58fd3"
+  },
+  "scope": "Optimistic registered/+3px capacity only; learned arms still require intersection"
+}

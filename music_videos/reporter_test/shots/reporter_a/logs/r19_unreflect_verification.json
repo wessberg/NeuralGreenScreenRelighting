@@ -1,0 +1,395 @@
+{
+  "cases": 100,
+  "independently_checked_native_resize_max_error": 2.9802322387695312e-08,
+  "probes": 42,
+  "exact_repeat_cases": 2,
+  "installed_source_sha256": {
+    "models.py": "55568ea87601df455eb51a8fa5778795ffe7cffba4ce53d752cfbc8ed9b02de3",
+    "token_inpainters.py": "d3e40d8a9a15e38490246f75a9fce6256bddece826a8a3ed67b832739c03b2d4",
+    "endpoints/model_.py": "0f26da5b964c497849f6ab2bd655cc37bc5bbd962364976cb794ec99d02ad15d"
+  },
+  "author_code_revision": "363ebb5c87d9f4f49b63f744fded8d3786a051b3",
+  "model": {
+    "model": "UnReflectAnything 1.1.1 highlight head only",
+    "checkpoint_sha256": "12c0cf4518a39325b7bfe2bed04a96395189f2643c2f90b7b79360a659dc739b",
+    "strict_state_entries": 601,
+    "exact_loaded_tensors": true,
+    "config": {
+      "MODEL": {
+        "MODEL_CLASS": "UnReflect_Model_TokenInpainter",
+        "MODEL_MODULE": "models",
+        "RGB_ENCODER": {
+          "ENCODER": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\dependencies\\unreflect-weights\\encoder",
+          "IMAGE_SIZE": 896,
+          "RETURN_SELECTED_LAYERS": [
+            3,
+            6,
+            9,
+            12
+          ],
+          "RGB_ENCODER_LR": 0.0
+        },
+        "DECODERS": {
+          "diffuse": {
+            "FEATURE_DIM": 1024,
+            "REASSEMBLE_OUT_CHANNELS": [
+              768,
+              1024,
+              1536,
+              2048
+            ],
+            "REASSEMBLE_FACTORS": [
+              4.0,
+              2.0,
+              1.0,
+              0.5
+            ],
+            "READOUT_TYPE": "ignore",
+            "FROM_PRETRAINED": "",
+            "USE_BN": false,
+            "DROPOUT": 0.1,
+            "OUTPUT_IMAGE_SIZE": [
+              896,
+              896
+            ],
+            "OUTPUT_CHANNELS": 3,
+            "DECODER_LR": 1e-06,
+            "NUM_FUSION_BLOCKS_TRAINABLE": 1,
+            "TRAIN_RGB_HEAD": true
+          },
+          "highlight": {
+            "FEATURE_DIM": 1024,
+            "REASSEMBLE_OUT_CHANNELS": [
+              96,
+              192,
+              384,
+              768
+            ],
+            "REASSEMBLE_FACTORS": [
+              4.0,
+              2.0,
+              1.0,
+              0.5
+            ],
+            "READOUT_TYPE": "ignore",
+            "FROM_PRETRAINED": "",
+            "USE_BN": false,
+            "DROPOUT": 0.1,
+            "OUTPUT_IMAGE_SIZE": [
+              896,
+              896
+            ],
+            "OUTPUT_CHANNELS": 1,
+            "DECODER_LR": 0.0,
+            "NUM_FUSION_BLOCKS_TRAINABLE": null
+          }
+        },
+        "TOKEN_INPAINTER": {
+          "TOKEN_INPAINTER_CLASS": "TokenInpainter_Prior",
+          "TOKEN_INPAINTER_MODULE": "token_inpainters",
+          "TOKEN_INPAINTER_LR": 1e-05,
+          "DEPTH": 6,
+          "HEADS": 16,
+          "DROP": 0.0,
+          "USE_POSITIONAL_ENCODING": true,
+          "USE_FINAL_NORM": true,
+          "USE_LOCAL_PRIOR": true,
+          "LOCAL_PRIOR_WEIGHT": 0.2,
+          "LOCAL_PRIOR_KERNEL": 5,
+          "SEED_NOISE_STD": 0.02
+        }
+      },
+      "INPAINT_MASK_THRESHOLD": 0.2,
+      "INPAINT_MASK_DILATION": 3,
+      "USE_TORCH_COMPILE": false,
+      "DISTRIBUTE": "ddp",
+      "DATASETS": {
+        "SCRREAM": {
+          "VAL_SCENES": [
+            "scene10",
+            "scene04"
+          ],
+          "RESIZE_MODE": "resize+crop",
+          "SAMPLE_EVERY_N": 6,
+          "FEW_IMAGES": false,
+          "TARGET_SIZE": [
+            896,
+            896
+          ],
+          "LOAD_RGB_ONLY": true
+        },
+        "HOUSECAT6D": {
+          "VAL_SCENES": [
+            "val_scene1",
+            "val_scene2"
+          ],
+          "RESIZE_MODE": "resize+crop",
+          "SAMPLE_EVERY_N": 4,
+          "FEW_IMAGES": false,
+          "TARGET_SIZE": [
+            896,
+            896
+          ],
+          "LOAD_RGB_ONLY": true
+        },
+        "CROMO": {
+          "TRAIN_SCENES": [
+            "kitchen"
+          ],
+          "RESIZE_MODE": "resize",
+          "SAMPLE_EVERY_N": 2,
+          "FEW_IMAGES": false,
+          "TARGET_SIZE": [
+            896,
+            896
+          ],
+          "LOAD_RGB_ONLY": true
+        },
+        "PSD": {
+          "TRAIN_SCENES": "PSD_Train",
+          "VAL_SCENES": "PSD_Val",
+          "RESIZE_MODE": "resize+crop",
+          "SAMPLE_EVERY_N": 1,
+          "FEW_IMAGES": false,
+          "TARGET_SIZE": [
+            896,
+            896
+          ],
+          "LOAD_RGB_ONLY": true
+        },
+        "SCARED": {
+          "VAL_SCENES": [
+            "v22",
+            "v23",
+            "v24",
+            "v25",
+            "v26",
+            "v27",
+            "v28",
+            "v29",
+            "v30",
+            "v31",
+            "v32",
+            "v33",
+            "v34"
+          ],
+          "RESIZE_MODE": "resize+crop",
+          "SAMPLE_EVERY_N": 8,
+          "FEW_IMAGES": false,
+          "TARGET_SIZE": [
+            896,
+            896
+          ],
+          "LOAD_RGB_ONLY": true
+        },
+        "STEREOMIS_TRACKING": {
+          "VAL_SCENES": [
+            "P2_2"
+          ],
+          "RESIZE_MODE": "resize+crop",
+          "SAMPLE_EVERY_N": 2,
+          "FEW_IMAGES": false,
+          "TARGET_SIZE": [
+            896,
+            896
+          ],
+          "LOAD_RGB_ONLY": true
+        },
+        "CHOLEC80": {
+          "TRAIN_SCENES": [
+            "train"
+          ],
+          "VAL_SCENES": [
+            "test"
+          ],
+          "RESIZE_MODE": "resize+crop",
+          "SAMPLE_EVERY_N": 40,
+          "FEW_IMAGES": false,
+          "TARGET_SIZE": [
+            896,
+            896
+          ],
+          "LOAD_RGB_ONLY": true
+        },
+        "SUNRGBD": {
+          "VAL_SCENES": [
+            "realsense"
+          ],
+          "RESIZE_MODE": "resize+crop",
+          "SAMPLE_EVERY_N": 4,
+          "FEW_IMAGES": false,
+          "TARGET_SIZE": [
+            896,
+            896
+          ],
+          "LOAD_RGB_ONLY": true
+        },
+        "OPENIMAGESV7": {
+          "TRAIN_SCENES": [
+            "thescene"
+          ],
+          "RESIZE_MODE": "resize+crop",
+          "SAMPLE_EVERY_N": 5,
+          "FEW_IMAGES": false,
+          "TARGET_SIZE": [
+            896,
+            896
+          ],
+          "LOAD_RGB_ONLY": true
+        },
+        "ENDOSYNTH": {
+          "TRAIN_SCENES": [
+            "scene"
+          ],
+          "RESIZE_MODE": "resize+crop",
+          "SAMPLE_EVERY_N": 1,
+          "FEW_IMAGES": false,
+          "TARGET_SIZE": [
+            896,
+            896
+          ],
+          "LOAD_RGB_ONLY": true
+        },
+        "ALL_DATASETS": {
+          "FEW_IMAGES": false,
+          "TARGET_SIZE": [
+            896,
+            896
+          ],
+          "LOAD_RGB_ONLY": true
+        }
+      },
+      "BATCH_SIZE": 8,
+      "NUM_WORKERS": 12,
+      "SHUFFLE": true,
+      "PIN_MEMORY": true,
+      "PREFETCH_FACTOR": 2,
+      "MOGE_MODEL": "Ruicheng/moge-2-vits-normal",
+      "SURFACE_ROUGHNESS": [
+        100.0,
+        2000.0
+      ],
+      "INTENSITY": [
+        0.5,
+        1.0
+      ],
+      "LIGHT_DISTANCE_RANGE": [
+        0.0,
+        1
+      ],
+      "LIGHT_LEFT_RIGHT_ANGLE": [
+        0,
+        360
+      ],
+      "LIGHT_ABOVE_BELOW_ANGLE": [
+        0,
+        360
+      ],
+      "DATASET_HIGHLIGHT_DILATION": 25,
+      "DATASET_HIGHLIGHT_THRESHOLD": 0.6,
+      "DATASET_HIGHLIGHT_USE_LUMINANCE": true,
+      "HIGHLIGHT_COLOR": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "CLAMP_RECONSTRUCTION": true,
+      "LEARNING_RATE": 0.001,
+      "WEIGHT_DECAY": 0.0,
+      "EPOCHS": 20,
+      "GRADIENT_ACCUMULATION_STEPS": 1,
+      "WARMUP": 200,
+      "GRADIENT_CLIPPING_MAX_NORM": 8,
+      "LR_SCHEDULER": {
+        "ONPLATEAU": {
+          "PATIENCE": 5,
+          "FACTOR": 0.1
+        },
+        "COSINE": {
+          "N_PERIODS": 0.125
+        }
+      },
+      "OPTIMIZER_BOOTSTRAP_NAME": "AdamW",
+      "EARLY_STOPPING_PATIENCE": 10,
+      "SAVE_INTERVAL": 1000,
+      "DATASET_HIGHLIGHT_SUPERVISION_THRESHOLD": 0.01,
+      "SPECULAR_LOSS_WEIGHT": 0.0,
+      "DIFFUSE_LOSS_WEIGHT": 1.0,
+      "HIGHLIGHT_LOSS_WEIGHT": 0.0,
+      "TOKEN_INPAINT_LOSS_WEIGHT": 1.0,
+      "IMAGE_RECONSTRUCTION_LOSS_WEIGHT": 0.0,
+      "HLREG_W_L1": 1.0,
+      "HLREG_USE_CHARB": true,
+      "HLREG_W_DICE": 0.2,
+      "HLREG_W_SSIM": 0.0,
+      "HLREG_W_GRAD": 0.0,
+      "HLREG_W_TV": 0.0,
+      "HLREG_BALANCE_MODE": "auto",
+      "HLREG_POS_WEIGHT": 1.0,
+      "HLREG_FOCAL_GAMMA": 2.0,
+      "WEIGHT_SEAM": 0.0,
+      "RING_DILATE_KERNEL": 17,
+      "SEAM_USE_CHARB": true,
+      "SEAM_WEIGHT_GRAD": 0.0,
+      "TOKEN_FEAT_ALPHA": 0.5,
+      "WEIGHT_DIFFUSE_HIGHLIGHT_PENALTY": 0.5,
+      "DIFFUSE_HL_THRESHOLD": 0.6,
+      "DIFFUSE_HL_USE_CHARB": true,
+      "DIFFUSE_HL_PENALTY_MODE": "brightness",
+      "DIFFUSE_HL_TARGET_BRIGHTNESS": null,
+      "DIFFUSE_HL_USE_LUMINANCE": false,
+      "LOG_INTERVAL": 1,
+      "WANDB_LOG_INTERVAL": 1,
+      "IMAGE_LOG_INTERVAL": 5,
+      "NO_WANDB": false,
+      "MODEL_WATCHER_FREQ_WANDB": 50,
+      "WANDB_ENTITY": "unreflect-anything",
+      "WANDB_PROJECT": "UnReflectAnything",
+      "NOTES": "LOCAL_PRIOR_WEIGHT 0.2",
+      "LOCAL_RANK": 0,
+      "RANK": 0,
+      "WORLD_SIZE": 6,
+      "name": "cool-hill-1091"
+    },
+    "torch": "2.9.1+cu128",
+    "device": "cuda",
+    "dtype": "float32",
+    "model_size": 896,
+    "diffuse_decoder_executed": false,
+    "token_inpainter_executed": false,
+    "source_fallback_required": true
+  },
+  "author_sample": {
+    "source": "dependencies\\UnReflectAnything\\dataset\\sample_datasets\\SCARED\\v1\\frame\\000000.png",
+    "sha256": "0e3a800d3b17b88059240e3cda6bd25781ff587c239c230150564ffa5a4bbb57",
+    "full_forward_finite": true,
+    "full_diffuse_shape": [
+      1,
+      3,
+      896,
+      896
+    ],
+    "highlight_head_exact": true,
+    "highlight_max": 0.9541587829589844,
+    "highlight_pixels_above_03": 16313,
+    "full_diffuse_saved": false,
+    "performer_rgb_synthesized": false,
+    "scope": "One bundled surgical sample, chosen by filename; integration check only"
+  },
+  "fresh_integration_check": false,
+  "packages": {
+    "torch": "2.9.1+cu128",
+    "torchvision": "0.24.1+cu128",
+    "transformers": "4.56.0.dev0",
+    "unreflectanything": "1.1.1",
+    "numpy": "2.4.2",
+    "opencv-python": "4.13.0.92"
+  },
+  "video": {
+    "frames": 50,
+    "fps": 59.94005994005994,
+    "sha256": "ca24c4c0287b86de9f753ab2851dd1ab0b4fe41c58be9b08371e250867c2bbf6",
+    "artist_approval": false
+  },
+  "code_sha256": "c2cf340848eb599b5a36a7b5ac1c26b75a454a13d3fcf25af3a4ced6b1476934"
+}

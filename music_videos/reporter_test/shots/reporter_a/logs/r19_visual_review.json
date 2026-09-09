@@ -1,0 +1,32 @@
+{
+  "date": "2026-09-09",
+  "method": "Decoded ordered contact-sheet and selected full-board inspection, not real-time playback",
+  "artist_approval": false,
+  "local_motion": {
+    "video_sha256": "3668a706887207df92db65cb32bb149c12b0abbaff1d33f9f741875437d3f816",
+    "decoded_frames": 192,
+    "inspected_contact_sheets": [0, 24, 48, 72, 96, 120, 144, 168],
+    "full_decoded_boards": [23],
+    "observations": [
+      "All eight sequences show local observed-texture motion against stationary surroundings; artificial patch deformation is visible.",
+      "Base controls are on the left and contaminated cases on the right; model acceptance and known geometry have distinct markers.",
+      "Full board 23 has readable source/control labels and distinct material and stationary positions. Its rejected CoTracker marker is offset from material truth.",
+      "Contact thumbnails establish sequence coverage; small labels and subpixel distances are assessed from full boards/numeric verification, not claimed readable in thumbnails."
+    ]
+  },
+  "unreflect_highlights": {
+    "video_sha256": "ca24c4c0287b86de9f753ab2851dd1ab0b4fe41c58be9b08371e250867c2bbf6",
+    "decoded_frames": 50,
+    "inspected_contact_sheets": [0, 25],
+    "full_decoded_boards": [31],
+    "full_original_review_boards": [27],
+    "observations": [
+      "Original left/right eye crops appear on the left; probability maps are on the right.",
+      "Probability maps are almost black throughout, including when source catchlights are visible. This matches the saved weak probabilities; the panels are not missing.",
+      "The source blink and reopening remain visible; full board 31 shows narrowed/closed eyes with no thresholded highlight pixels.",
+      "No surgical imagery, reconstructed performer texture, removal or scene-light replacement appears in the video."
+    ]
+  },
+  "production_repairs": 0,
+  "photorealism_met": false
+}

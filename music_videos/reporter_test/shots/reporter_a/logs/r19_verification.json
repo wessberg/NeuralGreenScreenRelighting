@@ -1,0 +1,41 @@
+{
+  "synthetic_sequences": 8,
+  "signed_transform_controls": 4,
+  "paired_records": 384,
+  "exact_substitution_runs": 64,
+  "array_hash_comparisons": 1152,
+  "max_independent_mapping_error": 1.9073486328125e-06,
+  "max_independent_cycle_error": 3.3752450825375035e-06,
+  "fallback": {
+    "exact_keyed_eye_fallbacks": 300,
+    "protected_hashes_unchanged": 304
+  },
+  "search_isolation": {
+    "synthetic_known_geometry": true,
+    "training_pixels": 428,
+    "searched_native_footprints": 223,
+    "changed_validation_mae": 144.92591857910156,
+    "selected_angle_and_training_exact": true
+  },
+  "capacity": {
+    "pairs": 126,
+    "cases": 42,
+    "signed_centroid_controls": 4,
+    "independent_contributors": true
+  },
+  "prior_code_and_models_unchanged": true,
+  "video": {
+    "frames": 192,
+    "fps": 24.0,
+    "sha256": "3668a706887207df92db65cb32bb149c12b0abbaff1d33f9f741875437d3f816",
+    "bytes": 1401605,
+    "visual_review": "pending separate record",
+    "artist_approval": false
+  },
+  "code_sha256": {
+    "local_reflection_motion.py": "15f99a405af1cc416e2cb5c35c47fad110348aaef8f2a010cdb677d3d2472c09",
+    "registered_context.py": "bc7ca4786ba6c948b1d5053baec5cc8b6aeec90506e8a66702335898d2c5c127",
+    "audit_r19_local.py": "980469e1c3db2701f8e8bdbf0d07bdd270a625ff92645ab91739fc3ca94544b5",
+    "verify_r19.py": "beb8389ecc9fc4c24abbb0d6d2b6f01b3346275631533632f2c0f4e2e7fd93d2"
+  }
+}

@@ -1,5 +1,17 @@
 # Eye reflection relighting: reusable components and prior art
 
+**Round 19 correction (2026-09-09):** the previous UnReflectAnything availability
+assessment below was incomplete. Despite the stale GitHub README warning, the
+author's Hugging Face repository contains a full checkpoint. It is now downloaded,
+strictly loaded and its highlight head evaluated locally on 100 reporter eye crops.
+All 601 state entries match. None of the 12 sparse catchlight anchors exceeds the
+author's 0.3 threshold in this crop setup; diffuse reconstruction on the performer
+was not evaluated. This does not rule out the model's reconstruction capabilities
+or other materials. CoTracker3 has also now run in rounds 16-19. See the current
+[research and general-material strategy](r19-material-research.md) and
+[round 19 handoff](../rounds/round19.md). The artist explicitly includes drums,
+guitars and other reflective objects in the product's scope.
+
 Checked against authors' repositories and papers on 2026-09-08. None of the neural
 models below has been installed or evaluated in this project during round 12.
 Repository documentation advertising weights is not a verified download or inference run.
@@ -34,7 +46,7 @@ temporal reconstruction is generally impossible.
 | Highlight separation baseline | [TSHRNet](https://github.com/fu123456/TSHRNet) | ICCV 2023 three-stage RGB specular removal; README links pretrained models. | Eye-specific detail, pupil/sclera preservation and temporal behaviour; this is single-image estimation, not a tracked-eye relighting system. |
 | Multi-view corneal/iris decomposition | [Seeing the World through Your Eyes](https://world-from-eyes.github.io/), [CVPR 2024 paper](https://openaccess.thecvf.com/content/CVPR2024/papers/Alzayer_Seeing_the_World_through_Your_Eyes_CVPR_2024_paper.pdf) | Joint optimization of corneal poses, reflected scene and a shared iris texture field; public code is linked by the authors. | The paper evaluates the reflected scene reconstruction. Its radial iris regularizer may alter texture; it does not validate exact photographic iris restoration for our use. Small motion is a documented failure case. |
 | Iris deformation | [EyePreserve](https://github.com/CVRL/EyePreserve), [DeformIrisNet](https://arxiv.org/abs/2207.08980) | Learned nonlinear pupil-dilation deformation with biometric identity objectives. EyePreserve links model downloads. | EyePreserve's documented input is near-infrared iris imagery plus a target mask. This is adjacent deformation work, not an RGB catchlight-removal model. Biometric identity preservation is weaker than exact pixel provenance. |
-| Recent general highlight removal | [UnReflectAnything](https://github.com/alberto-rota/UnReflectAnything) | RGB highlight-removal research and package/API scaffold. | The README currently says official pretrained weights are **not released** and `pretrained=True` does not download them. Do not mistake the installation example for a runnable pretrained solution. |
+| Recent general highlight removal | [UnReflectAnything](https://github.com/alberto-rota/UnReflectAnything), [released author weights](https://huggingface.co/AlbeRota/UnReflectAnything/tree/main/weights) | General RGB highlight detection and learned diffuse reconstruction. Round 19 verifies strict checkpoint loading and executes its highlight head. | The README's unreleased-weights warning conflicts with the actual release. The reporter crop test does not validate masks or clean reconstruction; diffuse inpainting is not observed-pixel provenance. Instruments remain untested. |
 
 The practical conclusion is to benchmark released components first, especially neural
 eye segmentation/tracking. The sources establish relevant prior art, not a turnkey
