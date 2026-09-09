@@ -6,6 +6,28 @@ any model starts from the same state.
 
 ## Read the latest round first
 
+**Artist steering after round 30 (2026-09-09): selective generation is allowed.**
+The artist explicitly accepts generative repair for selected regions, especially
+after prolonged failure of an observed-pixel method, and reiterates a preference
+for DiffusionRenderer. This supersedes older blanket bans on generated performer
+texture and the strict pixel-provenance requirement below. Preserve recognizable
+identity, gaze, expression and timing; evaluate selective eye regeneration with
+scene-light conditioning in a source/result video. Preserve original pixels outside
+the selected repair region and retain source fallback for failed repairs. Do not
+spend another round tuning the same optical solver merely because it is the inherited
+starter prompt: round 30 is not close to a working eye solution. Existing tracking,
+masking, lighting and compositor work remains useful. A model's generated output
+must be judged visually and temporally; exact material recovery is not a prerequisite
+for this newly authorized experiment.
+
+**Round 31 artist rejection:** released SVD DiffusionRenderer now runs locally,
+but whole-eye replacement produces unrealistic golden irises and distorted pupil
+detail. Restricting its generated albedo to reflection spots still leaves a light
+brown spot inside the pupil; the artist rejected that too. Neither is a repair.
+Selective generation remains authorized; this does not reinstate a blanket ban.
+Do not reuse the failed albedo as clean pupil material or hide its errors with
+another tint/mask adjustment. See `rounds/round31.md` for outputs and next steps.
+
 **Before doing anything else in this repo, read the most recent file in `rounds/`.**
 
 ```powershell
@@ -185,7 +207,7 @@ Status is for `reporter_test/reporter_a`, the test bed, as of the end of round 2
 | 12 | **Motion blur match** — 180° shutter at 24 fps | CG rendered without matching blur strobes against a correctly blurred plate. | 🔴 |
 | 13 | **Edge integration** — no green fringe, correct edge alpha, no dark halo | Round 2 measured 68 % of hair-fringe pixels going green-positive once a green light was applied. | 🟡 despill works; fringe compounds under coloured light |
 | 14 | **Temporal stability** — no flicker, no crawling normals or matte | A per-frame estimator with no temporal model will crawl. Sapiens2 measures 2.03°/frame. | 🟡 measured, not yet controlled |
-| 15 | **Identity preservation** — the actor's own pixels, never a generative reconstruction | Non-negotiable for the artist's own face. Structurally guaranteed by ratio compositing; broken by any diffusion relighter in the output path. | 🟢 architecture enforces it |
+| 15 | **Identity preservation** — preserve the actor's recognizable identity, gaze, expression and performance | Selective generative repair is explicitly allowed by the artist after round 30. Preserve original pixels outside the selected repair region; generated regions need visual and temporal evaluation. | 🟡 original ratio path preserves source; selective generation is authorized but not yet validated |
 | 16 | **Perspective and scale match** — lens, distance, height | Wrong focal length reads as a wrong-sized person. | 🟡 ASSUMED for the reporter plate, must be recorded on set |
 | 17 | **Colour pipeline** — Rec.2020 / ST2084, 1000-nit master, ProRes 4444 / DNxHR 444 for Resolve | | 🟢 validated end to end, including that the ProRes encoder silently drops `-color_trc` and needs the `prores_metadata` bitstream filter |
 | 18 | **V-Log / V-Gamut decode on ingest** | His camera records log over a wide gamut. Undecoded, every downstream stage is wrong in a way that still looks like a picture. | 🔴 not built; constants not yet verified against Panasonic documentation |

@@ -1,0 +1,28 @@
+{
+  "frames": 24,
+  "edited_frames": 9,
+  "fallback_frames": 15,
+  "maximum_edited_native_pixels_per_frame": 95,
+  "total_edited_native_pixels": 680,
+  "exact_source_outside_mask": true,
+  "source_hashes_unchanged": true,
+  "all_arrays_finite": true,
+  "edited_mean_source_display": 85.79313725490196,
+  "edited_mean_result_display": 40.805392156862744,
+  "brightness_change_is_not_clean_material_evidence": true,
+  "scene_replacement": false,
+  "videos": {
+    "native": {
+      "frames": 24,
+      "fps": 59.94005994005994,
+      "sha256": "5266bd00f85ef328d4766e15b0029772ef44da3017f79f1b50b9de01134ab2fd",
+      "max_frame_mean_encode_error": 1.8371771918402777
+    },
+    "_slow": {
+      "frames": 24,
+      "fps": 12.0,
+      "sha256": "4a99ef8ddbc2243e4e053599e7f977da81ac93ec1f1b6aaf5891a766db912b6d",
+      "max_frame_mean_encode_error": 1.4537950303819445
+    }
+  }
+}

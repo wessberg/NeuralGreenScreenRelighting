@@ -1,0 +1,34 @@
+{
+  "frames": 24,
+  "native_unchanged_pixels_per_arm": 3741995,
+  "full_closure_exact_source_frames": [
+    708,
+    709
+  ],
+  "all_source_hashes_unchanged": true,
+  "all_generated_image_hashes_match": true,
+  "all_arrays_finite": true,
+  "author_environment_direction_max_abs_error": 3.2782554626464844e-07,
+  "mean_display_change_inside_masks": {
+    "neutral": 30.273621606520713,
+    "scene": 19.116042062104583
+  },
+  "display_change_is_not_a_quality_score": true,
+  "inference_seconds": 165.25208080000448,
+  "max_cuda_allocated_bytes": 7446993408,
+  "video": {
+    "frames": 24,
+    "fps": 59.94005994005994,
+    "seconds": 0.40040000000000003,
+    "sha256": "3ef8710093a2cc3fbdd71d41551509c137f96038529190860bda5f8271016a04",
+    "max_frame_mean_encode_error": 1.7684236111111111,
+    "all_frames_decoded": true
+  },
+  "slow_video": {
+    "frames": 24,
+    "fps": 12.0,
+    "sha256": "3aabf422077e16d31d0cb7af9507c770e0f56e71be1e1a30181a9336fbce3be1",
+    "max_frame_mean_encode_error": 1.4199995659722222,
+    "all_frames_decoded": true
+  }
+}

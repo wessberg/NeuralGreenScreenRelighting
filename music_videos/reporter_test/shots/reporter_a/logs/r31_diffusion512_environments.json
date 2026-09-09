@@ -1,0 +1,11 @@
+{
+  "scene": "assets\\hdri\\warm_restaurant_night_4k.exr",
+  "sha256": "a15bfa2e3507c58fc1ae247a5922d7bb70ae6e60168785ac1d6740fa97d71f18",
+  "strength": 1.0,
+  "author_layout_rotation_degrees": 180.0,
+  "neutral_radiance": 0.1,
+  "source": "shot environment HDRI",
+  "world_registration_validated": false,
+  "direct_latlong_sampling": true,
+  "finite_scene_geometry_reflections": false
+}

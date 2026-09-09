@@ -1,0 +1,140 @@
+{
+  "results": [
+    {
+      "screenshot": "C:\\Users\\Frede\\Downloads\\Screenshot 2026-09-09 135051.png",
+      "sha256": "7373b87ada8e713b0851c4f8964bf41d4b45e8f8d6dd839edc536a2039dfdbcf",
+      "best_matches": [
+        {
+          "local_frame": 1,
+          "source_frame": 701,
+          "correlation": 0.9943342804908752,
+          "transform": {
+            "width": 321,
+            "xy": [
+              20,
+              13
+            ]
+          }
+        },
+        {
+          "local_frame": 0,
+          "source_frame": 700,
+          "correlation": 0.9907925128936768,
+          "transform": {
+            "width": 321,
+            "xy": [
+              20,
+              13
+            ]
+          }
+        },
+        {
+          "local_frame": 2,
+          "source_frame": 702,
+          "correlation": 0.9731124043464661,
+          "transform": {
+            "width": 324,
+            "xy": [
+              21,
+              13
+            ]
+          }
+        },
+        {
+          "local_frame": 23,
+          "source_frame": 723,
+          "correlation": 0.9617242813110352,
+          "transform": {
+            "width": 324,
+            "xy": [
+              19,
+              18
+            ]
+          }
+        },
+        {
+          "local_frame": 22,
+          "source_frame": 722,
+          "correlation": 0.9602248072624207,
+          "transform": {
+            "width": 324,
+            "xy": [
+              19,
+              19
+            ]
+          }
+        }
+      ],
+      "matching_is_inference_not_frame_metadata": true
+    },
+    {
+      "screenshot": "C:\\Users\\Frede\\Downloads\\Screenshot 2026-09-09 135325.png",
+      "sha256": "4cb9711abba1da01f6b41261b1d62657cdb1b6ae5d909475154d8e378ff400a6",
+      "best_matches": [
+        {
+          "local_frame": 22,
+          "source_frame": 722,
+          "correlation": 0.9978690147399902,
+          "transform": {
+            "width": 324,
+            "xy": [
+              21,
+              17
+            ]
+          }
+        },
+        {
+          "local_frame": 23,
+          "source_frame": 723,
+          "correlation": 0.993693470954895,
+          "transform": {
+            "width": 324,
+            "xy": [
+              21,
+              16
+            ]
+          }
+        },
+        {
+          "local_frame": 21,
+          "source_frame": 721,
+          "correlation": 0.9920817613601685,
+          "transform": {
+            "width": 324,
+            "xy": [
+              21,
+              19
+            ]
+          }
+        },
+        {
+          "local_frame": 20,
+          "source_frame": 720,
+          "correlation": 0.9870582818984985,
+          "transform": {
+            "width": 324,
+            "xy": [
+              22,
+              20
+            ]
+          }
+        },
+        {
+          "local_frame": 19,
+          "source_frame": 719,
+          "correlation": 0.9712362289428711,
+          "transform": {
+            "width": 324,
+            "xy": [
+              21,
+              21
+            ]
+          }
+        }
+      ],
+      "matching_is_inference_not_frame_metadata": true
+    }
+  ],
+  "video_sha256": "4a99ef8ddbc2243e4e053599e7f977da81ac93ec1f1b6aaf5891a766db912b6d",
+  "video_not_modified": true
+}

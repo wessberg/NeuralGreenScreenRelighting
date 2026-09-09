@@ -1,0 +1,152 @@
+{
+  "inverse": {
+    "repository": "nexuslrf/diffusion_renderer-inverse-svd",
+    "revision": "54243c27ad6299e43159410188403f7136b2dcba",
+    "files": [
+      {
+        "path": "README.md",
+        "bytes": 4914,
+        "expected_sha256": null,
+        "sha256": "e208894015f55b71e9b4b6e937605f344cfcbbc94417b7461f7ae37dc871e297"
+      },
+      {
+        "path": "config.json",
+        "bytes": 0,
+        "expected_sha256": null,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "model_index.json",
+        "bytes": 409,
+        "expected_sha256": null,
+        "sha256": "b78c6252cd7f4985922c756bf98e37ec692d7df878888addae34912bb34c8a49"
+      },
+      {
+        "path": "scheduler/scheduler_config.json",
+        "bytes": 595,
+        "expected_sha256": null,
+        "sha256": "5efadbe627d72ea2f70ffe5ffc55ae4fd602da981b60b55f15871c07fa7fda2a"
+      },
+      {
+        "path": "unet/config.json",
+        "bytes": 941,
+        "expected_sha256": null,
+        "sha256": "59af3109c37ab57e1cd383ad32b14268257cbd3e2815d97d8113b697431719f9"
+      },
+      {
+        "path": "unet/diffusion_pytorch_model.safetensors",
+        "bytes": 6098707136,
+        "expected_sha256": "f9552d85fcac9d32ef643ba9f8ed663386706a3797162c1e844e26b19983ee84",
+        "sha256": "f9552d85fcac9d32ef643ba9f8ed663386706a3797162c1e844e26b19983ee84"
+      },
+      {
+        "path": "vae/config.json",
+        "bytes": 655,
+        "expected_sha256": null,
+        "sha256": "6232206166b38b3845805825fd2ebaf85fa8f3fc06df99e0d87f8e48bfd45ff4"
+      },
+      {
+        "path": "vae/diffusion_pytorch_model.safetensors",
+        "bytes": 195531910,
+        "expected_sha256": "af602cd0eb4ad6086ec94fbf1438dfb1be5ec9ac03fd0215640854e90d6463a3",
+        "sha256": "af602cd0eb4ad6086ec94fbf1438dfb1be5ec9ac03fd0215640854e90d6463a3"
+      }
+    ]
+  },
+  "forward": {
+    "repository": "nexuslrf/diffusion_renderer-forward-svd",
+    "revision": "bea8a656cff77215e70f1081070bd2b39dad004d",
+    "files": [
+      {
+        "path": "README.md",
+        "bytes": 4915,
+        "expected_sha256": null,
+        "sha256": "57bcd9de330db42cf8bff6a25d6c2cef7cde6acf7cf833e01dae2deab79d5965"
+      },
+      {
+        "path": "config.json",
+        "bytes": 0,
+        "expected_sha256": null,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "env_decoder/config.json",
+        "bytes": 399,
+        "expected_sha256": null,
+        "sha256": "3d95a3040106c2c17c4ead700a7f7cabbbc3bb8bda66f60de1425b85666dd0f2"
+      },
+      {
+        "path": "env_decoder/diffusion_pytorch_model.safetensors",
+        "bytes": 639050104,
+        "expected_sha256": "66bbda72d25a3d6bf534241528053955a6d0da843b5a75ad879e9062bad58ad5",
+        "sha256": "66bbda72d25a3d6bf534241528053955a6d0da843b5a75ad879e9062bad58ad5"
+      },
+      {
+        "path": "env_encoder/config.json",
+        "bytes": 263,
+        "expected_sha256": null,
+        "sha256": "be88825cba73f54373897c935305ef401b21d05e7f4c3983fbbe64b1333b1944"
+      },
+      {
+        "path": "env_encoder/diffusion_pytorch_model.safetensors",
+        "bytes": 645859016,
+        "expected_sha256": "8b482aedf651bd9f0c70523168d828b0dba1fecfcfd027dc552c3283916a762c",
+        "sha256": "8b482aedf651bd9f0c70523168d828b0dba1fecfcfd027dc552c3283916a762c"
+      },
+      {
+        "path": "lora/pytorch_lora_weights.safetensors",
+        "bytes": 13632920,
+        "expected_sha256": "aca396e76261c37c5a42b9d8f4c5fea2d4970847bf45b4998a61ebad49f83786",
+        "sha256": "aca396e76261c37c5a42b9d8f4c5fea2d4970847bf45b4998a61ebad49f83786"
+      },
+      {
+        "path": "model_index.json",
+        "bytes": 480,
+        "expected_sha256": null,
+        "sha256": "0d395b95252d5f685aee404bb968d279062600581e8e6ab5c6d7b59ea939b30d"
+      },
+      {
+        "path": "nrm_encoder/config.json",
+        "bytes": 292,
+        "expected_sha256": null,
+        "sha256": "e3f94d97042887a2e6bc9933eb030eb8b91a3825b1b0833979f4b61100edcc39"
+      },
+      {
+        "path": "nrm_encoder/diffusion_pytorch_model.safetensors",
+        "bytes": 645766856,
+        "expected_sha256": "e5cae950adce2f7a719f3223efb247896748d743f875240a90944d902ce26789",
+        "sha256": "e5cae950adce2f7a719f3223efb247896748d743f875240a90944d902ce26789"
+      },
+      {
+        "path": "scheduler/scheduler_config.json",
+        "bytes": 594,
+        "expected_sha256": null,
+        "sha256": "0225101984de448c739eefaa28c936c711c8010b33ebdad542e642c65c187dcb"
+      },
+      {
+        "path": "unet/config.json",
+        "bytes": 1138,
+        "expected_sha256": null,
+        "sha256": "cd827e962966f3f944876dc7fbd741c81b3a3a1a82021f338d31014f27867d7f"
+      },
+      {
+        "path": "unet/diffusion_pytorch_model.safetensors",
+        "bytes": 5894228272,
+        "expected_sha256": "a4a08509483087c40e091294ec944150c2a0183c664f8f1dffcbde5a1d7389f2",
+        "sha256": "a4a08509483087c40e091294ec944150c2a0183c664f8f1dffcbde5a1d7389f2"
+      },
+      {
+        "path": "vae/config.json",
+        "bytes": 514,
+        "expected_sha256": null,
+        "sha256": "0e14e977e877c2e942a59a109df9926b5d8604d933b2ddd3f911d9fd3fd8d43b"
+      },
+      {
+        "path": "vae/diffusion_pytorch_model.safetensors",
+        "bytes": 195531910,
+        "expected_sha256": "af602cd0eb4ad6086ec94fbf1438dfb1be5ec9ac03fd0215640854e90d6463a3",
+        "sha256": "af602cd0eb4ad6086ec94fbf1438dfb1be5ec9ac03fd0215640854e90d6463a3"
+      }
+    ]
+  }
+}

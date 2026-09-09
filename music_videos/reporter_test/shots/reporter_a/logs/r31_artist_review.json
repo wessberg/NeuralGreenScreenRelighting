@@ -1,0 +1,32 @@
+{
+  "date": "2026-09-09",
+  "selective_generation_authorized": true,
+  "preferred_model_family": "DiffusionRenderer",
+  "whole_eye_replacement": "rejected",
+  "rejected_trials": ["r31_diffusion", "r31_diffusion512"],
+  "artist_words": "The diffusion eyes look terrible and completely unrealistic?",
+  "artist_screenshot": "C:/Users/Frede/Downloads/Screenshot 2026-09-09 134722.png",
+  "artist_screenshot_sha256": "d98277b833bdf3c59c22e740467d1f86cc62c7b34489cc402d145dad5a7a05b1",
+  "observed_failures": [
+    "Flattened golden irises, distorted pupil boundaries and lost fine texture in scene-conditioned output",
+    "Albedo generation already alters iris appearance before forward relighting",
+    "Neutral output darkens sclera and iris unnaturally",
+    "The unvalidated opening mask admits mismatched generated eye detail during partial closures",
+    "Scene registration and replacement-reflection fidelity are not established"
+  ],
+  "followup_trial": "r31_reflection_spots",
+  "followup_artist_accepted": false,
+  "followup_artist_decision": "rejected",
+  "followup_artist_words": "it kind of removed the reflection, but instead now we have a light brown spot inside the pupil",
+  "followup_artist_screenshot": "C:/Users/Frede/Downloads/Screenshot 2026-09-09 135051.png",
+  "followup_scope": "Small source reflection spot patches from generated basecolor, locally colour matched; removal only",
+  "followup_remaining": [
+    "The generated fill leaves a light brown spot inside the pupil; the small mask did not repair the material error",
+    "Some reflection spots remain when proposals abstain",
+    "Repair turns on and off across the blink interval; temporal stability is not established",
+    "Generated patch texture is not validated clean iris material",
+    "No scene reflection replacement was added"
+  ],
+  "agent_visual_review": "All 24 decoded frames for both whole-eye trials and the spot trial inspected in eye contact sheets; selected full boards inspected. This is not live playback or artist acceptance of the spot trial.",
+  "production_enabled": false
+}
