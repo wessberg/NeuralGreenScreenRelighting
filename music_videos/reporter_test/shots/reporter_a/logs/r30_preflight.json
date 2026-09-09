@@ -1,0 +1,66 @@
+{
+  "left": [
+    {
+      "source": 730,
+      "candidates": 246,
+      "prior_supported": 90
+    },
+    {
+      "source": 760,
+      "candidates": 272,
+      "prior_supported": 132
+    },
+    {
+      "source": 790,
+      "candidates": 265,
+      "prior_supported": 132
+    },
+    {
+      "source": 820,
+      "candidates": 251,
+      "prior_supported": 90
+    },
+    {
+      "source": 805,
+      "candidates": 269,
+      "prior_supported": 41
+    },
+    {
+      "source": 815,
+      "candidates": 316,
+      "prior_supported": 181
+    }
+  ],
+  "right": [
+    {
+      "source": 730,
+      "candidates": 248,
+      "prior_supported": 173
+    },
+    {
+      "source": 760,
+      "candidates": 296,
+      "prior_supported": 172
+    },
+    {
+      "source": 790,
+      "candidates": 240,
+      "prior_supported": 193
+    },
+    {
+      "source": 820,
+      "candidates": 249,
+      "prior_supported": 195
+    },
+    {
+      "source": 805,
+      "candidates": 300,
+      "prior_supported": 204
+    },
+    {
+      "source": 815,
+      "candidates": 312,
+      "prior_supported": 80
+    }
+  ]
+}

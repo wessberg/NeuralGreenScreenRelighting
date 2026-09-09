@@ -1,0 +1,1892 @@
+{
+  "left": {
+    "arms": {
+      "fixed": {
+        "train_reflection": {
+          "pixels": 122,
+          "median_display": 53.029005825871664,
+          "mean_display": 52.94920003167703,
+          "p95_display": 97.50356622436325,
+          "linear_mse": 0.04633815512222848
+        },
+        "parameters": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "concentration": 512.0,
+        "bound_hits": [],
+        "localized_lobe_rgb": [
+          11.92406664323136,
+          12.48007459507176,
+          11.699300722707966
+        ],
+        "full_objectives": [
+          0.02125458958796681
+        ],
+        "solver_steps": 0,
+        "evaluation_limit_steps": 0,
+        "rejected_steps": 0,
+        "invalid_training_pixels_max": 0,
+        "train_reflection_layer_means": [
+          0.0005953194887785315,
+          0.08489253048432037,
+          0.08520834647731095
+        ],
+        "maximum_prediction": 0.38618826185044625,
+        "boundaries": [
+          {
+            "source": 730,
+            "limbus_max_px": 0.8261327476529664,
+            "limbus_rms_px": 0.3817090266696296,
+            "pupil_max_px": 0.7718695539107642,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 760,
+            "limbus_max_px": 0.8285465919549442,
+            "limbus_rms_px": 0.33206947406712983,
+            "pupil_max_px": 1.0599116857631454,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 790,
+            "limbus_max_px": 1.2116142037137296,
+            "limbus_rms_px": 0.6102294850921196,
+            "pupil_max_px": 0.7241620214409747,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 820,
+            "limbus_max_px": 0.7395224938751921,
+            "limbus_rms_px": 0.35776587002201155,
+            "pupil_max_px": 0.6233894425723662,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 805,
+            "limbus_max_px": 0.40821090363078627,
+            "limbus_rms_px": 0.20238404918017122,
+            "pupil_max_px": 0.7519460076119072,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 815,
+            "limbus_max_px": 0.2892714925656807,
+            "limbus_rms_px": 0.21143424726794052,
+            "pupil_max_px": 2.769845112132752,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          }
+        ]
+      },
+      "light": {
+        "train_reflection": {
+          "pixels": 122,
+          "median_display": 43.99441841054124,
+          "mean_display": 47.71892831523915,
+          "p95_display": 97.62692553494023,
+          "linear_mse": 0.038839715531776106
+        },
+        "parameters": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -0.4829403796332673,
+          -0.22374353541668368,
+          -0.9979999999999974
+        ],
+        "concentration": 128.3553837953384,
+        "bound_hits": [
+          6
+        ],
+        "localized_lobe_rgb": [
+          19.850998291313438,
+          18.064140467547137,
+          17.664247449671606
+        ],
+        "full_objectives": [
+          0.02125458958796681,
+          0.01698422315332277,
+          0.016975243620499503,
+          0.016975152738446582,
+          0.01697515141675907
+        ],
+        "solver_steps": 20,
+        "evaluation_limit_steps": 1,
+        "rejected_steps": 0,
+        "invalid_training_pixels_max": 0,
+        "train_reflection_layer_means": [
+          0.0011332287997142683,
+          0.06981885222327104,
+          0.12194179798272191
+        ],
+        "maximum_prediction": 0.6097230719743336,
+        "boundaries": [
+          {
+            "source": 730,
+            "limbus_max_px": 0.8261327476529664,
+            "limbus_rms_px": 0.3817090266696296,
+            "pupil_max_px": 0.7718695539107642,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 760,
+            "limbus_max_px": 0.8285465919549442,
+            "limbus_rms_px": 0.33206947406712983,
+            "pupil_max_px": 1.0599116857631454,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 790,
+            "limbus_max_px": 1.2116142037137296,
+            "limbus_rms_px": 0.6102294850921196,
+            "pupil_max_px": 0.7241620214409747,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 820,
+            "limbus_max_px": 0.7395224938751921,
+            "limbus_rms_px": 0.35776587002201155,
+            "pupil_max_px": 0.6233894425723662,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 805,
+            "limbus_max_px": 0.40821090363078627,
+            "limbus_rms_px": 0.20238404918017122,
+            "pupil_max_px": 0.7519460076119072,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 815,
+            "limbus_max_px": 0.2892714925656807,
+            "limbus_rms_px": 0.21143424726794052,
+            "pupil_max_px": 2.769845112132752,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          }
+        ]
+      },
+      "coupled": {
+        "train_reflection": {
+          "pixels": 122,
+          "median_display": 53.034786212889216,
+          "mean_display": 52.876333514078375,
+          "p95_display": 96.21146580418637,
+          "linear_mse": 0.046167237363182886
+        },
+        "parameters": [
+          -4.201410386068881e-05,
+          0.0011207331606967901,
+          0.0004969417172902327,
+          -0.002680033529487437,
+          -0.017845494487358476,
+          -0.0035987039049908227,
+          -0.002789057777168217
+        ],
+        "concentration": 510.02419714242643,
+        "bound_hits": [],
+        "localized_lobe_rgb": [
+          12.643245146601263,
+          13.154756546496518,
+          12.34749517494194
+        ],
+        "full_objectives": [
+          0.02125458958796681,
+          0.021219029575888754,
+          0.021194342390503055,
+          0.0211942871178582,
+          0.021194281563790256
+        ],
+        "solver_steps": 20,
+        "evaluation_limit_steps": 15,
+        "rejected_steps": 0,
+        "invalid_training_pixels_max": 1,
+        "train_reflection_layer_means": [
+          0.0006058875853373214,
+          0.08454135986876841,
+          0.08573160953465518
+        ],
+        "maximum_prediction": 0.39738659455416336,
+        "boundaries": [
+          {
+            "source": 730,
+            "limbus_max_px": 0.8301954366203947,
+            "limbus_rms_px": 0.38273518195535705,
+            "pupil_max_px": 0.7753689960370852,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 760,
+            "limbus_max_px": 0.8250241817457346,
+            "limbus_rms_px": 0.3316569951887195,
+            "pupil_max_px": 1.0631735939709774,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 790,
+            "limbus_max_px": 1.208711559600181,
+            "limbus_rms_px": 0.607808297144882,
+            "pupil_max_px": 0.7247791569876072,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 820,
+            "limbus_max_px": 0.7358724959897089,
+            "limbus_rms_px": 0.3570202344777012,
+            "pupil_max_px": 0.6257255032916632,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 805,
+            "limbus_max_px": 0.40451820282786416,
+            "limbus_rms_px": 0.2007505980519833,
+            "pupil_max_px": 0.748828410235101,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 815,
+            "limbus_max_px": 0.28644206010601575,
+            "limbus_rms_px": 0.21110748593172932,
+            "pupil_max_px": 2.7657244142631625,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          }
+        ]
+      },
+      "spatial_backing": {
+        "train_reflection": {
+          "pixels": 122,
+          "median_display": 31.708609129347543,
+          "mean_display": 37.439137462301304,
+          "p95_display": 84.98115153725723,
+          "linear_mse": 0.01997086270645133
+        },
+        "parameters": [
+          0.0016066878129163153,
+          -0.0007739964772633117,
+          -0.0010738516035705954,
+          6.896994267407787e-05,
+          -0.0006224728186302437,
+          -0.00011222040910838961,
+          -5.845900869054972e-05
+        ],
+        "concentration": 511.95850848750626,
+        "bound_hits": [],
+        "localized_lobe_rgb": [
+          5.07330333906938,
+          5.843546897911662,
+          5.082848934495436
+        ],
+        "full_objectives": [
+          0.008605229404353008,
+          0.008590999793218049,
+          0.008590930860898578,
+          0.00859089451375522,
+          0.00859089403669715
+        ],
+        "solver_steps": 20,
+        "evaluation_limit_steps": 8,
+        "rejected_steps": 0,
+        "invalid_training_pixels_max": 0,
+        "train_reflection_layer_means": [
+          0.013616030953241091,
+          0.23599928356069133,
+          0.004456757784986916
+        ],
+        "maximum_prediction": 0.5470646261923803,
+        "boundaries": [
+          {
+            "source": 730,
+            "limbus_max_px": 0.8277155519032291,
+            "limbus_rms_px": 0.38232778498447273,
+            "pupil_max_px": 0.7735408973477149,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 760,
+            "limbus_max_px": 0.8300818204881305,
+            "limbus_rms_px": 0.33261914254866753,
+            "pupil_max_px": 1.0623294012680873,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 790,
+            "limbus_max_px": 1.2134123523287323,
+            "limbus_rms_px": 0.6103129875435204,
+            "pupil_max_px": 0.72084783198962,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 820,
+            "limbus_max_px": 0.7412166097952204,
+            "limbus_rms_px": 0.3581902997579008,
+            "pupil_max_px": 0.6262599170823956,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 805,
+            "limbus_max_px": 0.40965053563282655,
+            "limbus_rms_px": 0.20258677194606825,
+            "pupil_max_px": 0.7541548711732589,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 815,
+            "limbus_max_px": 0.2917859327078977,
+            "limbus_rms_px": 0.21178718046688189,
+            "pupil_max_px": 2.7676889629905457,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          }
+        ]
+      }
+    },
+    "coverage": {
+      "0": {
+        "prior": 90,
+        "joint": 90,
+        "reflection": 22,
+        "other": 68,
+        "lost_from_prior": 0
+      },
+      "1": {
+        "prior": 132,
+        "joint": 132,
+        "reflection": 2,
+        "other": 130,
+        "lost_from_prior": 0
+      },
+      "2": {
+        "prior": 132,
+        "joint": 132,
+        "reflection": 2,
+        "other": 130,
+        "lost_from_prior": 0
+      },
+      "3": {
+        "prior": 90,
+        "joint": 89,
+        "reflection": 6,
+        "other": 83,
+        "lost_from_prior": 1
+      },
+      "4": {
+        "prior": 41,
+        "joint": 41,
+        "reflection": 0,
+        "other": 41,
+        "lost_from_prior": 0
+      },
+      "5": {
+        "prior": 181,
+        "joint": 180,
+        "reflection": 16,
+        "other": 164,
+        "lost_from_prior": 1
+      }
+    },
+    "selected": null,
+    "scores": {
+      "fixed": null,
+      "light": null,
+      "coupled": null,
+      "spatial_backing": null
+    },
+    "seen_815": {
+      "fixed": {
+        "reflection": {
+          "pixels": 16,
+          "median_display": 63.908847150441176,
+          "mean_display": 60.50643301015529,
+          "p95_display": 104.93241774251327,
+          "linear_mse": 0.03597140744092105
+        },
+        "other": {
+          "pixels": 164,
+          "median_display": 9.793360656018873,
+          "mean_display": 22.116293899320198,
+          "p95_display": 77.3983577414595,
+          "linear_mse": 0.0038470114189521256
+        },
+        "supported": {
+          "pixels": 180,
+          "median_display": 10.581261999571627,
+          "mean_display": 25.528750709172208,
+          "p95_display": 80.48887810804986,
+          "linear_mse": 0.006702513287571584
+        },
+        "reflection_layer_means": [
+          0.0,
+          0.0985166469090684,
+          0.07631776645094056
+        ]
+      },
+      "light": {
+        "reflection": {
+          "pixels": 16,
+          "median_display": 59.2777840497242,
+          "mean_display": 60.49077061819229,
+          "p95_display": 120.61764552250446,
+          "linear_mse": 0.04198060559144268
+        },
+        "other": {
+          "pixels": 164,
+          "median_display": 9.14666720218955,
+          "mean_display": 21.632305011301295,
+          "p95_display": 72.89088503047901,
+          "linear_mse": 0.0069737234367747165
+        },
+        "supported": {
+          "pixels": 180,
+          "median_display": 10.178335887614391,
+          "mean_display": 25.086390843024937,
+          "p95_display": 90.82074062851247,
+          "linear_mse": 0.010085446294967425
+        },
+        "reflection_layer_means": [
+          0.0,
+          0.08102384476979212,
+          0.07134878920855002
+        ]
+      },
+      "coupled": {
+        "reflection": {
+          "pixels": 16,
+          "median_display": 63.90724746796745,
+          "mean_display": 60.613400886888,
+          "p95_display": 105.91962833608065,
+          "linear_mse": 0.03631005217064775
+        },
+        "other": {
+          "pixels": 164,
+          "median_display": 9.799724586749619,
+          "mean_display": 22.093051436269107,
+          "p95_display": 77.22137846252326,
+          "linear_mse": 0.0038474830118894457
+        },
+        "supported": {
+          "pixels": 180,
+          "median_display": 10.590890622247702,
+          "mean_display": 25.517082498546344,
+          "p95_display": 80.2440389880908,
+          "linear_mse": 0.006733044714890183
+        },
+        "reflection_layer_means": [
+          0.0,
+          0.09810911817302571,
+          0.07696546929735655
+        ]
+      },
+      "spatial_backing": {
+        "reflection": {
+          "pixels": 16,
+          "median_display": 48.48708561320763,
+          "mean_display": 58.99820810555634,
+          "p95_display": 127.99499490070585,
+          "linear_mse": 0.04681845174002338
+        },
+        "other": {
+          "pixels": 164,
+          "median_display": 7.770768881277454,
+          "mean_display": 14.985545826715517,
+          "p95_display": 68.30239102574484,
+          "linear_mse": 0.004897281877348938
+        },
+        "supported": {
+          "pixels": 180,
+          "median_display": 8.129024259221524,
+          "mean_display": 18.89778247372359,
+          "p95_display": 87.97371708192568,
+          "linear_mse": 0.008623608087364443
+        },
+        "reflection_layer_means": [
+          0.0,
+          0.23669424944796938,
+          0.0072238642290287786
+        ]
+      }
+    },
+    "sampling": {
+      "fixed": {
+        "common_pixels": 1610,
+        "boundary_pixels": 171,
+        "comparisons": {
+          "3": {
+            "all": {
+              "pixels": 1610,
+              "max_sum": 0.013932494393783149,
+              "mean_sum": 0.00040310755914952344,
+              "layer_max": [
+                0.007853351729281192,
+                0.014605575756629428,
+                0.0061632402931919295
+              ]
+            },
+            "boundary": {
+              "pixels": 171,
+              "max_sum": 0.013932494393783149,
+              "mean_sum": 0.0031225732878186804,
+              "layer_max": [
+                0.007853351729281192,
+                0.014605575756629428,
+                0.0008700526037043882
+              ]
+            },
+            "interior": {
+              "pixels": 1439,
+              "max_sum": 0.006163259386661568,
+              "mean_sum": 7.994658652796275e-05,
+              "layer_max": [
+                0.001157595023118213,
+                1.6825803547670937e-07,
+                0.0061632402931919295
+              ]
+            }
+          },
+          "7": {
+            "all": {
+              "pixels": 1610,
+              "max_sum": 0.00576242162657932,
+              "mean_sum": 0.00011030879239490539,
+              "layer_max": [
+                0.002073124331386629,
+                0.005761223241317434,
+                0.0010553515743407793
+              ]
+            },
+            "boundary": {
+              "pixels": 171,
+              "max_sum": 0.00576242162657932,
+              "mean_sum": 0.0009213841025181497,
+              "layer_max": [
+                0.002073124331386629,
+                0.005761223241317434,
+                0.0001431051089058749
+              ]
+            },
+            "interior": {
+              "pixels": 1439,
+              "max_sum": 0.001055354935760977,
+              "mean_sum": 1.3926667286444833e-05,
+              "layer_max": [
+                0.00020176063489527052,
+                2.9621712110960985e-08,
+                0.0010553515743407793
+              ]
+            }
+          },
+          "15": {
+            "all": {
+              "pixels": 1610,
+              "max_sum": 0.001584774701807068,
+              "mean_sum": 3.1828055815442526e-05,
+              "layer_max": [
+                0.0007912863089843888,
+                0.0016945223656653317,
+                0.0001846115376137325
+              ]
+            },
+            "boundary": {
+              "pixels": 171,
+              "max_sum": 0.001584774701807068,
+              "mean_sum": 0.00027929687864877234,
+              "layer_max": [
+                0.0007912863089843888,
+                0.0016945223656653317,
+                2.4862013751375533e-05
+              ]
+            },
+            "interior": {
+              "pixels": 1439,
+              "max_sum": 0.00018461212844089747,
+              "mean_sum": 2.42071133698568e-06,
+              "layer_max": [
+                2.8604130012377382e-05,
+                5.206515885092244e-09,
+                0.0001846115376137325
+              ]
+            }
+          }
+        }
+      },
+      "light": {
+        "common_pixels": 1610,
+        "boundary_pixels": 171,
+        "comparisons": {
+          "3": {
+            "all": {
+              "pixels": 1610,
+              "max_sum": 0.0112760386062783,
+              "mean_sum": 0.0003607977259231955,
+              "layer_max": [
+                0.008565665467723395,
+                0.011987051488847766,
+                0.004662466558221168
+              ]
+            },
+            "boundary": {
+              "pixels": 171,
+              "max_sum": 0.0112760386062783,
+              "mean_sum": 0.002585029847881699,
+              "layer_max": [
+                0.008565665467723395,
+                0.011987051488847766,
+                0.00365845319097291
+              ]
+            },
+            "interior": {
+              "pixels": 1439,
+              "max_sum": 0.004662479907412087,
+              "mean_sum": 9.648661205599325e-05,
+              "layer_max": [
+                0.001156779170106037,
+                1.3809231269590327e-07,
+                0.004662466558221168
+              ]
+            }
+          },
+          "7": {
+            "all": {
+              "pixels": 1610,
+              "max_sum": 0.00472916845798918,
+              "mean_sum": 9.39362191884882e-05,
+              "layer_max": [
+                0.003053089447300039,
+                0.004728336683411639,
+                0.000810639975791172
+              ]
+            },
+            "boundary": {
+              "pixels": 171,
+              "max_sum": 0.00472916845798918,
+              "mean_sum": 0.0007415830407470396,
+              "layer_max": [
+                0.003053089447300039,
+                0.004728336683411639,
+                0.0006382253647352343
+              ]
+            },
+            "interior": {
+              "pixels": 1439,
+              "max_sum": 0.0008106423267965068,
+              "mean_sum": 1.6974713638444898e-05,
+              "layer_max": [
+                0.0002015089702316064,
+                2.4311057236769962e-08,
+                0.000810639975791172
+              ]
+            }
+          },
+          "15": {
+            "all": {
+              "pixels": 1610,
+              "max_sum": 0.0013907337989562396,
+              "mean_sum": 2.6849885151323477e-05,
+              "layer_max": [
+                0.0011450482881326489,
+                0.0013907241443059694,
+                0.0001421742637429113
+              ]
+            },
+            "boundary": {
+              "pixels": 171,
+              "max_sum": 0.0013907337989562396,
+              "mean_sum": 0.00022793177478356736,
+              "layer_max": [
+                0.0011450482881326489,
+                0.0013907241443059694,
+                0.000112000447086813
+              ]
+            },
+            "interior": {
+              "pixels": 1439,
+              "max_sum": 0.00014217467699928488,
+              "mean_sum": 2.9548169601395218e-06,
+              "layer_max": [
+                2.8620714005792025e-05,
+                4.273078640926187e-09,
+                0.0001421742637429113
+              ]
+            }
+          }
+        }
+      },
+      "coupled": {
+        "common_pixels": 1607,
+        "boundary_pixels": 171,
+        "comparisons": {
+          "3": {
+            "all": {
+              "pixels": 1607,
+              "max_sum": 0.014402511587437924,
+              "mean_sum": 0.0004143240732733189,
+              "layer_max": [
+                0.007689554639393678,
+                0.01620194149311567,
+                0.0063911175532943565
+              ]
+            },
+            "boundary": {
+              "pixels": 171,
+              "max_sum": 0.014402511587437924,
+              "mean_sum": 0.0032123927268150197,
+              "layer_max": [
+                0.007689554639393678,
+                0.01620194149311567,
+                0.001055314708374555
+              ]
+            },
+            "interior": {
+              "pixels": 1436,
+              "max_sum": 0.0063911365682867705,
+              "mean_sum": 8.112787567190461e-05,
+              "layer_max": [
+                0.001135851767070345,
+                1.6759973685276375e-07,
+                0.0063911175532943565
+              ]
+            }
+          },
+          "7": {
+            "all": {
+              "pixels": 1607,
+              "max_sum": 0.005739436670992096,
+              "mean_sum": 0.00010506564265208496,
+              "layer_max": [
+                0.0019425192786611221,
+                0.005738240799378791,
+                0.001094594386595149
+              ]
+            },
+            "boundary": {
+              "pixels": 171,
+              "max_sum": 0.005739436670992096,
+              "mean_sum": 0.0008687424472575822,
+              "layer_max": [
+                0.0019425192786611221,
+                0.005738240799378791,
+                0.00017511482903165287
+              ]
+            },
+            "interior": {
+              "pixels": 1436,
+              "max_sum": 0.0010945977341991764,
+              "mean_sum": 1.41264131342994e-05,
+              "layer_max": [
+                0.000195755669567671,
+                2.950581950988962e-08,
+                0.001094594386595149
+              ]
+            }
+          },
+          "15": {
+            "all": {
+              "pixels": 1607,
+              "max_sum": 0.0022028294778377727,
+              "mean_sum": 3.359405929327648e-05,
+              "layer_max": [
+                0.0006138449922593464,
+                0.002483712200529467,
+                0.00019148285484382743
+              ]
+            },
+            "boundary": {
+              "pixels": 171,
+              "max_sum": 0.0022028294778377727,
+              "mean_sum": 0.0002949924626854891,
+              "layer_max": [
+                0.0006138449922593464,
+                0.002483712200529467,
+                3.0469778082811705e-05
+              ]
+            },
+            "interior": {
+              "pixels": 1436,
+              "max_sum": 0.00019148344324254607,
+              "mean_sum": 2.46653354113974e-06,
+              "layer_max": [
+                2.816661511073626e-05,
+                5.1861457628366026e-09,
+                0.00019148285484382743
+              ]
+            }
+          }
+        }
+      },
+      "spatial_backing": {
+        "common_pixels": 1608,
+        "boundary_pixels": 171,
+        "comparisons": {
+          "3": {
+            "all": {
+              "pixels": 1608,
+              "max_sum": 0.030418768303386745,
+              "mean_sum": 0.0002636548089854062,
+              "layer_max": [
+                0.018648340473156166,
+                0.039889509500183995,
+                0.0028868814621362537
+              ]
+            },
+            "boundary": {
+              "pixels": 171,
+              "max_sum": 0.030418768303386745,
+              "mean_sum": 0.0014346352779870605,
+              "layer_max": [
+                0.018648340473156166,
+                0.039889509500183995,
+                0.00040023324716214476
+              ]
+            },
+            "interior": {
+              "pixels": 1437,
+              "max_sum": 0.006759278990355,
+              "mean_sum": 0.00012431057780984395,
+              "layer_max": [
+                0.0018983185920672593,
+                0.006759471764601788,
+                0.0028868814621362537
+              ]
+            }
+          },
+          "7": {
+            "all": {
+              "pixels": 1608,
+              "max_sum": 0.005608272348663373,
+              "mean_sum": 5.544272314016711e-05,
+              "layer_max": [
+                0.007218438218763973,
+                0.009311642543767817,
+                0.0004943365472882544
+              ]
+            },
+            "boundary": {
+              "pixels": 171,
+              "max_sum": 0.005608272348663373,
+              "mean_sum": 0.00033659573516925476,
+              "layer_max": [
+                0.007218438218763973,
+                0.009311642543767817,
+                6.575281417734932e-05
+              ]
+            },
+            "interior": {
+              "pixels": 1437,
+              "max_sum": 0.0006934665809669172,
+              "mean_sum": 2.1986101666977133e-05,
+              "layer_max": [
+                0.00031007987303437873,
+                0.0006934800974833788,
+                0.0004943365472882544
+              ]
+            }
+          },
+          "15": {
+            "all": {
+              "pixels": 1608,
+              "max_sum": 0.002977106345069841,
+              "mean_sum": 1.927951947056096e-05,
+              "layer_max": [
+                0.0032142219647615655,
+                0.005782785838389454,
+                8.647396809415009e-05
+              ]
+            },
+            "boundary": {
+              "pixels": 171,
+              "max_sum": 0.002977106345069841,
+              "mean_sum": 0.00015093440542903973,
+              "layer_max": [
+                0.0032142219647615655,
+                0.005782785838389454,
+                1.142102101449674e-05
+              ]
+            },
+            "interior": {
+              "pixels": 1437,
+              "max_sum": 0.00010242967288243143,
+              "mean_sum": 3.612862895126115e-06,
+              "layer_max": [
+                7.047408118118076e-05,
+                0.0001024320571529902,
+                8.647396809415009e-05
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "right": {
+    "arms": {
+      "fixed": {
+        "train_reflection": {
+          "pixels": 139,
+          "median_display": 48.74701865959355,
+          "mean_display": 50.607484148242435,
+          "p95_display": 104.4219049121423,
+          "linear_mse": 0.045459344725314925
+        },
+        "parameters": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "concentration": 512.0,
+        "bound_hits": [],
+        "localized_lobe_rgb": [
+          42.87196844012818,
+          42.1038298415079,
+          42.42481251762628
+        ],
+        "full_objectives": [
+          0.023079123077047937
+        ],
+        "solver_steps": 0,
+        "evaluation_limit_steps": 0,
+        "rejected_steps": 0,
+        "invalid_training_pixels_max": 0,
+        "train_reflection_layer_means": [
+          0.0,
+          0.014359711613091892,
+          0.1575466007556822
+        ],
+        "maximum_prediction": 0.8602284166538297,
+        "boundaries": [
+          {
+            "source": 730,
+            "limbus_max_px": 1.190108632332755,
+            "limbus_rms_px": 0.4839996375902211,
+            "pupil_max_px": 0.18422484189746774,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 760,
+            "limbus_max_px": 1.388199140809201,
+            "limbus_rms_px": 0.5837095579606315,
+            "pupil_max_px": 0.6695786451574346,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 790,
+            "limbus_max_px": 1.5310900481272665,
+            "limbus_rms_px": 0.6189835463088387,
+            "pupil_max_px": 0.2452315100902602,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 820,
+            "limbus_max_px": 1.1771414313922237,
+            "limbus_rms_px": 0.48965488588993117,
+            "pupil_max_px": 0.34223768146406075,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 805,
+            "limbus_max_px": 1.1574996057104934,
+            "limbus_rms_px": 0.4970475939747948,
+            "pupil_max_px": 0.22134017305675294,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 815,
+            "limbus_max_px": 0.23894718966863582,
+            "limbus_rms_px": 0.11236915858325541,
+            "pupil_max_px": 1.3376154308445787,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          }
+        ]
+      },
+      "light": {
+        "train_reflection": {
+          "pixels": 139,
+          "median_display": 39.31404581604448,
+          "mean_display": 44.94629398311929,
+          "p95_display": 98.47839012369325,
+          "linear_mse": 0.0370141653096789
+        },
+        "parameters": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.3160304923496352,
+          -0.13305734851169837,
+          -0.9979999999999999
+        ],
+        "concentration": 128.35538379533796,
+        "bound_hits": [
+          6
+        ],
+        "localized_lobe_rgb": [
+          33.123441081969126,
+          32.19376773251246,
+          32.6180610128945
+        ],
+        "full_objectives": [
+          0.023079123077047937,
+          0.018666672856142652,
+          0.01797110431855945,
+          0.01796558193010112,
+          0.01796535916520829
+        ],
+        "solver_steps": 20,
+        "evaluation_limit_steps": 13,
+        "rejected_steps": 0,
+        "invalid_training_pixels_max": 0,
+        "train_reflection_layer_means": [
+          1.781909765622872e-06,
+          0.010999675442213055,
+          0.17677903701917475
+        ],
+        "maximum_prediction": 0.8961848373453708,
+        "boundaries": [
+          {
+            "source": 730,
+            "limbus_max_px": 1.190108632332755,
+            "limbus_rms_px": 0.4839996375902211,
+            "pupil_max_px": 0.18422484189746774,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 760,
+            "limbus_max_px": 1.388199140809201,
+            "limbus_rms_px": 0.5837095579606315,
+            "pupil_max_px": 0.6695786451574346,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 790,
+            "limbus_max_px": 1.5310900481272665,
+            "limbus_rms_px": 0.6189835463088387,
+            "pupil_max_px": 0.2452315100902602,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 820,
+            "limbus_max_px": 1.1771414313922237,
+            "limbus_rms_px": 0.48965488588993117,
+            "pupil_max_px": 0.34223768146406075,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 805,
+            "limbus_max_px": 1.1574996057104934,
+            "limbus_rms_px": 0.4970475939747948,
+            "pupil_max_px": 0.22134017305675294,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 815,
+            "limbus_max_px": 0.23894718966863582,
+            "limbus_rms_px": 0.11236915858325541,
+            "pupil_max_px": 1.3376154308445787,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          }
+        ]
+      },
+      "coupled": {
+        "train_reflection": {
+          "pixels": 139,
+          "median_display": 44.60120328438487,
+          "mean_display": 48.589188559755605,
+          "p95_display": 102.15095346844826,
+          "linear_mse": 0.04126556832728657
+        },
+        "parameters": [
+          -0.07918310916903609,
+          0.18954267285594137,
+          0.005266663906982065,
+          0.023662352951874167,
+          0.1884461242929307,
+          0.13150125345437993,
+          -0.39202468970425275
+        ],
+        "concentration": 297.33605821874534,
+        "bound_hits": [],
+        "localized_lobe_rgb": [
+          46.78926291823213,
+          45.32977460067077,
+          45.089552522223954
+        ],
+        "full_objectives": [
+          0.023079123077047937,
+          0.021587706854731978,
+          0.021581394985183328,
+          0.021581393194399896,
+          0.021581392749990838
+        ],
+        "solver_steps": 20,
+        "evaluation_limit_steps": 10,
+        "rejected_steps": 0,
+        "invalid_training_pixels_max": 1,
+        "train_reflection_layer_means": [
+          0.0,
+          0.012664028149506474,
+          0.16557257429436367
+        ],
+        "maximum_prediction": 0.9660591439341423,
+        "boundaries": [
+          {
+            "source": 730,
+            "limbus_max_px": 0.9595514478695272,
+            "limbus_rms_px": 0.4102617969834502,
+            "pupil_max_px": 0.4002678084564179,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 760,
+            "limbus_max_px": 1.1484091647656258,
+            "limbus_rms_px": 0.4862797130928802,
+            "pupil_max_px": 0.7772301715648174,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 790,
+            "limbus_max_px": 1.2982763625571507,
+            "limbus_rms_px": 0.525320966803244,
+            "pupil_max_px": 0.4871093159840293,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 820,
+            "limbus_max_px": 0.9387856382877533,
+            "limbus_rms_px": 0.40421591571260324,
+            "pupil_max_px": 0.2486625798909128,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 805,
+            "limbus_max_px": 0.9188592534262796,
+            "limbus_rms_px": 0.4093571602260507,
+            "pupil_max_px": 0.23385857650452171,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 815,
+            "limbus_max_px": 0.32335563199657646,
+            "limbus_rms_px": 0.20269811410160596,
+            "pupil_max_px": 1.5763586184470857,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          }
+        ]
+      },
+      "spatial_backing": {
+        "train_reflection": {
+          "pixels": 139,
+          "median_display": 24.85745530790311,
+          "mean_display": 32.87134747040662,
+          "p95_display": 90.36456892342727,
+          "linear_mse": 0.019524027635142924
+        },
+        "parameters": [
+          0.02272610040409505,
+          0.0325305590071099,
+          -0.05398032761038231,
+          0.020931425125010374,
+          -0.00786978314525228,
+          0.009085051239904798,
+          -0.0008384983174118631
+        ],
+        "concentration": 511.40519415927247,
+        "bound_hits": [],
+        "localized_lobe_rgb": [
+          6.3393764530638315,
+          6.947781627387058,
+          7.193443474119283
+        ],
+        "full_objectives": [
+          0.009232396900997043,
+          0.009171076361026263,
+          0.009123168741414434,
+          0.00902219162212132,
+          0.009021899370081101
+        ],
+        "solver_steps": 20,
+        "evaluation_limit_steps": 19,
+        "rejected_steps": 0,
+        "invalid_training_pixels_max": 0,
+        "train_reflection_layer_means": [
+          0.0011743018603718556,
+          0.23133938697424608,
+          0.012286682021767074
+        ],
+        "maximum_prediction": 0.7139107391490986,
+        "boundaries": [
+          {
+            "source": 730,
+            "limbus_max_px": 1.1031776668294433,
+            "limbus_rms_px": 0.4707982145713356,
+            "pupil_max_px": 0.2255091601507457,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 760,
+            "limbus_max_px": 1.3005501245465705,
+            "limbus_rms_px": 0.5609635542623569,
+            "pupil_max_px": 0.6451078046753822,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 790,
+            "limbus_max_px": 1.4425563781009587,
+            "limbus_rms_px": 0.5948497813497636,
+            "pupil_max_px": 0.30333496488069644,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 820,
+            "limbus_max_px": 1.0916863090956475,
+            "limbus_rms_px": 0.4733107949527329,
+            "pupil_max_px": 0.2940668496974611,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 805,
+            "limbus_max_px": 1.0732319990852828,
+            "limbus_rms_px": 0.4819198877154789,
+            "pupil_max_px": 0.34404143669628573,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          },
+          {
+            "source": 815,
+            "limbus_max_px": 0.2831496692690946,
+            "limbus_rms_px": 0.13555671632163782,
+            "pupil_max_px": 1.4146499972165267,
+            "pupil_cap_all": true,
+            "note": "All reused annotations; post-fit diagnostic, not independent geometry validation"
+          }
+        ]
+      }
+    },
+    "coverage": {
+      "0": {
+        "prior": 173,
+        "joint": 171,
+        "reflection": 35,
+        "other": 136,
+        "lost_from_prior": 2
+      },
+      "1": {
+        "prior": 172,
+        "joint": 172,
+        "reflection": 27,
+        "other": 145,
+        "lost_from_prior": 0
+      },
+      "2": {
+        "prior": 193,
+        "joint": 193,
+        "reflection": 28,
+        "other": 165,
+        "lost_from_prior": 0
+      },
+      "3": {
+        "prior": 195,
+        "joint": 195,
+        "reflection": 22,
+        "other": 173,
+        "lost_from_prior": 0
+      },
+      "4": {
+        "prior": 204,
+        "joint": 203,
+        "reflection": 35,
+        "other": 168,
+        "lost_from_prior": 1
+      },
+      "5": {
+        "prior": 80,
+        "joint": 80,
+        "reflection": 38,
+        "other": 42,
+        "lost_from_prior": 0
+      }
+    },
+    "selected": "spatial_backing",
+    "scores": {
+      "fixed": 0.02649512614292427,
+      "light": 0.027175778014154398,
+      "coupled": 0.02786779753927165,
+      "spatial_backing": 0.015091722079809612
+    },
+    "seen_815": {
+      "fixed": {
+        "reflection": {
+          "pixels": 38,
+          "median_display": 58.42946220852729,
+          "mean_display": 61.99402197245511,
+          "p95_display": 124.74811521929121,
+          "linear_mse": 0.07033599864853643
+        },
+        "other": {
+          "pixels": 42,
+          "median_display": 20.85319878042558,
+          "mean_display": 27.95363661170022,
+          "p95_display": 67.20246120848516,
+          "linear_mse": 0.0036968635927750564
+        },
+        "supported": {
+          "pixels": 80,
+          "median_display": 29.585307292195047,
+          "mean_display": 44.12281965805879,
+          "p95_display": 114.58039755338599,
+          "linear_mse": 0.0353504527442617
+        },
+        "reflection_layer_means": [
+          0.0,
+          0.014757796595921926,
+          0.06363859476778572
+        ]
+      },
+      "light": {
+        "reflection": {
+          "pixels": 38,
+          "median_display": 61.62030056584713,
+          "mean_display": 64.28220930482676,
+          "p95_display": 132.8361834058495,
+          "linear_mse": 0.07533944210555872
+        },
+        "other": {
+          "pixels": 42,
+          "median_display": 21.973435318398884,
+          "mean_display": 31.80007131841902,
+          "p95_display": 92.04848498373403,
+          "linear_mse": 0.017886231361608704
+        },
+        "supported": {
+          "pixels": 80,
+          "median_display": 27.529557997546192,
+          "mean_display": 47.229086861962685,
+          "p95_display": 125.01638628311743,
+          "linear_mse": 0.04517650646498495
+        },
+        "reflection_layer_means": [
+          0.0,
+          0.011304612318908901,
+          0.05442285782126211
+        ]
+      },
+      "coupled": {
+        "reflection": {
+          "pixels": 38,
+          "median_display": 60.28823803789439,
+          "mean_display": 62.644942363083885,
+          "p95_display": 127.18801509653417,
+          "linear_mse": 0.07186896946438116
+        },
+        "other": {
+          "pixels": 42,
+          "median_display": 20.478856062317533,
+          "mean_display": 27.833623278234395,
+          "p95_display": 65.1245093253053,
+          "linear_mse": 0.005409492403171433
+        },
+        "supported": {
+          "pixels": 80,
+          "median_display": 27.274009920161642,
+          "mean_display": 44.36899984353791,
+          "p95_display": 117.34837770641013,
+          "linear_mse": 0.03697774400724606
+        },
+        "reflection_layer_means": [
+          0.0,
+          0.013046604670083653,
+          0.06096374657460541
+        ]
+      },
+      "spatial_backing": {
+        "reflection": {
+          "pixels": 38,
+          "median_display": 77.69455780277677,
+          "mean_display": 80.69753432035937,
+          "p95_display": 159.58699727476002,
+          "linear_mse": 0.1002623199684856
+        },
+        "other": {
+          "pixels": 42,
+          "median_display": 38.8454117832681,
+          "mean_display": 46.892055508766965,
+          "p95_display": 115.55871556774896,
+          "linear_mse": 0.021134098789952222
+        },
+        "supported": {
+          "pixels": 80,
+          "median_display": 47.17360677746792,
+          "mean_display": 62.94965794427338,
+          "p95_display": 147.3218326909744,
+          "linear_mse": 0.058720003849755585
+        },
+        "reflection_layer_means": [
+          0.0,
+          0.14575796430264193,
+          0.006288075613704481
+        ]
+      }
+    },
+    "sampling": {
+      "fixed": {
+        "common_pixels": 1630,
+        "boundary_pixels": 190,
+        "comparisons": {
+          "3": {
+            "all": {
+              "pixels": 1630,
+              "max_sum": 0.02259512849497125,
+              "mean_sum": 0.00021922917842919187,
+              "layer_max": [
+                0.005328389228102654,
+                0.0029362306972801084,
+                0.0225951168092966
+              ]
+            },
+            "boundary": {
+              "pixels": 190,
+              "max_sum": 0.004980173283524791,
+              "mean_sum": 0.0006413444953347082,
+              "layer_max": [
+                0.005328389228102654,
+                0.0029362306972801084,
+                0.004143820982223545
+              ]
+            },
+            "interior": {
+              "pixels": 1440,
+              "max_sum": 0.02259512849497125,
+              "mean_sum": 0.00016353340744860293,
+              "layer_max": [
+                0.0020969777960662267,
+                5.6766254672574457e-08,
+                0.0225951168092966
+              ]
+            }
+          },
+          "7": {
+            "all": {
+              "pixels": 1630,
+              "max_sum": 0.0038716874511802724,
+              "mean_sum": 4.293603586714775e-05,
+              "layer_max": [
+                0.0020546306046077597,
+                0.0010786522563661378,
+                0.003871685393430191
+              ]
+            },
+            "boundary": {
+              "pixels": 190,
+              "max_sum": 0.0014457898997705318,
+              "mean_sum": 0.0001610385214814783,
+              "layer_max": [
+                0.0020546306046077597,
+                0.0010786522563661378,
+                0.0007183045906348218
+              ]
+            },
+            "interior": {
+              "pixels": 1440,
+              "max_sum": 0.0038716874511802724,
+              "mean_sum": 2.7353069015256916e-05,
+              "layer_max": [
+                0.0003330279909824936,
+                9.99662903844456e-09,
+                0.003871685393430191
+              ]
+            }
+          },
+          "15": {
+            "all": {
+              "pixels": 1630,
+              "max_sum": 0.0006771292316398725,
+              "mean_sum": 1.0382390238569159e-05,
+              "layer_max": [
+                0.0005529429485692586,
+                0.00044305079327153175,
+                0.0006771288699402023
+              ]
+            },
+            "boundary": {
+              "pixels": 190,
+              "max_sum": 0.00044688564990941204,
+              "mean_sum": 5.1553342455933646e-05,
+              "layer_max": [
+                0.0005529429485692586,
+                0.00044305079327153175,
+                0.000125959856216884
+              ]
+            },
+            "interior": {
+              "pixels": 1440,
+              "max_sum": 0.0006771292316398725,
+              "mean_sum": 4.950111821000234e-06,
+              "layer_max": [
+                4.7561403104565136e-05,
+                1.7571681887318391e-09,
+                0.0006771288699402023
+              ]
+            }
+          }
+        }
+      },
+      "light": {
+        "common_pixels": 1630,
+        "boundary_pixels": 190,
+        "comparisons": {
+          "3": {
+            "all": {
+              "pixels": 1630,
+              "max_sum": 0.01188493188258799,
+              "mean_sum": 0.00020851320348797104,
+              "layer_max": [
+                0.004620363114918997,
+                0.0024422154822306835,
+                0.011884926343782798
+              ]
+            },
+            "boundary": {
+              "pixels": 190,
+              "max_sum": 0.008044654617820335,
+              "mean_sum": 0.0005462722509398652,
+              "layer_max": [
+                0.004620363114918997,
+                0.0024422154822306835,
+                0.007106682736661818
+              ]
+            },
+            "interior": {
+              "pixels": 1440,
+              "max_sum": 0.01188493188258799,
+              "mean_sum": 0.00016394777361584611,
+              "layer_max": [
+                0.0020399526519320893,
+                4.721544058505778e-08,
+                0.011884926343782798
+              ]
+            }
+          },
+          "7": {
+            "all": {
+              "pixels": 1630,
+              "max_sum": 0.0020541011240966522,
+              "mean_sum": 4.050084121093617e-05,
+              "layer_max": [
+                0.0017816210914937897,
+                0.0008971710713605186,
+                0.00205410014865004
+              ]
+            },
+            "boundary": {
+              "pixels": 190,
+              "max_sum": 0.0014329474932825992,
+              "mean_sum": 0.00013652273682492508,
+              "layer_max": [
+                0.0017816210914937897,
+                0.0008971710713605186,
+                0.00123424307736697
+              ]
+            },
+            "interior": {
+              "pixels": 1440,
+              "max_sum": 0.0020541011240966522,
+              "mean_sum": 2.783128553964597e-05,
+              "layer_max": [
+                0.0002853145818842717,
+                8.314715266993788e-09,
+                0.00205410014865004
+              ]
+            }
+          },
+          "15": {
+            "all": {
+              "pixels": 1630,
+              "max_sum": 0.00041653468241402425,
+              "mean_sum": 9.532791596717588e-06,
+              "layer_max": [
+                0.0004837095322345053,
+                0.0003685083422581962,
+                0.0003598914356343075
+              ]
+            },
+            "boundary": {
+              "pixels": 190,
+              "max_sum": 0.00041653468241402425,
+              "mean_sum": 4.347856226810524e-05,
+              "layer_max": [
+                0.0004837095322345053,
+                0.0003685083422581962,
+                0.00021642721294479195
+              ]
+            },
+            "interior": {
+              "pixels": 1440,
+              "max_sum": 0.0003598916070961522,
+              "mean_sum": 5.053835744242828e-06,
+              "layer_max": [
+                4.132715555019151e-05,
+                1.461527992380196e-09,
+                0.0003598914356343075
+              ]
+            }
+          }
+        }
+      },
+      "coupled": {
+        "common_pixels": 1638,
+        "boundary_pixels": 193,
+        "comparisons": {
+          "3": {
+            "all": {
+              "pixels": 1638,
+              "max_sum": 0.020261117066115553,
+              "mean_sum": 0.00021010104368357642,
+              "layer_max": [
+                0.004851692668008001,
+                0.002642733928574644,
+                0.020261106399427464
+              ]
+            },
+            "boundary": {
+              "pixels": 193,
+              "max_sum": 0.010277323234106905,
+              "mean_sum": 0.0005941516948269398,
+              "layer_max": [
+                0.004851692668008001,
+                0.002642733928574644,
+                0.009830574724580932
+              ]
+            },
+            "interior": {
+              "pixels": 1445,
+              "max_sum": 0.020261117066115553,
+              "mean_sum": 0.0001588056971986843,
+              "layer_max": [
+                0.001218301014146106,
+                5.255545884250146e-08,
+                0.020261106399427464
+              ]
+            }
+          },
+          "7": {
+            "all": {
+              "pixels": 1638,
+              "max_sum": 0.0034672554233114994,
+              "mean_sum": 4.39174698027622e-05,
+              "layer_max": [
+                0.0022280169123028715,
+                0.0009524138197150086,
+                0.003467253545025195
+              ]
+            },
+            "boundary": {
+              "pixels": 193,
+              "max_sum": 0.0018661862468761503,
+              "mean_sum": 0.00016286181326765673,
+              "layer_max": [
+                0.0022280169123028715,
+                0.0009524138197150086,
+                0.0017040689446835566
+              ]
+            },
+            "interior": {
+              "pixels": 1445,
+              "max_sum": 0.0034672554233114994,
+              "mean_sum": 2.8030785865928536e-05,
+              "layer_max": [
+                0.0002009245451757985,
+                9.255447873390832e-09,
+                0.003467253545025195
+              ]
+            }
+          },
+          "15": {
+            "all": {
+              "pixels": 1638,
+              "max_sum": 0.0008913715958056706,
+              "mean_sum": 1.0134274583595122e-05,
+              "layer_max": [
+                0.0010376530292296182,
+                0.0004266420447345684,
+                0.0006064558070381088
+              ]
+            },
+            "boundary": {
+              "pixels": 193,
+              "max_sum": 0.0008913715958056706,
+              "mean_sum": 4.972225874208319e-05,
+              "layer_max": [
+                0.0010376530292296182,
+                0.0004266420447345684,
+                0.00029871717853879876
+              ]
+            },
+            "interior": {
+              "pixels": 1445,
+              "max_sum": 0.0006064561371916799,
+              "mean_sum": 4.846744519520248e-06,
+              "layer_max": [
+                3.206126351650018e-05,
+                1.6268970094712731e-09,
+                0.0006064558070381088
+              ]
+            }
+          }
+        }
+      },
+      "spatial_backing": {
+        "common_pixels": 1633,
+        "boundary_pixels": 190,
+        "comparisons": {
+          "3": {
+            "all": {
+              "pixels": 1633,
+              "max_sum": 0.012075847772074683,
+              "mean_sum": 0.00021071150399384265,
+              "layer_max": [
+                0.011417332305440571,
+                0.018529370173170648,
+                0.003709306716788957
+              ]
+            },
+            "boundary": {
+              "pixels": 190,
+              "max_sum": 0.012075847772074683,
+              "mean_sum": 0.00048655380748302324,
+              "layer_max": [
+                0.011417332305440571,
+                0.018529370173170648,
+                0.0009924252498087552
+              ]
+            },
+            "interior": {
+              "pixels": 1443,
+              "max_sum": 0.0071768484350275275,
+              "mean_sum": 0.00017439131157322984,
+              "layer_max": [
+                0.003080211115464526,
+                0.00687764476409114,
+                0.003709306716788957
+              ]
+            }
+          },
+          "7": {
+            "all": {
+              "pixels": 1633,
+              "max_sum": 0.0024871166205171352,
+              "mean_sum": 3.951413694912404e-05,
+              "layer_max": [
+                0.003411406088003697,
+                0.005725341078926152,
+                0.0006352859432536273
+              ]
+            },
+            "boundary": {
+              "pixels": 190,
+              "max_sum": 0.0024871166205171352,
+              "mean_sum": 0.00012407169334316425,
+              "layer_max": [
+                0.003411406088003697,
+                0.005725341078926152,
+                0.00017076912292963292
+              ]
+            },
+            "interior": {
+              "pixels": 1443,
+              "max_sum": 0.0016259638250500918,
+              "mean_sum": 2.8380432365016178e-05,
+              "layer_max": [
+                0.00045463770132803116,
+                0.0017393043276572318,
+                0.0006352859432536273
+              ]
+            }
+          },
+          "15": {
+            "all": {
+              "pixels": 1633,
+              "max_sum": 0.0015594501566886798,
+              "mean_sum": 9.996822070237282e-06,
+              "layer_max": [
+                0.0020405946716294514,
+                0.0017873116335047692,
+                0.00011109966589684106
+              ]
+            },
+            "boundary": {
+              "pixels": 190,
+              "max_sum": 0.0015594501566886798,
+              "mean_sum": 4.134306311639539e-05,
+              "layer_max": [
+                0.0020405946716294514,
+                0.0017873116335047692,
+                2.9909071501403595e-05
+              ]
+            },
+            "interior": {
+              "pixels": 1443,
+              "max_sum": 0.00031346258486952827,
+              "mean_sum": 5.869458384325957e-06,
+              "layer_max": [
+                7.104216827385351e-05,
+                0.0003332447817705475,
+                0.00011109966589684106
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

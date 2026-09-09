@@ -1,0 +1,15 @@
+{
+  "reviewer": "Codex visual inspection of decoded artifacts, not artist acceptance or live playback",
+  "continuous_video_sha256": "bd12ea99917a47aaa64b164ece5b4b856b1a1afd33573c8eabd055c3e8281864",
+  "layers_video_sha256": "258582b1c0ff04c4d376230f29c7c980c7b4c2d2f1fab71e219cbed5cb397ced",
+  "continuous_contact_sheet_starts": [0, 24, 48, 72, 96, 120, 144],
+  "layers_decoded_frames": [0, 24, 48, 72, 96, 120],
+  "findings": [
+    "Original eyes and catchlights persist throughout both blink sequences; sparse overlays are sampling diagnostics.",
+    "Comparison titles and one-second still-hold labels are legible; black regions are explicitly unscored.",
+    "Fixed/light/coupled sums generally show a broad incorrect grey spot; spatial backing resembles a compact fitting catchlight but fails its later seen location.",
+    "Seen 805 left has no scored reflection; seen 815 shows the displaced spatial-backing prediction clearly."
+  ],
+  "source_repair_accepted": false,
+  "scene_replacement_accepted": false
+}

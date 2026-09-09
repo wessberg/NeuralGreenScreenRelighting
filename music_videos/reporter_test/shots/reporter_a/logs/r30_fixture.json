@@ -1,0 +1,108 @@
+{
+  "signed_cases": 8.0,
+  "compact_dense_max_error": 4.440892098500626e-16,
+  "independent_scalar_direction_fresnel_max": 2.701394663517931e-11,
+  "independent_scalar_rgb_max": 7.490196657355952e-11,
+  "unknown_axis_fixture": {
+    "fixed": {
+      "held_sum_max": 0.024673600620574637,
+      "held_layer_max": 0.047834342220693785,
+      "final_objective": 1.2359612068869883e-05,
+      "parameters": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "localized_lobe_rgb": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "seed_true_axis_angle_degrees": 33.68098321674629,
+      "nonlinear_status": []
+    },
+    "light": {
+      "held_sum_max": 0.024673600620574637,
+      "held_layer_max": 0.047834342220693785,
+      "final_objective": 1.2359612068869883e-05,
+      "parameters": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "localized_lobe_rgb": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "seed_true_axis_angle_degrees": 33.68098321674629,
+      "nonlinear_status": [
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "coupled": {
+      "held_sum_max": 0.024727864730423377,
+      "held_layer_max": 0.047897656370007785,
+      "final_objective": 1.235515712901134e-05,
+      "parameters": [
+        -0.00028977719553734425,
+        0.0011134295176442773,
+        -3.382927103293195e-05,
+        -0.00031656832053539964,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "localized_lobe_rgb": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "seed_true_axis_angle_degrees": 33.68098321674629,
+      "nonlinear_status": [
+        0,
+        3,
+        3,
+        3
+      ]
+    },
+    "spatial_backing": {
+      "held_sum_max": 0.04752088283239844,
+      "held_layer_max": 0.05405431090244543,
+      "final_objective": 8.732350504209055e-06,
+      "parameters": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "localized_lobe_rgb": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "seed_true_axis_angle_degrees": 33.68098321674629,
+      "nonlinear_status": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "fixture_material_certified": false
+}
