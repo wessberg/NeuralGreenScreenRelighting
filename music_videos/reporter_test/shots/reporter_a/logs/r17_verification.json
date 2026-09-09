@@ -1,0 +1,42 @@
+{
+  "capacity": {
+    "cases": 42,
+    "pairs": 126,
+    "max_context_upper_bound": 8,
+    "pairs_with_eight_context_samples": 5,
+    "cases_with_three_donors": 0,
+    "donor_query_poison_context_exact": true,
+    "all_arm_intersection_only_reduces_capacity": true,
+    "independent_contributor_enumeration": true
+  },
+  "native_coordinates_verified": 696,
+  "max_independent_sample_error": 0.0,
+  "exact_substitution_runs": 24,
+  "exact_array_hash_comparisons": 528,
+  "source_crops_unchanged": 100,
+  "prior_code_hashes_unchanged": 7,
+  "search_isolation": {
+    "synthetic_known_geometry": true,
+    "training_pixels": 428,
+    "searched_native_footprints": 223,
+    "changed_validation_mae": 144.92591857910156,
+    "selected_angle_and_training_exact": true
+  },
+  "fallback": {
+    "exact_keyed_eye_fallbacks": 300,
+    "protected_hashes_unchanged": 304
+  },
+  "video": {
+    "frames": 50,
+    "fps": 59.94005994005994,
+    "sha256": "34fe0937b1014861747d52b6b431f04b45f726c0886f2389c802da3cb15c2d8d",
+    "bytes": 2048752,
+    "visual_review": "pending separate record",
+    "artist_approval": false
+  },
+  "code_sha256": {
+    "context_capacity.py": "dc3c8c484518df7112c2fb218903ddbbfad719117a01f35b853309001eadbbf8",
+    "audit_r17_reflection.py": "f574dd52c5a2d35d8383cbde3b2f37468ac990014fd717320c422a922a25a0f7",
+    "verify_r17.py": "26c9f6bc27788972e12a0c3985cf548d6a3caad3b688390d8bcc5b1bffaa702e"
+  }
+}

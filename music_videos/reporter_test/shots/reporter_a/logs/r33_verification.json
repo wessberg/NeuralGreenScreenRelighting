@@ -1,0 +1,14 @@
+{
+  "frames_checked": 150,
+  "exact_source_pixels_outside_mask": 311023768,
+  "repaired_eyes_darker_than_source": 274,
+  "repaired_eyes_not_darker": [],
+  "source_outside_mask_exact": true,
+  "exact_keyed_eye_fallbacks": 300,
+  "protected_hashes_unchanged": 304,
+  "repair_code_sha256": "4157d512c26cf7c7266b0204dff0d5dd9f43d7ca064dd06f3ceb163a640f8802",
+  "atlas_code_sha256": "0bcb1e0b43d849924bd523c27c21f8c886d2ea4df1c220ae52ab5a2da4f96f6e",
+  "code_sha256": "10c421d231177ca8fb65cc973484297e26e8b7baeb1991a2e1ff91aca0f1dd90",
+  "production_enabled": false,
+  "artist_accepted": false
+}

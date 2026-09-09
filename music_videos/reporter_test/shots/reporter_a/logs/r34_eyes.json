@@ -1,0 +1,5073 @@
+{
+  "new": "r34_removal",
+  "old": "r33_repair",
+  "frames": 150,
+  "grid": 33,
+  "reach": 0.95,
+  "per_frame": [
+    {
+      "frame": 0,
+      "source_frame": 700,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 222.59,
+          "new_peak": 111.52,
+          "old_peak": 111.52,
+          "iris_median": 49.9,
+          "replace_peak": 235.49,
+          "iris_level": 49.9,
+          "treated_cells": 166,
+          "source_peak_treated": 222.59,
+          "new_treated_peak": 103.39,
+          "old_treated_peak": 102.89,
+          "replace_treated_peak": 114.97
+        },
+        {
+          "side": "right",
+          "source_peak": 215.74,
+          "new_peak": 162.7,
+          "old_peak": 162.7,
+          "iris_median": 65.62,
+          "replace_peak": 168.25,
+          "iris_level": 65.62,
+          "treated_cells": 261,
+          "source_peak_treated": 215.74,
+          "new_treated_peak": 110.62,
+          "old_treated_peak": 111.25,
+          "replace_treated_peak": 123.17
+        }
+      ]
+    },
+    {
+      "frame": 1,
+      "source_frame": 701,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 223.94,
+          "new_peak": 117.63,
+          "old_peak": 117.63,
+          "iris_median": 53.25,
+          "replace_peak": 226.33,
+          "iris_level": 53.25,
+          "treated_cells": 172,
+          "source_peak_treated": 223.94,
+          "new_treated_peak": 103.09,
+          "old_treated_peak": 107.94,
+          "replace_treated_peak": 115.53
+        },
+        {
+          "side": "right",
+          "source_peak": 219.14,
+          "new_peak": 178.86,
+          "old_peak": 178.86,
+          "iris_median": 66.5,
+          "replace_peak": 184.1,
+          "iris_level": 66.5,
+          "treated_cells": 255,
+          "source_peak_treated": 219.14,
+          "new_treated_peak": 106.41,
+          "old_treated_peak": 110.95,
+          "replace_treated_peak": 144.84
+        }
+      ]
+    },
+    {
+      "frame": 2,
+      "source_frame": 702,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 211.34,
+          "new_peak": 147.24,
+          "old_peak": 147.24,
+          "iris_median": 56.99,
+          "replace_peak": 245.24,
+          "iris_level": 56.99,
+          "treated_cells": 156,
+          "source_peak_treated": 211.34,
+          "new_treated_peak": 106.31,
+          "old_treated_peak": 132.09,
+          "replace_treated_peak": 120.07
+        },
+        {
+          "side": "right",
+          "source_peak": 215.49,
+          "new_peak": 178.61,
+          "old_peak": 178.61,
+          "iris_median": 67.94,
+          "replace_peak": 182.98,
+          "iris_level": 67.94,
+          "treated_cells": 254,
+          "source_peak_treated": 215.49,
+          "new_treated_peak": 112.91,
+          "old_treated_peak": 151.6,
+          "replace_treated_peak": 134.02
+        }
+      ]
+    },
+    {
+      "frame": 3,
+      "source_frame": 703,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 181.44,
+          "new_peak": 163.22,
+          "old_peak": 163.22,
+          "iris_median": 56.96,
+          "replace_peak": 229.7,
+          "iris_level": 56.96,
+          "treated_cells": 171,
+          "source_peak_treated": 181.44,
+          "new_treated_peak": 123.79,
+          "old_treated_peak": 149.88,
+          "replace_treated_peak": 127.83
+        },
+        {
+          "side": "right",
+          "source_peak": 208.44,
+          "new_peak": 184.09,
+          "old_peak": 184.09,
+          "iris_median": 66.87,
+          "replace_peak": 185.34,
+          "iris_level": 66.87,
+          "treated_cells": 185,
+          "source_peak_treated": 208.44,
+          "new_treated_peak": 109.24,
+          "old_treated_peak": 163.24,
+          "replace_treated_peak": 122.16
+        }
+      ]
+    },
+    {
+      "frame": 4,
+      "source_frame": 704,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 161.86,
+          "new_peak": 153.37,
+          "old_peak": 148.7,
+          "iris_median": 50.29,
+          "replace_peak": 236.38,
+          "iris_level": 50.29,
+          "treated_cells": 240,
+          "source_peak_treated": 161.86,
+          "new_treated_peak": 153.37,
+          "old_treated_peak": 148.7,
+          "replace_treated_peak": 192.06
+        },
+        {
+          "side": "right",
+          "source_peak": 172.33,
+          "new_peak": 167.47,
+          "old_peak": 159.24,
+          "iris_median": 52.21,
+          "replace_peak": 168.47,
+          "iris_level": 52.21,
+          "treated_cells": 244,
+          "source_peak_treated": 172.33,
+          "new_treated_peak": 167.47,
+          "old_treated_peak": 159.24,
+          "replace_treated_peak": 168.47
+        }
+      ]
+    },
+    {
+      "frame": 5,
+      "source_frame": 705,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 142.0,
+          "new_peak": 142.0,
+          "old_peak": 133.75,
+          "iris_median": 41.95,
+          "replace_peak": 239.45,
+          "iris_level": 41.95,
+          "treated_cells": 159,
+          "source_peak_treated": 142.0,
+          "new_treated_peak": 142.0,
+          "old_treated_peak": 133.75,
+          "replace_treated_peak": 204.99
+        },
+        {
+          "side": "right",
+          "source_peak": 134.42,
+          "new_peak": 134.42,
+          "old_peak": 134.42,
+          "iris_median": 53.63,
+          "replace_peak": 135.35,
+          "iris_level": 53.63,
+          "treated_cells": 0
+        }
+      ]
+    },
+    {
+      "frame": 6,
+      "source_frame": 706,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 90.61,
+          "new_peak": 90.61,
+          "old_peak": 90.61,
+          "iris_median": 39.97,
+          "replace_peak": 90.61,
+          "iris_level": 39.97,
+          "treated_cells": 0
+        },
+        {
+          "side": "right",
+          "source_peak": 101.71,
+          "new_peak": 101.71,
+          "old_peak": 101.71,
+          "iris_median": 44.57,
+          "replace_peak": 101.71,
+          "iris_level": 44.57,
+          "treated_cells": 0
+        }
+      ]
+    },
+    {
+      "frame": 7,
+      "source_frame": 707,
+      "eyes": []
+    },
+    {
+      "frame": 8,
+      "source_frame": 708,
+      "eyes": []
+    },
+    {
+      "frame": 9,
+      "source_frame": 709,
+      "eyes": []
+    },
+    {
+      "frame": 10,
+      "source_frame": 710,
+      "eyes": []
+    },
+    {
+      "frame": 11,
+      "source_frame": 711,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 134.01,
+          "new_peak": 126.0,
+          "old_peak": 127.12,
+          "iris_median": 42.75,
+          "replace_peak": 126.0,
+          "iris_level": 42.75,
+          "treated_cells": 76,
+          "source_peak_treated": 134.01,
+          "new_treated_peak": 126.0,
+          "old_treated_peak": 127.12,
+          "replace_treated_peak": 126.0
+        }
+      ]
+    },
+    {
+      "frame": 12,
+      "source_frame": 712,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 141.41,
+          "new_peak": 126.24,
+          "old_peak": 134.53,
+          "iris_median": 42.57,
+          "replace_peak": 126.24,
+          "iris_level": 42.57,
+          "treated_cells": 86,
+          "source_peak_treated": 141.41,
+          "new_treated_peak": 126.24,
+          "old_treated_peak": 134.53,
+          "replace_treated_peak": 126.24
+        },
+        {
+          "side": "right",
+          "source_peak": 170.68,
+          "new_peak": 170.68,
+          "old_peak": 170.68,
+          "iris_median": 56.0,
+          "replace_peak": 170.68,
+          "iris_level": 56.0,
+          "treated_cells": 0
+        }
+      ]
+    },
+    {
+      "frame": 13,
+      "source_frame": 713,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 146.16,
+          "new_peak": 123.05,
+          "old_peak": 130.53,
+          "iris_median": 41.48,
+          "replace_peak": 244.73,
+          "iris_level": 41.48,
+          "treated_cells": 75,
+          "source_peak_treated": 146.16,
+          "new_treated_peak": 123.05,
+          "old_treated_peak": 130.53,
+          "replace_treated_peak": 237.23
+        },
+        {
+          "side": "right",
+          "source_peak": 177.77,
+          "new_peak": 177.69,
+          "old_peak": 177.77,
+          "iris_median": 53.3,
+          "replace_peak": 178.57,
+          "iris_level": 53.3,
+          "treated_cells": 115,
+          "source_peak_treated": 177.77,
+          "new_treated_peak": 177.69,
+          "old_treated_peak": 177.77,
+          "replace_treated_peak": 178.57
+        }
+      ]
+    },
+    {
+      "frame": 14,
+      "source_frame": 714,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 143.75,
+          "new_peak": 143.75,
+          "old_peak": 143.75,
+          "iris_median": 39.71,
+          "replace_peak": 239.09,
+          "iris_level": 39.71,
+          "treated_cells": 58,
+          "source_peak_treated": 100.62,
+          "new_treated_peak": 90.46,
+          "old_treated_peak": 90.46,
+          "replace_treated_peak": 106.51
+        },
+        {
+          "side": "right",
+          "source_peak": 155.93,
+          "new_peak": 155.93,
+          "old_peak": 155.93,
+          "iris_median": 47.59,
+          "replace_peak": 157.23,
+          "iris_level": 47.59,
+          "treated_cells": 130,
+          "source_peak_treated": 140.5,
+          "new_treated_peak": 102.89,
+          "old_treated_peak": 117.9,
+          "replace_treated_peak": 122.05
+        }
+      ]
+    },
+    {
+      "frame": 15,
+      "source_frame": 715,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 138.73,
+          "new_peak": 138.73,
+          "old_peak": 138.73,
+          "iris_median": 40.21,
+          "replace_peak": 254.14,
+          "iris_level": 40.21,
+          "treated_cells": 71,
+          "source_peak_treated": 124.53,
+          "new_treated_peak": 87.78,
+          "old_treated_peak": 88.98,
+          "replace_treated_peak": 106.94
+        },
+        {
+          "side": "right",
+          "source_peak": 164.62,
+          "new_peak": 131.02,
+          "old_peak": 131.02,
+          "iris_median": 46.66,
+          "replace_peak": 160.2,
+          "iris_level": 46.66,
+          "treated_cells": 81,
+          "source_peak_treated": 164.62,
+          "new_treated_peak": 92.77,
+          "old_treated_peak": 126.01,
+          "replace_treated_peak": 125.09
+        }
+      ]
+    },
+    {
+      "frame": 16,
+      "source_frame": 716,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 145.99,
+          "new_peak": 123.11,
+          "old_peak": 123.11,
+          "iris_median": 39.5,
+          "replace_peak": 244.62,
+          "iris_level": 39.5,
+          "treated_cells": 93,
+          "source_peak_treated": 145.99,
+          "new_treated_peak": 102.89,
+          "old_treated_peak": 102.89,
+          "replace_treated_peak": 112.12
+        },
+        {
+          "side": "right",
+          "source_peak": 177.97,
+          "new_peak": 118.3,
+          "old_peak": 118.3,
+          "iris_median": 45.04,
+          "replace_peak": 122.12,
+          "iris_level": 45.04,
+          "treated_cells": 141,
+          "source_peak_treated": 177.97,
+          "new_treated_peak": 98.53,
+          "old_treated_peak": 98.9,
+          "replace_treated_peak": 117.46
+        }
+      ]
+    },
+    {
+      "frame": 17,
+      "source_frame": 717,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 162.38,
+          "new_peak": 110.83,
+          "old_peak": 110.83,
+          "iris_median": 37.03,
+          "replace_peak": 249.14,
+          "iris_level": 37.03,
+          "treated_cells": 132,
+          "source_peak_treated": 162.38,
+          "new_treated_peak": 95.41,
+          "old_treated_peak": 96.49,
+          "replace_treated_peak": 116.58
+        },
+        {
+          "side": "right",
+          "source_peak": 184.16,
+          "new_peak": 113.15,
+          "old_peak": 113.15,
+          "iris_median": 42.19,
+          "replace_peak": 134.06,
+          "iris_level": 42.19,
+          "treated_cells": 150,
+          "source_peak_treated": 184.16,
+          "new_treated_peak": 75.7,
+          "old_treated_peak": 80.25,
+          "replace_treated_peak": 134.06
+        }
+      ]
+    },
+    {
+      "frame": 18,
+      "source_frame": 718,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 173.28,
+          "new_peak": 108.66,
+          "old_peak": 105.99,
+          "iris_median": 38.65,
+          "replace_peak": 240.75,
+          "iris_level": 38.65,
+          "treated_cells": 176,
+          "source_peak_treated": 173.28,
+          "new_treated_peak": 108.66,
+          "old_treated_peak": 105.99,
+          "replace_treated_peak": 125.12
+        },
+        {
+          "side": "right",
+          "source_peak": 191.17,
+          "new_peak": 118.62,
+          "old_peak": 114.32,
+          "iris_median": 43.93,
+          "replace_peak": 144.98,
+          "iris_level": 43.93,
+          "treated_cells": 200,
+          "source_peak_treated": 191.17,
+          "new_treated_peak": 118.62,
+          "old_treated_peak": 101.94,
+          "replace_treated_peak": 138.93
+        }
+      ]
+    },
+    {
+      "frame": 19,
+      "source_frame": 719,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 179.98,
+          "new_peak": 143.0,
+          "old_peak": 125.32,
+          "iris_median": 40.42,
+          "replace_peak": 252.03,
+          "iris_level": 40.42,
+          "treated_cells": 193,
+          "source_peak_treated": 179.98,
+          "new_treated_peak": 143.0,
+          "old_treated_peak": 125.32,
+          "replace_treated_peak": 143.55
+        },
+        {
+          "side": "right",
+          "source_peak": 194.88,
+          "new_peak": 143.62,
+          "old_peak": 129.85,
+          "iris_median": 46.88,
+          "replace_peak": 144.48,
+          "iris_level": 46.88,
+          "treated_cells": 216,
+          "source_peak_treated": 194.88,
+          "new_treated_peak": 143.62,
+          "old_treated_peak": 129.85,
+          "replace_treated_peak": 144.48
+        }
+      ]
+    },
+    {
+      "frame": 20,
+      "source_frame": 720,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 176.27,
+          "new_peak": 138.28,
+          "old_peak": 126.91,
+          "iris_median": 41.69,
+          "replace_peak": 254.31,
+          "iris_level": 41.69,
+          "treated_cells": 175,
+          "source_peak_treated": 176.27,
+          "new_treated_peak": 138.28,
+          "old_treated_peak": 126.91,
+          "replace_treated_peak": 138.89
+        },
+        {
+          "side": "right",
+          "source_peak": 204.69,
+          "new_peak": 204.69,
+          "old_peak": 204.69,
+          "iris_median": 48.31,
+          "replace_peak": 214.54,
+          "iris_level": 48.31,
+          "treated_cells": 0
+        }
+      ]
+    },
+    {
+      "frame": 21,
+      "source_frame": 721,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 190.09,
+          "new_peak": 117.51,
+          "old_peak": 127.99,
+          "iris_median": 41.69,
+          "replace_peak": 223.16,
+          "iris_level": 41.69,
+          "treated_cells": 171,
+          "source_peak_treated": 190.09,
+          "new_treated_peak": 117.51,
+          "old_treated_peak": 127.99,
+          "replace_treated_peak": 118.52
+        },
+        {
+          "side": "right",
+          "source_peak": 205.18,
+          "new_peak": 133.45,
+          "old_peak": 121.49,
+          "iris_median": 49.72,
+          "replace_peak": 135.64,
+          "iris_level": 49.72,
+          "treated_cells": 229,
+          "source_peak_treated": 205.18,
+          "new_treated_peak": 133.45,
+          "old_treated_peak": 114.2,
+          "replace_treated_peak": 134.45
+        }
+      ]
+    },
+    {
+      "frame": 22,
+      "source_frame": 722,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 191.52,
+          "new_peak": 117.59,
+          "old_peak": 117.59,
+          "iris_median": 42.65,
+          "replace_peak": 212.84,
+          "iris_level": 42.65,
+          "treated_cells": 170,
+          "source_peak_treated": 191.52,
+          "new_treated_peak": 102.53,
+          "old_treated_peak": 109.65,
+          "replace_treated_peak": 111.78
+        },
+        {
+          "side": "right",
+          "source_peak": 205.45,
+          "new_peak": 127.59,
+          "old_peak": 127.59,
+          "iris_median": 50.88,
+          "replace_peak": 153.75,
+          "iris_level": 50.88,
+          "treated_cells": 217,
+          "source_peak_treated": 205.45,
+          "new_treated_peak": 114.62,
+          "old_treated_peak": 111.31,
+          "replace_treated_peak": 119.63
+        }
+      ]
+    },
+    {
+      "frame": 23,
+      "source_frame": 723,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 198.02,
+          "new_peak": 121.86,
+          "old_peak": 121.86,
+          "iris_median": 42.35,
+          "replace_peak": 250.45,
+          "iris_level": 42.35,
+          "treated_cells": 179,
+          "source_peak_treated": 198.02,
+          "new_treated_peak": 103.42,
+          "old_treated_peak": 113.41,
+          "replace_treated_peak": 105.11
+        },
+        {
+          "side": "right",
+          "source_peak": 205.77,
+          "new_peak": 142.39,
+          "old_peak": 142.39,
+          "iris_median": 52.94,
+          "replace_peak": 222.98,
+          "iris_level": 52.94,
+          "treated_cells": 179,
+          "source_peak_treated": 205.77,
+          "new_treated_peak": 112.03,
+          "old_treated_peak": 113.77,
+          "replace_treated_peak": 137.99
+        }
+      ]
+    },
+    {
+      "frame": 24,
+      "source_frame": 724,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 212.0,
+          "new_peak": 124.79,
+          "old_peak": 124.79,
+          "iris_median": 43.96,
+          "replace_peak": 246.98,
+          "iris_level": 43.96,
+          "treated_cells": 165,
+          "source_peak_treated": 212.0,
+          "new_treated_peak": 109.81,
+          "old_treated_peak": 110.12,
+          "replace_treated_peak": 117.45
+        },
+        {
+          "side": "right",
+          "source_peak": 209.09,
+          "new_peak": 147.05,
+          "old_peak": 147.05,
+          "iris_median": 55.19,
+          "replace_peak": 148.69,
+          "iris_level": 55.19,
+          "treated_cells": 159,
+          "source_peak_treated": 209.09,
+          "new_treated_peak": 110.94,
+          "old_treated_peak": 110.94,
+          "replace_treated_peak": 124.71
+        }
+      ]
+    },
+    {
+      "frame": 25,
+      "source_frame": 725,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 205.19,
+          "new_peak": 125.81,
+          "old_peak": 125.81,
+          "iris_median": 44.83,
+          "replace_peak": 248.38,
+          "iris_level": 44.83,
+          "treated_cells": 145,
+          "source_peak_treated": 205.19,
+          "new_treated_peak": 102.84,
+          "old_treated_peak": 102.72,
+          "replace_treated_peak": 123.67
+        },
+        {
+          "side": "right",
+          "source_peak": 207.81,
+          "new_peak": 157.75,
+          "old_peak": 157.75,
+          "iris_median": 57.2,
+          "replace_peak": 219.28,
+          "iris_level": 57.2,
+          "treated_cells": 136,
+          "source_peak_treated": 207.81,
+          "new_treated_peak": 81.5,
+          "old_treated_peak": 83.12,
+          "replace_treated_peak": 115.32
+        }
+      ]
+    },
+    {
+      "frame": 26,
+      "source_frame": 726,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 202.5,
+          "new_peak": 132.55,
+          "old_peak": 132.55,
+          "iris_median": 47.08,
+          "replace_peak": 241.59,
+          "iris_level": 47.08,
+          "treated_cells": 173,
+          "source_peak_treated": 202.5,
+          "new_treated_peak": 108.94,
+          "old_treated_peak": 107.18,
+          "replace_treated_peak": 110.11
+        },
+        {
+          "side": "right",
+          "source_peak": 211.16,
+          "new_peak": 160.98,
+          "old_peak": 160.98,
+          "iris_median": 59.95,
+          "replace_peak": 249.42,
+          "iris_level": 59.95,
+          "treated_cells": 149,
+          "source_peak_treated": 211.16,
+          "new_treated_peak": 111.82,
+          "old_treated_peak": 114.07,
+          "replace_treated_peak": 151.69
+        }
+      ]
+    },
+    {
+      "frame": 27,
+      "source_frame": 727,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 203.87,
+          "new_peak": 138.34,
+          "old_peak": 138.34,
+          "iris_median": 48.31,
+          "replace_peak": 215.26,
+          "iris_level": 48.31,
+          "treated_cells": 154,
+          "source_peak_treated": 203.87,
+          "new_treated_peak": 112.62,
+          "old_treated_peak": 109.47,
+          "replace_treated_peak": 114.61
+        },
+        {
+          "side": "right",
+          "source_peak": 209.77,
+          "new_peak": 160.29,
+          "old_peak": 160.29,
+          "iris_median": 60.57,
+          "replace_peak": 194.58,
+          "iris_level": 60.57,
+          "treated_cells": 139,
+          "source_peak_treated": 209.77,
+          "new_treated_peak": 86.79,
+          "old_treated_peak": 88.54,
+          "replace_treated_peak": 125.83
+        }
+      ]
+    },
+    {
+      "frame": 28,
+      "source_frame": 728,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 203.9,
+          "new_peak": 136.23,
+          "old_peak": 136.23,
+          "iris_median": 49.34,
+          "replace_peak": 240.52,
+          "iris_level": 49.34,
+          "treated_cells": 136,
+          "source_peak_treated": 203.9,
+          "new_treated_peak": 108.34,
+          "old_treated_peak": 109.75,
+          "replace_treated_peak": 124.68
+        },
+        {
+          "side": "right",
+          "source_peak": 209.91,
+          "new_peak": 169.75,
+          "old_peak": 169.75,
+          "iris_median": 61.76,
+          "replace_peak": 239.55,
+          "iris_level": 61.76,
+          "treated_cells": 149,
+          "source_peak_treated": 209.91,
+          "new_treated_peak": 100.3,
+          "old_treated_peak": 108.93,
+          "replace_treated_peak": 158.41
+        }
+      ]
+    },
+    {
+      "frame": 29,
+      "source_frame": 729,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 205.72,
+          "new_peak": 139.0,
+          "old_peak": 139.0,
+          "iris_median": 48.81,
+          "replace_peak": 246.91,
+          "iris_level": 48.81,
+          "treated_cells": 150,
+          "source_peak_treated": 205.72,
+          "new_treated_peak": 108.8,
+          "old_treated_peak": 110.02,
+          "replace_treated_peak": 117.97
+        },
+        {
+          "side": "right",
+          "source_peak": 212.07,
+          "new_peak": 171.51,
+          "old_peak": 171.51,
+          "iris_median": 61.15,
+          "replace_peak": 249.33,
+          "iris_level": 61.15,
+          "treated_cells": 143,
+          "source_peak_treated": 212.07,
+          "new_treated_peak": 116.92,
+          "old_treated_peak": 117.23,
+          "replace_treated_peak": 122.62
+        }
+      ]
+    },
+    {
+      "frame": 30,
+      "source_frame": 730,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 198.55,
+          "new_peak": 137.87,
+          "old_peak": 137.87,
+          "iris_median": 48.75,
+          "replace_peak": 241.74,
+          "iris_level": 48.75,
+          "treated_cells": 149,
+          "source_peak_treated": 198.55,
+          "new_treated_peak": 102.17,
+          "old_treated_peak": 102.78,
+          "replace_treated_peak": 134.56
+        },
+        {
+          "side": "right",
+          "source_peak": 215.81,
+          "new_peak": 169.0,
+          "old_peak": 169.0,
+          "iris_median": 62.82,
+          "replace_peak": 224.84,
+          "iris_level": 62.82,
+          "treated_cells": 128,
+          "source_peak_treated": 215.81,
+          "new_treated_peak": 86.69,
+          "old_treated_peak": 85.21,
+          "replace_treated_peak": 112.32
+        }
+      ]
+    },
+    {
+      "frame": 31,
+      "source_frame": 731,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 206.14,
+          "new_peak": 132.73,
+          "old_peak": 132.73,
+          "iris_median": 49.93,
+          "replace_peak": 255.0,
+          "iris_level": 49.93,
+          "treated_cells": 141,
+          "source_peak_treated": 206.14,
+          "new_treated_peak": 107.96,
+          "old_treated_peak": 105.25,
+          "replace_treated_peak": 117.55
+        },
+        {
+          "side": "right",
+          "source_peak": 216.92,
+          "new_peak": 168.82,
+          "old_peak": 168.82,
+          "iris_median": 62.69,
+          "replace_peak": 231.47,
+          "iris_level": 62.69,
+          "treated_cells": 145,
+          "source_peak_treated": 216.92,
+          "new_treated_peak": 94.05,
+          "old_treated_peak": 87.34,
+          "replace_treated_peak": 111.91
+        }
+      ]
+    },
+    {
+      "frame": 32,
+      "source_frame": 732,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 203.02,
+          "new_peak": 135.12,
+          "old_peak": 135.12,
+          "iris_median": 49.87,
+          "replace_peak": 237.48,
+          "iris_level": 49.87,
+          "treated_cells": 146,
+          "source_peak_treated": 203.02,
+          "new_treated_peak": 102.57,
+          "old_treated_peak": 103.74,
+          "replace_treated_peak": 121.83
+        },
+        {
+          "side": "right",
+          "source_peak": 217.71,
+          "new_peak": 166.7,
+          "old_peak": 166.7,
+          "iris_median": 62.8,
+          "replace_peak": 231.82,
+          "iris_level": 62.8,
+          "treated_cells": 136,
+          "source_peak_treated": 217.71,
+          "new_treated_peak": 86.04,
+          "old_treated_peak": 86.91,
+          "replace_treated_peak": 131.92
+        }
+      ]
+    },
+    {
+      "frame": 33,
+      "source_frame": 733,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 204.91,
+          "new_peak": 134.54,
+          "old_peak": 134.54,
+          "iris_median": 51.14,
+          "replace_peak": 252.62,
+          "iris_level": 51.14,
+          "treated_cells": 139,
+          "source_peak_treated": 204.91,
+          "new_treated_peak": 106.9,
+          "old_treated_peak": 102.54,
+          "replace_treated_peak": 118.2
+        },
+        {
+          "side": "right",
+          "source_peak": 217.49,
+          "new_peak": 172.61,
+          "old_peak": 172.61,
+          "iris_median": 63.64,
+          "replace_peak": 244.08,
+          "iris_level": 63.64,
+          "treated_cells": 142,
+          "source_peak_treated": 217.49,
+          "new_treated_peak": 89.86,
+          "old_treated_peak": 88.32,
+          "replace_treated_peak": 116.68
+        }
+      ]
+    },
+    {
+      "frame": 34,
+      "source_frame": 734,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 209.8,
+          "new_peak": 131.98,
+          "old_peak": 131.98,
+          "iris_median": 51.25,
+          "replace_peak": 241.25,
+          "iris_level": 51.25,
+          "treated_cells": 148,
+          "source_peak_treated": 209.8,
+          "new_treated_peak": 111.34,
+          "old_treated_peak": 112.28,
+          "replace_treated_peak": 113.59
+        },
+        {
+          "side": "right",
+          "source_peak": 214.67,
+          "new_peak": 170.56,
+          "old_peak": 170.56,
+          "iris_median": 64.62,
+          "replace_peak": 212.32,
+          "iris_level": 64.62,
+          "treated_cells": 145,
+          "source_peak_treated": 214.67,
+          "new_treated_peak": 88.18,
+          "old_treated_peak": 88.5,
+          "replace_treated_peak": 119.49
+        }
+      ]
+    },
+    {
+      "frame": 35,
+      "source_frame": 735,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 210.07,
+          "new_peak": 131.5,
+          "old_peak": 131.5,
+          "iris_median": 51.83,
+          "replace_peak": 240.95,
+          "iris_level": 51.83,
+          "treated_cells": 136,
+          "source_peak_treated": 210.07,
+          "new_treated_peak": 103.13,
+          "old_treated_peak": 104.86,
+          "replace_treated_peak": 122.16
+        },
+        {
+          "side": "right",
+          "source_peak": 215.22,
+          "new_peak": 167.97,
+          "old_peak": 167.97,
+          "iris_median": 63.78,
+          "replace_peak": 210.26,
+          "iris_level": 63.78,
+          "treated_cells": 158,
+          "source_peak_treated": 215.22,
+          "new_treated_peak": 93.84,
+          "old_treated_peak": 88.25,
+          "replace_treated_peak": 122.3
+        }
+      ]
+    },
+    {
+      "frame": 36,
+      "source_frame": 736,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 206.73,
+          "new_peak": 133.31,
+          "old_peak": 133.31,
+          "iris_median": 52.36,
+          "replace_peak": 246.73,
+          "iris_level": 52.36,
+          "treated_cells": 140,
+          "source_peak_treated": 206.73,
+          "new_treated_peak": 106.14,
+          "old_treated_peak": 104.97,
+          "replace_treated_peak": 142.79
+        },
+        {
+          "side": "right",
+          "source_peak": 221.41,
+          "new_peak": 170.21,
+          "old_peak": 170.21,
+          "iris_median": 65.93,
+          "replace_peak": 242.53,
+          "iris_level": 65.93,
+          "treated_cells": 145,
+          "source_peak_treated": 221.41,
+          "new_treated_peak": 89.96,
+          "old_treated_peak": 87.59,
+          "replace_treated_peak": 129.57
+        }
+      ]
+    },
+    {
+      "frame": 37,
+      "source_frame": 737,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 209.29,
+          "new_peak": 139.17,
+          "old_peak": 139.17,
+          "iris_median": 53.38,
+          "replace_peak": 236.97,
+          "iris_level": 53.38,
+          "treated_cells": 124,
+          "source_peak_treated": 209.29,
+          "new_treated_peak": 105.11,
+          "old_treated_peak": 105.11,
+          "replace_treated_peak": 115.56
+        },
+        {
+          "side": "right",
+          "source_peak": 217.49,
+          "new_peak": 170.97,
+          "old_peak": 170.97,
+          "iris_median": 64.72,
+          "replace_peak": 245.58,
+          "iris_level": 64.72,
+          "treated_cells": 131,
+          "source_peak_treated": 217.49,
+          "new_treated_peak": 89.77,
+          "old_treated_peak": 87.16,
+          "replace_treated_peak": 160.9
+        }
+      ]
+    },
+    {
+      "frame": 38,
+      "source_frame": 738,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 210.08,
+          "new_peak": 142.38,
+          "old_peak": 142.38,
+          "iris_median": 53.75,
+          "replace_peak": 252.69,
+          "iris_level": 53.75,
+          "treated_cells": 136,
+          "source_peak_treated": 210.08,
+          "new_treated_peak": 111.08,
+          "old_treated_peak": 110.78,
+          "replace_treated_peak": 118.17
+        },
+        {
+          "side": "right",
+          "source_peak": 218.96,
+          "new_peak": 173.62,
+          "old_peak": 173.62,
+          "iris_median": 66.22,
+          "replace_peak": 221.94,
+          "iris_level": 66.22,
+          "treated_cells": 149,
+          "source_peak_treated": 218.96,
+          "new_treated_peak": 88.05,
+          "old_treated_peak": 88.97,
+          "replace_treated_peak": 144.0
+        }
+      ]
+    },
+    {
+      "frame": 39,
+      "source_frame": 739,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 207.63,
+          "new_peak": 139.0,
+          "old_peak": 139.0,
+          "iris_median": 53.76,
+          "replace_peak": 228.67,
+          "iris_level": 53.76,
+          "treated_cells": 141,
+          "source_peak_treated": 207.63,
+          "new_treated_peak": 109.79,
+          "old_treated_peak": 110.17,
+          "replace_treated_peak": 120.83
+        },
+        {
+          "side": "right",
+          "source_peak": 222.0,
+          "new_peak": 175.04,
+          "old_peak": 175.04,
+          "iris_median": 66.41,
+          "replace_peak": 239.1,
+          "iris_level": 66.41,
+          "treated_cells": 140,
+          "source_peak_treated": 222.0,
+          "new_treated_peak": 90.48,
+          "old_treated_peak": 90.5,
+          "replace_treated_peak": 153.0
+        }
+      ]
+    },
+    {
+      "frame": 40,
+      "source_frame": 740,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 207.58,
+          "new_peak": 141.41,
+          "old_peak": 141.41,
+          "iris_median": 54.76,
+          "replace_peak": 255.0,
+          "iris_level": 54.76,
+          "treated_cells": 132,
+          "source_peak_treated": 207.58,
+          "new_treated_peak": 110.65,
+          "old_treated_peak": 109.92,
+          "replace_treated_peak": 130.52
+        },
+        {
+          "side": "right",
+          "source_peak": 214.2,
+          "new_peak": 176.59,
+          "old_peak": 176.59,
+          "iris_median": 66.51,
+          "replace_peak": 233.05,
+          "iris_level": 66.51,
+          "treated_cells": 144,
+          "source_peak_treated": 214.2,
+          "new_treated_peak": 83.43,
+          "old_treated_peak": 86.73,
+          "replace_treated_peak": 138.95
+        }
+      ]
+    },
+    {
+      "frame": 41,
+      "source_frame": 741,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 209.06,
+          "new_peak": 139.93,
+          "old_peak": 139.93,
+          "iris_median": 54.14,
+          "replace_peak": 251.8,
+          "iris_level": 54.14,
+          "treated_cells": 131,
+          "source_peak_treated": 209.06,
+          "new_treated_peak": 109.57,
+          "old_treated_peak": 107.14,
+          "replace_treated_peak": 132.36
+        },
+        {
+          "side": "right",
+          "source_peak": 215.62,
+          "new_peak": 178.35,
+          "old_peak": 178.35,
+          "iris_median": 67.45,
+          "replace_peak": 221.72,
+          "iris_level": 67.45,
+          "treated_cells": 140,
+          "source_peak_treated": 215.62,
+          "new_treated_peak": 88.25,
+          "old_treated_peak": 85.5,
+          "replace_treated_peak": 116.88
+        }
+      ]
+    },
+    {
+      "frame": 42,
+      "source_frame": 742,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 214.78,
+          "new_peak": 143.77,
+          "old_peak": 143.77,
+          "iris_median": 55.84,
+          "replace_peak": 226.95,
+          "iris_level": 55.84,
+          "treated_cells": 131,
+          "source_peak_treated": 214.78,
+          "new_treated_peak": 109.04,
+          "old_treated_peak": 108.9,
+          "replace_treated_peak": 139.78
+        },
+        {
+          "side": "right",
+          "source_peak": 217.52,
+          "new_peak": 179.47,
+          "old_peak": 179.47,
+          "iris_median": 67.23,
+          "replace_peak": 254.0,
+          "iris_level": 67.23,
+          "treated_cells": 136,
+          "source_peak_treated": 217.52,
+          "new_treated_peak": 91.41,
+          "old_treated_peak": 86.68,
+          "replace_treated_peak": 123.25
+        }
+      ]
+    },
+    {
+      "frame": 43,
+      "source_frame": 743,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 211.95,
+          "new_peak": 144.64,
+          "old_peak": 144.64,
+          "iris_median": 56.39,
+          "replace_peak": 254.75,
+          "iris_level": 56.39,
+          "treated_cells": 130,
+          "source_peak_treated": 211.95,
+          "new_treated_peak": 109.9,
+          "old_treated_peak": 109.67,
+          "replace_treated_peak": 119.27
+        },
+        {
+          "side": "right",
+          "source_peak": 215.18,
+          "new_peak": 178.91,
+          "old_peak": 178.91,
+          "iris_median": 68.47,
+          "replace_peak": 203.01,
+          "iris_level": 68.47,
+          "treated_cells": 147,
+          "source_peak_treated": 215.18,
+          "new_treated_peak": 89.21,
+          "old_treated_peak": 87.98,
+          "replace_treated_peak": 136.05
+        }
+      ]
+    },
+    {
+      "frame": 44,
+      "source_frame": 744,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 210.17,
+          "new_peak": 145.63,
+          "old_peak": 145.63,
+          "iris_median": 56.98,
+          "replace_peak": 249.86,
+          "iris_level": 56.98,
+          "treated_cells": 118,
+          "source_peak_treated": 210.17,
+          "new_treated_peak": 108.13,
+          "old_treated_peak": 108.27,
+          "replace_treated_peak": 118.36
+        },
+        {
+          "side": "right",
+          "source_peak": 211.66,
+          "new_peak": 180.83,
+          "old_peak": 180.83,
+          "iris_median": 69.32,
+          "replace_peak": 234.23,
+          "iris_level": 69.32,
+          "treated_cells": 131,
+          "source_peak_treated": 211.66,
+          "new_treated_peak": 92.29,
+          "old_treated_peak": 94.19,
+          "replace_treated_peak": 126.38
+        }
+      ]
+    },
+    {
+      "frame": 45,
+      "source_frame": 745,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 213.03,
+          "new_peak": 157.0,
+          "old_peak": 157.0,
+          "iris_median": 59.9,
+          "replace_peak": 241.58,
+          "iris_level": 59.9,
+          "treated_cells": 146,
+          "source_peak_treated": 213.03,
+          "new_treated_peak": 104.9,
+          "old_treated_peak": 107.5,
+          "replace_treated_peak": 140.62
+        },
+        {
+          "side": "right",
+          "source_peak": 216.18,
+          "new_peak": 186.98,
+          "old_peak": 186.98,
+          "iris_median": 71.23,
+          "replace_peak": 223.66,
+          "iris_level": 71.23,
+          "treated_cells": 136,
+          "source_peak_treated": 216.18,
+          "new_treated_peak": 107.63,
+          "old_treated_peak": 109.81,
+          "replace_treated_peak": 146.0
+        }
+      ]
+    },
+    {
+      "frame": 46,
+      "source_frame": 746,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 213.84,
+          "new_peak": 158.06,
+          "old_peak": 158.06,
+          "iris_median": 60.33,
+          "replace_peak": 246.14,
+          "iris_level": 60.33,
+          "treated_cells": 164,
+          "source_peak_treated": 213.84,
+          "new_treated_peak": 113.13,
+          "old_treated_peak": 114.72,
+          "replace_treated_peak": 138.79
+        },
+        {
+          "side": "right",
+          "source_peak": 222.21,
+          "new_peak": 185.33,
+          "old_peak": 185.33,
+          "iris_median": 72.75,
+          "replace_peak": 223.82,
+          "iris_level": 72.75,
+          "treated_cells": 155,
+          "source_peak_treated": 222.21,
+          "new_treated_peak": 111.32,
+          "old_treated_peak": 113.21,
+          "replace_treated_peak": 142.85
+        }
+      ]
+    },
+    {
+      "frame": 47,
+      "source_frame": 747,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 212.07,
+          "new_peak": 157.62,
+          "old_peak": 157.62,
+          "iris_median": 59.49,
+          "replace_peak": 250.8,
+          "iris_level": 59.49,
+          "treated_cells": 195,
+          "source_peak_treated": 212.07,
+          "new_treated_peak": 107.68,
+          "old_treated_peak": 109.62,
+          "replace_treated_peak": 125.16
+        },
+        {
+          "side": "right",
+          "source_peak": 213.0,
+          "new_peak": 182.75,
+          "old_peak": 182.75,
+          "iris_median": 72.14,
+          "replace_peak": 233.48,
+          "iris_level": 72.14,
+          "treated_cells": 211,
+          "source_peak_treated": 213.0,
+          "new_treated_peak": 107.87,
+          "old_treated_peak": 109.51,
+          "replace_treated_peak": 122.17
+        }
+      ]
+    },
+    {
+      "frame": 48,
+      "source_frame": 748,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 209.12,
+          "new_peak": 148.75,
+          "old_peak": 148.75,
+          "iris_median": 57.64,
+          "replace_peak": 250.91,
+          "iris_level": 57.64,
+          "treated_cells": 177,
+          "source_peak_treated": 209.12,
+          "new_treated_peak": 109.68,
+          "old_treated_peak": 106.94,
+          "replace_treated_peak": 119.46
+        },
+        {
+          "side": "right",
+          "source_peak": 214.12,
+          "new_peak": 176.4,
+          "old_peak": 176.4,
+          "iris_median": 69.38,
+          "replace_peak": 224.27,
+          "iris_level": 69.38,
+          "treated_cells": 178,
+          "source_peak_treated": 214.12,
+          "new_treated_peak": 111.5,
+          "old_treated_peak": 111.5,
+          "replace_treated_peak": 141.62
+        }
+      ]
+    },
+    {
+      "frame": 49,
+      "source_frame": 749,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 210.74,
+          "new_peak": 127.14,
+          "old_peak": 127.14,
+          "iris_median": 49.34,
+          "replace_peak": 215.23,
+          "iris_level": 49.34,
+          "treated_cells": 197,
+          "source_peak_treated": 210.74,
+          "new_treated_peak": 105.95,
+          "old_treated_peak": 106.24,
+          "replace_treated_peak": 115.33
+        },
+        {
+          "side": "right",
+          "source_peak": 223.27,
+          "new_peak": 159.6,
+          "old_peak": 159.6,
+          "iris_median": 60.42,
+          "replace_peak": 250.43,
+          "iris_level": 60.42,
+          "treated_cells": 188,
+          "source_peak_treated": 223.27,
+          "new_treated_peak": 104.4,
+          "old_treated_peak": 107.74,
+          "replace_treated_peak": 144.8
+        }
+      ]
+    },
+    {
+      "frame": 50,
+      "source_frame": 750,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 206.75,
+          "new_peak": 106.75,
+          "old_peak": 109.12,
+          "iris_median": 43.09,
+          "replace_peak": 233.55,
+          "iris_level": 43.09,
+          "treated_cells": 208,
+          "source_peak_treated": 206.75,
+          "new_treated_peak": 106.55,
+          "old_treated_peak": 109.12,
+          "replace_treated_peak": 130.36
+        },
+        {
+          "side": "right",
+          "source_peak": 219.95,
+          "new_peak": 125.29,
+          "old_peak": 125.29,
+          "iris_median": 51.47,
+          "replace_peak": 187.69,
+          "iris_level": 51.47,
+          "treated_cells": 218,
+          "source_peak_treated": 219.95,
+          "new_treated_peak": 112.0,
+          "old_treated_peak": 115.22,
+          "replace_treated_peak": 135.52
+        }
+      ]
+    },
+    {
+      "frame": 51,
+      "source_frame": 751,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 208.7,
+          "new_peak": 108.37,
+          "old_peak": 108.37,
+          "iris_median": 38.96,
+          "replace_peak": 250.32,
+          "iris_level": 38.96,
+          "treated_cells": 175,
+          "source_peak_treated": 208.7,
+          "new_treated_peak": 104.8,
+          "old_treated_peak": 107.64,
+          "replace_treated_peak": 113.8
+        },
+        {
+          "side": "right",
+          "source_peak": 216.44,
+          "new_peak": 123.62,
+          "old_peak": 123.62,
+          "iris_median": 49.8,
+          "replace_peak": 222.5,
+          "iris_level": 49.8,
+          "treated_cells": 199,
+          "source_peak_treated": 216.44,
+          "new_treated_peak": 101.75,
+          "old_treated_peak": 106.89,
+          "replace_treated_peak": 122.03
+        }
+      ]
+    },
+    {
+      "frame": 52,
+      "source_frame": 752,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 214.54,
+          "new_peak": 105.41,
+          "old_peak": 105.41,
+          "iris_median": 39.16,
+          "replace_peak": 231.66,
+          "iris_level": 39.16,
+          "treated_cells": 142,
+          "source_peak_treated": 214.54,
+          "new_treated_peak": 92.88,
+          "old_treated_peak": 89.92,
+          "replace_treated_peak": 120.75
+        },
+        {
+          "side": "right",
+          "source_peak": 216.01,
+          "new_peak": 122.0,
+          "old_peak": 122.0,
+          "iris_median": 50.72,
+          "replace_peak": 248.12,
+          "iris_level": 50.72,
+          "treated_cells": 189,
+          "source_peak_treated": 216.01,
+          "new_treated_peak": 111.95,
+          "old_treated_peak": 109.44,
+          "replace_treated_peak": 156.6
+        }
+      ]
+    },
+    {
+      "frame": 53,
+      "source_frame": 753,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 210.31,
+          "new_peak": 114.49,
+          "old_peak": 114.49,
+          "iris_median": 39.29,
+          "replace_peak": 252.32,
+          "iris_level": 39.29,
+          "treated_cells": 136,
+          "source_peak_treated": 210.31,
+          "new_treated_peak": 92.11,
+          "old_treated_peak": 88.44,
+          "replace_treated_peak": 98.44
+        },
+        {
+          "side": "right",
+          "source_peak": 219.57,
+          "new_peak": 142.03,
+          "old_peak": 142.03,
+          "iris_median": 52.72,
+          "replace_peak": 254.39,
+          "iris_level": 52.72,
+          "treated_cells": 185,
+          "source_peak_treated": 219.57,
+          "new_treated_peak": 99.77,
+          "old_treated_peak": 102.0,
+          "replace_treated_peak": 119.36
+        }
+      ]
+    },
+    {
+      "frame": 54,
+      "source_frame": 754,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 208.87,
+          "new_peak": 120.57,
+          "old_peak": 120.57,
+          "iris_median": 40.6,
+          "replace_peak": 220.06,
+          "iris_level": 40.6,
+          "treated_cells": 107,
+          "source_peak_treated": 208.87,
+          "new_treated_peak": 94.77,
+          "old_treated_peak": 95.63,
+          "replace_treated_peak": 119.94
+        },
+        {
+          "side": "right",
+          "source_peak": 219.7,
+          "new_peak": 153.79,
+          "old_peak": 153.79,
+          "iris_median": 56.19,
+          "replace_peak": 250.2,
+          "iris_level": 56.19,
+          "treated_cells": 156,
+          "source_peak_treated": 219.7,
+          "new_treated_peak": 98.22,
+          "old_treated_peak": 97.45,
+          "replace_treated_peak": 132.3
+        }
+      ]
+    },
+    {
+      "frame": 55,
+      "source_frame": 755,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 211.47,
+          "new_peak": 121.9,
+          "old_peak": 121.9,
+          "iris_median": 41.5,
+          "replace_peak": 247.12,
+          "iris_level": 41.5,
+          "treated_cells": 88,
+          "source_peak_treated": 211.47,
+          "new_treated_peak": 82.03,
+          "old_treated_peak": 82.56,
+          "replace_treated_peak": 120.44
+        },
+        {
+          "side": "right",
+          "source_peak": 211.15,
+          "new_peak": 158.34,
+          "old_peak": 158.34,
+          "iris_median": 57.7,
+          "replace_peak": 239.09,
+          "iris_level": 57.7,
+          "treated_cells": 135,
+          "source_peak_treated": 211.15,
+          "new_treated_peak": 103.31,
+          "old_treated_peak": 102.29,
+          "replace_treated_peak": 130.77
+        }
+      ]
+    },
+    {
+      "frame": 56,
+      "source_frame": 756,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 201.95,
+          "new_peak": 122.8,
+          "old_peak": 122.8,
+          "iris_median": 41.16,
+          "replace_peak": 253.75,
+          "iris_level": 41.16,
+          "treated_cells": 106,
+          "source_peak_treated": 201.95,
+          "new_treated_peak": 97.59,
+          "old_treated_peak": 102.31,
+          "replace_treated_peak": 131.61
+        },
+        {
+          "side": "right",
+          "source_peak": 214.77,
+          "new_peak": 165.98,
+          "old_peak": 165.98,
+          "iris_median": 58.17,
+          "replace_peak": 251.19,
+          "iris_level": 58.17,
+          "treated_cells": 132,
+          "source_peak_treated": 214.77,
+          "new_treated_peak": 104.35,
+          "old_treated_peak": 102.39,
+          "replace_treated_peak": 114.68
+        }
+      ]
+    },
+    {
+      "frame": 57,
+      "source_frame": 757,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 203.54,
+          "new_peak": 120.78,
+          "old_peak": 120.78,
+          "iris_median": 40.56,
+          "replace_peak": 250.27,
+          "iris_level": 40.56,
+          "treated_cells": 99,
+          "source_peak_treated": 203.54,
+          "new_treated_peak": 101.95,
+          "old_treated_peak": 102.46,
+          "replace_treated_peak": 113.24
+        },
+        {
+          "side": "right",
+          "source_peak": 219.45,
+          "new_peak": 166.99,
+          "old_peak": 166.99,
+          "iris_median": 57.33,
+          "replace_peak": 250.98,
+          "iris_level": 57.33,
+          "treated_cells": 141,
+          "source_peak_treated": 219.45,
+          "new_treated_peak": 105.14,
+          "old_treated_peak": 106.03,
+          "replace_treated_peak": 124.92
+        }
+      ]
+    },
+    {
+      "frame": 58,
+      "source_frame": 758,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 210.6,
+          "new_peak": 121.32,
+          "old_peak": 121.32,
+          "iris_median": 41.59,
+          "replace_peak": 245.33,
+          "iris_level": 41.59,
+          "treated_cells": 100,
+          "source_peak_treated": 210.6,
+          "new_treated_peak": 78.41,
+          "old_treated_peak": 90.84,
+          "replace_treated_peak": 117.87
+        },
+        {
+          "side": "right",
+          "source_peak": 215.23,
+          "new_peak": 165.65,
+          "old_peak": 165.65,
+          "iris_median": 55.95,
+          "replace_peak": 238.38,
+          "iris_level": 55.95,
+          "treated_cells": 137,
+          "source_peak_treated": 215.23,
+          "new_treated_peak": 101.59,
+          "old_treated_peak": 102.78,
+          "replace_treated_peak": 117.64
+        }
+      ]
+    },
+    {
+      "frame": 59,
+      "source_frame": 759,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 201.91,
+          "new_peak": 127.79,
+          "old_peak": 127.79,
+          "iris_median": 42.96,
+          "replace_peak": 234.51,
+          "iris_level": 42.96,
+          "treated_cells": 97,
+          "source_peak_treated": 201.91,
+          "new_treated_peak": 101.0,
+          "old_treated_peak": 101.0,
+          "replace_treated_peak": 116.74
+        },
+        {
+          "side": "right",
+          "source_peak": 211.5,
+          "new_peak": 163.17,
+          "old_peak": 163.17,
+          "iris_median": 56.09,
+          "replace_peak": 236.74,
+          "iris_level": 56.09,
+          "treated_cells": 143,
+          "source_peak_treated": 211.5,
+          "new_treated_peak": 112.52,
+          "old_treated_peak": 114.73,
+          "replace_treated_peak": 118.9
+        }
+      ]
+    },
+    {
+      "frame": 60,
+      "source_frame": 760,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 202.67,
+          "new_peak": 132.92,
+          "old_peak": 132.92,
+          "iris_median": 43.75,
+          "replace_peak": 245.36,
+          "iris_level": 43.75,
+          "treated_cells": 100,
+          "source_peak_treated": 202.67,
+          "new_treated_peak": 85.22,
+          "old_treated_peak": 87.41,
+          "replace_treated_peak": 114.62
+        },
+        {
+          "side": "right",
+          "source_peak": 219.08,
+          "new_peak": 163.78,
+          "old_peak": 163.78,
+          "iris_median": 56.24,
+          "replace_peak": 228.66,
+          "iris_level": 56.24,
+          "treated_cells": 125,
+          "source_peak_treated": 219.08,
+          "new_treated_peak": 104.95,
+          "old_treated_peak": 105.51,
+          "replace_treated_peak": 107.09
+        }
+      ]
+    },
+    {
+      "frame": 61,
+      "source_frame": 761,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 208.57,
+          "new_peak": 141.46,
+          "old_peak": 141.46,
+          "iris_median": 48.09,
+          "replace_peak": 251.71,
+          "iris_level": 48.09,
+          "treated_cells": 94,
+          "source_peak_treated": 208.57,
+          "new_treated_peak": 100.74,
+          "old_treated_peak": 100.74,
+          "replace_treated_peak": 107.18
+        },
+        {
+          "side": "right",
+          "source_peak": 219.36,
+          "new_peak": 167.61,
+          "old_peak": 167.61,
+          "iris_median": 59.97,
+          "replace_peak": 246.9,
+          "iris_level": 59.97,
+          "treated_cells": 138,
+          "source_peak_treated": 219.36,
+          "new_treated_peak": 112.5,
+          "old_treated_peak": 116.36,
+          "replace_treated_peak": 114.36
+        }
+      ]
+    },
+    {
+      "frame": 62,
+      "source_frame": 762,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 210.35,
+          "new_peak": 142.47,
+          "old_peak": 142.47,
+          "iris_median": 50.06,
+          "replace_peak": 250.47,
+          "iris_level": 50.06,
+          "treated_cells": 80,
+          "source_peak_treated": 210.35,
+          "new_treated_peak": 103.79,
+          "old_treated_peak": 105.29,
+          "replace_treated_peak": 105.64
+        },
+        {
+          "side": "right",
+          "source_peak": 219.71,
+          "new_peak": 181.59,
+          "old_peak": 181.59,
+          "iris_median": 64.78,
+          "replace_peak": 248.39,
+          "iris_level": 64.78,
+          "treated_cells": 141,
+          "source_peak_treated": 219.71,
+          "new_treated_peak": 115.08,
+          "old_treated_peak": 116.79,
+          "replace_treated_peak": 121.0
+        }
+      ]
+    },
+    {
+      "frame": 63,
+      "source_frame": 763,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 206.08,
+          "new_peak": 146.17,
+          "old_peak": 146.17,
+          "iris_median": 50.75,
+          "replace_peak": 240.97,
+          "iris_level": 50.75,
+          "treated_cells": 96,
+          "source_peak_treated": 206.08,
+          "new_treated_peak": 97.93,
+          "old_treated_peak": 124.57,
+          "replace_treated_peak": 115.84
+        },
+        {
+          "side": "right",
+          "source_peak": 214.74,
+          "new_peak": 182.79,
+          "old_peak": 182.79,
+          "iris_median": 65.71,
+          "replace_peak": 250.82,
+          "iris_level": 65.71,
+          "treated_cells": 107,
+          "source_peak_treated": 214.74,
+          "new_treated_peak": 98.44,
+          "old_treated_peak": 107.96,
+          "replace_treated_peak": 119.26
+        }
+      ]
+    },
+    {
+      "frame": 64,
+      "source_frame": 764,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 207.91,
+          "new_peak": 146.8,
+          "old_peak": 146.8,
+          "iris_median": 50.97,
+          "replace_peak": 246.71,
+          "iris_level": 50.97,
+          "treated_cells": 100,
+          "source_peak_treated": 207.91,
+          "new_treated_peak": 99.98,
+          "old_treated_peak": 109.06,
+          "replace_treated_peak": 101.26
+        },
+        {
+          "side": "right",
+          "source_peak": 214.61,
+          "new_peak": 179.5,
+          "old_peak": 179.5,
+          "iris_median": 65.98,
+          "replace_peak": 246.69,
+          "iris_level": 65.98,
+          "treated_cells": 122,
+          "source_peak_treated": 214.61,
+          "new_treated_peak": 112.22,
+          "old_treated_peak": 113.31,
+          "replace_treated_peak": 124.7
+        }
+      ]
+    },
+    {
+      "frame": 65,
+      "source_frame": 765,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 207.48,
+          "new_peak": 157.12,
+          "old_peak": 157.12,
+          "iris_median": 54.38,
+          "replace_peak": 225.14,
+          "iris_level": 54.38,
+          "treated_cells": 97,
+          "source_peak_treated": 207.48,
+          "new_treated_peak": 102.78,
+          "old_treated_peak": 116.52,
+          "replace_treated_peak": 103.2
+        },
+        {
+          "side": "right",
+          "source_peak": 212.31,
+          "new_peak": 181.74,
+          "old_peak": 181.74,
+          "iris_median": 69.17,
+          "replace_peak": 240.91,
+          "iris_level": 69.17,
+          "treated_cells": 119,
+          "source_peak_treated": 212.31,
+          "new_treated_peak": 113.78,
+          "old_treated_peak": 128.62,
+          "replace_treated_peak": 121.01
+        }
+      ]
+    },
+    {
+      "frame": 66,
+      "source_frame": 766,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 209.3,
+          "new_peak": 174.81,
+          "old_peak": 174.81,
+          "iris_median": 61.12,
+          "replace_peak": 226.32,
+          "iris_level": 61.12,
+          "treated_cells": 99,
+          "source_peak_treated": 209.3,
+          "new_treated_peak": 99.73,
+          "old_treated_peak": 144.51,
+          "replace_treated_peak": 106.2
+        },
+        {
+          "side": "right",
+          "source_peak": 212.06,
+          "new_peak": 188.21,
+          "old_peak": 188.21,
+          "iris_median": 72.25,
+          "replace_peak": 250.0,
+          "iris_level": 72.25,
+          "treated_cells": 109,
+          "source_peak_treated": 212.06,
+          "new_treated_peak": 110.91,
+          "old_treated_peak": 130.16,
+          "replace_treated_peak": 134.28
+        }
+      ]
+    },
+    {
+      "frame": 67,
+      "source_frame": 767,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 194.94,
+          "new_peak": 170.49,
+          "old_peak": 169.42,
+          "iris_median": 76.17,
+          "replace_peak": 235.51,
+          "iris_level": 76.17,
+          "treated_cells": 181,
+          "source_peak_treated": 194.94,
+          "new_treated_peak": 170.49,
+          "old_treated_peak": 159.48,
+          "replace_treated_peak": 175.46
+        },
+        {
+          "side": "right",
+          "source_peak": 196.72,
+          "new_peak": 196.72,
+          "old_peak": 196.72,
+          "iris_median": 80.28,
+          "replace_peak": 242.85,
+          "iris_level": 80.28,
+          "treated_cells": 121,
+          "source_peak_treated": 194.94,
+          "new_treated_peak": 111.6,
+          "old_treated_peak": 130.94,
+          "replace_treated_peak": 128.61
+        }
+      ]
+    },
+    {
+      "frame": 68,
+      "source_frame": 768,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 192.88,
+          "new_peak": 178.22,
+          "old_peak": 167.06,
+          "iris_median": 75.0,
+          "replace_peak": 243.61,
+          "iris_level": 75.0,
+          "treated_cells": 159,
+          "source_peak_treated": 192.88,
+          "new_treated_peak": 178.22,
+          "old_treated_peak": 157.33,
+          "replace_treated_peak": 183.22
+        },
+        {
+          "side": "right",
+          "source_peak": 197.5,
+          "new_peak": 197.5,
+          "old_peak": 197.5,
+          "iris_median": 88.0,
+          "replace_peak": 255.0,
+          "iris_level": 88.0,
+          "treated_cells": 132,
+          "source_peak_treated": 174.28,
+          "new_treated_peak": 123.42,
+          "old_treated_peak": 125.13,
+          "replace_treated_peak": 136.42
+        }
+      ]
+    },
+    {
+      "frame": 69,
+      "source_frame": 769,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 188.3,
+          "new_peak": 188.3,
+          "old_peak": 188.3,
+          "iris_median": 66.1,
+          "replace_peak": 254.41,
+          "iris_level": 66.1,
+          "treated_cells": 108,
+          "source_peak_treated": 187.64,
+          "new_treated_peak": 100.48,
+          "old_treated_peak": 117.28,
+          "replace_treated_peak": 102.52
+        },
+        {
+          "side": "right",
+          "source_peak": 207.12,
+          "new_peak": 196.77,
+          "old_peak": 196.77,
+          "iris_median": 78.59,
+          "replace_peak": 234.12,
+          "iris_level": 78.59,
+          "treated_cells": 95,
+          "source_peak_treated": 207.12,
+          "new_treated_peak": 109.67,
+          "old_treated_peak": 134.66,
+          "replace_treated_peak": 149.25
+        }
+      ]
+    },
+    {
+      "frame": 70,
+      "source_frame": 770,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 210.81,
+          "new_peak": 170.92,
+          "old_peak": 170.92,
+          "iris_median": 59.66,
+          "replace_peak": 244.08,
+          "iris_level": 59.66,
+          "treated_cells": 110,
+          "source_peak_treated": 210.81,
+          "new_treated_peak": 100.68,
+          "old_treated_peak": 149.79,
+          "replace_treated_peak": 114.12
+        },
+        {
+          "side": "right",
+          "source_peak": 215.91,
+          "new_peak": 188.69,
+          "old_peak": 188.69,
+          "iris_median": 72.71,
+          "replace_peak": 246.88,
+          "iris_level": 72.71,
+          "treated_cells": 126,
+          "source_peak_treated": 215.91,
+          "new_treated_peak": 108.2,
+          "old_treated_peak": 151.53,
+          "replace_treated_peak": 114.75
+        }
+      ]
+    },
+    {
+      "frame": 71,
+      "source_frame": 771,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 207.79,
+          "new_peak": 160.72,
+          "old_peak": 160.72,
+          "iris_median": 54.58,
+          "replace_peak": 255.0,
+          "iris_level": 54.58,
+          "treated_cells": 81,
+          "source_peak_treated": 207.79,
+          "new_treated_peak": 113.93,
+          "old_treated_peak": 131.94,
+          "replace_treated_peak": 115.03
+        },
+        {
+          "side": "right",
+          "source_peak": 208.6,
+          "new_peak": 184.31,
+          "old_peak": 184.31,
+          "iris_median": 68.18,
+          "replace_peak": 247.14,
+          "iris_level": 68.18,
+          "treated_cells": 120,
+          "source_peak_treated": 208.6,
+          "new_treated_peak": 99.69,
+          "old_treated_peak": 108.2,
+          "replace_treated_peak": 141.65
+        }
+      ]
+    },
+    {
+      "frame": 72,
+      "source_frame": 772,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 217.11,
+          "new_peak": 145.44,
+          "old_peak": 145.44,
+          "iris_median": 50.91,
+          "replace_peak": 248.31,
+          "iris_level": 50.91,
+          "treated_cells": 95,
+          "source_peak_treated": 217.11,
+          "new_treated_peak": 108.45,
+          "old_treated_peak": 122.11,
+          "replace_treated_peak": 120.0
+        },
+        {
+          "side": "right",
+          "source_peak": 214.08,
+          "new_peak": 171.66,
+          "old_peak": 171.66,
+          "iris_median": 64.61,
+          "replace_peak": 234.98,
+          "iris_level": 64.61,
+          "treated_cells": 150,
+          "source_peak_treated": 214.08,
+          "new_treated_peak": 110.59,
+          "old_treated_peak": 111.8,
+          "replace_treated_peak": 124.57
+        }
+      ]
+    },
+    {
+      "frame": 73,
+      "source_frame": 773,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 210.05,
+          "new_peak": 138.98,
+          "old_peak": 138.98,
+          "iris_median": 49.92,
+          "replace_peak": 240.54,
+          "iris_level": 49.92,
+          "treated_cells": 84,
+          "source_peak_treated": 210.05,
+          "new_treated_peak": 85.98,
+          "old_treated_peak": 125.45,
+          "replace_treated_peak": 114.86
+        },
+        {
+          "side": "right",
+          "source_peak": 215.41,
+          "new_peak": 150.96,
+          "old_peak": 150.96,
+          "iris_median": 61.9,
+          "replace_peak": 250.39,
+          "iris_level": 61.9,
+          "treated_cells": 125,
+          "source_peak_treated": 215.41,
+          "new_treated_peak": 90.95,
+          "old_treated_peak": 94.82,
+          "replace_treated_peak": 130.23
+        }
+      ]
+    },
+    {
+      "frame": 74,
+      "source_frame": 774,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 205.99,
+          "new_peak": 133.35,
+          "old_peak": 133.35,
+          "iris_median": 48.39,
+          "replace_peak": 247.1,
+          "iris_level": 48.39,
+          "treated_cells": 94,
+          "source_peak_treated": 205.99,
+          "new_treated_peak": 94.79,
+          "old_treated_peak": 106.27,
+          "replace_treated_peak": 101.0
+        },
+        {
+          "side": "right",
+          "source_peak": 212.5,
+          "new_peak": 139.52,
+          "old_peak": 139.52,
+          "iris_median": 60.12,
+          "replace_peak": 251.83,
+          "iris_level": 60.12,
+          "treated_cells": 143,
+          "source_peak_treated": 212.5,
+          "new_treated_peak": 94.84,
+          "old_treated_peak": 97.73,
+          "replace_treated_peak": 141.14
+        }
+      ]
+    },
+    {
+      "frame": 75,
+      "source_frame": 775,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 207.44,
+          "new_peak": 126.89,
+          "old_peak": 126.89,
+          "iris_median": 46.78,
+          "replace_peak": 246.63,
+          "iris_level": 46.78,
+          "treated_cells": 90,
+          "source_peak_treated": 207.44,
+          "new_treated_peak": 86.12,
+          "old_treated_peak": 122.92,
+          "replace_treated_peak": 118.92
+        },
+        {
+          "side": "right",
+          "source_peak": 214.93,
+          "new_peak": 139.77,
+          "old_peak": 139.77,
+          "iris_median": 59.47,
+          "replace_peak": 249.56,
+          "iris_level": 59.47,
+          "treated_cells": 158,
+          "source_peak_treated": 214.93,
+          "new_treated_peak": 104.31,
+          "old_treated_peak": 101.8,
+          "replace_treated_peak": 130.25
+        }
+      ]
+    },
+    {
+      "frame": 76,
+      "source_frame": 776,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 212.58,
+          "new_peak": 120.75,
+          "old_peak": 120.75,
+          "iris_median": 44.39,
+          "replace_peak": 232.31,
+          "iris_level": 44.39,
+          "treated_cells": 111,
+          "source_peak_treated": 212.58,
+          "new_treated_peak": 87.02,
+          "old_treated_peak": 103.4,
+          "replace_treated_peak": 113.83
+        },
+        {
+          "side": "right",
+          "source_peak": 217.79,
+          "new_peak": 136.4,
+          "old_peak": 136.4,
+          "iris_median": 56.78,
+          "replace_peak": 246.39,
+          "iris_level": 56.78,
+          "treated_cells": 133,
+          "source_peak_treated": 217.79,
+          "new_treated_peak": 104.74,
+          "old_treated_peak": 105.35,
+          "replace_treated_peak": 131.73
+        }
+      ]
+    },
+    {
+      "frame": 77,
+      "source_frame": 777,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 210.5,
+          "new_peak": 116.39,
+          "old_peak": 116.39,
+          "iris_median": 43.47,
+          "replace_peak": 248.36,
+          "iris_level": 43.47,
+          "treated_cells": 109,
+          "source_peak_treated": 210.5,
+          "new_treated_peak": 90.28,
+          "old_treated_peak": 90.19,
+          "replace_treated_peak": 109.59
+        },
+        {
+          "side": "right",
+          "source_peak": 217.03,
+          "new_peak": 134.57,
+          "old_peak": 134.57,
+          "iris_median": 55.79,
+          "replace_peak": 253.67,
+          "iris_level": 55.79,
+          "treated_cells": 157,
+          "source_peak_treated": 217.03,
+          "new_treated_peak": 102.94,
+          "old_treated_peak": 101.55,
+          "replace_treated_peak": 120.41
+        }
+      ]
+    },
+    {
+      "frame": 78,
+      "source_frame": 778,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 215.22,
+          "new_peak": 116.04,
+          "old_peak": 116.04,
+          "iris_median": 42.45,
+          "replace_peak": 255.0,
+          "iris_level": 42.45,
+          "treated_cells": 124,
+          "source_peak_treated": 215.22,
+          "new_treated_peak": 89.74,
+          "old_treated_peak": 90.06,
+          "replace_treated_peak": 95.19
+        },
+        {
+          "side": "right",
+          "source_peak": 215.52,
+          "new_peak": 138.6,
+          "old_peak": 138.6,
+          "iris_median": 57.0,
+          "replace_peak": 249.59,
+          "iris_level": 57.0,
+          "treated_cells": 135,
+          "source_peak_treated": 215.52,
+          "new_treated_peak": 94.79,
+          "old_treated_peak": 97.59,
+          "replace_treated_peak": 129.52
+        }
+      ]
+    },
+    {
+      "frame": 79,
+      "source_frame": 779,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 213.44,
+          "new_peak": 109.74,
+          "old_peak": 109.74,
+          "iris_median": 41.29,
+          "replace_peak": 235.89,
+          "iris_level": 41.29,
+          "treated_cells": 109,
+          "source_peak_treated": 213.44,
+          "new_treated_peak": 89.32,
+          "old_treated_peak": 88.92,
+          "replace_treated_peak": 105.24
+        },
+        {
+          "side": "right",
+          "source_peak": 220.31,
+          "new_peak": 134.57,
+          "old_peak": 134.57,
+          "iris_median": 56.33,
+          "replace_peak": 248.37,
+          "iris_level": 56.33,
+          "treated_cells": 143,
+          "source_peak_treated": 220.31,
+          "new_treated_peak": 103.57,
+          "old_treated_peak": 104.2,
+          "replace_treated_peak": 133.04
+        }
+      ]
+    },
+    {
+      "frame": 80,
+      "source_frame": 780,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 214.85,
+          "new_peak": 111.82,
+          "old_peak": 111.82,
+          "iris_median": 40.34,
+          "replace_peak": 242.13,
+          "iris_level": 40.34,
+          "treated_cells": 120,
+          "source_peak_treated": 214.85,
+          "new_treated_peak": 87.7,
+          "old_treated_peak": 87.03,
+          "replace_treated_peak": 124.93
+        },
+        {
+          "side": "right",
+          "source_peak": 216.38,
+          "new_peak": 139.93,
+          "old_peak": 139.93,
+          "iris_median": 55.92,
+          "replace_peak": 253.75,
+          "iris_level": 55.92,
+          "treated_cells": 137,
+          "source_peak_treated": 216.38,
+          "new_treated_peak": 104.95,
+          "old_treated_peak": 105.44,
+          "replace_treated_peak": 124.47
+        }
+      ]
+    },
+    {
+      "frame": 81,
+      "source_frame": 781,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 209.05,
+          "new_peak": 110.6,
+          "old_peak": 115.19,
+          "iris_median": 40.81,
+          "replace_peak": 239.62,
+          "iris_level": 40.81,
+          "treated_cells": 127,
+          "source_peak_treated": 209.05,
+          "new_treated_peak": 110.6,
+          "old_treated_peak": 115.19,
+          "replace_treated_peak": 118.25
+        },
+        {
+          "side": "right",
+          "source_peak": 213.81,
+          "new_peak": 143.69,
+          "old_peak": 143.69,
+          "iris_median": 57.3,
+          "replace_peak": 248.91,
+          "iris_level": 57.3,
+          "treated_cells": 136,
+          "source_peak_treated": 213.81,
+          "new_treated_peak": 104.37,
+          "old_treated_peak": 104.93,
+          "replace_treated_peak": 127.62
+        }
+      ]
+    },
+    {
+      "frame": 82,
+      "source_frame": 782,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 216.94,
+          "new_peak": 118.29,
+          "old_peak": 118.29,
+          "iris_median": 43.82,
+          "replace_peak": 253.38,
+          "iris_level": 43.82,
+          "treated_cells": 134,
+          "source_peak_treated": 216.94,
+          "new_treated_peak": 114.35,
+          "old_treated_peak": 111.24,
+          "replace_treated_peak": 121.53
+        },
+        {
+          "side": "right",
+          "source_peak": 215.36,
+          "new_peak": 145.53,
+          "old_peak": 145.53,
+          "iris_median": 58.67,
+          "replace_peak": 250.21,
+          "iris_level": 58.67,
+          "treated_cells": 124,
+          "source_peak_treated": 215.36,
+          "new_treated_peak": 86.41,
+          "old_treated_peak": 92.21,
+          "replace_treated_peak": 124.35
+        }
+      ]
+    },
+    {
+      "frame": 83,
+      "source_frame": 783,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 209.97,
+          "new_peak": 121.31,
+          "old_peak": 121.31,
+          "iris_median": 46.22,
+          "replace_peak": 246.2,
+          "iris_level": 46.22,
+          "treated_cells": 111,
+          "source_peak_treated": 209.97,
+          "new_treated_peak": 113.78,
+          "old_treated_peak": 110.38,
+          "replace_treated_peak": 115.91
+        },
+        {
+          "side": "right",
+          "source_peak": 212.2,
+          "new_peak": 153.45,
+          "old_peak": 153.45,
+          "iris_median": 60.49,
+          "replace_peak": 227.11,
+          "iris_level": 60.49,
+          "treated_cells": 131,
+          "source_peak_treated": 212.2,
+          "new_treated_peak": 104.02,
+          "old_treated_peak": 104.02,
+          "replace_treated_peak": 129.47
+        }
+      ]
+    },
+    {
+      "frame": 84,
+      "source_frame": 784,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 210.48,
+          "new_peak": 133.0,
+          "old_peak": 133.0,
+          "iris_median": 47.96,
+          "replace_peak": 241.68,
+          "iris_level": 47.96,
+          "treated_cells": 122,
+          "source_peak_treated": 210.48,
+          "new_treated_peak": 113.42,
+          "old_treated_peak": 112.08,
+          "replace_treated_peak": 114.91
+        },
+        {
+          "side": "right",
+          "source_peak": 218.33,
+          "new_peak": 161.83,
+          "old_peak": 161.83,
+          "iris_median": 62.67,
+          "replace_peak": 251.2,
+          "iris_level": 62.67,
+          "treated_cells": 133,
+          "source_peak_treated": 218.33,
+          "new_treated_peak": 103.63,
+          "old_treated_peak": 104.44,
+          "replace_treated_peak": 138.66
+        }
+      ]
+    },
+    {
+      "frame": 85,
+      "source_frame": 785,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 218.53,
+          "new_peak": 140.34,
+          "old_peak": 140.34,
+          "iris_median": 49.09,
+          "replace_peak": 243.21,
+          "iris_level": 49.09,
+          "treated_cells": 106,
+          "source_peak_treated": 218.53,
+          "new_treated_peak": 111.0,
+          "old_treated_peak": 111.73,
+          "replace_treated_peak": 111.8
+        },
+        {
+          "side": "right",
+          "source_peak": 209.47,
+          "new_peak": 159.88,
+          "old_peak": 159.88,
+          "iris_median": 62.5,
+          "replace_peak": 236.08,
+          "iris_level": 62.5,
+          "treated_cells": 133,
+          "source_peak_treated": 209.47,
+          "new_treated_peak": 103.25,
+          "old_treated_peak": 106.65,
+          "replace_treated_peak": 125.09
+        }
+      ]
+    },
+    {
+      "frame": 86,
+      "source_frame": 786,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 209.77,
+          "new_peak": 142.62,
+          "old_peak": 142.62,
+          "iris_median": 49.35,
+          "replace_peak": 251.09,
+          "iris_level": 49.35,
+          "treated_cells": 110,
+          "source_peak_treated": 209.77,
+          "new_treated_peak": 110.19,
+          "old_treated_peak": 124.38,
+          "replace_treated_peak": 110.95
+        },
+        {
+          "side": "right",
+          "source_peak": 212.79,
+          "new_peak": 154.53,
+          "old_peak": 154.53,
+          "iris_median": 62.38,
+          "replace_peak": 238.69,
+          "iris_level": 62.38,
+          "treated_cells": 123,
+          "source_peak_treated": 212.79,
+          "new_treated_peak": 88.35,
+          "old_treated_peak": 94.98,
+          "replace_treated_peak": 133.4
+        }
+      ]
+    },
+    {
+      "frame": 87,
+      "source_frame": 787,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 210.46,
+          "new_peak": 142.29,
+          "old_peak": 142.29,
+          "iris_median": 49.59,
+          "replace_peak": 252.65,
+          "iris_level": 49.59,
+          "treated_cells": 95,
+          "source_peak_treated": 210.46,
+          "new_treated_peak": 109.86,
+          "old_treated_peak": 134.86,
+          "replace_treated_peak": 110.45
+        },
+        {
+          "side": "right",
+          "source_peak": 211.92,
+          "new_peak": 150.33,
+          "old_peak": 150.33,
+          "iris_median": 62.44,
+          "replace_peak": 251.29,
+          "iris_level": 62.44,
+          "treated_cells": 142,
+          "source_peak_treated": 211.92,
+          "new_treated_peak": 103.62,
+          "old_treated_peak": 106.88,
+          "replace_treated_peak": 117.2
+        }
+      ]
+    },
+    {
+      "frame": 88,
+      "source_frame": 788,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 209.33,
+          "new_peak": 141.78,
+          "old_peak": 141.78,
+          "iris_median": 49.37,
+          "replace_peak": 250.39,
+          "iris_level": 49.37,
+          "treated_cells": 99,
+          "source_peak_treated": 209.33,
+          "new_treated_peak": 109.69,
+          "old_treated_peak": 127.31,
+          "replace_treated_peak": 110.59
+        },
+        {
+          "side": "right",
+          "source_peak": 209.59,
+          "new_peak": 146.25,
+          "old_peak": 146.25,
+          "iris_median": 61.28,
+          "replace_peak": 247.08,
+          "iris_level": 61.28,
+          "treated_cells": 144,
+          "source_peak_treated": 209.59,
+          "new_treated_peak": 115.83,
+          "old_treated_peak": 116.27,
+          "replace_treated_peak": 128.35
+        }
+      ]
+    },
+    {
+      "frame": 89,
+      "source_frame": 789,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 208.3,
+          "new_peak": 136.67,
+          "old_peak": 136.67,
+          "iris_median": 48.04,
+          "replace_peak": 226.87,
+          "iris_level": 48.04,
+          "treated_cells": 90,
+          "source_peak_treated": 208.3,
+          "new_treated_peak": 89.4,
+          "old_treated_peak": 117.91,
+          "replace_treated_peak": 101.31
+        },
+        {
+          "side": "right",
+          "source_peak": 208.79,
+          "new_peak": 139.94,
+          "old_peak": 139.94,
+          "iris_median": 61.15,
+          "replace_peak": 247.52,
+          "iris_level": 61.15,
+          "treated_cells": 158,
+          "source_peak_treated": 208.79,
+          "new_treated_peak": 101.96,
+          "old_treated_peak": 101.88,
+          "replace_treated_peak": 154.59
+        }
+      ]
+    },
+    {
+      "frame": 90,
+      "source_frame": 790,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 209.62,
+          "new_peak": 125.16,
+          "old_peak": 125.16,
+          "iris_median": 46.12,
+          "replace_peak": 254.46,
+          "iris_level": 46.12,
+          "treated_cells": 113,
+          "source_peak_treated": 209.62,
+          "new_treated_peak": 108.0,
+          "old_treated_peak": 110.0,
+          "replace_treated_peak": 108.94
+        },
+        {
+          "side": "right",
+          "source_peak": 214.1,
+          "new_peak": 135.11,
+          "old_peak": 135.11,
+          "iris_median": 59.34,
+          "replace_peak": 254.12,
+          "iris_level": 59.34,
+          "treated_cells": 172,
+          "source_peak_treated": 214.1,
+          "new_treated_peak": 113.06,
+          "old_treated_peak": 113.56,
+          "replace_treated_peak": 136.7
+        }
+      ]
+    },
+    {
+      "frame": 91,
+      "source_frame": 791,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 212.9,
+          "new_peak": 115.12,
+          "old_peak": 115.12,
+          "iris_median": 42.99,
+          "replace_peak": 245.2,
+          "iris_level": 42.99,
+          "treated_cells": 116,
+          "source_peak_treated": 212.9,
+          "new_treated_peak": 107.62,
+          "old_treated_peak": 108.64,
+          "replace_treated_peak": 111.69
+        },
+        {
+          "side": "right",
+          "source_peak": 213.09,
+          "new_peak": 131.67,
+          "old_peak": 131.67,
+          "iris_median": 56.18,
+          "replace_peak": 243.39,
+          "iris_level": 56.18,
+          "treated_cells": 152,
+          "source_peak_treated": 213.09,
+          "new_treated_peak": 110.44,
+          "old_treated_peak": 111.21,
+          "replace_treated_peak": 121.84
+        }
+      ]
+    },
+    {
+      "frame": 92,
+      "source_frame": 792,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 211.22,
+          "new_peak": 108.83,
+          "old_peak": 108.83,
+          "iris_median": 40.98,
+          "replace_peak": 243.16,
+          "iris_level": 40.98,
+          "treated_cells": 138,
+          "source_peak_treated": 211.22,
+          "new_treated_peak": 106.46,
+          "old_treated_peak": 107.75,
+          "replace_treated_peak": 113.81
+        },
+        {
+          "side": "right",
+          "source_peak": 213.8,
+          "new_peak": 125.38,
+          "old_peak": 125.38,
+          "iris_median": 53.65,
+          "replace_peak": 252.19,
+          "iris_level": 53.65,
+          "treated_cells": 158,
+          "source_peak_treated": 213.8,
+          "new_treated_peak": 97.97,
+          "old_treated_peak": 104.96,
+          "replace_treated_peak": 122.32
+        }
+      ]
+    },
+    {
+      "frame": 93,
+      "source_frame": 793,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 209.8,
+          "new_peak": 111.59,
+          "old_peak": 111.59,
+          "iris_median": 39.94,
+          "replace_peak": 255.0,
+          "iris_level": 39.94,
+          "treated_cells": 137,
+          "source_peak_treated": 209.8,
+          "new_treated_peak": 95.78,
+          "old_treated_peak": 98.92,
+          "replace_treated_peak": 105.66
+        },
+        {
+          "side": "right",
+          "source_peak": 216.21,
+          "new_peak": 138.95,
+          "old_peak": 138.95,
+          "iris_median": 50.81,
+          "replace_peak": 247.37,
+          "iris_level": 50.81,
+          "treated_cells": 155,
+          "source_peak_treated": 216.21,
+          "new_treated_peak": 99.1,
+          "old_treated_peak": 99.45,
+          "replace_treated_peak": 106.9
+        }
+      ]
+    },
+    {
+      "frame": 94,
+      "source_frame": 794,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 209.84,
+          "new_peak": 106.77,
+          "old_peak": 106.77,
+          "iris_median": 38.75,
+          "replace_peak": 250.92,
+          "iris_level": 38.75,
+          "treated_cells": 140,
+          "source_peak_treated": 209.84,
+          "new_treated_peak": 87.61,
+          "old_treated_peak": 87.68,
+          "replace_treated_peak": 97.14
+        },
+        {
+          "side": "right",
+          "source_peak": 216.31,
+          "new_peak": 145.98,
+          "old_peak": 145.98,
+          "iris_median": 49.91,
+          "replace_peak": 249.67,
+          "iris_level": 49.91,
+          "treated_cells": 154,
+          "source_peak_treated": 216.31,
+          "new_treated_peak": 104.52,
+          "old_treated_peak": 104.52,
+          "replace_treated_peak": 107.16
+        }
+      ]
+    },
+    {
+      "frame": 95,
+      "source_frame": 795,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 214.64,
+          "new_peak": 107.94,
+          "old_peak": 107.94,
+          "iris_median": 38.95,
+          "replace_peak": 234.61,
+          "iris_level": 38.95,
+          "treated_cells": 133,
+          "source_peak_treated": 214.64,
+          "new_treated_peak": 84.8,
+          "old_treated_peak": 88.23,
+          "replace_treated_peak": 112.89
+        },
+        {
+          "side": "right",
+          "source_peak": 212.29,
+          "new_peak": 144.89,
+          "old_peak": 144.89,
+          "iris_median": 49.33,
+          "replace_peak": 246.51,
+          "iris_level": 49.33,
+          "treated_cells": 165,
+          "source_peak_treated": 212.29,
+          "new_treated_peak": 100.66,
+          "old_treated_peak": 103.34,
+          "replace_treated_peak": 111.19
+        }
+      ]
+    },
+    {
+      "frame": 96,
+      "source_frame": 796,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 216.68,
+          "new_peak": 106.92,
+          "old_peak": 106.92,
+          "iris_median": 38.96,
+          "replace_peak": 243.92,
+          "iris_level": 38.96,
+          "treated_cells": 134,
+          "source_peak_treated": 216.68,
+          "new_treated_peak": 87.18,
+          "old_treated_peak": 88.04,
+          "replace_treated_peak": 105.1
+        },
+        {
+          "side": "right",
+          "source_peak": 218.03,
+          "new_peak": 144.62,
+          "old_peak": 144.62,
+          "iris_median": 49.89,
+          "replace_peak": 246.11,
+          "iris_level": 49.89,
+          "treated_cells": 153,
+          "source_peak_treated": 218.03,
+          "new_treated_peak": 108.18,
+          "old_treated_peak": 107.14,
+          "replace_treated_peak": 117.18
+        }
+      ]
+    },
+    {
+      "frame": 97,
+      "source_frame": 797,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 212.72,
+          "new_peak": 106.84,
+          "old_peak": 106.84,
+          "iris_median": 38.99,
+          "replace_peak": 232.1,
+          "iris_level": 38.99,
+          "treated_cells": 119,
+          "source_peak_treated": 212.72,
+          "new_treated_peak": 85.18,
+          "old_treated_peak": 85.32,
+          "replace_treated_peak": 114.4
+        },
+        {
+          "side": "right",
+          "source_peak": 213.11,
+          "new_peak": 134.8,
+          "old_peak": 134.8,
+          "iris_median": 50.17,
+          "replace_peak": 241.97,
+          "iris_level": 50.17,
+          "treated_cells": 152,
+          "source_peak_treated": 213.11,
+          "new_treated_peak": 96.68,
+          "old_treated_peak": 100.61,
+          "replace_treated_peak": 101.35
+        }
+      ]
+    },
+    {
+      "frame": 98,
+      "source_frame": 798,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 212.99,
+          "new_peak": 110.25,
+          "old_peak": 116.01,
+          "iris_median": 39.75,
+          "replace_peak": 235.81,
+          "iris_level": 39.75,
+          "treated_cells": 129,
+          "source_peak_treated": 212.99,
+          "new_treated_peak": 110.25,
+          "old_treated_peak": 116.01,
+          "replace_treated_peak": 118.38
+        },
+        {
+          "side": "right",
+          "source_peak": 217.81,
+          "new_peak": 130.16,
+          "old_peak": 130.16,
+          "iris_median": 51.97,
+          "replace_peak": 237.19,
+          "iris_level": 51.97,
+          "treated_cells": 163,
+          "source_peak_treated": 217.81,
+          "new_treated_peak": 112.03,
+          "old_treated_peak": 114.09,
+          "replace_treated_peak": 118.23
+        }
+      ]
+    },
+    {
+      "frame": 99,
+      "source_frame": 799,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 211.27,
+          "new_peak": 112.04,
+          "old_peak": 109.33,
+          "iris_median": 41.94,
+          "replace_peak": 249.63,
+          "iris_level": 41.94,
+          "treated_cells": 144,
+          "source_peak_treated": 211.27,
+          "new_treated_peak": 112.04,
+          "old_treated_peak": 109.33,
+          "replace_treated_peak": 119.41
+        },
+        {
+          "side": "right",
+          "source_peak": 214.27,
+          "new_peak": 123.83,
+          "old_peak": 123.83,
+          "iris_median": 53.34,
+          "replace_peak": 255.0,
+          "iris_level": 53.34,
+          "treated_cells": 163,
+          "source_peak_treated": 214.27,
+          "new_treated_peak": 111.94,
+          "old_treated_peak": 114.56,
+          "replace_treated_peak": 133.25
+        }
+      ]
+    },
+    {
+      "frame": 100,
+      "source_frame": 800,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 207.58,
+          "new_peak": 114.06,
+          "old_peak": 114.06,
+          "iris_median": 44.05,
+          "replace_peak": 249.29,
+          "iris_level": 44.05,
+          "treated_cells": 123,
+          "source_peak_treated": 207.58,
+          "new_treated_peak": 90.1,
+          "old_treated_peak": 92.0,
+          "replace_treated_peak": 102.13
+        },
+        {
+          "side": "right",
+          "source_peak": 210.76,
+          "new_peak": 129.96,
+          "old_peak": 129.96,
+          "iris_median": 56.25,
+          "replace_peak": 250.3,
+          "iris_level": 56.25,
+          "treated_cells": 160,
+          "source_peak_treated": 210.76,
+          "new_treated_peak": 105.48,
+          "old_treated_peak": 106.65,
+          "replace_treated_peak": 135.62
+        }
+      ]
+    },
+    {
+      "frame": 101,
+      "source_frame": 801,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 205.43,
+          "new_peak": 120.24,
+          "old_peak": 120.24,
+          "iris_median": 45.84,
+          "replace_peak": 250.22,
+          "iris_level": 45.84,
+          "treated_cells": 113,
+          "source_peak_treated": 205.43,
+          "new_treated_peak": 89.13,
+          "old_treated_peak": 93.65,
+          "replace_treated_peak": 98.27
+        },
+        {
+          "side": "right",
+          "source_peak": 217.32,
+          "new_peak": 135.36,
+          "old_peak": 135.36,
+          "iris_median": 58.52,
+          "replace_peak": 246.88,
+          "iris_level": 58.52,
+          "treated_cells": 177,
+          "source_peak_treated": 217.32,
+          "new_treated_peak": 116.41,
+          "old_treated_peak": 116.9,
+          "replace_treated_peak": 135.69
+        }
+      ]
+    },
+    {
+      "frame": 102,
+      "source_frame": 802,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 211.46,
+          "new_peak": 123.0,
+          "old_peak": 123.0,
+          "iris_median": 47.05,
+          "replace_peak": 250.78,
+          "iris_level": 47.05,
+          "treated_cells": 112,
+          "source_peak_treated": 211.46,
+          "new_treated_peak": 109.47,
+          "old_treated_peak": 109.91,
+          "replace_treated_peak": 110.1
+        },
+        {
+          "side": "right",
+          "source_peak": 210.56,
+          "new_peak": 138.6,
+          "old_peak": 138.6,
+          "iris_median": 58.9,
+          "replace_peak": 244.98,
+          "iris_level": 58.9,
+          "treated_cells": 156,
+          "source_peak_treated": 210.56,
+          "new_treated_peak": 103.25,
+          "old_treated_peak": 103.84,
+          "replace_treated_peak": 128.92
+        }
+      ]
+    },
+    {
+      "frame": 103,
+      "source_frame": 803,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 205.44,
+          "new_peak": 121.69,
+          "old_peak": 121.69,
+          "iris_median": 46.79,
+          "replace_peak": 248.7,
+          "iris_level": 46.79,
+          "treated_cells": 105,
+          "source_peak_treated": 205.44,
+          "new_treated_peak": 95.23,
+          "old_treated_peak": 95.86,
+          "replace_treated_peak": 99.17
+        },
+        {
+          "side": "right",
+          "source_peak": 213.42,
+          "new_peak": 138.76,
+          "old_peak": 138.76,
+          "iris_median": 59.08,
+          "replace_peak": 242.16,
+          "iris_level": 59.08,
+          "treated_cells": 145,
+          "source_peak_treated": 213.42,
+          "new_treated_peak": 97.62,
+          "old_treated_peak": 97.91,
+          "replace_treated_peak": 145.72
+        }
+      ]
+    },
+    {
+      "frame": 104,
+      "source_frame": 804,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 204.12,
+          "new_peak": 119.84,
+          "old_peak": 119.84,
+          "iris_median": 45.77,
+          "replace_peak": 252.68,
+          "iris_level": 45.77,
+          "treated_cells": 122,
+          "source_peak_treated": 204.12,
+          "new_treated_peak": 111.0,
+          "old_treated_peak": 111.5,
+          "replace_treated_peak": 119.77
+        },
+        {
+          "side": "right",
+          "source_peak": 215.37,
+          "new_peak": 134.46,
+          "old_peak": 134.46,
+          "iris_median": 58.23,
+          "replace_peak": 250.3,
+          "iris_level": 58.23,
+          "treated_cells": 165,
+          "source_peak_treated": 215.37,
+          "new_treated_peak": 98.27,
+          "old_treated_peak": 104.63,
+          "replace_treated_peak": 150.55
+        }
+      ]
+    },
+    {
+      "frame": 105,
+      "source_frame": 805,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 206.28,
+          "new_peak": 110.66,
+          "old_peak": 110.92,
+          "iris_median": 44.96,
+          "replace_peak": 250.46,
+          "iris_level": 44.96,
+          "treated_cells": 118,
+          "source_peak_treated": 206.28,
+          "new_treated_peak": 110.66,
+          "old_treated_peak": 110.92,
+          "replace_treated_peak": 113.3
+        },
+        {
+          "side": "right",
+          "source_peak": 215.38,
+          "new_peak": 129.85,
+          "old_peak": 129.85,
+          "iris_median": 57.21,
+          "replace_peak": 250.65,
+          "iris_level": 57.21,
+          "treated_cells": 168,
+          "source_peak_treated": 215.38,
+          "new_treated_peak": 107.15,
+          "old_treated_peak": 107.15,
+          "replace_treated_peak": 126.17
+        }
+      ]
+    },
+    {
+      "frame": 106,
+      "source_frame": 806,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 212.98,
+          "new_peak": 109.73,
+          "old_peak": 109.73,
+          "iris_median": 44.23,
+          "replace_peak": 254.15,
+          "iris_level": 44.23,
+          "treated_cells": 117,
+          "source_peak_treated": 212.98,
+          "new_treated_peak": 91.63,
+          "old_treated_peak": 90.7,
+          "replace_treated_peak": 102.87
+        },
+        {
+          "side": "right",
+          "source_peak": 218.68,
+          "new_peak": 123.77,
+          "old_peak": 123.77,
+          "iris_median": 55.52,
+          "replace_peak": 248.52,
+          "iris_level": 55.52,
+          "treated_cells": 185,
+          "source_peak_treated": 218.68,
+          "new_treated_peak": 109.83,
+          "old_treated_peak": 110.16,
+          "replace_treated_peak": 129.72
+        }
+      ]
+    },
+    {
+      "frame": 107,
+      "source_frame": 807,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 210.44,
+          "new_peak": 112.2,
+          "old_peak": 113.22,
+          "iris_median": 42.19,
+          "replace_peak": 255.0,
+          "iris_level": 42.19,
+          "treated_cells": 124,
+          "source_peak_treated": 210.44,
+          "new_treated_peak": 112.2,
+          "old_treated_peak": 113.22,
+          "replace_treated_peak": 116.95
+        },
+        {
+          "side": "right",
+          "source_peak": 211.42,
+          "new_peak": 122.22,
+          "old_peak": 122.22,
+          "iris_median": 54.29,
+          "replace_peak": 252.09,
+          "iris_level": 54.29,
+          "treated_cells": 181,
+          "source_peak_treated": 211.42,
+          "new_treated_peak": 111.85,
+          "old_treated_peak": 111.41,
+          "replace_treated_peak": 127.76
+        }
+      ]
+    },
+    {
+      "frame": 108,
+      "source_frame": 808,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 209.15,
+          "new_peak": 109.59,
+          "old_peak": 109.59,
+          "iris_median": 42.48,
+          "replace_peak": 254.25,
+          "iris_level": 42.48,
+          "treated_cells": 144,
+          "source_peak_treated": 209.15,
+          "new_treated_peak": 93.48,
+          "old_treated_peak": 92.01,
+          "replace_treated_peak": 101.97
+        },
+        {
+          "side": "right",
+          "source_peak": 212.1,
+          "new_peak": 123.31,
+          "old_peak": 123.31,
+          "iris_median": 54.04,
+          "replace_peak": 255.0,
+          "iris_level": 54.04,
+          "treated_cells": 181,
+          "source_peak_treated": 212.1,
+          "new_treated_peak": 108.36,
+          "old_treated_peak": 108.62,
+          "replace_treated_peak": 132.84
+        }
+      ]
+    },
+    {
+      "frame": 109,
+      "source_frame": 809,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 208.23,
+          "new_peak": 110.78,
+          "old_peak": 110.78,
+          "iris_median": 42.79,
+          "replace_peak": 255.0,
+          "iris_level": 42.79,
+          "treated_cells": 146,
+          "source_peak_treated": 208.23,
+          "new_treated_peak": 91.65,
+          "old_treated_peak": 90.7,
+          "replace_treated_peak": 98.21
+        },
+        {
+          "side": "right",
+          "source_peak": 208.38,
+          "new_peak": 124.39,
+          "old_peak": 124.39,
+          "iris_median": 53.21,
+          "replace_peak": 250.07,
+          "iris_level": 53.21,
+          "treated_cells": 172,
+          "source_peak_treated": 208.38,
+          "new_treated_peak": 100.41,
+          "old_treated_peak": 98.02,
+          "replace_treated_peak": 125.12
+        }
+      ]
+    },
+    {
+      "frame": 110,
+      "source_frame": 810,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 210.82,
+          "new_peak": 107.7,
+          "old_peak": 107.7,
+          "iris_median": 43.33,
+          "replace_peak": 244.77,
+          "iris_level": 43.33,
+          "treated_cells": 182,
+          "source_peak_treated": 210.82,
+          "new_treated_peak": 106.62,
+          "old_treated_peak": 106.33,
+          "replace_treated_peak": 111.68
+        },
+        {
+          "side": "right",
+          "source_peak": 208.94,
+          "new_peak": 130.55,
+          "old_peak": 130.55,
+          "iris_median": 54.33,
+          "replace_peak": 252.77,
+          "iris_level": 54.33,
+          "treated_cells": 167,
+          "source_peak_treated": 208.94,
+          "new_treated_peak": 121.04,
+          "old_treated_peak": 121.3,
+          "replace_treated_peak": 126.83
+        }
+      ]
+    },
+    {
+      "frame": 111,
+      "source_frame": 811,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 215.66,
+          "new_peak": 109.44,
+          "old_peak": 109.44,
+          "iris_median": 44.63,
+          "replace_peak": 242.51,
+          "iris_level": 44.63,
+          "treated_cells": 174,
+          "source_peak_treated": 215.66,
+          "new_treated_peak": 106.22,
+          "old_treated_peak": 107.66,
+          "replace_treated_peak": 115.81
+        },
+        {
+          "side": "right",
+          "source_peak": 216.77,
+          "new_peak": 128.54,
+          "old_peak": 128.54,
+          "iris_median": 55.45,
+          "replace_peak": 243.67,
+          "iris_level": 55.45,
+          "treated_cells": 160,
+          "source_peak_treated": 216.77,
+          "new_treated_peak": 99.92,
+          "old_treated_peak": 101.25,
+          "replace_treated_peak": 102.92
+        }
+      ]
+    },
+    {
+      "frame": 112,
+      "source_frame": 812,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 210.49,
+          "new_peak": 109.83,
+          "old_peak": 109.83,
+          "iris_median": 46.41,
+          "replace_peak": 250.22,
+          "iris_level": 46.41,
+          "treated_cells": 173,
+          "source_peak_treated": 210.49,
+          "new_treated_peak": 104.38,
+          "old_treated_peak": 104.42,
+          "replace_treated_peak": 105.94
+        },
+        {
+          "side": "right",
+          "source_peak": 218.37,
+          "new_peak": 124.19,
+          "old_peak": 124.19,
+          "iris_median": 55.25,
+          "replace_peak": 248.36,
+          "iris_level": 55.25,
+          "treated_cells": 194,
+          "source_peak_treated": 218.37,
+          "new_treated_peak": 109.28,
+          "old_treated_peak": 111.21,
+          "replace_treated_peak": 125.86
+        }
+      ]
+    },
+    {
+      "frame": 113,
+      "source_frame": 813,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 215.65,
+          "new_peak": 110.09,
+          "old_peak": 110.38,
+          "iris_median": 45.96,
+          "replace_peak": 252.3,
+          "iris_level": 45.96,
+          "treated_cells": 190,
+          "source_peak_treated": 215.65,
+          "new_treated_peak": 109.09,
+          "old_treated_peak": 110.38,
+          "replace_treated_peak": 109.88
+        },
+        {
+          "side": "right",
+          "source_peak": 209.06,
+          "new_peak": 123.46,
+          "old_peak": 123.46,
+          "iris_median": 56.52,
+          "replace_peak": 249.62,
+          "iris_level": 56.52,
+          "treated_cells": 204,
+          "source_peak_treated": 209.06,
+          "new_treated_peak": 119.13,
+          "old_treated_peak": 119.66,
+          "replace_treated_peak": 123.97
+        }
+      ]
+    },
+    {
+      "frame": 114,
+      "source_frame": 814,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 210.66,
+          "new_peak": 110.91,
+          "old_peak": 110.91,
+          "iris_median": 46.62,
+          "replace_peak": 234.7,
+          "iris_level": 46.62,
+          "treated_cells": 159,
+          "source_peak_treated": 210.66,
+          "new_treated_peak": 106.84,
+          "old_treated_peak": 105.06,
+          "replace_treated_peak": 109.1
+        },
+        {
+          "side": "right",
+          "source_peak": 209.83,
+          "new_peak": 124.23,
+          "old_peak": 124.23,
+          "iris_median": 56.98,
+          "replace_peak": 247.47,
+          "iris_level": 56.98,
+          "treated_cells": 179,
+          "source_peak_treated": 209.83,
+          "new_treated_peak": 120.94,
+          "old_treated_peak": 121.49,
+          "replace_treated_peak": 126.62
+        }
+      ]
+    },
+    {
+      "frame": 115,
+      "source_frame": 815,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 215.93,
+          "new_peak": 108.64,
+          "old_peak": 108.64,
+          "iris_median": 46.08,
+          "replace_peak": 239.82,
+          "iris_level": 46.08,
+          "treated_cells": 175,
+          "source_peak_treated": 215.93,
+          "new_treated_peak": 104.3,
+          "old_treated_peak": 108.17,
+          "replace_treated_peak": 119.73
+        },
+        {
+          "side": "right",
+          "source_peak": 212.82,
+          "new_peak": 129.35,
+          "old_peak": 129.35,
+          "iris_median": 56.37,
+          "replace_peak": 251.25,
+          "iris_level": 56.37,
+          "treated_cells": 171,
+          "source_peak_treated": 212.82,
+          "new_treated_peak": 101.45,
+          "old_treated_peak": 101.95,
+          "replace_treated_peak": 117.61
+        }
+      ]
+    },
+    {
+      "frame": 116,
+      "source_frame": 816,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 212.73,
+          "new_peak": 108.75,
+          "old_peak": 108.75,
+          "iris_median": 46.09,
+          "replace_peak": 251.79,
+          "iris_level": 46.09,
+          "treated_cells": 161,
+          "source_peak_treated": 212.73,
+          "new_treated_peak": 107.09,
+          "old_treated_peak": 105.48,
+          "replace_treated_peak": 110.32
+        },
+        {
+          "side": "right",
+          "source_peak": 211.5,
+          "new_peak": 127.78,
+          "old_peak": 127.78,
+          "iris_median": 56.4,
+          "replace_peak": 246.02,
+          "iris_level": 56.4,
+          "treated_cells": 173,
+          "source_peak_treated": 211.5,
+          "new_treated_peak": 103.0,
+          "old_treated_peak": 103.5,
+          "replace_treated_peak": 116.27
+        }
+      ]
+    },
+    {
+      "frame": 117,
+      "source_frame": 817,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 216.34,
+          "new_peak": 107.47,
+          "old_peak": 108.12,
+          "iris_median": 45.31,
+          "replace_peak": 244.5,
+          "iris_level": 45.31,
+          "treated_cells": 191,
+          "source_peak_treated": 216.34,
+          "new_treated_peak": 107.34,
+          "old_treated_peak": 108.12,
+          "replace_treated_peak": 111.31
+        },
+        {
+          "side": "right",
+          "source_peak": 211.68,
+          "new_peak": 124.12,
+          "old_peak": 124.12,
+          "iris_median": 57.77,
+          "replace_peak": 253.11,
+          "iris_level": 57.77,
+          "treated_cells": 164,
+          "source_peak_treated": 211.68,
+          "new_treated_peak": 98.75,
+          "old_treated_peak": 98.32,
+          "replace_treated_peak": 122.83
+        }
+      ]
+    },
+    {
+      "frame": 118,
+      "source_frame": 818,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 214.22,
+          "new_peak": 108.46,
+          "old_peak": 108.46,
+          "iris_median": 43.59,
+          "replace_peak": 246.0,
+          "iris_level": 43.59,
+          "treated_cells": 180,
+          "source_peak_treated": 214.22,
+          "new_treated_peak": 108.22,
+          "old_treated_peak": 107.03,
+          "replace_treated_peak": 110.37
+        },
+        {
+          "side": "right",
+          "source_peak": 214.18,
+          "new_peak": 127.06,
+          "old_peak": 127.06,
+          "iris_median": 54.8,
+          "replace_peak": 246.13,
+          "iris_level": 54.8,
+          "treated_cells": 163,
+          "source_peak_treated": 214.18,
+          "new_treated_peak": 107.45,
+          "old_treated_peak": 107.79,
+          "replace_treated_peak": 113.11
+        }
+      ]
+    },
+    {
+      "frame": 119,
+      "source_frame": 819,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 215.62,
+          "new_peak": 109.96,
+          "old_peak": 109.96,
+          "iris_median": 42.83,
+          "replace_peak": 247.71,
+          "iris_level": 42.83,
+          "treated_cells": 168,
+          "source_peak_treated": 215.62,
+          "new_treated_peak": 109.56,
+          "old_treated_peak": 108.0,
+          "replace_treated_peak": 113.72
+        },
+        {
+          "side": "right",
+          "source_peak": 216.05,
+          "new_peak": 129.18,
+          "old_peak": 129.18,
+          "iris_median": 54.42,
+          "replace_peak": 254.23,
+          "iris_level": 54.42,
+          "treated_cells": 166,
+          "source_peak_treated": 216.05,
+          "new_treated_peak": 109.47,
+          "old_treated_peak": 109.77,
+          "replace_treated_peak": 113.73
+        }
+      ]
+    },
+    {
+      "frame": 120,
+      "source_frame": 820,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 212.87,
+          "new_peak": 110.15,
+          "old_peak": 110.15,
+          "iris_median": 41.72,
+          "replace_peak": 250.03,
+          "iris_level": 41.72,
+          "treated_cells": 145,
+          "source_peak_treated": 212.87,
+          "new_treated_peak": 104.17,
+          "old_treated_peak": 106.35,
+          "replace_treated_peak": 108.81
+        },
+        {
+          "side": "right",
+          "source_peak": 221.15,
+          "new_peak": 126.73,
+          "old_peak": 126.73,
+          "iris_median": 53.95,
+          "replace_peak": 253.96,
+          "iris_level": 53.95,
+          "treated_cells": 179,
+          "source_peak_treated": 221.15,
+          "new_treated_peak": 103.73,
+          "old_treated_peak": 101.85,
+          "replace_treated_peak": 117.52
+        }
+      ]
+    },
+    {
+      "frame": 121,
+      "source_frame": 821,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 216.78,
+          "new_peak": 111.02,
+          "old_peak": 111.07,
+          "iris_median": 41.56,
+          "replace_peak": 249.93,
+          "iris_level": 41.56,
+          "treated_cells": 153,
+          "source_peak_treated": 216.78,
+          "new_treated_peak": 105.69,
+          "old_treated_peak": 106.39,
+          "replace_treated_peak": 107.7
+        },
+        {
+          "side": "right",
+          "source_peak": 218.69,
+          "new_peak": 128.31,
+          "old_peak": 128.31,
+          "iris_median": 54.71,
+          "replace_peak": 246.6,
+          "iris_level": 54.71,
+          "treated_cells": 173,
+          "source_peak_treated": 218.69,
+          "new_treated_peak": 101.78,
+          "old_treated_peak": 101.45,
+          "replace_treated_peak": 112.25
+        }
+      ]
+    },
+    {
+      "frame": 122,
+      "source_frame": 822,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 209.75,
+          "new_peak": 111.68,
+          "old_peak": 111.68,
+          "iris_median": 41.8,
+          "replace_peak": 243.87,
+          "iris_level": 41.8,
+          "treated_cells": 164,
+          "source_peak_treated": 209.75,
+          "new_treated_peak": 108.62,
+          "old_treated_peak": 109.31,
+          "replace_treated_peak": 113.12
+        },
+        {
+          "side": "right",
+          "source_peak": 214.63,
+          "new_peak": 123.32,
+          "old_peak": 123.32,
+          "iris_median": 54.19,
+          "replace_peak": 253.45,
+          "iris_level": 54.19,
+          "treated_cells": 186,
+          "source_peak_treated": 214.63,
+          "new_treated_peak": 108.01,
+          "old_treated_peak": 109.79,
+          "replace_treated_peak": 121.47
+        }
+      ]
+    },
+    {
+      "frame": 123,
+      "source_frame": 823,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 216.98,
+          "new_peak": 112.52,
+          "old_peak": 111.91,
+          "iris_median": 42.05,
+          "replace_peak": 233.77,
+          "iris_level": 42.05,
+          "treated_cells": 163,
+          "source_peak_treated": 216.98,
+          "new_treated_peak": 112.52,
+          "old_treated_peak": 109.25,
+          "replace_treated_peak": 117.69
+        },
+        {
+          "side": "right",
+          "source_peak": 216.16,
+          "new_peak": 125.56,
+          "old_peak": 125.56,
+          "iris_median": 55.15,
+          "replace_peak": 238.55,
+          "iris_level": 55.15,
+          "treated_cells": 205,
+          "source_peak_treated": 216.16,
+          "new_treated_peak": 113.51,
+          "old_treated_peak": 113.78,
+          "replace_treated_peak": 113.79
+        }
+      ]
+    },
+    {
+      "frame": 124,
+      "source_frame": 824,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 213.73,
+          "new_peak": 107.8,
+          "old_peak": 107.8,
+          "iris_median": 43.0,
+          "replace_peak": 254.77,
+          "iris_level": 43.0,
+          "treated_cells": 151,
+          "source_peak_treated": 213.73,
+          "new_treated_peak": 107.53,
+          "old_treated_peak": 105.51,
+          "replace_treated_peak": 109.93
+        },
+        {
+          "side": "right",
+          "source_peak": 213.69,
+          "new_peak": 123.37,
+          "old_peak": 123.37,
+          "iris_median": 55.23,
+          "replace_peak": 254.57,
+          "iris_level": 55.23,
+          "treated_cells": 193,
+          "source_peak_treated": 213.69,
+          "new_treated_peak": 108.47,
+          "old_treated_peak": 109.74,
+          "replace_treated_peak": 119.16
+        }
+      ]
+    },
+    {
+      "frame": 125,
+      "source_frame": 825,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 203.0,
+          "new_peak": 110.01,
+          "old_peak": 110.01,
+          "iris_median": 42.1,
+          "replace_peak": 254.02,
+          "iris_level": 42.1,
+          "treated_cells": 131,
+          "source_peak_treated": 203.0,
+          "new_treated_peak": 106.52,
+          "old_treated_peak": 104.06,
+          "replace_treated_peak": 115.57
+        },
+        {
+          "side": "right",
+          "source_peak": 207.97,
+          "new_peak": 128.22,
+          "old_peak": 128.22,
+          "iris_median": 51.86,
+          "replace_peak": 250.23,
+          "iris_level": 51.86,
+          "treated_cells": 199,
+          "source_peak_treated": 207.97,
+          "new_treated_peak": 109.54,
+          "old_treated_peak": 110.38,
+          "replace_treated_peak": 114.51
+        }
+      ]
+    },
+    {
+      "frame": 126,
+      "source_frame": 826,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 152.84,
+          "new_peak": 130.88,
+          "old_peak": 130.88,
+          "iris_median": 39.82,
+          "replace_peak": 252.27,
+          "iris_level": 39.82,
+          "treated_cells": 126,
+          "source_peak_treated": 152.84,
+          "new_treated_peak": 86.36,
+          "old_treated_peak": 86.32,
+          "replace_treated_peak": 114.61
+        },
+        {
+          "side": "right",
+          "source_peak": 174.93,
+          "new_peak": 153.25,
+          "old_peak": 153.25,
+          "iris_median": 45.59,
+          "replace_peak": 248.91,
+          "iris_level": 45.59,
+          "treated_cells": 123,
+          "source_peak_treated": 174.93,
+          "new_treated_peak": 99.36,
+          "old_treated_peak": 104.8,
+          "replace_treated_peak": 100.98
+        }
+      ]
+    },
+    {
+      "frame": 127,
+      "source_frame": 827,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 152.67,
+          "new_peak": 152.67,
+          "old_peak": 152.67,
+          "iris_median": 38.34,
+          "replace_peak": 247.3,
+          "iris_level": 38.34,
+          "treated_cells": 0
+        },
+        {
+          "side": "right",
+          "source_peak": 167.25,
+          "new_peak": 149.91,
+          "old_peak": 143.91,
+          "iris_median": 44.7,
+          "replace_peak": 205.74,
+          "iris_level": 44.7,
+          "treated_cells": 151,
+          "source_peak_treated": 167.25,
+          "new_treated_peak": 149.91,
+          "old_treated_peak": 143.91,
+          "replace_treated_peak": 205.74
+        }
+      ]
+    },
+    {
+      "frame": 128,
+      "source_frame": 828,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 131.78,
+          "new_peak": 126.06,
+          "old_peak": 129.5,
+          "iris_median": 41.64,
+          "replace_peak": 126.06,
+          "iris_level": 41.64,
+          "treated_cells": 130,
+          "source_peak_treated": 131.78,
+          "new_treated_peak": 126.06,
+          "old_treated_peak": 129.5,
+          "replace_treated_peak": 126.06
+        },
+        {
+          "side": "right",
+          "source_peak": 145.41,
+          "new_peak": 145.41,
+          "old_peak": 145.41,
+          "iris_median": 50.66,
+          "replace_peak": 145.41,
+          "iris_level": 50.66,
+          "treated_cells": 0
+        }
+      ]
+    },
+    {
+      "frame": 129,
+      "source_frame": 829,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 85.68,
+          "new_peak": 85.68,
+          "old_peak": 85.68,
+          "iris_median": 37.87,
+          "replace_peak": 85.68,
+          "iris_level": 37.87,
+          "treated_cells": 0
+        }
+      ]
+    },
+    {
+      "frame": 130,
+      "source_frame": 830,
+      "eyes": []
+    },
+    {
+      "frame": 131,
+      "source_frame": 831,
+      "eyes": []
+    },
+    {
+      "frame": 132,
+      "source_frame": 832,
+      "eyes": []
+    },
+    {
+      "frame": 133,
+      "source_frame": 833,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 132.28,
+          "new_peak": 123.1,
+          "old_peak": 123.1,
+          "iris_median": 45.86,
+          "replace_peak": 123.1,
+          "iris_level": 45.86,
+          "treated_cells": 102,
+          "source_peak_treated": 132.28,
+          "new_treated_peak": 100.19,
+          "old_treated_peak": 118.12,
+          "replace_treated_peak": 100.19
+        }
+      ]
+    },
+    {
+      "frame": 134,
+      "source_frame": 834,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 136.96,
+          "new_peak": 136.96,
+          "old_peak": 136.96,
+          "iris_median": 41.31,
+          "replace_peak": 250.27,
+          "iris_level": 41.31,
+          "treated_cells": 40,
+          "source_peak_treated": 112.65,
+          "new_treated_peak": 111.15,
+          "old_treated_peak": 112.21,
+          "replace_treated_peak": 112.67
+        },
+        {
+          "side": "right",
+          "source_peak": 113.62,
+          "new_peak": 113.62,
+          "old_peak": 113.62,
+          "iris_median": 48.74,
+          "replace_peak": 113.62,
+          "iris_level": 48.74,
+          "treated_cells": 118,
+          "source_peak_treated": 105.28,
+          "new_treated_peak": 101.13,
+          "old_treated_peak": 102.44,
+          "replace_treated_peak": 101.13
+        }
+      ]
+    },
+    {
+      "frame": 135,
+      "source_frame": 835,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 136.26,
+          "new_peak": 136.26,
+          "old_peak": 136.26,
+          "iris_median": 38.27,
+          "replace_peak": 254.88,
+          "iris_level": 38.27,
+          "treated_cells": 70,
+          "source_peak_treated": 109.16,
+          "new_treated_peak": 109.16,
+          "old_treated_peak": 103.37,
+          "replace_treated_peak": 110.38
+        },
+        {
+          "side": "right",
+          "source_peak": 116.88,
+          "new_peak": 116.88,
+          "old_peak": 116.88,
+          "iris_median": 41.41,
+          "replace_peak": 252.66,
+          "iris_level": 41.41,
+          "treated_cells": 44,
+          "source_peak_treated": 95.08,
+          "new_treated_peak": 95.08,
+          "old_treated_peak": 79.36,
+          "replace_treated_peak": 95.5
+        }
+      ]
+    },
+    {
+      "frame": 136,
+      "source_frame": 836,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 132.57,
+          "new_peak": 124.16,
+          "old_peak": 124.16,
+          "iris_median": 36.55,
+          "replace_peak": 244.75,
+          "iris_level": 36.55,
+          "treated_cells": 99,
+          "source_peak_treated": 132.57,
+          "new_treated_peak": 107.2,
+          "old_treated_peak": 103.61,
+          "replace_treated_peak": 108.88
+        },
+        {
+          "side": "right",
+          "source_peak": 147.55,
+          "new_peak": 110.46,
+          "old_peak": 122.94,
+          "iris_median": 39.95,
+          "replace_peak": 249.69,
+          "iris_level": 39.95,
+          "treated_cells": 70,
+          "source_peak_treated": 147.55,
+          "new_treated_peak": 93.16,
+          "old_treated_peak": 122.94,
+          "replace_treated_peak": 132.66
+        }
+      ]
+    },
+    {
+      "frame": 137,
+      "source_frame": 837,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 139.65,
+          "new_peak": 113.53,
+          "old_peak": 113.53,
+          "iris_median": 35.12,
+          "replace_peak": 239.49,
+          "iris_level": 35.12,
+          "treated_cells": 103,
+          "source_peak_treated": 139.65,
+          "new_treated_peak": 101.61,
+          "old_treated_peak": 101.28,
+          "replace_treated_peak": 103.61
+        },
+        {
+          "side": "right",
+          "source_peak": 168.51,
+          "new_peak": 122.5,
+          "old_peak": 138.42,
+          "iris_median": 40.36,
+          "replace_peak": 244.93,
+          "iris_level": 40.36,
+          "treated_cells": 94,
+          "source_peak_treated": 168.51,
+          "new_treated_peak": 121.91,
+          "old_treated_peak": 138.42,
+          "replace_treated_peak": 126.58
+        }
+      ]
+    },
+    {
+      "frame": 138,
+      "source_frame": 838,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 162.38,
+          "new_peak": 112.75,
+          "old_peak": 112.75,
+          "iris_median": 36.16,
+          "replace_peak": 218.95,
+          "iris_level": 36.16,
+          "treated_cells": 106,
+          "source_peak_treated": 162.38,
+          "new_treated_peak": 105.66,
+          "old_treated_peak": 104.92,
+          "replace_treated_peak": 107.07
+        },
+        {
+          "side": "right",
+          "source_peak": 178.56,
+          "new_peak": 115.31,
+          "old_peak": 115.31,
+          "iris_median": 41.73,
+          "replace_peak": 252.98,
+          "iris_level": 41.73,
+          "treated_cells": 100,
+          "source_peak_treated": 178.56,
+          "new_treated_peak": 91.88,
+          "old_treated_peak": 111.44,
+          "replace_treated_peak": 129.0
+        }
+      ]
+    },
+    {
+      "frame": 139,
+      "source_frame": 839,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 170.73,
+          "new_peak": 122.13,
+          "old_peak": 122.13,
+          "iris_median": 36.38,
+          "replace_peak": 232.36,
+          "iris_level": 36.38,
+          "treated_cells": 106,
+          "source_peak_treated": 170.73,
+          "new_treated_peak": 111.25,
+          "old_treated_peak": 108.95,
+          "replace_treated_peak": 112.67
+        },
+        {
+          "side": "right",
+          "source_peak": 183.19,
+          "new_peak": 116.6,
+          "old_peak": 120.54,
+          "iris_median": 41.98,
+          "replace_peak": 252.23,
+          "iris_level": 41.98,
+          "treated_cells": 119,
+          "source_peak_treated": 183.19,
+          "new_treated_peak": 105.15,
+          "old_treated_peak": 120.54,
+          "replace_treated_peak": 135.0
+        }
+      ]
+    },
+    {
+      "frame": 140,
+      "source_frame": 840,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 172.34,
+          "new_peak": 128.73,
+          "old_peak": 128.73,
+          "iris_median": 36.33,
+          "replace_peak": 239.82,
+          "iris_level": 36.33,
+          "treated_cells": 93,
+          "source_peak_treated": 172.34,
+          "new_treated_peak": 110.67,
+          "old_treated_peak": 103.26,
+          "replace_treated_peak": 112.67
+        },
+        {
+          "side": "right",
+          "source_peak": 192.59,
+          "new_peak": 116.04,
+          "old_peak": 130.25,
+          "iris_median": 41.8,
+          "replace_peak": 246.3,
+          "iris_level": 41.8,
+          "treated_cells": 106,
+          "source_peak_treated": 192.59,
+          "new_treated_peak": 92.72,
+          "old_treated_peak": 130.25,
+          "replace_treated_peak": 120.08
+        }
+      ]
+    },
+    {
+      "frame": 141,
+      "source_frame": 841,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 174.66,
+          "new_peak": 135.33,
+          "old_peak": 135.33,
+          "iris_median": 36.94,
+          "replace_peak": 250.56,
+          "iris_level": 36.94,
+          "treated_cells": 85,
+          "source_peak_treated": 174.66,
+          "new_treated_peak": 101.61,
+          "old_treated_peak": 101.01,
+          "replace_treated_peak": 104.38
+        },
+        {
+          "side": "right",
+          "source_peak": 193.9,
+          "new_peak": 132.49,
+          "old_peak": 132.49,
+          "iris_median": 44.91,
+          "replace_peak": 247.79,
+          "iris_level": 44.91,
+          "treated_cells": 116,
+          "source_peak_treated": 193.9,
+          "new_treated_peak": 90.73,
+          "old_treated_peak": 116.23,
+          "replace_treated_peak": 124.92
+        }
+      ]
+    },
+    {
+      "frame": 142,
+      "source_frame": 842,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 184.0,
+          "new_peak": 139.34,
+          "old_peak": 139.34,
+          "iris_median": 37.5,
+          "replace_peak": 245.82,
+          "iris_level": 37.5,
+          "treated_cells": 52,
+          "source_peak_treated": 184.0,
+          "new_treated_peak": 66.24,
+          "old_treated_peak": 102.21,
+          "replace_treated_peak": 85.77
+        },
+        {
+          "side": "right",
+          "source_peak": 199.85,
+          "new_peak": 148.39,
+          "old_peak": 148.39,
+          "iris_median": 47.13,
+          "replace_peak": 254.55,
+          "iris_level": 47.13,
+          "treated_cells": 111,
+          "source_peak_treated": 199.85,
+          "new_treated_peak": 99.12,
+          "old_treated_peak": 130.33,
+          "replace_treated_peak": 113.41
+        }
+      ]
+    },
+    {
+      "frame": 143,
+      "source_frame": 843,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 182.95,
+          "new_peak": 137.38,
+          "old_peak": 137.38,
+          "iris_median": 35.56,
+          "replace_peak": 226.34,
+          "iris_level": 35.56,
+          "treated_cells": 50,
+          "source_peak_treated": 182.95,
+          "new_treated_peak": 76.22,
+          "old_treated_peak": 118.4,
+          "replace_treated_peak": 91.56
+        },
+        {
+          "side": "right",
+          "source_peak": 201.82,
+          "new_peak": 164.97,
+          "old_peak": 164.97,
+          "iris_median": 48.5,
+          "replace_peak": 251.07,
+          "iris_level": 48.5,
+          "treated_cells": 111,
+          "source_peak_treated": 201.82,
+          "new_treated_peak": 88.66,
+          "old_treated_peak": 132.58,
+          "replace_treated_peak": 114.47
+        }
+      ]
+    },
+    {
+      "frame": 144,
+      "source_frame": 844,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 185.17,
+          "new_peak": 138.16,
+          "old_peak": 138.16,
+          "iris_median": 37.22,
+          "replace_peak": 222.16,
+          "iris_level": 37.22,
+          "treated_cells": 50,
+          "source_peak_treated": 185.17,
+          "new_treated_peak": 76.95,
+          "old_treated_peak": 119.54,
+          "replace_treated_peak": 97.32
+        },
+        {
+          "side": "right",
+          "source_peak": 202.22,
+          "new_peak": 168.73,
+          "old_peak": 168.73,
+          "iris_median": 50.09,
+          "replace_peak": 254.37,
+          "iris_level": 50.09,
+          "treated_cells": 102,
+          "source_peak_treated": 202.22,
+          "new_treated_peak": 86.23,
+          "old_treated_peak": 135.5,
+          "replace_treated_peak": 110.5
+        }
+      ]
+    },
+    {
+      "frame": 145,
+      "source_frame": 845,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 190.16,
+          "new_peak": 135.4,
+          "old_peak": 135.4,
+          "iris_median": 36.7,
+          "replace_peak": 254.14,
+          "iris_level": 36.7,
+          "treated_cells": 53,
+          "source_peak_treated": 190.16,
+          "new_treated_peak": 59.62,
+          "old_treated_peak": 104.72,
+          "replace_treated_peak": 83.5
+        },
+        {
+          "side": "right",
+          "source_peak": 203.35,
+          "new_peak": 168.55,
+          "old_peak": 168.55,
+          "iris_median": 49.67,
+          "replace_peak": 241.59,
+          "iris_level": 49.67,
+          "treated_cells": 108,
+          "source_peak_treated": 203.35,
+          "new_treated_peak": 79.83,
+          "old_treated_peak": 130.13,
+          "replace_treated_peak": 120.75
+        }
+      ]
+    },
+    {
+      "frame": 146,
+      "source_frame": 846,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 188.6,
+          "new_peak": 130.41,
+          "old_peak": 130.41,
+          "iris_median": 36.0,
+          "replace_peak": 252.12,
+          "iris_level": 36.0,
+          "treated_cells": 64,
+          "source_peak_treated": 188.6,
+          "new_treated_peak": 67.68,
+          "old_treated_peak": 107.58,
+          "replace_treated_peak": 99.14
+        },
+        {
+          "side": "right",
+          "source_peak": 202.5,
+          "new_peak": 170.34,
+          "old_peak": 170.34,
+          "iris_median": 50.0,
+          "replace_peak": 246.14,
+          "iris_level": 50.0,
+          "treated_cells": 126,
+          "source_peak_treated": 202.5,
+          "new_treated_peak": 109.13,
+          "old_treated_peak": 133.61,
+          "replace_treated_peak": 111.84
+        }
+      ]
+    },
+    {
+      "frame": 147,
+      "source_frame": 847,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 195.62,
+          "new_peak": 125.16,
+          "old_peak": 125.16,
+          "iris_median": 35.32,
+          "replace_peak": 240.85,
+          "iris_level": 35.32,
+          "treated_cells": 68,
+          "source_peak_treated": 195.62,
+          "new_treated_peak": 82.34,
+          "old_treated_peak": 121.2,
+          "replace_treated_peak": 98.72
+        },
+        {
+          "side": "right",
+          "source_peak": 197.26,
+          "new_peak": 167.68,
+          "old_peak": 167.68,
+          "iris_median": 50.16,
+          "replace_peak": 249.52,
+          "iris_level": 50.16,
+          "treated_cells": 128,
+          "source_peak_treated": 197.26,
+          "new_treated_peak": 92.89,
+          "old_treated_peak": 128.81,
+          "replace_treated_peak": 112.57
+        }
+      ]
+    },
+    {
+      "frame": 148,
+      "source_frame": 848,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 183.39,
+          "new_peak": 121.31,
+          "old_peak": 121.31,
+          "iris_median": 35.34,
+          "replace_peak": 242.92,
+          "iris_level": 35.34,
+          "treated_cells": 79,
+          "source_peak_treated": 183.39,
+          "new_treated_peak": 60.95,
+          "old_treated_peak": 89.54,
+          "replace_treated_peak": 91.91
+        },
+        {
+          "side": "right",
+          "source_peak": 204.31,
+          "new_peak": 166.44,
+          "old_peak": 166.44,
+          "iris_median": 46.63,
+          "replace_peak": 254.02,
+          "iris_level": 46.63,
+          "treated_cells": 111,
+          "source_peak_treated": 204.31,
+          "new_treated_peak": 79.35,
+          "old_treated_peak": 116.2,
+          "replace_treated_peak": 104.75
+        }
+      ]
+    },
+    {
+      "frame": 149,
+      "source_frame": 849,
+      "eyes": [
+        {
+          "side": "left",
+          "source_peak": 174.14,
+          "new_peak": 116.51,
+          "old_peak": 116.51,
+          "iris_median": 35.22,
+          "replace_peak": 249.56,
+          "iris_level": 35.22,
+          "treated_cells": 130,
+          "source_peak_treated": 174.14,
+          "new_treated_peak": 116.42,
+          "old_treated_peak": 97.59,
+          "replace_treated_peak": 117.42
+        },
+        {
+          "side": "right",
+          "source_peak": 206.19,
+          "new_peak": 153.56,
+          "old_peak": 153.56,
+          "iris_median": 44.2,
+          "replace_peak": 255.0,
+          "iris_level": 44.2,
+          "treated_cells": 143,
+          "source_peak_treated": 206.19,
+          "new_treated_peak": 91.81,
+          "old_treated_peak": 86.92,
+          "replace_treated_peak": 113.89
+        }
+      ]
+    }
+  ],
+  "by_side": {
+    "left": {
+      "frames": 143,
+      "changed_cells": 426,
+      "cells_open_in_90pct": 462,
+      "jitter_source": {
+        "n": 60918,
+        "median": 0.8519,
+        "p95": 12.8713,
+        "max": 120.6934
+      },
+      "jitter_old": {
+        "n": 60918,
+        "median": 0.849,
+        "p95": 8.558,
+        "max": 92.1413
+      },
+      "jitter_new": {
+        "n": 60918,
+        "median": 1.0262,
+        "p95": 8.977,
+        "max": 92.2012
+      },
+      "jitter_replace": {
+        "n": 60918,
+        "median": 1.1074,
+        "p95": 10.6662,
+        "max": 92.1309
+      },
+      "source_peak": {
+        "n": 143,
+        "median": 208.3,
+        "p95": 216.646,
+        "max": 223.94
+      },
+      "old_peak": {
+        "n": 143,
+        "median": 125.32,
+        "p95": 158.016,
+        "max": 188.3
+      },
+      "new_peak": {
+        "n": 143,
+        "median": 125.16,
+        "p95": 158.016,
+        "max": 188.3
+      },
+      "replace_peak": {
+        "n": 143,
+        "median": 245.36,
+        "p95": 254.869,
+        "max": 255.0
+      },
+      "source_peak_treated": {
+        "n": 140,
+        "median": 208.635,
+        "p95": 216.685,
+        "max": 223.94
+      },
+      "old_treated_peak": {
+        "n": 140,
+        "median": 107.705,
+        "p95": 134.5465,
+        "max": 159.48
+      },
+      "new_treated_peak": {
+        "n": 140,
+        "median": 106.18,
+        "p95": 126.069,
+        "max": 178.22
+      },
+      "replace_treated_peak": {
+        "n": 140,
+        "median": 114.26,
+        "p95": 140.7285,
+        "max": 237.23
+      },
+      "iris_level": {
+        "n": 143,
+        "median": 43.75,
+        "p95": 59.305,
+        "max": 76.17
+      },
+      "residual_pixels_above_r33_threshold": {
+        "n": 140,
+        "median": 0.0,
+        "p95": 4.0,
+        "max": 12.0
+      },
+      "weighted_pixels": {
+        "n": 140,
+        "median": 36.714,
+        "p95": 51.1967,
+        "max": 86.886
+      },
+      "pixels_touched": {
+        "n": 140,
+        "median": 82.0,
+        "p95": 114.05,
+        "max": 126.0
+      },
+      "peak_excess_sigmas": {
+        "n": 140,
+        "median": 81.1645,
+        "p95": 88.3727,
+        "max": 91.796
+      },
+      "catchlight_lid_kept": {
+        "n": 143,
+        "median": 0.933,
+        "p95": 0.9521,
+        "max": 0.9718
+      },
+      "catchlight_peak_added_linear": {
+        "n": 143,
+        "median": 2.5682,
+        "p95": 6.6004,
+        "max": 11.2625
+      }
+    },
+    "right": {
+      "frames": 140,
+      "changed_cells": 450,
+      "cells_open_in_90pct": 450,
+      "jitter_source": {
+        "n": 63000,
+        "median": 0.8913,
+        "p95": 14.3702,
+        "max": 125.8216
+      },
+      "jitter_old": {
+        "n": 63000,
+        "median": 0.9014,
+        "p95": 10.456,
+        "max": 154.2083
+      },
+      "jitter_new": {
+        "n": 63000,
+        "median": 1.0488,
+        "p95": 10.3211,
+        "max": 154.2012
+      },
+      "jitter_replace": {
+        "n": 63000,
+        "median": 1.1528,
+        "p95": 12.1263,
+        "max": 140.2175
+      },
+      "source_peak": {
+        "n": 140,
+        "median": 212.91,
+        "p95": 219.722,
+        "max": 223.27
+      },
+      "old_peak": {
+        "n": 140,
+        "median": 146.115,
+        "p95": 185.4125,
+        "max": 204.69
+      },
+      "new_peak": {
+        "n": 140,
+        "median": 146.65,
+        "p95": 185.4125,
+        "max": 204.69
+      },
+      "replace_peak": {
+        "n": 140,
+        "median": 246.22,
+        "p95": 254.371,
+        "max": 255.0
+      },
+      "source_peak_treated": {
+        "n": 135,
+        "median": 213.11,
+        "p95": 219.782,
+        "max": 223.27
+      },
+      "old_treated_peak": {
+        "n": 135,
+        "median": 107.79,
+        "p95": 136.376,
+        "max": 177.77
+      },
+      "new_treated_peak": {
+        "n": 135,
+        "median": 103.73,
+        "p95": 121.301,
+        "max": 177.69
+      },
+      "replace_treated_peak": {
+        "n": 135,
+        "median": 124.92,
+        "p95": 153.477,
+        "max": 205.74
+      },
+      "iris_level": {
+        "n": 140,
+        "median": 56.29,
+        "p95": 71.2755,
+        "max": 88.0
+      },
+      "residual_pixels_above_r33_threshold": {
+        "n": 134,
+        "median": 0.0,
+        "p95": 3.0,
+        "max": 12.0
+      },
+      "weighted_pixels": {
+        "n": 135,
+        "median": 33.973,
+        "p95": 44.7719,
+        "max": 64.141
+      },
+      "pixels_touched": {
+        "n": 134,
+        "median": 92.0,
+        "p95": 125.35,
+        "max": 140.0
+      },
+      "peak_excess_sigmas": {
+        "n": 134,
+        "median": 69.2215,
+        "p95": 74.6538,
+        "max": 77.899
+      },
+      "catchlight_lid_kept": {
+        "n": 140,
+        "median": 0.9007,
+        "p95": 0.9394,
+        "max": 0.9544
+      },
+      "catchlight_peak_added_linear": {
+        "n": 140,
+        "median": 1.7742,
+        "p95": 2.9152,
+        "max": 10.6378
+      }
+    }
+  },
+  "note": "Jitter is per cell in a limbus-registered eye grid, against a five-frame rolling median of the same cell, over cells either round ever changed. The source is the paired control on identical cells and frames. Peaks and residues are display levels 0-255 inside the iris disc."
+}

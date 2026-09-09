@@ -43,3 +43,13 @@ __pycache__/
 
 # Agent tool state, including worktrees a session may create
 .claude/
+# Non-commercial third-party model checkpoints and clones, fetched by round 34.
+# Multi-GB and licence-restricted; re-fetch with dependencies/dl_models.py.
+dependencies/ProPainter/
+dependencies/DiffuEraser/
+dependencies/EffectErase/
+dependencies/svor/
+dependencies/propainter-runtime/
+dependencies/diffueraser-runtime/
+dependencies/effecterase-runtime/
+dependencies/wan-runtime/

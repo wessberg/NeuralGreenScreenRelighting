@@ -1,0 +1,20 @@
+{
+  "date": "2026-09-09",
+  "video": "final/r17_reflection.mp4",
+  "video_sha256": "34fe0937b1014861747d52b6b431f04b45f726c0886f2389c802da3cb15c2d8d",
+  "frames_decoded": 50,
+  "ordered_thumbnails_inspected": 50,
+  "source_frame_range": [950, 999],
+  "full_boards_inspected": [974, 977, 981, 982, 984, 985, 990, 994],
+  "method": "Assistant inspection of decoded ordered contact sheets and full boards. Final encode rechecked after shortening panel titles; image content and inference unchanged.",
+  "real_time_playback": false,
+  "artist_approval": false,
+  "observations": [
+    "Original softboxes remain in source and exact fallback panels throughout.",
+    "Query frame 977 is explicitly labelled forced; it is excluded from scoring.",
+    "RAFT marks only the eight evaluated frames; other frames say not evaluated.",
+    "Closure markers are rejected. At 990 the 977-anchored RAFT queries pass cycle while CoTracker rejects; markers remain near the photographed reflection.",
+    "Markers describe model cycle/visibility, not clean material or same-point identity. These post-inference observations did not change frozen labels or numerical scores.",
+    "No reflection removal or scene-light replacement is shown. Photorealism remains unmet."
+  ]
+}

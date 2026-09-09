@@ -1,0 +1,204 @@
+{
+  "code_sha256": "fb3afb4637bcd8ec352622f55b01099d0c4689d0901ca13082391004fdd82dff",
+  "repair_code_sha256": "4157d512c26cf7c7266b0204dff0d5dd9f43d7ca064dd06f3ceb163a640f8802",
+  "atlas_code_sha256": "0bcb1e0b43d849924bd523c27c21f8c886d2ea4df1c220ae52ab5a2da4f96f6e",
+  "rotations_deg": [
+    60.0,
+    120.0,
+    180.0,
+    240.0,
+    300.0
+  ],
+  "temporal_split_cut_frame": {
+    "left": 75,
+    "right": 75
+  },
+  "withheld_sites": {
+    "attempted": 1405,
+    "scored": 162,
+    "rejected": 1243,
+    "reasons": {
+      "overlap": 1096,
+      "nodonor": 5,
+      "no_atlas_support": 111,
+      "unsupported": 31
+    }
+  },
+  "withheld": {
+    "left": {
+      "atlas_split": {
+        "pixels": 5739,
+        "median_display_error": 6.3662,
+        "p95": 21.9595
+      },
+      "r32_repair": {
+        "pixels": 5739,
+        "median_display_error": 8.972,
+        "p95": 28.6523
+      },
+      "profile": {
+        "pixels": 5739,
+        "median_display_error": 9.0444,
+        "p95": 24.4956
+      },
+      "annulus_median": {
+        "pixels": 5739,
+        "median_display_error": 13.3251,
+        "p95": 39.0009
+      },
+      "single_gain": {
+        "pixels": 5739,
+        "median_display_error": 12.6648,
+        "p95": 46.8253
+      },
+      "texture_floor": {
+        "pixels": 119,
+        "median_display_error": 4.6646,
+        "p95": 8.2612
+      }
+    },
+    "right": {
+      "atlas_split": {
+        "pixels": 1599,
+        "median_display_error": 6.5438,
+        "p95": 21.897
+      },
+      "r32_repair": {
+        "pixels": 1599,
+        "median_display_error": 7.9791,
+        "p95": 26.3455
+      },
+      "profile": {
+        "pixels": 1599,
+        "median_display_error": 7.8197,
+        "p95": 26.3948
+      },
+      "annulus_median": {
+        "pixels": 1599,
+        "median_display_error": 12.9904,
+        "p95": 44.0029
+      },
+      "single_gain": {
+        "pixels": 1599,
+        "median_display_error": 13.9915,
+        "p95": 57.698
+      },
+      "texture_floor": {
+        "pixels": 43,
+        "median_display_error": 5.276,
+        "p95": 13.2281
+      }
+    }
+  },
+  "temporal": {
+    "left": {
+      "adjacent_frame_pairs": 136,
+      "repair_step": {
+        "n": 136,
+        "median": 3.4038,
+        "p95": 26.1539,
+        "max": 55.5556
+      },
+      "source_step_control": {
+        "n": 136,
+        "median": 3.9109,
+        "p95": 32.9153,
+        "max": 78.7222
+      },
+      "repair_jitter": {
+        "n": 140,
+        "median": 0.7057,
+        "p95": 4.5784,
+        "max": 17.8164
+      },
+      "source_jitter_control": {
+        "n": 140,
+        "median": 1.7216,
+        "p95": 7.7114,
+        "max": 25.7967
+      },
+      "mask_iou_between_adjacent_frames": {
+        "n": 136,
+        "median": 0.7821,
+        "p5": 0.3827,
+        "min": 0.0
+      },
+      "mask_size_change_px": {
+        "n": 136,
+        "median": 5.0,
+        "p95": 22.0,
+        "max": 43.0
+      },
+      "fill_display_min": [
+        50.11,
+        32.82,
+        24.07
+      ],
+      "fill_display_max": [
+        115.27,
+        90.42,
+        82.0
+      ],
+      "fill_display_median": [
+        64.82,
+        42.98,
+        31.35
+      ]
+    },
+    "right": {
+      "adjacent_frame_pairs": 130,
+      "repair_step": {
+        "n": 130,
+        "median": 2.2617,
+        "p95": 16.5769,
+        "max": 71.2941
+      },
+      "source_step_control": {
+        "n": 130,
+        "median": 2.3179,
+        "p95": 31.554,
+        "max": 68.5882
+      },
+      "repair_jitter": {
+        "n": 134,
+        "median": 0.4014,
+        "p95": 3.8403,
+        "max": 30.1275
+      },
+      "source_jitter_control": {
+        "n": 134,
+        "median": 1.392,
+        "p95": 10.8425,
+        "max": 30.1149
+      },
+      "mask_iou_between_adjacent_frames": {
+        "n": 130,
+        "median": 0.7826,
+        "p5": 0.5376,
+        "min": 0.0378
+      },
+      "mask_size_change_px": {
+        "n": 130,
+        "median": 4.0,
+        "p95": 15.0,
+        "max": 56.0
+      },
+      "fill_display_min": [
+        55.0,
+        35.81,
+        22.68
+      ],
+      "fill_display_max": [
+        112.18,
+        77.54,
+        57.41
+      ],
+      "fill_display_median": [
+        72.5,
+        45.91,
+        30.86
+      ]
+    }
+  },
+  "note": "atlas_split is scored ONLY on frames outside the half its atlas was built from. r32_repair, profile, annulus_median and single_gain are round 32's controls, recomputed here on identical pixels. texture_floor is the plate's own angular variation at the same radii and is not a target any completion can beat. Temporal figures are read from the 8-bit review frames the artist watches, so they are quantized at one display level."
+}

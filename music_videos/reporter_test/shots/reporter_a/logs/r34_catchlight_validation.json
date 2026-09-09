@@ -1,0 +1,312 @@
+{
+  "render": "composite/r34_catchlight",
+  "frames": "20,60,100",
+  "eyes": 6,
+  "environment": "scene_library\\night_restaurant",
+  "hdri": "warm_restaurant_night_4k.exr",
+  "hdri_rotation_deg": 0.0,
+  "hdri_strength": 1.0,
+  "anchor": "tracked iris landmark smoothed by a local quadratic",
+  "fresnel_f0": 0.02504,
+  "ior": 1.376,
+  "by_variant": {
+    "blender_convention": {
+      "ncc_median": 0.2985,
+      "log_ncc_median": 0.5612,
+      "peak_offset_px_median": 2.29,
+      "peak_offset_px_max": 16.76,
+      "energy_ratio_median": 0.2106
+    },
+    "blender_convention_prefiltered": {
+      "ncc_median": 0.9418,
+      "log_ncc_median": 0.7629,
+      "peak_offset_px_median": 0.0,
+      "peak_offset_px_max": 4.47,
+      "energy_ratio_median": 0.7416
+    },
+    "wrong_flip_u": {
+      "ncc_median": 0.0771,
+      "log_ncc_median": 0.2792,
+      "peak_offset_px_median": 14.66,
+      "peak_offset_px_max": 17.03,
+      "energy_ratio_median": 0.2297
+    },
+    "wrong_flip_v": {
+      "ncc_median": 0.0071,
+      "log_ncc_median": -0.153,
+      "peak_offset_px_median": 12.1,
+      "peak_offset_px_max": 18.25,
+      "energy_ratio_median": 0.2278
+    },
+    "wrong_normal_not_reflection": {
+      "ncc_median": -0.0119,
+      "log_ncc_median": 0.3561,
+      "peak_offset_px_median": 7.25,
+      "peak_offset_px_max": 14.87,
+      "energy_ratio_median": 0.1431
+    }
+  },
+  "rows": [
+    {
+      "frame": 20,
+      "side": "right",
+      "disc_pixels": 387,
+      "rendered_peak": 2.2168,
+      "reflection_deg_per_pixel": 7.487,
+      "prefilter_sigma_env_px": 42.59,
+      "blender_convention": {
+        "ncc": 0.3502,
+        "log_ncc": 0.5727,
+        "peak_offset_px": 14.14,
+        "predicted_peak": 0.16015,
+        "energy_ratio": 0.2115
+      },
+      "wrong_flip_u": {
+        "ncc": 0.1032,
+        "log_ncc": 0.2835,
+        "peak_offset_px": 14.32,
+        "predicted_peak": 0.15847,
+        "energy_ratio": 0.2285
+      },
+      "wrong_flip_v": {
+        "ncc": -0.0003,
+        "log_ncc": -0.1813,
+        "peak_offset_px": 18.25,
+        "predicted_peak": 0.11979,
+        "energy_ratio": 0.238
+      },
+      "wrong_normal_not_reflection": {
+        "ncc": -0.0078,
+        "log_ncc": 0.351,
+        "peak_offset_px": 12.04,
+        "predicted_peak": 2.45995,
+        "energy_ratio": 0.3193
+      },
+      "blender_convention_prefiltered": {
+        "ncc": 0.9363,
+        "log_ncc": 0.8173,
+        "peak_offset_px": 0.0,
+        "predicted_peak": 1.99006,
+        "energy_ratio": 0.909
+      }
+    },
+    {
+      "frame": 20,
+      "side": "left",
+      "disc_pixels": 422,
+      "rendered_peak": 3.3125,
+      "reflection_deg_per_pixel": 7.346,
+      "prefilter_sigma_env_px": 41.79,
+      "blender_convention": {
+        "ncc": 0.2206,
+        "log_ncc": 0.5087,
+        "peak_offset_px": 3.16,
+        "predicted_peak": 0.07801,
+        "energy_ratio": 0.1598
+      },
+      "wrong_flip_u": {
+        "ncc": 0.0443,
+        "log_ncc": 0.2749,
+        "peak_offset_px": 17.03,
+        "predicted_peak": 0.35766,
+        "energy_ratio": 0.2301
+      },
+      "wrong_flip_v": {
+        "ncc": 0.0077,
+        "log_ncc": -0.1524,
+        "peak_offset_px": 13.15,
+        "predicted_peak": 0.1145,
+        "energy_ratio": 0.179
+      },
+      "wrong_normal_not_reflection": {
+        "ncc": 0.0068,
+        "log_ncc": 0.3389,
+        "peak_offset_px": 4.47,
+        "predicted_peak": 0.05255,
+        "energy_ratio": 0.12
+      },
+      "blender_convention_prefiltered": {
+        "ncc": 0.673,
+        "log_ncc": 0.7776,
+        "peak_offset_px": 4.47,
+        "predicted_peak": 2.36253,
+        "energy_ratio": 0.6392
+      }
+    },
+    {
+      "frame": 60,
+      "side": "right",
+      "disc_pixels": 454,
+      "rendered_peak": 3.14648,
+      "reflection_deg_per_pixel": 7.234,
+      "prefilter_sigma_env_px": 41.15,
+      "blender_convention": {
+        "ncc": 0.2972,
+        "log_ncc": 0.5727,
+        "peak_offset_px": 1.41,
+        "predicted_peak": 0.12112,
+        "energy_ratio": 0.2097
+      },
+      "wrong_flip_u": {
+        "ncc": 0.0511,
+        "log_ncc": 0.2477,
+        "peak_offset_px": 15.13,
+        "predicted_peak": 0.54306,
+        "energy_ratio": 0.2599
+      },
+      "wrong_flip_v": {
+        "ncc": 0.0075,
+        "log_ncc": -0.1287,
+        "peak_offset_px": 11.05,
+        "predicted_peak": 0.4389,
+        "energy_ratio": 0.2367
+      },
+      "wrong_normal_not_reflection": {
+        "ncc": -0.0382,
+        "log_ncc": 0.3612,
+        "peak_offset_px": 3.0,
+        "predicted_peak": 0.04252,
+        "energy_ratio": 0.1434
+      },
+      "blender_convention_prefiltered": {
+        "ncc": 0.9472,
+        "log_ncc": 0.7258,
+        "peak_offset_px": 0.0,
+        "predicted_peak": 2.74507,
+        "energy_ratio": 0.7671
+      }
+    },
+    {
+      "frame": 60,
+      "side": "left",
+      "disc_pixels": 466,
+      "rendered_peak": 2.94727,
+      "reflection_deg_per_pixel": 7.086,
+      "prefilter_sigma_env_px": 40.31,
+      "blender_convention": {
+        "ncc": 0.7534,
+        "log_ncc": 0.6327,
+        "peak_offset_px": 0.0,
+        "predicted_peak": 13.91431,
+        "energy_ratio": 0.9562
+      },
+      "wrong_flip_u": {
+        "ncc": 0.1178,
+        "log_ncc": 0.3062,
+        "peak_offset_px": 3.61,
+        "predicted_peak": 0.14801,
+        "energy_ratio": 0.2293
+      },
+      "wrong_flip_v": {
+        "ncc": -0.0007,
+        "log_ncc": -0.1874,
+        "peak_offset_px": 11.05,
+        "predicted_peak": 0.15442,
+        "energy_ratio": 0.2188
+      },
+      "wrong_normal_not_reflection": {
+        "ncc": -0.0096,
+        "log_ncc": 0.4667,
+        "peak_offset_px": 7.28,
+        "predicted_peak": 0.75923,
+        "energy_ratio": 0.1864
+      },
+      "blender_convention_prefiltered": {
+        "ncc": 0.974,
+        "log_ncc": 0.7265,
+        "peak_offset_px": 0.0,
+        "predicted_peak": 2.85835,
+        "energy_ratio": 0.7161
+      }
+    },
+    {
+      "frame": 100,
+      "side": "right",
+      "disc_pixels": 429,
+      "rendered_peak": 2.39844,
+      "reflection_deg_per_pixel": 7.328,
+      "prefilter_sigma_env_px": 41.69,
+      "blender_convention": {
+        "ncc": 0.2998,
+        "log_ncc": 0.5497,
+        "peak_offset_px": 1.41,
+        "predicted_peak": 0.17505,
+        "energy_ratio": 0.2197
+      },
+      "wrong_flip_u": {
+        "ncc": 0.1705,
+        "log_ncc": 0.2899,
+        "peak_offset_px": 5.83,
+        "predicted_peak": 0.10029,
+        "energy_ratio": 0.2205
+      },
+      "wrong_flip_v": {
+        "ncc": 0.0067,
+        "log_ncc": -0.1536,
+        "peak_offset_px": 9.0,
+        "predicted_peak": 61.50502,
+        "energy_ratio": 4.0013
+      },
+      "wrong_normal_not_reflection": {
+        "ncc": -0.0215,
+        "log_ncc": 0.3745,
+        "peak_offset_px": 7.21,
+        "predicted_peak": 0.08112,
+        "energy_ratio": 0.1429
+      },
+      "blender_convention_prefiltered": {
+        "ncc": 0.9843,
+        "log_ncc": 0.7746,
+        "peak_offset_px": 0.0,
+        "predicted_peak": 2.46647,
+        "energy_ratio": 0.8274
+      }
+    },
+    {
+      "frame": 100,
+      "side": "left",
+      "disc_pixels": 446,
+      "rendered_peak": 4.96094,
+      "reflection_deg_per_pixel": 7.252,
+      "prefilter_sigma_env_px": 41.26,
+      "blender_convention": {
+        "ncc": 0.0802,
+        "log_ncc": 0.5313,
+        "peak_offset_px": 16.76,
+        "predicted_peak": 0.08925,
+        "energy_ratio": 0.1254
+      },
+      "wrong_flip_u": {
+        "ncc": -0.0031,
+        "log_ncc": 0.2417,
+        "peak_offset_px": 15.0,
+        "predicted_peak": 8.95652,
+        "energy_ratio": 0.4403
+      },
+      "wrong_flip_v": {
+        "ncc": 0.0218,
+        "log_ncc": -0.1144,
+        "peak_offset_px": 14.04,
+        "predicted_peak": 0.10996,
+        "energy_ratio": 0.1229
+      },
+      "wrong_normal_not_reflection": {
+        "ncc": -0.0142,
+        "log_ncc": 0.331,
+        "peak_offset_px": 14.87,
+        "predicted_peak": 0.27009,
+        "energy_ratio": 0.1074
+      },
+      "blender_convention_prefiltered": {
+        "ncc": 0.52,
+        "log_ncc": 0.7512,
+        "peak_offset_px": 4.47,
+        "predicted_peak": 1.95504,
+        "energy_ratio": 0.4548
+      }
+    }
+  ],
+  "note": "Cycles and this numpy model share no code. Agreement on where a 25-pixel cornea puts the restaurant lamps is the check; the three wrong variants are there so the test can fail.",
+  "best_variant": "blender_convention_prefiltered",
+  "passes": true
+}

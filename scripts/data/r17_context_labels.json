@@ -1,0 +1,13 @@
+{
+  "provenance": "New assistant conservative iris polygons from source-only native nearest-neighbour boards 959/977/995 inspected before round 17 inference. Reused seen footage, not independent human or clean-radiance truth. Other materials and boundaries remain unknown. Round 16 labels are unchanged.",
+  "boundary_uncertainty_px": 1.5,
+  "clean_radiance_certified": false,
+  "frames": [
+    {"frame":959,"side":"left","regions":{"iris":[[[20,36],[24,38],[30,39],[35,36],[38,32],[40,34],[38,40],[32,43],[25,43],[21,40]]]}},
+    {"frame":959,"side":"right","regions":{"iris":[[[22,36],[27,38],[32,37],[37,33],[39,31],[41,33],[38,39],[33,42],[27,43],[23,40]]]}},
+    {"frame":977,"side":"left","regions":{"iris":[[[22,35],[27,37],[32,37],[37,33],[39,32],[39,36],[35,40],[28,41],[24,39]]]}},
+    {"frame":977,"side":"right","regions":{"iris":[[[23,35],[28,36],[33,35],[38,32],[40,30],[40,34],[36,39],[29,40],[25,38]]]}},
+    {"frame":995,"side":"left","regions":{"iris":[[[26,35],[30,37],[35,37],[39,33],[42,30],[44,32],[42,39],[36,43],[30,42],[27,39]]]}},
+    {"frame":995,"side":"right","regions":{"iris":[[[27,34],[32,35],[37,33],[41,29],[44,29],[44,33],[40,38],[35,41],[30,40],[28,37]]]}}
+  ]
+}

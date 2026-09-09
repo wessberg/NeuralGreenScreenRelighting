@@ -1,0 +1,159 @@
+{
+  "protocol_sha256": "12353811428f13156ad1ffe279b1fd0e2629b0b5dcd6813f9c9dc6fc92759fa2",
+  "code_sha256": "66fe7031f62d7fc8beaae692b6925d2a35fdc166c4caf4afb341cd3ca4656341",
+  "repair_code_sha256": "4e7c367fb4a3c98771c56a70d5e3c92fc529b87ea1f389a57ea61e1d00afe227",
+  "rotations_deg": [
+    60.0,
+    120.0,
+    180.0,
+    240.0,
+    300.0
+  ],
+  "sites_attempted": 1400,
+  "sites_scored": 273,
+  "sites_rejected": 1127,
+  "rejection_reasons": {
+    "overlap": 1091,
+    "nodonor": 5,
+    "unsupported": 31
+  },
+  "withheld": {
+    "left": {
+      "repair": {
+        "pixels": 8855,
+        "median": 9.4311,
+        "p95": 31.0931,
+        "mean": 12.0476
+      },
+      "profile": {
+        "pixels": 8855,
+        "median": 9.7077,
+        "p95": 28.9433,
+        "mean": 11.928
+      },
+      "annulus_median": {
+        "pixels": 8855,
+        "median": 14.0009,
+        "p95": 46.4888,
+        "mean": 17.7604
+      },
+      "single_gain": {
+        "pixels": 8855,
+        "median": 12.9979,
+        "p95": 57.3773,
+        "mean": 18.4189
+      },
+      "texture_floor": {
+        "pixels": 190,
+        "median": 4.9442,
+        "p95": 8.7864,
+        "mean": 5.49
+      }
+    },
+    "right": {
+      "repair": {
+        "pixels": 3227,
+        "median": 8.6855,
+        "p95": 32.6175,
+        "mean": 11.8173
+      },
+      "profile": {
+        "pixels": 3227,
+        "median": 8.9125,
+        "p95": 37.0431,
+        "mean": 12.3766
+      },
+      "annulus_median": {
+        "pixels": 3227,
+        "median": 14.1653,
+        "p95": 58.9951,
+        "mean": 19.4344
+      },
+      "single_gain": {
+        "pixels": 3227,
+        "median": 15.0028,
+        "p95": 67.6598,
+        "mean": 21.4086
+      },
+      "texture_floor": {
+        "pixels": 83,
+        "median": 5.4481,
+        "p95": 13.2074,
+        "mean": 6.1681
+      }
+    }
+  },
+  "repair_split_by_profile_step": {
+    "left": {
+      "inner": {
+        "pixels": 5059,
+        "median": 8.1641,
+        "p95": 24.1558,
+        "mean": 10.097
+      },
+      "outer": {
+        "pixels": 3796,
+        "median": 11.7882,
+        "p95": 35.7607,
+        "mean": 14.6472
+      }
+    },
+    "right": {
+      "inner": {
+        "pixels": 930,
+        "median": 7.5999,
+        "p95": 29.9465,
+        "mean": 10.7383
+      },
+      "outer": {
+        "pixels": 2297,
+        "median": 9.0965,
+        "p95": 34.1842,
+        "mean": 12.2542
+      }
+    }
+  },
+  "temporal_fill": {
+    "left": {
+      "frames": 143,
+      "fill_over_surround_median": [
+        0.6227,
+        0.5523,
+        0.421
+      ],
+      "fill_over_surround_max_over_min": [
+        6.0736,
+        11.5378,
+        42.1641
+      ],
+      "fill_over_surround_iqr": [
+        0.2378,
+        0.2638,
+        0.3018
+      ],
+      "red_blue_ratio_median": 1.5885,
+      "red_blue_ratio_max_over_min": 12.1169
+    },
+    "right": {
+      "frames": 137,
+      "fill_over_surround_median": [
+        0.6077,
+        0.5302,
+        0.502
+      ],
+      "fill_over_surround_max_over_min": [
+        3.6235,
+        5.8823,
+        10.7518
+      ],
+      "fill_over_surround_iqr": [
+        0.161,
+        0.1995,
+        0.2347
+      ],
+      "red_blue_ratio_median": 1.2261,
+      "red_blue_ratio_max_over_min": 4.4716
+    }
+  },
+  "note": "Rotated-footprint withheld pixels in the same eyes. Controls are paired on identical pixels. texture_floor is the plate's own angular variation at the same radii, not an achievable target to beat."
+}

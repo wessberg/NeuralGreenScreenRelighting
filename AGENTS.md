@@ -28,6 +28,59 @@ Selective generation remains authorized; this does not reinstate a blanket ban.
 Do not reuse the failed albedo as clean pupil material or hide its errors with
 another tint/mask adjustment. See `rounds/round31.md` for outputs and next steps.
 
+**Round 32 rejection:** same-frame anatomical completion of the highlight was built
+and **rejected**, for colour AND shape flicker and a sometimes-brown pupil, because
+every term of the fill was refit per frame from a few dozen pixels. **No per-frame-refit
+fill can be temporally stable at a 24-pixel iris.** See `rounds/round32.md`.
+
+**Round 34 — the construction is settled and the artist endorsed it; the TRACKER is the
+blocker.** The eye is now generated **once**, in the eye's own registered frame, and
+rendered into every frame (`eye_soft_removal.py --fill-iris`); only a scalar illumination
+gain varies per frame, so iris crawl is structurally impossible. His words: *"the new iris
+generation approach here seems to be the right one"*. What now blocks it is measured:
+the mediapipe four-point limbus ellipse sits at **0.936 of the observed iris radius on the
+left eye**, with **1.66 px** of spread and **2.49 px** p95 frame-to-frame change against
+the photograph (`audit_r34_track.py`). That is his "double iris" and his "delayed, slow to
+react", and every fill since round 32 inherits it. **Round 33's 0.353 px figure measured
+smoothness against its own trajectory, not accuracy against the image — never quote it as
+accuracy.** Round 35 fits the limbus to the image edge and feeds it to everything.
+
+**Correction to a standing rule.** The black beside the highlight is coding undershoot,
+as recorded — and that is exactly why it must be removed WITH the highlight, not left.
+It is the codec's ringing *around* the bright lobe; deleting one lobe of a two-lobed
+artefact leaves a hard black crescent round a smooth fill, which is what the artist
+rejected as "weird brown stuff" in rounds 32, 33 and 34's first pass.
+
+**Model class matters more than model rank.** SVOR 1.3B and EffectErase 1.3B (both CVPR
+2026) are OBJECT removal: given a mask on an iris they delete the iris — SVOR returned
+blank sclera, EffectErase a lump of skin. **UnReflectAnything** is specular removal and
+keeps her eye; **ProPainter** is flow propagation and invents nothing. The last two are
+equal on temporal stability here (per-cell spread 20.7 vs 21.1). ProPainter needs the
+occluder to MOVE between input frames: at stride 1 it puts the catchlight back, at stride
+5 it removes it. All four are NONCOMMERCIAL. Do not re-evaluate the object erasers.
+
+**The scene's own corneal catchlight is built and validated** (`render_eye_catchlight.py`,
+`validate_eye_catchlight.py`: NCC 0.942 against an independent numpy model, three wrong
+conventions at 0.077 / 0.007 / −0.012; 110,213 added pixels inside the eyelids and 0
+outside). **The artist parked it until removal is clean — do not switch it on unprompted.**
+
+See `rounds/round34.md`.
+
+Also still true, and not to be re-derived: the highlight is **unclipped** (peak display
+0.7843–0.8823, zero pixels at 255); the black beside it is undershoot **clipped at legal
+black** by the tagged limited-range expansion (G and B exactly 0, R 8–26) — and round 34
+established it must therefore be removed WITH the highlight, not left, because it is that
+highlight's own ringing; and no pupil localizes once highlight and rim are excluded, which
+is why the pupil is now DRAWN into the canonical iris at a level measured from her own
+darkest observed pupil rather than recovered.
+Two working rules he stated explicitly: **put frames in front of him constantly, not
+at the end**, and **inspect every frame** on contact sheets at eye scale (the
+`composite/r29_shape/contact_*.jpg` standard). Two of round 33's four bugs were
+invisible in the logs and visible only in frames. Report p95 and max for anything
+temporal, never a median alone, and never an adjacent-frame step alone — it conflates
+real eye motion with flicker, which is how round 32 scored below its own control while
+plainly flickering.
+
 **Before doing anything else in this repo, read the most recent file in `rounds/`.**
 
 ```powershell
@@ -107,6 +160,19 @@ so the eight-pixel gate is unevaluable and zero repairs are earned. All 12 real
 reflection points have zero candidate donor support. At nearly closed source 981
 left, 4/5 points pass round-trip consistency: this is not visibility. Hidden RGB,
 native footprints and exact keyed fallback are verified. See `rounds/round15.md`.
+
+**Round 17 reflection material:** all 12 reused reflection anchors now run one
+query at a time through masked CoTracker3 and RAFT against the same eight labelled
+donors. Of 96 attempts each, RAFT cycle accepts 27 (14 labelled reflections,
+13 unknown); CoTracker accepts 15 (eight reflections, seven unknown). Neither
+has an accepted iris-compatible footprint; the shared neural proposal rejects
+all. Tracking a reflection is not evidence of tracking the underlying iris.
+RGB-free preflight on 30 iris / 12 reflection queries finds only five of 126
+target/donor pairs with capacity for eight context samples, and no query with
+three eligible donors under the frozen fixed/+3px control design. No photometric
+scores or repair are earned. This is a limitation of this design and labels,
+not universal impossibility. All 24 complete-footprint substitution runs and
+300 exact keyed fallbacks pass. See `rounds/round17.md`.
 
 ## What this project is
 
@@ -385,6 +451,8 @@ Every stage takes `--shot`. Interpreter is the pipeline venv unless the row says
 | 11b | stress demo | `stress_proxy.py` (Blender) | `composite/stress_proxy*/` | lightbulb tour; `--textured` uses the albedo |
 | 11c | **ratio irradiance** | `stress_proxy.py --ratio` (Blender) | `composite/ratio_render/*.exr` | neutral albedo at PLATE resolution and the PLATE lens |
 | 11d | ~~catchlight~~ | `stress_proxy.py --catchlight` (Blender) | `composite/catchlight_render/*.exr` | renderer looks sound and its validator passes; **the compositing of it is rejected and `--catchlight` defaults to 0** |
+| 11e | **corneal catchlight** | `render_eye_catchlight.py` (Blender) | `composite/r34_catchlight/*.exr` | the scene's own reflection in a corneal cap; validated by `validate_eye_catchlight.py`. PARKED by the artist |
+| 11f | **eye: one canonical iris** | `eye_soft_removal.py --fill-iris` | `composite/<name>/` | built once in the registered eye frame from `eye_video_inpaint.py` / `unreflect_diffuse.py` material; audited by `audit_r34_track.py`, `audit_r34_flicker.py` |
 | 12 | **ratio composite** | `composite_ratio.py` | `composite/ratio/` | `out = plate × R` by default. `--plate-specular remove` and `--catchlight` are rejected experiments |
 | 12b | composite (gain map) | `composite_shot.py` | `composite/`, `intermediate/linear_4k/` | legacy path; loads background **per frame** |
 | 12c | **review video** | `review_video.py` | `final/*.mp4` | what the artist watches; `--compare` puts the before on the LEFT with both halves labelled |

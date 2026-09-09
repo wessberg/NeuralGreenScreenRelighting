@@ -1,0 +1,5549 @@
+{
+  "rho_bins": 16,
+  "theta_bins": 64,
+  "rho_max": 0.88,
+  "frames": 150,
+  "tracks": {
+    "left": [
+      {
+        "frame": 0,
+        "source_frame": 700,
+        "pixels": 85,
+        "rho": 0.5811,
+        "theta": -2.8401,
+        "rho_span": [
+          0.1418,
+          0.8706
+        ],
+        "limbus_axes": [
+          12.811,
+          11.083
+        ],
+        "limbus_centre": [
+          1069.749,
+          281.424
+        ]
+      },
+      {
+        "frame": 1,
+        "source_frame": 701,
+        "pixels": 64,
+        "rho": 0.5513,
+        "theta": -2.6059,
+        "rho_span": [
+          0.1389,
+          0.8583
+        ],
+        "limbus_axes": [
+          12.844,
+          11.166
+        ],
+        "limbus_centre": [
+          1069.784,
+          280.99
+        ]
+      },
+      {
+        "frame": 2,
+        "source_frame": 702,
+        "pixels": 38,
+        "rho": 0.516,
+        "theta": -2.3694,
+        "rho_span": [
+          0.1884,
+          0.7779
+        ],
+        "limbus_axes": [
+          12.843,
+          11.112
+        ],
+        "limbus_centre": [
+          1069.822,
+          280.378
+        ]
+      },
+      {
+        "frame": 3,
+        "source_frame": 703,
+        "pixels": 23,
+        "rho": 0.5402,
+        "theta": -2.3981,
+        "rho_span": [
+          0.3022,
+          0.7236
+        ],
+        "limbus_axes": [
+          12.835,
+          10.951
+        ],
+        "limbus_centre": [
+          1069.825,
+          279.268
+        ]
+      },
+      {
+        "frame": 4,
+        "source_frame": 704,
+        "pixels": 72,
+        "rho": 0.6367,
+        "theta": 0.8087,
+        "rho_span": [
+          0.4137,
+          0.8712
+        ],
+        "limbus_axes": [
+          12.749,
+          10.606
+        ],
+        "limbus_centre": [
+          1069.795,
+          278.352
+        ]
+      },
+      {
+        "frame": 5,
+        "source_frame": 705,
+        "pixels": 38,
+        "rho": 0.5795,
+        "theta": 2.5146,
+        "rho_span": [
+          0.323,
+          0.8629
+        ],
+        "limbus_axes": [
+          12.547,
+          10.181
+        ],
+        "limbus_centre": [
+          1069.701,
+          277.661
+        ]
+      },
+      {
+        "frame": 6,
+        "source_frame": 706,
+        "pixels": 28,
+        "rho": 0.6403,
+        "theta": 3.0589,
+        "rho_span": [
+          0.3866,
+          0.8712
+        ],
+        "limbus_axes": [
+          12.41,
+          9.902
+        ],
+        "limbus_centre": [
+          1069.701,
+          277.234
+        ]
+      },
+      {
+        "frame": 7,
+        "reason": "eye_closed_or_occluded"
+      },
+      {
+        "frame": 8,
+        "reason": "eye_closed_or_occluded"
+      },
+      {
+        "frame": 9,
+        "reason": "eye_closed_or_occluded"
+      },
+      {
+        "frame": 10,
+        "reason": "eye_closed_or_occluded"
+      },
+      {
+        "frame": 11,
+        "source_frame": 711,
+        "pixels": 40,
+        "rho": 0.5588,
+        "theta": 0.4113,
+        "rho_span": [
+          0.3044,
+          0.8614
+        ],
+        "limbus_axes": [
+          12.231,
+          10.012
+        ],
+        "limbus_centre": [
+          1068.102,
+          266.043
+        ]
+      },
+      {
+        "frame": 12,
+        "source_frame": 712,
+        "pixels": 43,
+        "rho": 0.6133,
+        "theta": 0.3885,
+        "rho_span": [
+          0.3883,
+          0.8642
+        ],
+        "limbus_axes": [
+          12.249,
+          10.133
+        ],
+        "limbus_centre": [
+          1066.635,
+          265.22
+        ]
+      },
+      {
+        "frame": 13,
+        "source_frame": 713,
+        "pixels": 35,
+        "rho": 0.7051,
+        "theta": 0.2874,
+        "rho_span": [
+          0.5125,
+          0.8789
+        ],
+        "limbus_axes": [
+          12.314,
+          10.276
+        ],
+        "limbus_centre": [
+          1065.178,
+          264.967
+        ]
+      },
+      {
+        "frame": 14,
+        "source_frame": 714,
+        "pixels": 60,
+        "rho": 0.5878,
+        "theta": 0.3845,
+        "rho_span": [
+          0.2258,
+          0.8787
+        ],
+        "limbus_axes": [
+          12.375,
+          10.395
+        ],
+        "limbus_centre": [
+          1064.285,
+          265.441
+        ]
+      },
+      {
+        "frame": 15,
+        "source_frame": 715,
+        "pixels": 25,
+        "rho": 0.5734,
+        "theta": -2.7681,
+        "rho_span": [
+          0.3514,
+          0.7825
+        ],
+        "limbus_axes": [
+          12.488,
+          10.494
+        ],
+        "limbus_centre": [
+          1063.371,
+          266.328
+        ]
+      },
+      {
+        "frame": 16,
+        "source_frame": 716,
+        "pixels": 58,
+        "rho": 0.6546,
+        "theta": 3.0659,
+        "rho_span": [
+          0.3486,
+          0.8718
+        ],
+        "limbus_axes": [
+          12.523,
+          10.501
+        ],
+        "limbus_centre": [
+          1062.352,
+          267.277
+        ]
+      },
+      {
+        "frame": 17,
+        "source_frame": 717,
+        "pixels": 56,
+        "rho": 0.6229,
+        "theta": 2.9548,
+        "rho_span": [
+          0.35,
+          0.8526
+        ],
+        "limbus_axes": [
+          12.569,
+          10.352
+        ],
+        "limbus_centre": [
+          1061.388,
+          267.744
+        ]
+      },
+      {
+        "frame": 18,
+        "source_frame": 718,
+        "pixels": 55,
+        "rho": 0.5332,
+        "theta": -3.0607,
+        "rho_span": [
+          0.2682,
+          0.7769
+        ],
+        "limbus_axes": [
+          12.577,
+          10.667
+        ],
+        "limbus_centre": [
+          1060.329,
+          268.536
+        ]
+      },
+      {
+        "frame": 19,
+        "source_frame": 719,
+        "pixels": 59,
+        "rho": 0.5839,
+        "theta": 2.8464,
+        "rho_span": [
+          0.2601,
+          0.8658
+        ],
+        "limbus_axes": [
+          12.587,
+          10.949
+        ],
+        "limbus_centre": [
+          1059.274,
+          270.021
+        ]
+      },
+      {
+        "frame": 20,
+        "source_frame": 720,
+        "pixels": 61,
+        "rho": 0.5909,
+        "theta": 2.9374,
+        "rho_span": [
+          0.2675,
+          0.8743
+        ],
+        "limbus_axes": [
+          12.686,
+          11.177
+        ],
+        "limbus_centre": [
+          1058.393,
+          272.015
+        ]
+      },
+      {
+        "frame": 21,
+        "source_frame": 721,
+        "pixels": 65,
+        "rho": 0.5879,
+        "theta": 2.9784,
+        "rho_span": [
+          0.2887,
+          0.8784
+        ],
+        "limbus_axes": [
+          12.755,
+          11.288
+        ],
+        "limbus_centre": [
+          1057.669,
+          273.719
+        ]
+      },
+      {
+        "frame": 22,
+        "source_frame": 722,
+        "pixels": 69,
+        "rho": 0.6094,
+        "theta": 3.0617,
+        "rho_span": [
+          0.2983,
+          0.872
+        ],
+        "limbus_axes": [
+          12.823,
+          11.375
+        ],
+        "limbus_centre": [
+          1056.796,
+          275.418
+        ]
+      },
+      {
+        "frame": 23,
+        "source_frame": 723,
+        "pixels": 81,
+        "rho": 0.6108,
+        "theta": -3.1262,
+        "rho_span": [
+          0.246,
+          0.877
+        ],
+        "limbus_axes": [
+          12.89,
+          11.43
+        ],
+        "limbus_centre": [
+          1056.034,
+          276.818
+        ]
+      },
+      {
+        "frame": 24,
+        "source_frame": 724,
+        "pixels": 55,
+        "rho": 0.5425,
+        "theta": -2.8185,
+        "rho_span": [
+          0.2605,
+          0.8343
+        ],
+        "limbus_axes": [
+          12.943,
+          11.475
+        ],
+        "limbus_centre": [
+          1055.371,
+          278.046
+        ]
+      },
+      {
+        "frame": 25,
+        "source_frame": 725,
+        "pixels": 51,
+        "rho": 0.5497,
+        "theta": -2.8,
+        "rho_span": [
+          0.2845,
+          0.8001
+        ],
+        "limbus_axes": [
+          13.014,
+          11.522
+        ],
+        "limbus_centre": [
+          1054.701,
+          279.064
+        ]
+      },
+      {
+        "frame": 26,
+        "source_frame": 726,
+        "pixels": 73,
+        "rho": 0.6169,
+        "theta": -3.003,
+        "rho_span": [
+          0.2619,
+          0.8739
+        ],
+        "limbus_axes": [
+          13.097,
+          11.566
+        ],
+        "limbus_centre": [
+          1054.226,
+          280.03
+        ]
+      },
+      {
+        "frame": 27,
+        "source_frame": 727,
+        "pixels": 50,
+        "rho": 0.561,
+        "theta": -2.7751,
+        "rho_span": [
+          0.2792,
+          0.805
+        ],
+        "limbus_axes": [
+          13.127,
+          11.592
+        ],
+        "limbus_centre": [
+          1053.657,
+          280.789
+        ]
+      },
+      {
+        "frame": 28,
+        "source_frame": 728,
+        "pixels": 49,
+        "rho": 0.5638,
+        "theta": -2.7556,
+        "rho_span": [
+          0.297,
+          0.8208
+        ],
+        "limbus_axes": [
+          13.167,
+          11.597
+        ],
+        "limbus_centre": [
+          1052.88,
+          281.425
+        ]
+      },
+      {
+        "frame": 29,
+        "source_frame": 729,
+        "pixels": 47,
+        "rho": 0.5501,
+        "theta": -2.7321,
+        "rho_span": [
+          0.2821,
+          0.7952
+        ],
+        "limbus_axes": [
+          13.197,
+          11.581
+        ],
+        "limbus_centre": [
+          1051.721,
+          282.122
+        ]
+      },
+      {
+        "frame": 30,
+        "source_frame": 730,
+        "pixels": 49,
+        "rho": 0.5467,
+        "theta": -2.6858,
+        "rho_span": [
+          0.2464,
+          0.8178
+        ],
+        "limbus_axes": [
+          13.146,
+          11.548
+        ],
+        "limbus_centre": [
+          1050.821,
+          282.398
+        ]
+      },
+      {
+        "frame": 31,
+        "source_frame": 731,
+        "pixels": 50,
+        "rho": 0.5253,
+        "theta": -2.7144,
+        "rho_span": [
+          0.2458,
+          0.7884
+        ],
+        "limbus_axes": [
+          13.138,
+          11.527
+        ],
+        "limbus_centre": [
+          1050.187,
+          282.544
+        ]
+      },
+      {
+        "frame": 32,
+        "source_frame": 732,
+        "pixels": 50,
+        "rho": 0.5409,
+        "theta": -2.645,
+        "rho_span": [
+          0.2427,
+          0.8166
+        ],
+        "limbus_axes": [
+          13.115,
+          11.52
+        ],
+        "limbus_centre": [
+          1049.667,
+          282.526
+        ]
+      },
+      {
+        "frame": 33,
+        "source_frame": 733,
+        "pixels": 50,
+        "rho": 0.5454,
+        "theta": -2.6726,
+        "rho_span": [
+          0.2441,
+          0.7983
+        ],
+        "limbus_axes": [
+          13.136,
+          11.516
+        ],
+        "limbus_centre": [
+          1049.16,
+          282.475
+        ]
+      },
+      {
+        "frame": 34,
+        "source_frame": 734,
+        "pixels": 56,
+        "rho": 0.5629,
+        "theta": -2.7054,
+        "rho_span": [
+          0.2387,
+          0.8311
+        ],
+        "limbus_axes": [
+          13.054,
+          11.48
+        ],
+        "limbus_centre": [
+          1048.691,
+          282.381
+        ]
+      },
+      {
+        "frame": 35,
+        "source_frame": 735,
+        "pixels": 59,
+        "rho": 0.5726,
+        "theta": -2.7784,
+        "rho_span": [
+          0.2382,
+          0.8617
+        ],
+        "limbus_axes": [
+          13.084,
+          11.479
+        ],
+        "limbus_centre": [
+          1048.101,
+          282.272
+        ]
+      },
+      {
+        "frame": 36,
+        "source_frame": 736,
+        "pixels": 50,
+        "rho": 0.527,
+        "theta": -2.6596,
+        "rho_span": [
+          0.212,
+          0.8072
+        ],
+        "limbus_axes": [
+          13.097,
+          11.477
+        ],
+        "limbus_centre": [
+          1047.769,
+          282.175
+        ]
+      },
+      {
+        "frame": 37,
+        "source_frame": 737,
+        "pixels": 44,
+        "rho": 0.5648,
+        "theta": -2.6092,
+        "rho_span": [
+          0.2695,
+          0.8407
+        ],
+        "limbus_axes": [
+          13.059,
+          11.468
+        ],
+        "limbus_centre": [
+          1047.518,
+          282.082
+        ]
+      },
+      {
+        "frame": 38,
+        "source_frame": 738,
+        "pixels": 61,
+        "rho": 0.609,
+        "theta": -2.7516,
+        "rho_span": [
+          0.2429,
+          0.8722
+        ],
+        "limbus_axes": [
+          13.085,
+          11.465
+        ],
+        "limbus_centre": [
+          1047.178,
+          281.987
+        ]
+      },
+      {
+        "frame": 39,
+        "source_frame": 739,
+        "pixels": 49,
+        "rho": 0.5676,
+        "theta": -2.6008,
+        "rho_span": [
+          0.2859,
+          0.8422
+        ],
+        "limbus_axes": [
+          13.092,
+          11.457
+        ],
+        "limbus_centre": [
+          1046.741,
+          281.883
+        ]
+      },
+      {
+        "frame": 40,
+        "source_frame": 740,
+        "pixels": 46,
+        "rho": 0.5439,
+        "theta": -2.6117,
+        "rho_span": [
+          0.2481,
+          0.808
+        ],
+        "limbus_axes": [
+          13.073,
+          11.449
+        ],
+        "limbus_centre": [
+          1046.235,
+          281.793
+        ]
+      },
+      {
+        "frame": 41,
+        "source_frame": 741,
+        "pixels": 49,
+        "rho": 0.5594,
+        "theta": -2.5973,
+        "rho_span": [
+          0.2671,
+          0.8434
+        ],
+        "limbus_axes": [
+          13.083,
+          11.445
+        ],
+        "limbus_centre": [
+          1045.888,
+          281.722
+        ]
+      },
+      {
+        "frame": 42,
+        "source_frame": 742,
+        "pixels": 58,
+        "rho": 0.6011,
+        "theta": -2.7919,
+        "rho_span": [
+          0.2708,
+          0.8564
+        ],
+        "limbus_axes": [
+          13.062,
+          11.439
+        ],
+        "limbus_centre": [
+          1045.515,
+          281.658
+        ]
+      },
+      {
+        "frame": 43,
+        "source_frame": 743,
+        "pixels": 45,
+        "rho": 0.5658,
+        "theta": -2.5553,
+        "rho_span": [
+          0.2387,
+          0.8491
+        ],
+        "limbus_axes": [
+          13.05,
+          11.429
+        ],
+        "limbus_centre": [
+          1045.033,
+          281.621
+        ]
+      },
+      {
+        "frame": 44,
+        "source_frame": 744,
+        "pixels": 42,
+        "rho": 0.5658,
+        "theta": -2.5598,
+        "rho_span": [
+          0.2641,
+          0.8027
+        ],
+        "limbus_axes": [
+          13.052,
+          11.459
+        ],
+        "limbus_centre": [
+          1044.401,
+          281.497
+        ]
+      },
+      {
+        "frame": 45,
+        "source_frame": 745,
+        "pixels": 40,
+        "rho": 0.5718,
+        "theta": -2.464,
+        "rho_span": [
+          0.2587,
+          0.8226
+        ],
+        "limbus_axes": [
+          13.043,
+          11.459
+        ],
+        "limbus_centre": [
+          1044.09,
+          281.191
+        ]
+      },
+      {
+        "frame": 46,
+        "source_frame": 746,
+        "pixels": 45,
+        "rho": 0.5992,
+        "theta": -2.4093,
+        "rho_span": [
+          0.2978,
+          0.8611
+        ],
+        "limbus_axes": [
+          13.076,
+          11.499
+        ],
+        "limbus_centre": [
+          1043.51,
+          280.483
+        ]
+      },
+      {
+        "frame": 47,
+        "source_frame": 747,
+        "pixels": 44,
+        "rho": 0.5733,
+        "theta": -2.4788,
+        "rho_span": [
+          0.2479,
+          0.8458
+        ],
+        "limbus_axes": [
+          13.087,
+          11.52
+        ],
+        "limbus_centre": [
+          1043.18,
+          279.564
+        ]
+      },
+      {
+        "frame": 48,
+        "source_frame": 748,
+        "pixels": 51,
+        "rho": 0.5545,
+        "theta": -2.4131,
+        "rho_span": [
+          0.1813,
+          0.8624
+        ],
+        "limbus_axes": [
+          13.102,
+          11.509
+        ],
+        "limbus_centre": [
+          1043.161,
+          278.865
+        ]
+      },
+      {
+        "frame": 49,
+        "source_frame": 749,
+        "pixels": 77,
+        "rho": 0.5542,
+        "theta": -2.6813,
+        "rho_span": [
+          0.1276,
+          0.8624
+        ],
+        "limbus_axes": [
+          13.1,
+          11.49
+        ],
+        "limbus_centre": [
+          1043.525,
+          278.599
+        ]
+      },
+      {
+        "frame": 50,
+        "source_frame": 750,
+        "pixels": 75,
+        "rho": 0.5078,
+        "theta": -2.8593,
+        "rho_span": [
+          0.1328,
+          0.8735
+        ],
+        "limbus_axes": [
+          13.115,
+          11.485
+        ],
+        "limbus_centre": [
+          1043.685,
+          278.616
+        ]
+      },
+      {
+        "frame": 51,
+        "source_frame": 751,
+        "pixels": 78,
+        "rho": 0.5681,
+        "theta": 3.0369,
+        "rho_span": [
+          0.2303,
+          0.8663
+        ],
+        "limbus_axes": [
+          13.107,
+          11.512
+        ],
+        "limbus_centre": [
+          1043.976,
+          279.448
+        ]
+      },
+      {
+        "frame": 52,
+        "source_frame": 752,
+        "pixels": 65,
+        "rho": 0.6046,
+        "theta": 3.0644,
+        "rho_span": [
+          0.3236,
+          0.8677
+        ],
+        "limbus_axes": [
+          13.07,
+          11.536
+        ],
+        "limbus_centre": [
+          1044.211,
+          282.644
+        ]
+      },
+      {
+        "frame": 53,
+        "source_frame": 753,
+        "pixels": 69,
+        "rho": 0.6633,
+        "theta": 2.9926,
+        "rho_span": [
+          0.3851,
+          0.874
+        ],
+        "limbus_axes": [
+          12.999,
+          11.488
+        ],
+        "limbus_centre": [
+          1043.983,
+          287.572
+        ]
+      },
+      {
+        "frame": 54,
+        "source_frame": 754,
+        "pixels": 63,
+        "rho": 0.6707,
+        "theta": 3.0818,
+        "rho_span": [
+          0.4162,
+          0.879
+        ],
+        "limbus_axes": [
+          12.967,
+          11.571
+        ],
+        "limbus_centre": [
+          1043.378,
+          294.403
+        ]
+      },
+      {
+        "frame": 55,
+        "source_frame": 755,
+        "pixels": 50,
+        "rho": 0.6708,
+        "theta": -3.0162,
+        "rho_span": [
+          0.4387,
+          0.8662
+        ],
+        "limbus_axes": [
+          12.985,
+          11.621
+        ],
+        "limbus_centre": [
+          1042.695,
+          302.102
+        ]
+      },
+      {
+        "frame": 56,
+        "source_frame": 756,
+        "pixels": 46,
+        "rho": 0.6714,
+        "theta": -2.9872,
+        "rho_span": [
+          0.4343,
+          0.8559
+        ],
+        "limbus_axes": [
+          13.06,
+          11.615
+        ],
+        "limbus_centre": [
+          1041.497,
+          310.243
+        ]
+      },
+      {
+        "frame": 57,
+        "source_frame": 757,
+        "pixels": 47,
+        "rho": 0.6688,
+        "theta": -2.9645,
+        "rho_span": [
+          0.453,
+          0.8566
+        ],
+        "limbus_axes": [
+          13.158,
+          11.613
+        ],
+        "limbus_centre": [
+          1039.945,
+          317.376
+        ]
+      },
+      {
+        "frame": 58,
+        "source_frame": 758,
+        "pixels": 52,
+        "rho": 0.6715,
+        "theta": -2.9078,
+        "rho_span": [
+          0.4192,
+          0.8759
+        ],
+        "limbus_axes": [
+          13.284,
+          11.648
+        ],
+        "limbus_centre": [
+          1038.568,
+          323.097
+        ]
+      },
+      {
+        "frame": 59,
+        "source_frame": 759,
+        "pixels": 52,
+        "rho": 0.6675,
+        "theta": -2.7889,
+        "rho_span": [
+          0.3847,
+          0.8782
+        ],
+        "limbus_axes": [
+          13.404,
+          11.678
+        ],
+        "limbus_centre": [
+          1037.152,
+          327.191
+        ]
+      },
+      {
+        "frame": 60,
+        "source_frame": 760,
+        "pixels": 49,
+        "rho": 0.6558,
+        "theta": -2.6748,
+        "rho_span": [
+          0.3611,
+          0.8575
+        ],
+        "limbus_axes": [
+          13.467,
+          11.782
+        ],
+        "limbus_centre": [
+          1035.853,
+          329.268
+        ]
+      },
+      {
+        "frame": 61,
+        "source_frame": 761,
+        "pixels": 42,
+        "rho": 0.681,
+        "theta": -2.6458,
+        "rho_span": [
+          0.4115,
+          0.8727
+        ],
+        "limbus_axes": [
+          13.539,
+          11.777
+        ],
+        "limbus_centre": [
+          1035.516,
+          329.688
+        ]
+      },
+      {
+        "frame": 62,
+        "source_frame": 762,
+        "pixels": 42,
+        "rho": 0.6735,
+        "theta": -2.5901,
+        "rho_span": [
+          0.3911,
+          0.8644
+        ],
+        "limbus_axes": [
+          13.542,
+          11.71
+        ],
+        "limbus_centre": [
+          1035.167,
+          328.003
+        ]
+      },
+      {
+        "frame": 63,
+        "source_frame": 763,
+        "pixels": 39,
+        "rho": 0.6754,
+        "theta": -2.5193,
+        "rho_span": [
+          0.3886,
+          0.8732
+        ],
+        "limbus_axes": [
+          13.458,
+          11.549
+        ],
+        "limbus_centre": [
+          1034.887,
+          325.599
+        ]
+      },
+      {
+        "frame": 64,
+        "source_frame": 764,
+        "pixels": 41,
+        "rho": 0.6762,
+        "theta": -2.5659,
+        "rho_span": [
+          0.3876,
+          0.877
+        ],
+        "limbus_axes": [
+          13.319,
+          11.459
+        ],
+        "limbus_centre": [
+          1035.021,
+          322.031
+        ]
+      },
+      {
+        "frame": 65,
+        "source_frame": 765,
+        "pixels": 38,
+        "rho": 0.6892,
+        "theta": -2.493,
+        "rho_span": [
+          0.4226,
+          0.8771
+        ],
+        "limbus_axes": [
+          13.248,
+          11.47
+        ],
+        "limbus_centre": [
+          1035.155,
+          318.892
+        ]
+      },
+      {
+        "frame": 66,
+        "source_frame": 766,
+        "pixels": 24,
+        "rho": 0.7172,
+        "theta": -2.4348,
+        "rho_span": [
+          0.4934,
+          0.8587
+        ],
+        "limbus_axes": [
+          13.222,
+          11.5
+        ],
+        "limbus_centre": [
+          1035.054,
+          316.589
+        ]
+      },
+      {
+        "frame": 67,
+        "source_frame": 767,
+        "pixels": 61,
+        "rho": 0.6663,
+        "theta": 2.4424,
+        "rho_span": [
+          0.342,
+          0.8703
+        ],
+        "limbus_axes": [
+          13.191,
+          11.48
+        ],
+        "limbus_centre": [
+          1034.981,
+          316.472
+        ]
+      },
+      {
+        "frame": 68,
+        "source_frame": 768,
+        "pixels": 73,
+        "rho": 0.6519,
+        "theta": 2.2967,
+        "rho_span": [
+          0.2933,
+          0.879
+        ],
+        "limbus_axes": [
+          13.182,
+          11.533
+        ],
+        "limbus_centre": [
+          1034.923,
+          313.619
+        ]
+      },
+      {
+        "frame": 69,
+        "source_frame": 769,
+        "pixels": 20,
+        "rho": 0.7494,
+        "theta": -2.3361,
+        "rho_span": [
+          0.5846,
+          0.8799
+        ],
+        "limbus_axes": [
+          13.129,
+          11.49
+        ],
+        "limbus_centre": [
+          1034.683,
+          309.514
+        ]
+      },
+      {
+        "frame": 70,
+        "source_frame": 770,
+        "pixels": 30,
+        "rho": 0.7174,
+        "theta": -2.4361,
+        "rho_span": [
+          0.4807,
+          0.88
+        ],
+        "limbus_axes": [
+          13.096,
+          11.505
+        ],
+        "limbus_centre": [
+          1034.33,
+          305.942
+        ]
+      },
+      {
+        "frame": 71,
+        "source_frame": 771,
+        "pixels": 34,
+        "rho": 0.6924,
+        "theta": -2.5048,
+        "rho_span": [
+          0.4204,
+          0.868
+        ],
+        "limbus_axes": [
+          13.079,
+          11.529
+        ],
+        "limbus_centre": [
+          1033.916,
+          303.173
+        ]
+      },
+      {
+        "frame": 72,
+        "source_frame": 772,
+        "pixels": 41,
+        "rho": 0.6835,
+        "theta": -2.5677,
+        "rho_span": [
+          0.4364,
+          0.8601
+        ],
+        "limbus_axes": [
+          13.069,
+          11.53
+        ],
+        "limbus_centre": [
+          1033.518,
+          301.275
+        ]
+      },
+      {
+        "frame": 73,
+        "source_frame": 773,
+        "pixels": 44,
+        "rho": 0.6655,
+        "theta": -2.6761,
+        "rho_span": [
+          0.3957,
+          0.8744
+        ],
+        "limbus_axes": [
+          13.055,
+          11.54
+        ],
+        "limbus_centre": [
+          1033.166,
+          300.014
+        ]
+      },
+      {
+        "frame": 74,
+        "source_frame": 774,
+        "pixels": 57,
+        "rho": 0.6648,
+        "theta": -2.8093,
+        "rho_span": [
+          0.38,
+          0.8763
+        ],
+        "limbus_axes": [
+          13.057,
+          11.537
+        ],
+        "limbus_centre": [
+          1032.734,
+          299.314
+        ]
+      },
+      {
+        "frame": 75,
+        "source_frame": 775,
+        "pixels": 49,
+        "rho": 0.6572,
+        "theta": -2.7435,
+        "rho_span": [
+          0.3927,
+          0.8763
+        ],
+        "limbus_axes": [
+          13.055,
+          11.511
+        ],
+        "limbus_centre": [
+          1032.126,
+          299.083
+        ]
+      },
+      {
+        "frame": 76,
+        "source_frame": 776,
+        "pixels": 70,
+        "rho": 0.6748,
+        "theta": -2.9593,
+        "rho_span": [
+          0.349,
+          0.8748
+        ],
+        "limbus_axes": [
+          13.061,
+          11.513
+        ],
+        "limbus_centre": [
+          1031.34,
+          299.228
+        ]
+      },
+      {
+        "frame": 77,
+        "source_frame": 777,
+        "pixels": 56,
+        "rho": 0.6378,
+        "theta": -2.8071,
+        "rho_span": [
+          0.3542,
+          0.8778
+        ],
+        "limbus_axes": [
+          13.062,
+          11.512
+        ],
+        "limbus_centre": [
+          1030.596,
+          299.53
+        ]
+      },
+      {
+        "frame": 78,
+        "source_frame": 778,
+        "pixels": 47,
+        "rho": 0.631,
+        "theta": -2.8181,
+        "rho_span": [
+          0.3788,
+          0.8717
+        ],
+        "limbus_axes": [
+          13.072,
+          11.514
+        ],
+        "limbus_centre": [
+          1029.95,
+          299.891
+        ]
+      },
+      {
+        "frame": 79,
+        "source_frame": 779,
+        "pixels": 54,
+        "rho": 0.6094,
+        "theta": -2.8818,
+        "rho_span": [
+          0.3275,
+          0.8681
+        ],
+        "limbus_axes": [
+          13.076,
+          11.515
+        ],
+        "limbus_centre": [
+          1029.272,
+          300.255
+        ]
+      },
+      {
+        "frame": 80,
+        "source_frame": 780,
+        "pixels": 53,
+        "rho": 0.6314,
+        "theta": -2.8779,
+        "rho_span": [
+          0.3621,
+          0.8743
+        ],
+        "limbus_axes": [
+          13.084,
+          11.519
+        ],
+        "limbus_centre": [
+          1028.709,
+          300.539
+        ]
+      },
+      {
+        "frame": 81,
+        "source_frame": 781,
+        "pixels": 64,
+        "rho": 0.6237,
+        "theta": -2.9572,
+        "rho_span": [
+          0.3201,
+          0.879
+        ],
+        "limbus_axes": [
+          13.111,
+          11.521
+        ],
+        "limbus_centre": [
+          1028.187,
+          300.736
+        ]
+      },
+      {
+        "frame": 82,
+        "source_frame": 782,
+        "pixels": 47,
+        "rho": 0.6203,
+        "theta": -2.8286,
+        "rho_span": [
+          0.371,
+          0.8589
+        ],
+        "limbus_axes": [
+          13.107,
+          11.521
+        ],
+        "limbus_centre": [
+          1027.856,
+          300.783
+        ]
+      },
+      {
+        "frame": 83,
+        "source_frame": 783,
+        "pixels": 52,
+        "rho": 0.63,
+        "theta": -2.7311,
+        "rho_span": [
+          0.3356,
+          0.8619
+        ],
+        "limbus_axes": [
+          13.129,
+          11.539
+        ],
+        "limbus_centre": [
+          1027.379,
+          300.566
+        ]
+      },
+      {
+        "frame": 84,
+        "source_frame": 784,
+        "pixels": 49,
+        "rho": 0.6497,
+        "theta": -2.6511,
+        "rho_span": [
+          0.3831,
+          0.8775
+        ],
+        "limbus_axes": [
+          13.113,
+          11.546
+        ],
+        "limbus_centre": [
+          1027.024,
+          299.976
+        ]
+      },
+      {
+        "frame": 85,
+        "source_frame": 785,
+        "pixels": 47,
+        "rho": 0.6638,
+        "theta": -2.6485,
+        "rho_span": [
+          0.3745,
+          0.8656
+        ],
+        "limbus_axes": [
+          13.092,
+          11.548
+        ],
+        "limbus_centre": [
+          1026.737,
+          299.116
+        ]
+      },
+      {
+        "frame": 86,
+        "source_frame": 786,
+        "pixels": 44,
+        "rho": 0.6695,
+        "theta": -2.6385,
+        "rho_span": [
+          0.4252,
+          0.8708
+        ],
+        "limbus_axes": [
+          13.063,
+          11.533
+        ],
+        "limbus_centre": [
+          1026.442,
+          297.982
+        ]
+      },
+      {
+        "frame": 87,
+        "source_frame": 787,
+        "pixels": 39,
+        "rho": 0.6724,
+        "theta": -2.6301,
+        "rho_span": [
+          0.4001,
+          0.8651
+        ],
+        "limbus_axes": [
+          13.057,
+          11.531
+        ],
+        "limbus_centre": [
+          1026.129,
+          296.875
+        ]
+      },
+      {
+        "frame": 88,
+        "source_frame": 788,
+        "pixels": 45,
+        "rho": 0.671,
+        "theta": -2.6708,
+        "rho_span": [
+          0.43,
+          0.8526
+        ],
+        "limbus_axes": [
+          13.059,
+          11.523
+        ],
+        "limbus_centre": [
+          1025.615,
+          295.954
+        ]
+      },
+      {
+        "frame": 89,
+        "source_frame": 789,
+        "pixels": 47,
+        "rho": 0.6716,
+        "theta": -2.6757,
+        "rho_span": [
+          0.3777,
+          0.8766
+        ],
+        "limbus_axes": [
+          13.06,
+          11.546
+        ],
+        "limbus_centre": [
+          1024.921,
+          295.309
+        ]
+      },
+      {
+        "frame": 90,
+        "source_frame": 790,
+        "pixels": 53,
+        "rho": 0.644,
+        "theta": -2.7248,
+        "rho_span": [
+          0.397,
+          0.8753
+        ],
+        "limbus_axes": [
+          13.044,
+          11.55
+        ],
+        "limbus_centre": [
+          1024.179,
+          295.014
+        ]
+      },
+      {
+        "frame": 91,
+        "source_frame": 791,
+        "pixels": 60,
+        "rho": 0.644,
+        "theta": -2.9166,
+        "rho_span": [
+          0.3503,
+          0.8611
+        ],
+        "limbus_axes": [
+          13.04,
+          11.544
+        ],
+        "limbus_centre": [
+          1023.561,
+          295.213
+        ]
+      },
+      {
+        "frame": 92,
+        "source_frame": 792,
+        "pixels": 58,
+        "rho": 0.5975,
+        "theta": -2.8959,
+        "rho_span": [
+          0.3075,
+          0.8639
+        ],
+        "limbus_axes": [
+          13.021,
+          11.539
+        ],
+        "limbus_centre": [
+          1022.979,
+          295.601
+        ]
+      },
+      {
+        "frame": 93,
+        "source_frame": 793,
+        "pixels": 59,
+        "rho": 0.6027,
+        "theta": -3.1002,
+        "rho_span": [
+          0.2859,
+          0.8618
+        ],
+        "limbus_axes": [
+          13.002,
+          11.547
+        ],
+        "limbus_centre": [
+          1022.608,
+          295.795
+        ]
+      },
+      {
+        "frame": 94,
+        "source_frame": 794,
+        "pixels": 64,
+        "rho": 0.6289,
+        "theta": 3.0218,
+        "rho_span": [
+          0.3354,
+          0.8782
+        ],
+        "limbus_axes": [
+          12.987,
+          11.523
+        ],
+        "limbus_centre": [
+          1022.355,
+          296.059
+        ]
+      },
+      {
+        "frame": 95,
+        "source_frame": 795,
+        "pixels": 73,
+        "rho": 0.6316,
+        "theta": 2.9938,
+        "rho_span": [
+          0.3253,
+          0.8758
+        ],
+        "limbus_axes": [
+          13.006,
+          11.5
+        ],
+        "limbus_centre": [
+          1022.194,
+          296.505
+        ]
+      },
+      {
+        "frame": 96,
+        "source_frame": 796,
+        "pixels": 61,
+        "rho": 0.5979,
+        "theta": 3.1335,
+        "rho_span": [
+          0.3173,
+          0.8722
+        ],
+        "limbus_axes": [
+          13.018,
+          11.487
+        ],
+        "limbus_centre": [
+          1022.13,
+          297.018
+        ]
+      },
+      {
+        "frame": 97,
+        "source_frame": 797,
+        "pixels": 59,
+        "rho": 0.5964,
+        "theta": -3.0537,
+        "rho_span": [
+          0.317,
+          0.8618
+        ],
+        "limbus_axes": [
+          13.022,
+          11.487
+        ],
+        "limbus_centre": [
+          1022.116,
+          297.285
+        ]
+      },
+      {
+        "frame": 98,
+        "source_frame": 798,
+        "pixels": 59,
+        "rho": 0.5832,
+        "theta": -2.971,
+        "rho_span": [
+          0.3099,
+          0.8549
+        ],
+        "limbus_axes": [
+          13.049,
+          11.482
+        ],
+        "limbus_centre": [
+          1022.029,
+          297.298
+        ]
+      },
+      {
+        "frame": 99,
+        "source_frame": 799,
+        "pixels": 53,
+        "rho": 0.5864,
+        "theta": -2.8422,
+        "rho_span": [
+          0.3032,
+          0.8513
+        ],
+        "limbus_axes": [
+          13.057,
+          11.487
+        ],
+        "limbus_centre": [
+          1021.934,
+          297.389
+        ]
+      },
+      {
+        "frame": 100,
+        "source_frame": 800,
+        "pixels": 53,
+        "rho": 0.6086,
+        "theta": -2.7218,
+        "rho_span": [
+          0.299,
+          0.8759
+        ],
+        "limbus_axes": [
+          13.046,
+          11.487
+        ],
+        "limbus_centre": [
+          1021.882,
+          297.329
+        ]
+      },
+      {
+        "frame": 101,
+        "source_frame": 801,
+        "pixels": 52,
+        "rho": 0.6285,
+        "theta": -2.6311,
+        "rho_span": [
+          0.3096,
+          0.8743
+        ],
+        "limbus_axes": [
+          13.048,
+          11.495
+        ],
+        "limbus_centre": [
+          1021.857,
+          297.06
+        ]
+      },
+      {
+        "frame": 102,
+        "source_frame": 802,
+        "pixels": 52,
+        "rho": 0.6083,
+        "theta": -2.6342,
+        "rho_span": [
+          0.2926,
+          0.8494
+        ],
+        "limbus_axes": [
+          13.058,
+          11.499
+        ],
+        "limbus_centre": [
+          1021.747,
+          296.662
+        ]
+      },
+      {
+        "frame": 103,
+        "source_frame": 803,
+        "pixels": 56,
+        "rho": 0.6382,
+        "theta": -2.6443,
+        "rho_span": [
+          0.306,
+          0.8752
+        ],
+        "limbus_axes": [
+          13.066,
+          11.507
+        ],
+        "limbus_centre": [
+          1021.703,
+          296.328
+        ]
+      },
+      {
+        "frame": 104,
+        "source_frame": 804,
+        "pixels": 53,
+        "rho": 0.6132,
+        "theta": -2.6256,
+        "rho_span": [
+          0.2832,
+          0.8649
+        ],
+        "limbus_axes": [
+          13.059,
+          11.509
+        ],
+        "limbus_centre": [
+          1021.697,
+          296.104
+        ]
+      },
+      {
+        "frame": 105,
+        "source_frame": 805,
+        "pixels": 53,
+        "rho": 0.6091,
+        "theta": -2.6387,
+        "rho_span": [
+          0.2831,
+          0.8603
+        ],
+        "limbus_axes": [
+          13.059,
+          11.514
+        ],
+        "limbus_centre": [
+          1021.697,
+          296.003
+        ]
+      },
+      {
+        "frame": 106,
+        "source_frame": 806,
+        "pixels": 64,
+        "rho": 0.6133,
+        "theta": -2.7881,
+        "rho_span": [
+          0.2847,
+          0.8616
+        ],
+        "limbus_axes": [
+          13.058,
+          11.515
+        ],
+        "limbus_centre": [
+          1021.717,
+          296.001
+        ]
+      },
+      {
+        "frame": 107,
+        "source_frame": 807,
+        "pixels": 79,
+        "rho": 0.6324,
+        "theta": -3.0158,
+        "rho_span": [
+          0.2878,
+          0.8671
+        ],
+        "limbus_axes": [
+          13.054,
+          11.516
+        ],
+        "limbus_centre": [
+          1021.757,
+          296.063
+        ]
+      },
+      {
+        "frame": 108,
+        "source_frame": 808,
+        "pixels": 83,
+        "rho": 0.6085,
+        "theta": -3.0223,
+        "rho_span": [
+          0.2924,
+          0.8735
+        ],
+        "limbus_axes": [
+          13.052,
+          11.516
+        ],
+        "limbus_centre": [
+          1021.814,
+          296.119
+        ]
+      },
+      {
+        "frame": 109,
+        "source_frame": 809,
+        "pixels": 76,
+        "rho": 0.5936,
+        "theta": -2.9225,
+        "rho_span": [
+          0.2414,
+          0.8679
+        ],
+        "limbus_axes": [
+          13.052,
+          11.516
+        ],
+        "limbus_centre": [
+          1021.862,
+          296.163
+        ]
+      },
+      {
+        "frame": 110,
+        "source_frame": 810,
+        "pixels": 58,
+        "rho": 0.5338,
+        "theta": -2.724,
+        "rho_span": [
+          0.2209,
+          0.8676
+        ],
+        "limbus_axes": [
+          13.046,
+          11.516
+        ],
+        "limbus_centre": [
+          1021.872,
+          296.203
+        ]
+      },
+      {
+        "frame": 111,
+        "source_frame": 811,
+        "pixels": 54,
+        "rho": 0.5099,
+        "theta": -2.6171,
+        "rho_span": [
+          0.1949,
+          0.8253
+        ],
+        "limbus_axes": [
+          13.035,
+          11.515
+        ],
+        "limbus_centre": [
+          1022.129,
+          296.225
+        ]
+      },
+      {
+        "frame": 112,
+        "source_frame": 812,
+        "pixels": 73,
+        "rho": 0.5832,
+        "theta": -2.7197,
+        "rho_span": [
+          0.1996,
+          0.8542
+        ],
+        "limbus_axes": [
+          13.031,
+          11.517
+        ],
+        "limbus_centre": [
+          1022.592,
+          296.194
+        ]
+      },
+      {
+        "frame": 113,
+        "source_frame": 813,
+        "pixels": 80,
+        "rho": 0.6091,
+        "theta": -2.7659,
+        "rho_span": [
+          0.1905,
+          0.8768
+        ],
+        "limbus_axes": [
+          13.055,
+          11.526
+        ],
+        "limbus_centre": [
+          1023.164,
+          296.083
+        ]
+      },
+      {
+        "frame": 114,
+        "source_frame": 814,
+        "pixels": 51,
+        "rho": 0.5496,
+        "theta": -2.5513,
+        "rho_span": [
+          0.2131,
+          0.8467
+        ],
+        "limbus_axes": [
+          13.067,
+          11.539
+        ],
+        "limbus_centre": [
+          1023.784,
+          295.941
+        ]
+      },
+      {
+        "frame": 115,
+        "source_frame": 815,
+        "pixels": 87,
+        "rho": 0.6227,
+        "theta": -2.819,
+        "rho_span": [
+          0.2412,
+          0.8756
+        ],
+        "limbus_axes": [
+          13.046,
+          11.528
+        ],
+        "limbus_centre": [
+          1024.348,
+          295.851
+        ]
+      },
+      {
+        "frame": 116,
+        "source_frame": 816,
+        "pixels": 53,
+        "rho": 0.5512,
+        "theta": -2.591,
+        "rho_span": [
+          0.2174,
+          0.8417
+        ],
+        "limbus_axes": [
+          13.029,
+          11.523
+        ],
+        "limbus_centre": [
+          1024.82,
+          295.763
+        ]
+      },
+      {
+        "frame": 117,
+        "source_frame": 817,
+        "pixels": 73,
+        "rho": 0.5902,
+        "theta": -2.7712,
+        "rho_span": [
+          0.1946,
+          0.8712
+        ],
+        "limbus_axes": [
+          12.998,
+          11.515
+        ],
+        "limbus_centre": [
+          1025.388,
+          295.74
+        ]
+      },
+      {
+        "frame": 118,
+        "source_frame": 818,
+        "pixels": 54,
+        "rho": 0.5579,
+        "theta": -2.6079,
+        "rho_span": [
+          0.223,
+          0.8465
+        ],
+        "limbus_axes": [
+          12.981,
+          11.511
+        ],
+        "limbus_centre": [
+          1025.879,
+          295.74
+        ]
+      },
+      {
+        "frame": 119,
+        "source_frame": 819,
+        "pixels": 55,
+        "rho": 0.5261,
+        "theta": -2.6681,
+        "rho_span": [
+          0.2397,
+          0.8183
+        ],
+        "limbus_axes": [
+          12.966,
+          11.51
+        ],
+        "limbus_centre": [
+          1026.401,
+          295.753
+        ]
+      },
+      {
+        "frame": 120,
+        "source_frame": 820,
+        "pixels": 55,
+        "rho": 0.5271,
+        "theta": -2.7501,
+        "rho_span": [
+          0.221,
+          0.8462
+        ],
+        "limbus_axes": [
+          12.975,
+          11.51
+        ],
+        "limbus_centre": [
+          1026.854,
+          295.759
+        ]
+      },
+      {
+        "frame": 121,
+        "source_frame": 821,
+        "pixels": 86,
+        "rho": 0.6026,
+        "theta": -3.0278,
+        "rho_span": [
+          0.2377,
+          0.8786
+        ],
+        "limbus_axes": [
+          12.983,
+          11.509
+        ],
+        "limbus_centre": [
+          1027.326,
+          295.797
+        ]
+      },
+      {
+        "frame": 122,
+        "source_frame": 822,
+        "pixels": 80,
+        "rho": 0.6136,
+        "theta": -2.9539,
+        "rho_span": [
+          0.2355,
+          0.8733
+        ],
+        "limbus_axes": [
+          12.96,
+          11.506
+        ],
+        "limbus_centre": [
+          1028.044,
+          295.802
+        ]
+      },
+      {
+        "frame": 123,
+        "source_frame": 823,
+        "pixels": 78,
+        "rho": 0.6077,
+        "theta": -2.8863,
+        "rho_span": [
+          0.2301,
+          0.8576
+        ],
+        "limbus_axes": [
+          12.962,
+          11.507
+        ],
+        "limbus_centre": [
+          1028.839,
+          295.81
+        ]
+      },
+      {
+        "frame": 124,
+        "source_frame": 824,
+        "pixels": 50,
+        "rho": 0.5892,
+        "theta": -2.6368,
+        "rho_span": [
+          0.2776,
+          0.8499
+        ],
+        "limbus_axes": [
+          12.959,
+          11.503
+        ],
+        "limbus_centre": [
+          1029.59,
+          295.808
+        ]
+      },
+      {
+        "frame": 125,
+        "source_frame": 825,
+        "pixels": 46,
+        "rho": 0.6174,
+        "theta": -2.6661,
+        "rho_span": [
+          0.331,
+          0.8772
+        ],
+        "limbus_axes": [
+          12.859,
+          11.471
+        ],
+        "limbus_centre": [
+          1030.248,
+          295.761
+        ]
+      },
+      {
+        "frame": 126,
+        "source_frame": 826,
+        "pixels": 59,
+        "rho": 0.6274,
+        "theta": -3.02,
+        "rho_span": [
+          0.3712,
+          0.8675
+        ],
+        "limbus_axes": [
+          12.633,
+          11.344
+        ],
+        "limbus_centre": [
+          1030.623,
+          295.71
+        ]
+      },
+      {
+        "frame": 127,
+        "source_frame": 827,
+        "pixels": 30,
+        "rho": 0.7488,
+        "theta": 2.0323,
+        "rho_span": [
+          0.6461,
+          0.8711
+        ],
+        "limbus_axes": [
+          12.412,
+          11.122
+        ],
+        "limbus_centre": [
+          1030.753,
+          295.818
+        ]
+      },
+      {
+        "frame": 128,
+        "source_frame": 828,
+        "pixels": 43,
+        "rho": 0.3826,
+        "theta": -2.9112,
+        "rho_span": [
+          0.0474,
+          0.8769
+        ],
+        "limbus_axes": [
+          12.284,
+          10.335
+        ],
+        "limbus_centre": [
+          1030.591,
+          297.348
+        ]
+      },
+      {
+        "frame": 129,
+        "source_frame": 829,
+        "pixels": 21,
+        "rho": 0.7113,
+        "theta": 2.7966,
+        "rho_span": [
+          0.5124,
+          0.8683
+        ],
+        "limbus_axes": [
+          11.969,
+          9.886
+        ],
+        "limbus_centre": [
+          1030.864,
+          298.519
+        ]
+      },
+      {
+        "frame": 130,
+        "reason": "eye_closed_or_occluded"
+      },
+      {
+        "frame": 131,
+        "reason": "eye_closed_or_occluded"
+      },
+      {
+        "frame": 132,
+        "reason": "eye_closed_or_occluded"
+      },
+      {
+        "frame": 133,
+        "source_frame": 833,
+        "pixels": 34,
+        "rho": 0.6167,
+        "theta": 0.4617,
+        "rho_span": [
+          0.3425,
+          0.8738
+        ],
+        "limbus_axes": [
+          12.01,
+          9.974
+        ],
+        "limbus_centre": [
+          1032.174,
+          277.94
+        ]
+      },
+      {
+        "frame": 134,
+        "source_frame": 834,
+        "pixels": 57,
+        "rho": 0.5387,
+        "theta": 0.2928,
+        "rho_span": [
+          0.118,
+          0.8567
+        ],
+        "limbus_axes": [
+          12.09,
+          10.098
+        ],
+        "limbus_centre": [
+          1032.844,
+          270.302
+        ]
+      },
+      {
+        "frame": 135,
+        "source_frame": 835,
+        "pixels": 11,
+        "rho": 0.68,
+        "theta": -2.7817,
+        "rho_span": [
+          0.5129,
+          0.8565
+        ],
+        "limbus_axes": [
+          12.138,
+          10.189
+        ],
+        "limbus_centre": [
+          1032.878,
+          263.722
+        ]
+      },
+      {
+        "frame": 136,
+        "source_frame": 836,
+        "pixels": 26,
+        "rho": 0.6464,
+        "theta": -2.8335,
+        "rho_span": [
+          0.4181,
+          0.8662
+        ],
+        "limbus_axes": [
+          12.158,
+          10.274
+        ],
+        "limbus_centre": [
+          1032.991,
+          257.814
+        ]
+      },
+      {
+        "frame": 137,
+        "source_frame": 837,
+        "pixels": 58,
+        "rho": 0.6922,
+        "theta": 3.0795,
+        "rho_span": [
+          0.4254,
+          0.8763
+        ],
+        "limbus_axes": [
+          12.158,
+          10.287
+        ],
+        "limbus_centre": [
+          1033.151,
+          253.385
+        ]
+      },
+      {
+        "frame": 138,
+        "source_frame": 838,
+        "pixels": 54,
+        "rho": 0.6841,
+        "theta": 3.1031,
+        "rho_span": [
+          0.4297,
+          0.8755
+        ],
+        "limbus_axes": [
+          12.166,
+          10.303
+        ],
+        "limbus_centre": [
+          1033.204,
+          250.584
+        ]
+      },
+      {
+        "frame": 139,
+        "source_frame": 839,
+        "pixels": 53,
+        "rho": 0.6744,
+        "theta": 3.1401,
+        "rho_span": [
+          0.4212,
+          0.8551
+        ],
+        "limbus_axes": [
+          12.169,
+          10.265
+        ],
+        "limbus_centre": [
+          1033.126,
+          249.022
+        ]
+      },
+      {
+        "frame": 140,
+        "source_frame": 840,
+        "pixels": 32,
+        "rho": 0.6745,
+        "theta": -2.7682,
+        "rho_span": [
+          0.4268,
+          0.8772
+        ],
+        "limbus_axes": [
+          12.173,
+          10.258
+        ],
+        "limbus_centre": [
+          1033.038,
+          247.069
+        ]
+      },
+      {
+        "frame": 141,
+        "source_frame": 841,
+        "pixels": 26,
+        "rho": 0.6951,
+        "theta": -2.7977,
+        "rho_span": [
+          0.489,
+          0.8746
+        ],
+        "limbus_axes": [
+          12.187,
+          10.318
+        ],
+        "limbus_centre": [
+          1032.954,
+          245.228
+        ]
+      },
+      {
+        "frame": 142,
+        "source_frame": 842,
+        "pixels": 24,
+        "rho": 0.7236,
+        "theta": -2.879,
+        "rho_span": [
+          0.5655,
+          0.8747
+        ],
+        "limbus_axes": [
+          12.171,
+          10.356
+        ],
+        "limbus_centre": [
+          1032.867,
+          243.403
+        ]
+      },
+      {
+        "frame": 143,
+        "source_frame": 843,
+        "pixels": 24,
+        "rho": 0.7357,
+        "theta": -2.9483,
+        "rho_span": [
+          0.5921,
+          0.8575
+        ],
+        "limbus_axes": [
+          12.129,
+          10.354
+        ],
+        "limbus_centre": [
+          1032.178,
+          241.827
+        ]
+      },
+      {
+        "frame": 144,
+        "source_frame": 844,
+        "pixels": 24,
+        "rho": 0.7412,
+        "theta": -2.9674,
+        "rho_span": [
+          0.6011,
+          0.8629
+        ],
+        "limbus_axes": [
+          12.15,
+          10.39
+        ],
+        "limbus_centre": [
+          1031.294,
+          240.696
+        ]
+      },
+      {
+        "frame": 145,
+        "source_frame": 845,
+        "pixels": 22,
+        "rho": 0.7252,
+        "theta": -2.8826,
+        "rho_span": [
+          0.5715,
+          0.8589
+        ],
+        "limbus_axes": [
+          12.15,
+          10.35
+        ],
+        "limbus_centre": [
+          1029.928,
+          240.602
+        ]
+      },
+      {
+        "frame": 146,
+        "source_frame": 846,
+        "pixels": 31,
+        "rho": 0.6995,
+        "theta": -2.9007,
+        "rho_span": [
+          0.4986,
+          0.8719
+        ],
+        "limbus_axes": [
+          12.163,
+          10.337
+        ],
+        "limbus_centre": [
+          1028.062,
+          241.845
+        ]
+      },
+      {
+        "frame": 147,
+        "source_frame": 847,
+        "pixels": 30,
+        "rho": 0.683,
+        "theta": -2.859,
+        "rho_span": [
+          0.4678,
+          0.8791
+        ],
+        "limbus_axes": [
+          12.141,
+          10.308
+        ],
+        "limbus_centre": [
+          1026.666,
+          243.335
+        ]
+      },
+      {
+        "frame": 148,
+        "source_frame": 848,
+        "pixels": 33,
+        "rho": 0.6916,
+        "theta": -2.9627,
+        "rho_span": [
+          0.501,
+          0.86
+        ],
+        "limbus_axes": [
+          12.182,
+          10.355
+        ],
+        "limbus_centre": [
+          1025.083,
+          245.419
+        ]
+      },
+      {
+        "frame": 149,
+        "source_frame": 849,
+        "pixels": 41,
+        "rho": 0.6923,
+        "theta": -2.9974,
+        "rho_span": [
+          0.5125,
+          0.8736
+        ],
+        "limbus_axes": [
+          12.2,
+          10.375
+        ],
+        "limbus_centre": [
+          1023.346,
+          247.823
+        ]
+      }
+    ],
+    "right": [
+      {
+        "frame": 0,
+        "source_frame": 700,
+        "pixels": 48,
+        "rho": 0.4612,
+        "theta": -1.9647,
+        "rho_span": [
+          0.1045,
+          0.766
+        ],
+        "limbus_axes": [
+          12.05,
+          10.856
+        ],
+        "limbus_centre": [
+          939.775,
+          294.116
+        ]
+      },
+      {
+        "frame": 1,
+        "source_frame": 701,
+        "pixels": 43,
+        "rho": 0.4634,
+        "theta": -2.0154,
+        "rho_span": [
+          0.1181,
+          0.767
+        ],
+        "limbus_axes": [
+          12.108,
+          11.016
+        ],
+        "limbus_centre": [
+          939.721,
+          293.276
+        ]
+      },
+      {
+        "frame": 2,
+        "source_frame": 702,
+        "pixels": 33,
+        "rho": 0.4929,
+        "theta": -1.9394,
+        "rho_span": [
+          0.2336,
+          0.71
+        ],
+        "limbus_axes": [
+          12.119,
+          10.991
+        ],
+        "limbus_centre": [
+          939.677,
+          292.551
+        ]
+      },
+      {
+        "frame": 3,
+        "source_frame": 703,
+        "pixels": 19,
+        "rho": 0.4983,
+        "theta": -2.0192,
+        "rho_span": [
+          0.3102,
+          0.6556
+        ],
+        "limbus_axes": [
+          12.116,
+          10.867
+        ],
+        "limbus_centre": [
+          939.674,
+          291.317
+        ]
+      },
+      {
+        "frame": 4,
+        "source_frame": 704,
+        "pixels": 55,
+        "rho": 0.6601,
+        "theta": 0.3466,
+        "rho_span": [
+          0.3736,
+          0.8697
+        ],
+        "limbus_axes": [
+          12.07,
+          10.466
+        ],
+        "limbus_centre": [
+          939.674,
+          290.359
+        ]
+      },
+      {
+        "frame": 5,
+        "source_frame": 705,
+        "pixels": 23,
+        "rho": 0.5103,
+        "theta": -2.6354,
+        "rho_span": [
+          0.2198,
+          0.8724
+        ],
+        "limbus_axes": [
+          11.751,
+          10.199
+        ],
+        "limbus_centre": [
+          940.249,
+          290.232
+        ]
+      },
+      {
+        "frame": 6,
+        "source_frame": 706,
+        "pixels": 32,
+        "rho": 0.3304,
+        "theta": 0.2419,
+        "rho_span": [
+          0.0749,
+          0.7094
+        ],
+        "limbus_axes": [
+          11.397,
+          10.066
+        ],
+        "limbus_centre": [
+          941.81,
+          290.265
+        ]
+      },
+      {
+        "frame": 7,
+        "reason": "eye_closed_or_occluded"
+      },
+      {
+        "frame": 8,
+        "reason": "eye_closed_or_occluded"
+      },
+      {
+        "frame": 9,
+        "reason": "eye_closed_or_occluded"
+      },
+      {
+        "frame": 10,
+        "reason": "eye_closed_or_occluded"
+      },
+      {
+        "frame": 11,
+        "reason": "eye_closed_or_occluded"
+      },
+      {
+        "frame": 12,
+        "source_frame": 712,
+        "pixels": 35,
+        "rho": 0.6069,
+        "theta": 0.0482,
+        "rho_span": [
+          0.3334,
+          0.8794
+        ],
+        "limbus_axes": [
+          11.396,
+          9.883
+        ],
+        "limbus_centre": [
+          937.037,
+          278.937
+        ]
+      },
+      {
+        "frame": 13,
+        "source_frame": 713,
+        "pixels": 37,
+        "rho": 0.66,
+        "theta": 0.1712,
+        "rho_span": [
+          0.4457,
+          0.8475
+        ],
+        "limbus_axes": [
+          11.473,
+          10.057
+        ],
+        "limbus_centre": [
+          934.72,
+          278.547
+        ]
+      },
+      {
+        "frame": 14,
+        "source_frame": 714,
+        "pixels": 39,
+        "rho": 0.6871,
+        "theta": 0.1226,
+        "rho_span": [
+          0.4441,
+          0.8784
+        ],
+        "limbus_axes": [
+          11.562,
+          10.207
+        ],
+        "limbus_centre": [
+          932.875,
+          278.712
+        ]
+      },
+      {
+        "frame": 15,
+        "source_frame": 715,
+        "pixels": 23,
+        "rho": 0.3251,
+        "theta": -2.4072,
+        "rho_span": [
+          0.0593,
+          0.5258
+        ],
+        "limbus_axes": [
+          11.754,
+          10.358
+        ],
+        "limbus_centre": [
+          931.583,
+          279.336
+        ]
+      },
+      {
+        "frame": 16,
+        "source_frame": 716,
+        "pixels": 33,
+        "rho": 0.3256,
+        "theta": -2.631,
+        "rho_span": [
+          0.0466,
+          0.5587
+        ],
+        "limbus_axes": [
+          11.817,
+          10.396
+        ],
+        "limbus_centre": [
+          930.471,
+          280.25
+        ]
+      },
+      {
+        "frame": 17,
+        "source_frame": 717,
+        "pixels": 44,
+        "rho": 0.3194,
+        "theta": -2.8104,
+        "rho_span": [
+          0.0482,
+          0.541
+        ],
+        "limbus_axes": [
+          11.914,
+          10.25
+        ],
+        "limbus_centre": [
+          929.541,
+          280.832
+        ]
+      },
+      {
+        "frame": 18,
+        "source_frame": 718,
+        "pixels": 54,
+        "rho": 0.3243,
+        "theta": 3.0409,
+        "rho_span": [
+          0.0365,
+          0.5912
+        ],
+        "limbus_axes": [
+          11.99,
+          10.648
+        ],
+        "limbus_centre": [
+          928.75,
+          281.319
+        ]
+      },
+      {
+        "frame": 19,
+        "source_frame": 719,
+        "pixels": 64,
+        "rho": 0.3654,
+        "theta": 3.1403,
+        "rho_span": [
+          0.0251,
+          0.6379
+        ],
+        "limbus_axes": [
+          12.056,
+          11.029
+        ],
+        "limbus_centre": [
+          928.127,
+          282.749
+        ]
+      },
+      {
+        "frame": 20,
+        "source_frame": 720,
+        "pixels": 58,
+        "rho": 0.3385,
+        "theta": 3.0224,
+        "rho_span": [
+          0.009,
+          0.6144
+        ],
+        "limbus_axes": [
+          12.207,
+          11.312
+        ],
+        "limbus_centre": [
+          927.077,
+          284.928
+        ]
+      },
+      {
+        "frame": 21,
+        "source_frame": 721,
+        "pixels": 47,
+        "rho": 0.3196,
+        "theta": -3.0602,
+        "rho_span": [
+          0.0375,
+          0.5586
+        ],
+        "limbus_axes": [
+          12.307,
+          11.43
+        ],
+        "limbus_centre": [
+          926.447,
+          286.895
+        ]
+      },
+      {
+        "frame": 22,
+        "source_frame": 722,
+        "pixels": 48,
+        "rho": 0.3482,
+        "theta": -2.7893,
+        "rho_span": [
+          0.0578,
+          0.6256
+        ],
+        "limbus_axes": [
+          12.375,
+          11.494
+        ],
+        "limbus_centre": [
+          925.7,
+          288.866
+        ]
+      },
+      {
+        "frame": 23,
+        "source_frame": 723,
+        "pixels": 82,
+        "rho": 0.4718,
+        "theta": -2.9116,
+        "rho_span": [
+          0.0307,
+          0.8482
+        ],
+        "limbus_axes": [
+          12.455,
+          11.535
+        ],
+        "limbus_centre": [
+          925.248,
+          290.269
+        ]
+      },
+      {
+        "frame": 24,
+        "source_frame": 724,
+        "pixels": 54,
+        "rho": 0.379,
+        "theta": -2.6536,
+        "rho_span": [
+          0.0579,
+          0.6545
+        ],
+        "limbus_axes": [
+          12.529,
+          11.594
+        ],
+        "limbus_centre": [
+          924.562,
+          291.576
+        ]
+      },
+      {
+        "frame": 25,
+        "source_frame": 725,
+        "pixels": 48,
+        "rho": 0.3809,
+        "theta": -2.6448,
+        "rho_span": [
+          0.0856,
+          0.6761
+        ],
+        "limbus_axes": [
+          12.623,
+          11.65
+        ],
+        "limbus_centre": [
+          923.994,
+          292.607
+        ]
+      },
+      {
+        "frame": 26,
+        "source_frame": 726,
+        "pixels": 70,
+        "rho": 0.4522,
+        "theta": -2.7716,
+        "rho_span": [
+          0.1094,
+          0.7876
+        ],
+        "limbus_axes": [
+          12.74,
+          11.71
+        ],
+        "limbus_centre": [
+          923.287,
+          293.507
+        ]
+      },
+      {
+        "frame": 27,
+        "source_frame": 727,
+        "pixels": 57,
+        "rho": 0.3954,
+        "theta": -2.5897,
+        "rho_span": [
+          0.0511,
+          0.6898
+        ],
+        "limbus_axes": [
+          12.755,
+          11.728
+        ],
+        "limbus_centre": [
+          922.597,
+          294.241
+        ]
+      },
+      {
+        "frame": 28,
+        "source_frame": 728,
+        "pixels": 51,
+        "rho": 0.402,
+        "theta": -2.5794,
+        "rho_span": [
+          0.0773,
+          0.6905
+        ],
+        "limbus_axes": [
+          12.794,
+          11.736
+        ],
+        "limbus_centre": [
+          921.988,
+          294.959
+        ]
+      },
+      {
+        "frame": 29,
+        "source_frame": 729,
+        "pixels": 54,
+        "rho": 0.3941,
+        "theta": -2.5458,
+        "rho_span": [
+          0.0936,
+          0.6812
+        ],
+        "limbus_axes": [
+          12.805,
+          11.71
+        ],
+        "limbus_centre": [
+          921.072,
+          295.49
+        ]
+      },
+      {
+        "frame": 30,
+        "source_frame": 730,
+        "pixels": 54,
+        "rho": 0.3897,
+        "theta": -2.5846,
+        "rho_span": [
+          0.0516,
+          0.7071
+        ],
+        "limbus_axes": [
+          12.749,
+          11.669
+        ],
+        "limbus_centre": [
+          920.55,
+          295.67
+        ]
+      },
+      {
+        "frame": 31,
+        "source_frame": 731,
+        "pixels": 48,
+        "rho": 0.3818,
+        "theta": -2.6121,
+        "rho_span": [
+          0.079,
+          0.6796
+        ],
+        "limbus_axes": [
+          12.745,
+          11.644
+        ],
+        "limbus_centre": [
+          919.965,
+          295.736
+        ]
+      },
+      {
+        "frame": 32,
+        "source_frame": 732,
+        "pixels": 57,
+        "rho": 0.3979,
+        "theta": -2.5406,
+        "rho_span": [
+          0.0454,
+          0.7028
+        ],
+        "limbus_axes": [
+          12.716,
+          11.628
+        ],
+        "limbus_centre": [
+          919.444,
+          295.663
+        ]
+      },
+      {
+        "frame": 33,
+        "source_frame": 733,
+        "pixels": 49,
+        "rho": 0.397,
+        "theta": -2.5759,
+        "rho_span": [
+          0.0899,
+          0.6937
+        ],
+        "limbus_axes": [
+          12.741,
+          11.627
+        ],
+        "limbus_centre": [
+          919.064,
+          295.611
+        ]
+      },
+      {
+        "frame": 34,
+        "source_frame": 734,
+        "pixels": 71,
+        "rho": 0.4853,
+        "theta": -2.7124,
+        "rho_span": [
+          0.0607,
+          0.8138
+        ],
+        "limbus_axes": [
+          12.662,
+          11.594
+        ],
+        "limbus_centre": [
+          918.589,
+          295.547
+        ]
+      },
+      {
+        "frame": 35,
+        "source_frame": 735,
+        "pixels": 48,
+        "rho": 0.4087,
+        "theta": -2.4683,
+        "rho_span": [
+          0.0794,
+          0.7236
+        ],
+        "limbus_axes": [
+          12.672,
+          11.579
+        ],
+        "limbus_centre": [
+          917.897,
+          295.415
+        ]
+      },
+      {
+        "frame": 36,
+        "source_frame": 736,
+        "pixels": 54,
+        "rho": 0.4117,
+        "theta": -2.4841,
+        "rho_span": [
+          0.0558,
+          0.7031
+        ],
+        "limbus_axes": [
+          12.671,
+          11.576
+        ],
+        "limbus_centre": [
+          917.615,
+          295.319
+        ]
+      },
+      {
+        "frame": 37,
+        "source_frame": 737,
+        "pixels": 55,
+        "rho": 0.4255,
+        "theta": -2.4123,
+        "rho_span": [
+          0.095,
+          0.7456
+        ],
+        "limbus_axes": [
+          12.654,
+          11.564
+        ],
+        "limbus_centre": [
+          917.181,
+          295.206
+        ]
+      },
+      {
+        "frame": 38,
+        "source_frame": 738,
+        "pixels": 51,
+        "rho": 0.417,
+        "theta": -2.4624,
+        "rho_span": [
+          0.0684,
+          0.7703
+        ],
+        "limbus_axes": [
+          12.697,
+          11.566
+        ],
+        "limbus_centre": [
+          916.856,
+          295.135
+        ]
+      },
+      {
+        "frame": 39,
+        "source_frame": 739,
+        "pixels": 57,
+        "rho": 0.4444,
+        "theta": -2.4046,
+        "rho_span": [
+          0.1011,
+          0.7983
+        ],
+        "limbus_axes": [
+          12.696,
+          11.563
+        ],
+        "limbus_centre": [
+          916.518,
+          295.069
+        ]
+      },
+      {
+        "frame": 40,
+        "source_frame": 740,
+        "pixels": 48,
+        "rho": 0.4478,
+        "theta": -2.3878,
+        "rho_span": [
+          0.0849,
+          0.7719
+        ],
+        "limbus_axes": [
+          12.663,
+          11.552
+        ],
+        "limbus_centre": [
+          916.076,
+          294.985
+        ]
+      },
+      {
+        "frame": 41,
+        "source_frame": 741,
+        "pixels": 54,
+        "rho": 0.451,
+        "theta": -2.395,
+        "rho_span": [
+          0.0619,
+          0.7533
+        ],
+        "limbus_axes": [
+          12.676,
+          11.548
+        ],
+        "limbus_centre": [
+          915.78,
+          294.925
+        ]
+      },
+      {
+        "frame": 42,
+        "source_frame": 742,
+        "pixels": 50,
+        "rho": 0.4535,
+        "theta": -2.3758,
+        "rho_span": [
+          0.1066,
+          0.7782
+        ],
+        "limbus_axes": [
+          12.658,
+          11.534
+        ],
+        "limbus_centre": [
+          915.342,
+          294.868
+        ]
+      },
+      {
+        "frame": 43,
+        "source_frame": 743,
+        "pixels": 49,
+        "rho": 0.4467,
+        "theta": -2.3605,
+        "rho_span": [
+          0.0969,
+          0.7507
+        ],
+        "limbus_axes": [
+          12.635,
+          11.524
+        ],
+        "limbus_centre": [
+          914.815,
+          294.834
+        ]
+      },
+      {
+        "frame": 44,
+        "source_frame": 744,
+        "pixels": 49,
+        "rho": 0.4856,
+        "theta": -2.2386,
+        "rho_span": [
+          0.12,
+          0.7668
+        ],
+        "limbus_axes": [
+          12.61,
+          11.548
+        ],
+        "limbus_centre": [
+          914.287,
+          294.728
+        ]
+      },
+      {
+        "frame": 45,
+        "source_frame": 745,
+        "pixels": 43,
+        "rho": 0.5122,
+        "theta": -2.1991,
+        "rho_span": [
+          0.1568,
+          0.8092
+        ],
+        "limbus_axes": [
+          12.62,
+          11.554
+        ],
+        "limbus_centre": [
+          914.024,
+          294.55
+        ]
+      },
+      {
+        "frame": 46,
+        "source_frame": 746,
+        "pixels": 51,
+        "rho": 0.5094,
+        "theta": -2.1818,
+        "rho_span": [
+          0.1472,
+          0.8155
+        ],
+        "limbus_axes": [
+          12.636,
+          11.585
+        ],
+        "limbus_centre": [
+          913.525,
+          293.975
+        ]
+      },
+      {
+        "frame": 47,
+        "source_frame": 747,
+        "pixels": 50,
+        "rho": 0.5046,
+        "theta": -2.1429,
+        "rho_span": [
+          0.138,
+          0.7891
+        ],
+        "limbus_axes": [
+          12.637,
+          11.6
+        ],
+        "limbus_centre": [
+          913.102,
+          293.24
+        ]
+      },
+      {
+        "frame": 48,
+        "source_frame": 748,
+        "pixels": 53,
+        "rho": 0.4553,
+        "theta": -2.153,
+        "rho_span": [
+          0.0535,
+          0.7677
+        ],
+        "limbus_axes": [
+          12.662,
+          11.593
+        ],
+        "limbus_centre": [
+          913.022,
+          292.62
+        ]
+      },
+      {
+        "frame": 49,
+        "source_frame": 749,
+        "pixels": 56,
+        "rho": 0.3717,
+        "theta": -2.2562,
+        "rho_span": [
+          0.0534,
+          0.7048
+        ],
+        "limbus_axes": [
+          12.656,
+          11.583
+        ],
+        "limbus_centre": [
+          913.434,
+          292.475
+        ]
+      },
+      {
+        "frame": 50,
+        "source_frame": 750,
+        "pixels": 62,
+        "rho": 0.3054,
+        "theta": -2.4917,
+        "rho_span": [
+          0.0475,
+          0.6063
+        ],
+        "limbus_axes": [
+          12.601,
+          11.59
+        ],
+        "limbus_centre": [
+          913.531,
+          292.659
+        ]
+      },
+      {
+        "frame": 51,
+        "source_frame": 751,
+        "pixels": 64,
+        "rho": 0.3184,
+        "theta": -2.9915,
+        "rho_span": [
+          0.0192,
+          0.5773
+        ],
+        "limbus_axes": [
+          12.586,
+          11.619
+        ],
+        "limbus_centre": [
+          913.772,
+          294.074
+        ]
+      },
+      {
+        "frame": 52,
+        "source_frame": 752,
+        "pixels": 75,
+        "rho": 0.4367,
+        "theta": 3.0541,
+        "rho_span": [
+          0.0885,
+          0.848
+        ],
+        "limbus_axes": [
+          12.591,
+          11.651
+        ],
+        "limbus_centre": [
+          914.017,
+          297.578
+        ]
+      },
+      {
+        "frame": 53,
+        "source_frame": 753,
+        "pixels": 63,
+        "rho": 0.4448,
+        "theta": -3.099,
+        "rho_span": [
+          0.1228,
+          0.6957
+        ],
+        "limbus_axes": [
+          12.602,
+          11.57
+        ],
+        "limbus_centre": [
+          914.161,
+          302.939
+        ]
+      },
+      {
+        "frame": 54,
+        "source_frame": 754,
+        "pixels": 60,
+        "rho": 0.5217,
+        "theta": -3.0314,
+        "rho_span": [
+          0.2447,
+          0.783
+        ],
+        "limbus_axes": [
+          12.635,
+          11.621
+        ],
+        "limbus_centre": [
+          914.067,
+          309.64
+        ]
+      },
+      {
+        "frame": 55,
+        "source_frame": 755,
+        "pixels": 60,
+        "rho": 0.5554,
+        "theta": -2.9886,
+        "rho_span": [
+          0.2723,
+          0.8158
+        ],
+        "limbus_axes": [
+          12.709,
+          11.687
+        ],
+        "limbus_centre": [
+          913.459,
+          316.905
+        ]
+      },
+      {
+        "frame": 56,
+        "source_frame": 756,
+        "pixels": 61,
+        "rho": 0.5736,
+        "theta": -2.8992,
+        "rho_span": [
+          0.2672,
+          0.8461
+        ],
+        "limbus_axes": [
+          12.815,
+          11.689
+        ],
+        "limbus_centre": [
+          912.423,
+          324.894
+        ]
+      },
+      {
+        "frame": 57,
+        "source_frame": 757,
+        "pixels": 58,
+        "rho": 0.5647,
+        "theta": -2.8005,
+        "rho_span": [
+          0.2926,
+          0.8708
+        ],
+        "limbus_axes": [
+          12.893,
+          11.66
+        ],
+        "limbus_centre": [
+          911.028,
+          332.036
+        ]
+      },
+      {
+        "frame": 58,
+        "source_frame": 758,
+        "pixels": 48,
+        "rho": 0.5353,
+        "theta": -2.8313,
+        "rho_span": [
+          0.2821,
+          0.8092
+        ],
+        "limbus_axes": [
+          13.048,
+          11.706
+        ],
+        "limbus_centre": [
+          909.648,
+          337.435
+        ]
+      },
+      {
+        "frame": 59,
+        "source_frame": 759,
+        "pixels": 54,
+        "rho": 0.5328,
+        "theta": -2.7,
+        "rho_span": [
+          0.2266,
+          0.8097
+        ],
+        "limbus_axes": [
+          13.223,
+          11.745
+        ],
+        "limbus_centre": [
+          907.991,
+          341.164
+        ]
+      },
+      {
+        "frame": 60,
+        "source_frame": 760,
+        "pixels": 53,
+        "rho": 0.5131,
+        "theta": -2.7205,
+        "rho_span": [
+          0.2175,
+          0.7882
+        ],
+        "limbus_axes": [
+          13.309,
+          11.828
+        ],
+        "limbus_centre": [
+          906.894,
+          342.942
+        ]
+      },
+      {
+        "frame": 61,
+        "source_frame": 761,
+        "pixels": 52,
+        "rho": 0.535,
+        "theta": -2.5816,
+        "rho_span": [
+          0.2622,
+          0.8431
+        ],
+        "limbus_axes": [
+          13.388,
+          11.781
+        ],
+        "limbus_centre": [
+          906.474,
+          343.561
+        ]
+      },
+      {
+        "frame": 62,
+        "source_frame": 762,
+        "pixels": 47,
+        "rho": 0.5919,
+        "theta": -2.4655,
+        "rho_span": [
+          0.2585,
+          0.867
+        ],
+        "limbus_axes": [
+          13.375,
+          11.723
+        ],
+        "limbus_centre": [
+          906.303,
+          342.895
+        ]
+      },
+      {
+        "frame": 63,
+        "source_frame": 763,
+        "pixels": 47,
+        "rho": 0.591,
+        "theta": -2.4269,
+        "rho_span": [
+          0.2715,
+          0.8783
+        ],
+        "limbus_axes": [
+          13.291,
+          11.574
+        ],
+        "limbus_centre": [
+          906.033,
+          340.702
+        ]
+      },
+      {
+        "frame": 64,
+        "source_frame": 764,
+        "pixels": 47,
+        "rho": 0.583,
+        "theta": -2.3509,
+        "rho_span": [
+          0.2216,
+          0.8763
+        ],
+        "limbus_axes": [
+          13.098,
+          11.47
+        ],
+        "limbus_centre": [
+          905.508,
+          337.28
+        ]
+      },
+      {
+        "frame": 65,
+        "source_frame": 765,
+        "pixels": 40,
+        "rho": 0.6098,
+        "theta": -2.2623,
+        "rho_span": [
+          0.2828,
+          0.8617
+        ],
+        "limbus_axes": [
+          13.056,
+          11.519
+        ],
+        "limbus_centre": [
+          905.422,
+          334.459
+        ]
+      },
+      {
+        "frame": 66,
+        "source_frame": 766,
+        "pixels": 38,
+        "rho": 0.6255,
+        "theta": -2.171,
+        "rho_span": [
+          0.3375,
+          0.8663
+        ],
+        "limbus_axes": [
+          13.024,
+          11.559
+        ],
+        "limbus_centre": [
+          904.985,
+          331.864
+        ]
+      },
+      {
+        "frame": 67,
+        "source_frame": 767,
+        "pixels": 22,
+        "rho": 0.7077,
+        "theta": -2.0411,
+        "rho_span": [
+          0.53,
+          0.8657
+        ],
+        "limbus_axes": [
+          12.991,
+          11.558
+        ],
+        "limbus_centre": [
+          904.625,
+          330.664
+        ]
+      },
+      {
+        "frame": 68,
+        "source_frame": 768,
+        "pixels": 14,
+        "rho": 0.7409,
+        "theta": -2.0047,
+        "rho_span": [
+          0.6082,
+          0.8556
+        ],
+        "limbus_axes": [
+          12.965,
+          11.613
+        ],
+        "limbus_centre": [
+          904.174,
+          328.789
+        ]
+      },
+      {
+        "frame": 69,
+        "source_frame": 769,
+        "pixels": 27,
+        "rho": 0.6936,
+        "theta": -2.0687,
+        "rho_span": [
+          0.4579,
+          0.8772
+        ],
+        "limbus_axes": [
+          12.891,
+          11.558
+        ],
+        "limbus_centre": [
+          903.956,
+          324.994
+        ]
+      },
+      {
+        "frame": 70,
+        "source_frame": 770,
+        "pixels": 38,
+        "rho": 0.6315,
+        "theta": -2.1478,
+        "rho_span": [
+          0.3531,
+          0.8649
+        ],
+        "limbus_axes": [
+          12.855,
+          11.593
+        ],
+        "limbus_centre": [
+          903.437,
+          321.454
+        ]
+      },
+      {
+        "frame": 71,
+        "source_frame": 771,
+        "pixels": 49,
+        "rho": 0.5915,
+        "theta": -2.188,
+        "rho_span": [
+          0.2681,
+          0.8791
+        ],
+        "limbus_axes": [
+          12.835,
+          11.628
+        ],
+        "limbus_centre": [
+          902.859,
+          318.736
+        ]
+      },
+      {
+        "frame": 72,
+        "source_frame": 772,
+        "pixels": 53,
+        "rho": 0.5555,
+        "theta": -2.2595,
+        "rho_span": [
+          0.1884,
+          0.8651
+        ],
+        "limbus_axes": [
+          12.822,
+          11.627
+        ],
+        "limbus_centre": [
+          902.394,
+          316.789
+        ]
+      },
+      {
+        "frame": 73,
+        "source_frame": 773,
+        "pixels": 55,
+        "rho": 0.5235,
+        "theta": -2.3289,
+        "rho_span": [
+          0.1561,
+          0.856
+        ],
+        "limbus_axes": [
+          12.834,
+          11.658
+        ],
+        "limbus_centre": [
+          901.958,
+          315.384
+        ]
+      },
+      {
+        "frame": 74,
+        "source_frame": 774,
+        "pixels": 54,
+        "rho": 0.517,
+        "theta": -2.399,
+        "rho_span": [
+          0.1281,
+          0.8204
+        ],
+        "limbus_axes": [
+          12.824,
+          11.644
+        ],
+        "limbus_centre": [
+          901.559,
+          314.47
+        ]
+      },
+      {
+        "frame": 75,
+        "source_frame": 775,
+        "pixels": 70,
+        "rho": 0.5492,
+        "theta": -2.6095,
+        "rho_span": [
+          0.1728,
+          0.8777
+        ],
+        "limbus_axes": [
+          12.804,
+          11.607
+        ],
+        "limbus_centre": [
+          901.203,
+          314.189
+        ]
+      },
+      {
+        "frame": 76,
+        "source_frame": 776,
+        "pixels": 63,
+        "rho": 0.524,
+        "theta": -2.6603,
+        "rho_span": [
+          0.1374,
+          0.8462
+        ],
+        "limbus_axes": [
+          12.791,
+          11.596
+        ],
+        "limbus_centre": [
+          900.731,
+          314.276
+        ]
+      },
+      {
+        "frame": 77,
+        "source_frame": 777,
+        "pixels": 57,
+        "rho": 0.4988,
+        "theta": -2.65,
+        "rho_span": [
+          0.1757,
+          0.798
+        ],
+        "limbus_axes": [
+          12.772,
+          11.583
+        ],
+        "limbus_centre": [
+          900.179,
+          314.515
+        ]
+      },
+      {
+        "frame": 78,
+        "source_frame": 778,
+        "pixels": 54,
+        "rho": 0.4757,
+        "theta": -2.6562,
+        "rho_span": [
+          0.153,
+          0.7872
+        ],
+        "limbus_axes": [
+          12.773,
+          11.58
+        ],
+        "limbus_centre": [
+          899.722,
+          314.838
+        ]
+      },
+      {
+        "frame": 79,
+        "source_frame": 779,
+        "pixels": 59,
+        "rho": 0.4886,
+        "theta": -2.7467,
+        "rho_span": [
+          0.1666,
+          0.7767
+        ],
+        "limbus_axes": [
+          12.777,
+          11.58
+        ],
+        "limbus_centre": [
+          899.12,
+          315.17
+        ]
+      },
+      {
+        "frame": 80,
+        "source_frame": 780,
+        "pixels": 56,
+        "rho": 0.4898,
+        "theta": -2.6864,
+        "rho_span": [
+          0.2051,
+          0.8117
+        ],
+        "limbus_axes": [
+          12.79,
+          11.584
+        ],
+        "limbus_centre": [
+          898.581,
+          315.424
+        ]
+      },
+      {
+        "frame": 81,
+        "source_frame": 781,
+        "pixels": 59,
+        "rho": 0.4996,
+        "theta": -2.6771,
+        "rho_span": [
+          0.1681,
+          0.7946
+        ],
+        "limbus_axes": [
+          12.816,
+          11.587
+        ],
+        "limbus_centre": [
+          898.103,
+          315.578
+        ]
+      },
+      {
+        "frame": 82,
+        "source_frame": 782,
+        "pixels": 51,
+        "rho": 0.5043,
+        "theta": -2.5492,
+        "rho_span": [
+          0.199,
+          0.8131
+        ],
+        "limbus_axes": [
+          12.839,
+          11.592
+        ],
+        "limbus_centre": [
+          897.506,
+          315.551
+        ]
+      },
+      {
+        "frame": 83,
+        "source_frame": 783,
+        "pixels": 55,
+        "rho": 0.5353,
+        "theta": -2.48,
+        "rho_span": [
+          0.1592,
+          0.8794
+        ],
+        "limbus_axes": [
+          12.878,
+          11.622
+        ],
+        "limbus_centre": [
+          897.039,
+          315.199
+        ]
+      },
+      {
+        "frame": 84,
+        "source_frame": 784,
+        "pixels": 52,
+        "rho": 0.5474,
+        "theta": -2.4015,
+        "rho_span": [
+          0.1994,
+          0.8705
+        ],
+        "limbus_axes": [
+          12.883,
+          11.653
+        ],
+        "limbus_centre": [
+          896.498,
+          314.544
+        ]
+      },
+      {
+        "frame": 85,
+        "source_frame": 785,
+        "pixels": 54,
+        "rho": 0.5537,
+        "theta": -2.3649,
+        "rho_span": [
+          0.1927,
+          0.8581
+        ],
+        "limbus_axes": [
+          12.869,
+          11.668
+        ],
+        "limbus_centre": [
+          895.863,
+          313.485
+        ]
+      },
+      {
+        "frame": 86,
+        "source_frame": 786,
+        "pixels": 58,
+        "rho": 0.5297,
+        "theta": -2.3429,
+        "rho_span": [
+          0.1712,
+          0.857
+        ],
+        "limbus_axes": [
+          12.842,
+          11.647
+        ],
+        "limbus_centre": [
+          895.18,
+          312.26
+        ]
+      },
+      {
+        "frame": 87,
+        "source_frame": 787,
+        "pixels": 54,
+        "rho": 0.5353,
+        "theta": -2.3382,
+        "rho_span": [
+          0.1607,
+          0.8722
+        ],
+        "limbus_axes": [
+          12.842,
+          11.645
+        ],
+        "limbus_centre": [
+          894.539,
+          311.246
+        ]
+      },
+      {
+        "frame": 88,
+        "source_frame": 788,
+        "pixels": 56,
+        "rho": 0.5138,
+        "theta": -2.3692,
+        "rho_span": [
+          0.1577,
+          0.8241
+        ],
+        "limbus_axes": [
+          12.841,
+          11.628
+        ],
+        "limbus_centre": [
+          894.015,
+          310.175
+        ]
+      },
+      {
+        "frame": 89,
+        "source_frame": 789,
+        "pixels": 59,
+        "rho": 0.5104,
+        "theta": -2.4431,
+        "rho_span": [
+          0.1271,
+          0.8726
+        ],
+        "limbus_axes": [
+          12.828,
+          11.651
+        ],
+        "limbus_centre": [
+          893.523,
+          309.528
+        ]
+      },
+      {
+        "frame": 90,
+        "source_frame": 790,
+        "pixels": 59,
+        "rho": 0.4844,
+        "theta": -2.4661,
+        "rho_span": [
+          0.1433,
+          0.8397
+        ],
+        "limbus_axes": [
+          12.793,
+          11.644
+        ],
+        "limbus_centre": [
+          893.131,
+          309.313
+        ]
+      },
+      {
+        "frame": 91,
+        "source_frame": 791,
+        "pixels": 53,
+        "rho": 0.4567,
+        "theta": -2.6471,
+        "rho_span": [
+          0.1565,
+          0.7799
+        ],
+        "limbus_axes": [
+          12.754,
+          11.619
+        ],
+        "limbus_centre": [
+          892.922,
+          309.508
+        ]
+      },
+      {
+        "frame": 92,
+        "source_frame": 792,
+        "pixels": 60,
+        "rho": 0.4453,
+        "theta": -2.7724,
+        "rho_span": [
+          0.1297,
+          0.7363
+        ],
+        "limbus_axes": [
+          12.728,
+          11.613
+        ],
+        "limbus_centre": [
+          892.65,
+          309.938
+        ]
+      },
+      {
+        "frame": 93,
+        "source_frame": 793,
+        "pixels": 54,
+        "rho": 0.4213,
+        "theta": -2.9467,
+        "rho_span": [
+          0.1199,
+          0.694
+        ],
+        "limbus_axes": [
+          12.703,
+          11.625
+        ],
+        "limbus_centre": [
+          892.499,
+          310.243
+        ]
+      },
+      {
+        "frame": 94,
+        "source_frame": 794,
+        "pixels": 52,
+        "rho": 0.4068,
+        "theta": 3.1317,
+        "rho_span": [
+          0.1038,
+          0.6575
+        ],
+        "limbus_axes": [
+          12.679,
+          11.592
+        ],
+        "limbus_centre": [
+          892.278,
+          310.284
+        ]
+      },
+      {
+        "frame": 95,
+        "source_frame": 795,
+        "pixels": 68,
+        "rho": 0.4563,
+        "theta": -3.0093,
+        "rho_span": [
+          0.0895,
+          0.8205
+        ],
+        "limbus_axes": [
+          12.693,
+          11.555
+        ],
+        "limbus_centre": [
+          892.085,
+          310.694
+        ]
+      },
+      {
+        "frame": 96,
+        "source_frame": 796,
+        "pixels": 58,
+        "rho": 0.4242,
+        "theta": -3.1202,
+        "rho_span": [
+          0.1214,
+          0.6544
+        ],
+        "limbus_axes": [
+          12.71,
+          11.528
+        ],
+        "limbus_centre": [
+          891.999,
+          311.066
+        ]
+      },
+      {
+        "frame": 97,
+        "source_frame": 797,
+        "pixels": 61,
+        "rho": 0.4244,
+        "theta": -3.0046,
+        "rho_span": [
+          0.1288,
+          0.682
+        ],
+        "limbus_axes": [
+          12.711,
+          11.515
+        ],
+        "limbus_centre": [
+          891.896,
+          311.242
+        ]
+      },
+      {
+        "frame": 98,
+        "source_frame": 798,
+        "pixels": 59,
+        "rho": 0.4474,
+        "theta": -2.8898,
+        "rho_span": [
+          0.1497,
+          0.7239
+        ],
+        "limbus_axes": [
+          12.743,
+          11.517
+        ],
+        "limbus_centre": [
+          891.868,
+          311.352
+        ]
+      },
+      {
+        "frame": 99,
+        "source_frame": 799,
+        "pixels": 68,
+        "rho": 0.4901,
+        "theta": -2.7737,
+        "rho_span": [
+          0.138,
+          0.8492
+        ],
+        "limbus_axes": [
+          12.74,
+          11.525
+        ],
+        "limbus_centre": [
+          891.684,
+          311.46
+        ]
+      },
+      {
+        "frame": 100,
+        "source_frame": 800,
+        "pixels": 68,
+        "rho": 0.5276,
+        "theta": -2.6782,
+        "rho_span": [
+          0.1322,
+          0.8418
+        ],
+        "limbus_axes": [
+          12.748,
+          11.537
+        ],
+        "limbus_centre": [
+          891.612,
+          311.445
+        ]
+      },
+      {
+        "frame": 101,
+        "source_frame": 801,
+        "pixels": 71,
+        "rho": 0.5417,
+        "theta": -2.6054,
+        "rho_span": [
+          0.1215,
+          0.8612
+        ],
+        "limbus_axes": [
+          12.76,
+          11.559
+        ],
+        "limbus_centre": [
+          891.524,
+          311.255
+        ]
+      },
+      {
+        "frame": 102,
+        "source_frame": 802,
+        "pixels": 65,
+        "rho": 0.5325,
+        "theta": -2.5585,
+        "rho_span": [
+          0.1175,
+          0.84
+        ],
+        "limbus_axes": [
+          12.771,
+          11.574
+        ],
+        "limbus_centre": [
+          891.5,
+          310.951
+        ]
+      },
+      {
+        "frame": 103,
+        "source_frame": 803,
+        "pixels": 69,
+        "rho": 0.5519,
+        "theta": -2.5418,
+        "rho_span": [
+          0.1303,
+          0.8534
+        ],
+        "limbus_axes": [
+          12.777,
+          11.586
+        ],
+        "limbus_centre": [
+          891.509,
+          310.64
+        ]
+      },
+      {
+        "frame": 104,
+        "source_frame": 804,
+        "pixels": 71,
+        "rho": 0.5417,
+        "theta": -2.586,
+        "rho_span": [
+          0.1242,
+          0.8695
+        ],
+        "limbus_axes": [
+          12.769,
+          11.58
+        ],
+        "limbus_centre": [
+          891.522,
+          310.406
+        ]
+      },
+      {
+        "frame": 105,
+        "source_frame": 805,
+        "pixels": 72,
+        "rho": 0.5272,
+        "theta": -2.5765,
+        "rho_span": [
+          0.1248,
+          0.8505
+        ],
+        "limbus_axes": [
+          12.768,
+          11.584
+        ],
+        "limbus_centre": [
+          891.555,
+          310.315
+        ]
+      },
+      {
+        "frame": 106,
+        "source_frame": 806,
+        "pixels": 70,
+        "rho": 0.5117,
+        "theta": -2.6465,
+        "rho_span": [
+          0.1279,
+          0.842
+        ],
+        "limbus_axes": [
+          12.763,
+          11.582
+        ],
+        "limbus_centre": [
+          891.589,
+          310.34
+        ]
+      },
+      {
+        "frame": 107,
+        "source_frame": 807,
+        "pixels": 79,
+        "rho": 0.5048,
+        "theta": -2.6429,
+        "rho_span": [
+          0.1306,
+          0.8443
+        ],
+        "limbus_axes": [
+          12.758,
+          11.582
+        ],
+        "limbus_centre": [
+          891.627,
+          310.401
+        ]
+      },
+      {
+        "frame": 108,
+        "source_frame": 808,
+        "pixels": 82,
+        "rho": 0.5006,
+        "theta": -2.6796,
+        "rho_span": [
+          0.0655,
+          0.8471
+        ],
+        "limbus_axes": [
+          12.754,
+          11.58
+        ],
+        "limbus_centre": [
+          891.669,
+          310.456
+        ]
+      },
+      {
+        "frame": 109,
+        "source_frame": 809,
+        "pixels": 67,
+        "rho": 0.4458,
+        "theta": -2.5271,
+        "rho_span": [
+          0.0699,
+          0.8213
+        ],
+        "limbus_axes": [
+          12.755,
+          11.579
+        ],
+        "limbus_centre": [
+          891.703,
+          310.499
+        ]
+      },
+      {
+        "frame": 110,
+        "source_frame": 810,
+        "pixels": 62,
+        "rho": 0.4287,
+        "theta": -2.4221,
+        "rho_span": [
+          0.0688,
+          0.8246
+        ],
+        "limbus_axes": [
+          12.759,
+          11.578
+        ],
+        "limbus_centre": [
+          891.713,
+          310.536
+        ]
+      },
+      {
+        "frame": 111,
+        "source_frame": 811,
+        "pixels": 61,
+        "rho": 0.3812,
+        "theta": -2.427,
+        "rho_span": [
+          0.0408,
+          0.7282
+        ],
+        "limbus_axes": [
+          12.757,
+          11.577
+        ],
+        "limbus_centre": [
+          891.853,
+          310.546
+        ]
+      },
+      {
+        "frame": 112,
+        "source_frame": 812,
+        "pixels": 52,
+        "rho": 0.3805,
+        "theta": -2.2553,
+        "rho_span": [
+          0.0429,
+          0.6931
+        ],
+        "limbus_axes": [
+          12.76,
+          11.581
+        ],
+        "limbus_centre": [
+          892.153,
+          310.523
+        ]
+      },
+      {
+        "frame": 113,
+        "source_frame": 813,
+        "pixels": 69,
+        "rho": 0.382,
+        "theta": -2.3705,
+        "rho_span": [
+          0.0494,
+          0.7753
+        ],
+        "limbus_axes": [
+          12.785,
+          11.591
+        ],
+        "limbus_centre": [
+          892.58,
+          310.427
+        ]
+      },
+      {
+        "frame": 114,
+        "source_frame": 814,
+        "pixels": 52,
+        "rho": 0.4189,
+        "theta": -2.1388,
+        "rho_span": [
+          0.0272,
+          0.7461
+        ],
+        "limbus_axes": [
+          12.791,
+          11.602
+        ],
+        "limbus_centre": [
+          893.19,
+          310.264
+        ]
+      },
+      {
+        "frame": 115,
+        "source_frame": 815,
+        "pixels": 67,
+        "rho": 0.3803,
+        "theta": -2.438,
+        "rho_span": [
+          0.0128,
+          0.7589
+        ],
+        "limbus_axes": [
+          12.76,
+          11.583
+        ],
+        "limbus_centre": [
+          893.838,
+          310.013
+        ]
+      },
+      {
+        "frame": 116,
+        "source_frame": 816,
+        "pixels": 64,
+        "rho": 0.4584,
+        "theta": -2.4162,
+        "rho_span": [
+          0.0429,
+          0.7652
+        ],
+        "limbus_axes": [
+          12.745,
+          11.581
+        ],
+        "limbus_centre": [
+          894.531,
+          309.88
+        ]
+      },
+      {
+        "frame": 117,
+        "source_frame": 817,
+        "pixels": 67,
+        "rho": 0.4687,
+        "theta": -2.4761,
+        "rho_span": [
+          0.0254,
+          0.8177
+        ],
+        "limbus_axes": [
+          12.72,
+          11.572
+        ],
+        "limbus_centre": [
+          895.215,
+          309.78
+        ]
+      },
+      {
+        "frame": 118,
+        "source_frame": 818,
+        "pixels": 54,
+        "rho": 0.4119,
+        "theta": -2.4019,
+        "rho_span": [
+          0.067,
+          0.7433
+        ],
+        "limbus_axes": [
+          12.712,
+          11.571
+        ],
+        "limbus_centre": [
+          895.816,
+          309.778
+        ]
+      },
+      {
+        "frame": 119,
+        "source_frame": 819,
+        "pixels": 60,
+        "rho": 0.4167,
+        "theta": -2.4872,
+        "rho_span": [
+          0.0367,
+          0.7732
+        ],
+        "limbus_axes": [
+          12.701,
+          11.567
+        ],
+        "limbus_centre": [
+          896.401,
+          309.783
+        ]
+      },
+      {
+        "frame": 120,
+        "source_frame": 820,
+        "pixels": 72,
+        "rho": 0.478,
+        "theta": -2.5112,
+        "rho_span": [
+          0.0796,
+          0.8229
+        ],
+        "limbus_axes": [
+          12.703,
+          11.567
+        ],
+        "limbus_centre": [
+          896.987,
+          309.8
+        ]
+      },
+      {
+        "frame": 121,
+        "source_frame": 821,
+        "pixels": 79,
+        "rho": 0.4908,
+        "theta": -2.5972,
+        "rho_span": [
+          0.0459,
+          0.8409
+        ],
+        "limbus_axes": [
+          12.718,
+          11.566
+        ],
+        "limbus_centre": [
+          897.543,
+          309.805
+        ]
+      },
+      {
+        "frame": 122,
+        "source_frame": 822,
+        "pixels": 76,
+        "rho": 0.4827,
+        "theta": -2.529,
+        "rho_span": [
+          0.0758,
+          0.8229
+        ],
+        "limbus_axes": [
+          12.717,
+          11.567
+        ],
+        "limbus_centre": [
+          897.942,
+          309.817
+        ]
+      },
+      {
+        "frame": 123,
+        "source_frame": 823,
+        "pixels": 65,
+        "rho": 0.4408,
+        "theta": -2.4655,
+        "rho_span": [
+          0.0447,
+          0.8122
+        ],
+        "limbus_axes": [
+          12.738,
+          11.568
+        ],
+        "limbus_centre": [
+          898.537,
+          309.829
+        ]
+      },
+      {
+        "frame": 124,
+        "source_frame": 824,
+        "pixels": 48,
+        "rho": 0.4306,
+        "theta": -2.4105,
+        "rho_span": [
+          0.0796,
+          0.7512
+        ],
+        "limbus_axes": [
+          12.733,
+          11.565
+        ],
+        "limbus_centre": [
+          898.983,
+          309.779
+        ]
+      },
+      {
+        "frame": 125,
+        "source_frame": 825,
+        "pixels": 60,
+        "rho": 0.46,
+        "theta": -2.3253,
+        "rho_span": [
+          0.0624,
+          0.8323
+        ],
+        "limbus_axes": [
+          12.648,
+          11.519
+        ],
+        "limbus_centre": [
+          899.361,
+          309.639
+        ]
+      },
+      {
+        "frame": 126,
+        "source_frame": 826,
+        "pixels": 41,
+        "rho": 0.4128,
+        "theta": -2.2815,
+        "rho_span": [
+          0.0506,
+          0.7158
+        ],
+        "limbus_axes": [
+          12.436,
+          11.256
+        ],
+        "limbus_centre": [
+          899.52,
+          309.321
+        ]
+      },
+      {
+        "frame": 127,
+        "source_frame": 827,
+        "pixels": 54,
+        "rho": 0.4388,
+        "theta": -1.9256,
+        "rho_span": [
+          0.1335,
+          0.7784
+        ],
+        "limbus_axes": [
+          12.036,
+          10.993
+        ],
+        "limbus_centre": [
+          899.97,
+          309.468
+        ]
+      },
+      {
+        "frame": 128,
+        "source_frame": 828,
+        "pixels": 37,
+        "rho": 0.3723,
+        "theta": 0.2615,
+        "rho_span": [
+          0.0251,
+          0.8734
+        ],
+        "limbus_axes": [
+          11.642,
+          10.133
+        ],
+        "limbus_centre": [
+          900.934,
+          312.247
+        ]
+      },
+      {
+        "frame": 129,
+        "reason": "eye_closed_or_occluded"
+      },
+      {
+        "frame": 130,
+        "reason": "eye_closed_or_occluded"
+      },
+      {
+        "frame": 131,
+        "reason": "eye_closed_or_occluded"
+      },
+      {
+        "frame": 132,
+        "reason": "eye_closed_or_occluded"
+      },
+      {
+        "frame": 133,
+        "reason": "eye_closed_or_occluded"
+      },
+      {
+        "frame": 134,
+        "source_frame": 834,
+        "pixels": 28,
+        "rho": 0.6196,
+        "theta": -0.1043,
+        "rho_span": [
+          0.3716,
+          0.8437
+        ],
+        "limbus_axes": [
+          11.589,
+          9.881
+        ],
+        "limbus_centre": [
+          901.717,
+          285.619
+        ]
+      },
+      {
+        "frame": 135,
+        "source_frame": 835,
+        "pixels": 10,
+        "rho": 0.2838,
+        "theta": -2.3903,
+        "rho_span": [
+          0.1735,
+          0.3721
+        ],
+        "limbus_axes": [
+          11.638,
+          10.033
+        ],
+        "limbus_centre": [
+          901.791,
+          278.804
+        ]
+      },
+      {
+        "frame": 136,
+        "source_frame": 836,
+        "pixels": 24,
+        "rho": 0.3519,
+        "theta": -2.5638,
+        "rho_span": [
+          0.0888,
+          0.5575
+        ],
+        "limbus_axes": [
+          11.644,
+          10.118
+        ],
+        "limbus_centre": [
+          902.029,
+          273.091
+        ]
+      },
+      {
+        "frame": 137,
+        "source_frame": 837,
+        "pixels": 25,
+        "rho": 0.4029,
+        "theta": -2.5496,
+        "rho_span": [
+          0.1315,
+          0.6025
+        ],
+        "limbus_axes": [
+          11.664,
+          10.212
+        ],
+        "limbus_centre": [
+          902.435,
+          269.473
+        ]
+      },
+      {
+        "frame": 138,
+        "source_frame": 838,
+        "pixels": 31,
+        "rho": 0.3717,
+        "theta": -2.5582,
+        "rho_span": [
+          0.0814,
+          0.5774
+        ],
+        "limbus_axes": [
+          11.703,
+          10.262
+        ],
+        "limbus_centre": [
+          902.934,
+          266.835
+        ]
+      },
+      {
+        "frame": 139,
+        "source_frame": 839,
+        "pixels": 38,
+        "rho": 0.4218,
+        "theta": -2.6032,
+        "rho_span": [
+          0.1557,
+          0.6797
+        ],
+        "limbus_axes": [
+          11.719,
+          10.235
+        ],
+        "limbus_centre": [
+          902.987,
+          265.341
+        ]
+      },
+      {
+        "frame": 140,
+        "source_frame": 840,
+        "pixels": 31,
+        "rho": 0.4421,
+        "theta": -2.6944,
+        "rho_span": [
+          0.1764,
+          0.6568
+        ],
+        "limbus_axes": [
+          11.74,
+          10.237
+        ],
+        "limbus_centre": [
+          903.047,
+          263.728
+        ]
+      },
+      {
+        "frame": 141,
+        "source_frame": 841,
+        "pixels": 35,
+        "rho": 0.4741,
+        "theta": -2.7337,
+        "rho_span": [
+          0.212,
+          0.714
+        ],
+        "limbus_axes": [
+          11.78,
+          10.328
+        ],
+        "limbus_centre": [
+          902.977,
+          262.339
+        ]
+      },
+      {
+        "frame": 142,
+        "source_frame": 842,
+        "pixels": 38,
+        "rho": 0.5286,
+        "theta": -2.8013,
+        "rho_span": [
+          0.244,
+          0.8076
+        ],
+        "limbus_axes": [
+          11.787,
+          10.386
+        ],
+        "limbus_centre": [
+          902.876,
+          261.032
+        ]
+      },
+      {
+        "frame": 143,
+        "source_frame": 843,
+        "pixels": 30,
+        "rho": 0.5569,
+        "theta": -2.792,
+        "rho_span": [
+          0.3132,
+          0.7845
+        ],
+        "limbus_axes": [
+          11.813,
+          10.409
+        ],
+        "limbus_centre": [
+          902.695,
+          259.825
+        ]
+      },
+      {
+        "frame": 144,
+        "source_frame": 844,
+        "pixels": 30,
+        "rho": 0.573,
+        "theta": -2.823,
+        "rho_span": [
+          0.3368,
+          0.7998
+        ],
+        "limbus_axes": [
+          11.891,
+          10.435
+        ],
+        "limbus_centre": [
+          901.993,
+          258.718
+        ]
+      },
+      {
+        "frame": 145,
+        "source_frame": 845,
+        "pixels": 32,
+        "rho": 0.5666,
+        "theta": -2.8811,
+        "rho_span": [
+          0.3348,
+          0.7823
+        ],
+        "limbus_axes": [
+          11.953,
+          10.431
+        ],
+        "limbus_centre": [
+          900.992,
+          258.237
+        ]
+      },
+      {
+        "frame": 146,
+        "source_frame": 846,
+        "pixels": 35,
+        "rho": 0.6098,
+        "theta": -2.867,
+        "rho_span": [
+          0.3806,
+          0.8505
+        ],
+        "limbus_axes": [
+          11.972,
+          10.436
+        ],
+        "limbus_centre": [
+          899.91,
+          259.038
+        ]
+      },
+      {
+        "frame": 147,
+        "source_frame": 847,
+        "pixels": 32,
+        "rho": 0.6017,
+        "theta": -2.9149,
+        "rho_span": [
+          0.3739,
+          0.8188
+        ],
+        "limbus_axes": [
+          11.928,
+          10.405
+        ],
+        "limbus_centre": [
+          898.458,
+          260.124
+        ]
+      },
+      {
+        "frame": 148,
+        "source_frame": 848,
+        "pixels": 40,
+        "rho": 0.5923,
+        "theta": -2.9675,
+        "rho_span": [
+          0.354,
+          0.8293
+        ],
+        "limbus_axes": [
+          11.93,
+          10.442
+        ],
+        "limbus_centre": [
+          896.671,
+          261.829
+        ]
+      },
+      {
+        "frame": 149,
+        "source_frame": 849,
+        "pixels": 47,
+        "rho": 0.5836,
+        "theta": -3.0812,
+        "rho_span": [
+          0.301,
+          0.8273
+        ],
+        "limbus_axes": [
+          11.913,
+          10.464
+        ],
+        "limbus_centre": [
+          894.586,
+          264.013
+        ]
+      }
+    ]
+  },
+  "sides": {
+    "left": {
+      "detected_frames": 143,
+      "cells_ever_corrupt": 507,
+      "cells_corrupt_with_zero_clean": 1,
+      "clean_count_in_corrupt_cells": {
+        "min": 0,
+        "p5": 2.0,
+        "median": 24.0,
+        "max": 101
+      },
+      "corrupt_count": {
+        "median": 4.0,
+        "max": 77
+      },
+      "footprint_track": {
+        "rho_mean": 0.618,
+        "rho_range": [
+          0.3826,
+          0.7494
+        ],
+        "rho_p5_p95": [
+          0.5277,
+          0.7166
+        ],
+        "theta_mean_rad": -2.8513,
+        "theta_spread_rad": [
+          -3.1391,
+          3.1387
+        ],
+        "theta_p5_p95_rad": [
+          -1.1207,
+          0.4124
+        ],
+        "theta_std_rad": 0.7221,
+        "arc_travel_px": 50.625,
+        "pixels": {
+          "median": 52.0,
+          "max": 87
+        }
+      },
+      "clean_cell_spread": {
+        "cells_with_8plus_clean": 758,
+        "relative_sd_median": 0.4198
+      }
+    },
+    "right": {
+      "detected_frames": 140,
+      "cells_ever_corrupt": 621,
+      "cells_corrupt_with_zero_clean": 71,
+      "clean_count_in_corrupt_cells": {
+        "min": 0,
+        "p5": 0.0,
+        "median": 7.0,
+        "max": 96
+      },
+      "corrupt_count": {
+        "median": 5.0,
+        "max": 62
+      },
+      "footprint_track": {
+        "rho_mean": 0.4787,
+        "rho_range": [
+          0.2838,
+          0.7409
+        ],
+        "rho_p5_p95": [
+          0.3256,
+          0.6258
+        ],
+        "theta_mean_rad": -2.5393,
+        "theta_spread_rad": [
+          -0.7215,
+          2.8859
+        ],
+        "theta_p5_p95_rad": [
+          -0.5428,
+          0.7047
+        ],
+        "theta_std_rad": 0.6577,
+        "arc_travel_px": 21.952,
+        "pixels": {
+          "median": 54.0,
+          "max": 82
+        }
+      },
+      "clean_cell_spread": {
+        "cells_with_8plus_clean": 607,
+        "relative_sd_median": 0.391
+      }
+    }
+  }
+}
