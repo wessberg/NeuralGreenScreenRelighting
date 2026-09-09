@@ -1,0 +1,114 @@
+{
+  "left": {
+    "0": {
+      "candidate": 246,
+      "reflection_candidate": 32,
+      "appearance": 190,
+      "angular": 107,
+      "joint": 90,
+      "reflection_joint": 22,
+      "other_joint": 68
+    },
+    "1": {
+      "candidate": 272,
+      "reflection_candidate": 30,
+      "appearance": 252,
+      "angular": 133,
+      "joint": 132,
+      "reflection_joint": 2,
+      "other_joint": 130
+    },
+    "2": {
+      "candidate": 265,
+      "reflection_candidate": 30,
+      "appearance": 256,
+      "angular": 132,
+      "joint": 132,
+      "reflection_joint": 2,
+      "other_joint": 130
+    },
+    "3": {
+      "candidate": 251,
+      "reflection_candidate": 30,
+      "appearance": 200,
+      "angular": 95,
+      "joint": 90,
+      "reflection_joint": 6,
+      "other_joint": 84
+    },
+    "4": {
+      "candidate": 269,
+      "reflection_candidate": 30,
+      "appearance": 217,
+      "angular": 42,
+      "joint": 41,
+      "reflection_joint": 0,
+      "other_joint": 41
+    },
+    "5": {
+      "candidate": 316,
+      "reflection_candidate": 37,
+      "appearance": 213,
+      "angular": 205,
+      "joint": 181,
+      "reflection_joint": 16,
+      "other_joint": 165
+    }
+  },
+  "right": {
+    "0": {
+      "candidate": 248,
+      "reflection_candidate": 35,
+      "appearance": 214,
+      "angular": 196,
+      "joint": 173,
+      "reflection_joint": 35,
+      "other_joint": 138
+    },
+    "1": {
+      "candidate": 296,
+      "reflection_candidate": 36,
+      "appearance": 247,
+      "angular": 206,
+      "joint": 172,
+      "reflection_joint": 27,
+      "other_joint": 145
+    },
+    "2": {
+      "candidate": 240,
+      "reflection_candidate": 34,
+      "appearance": 217,
+      "angular": 208,
+      "joint": 193,
+      "reflection_joint": 28,
+      "other_joint": 165
+    },
+    "3": {
+      "candidate": 249,
+      "reflection_candidate": 34,
+      "appearance": 227,
+      "angular": 202,
+      "joint": 195,
+      "reflection_joint": 22,
+      "other_joint": 173
+    },
+    "4": {
+      "candidate": 300,
+      "reflection_candidate": 40,
+      "appearance": 274,
+      "angular": 213,
+      "joint": 204,
+      "reflection_joint": 35,
+      "other_joint": 169
+    },
+    "5": {
+      "candidate": 312,
+      "reflection_candidate": 41,
+      "appearance": 211,
+      "angular": 127,
+      "joint": 80,
+      "reflection_joint": 38,
+      "other_joint": 42
+    }
+  }
+}

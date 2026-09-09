@@ -1,0 +1,37 @@
+{
+  "scalar_signed_transport_max_error": 2.2272517163912653e-11,
+  "signed_cases": 5,
+  "sphere_gram_max_error": 4.8498531579621584e-15,
+  "integration": {
+    "3": {
+      "scalar_max_error": 1.164126434138879e-11,
+      "dense41_max_error": 0.00416711377968481
+    },
+    "7": {
+      "scalar_max_error": 2.266237891790368e-11,
+      "dense41_max_error": 0.0001171081365629531
+    },
+    "21": {
+      "scalar_max_error": 7.754311082130982e-12,
+      "dense41_max_error": 0.00011710316161685219
+    }
+  },
+  "independent_held_fit": {
+    "broad": {
+      "held_sum_max_error": 0.019794168628301922,
+      "held_layer_max_error": 0.02608507426483654,
+      "held_sum_mse": 7.396935561962879e-06
+    },
+    "narrow": {
+      "held_sum_max_error": 0.0010054114852471874,
+      "held_layer_max_error": 0.022317048711671082,
+      "held_sum_mse": 2.1526533800835746e-07
+    }
+  },
+  "single_view_spatial_material_sum_error": 0.0,
+  "single_view_layer_difference": 0.027970710860398214,
+  "single_view_explanation_not_a_shared_temporal_texture": true,
+  "independent_truth_uses_production_ray_functions": false,
+  "performer_material_certified": false,
+  "code_sha256": "7ea908f867bfed51524ac2ccaa2a33d03ab4d967ff5583fee04539d35df724a4"
+}

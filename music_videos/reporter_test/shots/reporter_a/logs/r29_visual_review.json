@@ -1,0 +1,19 @@
+{
+  "reviewer": "Codex image inspection of decoded video artifacts",
+  "live_playback": false,
+  "artist_acceptance": false,
+  "continuous_video": "final/r29_shape.mp4",
+  "continuous_contact_sheets_inspected": [0, 24, 48, 72, 96, 120, 144],
+  "continuous_observations": "Original keyed eyes and catchlights remain visible through both blink sequences. Sparse green/orange overlays indicate sampling and annotations, not a replacement.",
+  "held_video": "final/r29_layers.mp4",
+  "held_decoded_frames_inspected": [0, 24, 48, 72, 96, 120],
+  "held_observations": "Broad and narrow constant-backing predictions form broad grey pupil regions. Spatial backing can reproduce a more compact bright spot in fitting frames but gives a misplaced or incorrect spot at seen 815. Left 805 excludes the reflection entirely. Black areas are unscored, not removed material.",
+  "left_model_selection": "abstained; fixed geometry witness 0 and BOX3 shown as an unselected diagnostic",
+  "right_model_selection": "configuration from reflection-balanced folds; all displayed comparison arms share that configuration",
+  "displayed_model_pixels_clipped_above_white": 0,
+  "clean_material_earned": false,
+  "source_removal_earned": false,
+  "scene_replacement_earned": false,
+  "numerical_validation": "logs/r29_verification.json",
+  "interpretation": "Sharper photographed sums can retain the source reflection in fitted backing. These failed models must not be used as clean layers."
+}

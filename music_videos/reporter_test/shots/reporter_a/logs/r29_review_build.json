@@ -1,0 +1,103 @@
+{
+  "choices": {
+    "left": {
+      "broad": 1,
+      "narrow": 2,
+      "spatial_backing": 3
+    },
+    "right": {
+      "broad": 1,
+      "narrow": 2,
+      "spatial_backing": 3
+    }
+  },
+  "continuous_frames": 150,
+  "held_frames": 144,
+  "clipped_pixels": {
+    "left_30": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "right_30": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "left_60": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "right_60": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "left_90": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "right_90": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "left_120": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "right_120": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "left_105": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "right_105": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "left_115": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "right_115": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "exact_source_retained": true
+}
