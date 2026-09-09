@@ -1,0 +1,22 @@
+{
+  "reviewer": "Codex assistant visual inspection, not artist acceptance",
+  "live_playback_performed": false,
+  "source_only_annotation_boards_inspected": ["730 left", "730 right", "760 left", "760 right", "790 left", "790 right", "820 left", "820 right"],
+  "continuous_review": {
+    "file": "final/r25_source.mp4",
+    "sha256": "cf5354999bc16a189e98f42e709bf5da2ceccb59c8d8a7a1d7ed74bdc1264fed",
+    "decoded_contact_sheet_starts_inspected": [0, 24, 48, 72, 96, 120, 144],
+    "native_png_inspected": [30],
+    "native_decoded_frames_inspected": [60, 90, 120],
+    "observations": "Source stays on the left with original catchlights. Fits flash only at the four annotated frames; all other frames abstain. Source blinks remain visible on both sides, with no fitted contours over the closed lids. Candidate routes remain diagnostic marks, not removal."
+  },
+  "held_detail_review": {
+    "file": "final/r25_detail.mp4",
+    "sha256": "344c2cd715a937420222e8dde172a20b510fb623e28bd83f119a1d7638bdccfb",
+    "decoded_contact_sheet_starts_inspected": [0, 24, 48, 72],
+    "observations": "Four chronological labelled one-second holds make the sparse diagnostic overlays readable. The source-760 left eye has zero optical candidates and no route dots. The source remains photographed and reflective; no visual reflection improvement is claimed."
+  },
+  "clean_material_certified": false,
+  "real_geometry_validated": false,
+  "production_repairs": 0
+}
