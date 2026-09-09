@@ -1,0 +1,72 @@
+{
+  "blender": "5.2.1 LTS",
+  "samples": 4096,
+  "device": "GPU",
+  "devices": [
+    "NVIDIA GeForce RTX 5080"
+  ],
+  "persistent_data": false,
+  "cases": [
+    {
+      "name": "front",
+      "yaw": 0,
+      "pitch": 0,
+      "lid_height": 4,
+      "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r20_eyes\\cycles\\front.exr"
+    },
+    {
+      "name": "yaw_plus",
+      "yaw": 12,
+      "pitch": 0,
+      "lid_height": 4,
+      "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r20_eyes\\cycles\\yaw_plus.exr"
+    },
+    {
+      "name": "yaw_minus",
+      "yaw": -12,
+      "pitch": 0,
+      "lid_height": 4,
+      "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r20_eyes\\cycles\\yaw_minus.exr"
+    },
+    {
+      "name": "pitch_plus",
+      "yaw": 0,
+      "pitch": 8,
+      "lid_height": 4,
+      "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r20_eyes\\cycles\\pitch_plus.exr"
+    },
+    {
+      "name": "pitch_minus",
+      "yaw": 0,
+      "pitch": -8,
+      "lid_height": 4,
+      "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r20_eyes\\cycles\\pitch_minus.exr"
+    },
+    {
+      "name": "closed",
+      "yaw": 0,
+      "pitch": 0,
+      "lid_height": 0,
+      "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r20_eyes\\cycles\\closed.exr"
+    },
+    {
+      "name": "narrow",
+      "yaw": 0,
+      "pitch": 0,
+      "lid_height": 1.5,
+      "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r20_eyes\\cycles\\narrow.exr"
+    }
+  ],
+  "emitter_interior": [
+    0.1,
+    0.2,
+    0.3
+  ],
+  "emitter_environment": [
+    0.7,
+    0.5,
+    0.2
+  ],
+  "ior": 1.376,
+  "scope": "Independent mesh/path-traced validation of simplified optical transport; no performer"
+}

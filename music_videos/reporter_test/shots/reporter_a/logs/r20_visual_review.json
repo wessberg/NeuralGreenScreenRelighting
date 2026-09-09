@@ -1,0 +1,43 @@
+{
+  "scope": "Visual inspection of all decoded thumbnails and selected full boards; no live playback or artist approval",
+  "decoded_thumbnails_inspected": 194,
+  "ordered_sheets_inspected": 9,
+  "inspected_files_sha256": {
+    "r20_eyes/contact_000.jpg": "1d067719edde719bcbb2dfdff4a55f79dcabd011f00ddd3498726ba9fce99650",
+    "r20_eyes/contact_024.jpg": "39f0be019ea334cd8088325bc7ed9af36c8b7eb7b1346537f5956fd6caf624e2",
+    "r20_eyes/contact_048.jpg": "e8c2232bbe7b78add7699725d7661b3b84941c8444aa652123a4116badaa73b4",
+    "r20_eyes/contact_072.jpg": "7fcf720d4b0e40e2902e7d90f1b9ad7c4fde016fadce54adfabba5f35ec2eea6",
+    "r20_eyes/contact_096.jpg": "4c05bb51c911ee862bf7d623eed1c1d80671603231715d9e98be825c99b379c9",
+    "r20_eyes/contact_120.jpg": "c293fc7ee1d3ed64ea34f27feb1fca73b97552f3396d768b4679ed66616a2fce",
+    "r20_source_fallback/contact_000.jpg": "2b70e8b0e1502e447c95f20e8f5a4fe5c56f387806cdda6d5821c2852727a66b",
+    "r20_source_fallback/contact_024.jpg": "c03fff512c48607562cd9e7a321f0c6ecc8e2a5903383f058c2f8a94403e9495",
+    "r20_source_fallback/contact_048.jpg": "d900372c94d2b628e8616d07d65abcaef82ffe467400db4399c06ac505674426",
+    "r20_eyes/decoded_005.png": "81dd912a794bcb8e966e8c0cc999710a847063f70c577910fb79a28afe282e1f",
+    "r20_eyes/decoded_017.png": "196595fee26ea0bff9902d43eac42540321a757b51ee86c93be84afe988d1540",
+    "r20_source_fallback/decoded_035.png": "7a1029623eb70e525bc02538fd601408466e40d447db2e8a99c105218d71cb6e",
+    "r20_eyes/review/000000.png": "2abcc6c8f47d2f76c70198e8bb26b8e4d64bd09ce6435a3ab3eb26e4678ed9a2",
+    "r20_eyes/cycles/yaw_plus_comparison.png": "233bb2a7e4993877b6b5d73bc246e77314b50dbabee583675d53a4e43735446e",
+    "r20_eyes/cycles/narrow_comparison.png": "413bbdd47190592ebd0cf5f82badca80a04858adba5b8534c10a9500f610c1ad"
+  },
+  "findings": [
+    "Synthetic unknown-pupil fit visibly blurs the pupil rim; oracle black-pupil result is conditional on exact supplied truth.",
+    "Synthetic frame 17 is deliberately fully closed; source and all conditions are black there.",
+    "Real native source/fallback panels preserve original catchlights and blink appearance. No real repair was enabled.",
+    "Cycles tilted/narrow constant-emitter checks agree away from boundaries; pixel filtering differs at edges."
+  ],
+  "videos": {
+    "synthetic": {
+      "frames": 144,
+      "fps": 24.0,
+      "sha256": "b1badfd5ca76a44e8792fe6f571354f1a719f097cf4f34daaaca1b964405edee",
+      "maximum_decoded_frame_mae": 0.2757012795275591
+    },
+    "real": {
+      "frames": 50,
+      "fps": 59.94005994005994,
+      "sha256": "f0cb4ef3487ff3596a9de98ab374c6508827993e3bd38004c48b6b34e4b42005",
+      "maximum_decoded_frame_mae": 1.68061745787796
+    }
+  },
+  "artist_approval": false
+}
