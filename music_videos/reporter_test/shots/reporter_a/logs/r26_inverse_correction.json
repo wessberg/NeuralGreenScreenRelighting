@@ -1,0 +1,18 @@
+{
+  "initial_report_sha256": "1aae24ba7db24c5facf81dc783ed30de4fcce4a5f4b4ee76de0989e3df7d5a4c",
+  "initial_control_failed_rays": 6,
+  "initial_control_max_coordinate_error_px": 3.035405574583365,
+  "corrected_control_rays": 2513,
+  "corrected_control_max_coordinate_error_px": 2.2326958060148172e-09,
+  "reason": "Unrefracted initialization can lie beyond corneal silhouette at oblique gaze; use apex initialization and descending Newton steps",
+  "real_source_comparison": {
+    "left": {
+      "paired_support_identical": true,
+      "prediction_max_linear_difference": 6.706883659557406e-11
+    },
+    "right": {
+      "paired_support_identical": true,
+      "prediction_max_linear_difference": 7.680978075796929e-11
+    }
+  }
+}

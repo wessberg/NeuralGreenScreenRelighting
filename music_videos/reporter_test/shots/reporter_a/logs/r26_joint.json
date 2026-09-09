@@ -1,0 +1,1467 @@
+{
+  "evidence": {
+    "docs\\r26-eye-protocol.md": "ca18a8579199296c7a6fbcfd8d4e069a3c96f0f7bef179e0ab4a42ceb02bdceb",
+    "scripts\\data\\r26_source_boundaries.json": "e621e243999ccc75c070fe0b2d498d6ea2086c01540b5313bfce5876b9f1f96b",
+    "scripts\\data\\r25_source_boundaries.json": "00c8ce462e496aee16357bb3dec918eadbdef4b588100d6cfcbd4170d07ed9b2",
+    "music_videos\\reporter_test\\shots\\reporter_a\\logs\\r25_source.json": "5ea610335f922dfe6191ad9fd92c3af0d8a57c842eb406ea5e71e9fd9103a301",
+    "music_videos\\reporter_test\\shots\\reporter_a\\logs\\r26_preflight.json": "96593795c2915aa409286c15493ef5770f4771078f538aced95a370dee5740a4",
+    "music_videos\\reporter_test\\shots\\reporter_a\\shot.json": "85abd77527760f0607409aa0929e80bc485dd4f6edcf90cb6713cbf80fc3601d",
+    "music_videos\\reporter_test\\shots\\reporter_a\\relight\\neural_iris_observations\\manifest.json": "073092bc638a1eb2a3166dad774e7aa382794207e0bfd6265de591438ff2b36c",
+    "music_videos\\reporter_test\\shots\\reporter_a\\relight\\neural_iris_observations\\000030_left.npz": "4d3d0ec6c8e3933882102c3824b542f01c271755817afddd35ca5d4144b4d351",
+    "music_videos\\reporter_test\\shots\\reporter_a\\relight\\neural_iris_observations\\000030_right.npz": "22cdfc9e2e95e4df66476863aeb19d5ef7a9c6426cace6dc92be75aa007a450a",
+    "music_videos\\reporter_test\\shots\\reporter_a\\relight\\neural_iris_observations\\000060_left.npz": "342db7684eb1bf574f85f4f50fa8e40066eb35dec45b3f88a70eb9f847516ede",
+    "music_videos\\reporter_test\\shots\\reporter_a\\relight\\neural_iris_observations\\000060_right.npz": "0e4bcec86905940e0a1f9d04eddee5958bc06955ee2d4d0c980b21d0aa1d291a",
+    "music_videos\\reporter_test\\shots\\reporter_a\\relight\\neural_iris_observations\\000090_left.npz": "0d16648c62949befd06e08f024ed1cbb7a1935e545ea72134520d91612036ded",
+    "music_videos\\reporter_test\\shots\\reporter_a\\relight\\neural_iris_observations\\000090_right.npz": "2e5e1632e1c6caf737459cc1879aa7aff0470aaab5574fb63f6e7d15f18a3f7c",
+    "music_videos\\reporter_test\\shots\\reporter_a\\relight\\neural_iris_observations\\000120_left.npz": "510fe986e564ab4bcc41ed50065031a2e9f59a25d07539b383b6b1f801e23e00",
+    "music_videos\\reporter_test\\shots\\reporter_a\\relight\\neural_iris_observations\\000120_right.npz": "e494f38ea2f3935bef3f521f3bd8532082f7865333424e0d5f9708adaf55adb7",
+    "music_videos\\reporter_test\\shots\\reporter_a\\relight\\neural_iris_observations\\000105_left.npz": "10d1c0afb3aed0c8bdc47baaaffa090358efb148dda0dc1b4ac3b478fae7e10e",
+    "music_videos\\reporter_test\\shots\\reporter_a\\relight\\neural_iris_observations\\000105_right.npz": "8ac9ffa0c82d2013b1eed4f0fbc14b938c3a71ded04856f254a8fa44177f07e2"
+  },
+  "results": {
+    "left": {
+      "side": "left",
+      "tested_rows": 205821,
+      "shared_profiles": 34,
+      "shared_pupil_tolerance_counts": {
+        "1.0": 4,
+        "2.0": 34,
+        "3.0": 71
+      },
+      "centred_shared_profiles": 1,
+      "baseline_depth_shared_profiles": 11,
+      "factored_assignments": [
+        {
+          "shared_index": 74,
+          "counts": [
+            168,
+            86,
+            105,
+            131,
+            233
+          ],
+          "sequence_count": "46304611920"
+        },
+        {
+          "shared_index": 47,
+          "counts": [
+            183,
+            95,
+            109,
+            149,
+            231
+          ],
+          "sequence_count": "65222800335"
+        },
+        {
+          "shared_index": 65,
+          "counts": [
+            183,
+            97,
+            119,
+            156,
+            240
+          ],
+          "sequence_count": "79087095360"
+        },
+        {
+          "shared_index": 20,
+          "counts": [
+            203,
+            105,
+            116,
+            174,
+            232
+          ],
+          "sequence_count": "99811494720"
+        },
+        {
+          "shared_index": 38,
+          "counts": [
+            203,
+            102,
+            125,
+            172,
+            235
+          ],
+          "sequence_count": "104617065000"
+        },
+        {
+          "shared_index": 56,
+          "counts": [
+            204,
+            111,
+            136,
+            179,
+            243
+          ],
+          "sequence_count": "133952665248"
+        },
+        {
+          "shared_index": 11,
+          "counts": [
+            213,
+            127,
+            133,
+            190,
+            229
+          ],
+          "sequence_count": "156539538330"
+        },
+        {
+          "shared_index": 2,
+          "counts": [
+            198,
+            124,
+            134,
+            203,
+            232
+          ],
+          "sequence_count": "154944332928"
+        },
+        {
+          "shared_index": 29,
+          "counts": [
+            210,
+            127,
+            138,
+            192,
+            230
+          ],
+          "sequence_count": "162529113600"
+        },
+        {
+          "shared_index": 73,
+          "counts": [
+            99,
+            48,
+            100,
+            76,
+            230
+          ],
+          "sequence_count": "8306496000"
+        },
+        {
+          "shared_index": 46,
+          "counts": [
+            97,
+            47,
+            109,
+            88,
+            233
+          ],
+          "sequence_count": "10189073224"
+        },
+        {
+          "shared_index": 64,
+          "counts": [
+            95,
+            42,
+            113,
+            85,
+            245
+          ],
+          "sequence_count": "9389367750"
+        },
+        {
+          "shared_index": 19,
+          "counts": [
+            95,
+            48,
+            112,
+            85,
+            231
+          ],
+          "sequence_count": "10027987200"
+        },
+        {
+          "shared_index": 37,
+          "counts": [
+            93,
+            44,
+            109,
+            84,
+            241
+          ],
+          "sequence_count": "9029390832"
+        },
+        {
+          "shared_index": 55,
+          "counts": [
+            93,
+            36,
+            106,
+            85,
+            250
+          ],
+          "sequence_count": "7541370000"
+        },
+        {
+          "shared_index": 1,
+          "counts": [
+            93,
+            43,
+            111,
+            85,
+            249
+          ],
+          "sequence_count": "9394910685"
+        },
+        {
+          "shared_index": 10,
+          "counts": [
+            95,
+            50,
+            102,
+            81,
+            241
+          ],
+          "sequence_count": "9457924500"
+        },
+        {
+          "shared_index": 28,
+          "counts": [
+            91,
+            33,
+            108,
+            83,
+            247
+          ],
+          "sequence_count": "6648966324"
+        },
+        {
+          "shared_index": 77,
+          "counts": [
+            54,
+            14,
+            32,
+            40,
+            121
+          ],
+          "sequence_count": "117089280"
+        },
+        {
+          "shared_index": 72,
+          "counts": [
+            34,
+            11,
+            37,
+            27,
+            162
+          ],
+          "sequence_count": "60527412"
+        },
+        {
+          "shared_index": 45,
+          "counts": [
+            26,
+            5,
+            31,
+            20,
+            160
+          ],
+          "sequence_count": "12896000"
+        },
+        {
+          "shared_index": 50,
+          "counts": [
+            47,
+            10,
+            30,
+            36,
+            118
+          ],
+          "sequence_count": "59896800"
+        },
+        {
+          "shared_index": 63,
+          "counts": [
+            22,
+            5,
+            23,
+            15,
+            176
+          ],
+          "sequence_count": "6679200"
+        },
+        {
+          "shared_index": 18,
+          "counts": [
+            15,
+            2,
+            25,
+            12,
+            164
+          ],
+          "sequence_count": "1476000"
+        },
+        {
+          "shared_index": 36,
+          "counts": [
+            17,
+            3,
+            22,
+            15,
+            174
+          ],
+          "sequence_count": "2928420"
+        },
+        {
+          "shared_index": 54,
+          "counts": [
+            14,
+            3,
+            23,
+            12,
+            182
+          ],
+          "sequence_count": "2109744"
+        },
+        {
+          "shared_index": 68,
+          "counts": [
+            49,
+            3,
+            25,
+            30,
+            124
+          ],
+          "sequence_count": "13671000"
+        },
+        {
+          "shared_index": 9,
+          "counts": [
+            8,
+            3,
+            21,
+            7,
+            175
+          ],
+          "sequence_count": "617400"
+        },
+        {
+          "shared_index": 27,
+          "counts": [
+            8,
+            4,
+            23,
+            5,
+            184
+          ],
+          "sequence_count": "677120"
+        },
+        {
+          "shared_index": 0,
+          "counts": [
+            8,
+            5,
+            21,
+            6,
+            180
+          ],
+          "sequence_count": "907200"
+        },
+        {
+          "shared_index": 23,
+          "counts": [
+            45,
+            1,
+            30,
+            30,
+            114
+          ],
+          "sequence_count": "4617000"
+        },
+        {
+          "shared_index": 41,
+          "counts": [
+            41,
+            1,
+            22,
+            27,
+            122
+          ],
+          "sequence_count": "2971188"
+        },
+        {
+          "shared_index": 76,
+          "counts": [
+            13,
+            2,
+            16,
+            12,
+            138
+          ],
+          "sequence_count": "688896"
+        },
+        {
+          "shared_index": 59,
+          "counts": [
+            43,
+            1,
+            7,
+            19,
+            130
+          ],
+          "sequence_count": "743470"
+        }
+      ],
+      "geometry_sha256": "30ae54e3e404c1ce5d5c37b086ca7b04ac2d1bcece659d14556c7961f3539c8a",
+      "family_sha256": "28788cf79bcfe60d19f81fa8b79febccba65a919869101b40fed209d7eb18927",
+      "geometry_validated": false,
+      "correspondence_reliable": false,
+      "production_repairs": 0,
+      "best_shared": [
+        8.4,
+        3.9,
+        -0.6,
+        0.6
+      ],
+      "best_conditioning_score": 5.07611692626798,
+      "best_rows": [
+        [
+          74.0,
+          0.0,
+          23.0,
+          2.0,
+          0.7718695539107642,
+          0.8264051217242641,
+          0.0,
+          0.0
+        ],
+        [
+          74.0,
+          1.0,
+          13.0,
+          1.0,
+          1.0599116857631454,
+          1.445420735298102,
+          0.0,
+          0.0
+        ],
+        [
+          74.0,
+          2.0,
+          4.0,
+          1.0,
+          0.7241620214409747,
+          1.280021008272253,
+          0.0,
+          0.0
+        ],
+        [
+          74.0,
+          3.0,
+          13.0,
+          2.0,
+          0.6233894425723662,
+          1.2727440399704033,
+          0.0,
+          0.0
+        ],
+        [
+          74.0,
+          4.0,
+          13.0,
+          2.0,
+          0.24672365119142262,
+          0.25152602100295757,
+          0.7519460076119072,
+          0.43635551008043627
+        ]
+      ],
+      "held_limbus_distances_px": [
+        0.1259407302731473,
+        0.1324150867490544,
+        0.4082109036308248
+      ],
+      "held_pupil_distances_px": [
+        0.7519460076119072,
+        0.43635551008043627
+      ],
+      "frontal_held_limbus_distances_px": [
+        0.5050538791984042,
+        0.8552487791407354,
+        0.35527674386447367
+      ],
+      "rgb_check": {
+        "donors": [
+          {
+            "samples": 92,
+            "joint_median": 7.005724053168871,
+            "control_median": 5.936690322231792,
+            "joint_mean": 8.273109787534564,
+            "control_mean": 7.1030089827048695,
+            "joint_p95": 19.722366325512287,
+            "control_p95": 17.030048014907088
+          },
+          {
+            "samples": 142,
+            "joint_median": 6.1719876799985,
+            "control_median": 5.955444797956799,
+            "joint_mean": 7.982648162385722,
+            "control_mean": 7.719011695277042,
+            "joint_p95": 18.050375360382105,
+            "control_p95": 17.211950841330033
+          },
+          {
+            "samples": 125,
+            "joint_median": 4.753406482153037,
+            "control_median": 4.963929467511119,
+            "joint_mean": 5.496626269099496,
+            "control_mean": 6.649956701502787,
+            "joint_p95": 11.491002177328603,
+            "control_p95": 16.09613929503597
+          },
+          {
+            "samples": 134,
+            "joint_median": 6.8818881054480086,
+            "control_median": 6.741157262258195,
+            "joint_mean": 8.23932073085384,
+            "control_mean": 8.246653678724789,
+            "joint_p95": 19.66296026666858,
+            "control_p95": 19.641967878785497
+          }
+        ],
+        "equal_weight_mean": {
+          "samples": 117,
+          "joint_median": 5.819331306700977,
+          "control_median": 5.561055537292653,
+          "joint_mean": 6.772553496509066,
+          "control_mean": 6.827510140793257,
+          "joint_p95": 16.353477142251155,
+          "control_p95": 16.67707469358372
+        },
+        "target_eligible_pixels": 371,
+        "mean_abstentions": 254,
+        "prediction_sha256": "61dd7a0aa04fcb7ed2b228e94c0f42ace15026995c9665ad27a2a38516ac3c08",
+        "clean_material_certified": false
+      },
+      "support_per_donor": [
+        121,
+        142,
+        125,
+        134
+      ],
+      "paired_per_donor": [
+        92,
+        142,
+        125,
+        134
+      ],
+      "witnesses": {
+        "hypotheses": 36,
+        "comparable_pairs": 493,
+        "median_diameter_lower_bound_px": 3.8461998207475894,
+        "max_diameter_lower_bound_px": 5.820065801647036,
+        "pairs_exceeding_2px": 491,
+        "certification": false
+      },
+      "lid_sensitivity": {
+        "1.0": {
+          "eligible": 475,
+          "supported": [
+            158,
+            166,
+            149,
+            162
+          ],
+          "paired": [
+            124,
+            166,
+            148,
+            162
+          ]
+        },
+        "2.0": {
+          "eligible": 371,
+          "supported": [
+            121,
+            142,
+            125,
+            134
+          ],
+          "paired": [
+            92,
+            142,
+            125,
+            134
+          ]
+        },
+        "3.0": {
+          "eligible": 268,
+          "supported": [
+            77,
+            111,
+            94,
+            99
+          ],
+          "paired": [
+            54,
+            111,
+            90,
+            99
+          ]
+        }
+      }
+    },
+    "right": {
+      "side": "right",
+      "tested_rows": 210924,
+      "shared_profiles": 57,
+      "shared_pupil_tolerance_counts": {
+        "1.0": 26,
+        "2.0": 57,
+        "3.0": 81
+      },
+      "centred_shared_profiles": 9,
+      "baseline_depth_shared_profiles": 18,
+      "factored_assignments": [
+        {
+          "shared_index": 19,
+          "counts": [
+            294,
+            190,
+            255,
+            203,
+            286
+          ],
+          "sequence_count": "826995569400"
+        },
+        {
+          "shared_index": 46,
+          "counts": [
+            264,
+            175,
+            231,
+            187,
+            281
+          ],
+          "sequence_count": "560792093400"
+        },
+        {
+          "shared_index": 73,
+          "counts": [
+            243,
+            164,
+            212,
+            167,
+            267
+          ],
+          "sequence_count": "376715695536"
+        },
+        {
+          "shared_index": 37,
+          "counts": [
+            297,
+            193,
+            266,
+            207,
+            297
+          ],
+          "sequence_count": "937394043894"
+        },
+        {
+          "shared_index": 64,
+          "counts": [
+            274,
+            184,
+            246,
+            195,
+            294
+          ],
+          "sequence_count": "711025922880"
+        },
+        {
+          "shared_index": 10,
+          "counts": [
+            312,
+            209,
+            268,
+            211,
+            296
+          ],
+          "sequence_count": "1091465067264"
+        },
+        {
+          "shared_index": 74,
+          "counts": [
+            192,
+            161,
+            219,
+            211,
+            275
+          ],
+          "sequence_count": "392813467200"
+        },
+        {
+          "shared_index": 1,
+          "counts": [
+            311,
+            202,
+            264,
+            213,
+            306
+          ],
+          "sequence_count": "1080977651424"
+        },
+        {
+          "shared_index": 55,
+          "counts": [
+            295,
+            193,
+            264,
+            217,
+            305
+          ],
+          "sequence_count": "994816145400"
+        },
+        {
+          "shared_index": 65,
+          "counts": [
+            220,
+            189,
+            253,
+            249,
+            289
+          ],
+          "sequence_count": "757011010140"
+        },
+        {
+          "shared_index": 47,
+          "counts": [
+            201,
+            175,
+            239,
+            231,
+            280
+          ],
+          "sequence_count": "543753441000"
+        },
+        {
+          "shared_index": 56,
+          "counts": [
+            247,
+            206,
+            284,
+            282,
+            298
+          ],
+          "sequence_count": "1214361209568"
+        },
+        {
+          "shared_index": 28,
+          "counts": [
+            303,
+            199,
+            270,
+            213,
+            309
+          ],
+          "sequence_count": "1071513265230"
+        },
+        {
+          "shared_index": 38,
+          "counts": [
+            228,
+            196,
+            262,
+            268,
+            294
+          ],
+          "sequence_count": "922516906752"
+        },
+        {
+          "shared_index": 20,
+          "counts": [
+            209,
+            191,
+            249,
+            257,
+            283
+          ],
+          "sequence_count": "722933848461"
+        },
+        {
+          "shared_index": 29,
+          "counts": [
+            241,
+            211,
+            278,
+            288,
+            293
+          ],
+          "sequence_count": "1192900997952"
+        },
+        {
+          "shared_index": 2,
+          "counts": [
+            239,
+            211,
+            275,
+            290,
+            292
+          ],
+          "sequence_count": "1174340123000"
+        },
+        {
+          "shared_index": 77,
+          "counts": [
+            182,
+            86,
+            192,
+            147,
+            210
+          ],
+          "sequence_count": "92770030080"
+        },
+        {
+          "shared_index": 11,
+          "counts": [
+            233,
+            204,
+            275,
+            282,
+            285
+          ],
+          "sequence_count": "1050540381000"
+        },
+        {
+          "shared_index": 50,
+          "counts": [
+            199,
+            97,
+            211,
+            156,
+            213
+          ],
+          "sequence_count": "135335417724"
+        },
+        {
+          "shared_index": 68,
+          "counts": [
+            214,
+            102,
+            228,
+            174,
+            223
+          ],
+          "sequence_count": "193109172768"
+        },
+        {
+          "shared_index": 72,
+          "counts": [
+            140,
+            63,
+            96,
+            69,
+            196
+          ],
+          "sequence_count": "11451041280"
+        },
+        {
+          "shared_index": 41,
+          "counts": [
+            223,
+            118,
+            245,
+            183,
+            219
+          ],
+          "sequence_count": "258373613610"
+        },
+        {
+          "shared_index": 23,
+          "counts": [
+            217,
+            111,
+            236,
+            174,
+            211
+          ],
+          "sequence_count": "208701907848"
+        },
+        {
+          "shared_index": 59,
+          "counts": [
+            245,
+            115,
+            263,
+            199,
+            226
+          ],
+          "sequence_count": "333258464350"
+        },
+        {
+          "shared_index": 45,
+          "counts": [
+            157,
+            53,
+            104,
+            64,
+            207
+          ],
+          "sequence_count": "11464607232"
+        },
+        {
+          "shared_index": 14,
+          "counts": [
+            242,
+            128,
+            260,
+            188,
+            216
+          ],
+          "sequence_count": "327047086080"
+        },
+        {
+          "shared_index": 32,
+          "counts": [
+            244,
+            124,
+            265,
+            206,
+            226
+          ],
+          "sequence_count": "373278559040"
+        },
+        {
+          "shared_index": 63,
+          "counts": [
+            164,
+            53,
+            105,
+            62,
+            210
+          ],
+          "sequence_count": "11882833200"
+        },
+        {
+          "shared_index": 5,
+          "counts": [
+            242,
+            123,
+            260,
+            188,
+            220
+          ],
+          "sequence_count": "320091657600"
+        },
+        {
+          "shared_index": 76,
+          "counts": [
+            162,
+            53,
+            139,
+            87,
+            218
+          ],
+          "sequence_count": "22635048564"
+        },
+        {
+          "shared_index": 49,
+          "counts": [
+            175,
+            54,
+            146,
+            89,
+            224
+          ],
+          "sequence_count": "27505699200"
+        },
+        {
+          "shared_index": 18,
+          "counts": [
+            165,
+            37,
+            99,
+            52,
+            201
+          ],
+          "sequence_count": "6317136540"
+        },
+        {
+          "shared_index": 36,
+          "counts": [
+            168,
+            39,
+            105,
+            49,
+            210
+          ],
+          "sequence_count": "7079108400"
+        },
+        {
+          "shared_index": 67,
+          "counts": [
+            179,
+            53,
+            152,
+            87,
+            240
+          ],
+          "sequence_count": "30109461120"
+        },
+        {
+          "shared_index": 54,
+          "counts": [
+            172,
+            43,
+            105,
+            51,
+            221
+          ],
+          "sequence_count": "8752833180"
+        },
+        {
+          "shared_index": 22,
+          "counts": [
+            181,
+            48,
+            154,
+            88,
+            224
+          ],
+          "sequence_count": "26373709824"
+        },
+        {
+          "shared_index": 40,
+          "counts": [
+            183,
+            47,
+            155,
+            83,
+            239
+          ],
+          "sequence_count": "26445795735"
+        },
+        {
+          "shared_index": 0,
+          "counts": [
+            161,
+            42,
+            95,
+            47,
+            218
+          ],
+          "sequence_count": "6581927940"
+        },
+        {
+          "shared_index": 58,
+          "counts": [
+            191,
+            44,
+            156,
+            84,
+            246
+          ],
+          "sequence_count": "27090999936"
+        },
+        {
+          "shared_index": 80,
+          "counts": [
+            90,
+            19,
+            94,
+            51,
+            111
+          ],
+          "sequence_count": "909949140"
+        },
+        {
+          "shared_index": 4,
+          "counts": [
+            190,
+            46,
+            159,
+            80,
+            245
+          ],
+          "sequence_count": "27237336000"
+        },
+        {
+          "shared_index": 13,
+          "counts": [
+            188,
+            47,
+            154,
+            80,
+            240
+          ],
+          "sequence_count": "26126284800"
+        },
+        {
+          "shared_index": 31,
+          "counts": [
+            193,
+            48,
+            158,
+            82,
+            246
+          ],
+          "sequence_count": "29525998464"
+        },
+        {
+          "shared_index": 9,
+          "counts": [
+            163,
+            38,
+            95,
+            44,
+            213
+          ],
+          "sequence_count": "5514765960"
+        },
+        {
+          "shared_index": 27,
+          "counts": [
+            168,
+            40,
+            101,
+            45,
+            221
+          ],
+          "sequence_count": "6749870400"
+        },
+        {
+          "shared_index": 53,
+          "counts": [
+            101,
+            18,
+            100,
+            43,
+            111
+          ],
+          "sequence_count": "867731400"
+        },
+        {
+          "shared_index": 75,
+          "counts": [
+            70,
+            9,
+            53,
+            24,
+            164
+          ],
+          "sequence_count": "131423040"
+        },
+        {
+          "shared_index": 71,
+          "counts": [
+            111,
+            15,
+            110,
+            48,
+            120
+          ],
+          "sequence_count": "1054944000"
+        },
+        {
+          "shared_index": 44,
+          "counts": [
+            115,
+            5,
+            115,
+            42,
+            110
+          ],
+          "sequence_count": "305497500"
+        },
+        {
+          "shared_index": 26,
+          "counts": [
+            111,
+            9,
+            109,
+            45,
+            105
+          ],
+          "sequence_count": "514509975"
+        },
+        {
+          "shared_index": 48,
+          "counts": [
+            58,
+            3,
+            38,
+            17,
+            166
+          ],
+          "sequence_count": "18659064"
+        },
+        {
+          "shared_index": 66,
+          "counts": [
+            59,
+            3,
+            34,
+            19,
+            183
+          ],
+          "sequence_count": "20924586"
+        },
+        {
+          "shared_index": 62,
+          "counts": [
+            116,
+            3,
+            122,
+            50,
+            124
+          ],
+          "sequence_count": "263227200"
+        },
+        {
+          "shared_index": 35,
+          "counts": [
+            128,
+            1,
+            130,
+            39,
+            121
+          ],
+          "sequence_count": "78524160"
+        },
+        {
+          "shared_index": 8,
+          "counts": [
+            126,
+            2,
+            130,
+            39,
+            120
+          ],
+          "sequence_count": "153316800"
+        },
+        {
+          "shared_index": 79,
+          "counts": [
+            53,
+            2,
+            45,
+            15,
+            125
+          ],
+          "sequence_count": "8943750"
+        }
+      ],
+      "geometry_sha256": "bf0c8f8d4ac54ad18f5acc407a85487f483994dedcdac14b2b3702e509fa5572",
+      "family_sha256": "0de5885cbca26212e2ab0e0f222e8b828e6e84cd37ba2468129fb5b817e45ea9",
+      "geometry_validated": false,
+      "correspondence_reliable": false,
+      "production_repairs": 0,
+      "best_shared": [
+        7.2,
+        3.9,
+        -0.6,
+        0.0
+      ],
+      "best_conditioning_score": 1.9859884505146417,
+      "best_rows": [
+        [
+          19.0,
+          0.0,
+          39.0,
+          4.0,
+          0.18422484189746774,
+          0.20898842690335795,
+          0.0,
+          0.0
+        ],
+        [
+          19.0,
+          1.0,
+          38.0,
+          2.0,
+          0.6695786451574346,
+          1.0476152655707685,
+          0.0,
+          0.0
+        ],
+        [
+          19.0,
+          2.0,
+          38.0,
+          4.0,
+          0.2452315100902602,
+          0.23837968134017756,
+          0.0,
+          0.0
+        ],
+        [
+          19.0,
+          3.0,
+          38.0,
+          3.0,
+          0.34223768146406075,
+          0.27431007512473327,
+          0.0,
+          0.0
+        ],
+        [
+          19.0,
+          4.0,
+          39.0,
+          3.0,
+          0.22134017305675294,
+          0.21669500157560448,
+          0.09695273265010103,
+          0.05615294652395979
+        ]
+      ],
+      "held_limbus_distances_px": [
+        0.8653201481770382,
+        1.1574996057104814,
+        0.024454003028776615
+      ],
+      "held_pupil_distances_px": [
+        0.09695273265010103,
+        0.05615294652395979
+      ],
+      "frontal_held_limbus_distances_px": [
+        0.7156692940685505,
+        0.9591527799335343,
+        0.15648919704444406
+      ],
+      "rgb_check": {
+        "donors": [
+          {
+            "samples": 111,
+            "joint_median": 5.354573792266429,
+            "control_median": 5.308061023405294,
+            "joint_mean": 6.753344128103533,
+            "control_mean": 6.878834347650905,
+            "joint_p95": 15.361544249887128,
+            "control_p95": 15.72109108201451
+          },
+          {
+            "samples": 136,
+            "joint_median": 5.630216773358974,
+            "control_median": 5.267240571411733,
+            "joint_mean": 6.429059821779781,
+            "control_mean": 6.698354649665512,
+            "joint_p95": 14.348801386969221,
+            "control_p95": 15.407750215422658
+          },
+          {
+            "samples": 108,
+            "joint_median": 5.443772552874318,
+            "control_median": 6.777205132907499,
+            "joint_mean": 6.506737342861078,
+            "control_mean": 7.569736644168129,
+            "joint_p95": 14.571171386263975,
+            "control_p95": 16.302034401135053
+          },
+          {
+            "samples": 116,
+            "joint_median": 6.582844890505839,
+            "control_median": 7.7412837106413255,
+            "joint_mean": 7.321098224015991,
+            "control_mean": 8.240329928067137,
+            "joint_p95": 15.7700031240236,
+            "control_p95": 17.004852367931267
+          }
+        ],
+        "equal_weight_mean": {
+          "samples": 110,
+          "joint_median": 5.412189736255964,
+          "control_median": 5.948307309244324,
+          "joint_mean": 6.0158799618548775,
+          "control_mean": 6.6478200094624835,
+          "joint_p95": 13.91006479432624,
+          "control_p95": 15.147480534009015
+        },
+        "target_eligible_pixels": 366,
+        "mean_abstentions": 256,
+        "prediction_sha256": "cd4646d5096f799be8d340b1701b9d54983cb303249b00af64e90bd2db1b8957",
+        "clean_material_certified": false
+      },
+      "support_per_donor": [
+        112,
+        136,
+        116,
+        129
+      ],
+      "paired_per_donor": [
+        111,
+        136,
+        108,
+        116
+      ],
+      "witnesses": {
+        "hypotheses": 59,
+        "comparable_pairs": 471,
+        "median_diameter_lower_bound_px": 3.3242541261130754,
+        "max_diameter_lower_bound_px": 5.486282899173283,
+        "pairs_exceeding_2px": 469,
+        "certification": false
+      },
+      "lid_sensitivity": {
+        "1.0": {
+          "eligible": 472,
+          "supported": [
+            139,
+            161,
+            140,
+            157
+          ],
+          "paired": [
+            137,
+            158,
+            129,
+            141
+          ]
+        },
+        "2.0": {
+          "eligible": 366,
+          "supported": [
+            112,
+            136,
+            116,
+            129
+          ],
+          "paired": [
+            111,
+            136,
+            108,
+            116
+          ]
+        },
+        "3.0": {
+          "eligible": 259,
+          "supported": [
+            71,
+            100,
+            83,
+            90
+          ],
+          "paired": [
+            71,
+            100,
+            76,
+            81
+          ]
+        }
+      }
+    }
+  },
+  "focal": [
+    2666.6666666666665,
+    2666.6666666666665
+  ],
+  "centre": [
+    959.5,
+    539.5
+  ],
+  "clean_material_certified": false,
+  "production_repairs": 0,
+  "neural_contours_loaded": false,
+  "code_sha256": {
+    "audit_r26_joint.py": "58c63244f81e8bfcbc0ed12196be49dac0f921da6b13d029e674e2cebbe60691",
+    "joint_eye_geometry.py": "6d31a8c1cdc5a34c8a81ffdcf9fb5d39fa5262a21a618ff47e0ab67072960a9e",
+    "partial_eye_geometry.py": "28d98adcdd60dba95a1b771c14afd8e305db69cbf62ab8dbbf2e9883038f2f14",
+    "connected_eye.py": "d11635665da255d103b94cd782173a12dc46f861117f9e9e867d181bda3dd305",
+    "corneal_transport.py": "580cf13503d98210834768d6f5c1f49544f882641e647bb55e2882a28557039b",
+    "coupled_eye_relight.py": "7d9b359414f3c1ba1252f617cf2d848f2e05234ad0ed9f683fa0ddec11bb1891"
+  }
+}

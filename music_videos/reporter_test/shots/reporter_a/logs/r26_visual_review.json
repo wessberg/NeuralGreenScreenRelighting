@@ -1,0 +1,32 @@
+{
+  "inspected": {
+    "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r26_joint\\contact_000.jpg": "b22b79c5377649bf29b2b6ec0056a25e4e4e1e18cb828d989d449336f0bde1ef",
+    "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r26_joint\\contact_024.jpg": "0efcdbdf45092e7f9f8124448b912888ac5a101bdad38901c533310eff5836d1",
+    "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r26_joint\\contact_048.jpg": "0b5b0a097943d9d66bc5dc9e301ee1e1efbf05ef8b71641004b6ea41a50ddc81",
+    "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r26_joint\\contact_072.jpg": "ca591689a1532cefdd7f6d7a12dd7f9f0605a4feb7cc1765b45035cb9304b0a5",
+    "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r26_joint\\contact_096.jpg": "4d4abab16cfffc6970d6dbf2c39ac69cfc4148eacd654511c67a1dd45029af62",
+    "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r26_joint\\contact_120.jpg": "3007696368da6335db63ca4d523ff3cba0c80c9b066ca96cd6c2305119dd4862",
+    "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r26_joint\\contact_144.jpg": "fb7733543b6f3781047928b9652559fcb84e252f75aa3897df62aea03f38f221",
+    "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r26_joint\\decoded_105.png": "80df2921e231f3174b5c01961bd514537945b9bc517282429e59c7484e1d745c",
+    "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r26_detail\\decoded_000.png": "0d59045ac8e7b0cc7546249b5dbc7fc0a3d5feaed01eb141f5d97f2e7c44b4c8",
+    "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r26_detail\\decoded_035.png": "8683543f3b24a258a1372843a1dd39a58f449a382e58e86b020c3d70e1f9864a",
+    "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r26_detail\\decoded_049.png": "f7481679cf949a822ad6c3626710dbc5d42ce6083e3272326baf623748385a4f",
+    "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r26_detail\\decoded_072.png": "b74f946d9be711f70b684944bf67d417655db57c98bf2eb62ce8ab06f2dca1c9",
+    "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r26_detail\\decoded_096.png": "9e0a3bd8b4a534159b29e666b68950ab690422ceee467879b63cdff817041779",
+    "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r26_transport\\decoded_000.png": "71f9ea10adb69aa230d5e373691e7f384e8bcd4842e7870e305ad557963ec4ba",
+    "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r26_transport\\decoded_035.png": "6477ed2ee9de9b25f470f81ecfc14cc6e178efa166d3891137799e6fe7a9741d",
+    "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r26_transport\\decoded_049.png": "049222f24e7e9873151126146e9cc4000909f40db69577d9a3721963ac4b5650",
+    "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r26_transport\\decoded_072.png": "226a8398e0d046494bb9f50e15114d7896038b95f00e6426188e131747e94692",
+    "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r26_transport\\decoded_096.png": "6475218d1114c651827ff21066614101a6dc5e2ab0b0c8a9e08059403b010bd1"
+  },
+  "method": "Decoded continuous contact sheets and distinct held boards inspected with view_image; no live playback",
+  "findings": [
+    "Original reflections retained through blinks and all continuous frames",
+    "Diagnostic overlays confined to five observed frames",
+    "Transport checks cover small lower and side iris regions; black means unscored",
+    "Brightness and texture differences remain; no clean material or replacement acceptance"
+  ],
+  "artist_approval": false,
+  "review_script_sha256": "be0f8f4f0afb710711d586d5993587fa7ecc45c19115ccb495aaf75b1f9023ef",
+  "prepare_script_sha256": "48978c8bfb03c57b6412ac6c421c342daafb87ebe7bf15d4b3f283444487e708"
+}
