@@ -1,0 +1,128 @@
+{
+  "selected": "fine",
+  "radius": 0.07796495981173088,
+  "channel": "green",
+  "records": [
+    {
+      "success": true,
+      "lower": 0.05128884914532582,
+      "upper": 0.20787241123052885,
+      "width": 0.15658356208520302,
+      "rejected": true,
+      "frame": 5,
+      "y": 32,
+      "x": 23
+    },
+    {
+      "success": true,
+      "lower": 0.0,
+      "upper": 0.09014468310504364,
+      "width": 0.09014468310504364,
+      "rejected": true,
+      "frame": 5,
+      "y": 31,
+      "x": 35
+    },
+    {
+      "success": true,
+      "lower": 0.05161029275844998,
+      "upper": 0.21174978785674245,
+      "width": 0.16013949509829248,
+      "rejected": true,
+      "frame": 11,
+      "y": 31,
+      "x": 43
+    },
+    {
+      "success": true,
+      "lower": 0.0,
+      "upper": 0.09408107011170527,
+      "width": 0.09408107011170527,
+      "rejected": true,
+      "frame": 11,
+      "y": 32,
+      "x": 32
+    },
+    {
+      "success": true,
+      "lower": 0.05717533696243224,
+      "upper": 0.21128593513669322,
+      "width": 0.15411059817426098,
+      "rejected": true,
+      "frame": 23,
+      "y": 31,
+      "x": 41
+    },
+    {
+      "success": true,
+      "lower": 0.0,
+      "upper": 0.09111010346653421,
+      "width": 0.09111010346653421,
+      "rejected": true,
+      "frame": 23,
+      "y": 32,
+      "x": 29
+    },
+    {
+      "success": true,
+      "lower": 0.04171230212539588,
+      "upper": 0.2254068310048037,
+      "width": 0.1836945288794078,
+      "rejected": true,
+      "frame": 29,
+      "y": 32,
+      "x": 21
+    },
+    {
+      "success": true,
+      "lower": 0.0,
+      "upper": 0.09014543924558094,
+      "width": 0.09014543924558094,
+      "rejected": true,
+      "frame": 29,
+      "y": 31,
+      "x": 32
+    },
+    {
+      "success": true,
+      "lower": 0.009654420719712599,
+      "upper": 0.2795340170877706,
+      "width": 0.269879596368058,
+      "rejected": true,
+      "frame": 35,
+      "y": 32,
+      "x": 23
+    },
+    {
+      "success": true,
+      "lower": 0.0,
+      "upper": 0.09810181297905357,
+      "width": 0.09810181297905357,
+      "rejected": true,
+      "frame": 35,
+      "y": 31,
+      "x": 29
+    },
+    {
+      "success": true,
+      "lower": 0.0075183440926163475,
+      "upper": 0.22715845242363822,
+      "width": 0.21964010833102188,
+      "rejected": true,
+      "frame": 5,
+      "y": 27,
+      "x": 25
+    },
+    {
+      "success": true,
+      "lower": 0.017036679159532917,
+      "upper": 0.2350365085591315,
+      "width": 0.21799982939959858,
+      "rejected": true,
+      "frame": 5,
+      "y": 36,
+      "x": 39
+    }
+  ],
+  "scope": "Conditional residual-box model intervals; not calibrated confidence"
+}

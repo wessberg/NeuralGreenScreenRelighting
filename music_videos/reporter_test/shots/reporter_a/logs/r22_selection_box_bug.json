@@ -1,0 +1,505 @@
+{
+  "protocol_sha256": "33d1d3e005086a1e5fd0ca4438e1f039c475f5befedb18df38f95b29ce255556",
+  "code_sha256": {
+    "audit_r22_eyes.py": "3cb4538c340d72f18d9f3e5362e7db8b364352806d0ae5aaaaecbfb73bb3396b",
+    "eye_detail_fit.py": "f79f16f149b56555dd9a3252028478e0fd39629942a970c6aca8892cb4875bac",
+    "eye_layer_fit.py": "0efd957306a01668f212cc5659ba84d5cbe98de25648839b44b2b003713ca879",
+    "corneal_transport.py": "580cf13503d98210834768d6f5c1f49544f882641e647bb55e2882a28557039b",
+    "observation_eye_fit.py": "c96f6d3f61afcd8d596eb7003b86b46d1cdf3fd0367056096273cbbd1fbe1172",
+    "render_r22_eyes.py": "d9f320614f5b15e4b0986a70a296ec055ae9bc2e1d3c671e07aba6a8b867acea",
+    "render_r20_transport.py": "49427d37b951a57fc0611c85beb54972ef5a84cf018f609eb49d2522f9e55c95",
+    "coupled_eye_relight.py": "7d9b359414f3c1ba1252f617cf2d848f2e05234ad0ed9f683fa0ddec11bb1891"
+  },
+  "train": [
+    0,
+    1,
+    3,
+    4,
+    6,
+    7,
+    9,
+    10,
+    12,
+    13,
+    15,
+    16,
+    18,
+    19,
+    21,
+    22,
+    24,
+    25,
+    27,
+    28,
+    30,
+    31,
+    33,
+    34
+  ],
+  "selection": {
+    "selected": "fine",
+    "scores": {
+      "coarse": 2.53207187463846,
+      "medium": 2.1319266318983194,
+      "fine": 1.7552417098080533
+    },
+    "calibration": false
+  },
+  "test": [
+    5,
+    11,
+    17,
+    23,
+    29,
+    35
+  ],
+  "arms": {
+    "legacy": {
+      "solvers": [
+        {
+          "success": false,
+          "status": 0,
+          "iterations": 200,
+          "cost": 0.2804862843631858,
+          "optimality": 1.0490205434292821e-06,
+          "projected_gradient": 0.0008277292524924446,
+          "certified": false
+        },
+        {
+          "success": false,
+          "status": 0,
+          "iterations": 200,
+          "cost": 0.505942869291701,
+          "optimality": 1.6473272268894322e-06,
+          "projected_gradient": 0.0007894764038705963,
+          "certified": false
+        },
+        {
+          "success": false,
+          "status": 0,
+          "iterations": 200,
+          "cost": 0.6603055992770418,
+          "optimality": 1.8083282829313896e-06,
+          "projected_gradient": 0.0007438920080396649,
+          "certified": false
+        }
+      ],
+      "observations": 9059,
+      "active_parameters": 371,
+      "total_parameters": 432,
+      "train_linear_mae": 0.006966205431184873,
+      "certified": false,
+      "seconds": 17.724991500002943,
+      "test_support": {
+        "visible": 1987,
+        "complete_three_frame": 1979
+      }
+    },
+    "coarse": {
+      "solvers": [
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 116,
+          "evaluations": 121,
+          "cost": 0.12147323419600471,
+          "projected_gradient": 9.225013182815808e-09,
+          "certified": true
+        },
+        {
+          "success": true,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "iterations": 67,
+          "evaluations": 77,
+          "cost": 0.34662126927448705,
+          "projected_gradient": 6.767651991819858e-05,
+          "certified": false
+        },
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 119,
+          "evaluations": 131,
+          "cost": 0.4991289957271272,
+          "projected_gradient": 7.136441769993451e-09,
+          "certified": true
+        }
+      ],
+      "observations": 9059,
+      "active_parameters": 1083,
+      "total_parameters": 1312,
+      "train_linear_mae": 0.005588672669931053,
+      "train_max_abs": 0.09508897557103092,
+      "certified": false,
+      "seconds": 0.06963199999881908,
+      "test_support": {
+        "visible": 1987,
+        "complete_three_frame": 1961
+      }
+    },
+    "medium": {
+      "solvers": [
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 83,
+          "evaluations": 87,
+          "cost": 0.07790927072820714,
+          "projected_gradient": 5.358205708121122e-09,
+          "certified": true
+        },
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 78,
+          "evaluations": 84,
+          "cost": 0.21612159819914958,
+          "projected_gradient": 4.8970736007958315e-09,
+          "certified": true
+        },
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 73,
+          "evaluations": 77,
+          "cost": 0.31034269749419136,
+          "projected_gradient": 4.323784660170693e-09,
+          "certified": true
+        }
+      ],
+      "observations": 9059,
+      "active_parameters": 1542,
+      "total_parameters": 2192,
+      "train_linear_mae": 0.004108629549124468,
+      "train_max_abs": 0.08573738300633926,
+      "certified": true,
+      "seconds": 0.06690410000010161,
+      "test_support": {
+        "visible": 1987,
+        "complete_three_frame": 1955
+      }
+    },
+    "fine": {
+      "solvers": [
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 557,
+          "evaluations": 584,
+          "cost": 0.04133508490068476,
+          "projected_gradient": 7.031462481710271e-09,
+          "certified": true
+        },
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 624,
+          "evaluations": 646,
+          "cost": 0.10665246372106608,
+          "projected_gradient": 9.760787823831496e-09,
+          "certified": true
+        },
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 651,
+          "evaluations": 682,
+          "cost": 0.15313437514148834,
+          "projected_gradient": 6.275087033325022e-09,
+          "certified": true
+        }
+      ],
+      "observations": 9059,
+      "active_parameters": 3000,
+      "total_parameters": 5264,
+      "train_linear_mae": 0.002305911485649904,
+      "train_max_abs": 0.07796395981173088,
+      "certified": true,
+      "seconds": 0.8704304000020784,
+      "test_support": {
+        "visible": 1987,
+        "complete_three_frame": 1938
+      }
+    }
+  },
+  "probes": [
+    [
+      5,
+      32,
+      23
+    ],
+    [
+      5,
+      31,
+      35
+    ],
+    [
+      11,
+      31,
+      43
+    ],
+    [
+      11,
+      32,
+      32
+    ],
+    [
+      23,
+      31,
+      41
+    ],
+    [
+      23,
+      32,
+      29
+    ],
+    [
+      29,
+      32,
+      21
+    ],
+    [
+      29,
+      31,
+      32
+    ],
+    [
+      35,
+      32,
+      23
+    ],
+    [
+      35,
+      31,
+      29
+    ],
+    [
+      5,
+      27,
+      25
+    ],
+    [
+      5,
+      36,
+      39
+    ]
+  ],
+  "masks": {
+    "0": {
+      "full_visible": 403,
+      "iris": 337,
+      "pupil": 66,
+      "mixed": 0
+    },
+    "1": {
+      "full_visible": 404,
+      "iris": 336,
+      "pupil": 67,
+      "mixed": 1
+    },
+    "2": {
+      "full_visible": 403,
+      "iris": 336,
+      "pupil": 67,
+      "mixed": 0
+    },
+    "3": {
+      "full_visible": 402,
+      "iris": 336,
+      "pupil": 65,
+      "mixed": 1
+    },
+    "4": {
+      "full_visible": 400,
+      "iris": 335,
+      "pupil": 63,
+      "mixed": 2
+    },
+    "5": {
+      "full_visible": 394,
+      "iris": 330,
+      "pupil": 64,
+      "mixed": 0
+    },
+    "6": {
+      "full_visible": 394,
+      "iris": 329,
+      "pupil": 65,
+      "mixed": 0
+    },
+    "7": {
+      "full_visible": 396,
+      "iris": 331,
+      "pupil": 65,
+      "mixed": 0
+    },
+    "8": {
+      "full_visible": 395,
+      "iris": 327,
+      "pupil": 67,
+      "mixed": 1
+    },
+    "9": {
+      "full_visible": 396,
+      "iris": 331,
+      "pupil": 65,
+      "mixed": 0
+    },
+    "10": {
+      "full_visible": 394,
+      "iris": 329,
+      "pupil": 64,
+      "mixed": 1
+    },
+    "11": {
+      "full_visible": 395,
+      "iris": 330,
+      "pupil": 64,
+      "mixed": 1
+    },
+    "12": {
+      "full_visible": 400,
+      "iris": 337,
+      "pupil": 62,
+      "mixed": 1
+    },
+    "13": {
+      "full_visible": 402,
+      "iris": 336,
+      "pupil": 66,
+      "mixed": 0
+    },
+    "14": {
+      "full_visible": 403,
+      "iris": 336,
+      "pupil": 67,
+      "mixed": 0
+    },
+    "15": {
+      "full_visible": 363,
+      "iris": 296,
+      "pupil": 67,
+      "mixed": 0
+    },
+    "16": {
+      "full_visible": 175,
+      "iris": 114,
+      "pupil": 61,
+      "mixed": 0
+    },
+    "17": {
+      "full_visible": 0,
+      "iris": 0,
+      "pupil": 0,
+      "mixed": 0
+    },
+    "18": {
+      "full_visible": 174,
+      "iris": 113,
+      "pupil": 61,
+      "mixed": 0
+    },
+    "19": {
+      "full_visible": 363,
+      "iris": 295,
+      "pupil": 67,
+      "mixed": 1
+    },
+    "20": {
+      "full_visible": 403,
+      "iris": 336,
+      "pupil": 67,
+      "mixed": 0
+    },
+    "21": {
+      "full_visible": 402,
+      "iris": 336,
+      "pupil": 65,
+      "mixed": 1
+    },
+    "22": {
+      "full_visible": 400,
+      "iris": 335,
+      "pupil": 63,
+      "mixed": 2
+    },
+    "23": {
+      "full_visible": 394,
+      "iris": 330,
+      "pupil": 64,
+      "mixed": 0
+    },
+    "24": {
+      "full_visible": 394,
+      "iris": 329,
+      "pupil": 65,
+      "mixed": 0
+    },
+    "25": {
+      "full_visible": 396,
+      "iris": 331,
+      "pupil": 65,
+      "mixed": 0
+    },
+    "26": {
+      "full_visible": 395,
+      "iris": 327,
+      "pupil": 67,
+      "mixed": 1
+    },
+    "27": {
+      "full_visible": 396,
+      "iris": 331,
+      "pupil": 65,
+      "mixed": 0
+    },
+    "28": {
+      "full_visible": 394,
+      "iris": 329,
+      "pupil": 64,
+      "mixed": 1
+    },
+    "29": {
+      "full_visible": 395,
+      "iris": 330,
+      "pupil": 64,
+      "mixed": 1
+    },
+    "30": {
+      "full_visible": 400,
+      "iris": 337,
+      "pupil": 62,
+      "mixed": 1
+    },
+    "31": {
+      "full_visible": 402,
+      "iris": 336,
+      "pupil": 66,
+      "mixed": 0
+    },
+    "32": {
+      "full_visible": 403,
+      "iris": 336,
+      "pupil": 67,
+      "mixed": 0
+    },
+    "33": {
+      "full_visible": 404,
+      "iris": 337,
+      "pupil": 67,
+      "mixed": 0
+    },
+    "34": {
+      "full_visible": 405,
+      "iris": 339,
+      "pupil": 66,
+      "mixed": 0
+    },
+    "35": {
+      "full_visible": 409,
+      "iris": 341,
+      "pupil": 67,
+      "mixed": 1
+    }
+  }
+}

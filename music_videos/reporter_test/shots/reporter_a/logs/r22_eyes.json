@@ -1,0 +1,1629 @@
+{
+  "protocol_sha256": "0a7cbbb170833fe903b54728bc031d0d685a6f80d3ce44575c3aad4e37211fb1",
+  "code_sha256": {
+    "audit_r22_eyes.py": "aa62b61b012a0e41e05a773d95df34d124aa767707837283e93ad057a30578a6",
+    "eye_detail_fit.py": "f79f16f149b56555dd9a3252028478e0fd39629942a970c6aca8892cb4875bac",
+    "eye_layer_fit.py": "0efd957306a01668f212cc5659ba84d5cbe98de25648839b44b2b003713ca879",
+    "corneal_transport.py": "580cf13503d98210834768d6f5c1f49544f882641e647bb55e2882a28557039b",
+    "observation_eye_fit.py": "c96f6d3f61afcd8d596eb7003b86b46d1cdf3fd0367056096273cbbd1fbe1172",
+    "render_r22_eyes.py": "1721b1d57be16d86d6002b0e83a104e8f2ca1055199941cdb8349d8d82d11af8",
+    "render_r20_transport.py": "49427d37b951a57fc0611c85beb54972ef5a84cf018f609eb49d2522f9e55c95",
+    "coupled_eye_relight.py": "7d9b359414f3c1ba1252f617cf2d848f2e05234ad0ed9f683fa0ddec11bb1891"
+  },
+  "train": [
+    0,
+    1,
+    3,
+    4,
+    6,
+    7,
+    9,
+    10,
+    12,
+    13,
+    15,
+    16,
+    18,
+    19,
+    21,
+    22,
+    24,
+    25,
+    27,
+    28,
+    30,
+    31,
+    33,
+    34
+  ],
+  "selection": {
+    "selected": "fine",
+    "scores": {
+      "coarse": 6.426489712487365,
+      "medium": 6.101827612619381,
+      "fine": 4.670064177595874
+    },
+    "calibration": false
+  },
+  "test": [
+    5,
+    11,
+    17,
+    23,
+    29,
+    35
+  ],
+  "arms": {
+    "legacy": {
+      "solvers": [
+        {
+          "success": false,
+          "status": 0,
+          "iterations": 200,
+          "cost": 1.0070127190259548,
+          "optimality": 4.87354606677368e-06,
+          "projected_gradient": 0.0008844592376775055,
+          "certified": false
+        },
+        {
+          "success": false,
+          "status": 0,
+          "iterations": 200,
+          "cost": 1.8418006092731163,
+          "optimality": 1.595160275328956e-06,
+          "projected_gradient": 0.0004575672442746759,
+          "certified": false
+        },
+        {
+          "success": false,
+          "status": 0,
+          "iterations": 200,
+          "cost": 2.351359056103324,
+          "optimality": 1.1666430149707615e-06,
+          "projected_gradient": 0.00043164777424414564,
+          "certified": false
+        }
+      ],
+      "observations": 9059,
+      "active_parameters": 371,
+      "total_parameters": 432,
+      "train_linear_mae": 0.014707835942396288,
+      "certified": false,
+      "seconds": 17.702716799998598,
+      "test_support": {
+        "visible": 1987,
+        "complete_three_frame": 1981
+      },
+      "test": {
+        "full_visible": {
+          "sum_fit": {
+            "pixels": 1987,
+            "linear_mae": 0.01502737398398774,
+            "display_mae": 6.359492985661588,
+            "display_p95": 14.044989921140731
+          },
+          "interior": {
+            "pixels": 1987,
+            "linear_mae": 0.013033760438422953,
+            "display_mae": 6.0464635770113935,
+            "display_p95": 13.161286251393232
+          },
+          "old_reflection": {
+            "pixels": 1987,
+            "linear_mae": 0.004011170310925598,
+            "display_mae": 4.864133069674245,
+            "display_p95": 22.668634672937728
+          },
+          "coupled_known_scene": {
+            "pixels": 1987,
+            "linear_mae": 0.013033760438422953,
+            "display_mae": 5.712513339420666,
+            "display_p95": 12.798844909264439
+          }
+        },
+        "iris": {
+          "sum_fit": {
+            "pixels": 1661,
+            "linear_mae": 0.01579389746203726,
+            "display_mae": 6.041963783463554,
+            "display_p95": 12.986858471649535
+          },
+          "interior": {
+            "pixels": 1661,
+            "linear_mae": 0.014764180186201658,
+            "display_mae": 5.836939897520752,
+            "display_p95": 12.490508448910994
+          },
+          "old_reflection": {
+            "pixels": 1661,
+            "linear_mae": 0.0026888975714336096,
+            "display_mae": 3.4866298731091527,
+            "display_p95": 18.719264475754077
+          },
+          "coupled_known_scene": {
+            "pixels": 1661,
+            "linear_mae": 0.014764180186201658,
+            "display_mae": 5.730754674245492,
+            "display_p95": 12.31183434750277
+          }
+        },
+        "pupil": {
+          "sum_fit": {
+            "pixels": 323,
+            "linear_mae": 0.01079415695354152,
+            "display_mae": 7.859619407642416,
+            "display_p95": 31.3481001691011
+          },
+          "interior": {
+            "pixels": 323,
+            "linear_mae": 0.0038296274702157226,
+            "display_mae": 6.975982335035251,
+            "display_p95": 18.681536023584663
+          },
+          "old_reflection": {
+            "pixels": 323,
+            "linear_mae": 0.010843745280769606,
+            "display_mae": 11.991373739768523,
+            "display_p95": 42.78719009516465
+          },
+          "coupled_known_scene": {
+            "pixels": 323,
+            "linear_mae": 0.0038296274702157226,
+            "display_mae": 5.467942887331445,
+            "display_p95": 16.47291926179194
+          }
+        },
+        "mixed": {
+          "sum_fit": {
+            "pixels": 3,
+            "linear_mae": 0.04640524191527903,
+            "display_mae": 20.651216502703882,
+            "display_p95": 32.48583262866406
+          },
+          "interior": {
+            "pixels": 3,
+            "linear_mae": 0.04593634299525667,
+            "display_mae": 21.974554507760953,
+            "display_p95": 32.48584073312047
+          },
+          "old_reflection": {
+            "pixels": 3,
+            "linear_mae": 0.0004689386564522187,
+            "display_mae": 0.17549075439625458,
+            "display_p95": 0.7407511595357233
+          },
+          "coupled_known_scene": {
+            "pixels": 3,
+            "linear_mae": 0.04593634299525667,
+            "display_mae": 21.944979633015034,
+            "display_p95": 32.485850249774174
+          }
+        }
+      }
+    },
+    "coarse": {
+      "solvers": [
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 73,
+          "evaluations": 78,
+          "cost": 0.6555088733022043,
+          "projected_gradient": 6.053410009365656e-09,
+          "certified": true
+        },
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 72,
+          "evaluations": 75,
+          "cost": 1.4584637866941124,
+          "projected_gradient": 5.166320260485691e-09,
+          "certified": true
+        },
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 72,
+          "evaluations": 77,
+          "cost": 1.9494022985776085,
+          "projected_gradient": 8.517739263913526e-09,
+          "certified": true
+        }
+      ],
+      "observations": 9059,
+      "active_parameters": 1083,
+      "total_parameters": 1312,
+      "train_linear_mae": 0.013141844303893244,
+      "train_max_abs": 0.11952781338802952,
+      "certified": true,
+      "seconds": 0.048286699999152916,
+      "test_support": {
+        "visible": 1987,
+        "complete_three_frame": 1963
+      },
+      "test": {
+        "full_visible": {
+          "sum_fit": {
+            "pixels": 1987,
+            "linear_mae": 0.014182305854438802,
+            "display_mae": 6.159696148717585,
+            "display_p95": 13.651588773441544
+          },
+          "interior": {
+            "pixels": 1987,
+            "linear_mae": 0.013348325922164344,
+            "display_mae": 6.655890777697821,
+            "display_p95": 14.162997420041158
+          },
+          "old_reflection": {
+            "pixels": 1987,
+            "linear_mae": 0.0034527704054283094,
+            "display_mae": 5.325700806664919,
+            "display_p95": 23.359024728859985
+          },
+          "coupled_known_scene": {
+            "pixels": 1987,
+            "linear_mae": 0.013348325922164344,
+            "display_mae": 6.150624554628489,
+            "display_p95": 13.287620540722768
+          }
+        },
+        "iris": {
+          "sum_fit": {
+            "pixels": 1661,
+            "linear_mae": 0.015334537389004818,
+            "display_mae": 5.9068625834568,
+            "display_p95": 12.894310499507043
+          },
+          "interior": {
+            "pixels": 1661,
+            "linear_mae": 0.014848871161159563,
+            "display_mae": 5.870064612781703,
+            "display_p95": 12.566583159503725
+          },
+          "old_reflection": {
+            "pixels": 1661,
+            "linear_mae": 0.002413870882079678,
+            "display_mae": 3.9380562796391234,
+            "display_p95": 22.00153292349095
+          },
+          "coupled_known_scene": {
+            "pixels": 1661,
+            "linear_mae": 0.014848871161159563,
+            "display_mae": 5.7619303440441625,
+            "display_p95": 12.432073393576331
+          }
+        },
+        "pupil": {
+          "sum_fit": {
+            "pixels": 323,
+            "linear_mae": 0.007941679943129835,
+            "display_mae": 7.320793967943409,
+            "display_p95": 25.791370640347754
+          },
+          "interior": {
+            "pixels": 323,
+            "linear_mae": 0.005334312892842738,
+            "display_mae": 10.557157663578185,
+            "display_p95": 24.45454776369321
+          },
+          "old_reflection": {
+            "pixels": 323,
+            "linear_mae": 0.008801759063488453,
+            "display_mae": 12.501599182200586,
+            "display_p95": 36.21631821854055
+          },
+          "coupled_known_scene": {
+            "pixels": 323,
+            "linear_mae": 0.005334312892842738,
+            "display_mae": 8.005235838829165,
+            "display_p95": 20.845927829185563
+          }
+        },
+        "mixed": {
+          "sum_fit": {
+            "pixels": 3,
+            "linear_mae": 0.04813750266731985,
+            "display_mae": 21.133681578124833,
+            "display_p95": 32.49586134804659
+          },
+          "interior": {
+            "pixels": 3,
+            "linear_mae": 0.04538851475543785,
+            "display_mae": 21.70524270647045,
+            "display_p95": 32.495869452502994
+          },
+          "old_reflection": {
+            "pixels": 3,
+            "linear_mae": 0.0027490276483118636,
+            "display_mae": 1.0131621706069736,
+            "display_p95": 3.483956314057718
+          },
+          "coupled_known_scene": {
+            "pixels": 3,
+            "linear_mae": 0.04538851475543785,
+            "display_mae": 21.677837549211986,
+            "display_p95": 32.49587897071443
+          }
+        }
+      }
+    },
+    "medium": {
+      "solvers": [
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 69,
+          "evaluations": 74,
+          "cost": 0.5592638363391504,
+          "projected_gradient": 7.928025763659363e-09,
+          "certified": true
+        },
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 65,
+          "evaluations": 70,
+          "cost": 1.1941868479106,
+          "projected_gradient": 9.887251295470634e-09,
+          "certified": true
+        },
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 71,
+          "evaluations": 77,
+          "cost": 1.5800411154320932,
+          "projected_gradient": 7.205967156309612e-09,
+          "certified": true
+        }
+      ],
+      "observations": 9059,
+      "active_parameters": 1542,
+      "total_parameters": 2192,
+      "train_linear_mae": 0.0115038536992487,
+      "train_max_abs": 0.10660763649113056,
+      "certified": true,
+      "seconds": 0.05703369999901042,
+      "test_support": {
+        "visible": 1987,
+        "complete_three_frame": 1955
+      },
+      "test": {
+        "full_visible": {
+          "sum_fit": {
+            "pixels": 1987,
+            "linear_mae": 0.012452347331369738,
+            "display_mae": 5.477952790636955,
+            "display_p95": 13.101331588834126
+          },
+          "interior": {
+            "pixels": 1987,
+            "linear_mae": 0.01162012690784668,
+            "display_mae": 5.982513895095775,
+            "display_p95": 14.178712733204943
+          },
+          "old_reflection": {
+            "pixels": 1987,
+            "linear_mae": 0.003462809144488808,
+            "display_mae": 5.373318850603166,
+            "display_p95": 23.645201150007015
+          },
+          "coupled_known_scene": {
+            "pixels": 1987,
+            "linear_mae": 0.01162012690784668,
+            "display_mae": 5.481611258408706,
+            "display_p95": 12.912689915932948
+          }
+        },
+        "iris": {
+          "sum_fit": {
+            "pixels": 1661,
+            "linear_mae": 0.013262777165549616,
+            "display_mae": 5.093950127059193,
+            "display_p95": 11.94890244634573
+          },
+          "interior": {
+            "pixels": 1661,
+            "linear_mae": 0.012772217537492652,
+            "display_mae": 5.050663435740365,
+            "display_p95": 11.692637385728675
+          },
+          "old_reflection": {
+            "pixels": 1661,
+            "linear_mae": 0.0024188165434189265,
+            "display_mae": 3.9714782436996163,
+            "display_p95": 22.327703358666106
+          },
+          "coupled_known_scene": {
+            "pixels": 1661,
+            "linear_mae": 0.012772217537492652,
+            "display_mae": 4.948433349465587,
+            "display_p95": 11.445738319391548
+          }
+        },
+        "pupil": {
+          "sum_fit": {
+            "pixels": 323,
+            "linear_mae": 0.00792062009192525,
+            "display_mae": 7.284970768882793,
+            "display_p95": 26.18085225945795
+          },
+          "interior": {
+            "pixels": 323,
+            "linear_mae": 0.0053541817555679,
+            "display_mae": 10.6089839436009,
+            "display_p95": 24.53105977097017
+          },
+          "old_reflection": {
+            "pixels": 323,
+            "linear_mae": 0.008833140915098635,
+            "display_mae": 12.620883454301275,
+            "display_p95": 36.080816693606224
+          },
+          "coupled_known_scene": {
+            "pixels": 323,
+            "linear_mae": 0.0053541817555679,
+            "display_mae": 8.053517745911353,
+            "display_p95": 20.746181148617634
+          }
+        },
+        "mixed": {
+          "sum_fit": {
+            "pixels": 3,
+            "linear_mae": 0.05166032858730005,
+            "display_mae": 23.531825200389633,
+            "display_p95": 37.34359027681678
+          },
+          "interior": {
+            "pixels": 3,
+            "linear_mae": 0.04837937635587483,
+            "display_mae": 23.800443002489956,
+            "display_p95": 37.343569058612026
+          },
+          "old_reflection": {
+            "pixels": 3,
+            "linear_mae": 0.0032809919678550726,
+            "display_mae": 1.2046125413718898,
+            "display_p95": 4.1961833205408965
+          },
+          "coupled_known_scene": {
+            "pixels": 3,
+            "linear_mae": 0.04837937635587483,
+            "display_mae": 23.775848355464152,
+            "display_p95": 37.343581604576016
+          }
+        }
+      }
+    },
+    "fine": {
+      "solvers": [
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 532,
+          "evaluations": 573,
+          "cost": 0.30331524688303557,
+          "projected_gradient": 9.885669893794358e-09,
+          "certified": true
+        },
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 543,
+          "evaluations": 561,
+          "cost": 0.4919270639897301,
+          "projected_gradient": 6.893822561415686e-09,
+          "certified": true
+        },
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 508,
+          "evaluations": 530,
+          "cost": 0.6053765454184407,
+          "projected_gradient": 7.61449871211628e-09,
+          "certified": true
+        }
+      ],
+      "observations": 9059,
+      "active_parameters": 3000,
+      "total_parameters": 5264,
+      "train_linear_mae": 0.006668724961277737,
+      "train_max_abs": 0.09021550379507458,
+      "certified": true,
+      "seconds": 0.7293738000007579,
+      "test_support": {
+        "visible": 1987,
+        "complete_three_frame": 1938
+      },
+      "test": {
+        "full_visible": {
+          "sum_fit": {
+            "pixels": 1987,
+            "linear_mae": 0.00855051016785737,
+            "display_mae": 3.9843109721288137,
+            "display_p95": 11.773390287704743
+          },
+          "interior": {
+            "pixels": 1987,
+            "linear_mae": 0.007634733838906554,
+            "display_mae": 4.5193057130658065,
+            "display_p95": 14.748287592539818
+          },
+          "old_reflection": {
+            "pixels": 1987,
+            "linear_mae": 0.003450472421115887,
+            "display_mae": 5.427343988830615,
+            "display_p95": 23.662517355317338
+          },
+          "coupled_known_scene": {
+            "pixels": 1987,
+            "linear_mae": 0.007634733838906554,
+            "display_mae": 4.017753491732619,
+            "display_p95": 12.252902570840162
+          }
+        },
+        "iris": {
+          "sum_fit": {
+            "pixels": 1661,
+            "linear_mae": 0.008587232552474879,
+            "display_mae": 3.2938045928852895,
+            "display_p95": 9.401054983216993
+          },
+          "interior": {
+            "pixels": 1661,
+            "linear_mae": 0.00796200950758177,
+            "display_mae": 3.181767771976564,
+            "display_p95": 8.869983870340867
+          },
+          "old_reflection": {
+            "pixels": 1661,
+            "linear_mae": 0.002353090194849361,
+            "display_mae": 3.9273990346160286,
+            "display_p95": 21.630714055922166
+          },
+          "coupled_known_scene": {
+            "pixels": 1661,
+            "linear_mae": 0.00796200950758177,
+            "display_mae": 3.113448864381201,
+            "display_p95": 8.529648771778632
+          }
+        },
+        "pupil": {
+          "sum_fit": {
+            "pixels": 323,
+            "linear_mae": 0.008043754417657374,
+            "display_mae": 7.391679282987186,
+            "display_p95": 25.830694213351602
+          },
+          "interior": {
+            "pixels": 323,
+            "linear_mae": 0.005628266286289462,
+            "display_mae": 11.251864403573341,
+            "display_p95": 24.59984313204576
+          },
+          "old_reflection": {
+            "pixels": 323,
+            "linear_mae": 0.009122775065873714,
+            "display_mae": 13.189989778906273,
+            "display_p95": 35.23814757613829
+          },
+          "coupled_known_scene": {
+            "pixels": 323,
+            "linear_mae": 0.005628266286289462,
+            "display_mae": 8.517962663950675,
+            "display_p95": 21.311624591008172
+          }
+        },
+        "mixed": {
+          "sum_fit": {
+            "pixels": 3,
+            "linear_mae": 0.042779252322827775,
+            "display_mae": 19.434688144208483,
+            "display_p95": 32.228429199721035
+          },
+          "interior": {
+            "pixels": 3,
+            "linear_mae": 0.04246277844750189,
+            "display_mae": 20.197326751498835,
+            "display_p95": 32.22845600890183
+          },
+          "old_reflection": {
+            "pixels": 3,
+            "linear_mae": 0.0003165136117557353,
+            "display_mae": 0.11867024082794954,
+            "display_p95": 0.4586764405808427
+          },
+          "coupled_known_scene": {
+            "pixels": 3,
+            "linear_mae": 0.04246277844750189,
+            "display_mae": 20.178561293157593,
+            "display_p95": 32.228475761217936
+          }
+        }
+      }
+    }
+  },
+  "probes": [
+    [
+      5,
+      32,
+      23
+    ],
+    [
+      5,
+      31,
+      35
+    ],
+    [
+      11,
+      31,
+      43
+    ],
+    [
+      11,
+      32,
+      32
+    ],
+    [
+      23,
+      31,
+      41
+    ],
+    [
+      23,
+      32,
+      29
+    ],
+    [
+      29,
+      32,
+      21
+    ],
+    [
+      29,
+      31,
+      32
+    ],
+    [
+      35,
+      32,
+      23
+    ],
+    [
+      35,
+      31,
+      29
+    ],
+    [
+      5,
+      27,
+      25
+    ],
+    [
+      5,
+      36,
+      39
+    ]
+  ],
+  "masks": {
+    "0": {
+      "full_visible": 403,
+      "iris": 337,
+      "pupil": 66,
+      "mixed": 0
+    },
+    "1": {
+      "full_visible": 404,
+      "iris": 336,
+      "pupil": 67,
+      "mixed": 1
+    },
+    "2": {
+      "full_visible": 403,
+      "iris": 336,
+      "pupil": 67,
+      "mixed": 0
+    },
+    "3": {
+      "full_visible": 402,
+      "iris": 336,
+      "pupil": 65,
+      "mixed": 1
+    },
+    "4": {
+      "full_visible": 400,
+      "iris": 335,
+      "pupil": 63,
+      "mixed": 2
+    },
+    "5": {
+      "full_visible": 394,
+      "iris": 330,
+      "pupil": 64,
+      "mixed": 0
+    },
+    "6": {
+      "full_visible": 394,
+      "iris": 329,
+      "pupil": 65,
+      "mixed": 0
+    },
+    "7": {
+      "full_visible": 396,
+      "iris": 331,
+      "pupil": 65,
+      "mixed": 0
+    },
+    "8": {
+      "full_visible": 396,
+      "iris": 327,
+      "pupil": 67,
+      "mixed": 2
+    },
+    "9": {
+      "full_visible": 396,
+      "iris": 331,
+      "pupil": 65,
+      "mixed": 0
+    },
+    "10": {
+      "full_visible": 394,
+      "iris": 329,
+      "pupil": 64,
+      "mixed": 1
+    },
+    "11": {
+      "full_visible": 395,
+      "iris": 330,
+      "pupil": 64,
+      "mixed": 1
+    },
+    "12": {
+      "full_visible": 400,
+      "iris": 337,
+      "pupil": 62,
+      "mixed": 1
+    },
+    "13": {
+      "full_visible": 402,
+      "iris": 336,
+      "pupil": 66,
+      "mixed": 0
+    },
+    "14": {
+      "full_visible": 403,
+      "iris": 336,
+      "pupil": 67,
+      "mixed": 0
+    },
+    "15": {
+      "full_visible": 363,
+      "iris": 296,
+      "pupil": 67,
+      "mixed": 0
+    },
+    "16": {
+      "full_visible": 175,
+      "iris": 114,
+      "pupil": 61,
+      "mixed": 0
+    },
+    "17": {
+      "full_visible": 0,
+      "iris": 0,
+      "pupil": 0,
+      "mixed": 0
+    },
+    "18": {
+      "full_visible": 174,
+      "iris": 113,
+      "pupil": 61,
+      "mixed": 0
+    },
+    "19": {
+      "full_visible": 363,
+      "iris": 295,
+      "pupil": 67,
+      "mixed": 1
+    },
+    "20": {
+      "full_visible": 403,
+      "iris": 336,
+      "pupil": 67,
+      "mixed": 0
+    },
+    "21": {
+      "full_visible": 402,
+      "iris": 336,
+      "pupil": 65,
+      "mixed": 1
+    },
+    "22": {
+      "full_visible": 400,
+      "iris": 335,
+      "pupil": 63,
+      "mixed": 2
+    },
+    "23": {
+      "full_visible": 394,
+      "iris": 330,
+      "pupil": 64,
+      "mixed": 0
+    },
+    "24": {
+      "full_visible": 394,
+      "iris": 329,
+      "pupil": 65,
+      "mixed": 0
+    },
+    "25": {
+      "full_visible": 396,
+      "iris": 331,
+      "pupil": 65,
+      "mixed": 0
+    },
+    "26": {
+      "full_visible": 396,
+      "iris": 327,
+      "pupil": 67,
+      "mixed": 2
+    },
+    "27": {
+      "full_visible": 396,
+      "iris": 331,
+      "pupil": 65,
+      "mixed": 0
+    },
+    "28": {
+      "full_visible": 394,
+      "iris": 329,
+      "pupil": 64,
+      "mixed": 1
+    },
+    "29": {
+      "full_visible": 395,
+      "iris": 330,
+      "pupil": 64,
+      "mixed": 1
+    },
+    "30": {
+      "full_visible": 400,
+      "iris": 337,
+      "pupil": 62,
+      "mixed": 1
+    },
+    "31": {
+      "full_visible": 402,
+      "iris": 336,
+      "pupil": 66,
+      "mixed": 0
+    },
+    "32": {
+      "full_visible": 403,
+      "iris": 336,
+      "pupil": 67,
+      "mixed": 0
+    },
+    "33": {
+      "full_visible": 404,
+      "iris": 337,
+      "pupil": 67,
+      "mixed": 0
+    },
+    "34": {
+      "full_visible": 405,
+      "iris": 339,
+      "pupil": 66,
+      "mixed": 0
+    },
+    "35": {
+      "full_visible": 409,
+      "iris": 341,
+      "pupil": 67,
+      "mixed": 1
+    }
+  },
+  "controls": {
+    "full_visible": {
+      "source": {
+        "pixels": 1987,
+        "linear_mae": 0.010417938770889121,
+        "display_mae": 5.181584781992466,
+        "display_p95": 40.39943950468533
+      },
+      "add_only": {
+        "pixels": 1987,
+        "linear_mae": 0.010417938770889121,
+        "display_mae": 4.753507554764961,
+        "display_p95": 39.2453298036351
+      }
+    },
+    "iris": {
+      "source": {
+        "pixels": 1661,
+        "linear_mae": 0.006602952275862542,
+        "display_mae": 2.2541288909491537,
+        "display_p95": 17.105816978301796
+      },
+      "add_only": {
+        "pixels": 1661,
+        "linear_mae": 0.006602952275862542,
+        "display_mae": 2.179939560918974,
+        "display_p95": 16.995421458022122
+      }
+    },
+    "pupil": {
+      "source": {
+        "pixels": 323,
+        "linear_mae": 0.029743674099233897,
+        "display_mae": 20.129859775482288,
+        "display_p95": 81.03722254738767
+      },
+      "add_only": {
+        "pixels": 323,
+        "linear_mae": 0.029743674099233897,
+        "display_mae": 17.878860627465922,
+        "display_p95": 78.1712310857673
+      }
+    },
+    "mixed": {
+      "source": {
+        "pixels": 3,
+        "linear_mae": 0.041911291165484324,
+        "display_mae": 16.585388823901795,
+        "display_p95": 53.89970573549617
+      },
+      "add_only": {
+        "pixels": 3,
+        "linear_mae": 0.041911291165484324,
+        "display_mae": 16.489305986690155,
+        "display_p95": 53.539722262367626
+      }
+    }
+  },
+  "uncertainty": {
+    "selected": "fine",
+    "radius": 0.09021650379507458,
+    "channel": "green",
+    "records": [
+      {
+        "success": true,
+        "lower": 0.03665613711726977,
+        "upper": 0.2177704593430118,
+        "width": 0.18111432222574203,
+        "rejected": true,
+        "frame": 5,
+        "y": 32,
+        "x": 23
+      },
+      {
+        "success": true,
+        "lower": 0.0,
+        "upper": 0.1023962049328051,
+        "width": 0.1023962049328051,
+        "rejected": true,
+        "frame": 5,
+        "y": 31,
+        "x": 35
+      },
+      {
+        "success": true,
+        "lower": 0.035954924232326484,
+        "upper": 0.22070826346487232,
+        "width": 0.18475333923254583,
+        "rejected": true,
+        "frame": 11,
+        "y": 31,
+        "x": 43
+      },
+      {
+        "success": true,
+        "lower": 0.0,
+        "upper": 0.10545172452208858,
+        "width": 0.10545172452208858,
+        "rejected": true,
+        "frame": 11,
+        "y": 32,
+        "x": 32
+      },
+      {
+        "success": true,
+        "lower": 0.049431739747049515,
+        "upper": 0.2263866114816997,
+        "width": 0.1769548717346502,
+        "rejected": true,
+        "frame": 23,
+        "y": 31,
+        "x": 41
+      },
+      {
+        "success": true,
+        "lower": 0.0,
+        "upper": 0.10250619917418144,
+        "width": 0.10250619917418144,
+        "rejected": true,
+        "frame": 23,
+        "y": 32,
+        "x": 29
+      },
+      {
+        "success": true,
+        "lower": 0.04397865435138826,
+        "upper": 0.23159763362804434,
+        "width": 0.18761897927665608,
+        "rejected": true,
+        "frame": 29,
+        "y": 32,
+        "x": 21
+      },
+      {
+        "success": true,
+        "lower": 0.0,
+        "upper": 0.10239620128149199,
+        "width": 0.10239620128149199,
+        "rejected": true,
+        "frame": 29,
+        "y": 31,
+        "x": 32
+      },
+      {
+        "success": true,
+        "lower": 0.005857334618428748,
+        "upper": 0.29827734984230986,
+        "width": 0.2924200152238811,
+        "rejected": true,
+        "frame": 35,
+        "y": 32,
+        "x": 23
+      },
+      {
+        "success": true,
+        "lower": 0.0,
+        "upper": 0.11142002969252163,
+        "width": 0.11142002969252163,
+        "rejected": true,
+        "frame": 35,
+        "y": 31,
+        "x": 29
+      },
+      {
+        "success": true,
+        "lower": 0.008035070649099014,
+        "upper": 0.24818656730269284,
+        "width": 0.24015149665359384,
+        "rejected": true,
+        "frame": 5,
+        "y": 27,
+        "x": 25
+      },
+      {
+        "success": true,
+        "lower": 0.008678845250725715,
+        "upper": 0.2370679546050687,
+        "width": 0.22838910935434298,
+        "rejected": true,
+        "frame": 5,
+        "y": 36,
+        "x": 39
+      }
+    ],
+    "scope": "Conditional residual-box model intervals; not calibrated confidence"
+  },
+  "disabled_coupled_fallbacks": 36,
+  "production_repairs": 0,
+  "reference_subtraction": {
+    "new_min": -5.811452865600586e-07,
+    "negative_channels": 12181,
+    "raw_differences_scored": true
+  },
+  "references": {
+    "0": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000000_source.exr",
+        "sha256": "e55c353b675a94d7b07b6cf45a487cf7e75dd68a0667389dde2d939faec76bd5"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000000_clean.exr",
+        "sha256": "0159b5c2f926920375faf43e42d934a98aa56b3f449da04fcb719eff675b3ad3"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000000_target.exr",
+        "sha256": "a23c1a0c923e49b3356e460c5ae5b675f33f4a39d1ceccc3cca629494a99e80b"
+      }
+    },
+    "1": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000001_source.exr",
+        "sha256": "aed88321f0ad8e588f7de75766bb080b2432eebb153e41e8f5773df975700f31"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000001_clean.exr",
+        "sha256": "dde9e7ea7bf08a6c1f580e7b32f596c79fc856c07fd639bba855cd07d3d92cd4"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000001_target.exr",
+        "sha256": "28d9682881d6878c30693c14b8e66f65570f2c9a816c87a8e289060d9b6abe36"
+      }
+    },
+    "2": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000002_source.exr",
+        "sha256": "22809013c863144cd4e9be27efea16e623318aa72b88060350271caa312cf5bd"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000002_clean.exr",
+        "sha256": "352d81d0695b2edd420d2bc8d00ff4f47651645845fb650f455d3d9b5a29b34f"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000002_target.exr",
+        "sha256": "54a6ac1d868dcd9823bdf17628594ec9b06a1739ff47ffb21ae8abe386f0880a"
+      }
+    },
+    "3": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000003_source.exr",
+        "sha256": "c4d46d676d457365090b199ba49adb3fe3db2920e7957259aeff88b5e6c2eb0e"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000003_clean.exr",
+        "sha256": "2589a4379489118b3b18b0152d09539ae79dd79b8b2906560b5d4d8e5bdcf85b"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000003_target.exr",
+        "sha256": "3164572185e6c817418288ba730cdd7c57ecdee63523cd5894ea97c6dc111519"
+      }
+    },
+    "4": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000004_source.exr",
+        "sha256": "b0da04709074c266d1f65e01fc1f5b8efd893e84173dee1eb33a56cd599f6188"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000004_clean.exr",
+        "sha256": "c7ef41d03093a875dc9b336cdcb485065a6a74c63ab7e5b7c9ded2bd1ec99cd2"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000004_target.exr",
+        "sha256": "6f20b2a458dda98f27ca3b147dd0225900762a2222b25eab1eee88a8e7de1750"
+      }
+    },
+    "5": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000005_source.exr",
+        "sha256": "8339350e0245aca66f83e82ea1844df10f4e7d65f3a3168afc3bb9230a624480"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000005_clean.exr",
+        "sha256": "845e9a59fe1742ed47e17a8d88e6fa9736dec6456066f10a9b900c4d164ea72b"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000005_target.exr",
+        "sha256": "f60bde11869ad7487013a7d72ca0e0c2b32e4ba849d4eff7f2c7c73278dc60a9"
+      }
+    },
+    "6": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000006_source.exr",
+        "sha256": "158cc66451ae4ae1434e6e1051f382c40bdbb1434892cc5e0454502504e56746"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000006_clean.exr",
+        "sha256": "a586de490b0da5165efbda748d1910000dc241a35911b7df75ef4f1872099102"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000006_target.exr",
+        "sha256": "8a8a5522922d05a840843ef70c6df4febe53c83d4b03ca89f44a8f8ff408896a"
+      }
+    },
+    "7": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000007_source.exr",
+        "sha256": "ea536c59f41226675431cbdac15e35fd0e24cb4adee8b23528b545133c4759cc"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000007_clean.exr",
+        "sha256": "9bc93988c37e6f1ff53d926d3d5af2277bcb1ef2670b2a8bb1d69c702724e350"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000007_target.exr",
+        "sha256": "2e0f06dc5007553da75c75e1c45708dd8c81e04f648dde9bc55650a22c4abc89"
+      }
+    },
+    "8": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000008_source.exr",
+        "sha256": "077921bcf9a495f07b4dc2c8fd7ecf9b25faefd35a30e6f0881adaa52b3a6f6f"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000008_clean.exr",
+        "sha256": "e949791a939c03a6bf7e30e8095e3cb9efd69734d9bd3c17b2db00a8075057b2"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000008_target.exr",
+        "sha256": "2aa927adfbf44a55c2729600931f14651899efa156dc92d75459d87d8ce1d750"
+      }
+    },
+    "9": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000009_source.exr",
+        "sha256": "89ec17809660e04eae02066013ecb3bb57c0bd468dae3029b05eec48cf417624"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000009_clean.exr",
+        "sha256": "6020406eb721cae8bf9957e1c9340d66834cbe260f46a54db488a55033ccd042"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000009_target.exr",
+        "sha256": "98e99c45ead9627849d3298a7d3ac2d4b91cefb710dc400b91c07481a08aaed2"
+      }
+    },
+    "10": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000010_source.exr",
+        "sha256": "8e60109e0bd1761900c2615c4814606dcf17be061a68be307846c8c4f9233e49"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000010_clean.exr",
+        "sha256": "0bfd17e9920eba4ee3e7bfc85d84436dd56828fad0ab4fb94a6a91e96931de88"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000010_target.exr",
+        "sha256": "f80b10c13a9d59daebbf811c9d5526441e94f9c055af14a835a0c34a5d8e590a"
+      }
+    },
+    "11": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000011_source.exr",
+        "sha256": "9d0aa72d45dd844c2a5c207f63e645a252b8e9f70b3dea35edbd7bb16b9cf059"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000011_clean.exr",
+        "sha256": "4340ac9fa4c11722309ae3f4e0810d4d2b79207e4d0cbe3106d897e808c50d7b"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000011_target.exr",
+        "sha256": "7a08265633c7c2bd0962b93b10cb4abe6fb40cc5607b2c1e39f14b85b5675522"
+      }
+    },
+    "12": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000012_source.exr",
+        "sha256": "7015bd9504bc0372b7c833fad2d5ad6a1baf6b703f1df507f83b95222efb8c19"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000012_clean.exr",
+        "sha256": "8f3444ccbab8ca8658b78ab6b323d0858acd3fbef93e141efa47b29d931a006f"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000012_target.exr",
+        "sha256": "b793519581b157d6281a9cffe0f029556822a6c1f82e52dc5ba3f79eb447dfa5"
+      }
+    },
+    "13": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000013_source.exr",
+        "sha256": "7d86c122368f51d60838a94402737b77ce3b68a61c8930ab951d71acfe127381"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000013_clean.exr",
+        "sha256": "8f24b9ac5ae25a984218fb1976400bc975ce8a6817ae7437ae5b6ea65b2ef48d"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000013_target.exr",
+        "sha256": "0076dc586804818fc841513e2e5cd904b7905e44cebea9793ad2b9e08f13a100"
+      }
+    },
+    "14": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000014_source.exr",
+        "sha256": "e2a8f0191b023bb86cc81dc8a6530e0b5cf067bd7f1cc6196d3b4fd338a10dae"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000014_clean.exr",
+        "sha256": "a3f03bd48830293bf2645a41ff61da6baa8ff73760d628ae5800c703825e43fd"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000014_target.exr",
+        "sha256": "54172202286442765424adbc94dfad1475ae6b01349b883400243baabb0c0c4d"
+      }
+    },
+    "15": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000015_source.exr",
+        "sha256": "b182e1f0bb85a21e7cfa619fc19c4135b72b3e22da6386ba2828c7634e297de6"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000015_clean.exr",
+        "sha256": "6e8906c71ca5920568b7291d7a29d1f3c94f5805bc0e39ed5a25d1771ca19703"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000015_target.exr",
+        "sha256": "9152c06f39b95bd5139e057dadb01c180bb59d6e148a2a890aaab596763dd63e"
+      }
+    },
+    "16": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000016_source.exr",
+        "sha256": "2d4773e5b8d3c79da36c074863fc92468748f48b5dcf26ad0e0d72eb57c11fc8"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000016_clean.exr",
+        "sha256": "4a71b4c7507c65b93cd55253adad4ade8ad8871c0744e356a26b4d933a1c9dd2"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000016_target.exr",
+        "sha256": "d0e6ed422cc4335f714c53b5a1754bbf0c0c9fd73db0e22e2244b0acff0652b7"
+      }
+    },
+    "17": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000017_source.exr",
+        "sha256": "9b70b491ad398efa26034b9ffb3bba42c06148a078153b842cfd08122bc2677e"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000017_clean.exr",
+        "sha256": "5cde670a0bbc2ddfc4792664ab01db2c48693b76f2a937d92bec411da26ab93d"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000017_target.exr",
+        "sha256": "d14cbf78c7c10f4f7ffa573be98ffa946e4a2b4dfa4df147b55cef8e37d18fa2"
+      }
+    },
+    "18": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000018_source.exr",
+        "sha256": "e09ab63c62bf45de395b029526faa25dc5f71dcd86deea5e78ea08783bdb69f6"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000018_clean.exr",
+        "sha256": "cd6ff6d84b048723a20075b94ba227bc5b1e16e9f033fdcf08d668dd9eb8ccfb"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000018_target.exr",
+        "sha256": "796757cd43a17f1495f8f09b152fb156c7a7ef36ce5dfb97f4538ea785af7092"
+      }
+    },
+    "19": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000019_source.exr",
+        "sha256": "cb5e5c6df09731e721d6c614ccf4ba8393a1fbb645934ca0487d9c9d3545a413"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000019_clean.exr",
+        "sha256": "1372fe37312a6fcf679513cefd7e001f3b7ea4cf77e46e97333b34b8c68281bc"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000019_target.exr",
+        "sha256": "83e0313770b2760b3188e741e8d7f90bf66e471198e90d5e53995857940b82be"
+      }
+    },
+    "20": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000020_source.exr",
+        "sha256": "60bccae4f0c7a4bcedb939f1719a9c2127edc840c165dd0624e204bb1731d163"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000020_clean.exr",
+        "sha256": "42722ced6641228ce2d587c3bdc1153a379f5a999ba8384265f1eb08551e44a1"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000020_target.exr",
+        "sha256": "c9f02ece09dd65227a516e7c55bb6383a9bb243593ee7086e488906b38603561"
+      }
+    },
+    "21": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000021_source.exr",
+        "sha256": "77df0d1cd03ae534962ab3670780e5d806682a2e49d8766715b5bd2b060b584b"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000021_clean.exr",
+        "sha256": "46dd4236455cf7265c18b9a85edee052d72d5f4b00c5f9e04787c35d4609e5de"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000021_target.exr",
+        "sha256": "c1bfe461afbdbf317368977ee75733d636aa8f946d560c4477228640c3a2a290"
+      }
+    },
+    "22": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000022_source.exr",
+        "sha256": "40a80df5594e7555011465497ed601f066ad6d5837a62d85cb49fb16aa85270f"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000022_clean.exr",
+        "sha256": "9b2a45ff13e113f34df074b855ae66a13da72fa6c9597baa9549b34d97fcdc81"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000022_target.exr",
+        "sha256": "ba75ef473f463275fa014ea7c8da72ab204bc21290a163cf8aca52e80b95dd0e"
+      }
+    },
+    "23": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000023_source.exr",
+        "sha256": "5a698f0cdb474bcea08746c990b6812a2a08de179075922601d2849ab65b1edf"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000023_clean.exr",
+        "sha256": "ed7cb6fe2a99ee788aa3eb823cf7d613759bdb784ad43ada4f8bd990009b06d9"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000023_target.exr",
+        "sha256": "6486772682b87d3d8a9e4e0f4c1eb7677a3b26fd75a0df65a8508f9271187e19"
+      }
+    },
+    "24": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000024_source.exr",
+        "sha256": "b4babf6bc29756592de83802637bb4f05b576f5fcdd2ace4c307e63385801581"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000024_clean.exr",
+        "sha256": "fe43c53e6d9d0e6c74d70ca75a4706e38f7791848f6dc72c67918f1d1ae794d4"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000024_target.exr",
+        "sha256": "d3e8a07e72332b40da1430c9f2b847e989678c9a44094af1c0db422312410b52"
+      }
+    },
+    "25": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000025_source.exr",
+        "sha256": "a5fdb861e78bb583c0386f777ea2e45beb73c8d405e6c542d5c3754693c60967"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000025_clean.exr",
+        "sha256": "52f0f70686c5325fd449fa368880b97c54bf24f43ec71296d75508c80db97901"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000025_target.exr",
+        "sha256": "d57c71fe1826e3b3bdca6c0e1af9d56f731ab06905e61ef1d238cdb8c96ca2b2"
+      }
+    },
+    "26": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000026_source.exr",
+        "sha256": "2cf5f8737fae064b5ef7ff1f34424c0bdabb2c48c0d90581700a1dae4123dbb8"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000026_clean.exr",
+        "sha256": "9d17afd1f970f8e35fe26998ccb615c548d7063bb61a61c0ec0a640233c35385"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000026_target.exr",
+        "sha256": "e56c31d15ac857e671cb76f678557a053c4144e25f843ca73c49deddc17fd000"
+      }
+    },
+    "27": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000027_source.exr",
+        "sha256": "63d2935ecfd302bf17496894764d7e5b678026c4de6ada03a5f80c995ea5436a"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000027_clean.exr",
+        "sha256": "52cad5d07828db157debaa6cec336f3c5e2575e719bdfc19ca3f672fae9c3c8d"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000027_target.exr",
+        "sha256": "e16a1354abb8b7d26d7209bbb6f1d7a7d676ac9c4ece41034aa207fd6335214a"
+      }
+    },
+    "28": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000028_source.exr",
+        "sha256": "bf24376b3e983dcce3b02a178c3a8c4a24156f30e873a855678774c614d571df"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000028_clean.exr",
+        "sha256": "8a702dc02005f868ed05161c05a78d4e14ef263e35a013bb11be0dc5fcef71d4"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000028_target.exr",
+        "sha256": "d5f3ae34574d22a7abe2070d6b8f2966c278ddf83632e90a33d1657c51e6de10"
+      }
+    },
+    "29": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000029_source.exr",
+        "sha256": "f0f945194519666e92b25fa303dd26e2666c2c87a655a048b789dbc3b9117308"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000029_clean.exr",
+        "sha256": "b2db7521ff6b9db85af0e0474e86ec4ef701f3d64faad686c8764f82b9174b67"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000029_target.exr",
+        "sha256": "b879cf2dbb763222db36bd2bff8c0f34c672e95db7712281d953e518ed22b61e"
+      }
+    },
+    "30": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000030_source.exr",
+        "sha256": "e472494689a97068c9217bf277385b5788f765679840ac6a62d714a81a627e52"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000030_clean.exr",
+        "sha256": "366d12c912916f0bc0037c04cef1de94a2d7b21333052c5e1e1924e4a59fa69a"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000030_target.exr",
+        "sha256": "6680d2e2d58118356ce77f8d4cd22b4efd11a9f0cfde4deec0a6b25c45017e6d"
+      }
+    },
+    "31": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000031_source.exr",
+        "sha256": "f7dc4fdc0a064a7c1b3bb66d72d8b62a607c1a80188057b96feef7f65b00b7a2"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000031_clean.exr",
+        "sha256": "edf12867604b11e6326d7253e716f4303bee6c7b4c9ac3ac7e306bdbcd3f90f6"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000031_target.exr",
+        "sha256": "f495e6a2be4c8dca789bc13a9f342c97b10b6113a54fbf312e29c402559cfe58"
+      }
+    },
+    "32": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000032_source.exr",
+        "sha256": "343e31c3e6b68474c62217cd452a457e95df5aea4a74f92ea4db724ddb35dcc0"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000032_clean.exr",
+        "sha256": "2b0aa59e5240a42ec55c5881633321860ebd4020c30e4caa5ba085409267bddb"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000032_target.exr",
+        "sha256": "5aac632a3aa6ab49f606b8170019ea7cdac9a841ea8655c127d7e11084874a1c"
+      }
+    },
+    "33": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000033_source.exr",
+        "sha256": "34d7557ef81aac45134bbffe2832a023b21750a57e59a875fdfd7f5fad736e3b"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000033_clean.exr",
+        "sha256": "1e3b5aa2736fd5aab5e73ab23521e2f78980a46dd7037e278a900ddc93efe04e"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000033_target.exr",
+        "sha256": "2d53a28eee155fe7d1da4de72006aa55d199c6562ed867adf71fc0f28dd36b4a"
+      }
+    },
+    "34": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000034_source.exr",
+        "sha256": "20c6fa8c6d6bcbcbda493a2aead817a9e9f2d4a354a226c48f5395a2f3cd712c"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000034_clean.exr",
+        "sha256": "9dab5149a8ec8db7b364d50c0ee412e95ef511928c6837b5ed7752785a9f33bb"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000034_target.exr",
+        "sha256": "95a6808d0623550e70d7d2d334424998db69304c4984bb4e46b394ee5eb80641"
+      }
+    },
+    "35": {
+      "source": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000035_source.exr",
+        "sha256": "3d993769f7b558ae480ec34f50143d689707999dafa7951bd0d69d2f0a00d90c"
+      },
+      "clean": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000035_clean.exr",
+        "sha256": "7354d0973cc71dbd0434d73fa604a904463139f9478e1781f31791f85a5d0db9"
+      },
+      "target": {
+        "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\cycles\\000035_target.exr",
+        "sha256": "0e9a01489d65dea46f17b34590852f5dcd43739aa58817cf0e6979bde6fb39b3"
+      }
+    }
+  },
+  "scope": "Independent rendering and new textures; shared simplified anatomy, oracle geometry and new reflection"
+}

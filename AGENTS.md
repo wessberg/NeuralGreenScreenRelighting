@@ -273,6 +273,13 @@ Each of these produces a wrong result with no error message.
     Cycles property explicitly when a diagnostic specifies its pixel footprint.
     Round 21 caught this with textured eyes; round 20's constant-emitter checks
     away from boundaries did not expose it. See `rounds/round21.md`.
+13. **Cycles BOX filtering forces width 1.0 internally**, even when
+    `scene.cycles.filter_width` reads back .01. The installed UI hides the width
+    for BOX, and Cycles' Blender sync overrides it. Round 22 caught this with
+    independent textured transport before final-test scoring. For a narrow
+    diagnostic filter use BLACKMAN_HARRIS, set its actual Cycles width, and model
+    its sampling footprint. A property assertion alone does not verify rendering.
+    See `docs/r22-eye-protocol.md` and `rounds/round22.md`.
 
 ## GPU: what is accelerated, and why the card still looks idle
 

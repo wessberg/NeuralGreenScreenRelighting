@@ -1,0 +1,21 @@
+{
+  "cases": [
+    {
+      "frame": 0,
+      "clean": {
+        "pixels": 403,
+        "linear_mae": 2.1633657105015187e-05,
+        "display_mae": 0.009923342947384766,
+        "display_p95": 0.02553029615516909
+      },
+      "source": {
+        "pixels": 403,
+        "linear_mae": 5.573111858518643e-05,
+        "display_mae": 0.023729674177987853,
+        "display_p95": 0.0834847507256663
+      }
+    }
+  ],
+  "quadrature_offset": 0.002770146247724608,
+  "scope": "Independent fixture texture lookup; approximate footprint, shared simplified optical geometry"
+}

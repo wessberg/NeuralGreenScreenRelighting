@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:/Program Files/Blender Foundation/Blender 5.2/blender.exe",
+    "-b",
+    "--factory-startup",
+    "--python",
+    "scripts/render_r22_eyes.py",
+    "--",
+    "--shot",
+    "music_videos/reporter_test/shots/reporter_a"
+  ],
+  "returncode": 0
+}

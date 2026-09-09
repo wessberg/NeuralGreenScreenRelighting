@@ -1,0 +1,336 @@
+{
+  "protocol_sha256": "33d1d3e005086a1e5fd0ca4438e1f039c475f5befedb18df38f95b29ce255556",
+  "code_sha256": {
+    "audit_r22_eyes.py": "3cb4538c340d72f18d9f3e5362e7db8b364352806d0ae5aaaaecbfb73bb3396b",
+    "eye_detail_fit.py": "f79f16f149b56555dd9a3252028478e0fd39629942a970c6aca8892cb4875bac",
+    "eye_layer_fit.py": "0efd957306a01668f212cc5659ba84d5cbe98de25648839b44b2b003713ca879",
+    "corneal_transport.py": "580cf13503d98210834768d6f5c1f49544f882641e647bb55e2882a28557039b",
+    "observation_eye_fit.py": "c96f6d3f61afcd8d596eb7003b86b46d1cdf3fd0367056096273cbbd1fbe1172",
+    "render_r22_eyes.py": "d9f320614f5b15e4b0986a70a296ec055ae9bc2e1d3c671e07aba6a8b867acea",
+    "render_r20_transport.py": "49427d37b951a57fc0611c85beb54972ef5a84cf018f609eb49d2522f9e55c95",
+    "coupled_eye_relight.py": "7d9b359414f3c1ba1252f617cf2d848f2e05234ad0ed9f683fa0ddec11bb1891"
+  },
+  "train": [
+    0,
+    1,
+    3,
+    4,
+    6,
+    7,
+    9,
+    10,
+    12,
+    13,
+    15,
+    16,
+    18,
+    19,
+    21,
+    22,
+    24,
+    25,
+    27,
+    28,
+    30,
+    31,
+    33,
+    34
+  ],
+  "selection": [
+    2,
+    8,
+    14,
+    20,
+    26,
+    32
+  ],
+  "test": [
+    5,
+    11,
+    17,
+    23,
+    29,
+    35
+  ],
+  "arms": {},
+  "probes": [
+    [
+      5,
+      32,
+      23
+    ],
+    [
+      5,
+      31,
+      35
+    ],
+    [
+      11,
+      31,
+      43
+    ],
+    [
+      11,
+      32,
+      32
+    ],
+    [
+      23,
+      31,
+      41
+    ],
+    [
+      23,
+      32,
+      29
+    ],
+    [
+      29,
+      32,
+      21
+    ],
+    [
+      29,
+      31,
+      32
+    ],
+    [
+      35,
+      32,
+      23
+    ],
+    [
+      35,
+      31,
+      29
+    ],
+    [
+      5,
+      27,
+      25
+    ],
+    [
+      5,
+      36,
+      39
+    ]
+  ],
+  "masks": {
+    "0": {
+      "full_visible": 403,
+      "iris": 337,
+      "pupil": 66,
+      "mixed": 0
+    },
+    "1": {
+      "full_visible": 404,
+      "iris": 336,
+      "pupil": 67,
+      "mixed": 1
+    },
+    "2": {
+      "full_visible": 403,
+      "iris": 336,
+      "pupil": 67,
+      "mixed": 0
+    },
+    "3": {
+      "full_visible": 402,
+      "iris": 336,
+      "pupil": 65,
+      "mixed": 1
+    },
+    "4": {
+      "full_visible": 400,
+      "iris": 335,
+      "pupil": 63,
+      "mixed": 2
+    },
+    "5": {
+      "full_visible": 394,
+      "iris": 330,
+      "pupil": 64,
+      "mixed": 0
+    },
+    "6": {
+      "full_visible": 394,
+      "iris": 329,
+      "pupil": 65,
+      "mixed": 0
+    },
+    "7": {
+      "full_visible": 396,
+      "iris": 331,
+      "pupil": 65,
+      "mixed": 0
+    },
+    "8": {
+      "full_visible": 395,
+      "iris": 327,
+      "pupil": 67,
+      "mixed": 1
+    },
+    "9": {
+      "full_visible": 396,
+      "iris": 331,
+      "pupil": 65,
+      "mixed": 0
+    },
+    "10": {
+      "full_visible": 394,
+      "iris": 329,
+      "pupil": 64,
+      "mixed": 1
+    },
+    "11": {
+      "full_visible": 395,
+      "iris": 330,
+      "pupil": 64,
+      "mixed": 1
+    },
+    "12": {
+      "full_visible": 400,
+      "iris": 337,
+      "pupil": 62,
+      "mixed": 1
+    },
+    "13": {
+      "full_visible": 402,
+      "iris": 336,
+      "pupil": 66,
+      "mixed": 0
+    },
+    "14": {
+      "full_visible": 403,
+      "iris": 336,
+      "pupil": 67,
+      "mixed": 0
+    },
+    "15": {
+      "full_visible": 363,
+      "iris": 296,
+      "pupil": 67,
+      "mixed": 0
+    },
+    "16": {
+      "full_visible": 175,
+      "iris": 114,
+      "pupil": 61,
+      "mixed": 0
+    },
+    "17": {
+      "full_visible": 0,
+      "iris": 0,
+      "pupil": 0,
+      "mixed": 0
+    },
+    "18": {
+      "full_visible": 174,
+      "iris": 113,
+      "pupil": 61,
+      "mixed": 0
+    },
+    "19": {
+      "full_visible": 363,
+      "iris": 295,
+      "pupil": 67,
+      "mixed": 1
+    },
+    "20": {
+      "full_visible": 403,
+      "iris": 336,
+      "pupil": 67,
+      "mixed": 0
+    },
+    "21": {
+      "full_visible": 402,
+      "iris": 336,
+      "pupil": 65,
+      "mixed": 1
+    },
+    "22": {
+      "full_visible": 400,
+      "iris": 335,
+      "pupil": 63,
+      "mixed": 2
+    },
+    "23": {
+      "full_visible": 394,
+      "iris": 330,
+      "pupil": 64,
+      "mixed": 0
+    },
+    "24": {
+      "full_visible": 394,
+      "iris": 329,
+      "pupil": 65,
+      "mixed": 0
+    },
+    "25": {
+      "full_visible": 396,
+      "iris": 331,
+      "pupil": 65,
+      "mixed": 0
+    },
+    "26": {
+      "full_visible": 395,
+      "iris": 327,
+      "pupil": 67,
+      "mixed": 1
+    },
+    "27": {
+      "full_visible": 396,
+      "iris": 331,
+      "pupil": 65,
+      "mixed": 0
+    },
+    "28": {
+      "full_visible": 394,
+      "iris": 329,
+      "pupil": 64,
+      "mixed": 1
+    },
+    "29": {
+      "full_visible": 395,
+      "iris": 330,
+      "pupil": 64,
+      "mixed": 1
+    },
+    "30": {
+      "full_visible": 400,
+      "iris": 337,
+      "pupil": 62,
+      "mixed": 1
+    },
+    "31": {
+      "full_visible": 402,
+      "iris": 336,
+      "pupil": 66,
+      "mixed": 0
+    },
+    "32": {
+      "full_visible": 403,
+      "iris": 336,
+      "pupil": 67,
+      "mixed": 0
+    },
+    "33": {
+      "full_visible": 404,
+      "iris": 337,
+      "pupil": 67,
+      "mixed": 0
+    },
+    "34": {
+      "full_visible": 405,
+      "iris": 339,
+      "pupil": 66,
+      "mixed": 0
+    },
+    "35": {
+      "full_visible": 409,
+      "iris": 341,
+      "pupil": 67,
+      "mixed": 1
+    }
+  }
+}

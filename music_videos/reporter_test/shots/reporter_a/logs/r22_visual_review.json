@@ -1,0 +1,33 @@
+{
+  "video_sha256": "4d326c84424ca92ec4a8bcba2ed8a1e73c629ef5ef9728d1d2de19b98b6bd8b2",
+  "decoded_frames": 108,
+  "fps": 24,
+  "dimensions": [
+    960,
+    762
+  ],
+  "seconds": 4.5,
+  "inspected_files": {
+    "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\contact_000.jpg": "e456f0fc41ac1e6f2b42db357389b36549b0d2688ad98190d8f560ec5dd53277",
+    "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\contact_024.jpg": "90330ed539243541dbcbe5d9b50617de213b6077688a777ad828c9e30d323796",
+    "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\contact_048.jpg": "c1a7dc51792385aba87cde049663a3974fe26494b93ff9b4630878106fea9be9",
+    "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\contact_072.jpg": "59f8322b34709593b55e5340c7d3c1357636e3a7123df9ee19dd4966549f0ac9",
+    "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\contact_096.jpg": "bb4212a6813666dcf069265b99a3b4d71d1e744b2257bce3177bcb46bfe9d2c6",
+    "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\decoded_005.png": "66fa8d61ba4ea19d8aa5eed766934c3204b57c821a27ea4f7f740a845e77e63d",
+    "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r22_eyes\\decoded_023.png": "2561cf1c0aa77cd9b01de824a92b13d24d0e9f8967bd4781a9d8ba61e4397930"
+  },
+  "inspection": "All 108 decoded thumbnails in five chronological sheets, plus decoded boards 5 and 23 at native board resolution.",
+  "findings": [
+    "Closure at frame 17 and repeat positions 53/89 is intentional.",
+    "Selected fit preserves more pattern than a smooth field but differs from known clean iris structure.",
+    "Fitted pupils are darker and patchier than the nonblack reference.",
+    "Coupled experiment still differs from target; no real performer output was changed."
+  ],
+  "live_playback": false,
+  "artist_acceptance": false,
+  "real_source_review": {
+    "path": "music_videos\\reporter_test\\shots\\reporter_a\\final\\r20_source_fallback.mp4",
+    "sha256": "f0cb4ef3487ff3596a9de98ab374c6508827993e3bd38004c48b6b34e4b42005",
+    "unchanged": true
+  }
+}
