@@ -1,0 +1,17 @@
+{
+  "video": "final/r18_motion.mp4",
+  "sha256": "f87f7589c0941eb8d6b6ef19b70cc2dc66abee59b470272d5617d2adfd45534d",
+  "method": "Assistant inspected all 192 decoded frames in eight ordered contact sheets and five full decoded boards; not real-time playback or artist approval.",
+  "contact_sheets": [0, 24, 48, 72, 96, 120, 144, 168],
+  "full_decoded_boards": [12, 23, 24, 132, 191],
+  "observations": [
+    "Each segment shows the base image translated as a whole; the added reflection moves in the opposite direction. Original photographed catchlights remain in both conditions.",
+    "Base-only controls are on the left, contaminated sequences on the right; anchor 0 is above anchor 12. Query frames are explicitly unscored. RAFT has no interpolated track between scored frames.",
+    "At left_0_y frame 0, the contaminated anchor-12 CoTracker prediction is accepted despite lying above the known material point; displayed EPE is 3.13 px. It is not at the synthetic reflection centre.",
+    "At right_3_y frame 23, the contaminated anchor-12 CoTracker prediction is far from material truth and is rejected; displayed EPE is 11.15 px.",
+    "At left_0_x frame 12, RAFT remains near the known material point under the addition. This is whole-image synthetic motion evidence, not demonstrated real iris rotation or clean-radiance recovery."
+  ],
+  "production_repairs": 0,
+  "scene_reflection_allowed": false,
+  "artist_approval": false
+}

@@ -1,0 +1,34 @@
+{
+  "synthetic_sequences": 8,
+  "signed_transform_controls": 4,
+  "paired_records": 384,
+  "exact_substitution_runs": 64,
+  "array_hash_comparisons": 1152,
+  "max_independent_mapping_error": 1.9073486328125e-06,
+  "max_independent_cycle_error": 3.7854324694552854e-06,
+  "fallback": {
+    "exact_keyed_eye_fallbacks": 300,
+    "protected_hashes_unchanged": 304
+  },
+  "search_isolation": {
+    "synthetic_known_geometry": true,
+    "training_pixels": 428,
+    "searched_native_footprints": 223,
+    "changed_validation_mae": 144.92591857910156,
+    "selected_angle_and_training_exact": true
+  },
+  "prior_code_and_models_unchanged": true,
+  "video": {
+    "frames": 192,
+    "fps": 24.0,
+    "sha256": "f87f7589c0941eb8d6b6ef19b70cc2dc66abee59b470272d5617d2adfd45534d",
+    "bytes": 1381897,
+    "visual_review": "pending separate record",
+    "artist_approval": false
+  },
+  "code_sha256": {
+    "reflection_motion.py": "ee44ff18d9ac92b72cedc9564653c6bfdb96564811c17433c5ad998da66beb3a",
+    "audit_r18_motion.py": "659bc92a656ee1d675b59a4c4c6a4c60792035816f7034a3caeb88da0ef7bf03",
+    "verify_r18.py": "d914f9a4a0ed89f68c8435b3b6cf170ac507f6ccc618aa9a80a4d9956efad36b"
+  }
+}
