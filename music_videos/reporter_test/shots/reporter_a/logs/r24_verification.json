@@ -1,0 +1,848 @@
+{
+  "geometry": {
+    "seam_conic_residual": 0.0,
+    "seam_sphere_residual": 0.0,
+    "seam_normal_jump_degrees": 15.43115502434522,
+    "cap_sag": 2.4924087106123145,
+    "cap_radius": 5.85,
+    "rotation_cases": [
+      {
+        "yaw": 0,
+        "pitch": 0,
+        "iris_pixels": 364,
+        "pupil_pixels": 68,
+        "camera_visible_light_blocked": 128
+      },
+      {
+        "yaw": 18,
+        "pitch": 0,
+        "iris_pixels": 306,
+        "pupil_pixels": 68,
+        "camera_visible_light_blocked": 124
+      },
+      {
+        "yaw": -18,
+        "pitch": 0,
+        "iris_pixels": 306,
+        "pupil_pixels": 68,
+        "camera_visible_light_blocked": 124
+      },
+      {
+        "yaw": 0,
+        "pitch": 10,
+        "iris_pixels": 324,
+        "pupil_pixels": 68,
+        "camera_visible_light_blocked": 104
+      },
+      {
+        "yaw": 0,
+        "pitch": -10,
+        "iris_pixels": 324,
+        "pupil_pixels": 68,
+        "camera_visible_light_blocked": 104
+      },
+      {
+        "yaw": 18,
+        "pitch": -10,
+        "iris_pixels": 284,
+        "pupil_pixels": 66,
+        "camera_visible_light_blocked": 115
+      },
+      {
+        "yaw": -18,
+        "pitch": 10,
+        "iris_pixels": 284,
+        "pupil_pixels": 66,
+        "camera_visible_light_blocked": 115
+      }
+    ],
+    "closed_eye_zero_visible": true,
+    "invalid_geometry_rejections": 7,
+    "asymmetric_pixel_aspect_same_physical_rays": true,
+    "continuous_anatomy_certified": false,
+    "posterior_cornea_modeled": false
+  },
+  "provenance": {
+    "original_module_hash_reconstructed": true,
+    "current_module_hash_matches_render": false,
+    "rendered_parameters_and_texture_functions_unchanged": true,
+    "corrected_analytic_module_sha256": "d11635665da255d103b94cd782173a12dc46f861117f9e9e867d181bda3dd305",
+    "verified_rendered_files": 72,
+    "frozen_original_module": "composite\\r24_eyes\\frozen_connected_eye_before_wall_fix.py"
+  },
+  "transport": {
+    "score_replay_max_difference": 0.0,
+    "disabled_transactions": 24,
+    "dense_32x32": [
+      {
+        "frame": 0,
+        "regions": {
+          "iris": {
+            "clean": {
+              "pixels": 264,
+              "linear_mae": 3.3639244082219776e-05,
+              "linear_max": 0.00037150224372227425,
+              "display_mae": 0.015255517832372957
+            },
+            "source": {
+              "pixels": 264,
+              "linear_mae": 0.00014308027101191478,
+              "linear_max": 0.007016465624414964,
+              "display_mae": 0.057639466949517916
+            }
+          },
+          "pupil": {
+            "clean": {
+              "pixels": 52,
+              "linear_mae": 2.05004929288617e-06,
+              "linear_max": 3.1384604423902174e-05,
+              "display_mae": 0.0024217107526635527
+            },
+            "source": {
+              "pixels": 52,
+              "linear_mae": 0.000576777265422068,
+              "linear_max": 0.0072404387204412154,
+              "display_mae": 0.32427103580416466
+            }
+          },
+          "sclera": {
+            "clean": {
+              "pixels": 158,
+              "linear_mae": 1.4549327802216114e-05,
+              "linear_max": 0.00023088574409507734,
+              "display_mae": 0.0033151335836433984
+            },
+            "source": {
+              "pixels": 158,
+              "linear_mae": 1.4549390676313978e-05,
+              "linear_max": 0.00023088574409507734,
+              "display_mae": 0.0033151472873904704
+            }
+          },
+          "lid": {
+            "clean": {
+              "pixels": 2336,
+              "linear_mae": 2.7540326118583036e-06,
+              "linear_max": 3.2958388329479282e-06,
+              "display_mae": 0.0015519525575113935
+            },
+            "source": {
+              "pixels": 2336,
+              "linear_mae": 2.7540326118583036e-06,
+              "linear_max": 3.2958388329479282e-06,
+              "display_mae": 0.0015519525575113935
+            }
+          },
+          "full": {
+            "clean": {
+              "pixels": 9216,
+              "linear_mae": 8.980671084566166e-06,
+              "linear_max": 0.002358698490060804,
+              "display_mae": 0.0057849687359469906
+            },
+            "source": {
+              "pixels": 9216,
+              "linear_mae": 1.6329855984171882e-05,
+              "linear_max": 0.0072404387204412154,
+              "display_mae": 0.00929466724770458
+            }
+          },
+          "mixed": {
+            "clean": {
+              "pixels": 442,
+              "linear_mae": 0.00014716354692392435,
+              "linear_max": 0.002358698490060804,
+              "display_mae": 0.1018365020883263
+            },
+            "source": {
+              "pixels": 442,
+              "linear_mae": 0.00016741655993863448,
+              "linear_max": 0.004558884792459562,
+              "display_mae": 0.11183616690633891
+            }
+          },
+          "cornea": {
+            "clean": {
+              "pixels": 441,
+              "linear_mae": 6.963539199530241e-05,
+              "linear_max": 0.002358698490060804,
+              "display_mae": 0.030522997866153985
+            },
+            "source": {
+              "pixels": 441,
+              "linear_mae": 0.00022321812434995404,
+              "linear_max": 0.0072404387204412154,
+              "display_mae": 0.10386857940313488
+            }
+          }
+        }
+      },
+      {
+        "frame": 6,
+        "regions": {
+          "iris": {
+            "clean": {
+              "pixels": 267,
+              "linear_mae": 3.298053896670839e-05,
+              "linear_max": 0.0004238069831980773,
+              "display_mae": 0.014910506117842292
+            },
+            "source": {
+              "pixels": 267,
+              "linear_mae": 8.924706194637198e-05,
+              "linear_max": 0.0037950071738232782,
+              "display_mae": 0.03860564064259973
+            }
+          },
+          "pupil": {
+            "clean": {
+              "pixels": 51,
+              "linear_mae": 1.703357198757719e-06,
+              "linear_max": 5.972688353495653e-06,
+              "display_mae": 0.00198234368074345
+            },
+            "source": {
+              "pixels": 51,
+              "linear_mae": 0.0015841602082293093,
+              "linear_max": 0.011015636787609431,
+              "display_mae": 0.8727476936978626
+            }
+          },
+          "sclera": {
+            "clean": {
+              "pixels": 154,
+              "linear_mae": 1.1918973097199872e-05,
+              "linear_max": 0.0001954507827761076,
+              "display_mae": 0.002717374350400587
+            },
+            "source": {
+              "pixels": 154,
+              "linear_mae": 1.1918973097199872e-05,
+              "linear_max": 0.0001954507827761076,
+              "display_mae": 0.002717374350400587
+            }
+          },
+          "lid": {
+            "clean": {
+              "pixels": 2336,
+              "linear_mae": 2.7540326118583036e-06,
+              "linear_max": 3.2958388329479282e-06,
+              "display_mae": 0.0015519525575113935
+            },
+            "source": {
+              "pixels": 2336,
+              "linear_mae": 2.7540326118583036e-06,
+              "linear_max": 3.2958388329479282e-06,
+              "display_mae": 0.0015519525575113935
+            }
+          },
+          "full": {
+            "clean": {
+              "pixels": 9216,
+              "linear_mae": 8.828308402085983e-06,
+              "linear_max": 0.0024162225148587207,
+              "display_mae": 0.005711673013811177
+            },
+            "source": {
+              "pixels": 9216,
+              "linear_mae": 1.9348072592682904e-05,
+              "linear_max": 0.011015636787609431,
+              "display_mae": 0.011324583993585506
+            }
+          },
+          "mixed": {
+            "clean": {
+              "pixels": 444,
+              "linear_mae": 0.00014459475917591634,
+              "linear_max": 0.0024162225148587207,
+              "display_mae": 0.10025391218422003
+            },
+            "source": {
+              "pixels": 444,
+              "linear_mae": 0.00014734630364081033,
+              "linear_max": 0.0024162225148587207,
+              "display_mae": 0.10249029466308696
+            }
+          },
+          "cornea": {
+            "clean": {
+              "pixels": 444,
+              "linear_mae": 6.704998267496562e-05,
+              "linear_max": 0.0024162225148587207,
+              "display_mae": 0.02879683470542338
+            },
+            "source": {
+              "pixels": 444,
+              "linear_mae": 0.00028540620827232895,
+              "linear_max": 0.011015636787609431,
+              "display_mae": 0.14530275203375473
+            }
+          }
+        }
+      },
+      {
+        "frame": 12,
+        "regions": {
+          "iris": {
+            "clean": {
+              "pixels": 264,
+              "linear_mae": 3.20867076306041e-05,
+              "linear_max": 0.0003161876622216203,
+              "display_mae": 0.014538331277308664
+            },
+            "source": {
+              "pixels": 264,
+              "linear_mae": 0.0002041532382645987,
+              "linear_max": 0.010043146539179232,
+              "display_mae": 0.07130444020211463
+            }
+          },
+          "pupil": {
+            "clean": {
+              "pixels": 52,
+              "linear_mae": 2.2950714274549554e-06,
+              "linear_max": 4.005030681349456e-05,
+              "display_mae": 0.0027335096194807374
+            },
+            "source": {
+              "pixels": 52,
+              "linear_mae": 0.00047012455948427926,
+              "linear_max": 0.008246915666865001,
+              "display_mae": 0.2915567224930056
+            }
+          },
+          "sclera": {
+            "clean": {
+              "pixels": 158,
+              "linear_mae": 1.4428078876934745e-05,
+              "linear_max": 0.0004637014865877531,
+              "display_mae": 0.003288893218732632
+            },
+            "source": {
+              "pixels": 158,
+              "linear_mae": 1.4428078876934745e-05,
+              "linear_max": 0.0004637014865877531,
+              "display_mae": 0.003288893218732632
+            }
+          },
+          "lid": {
+            "clean": {
+              "pixels": 2336,
+              "linear_mae": 2.7540326118583036e-06,
+              "linear_max": 3.2958388329479282e-06,
+              "display_mae": 0.0015519525575113935
+            },
+            "source": {
+              "pixels": 2336,
+              "linear_mae": 2.7540326118583036e-06,
+              "linear_max": 3.2958388329479282e-06,
+              "display_mae": 0.0015519525575113935
+            }
+          },
+          "full": {
+            "clean": {
+              "pixels": 9216,
+              "linear_mae": 8.868726794251498e-06,
+              "linear_max": 0.0016961061868569216,
+              "display_mae": 0.005773832616885728
+            },
+            "source": {
+              "pixels": 9216,
+              "linear_mae": 1.8039841702310946e-05,
+              "linear_max": 0.010043146539179232,
+              "display_mae": 0.009692923440117768
+            }
+          },
+          "mixed": {
+            "clean": {
+              "pixels": 442,
+              "linear_mae": 0.00014577125557298183,
+              "linear_max": 0.0016961061868569216,
+              "display_mae": 0.10200536908798648
+            },
+            "source": {
+              "pixels": 442,
+              "linear_mae": 0.00017918369341539462,
+              "linear_max": 0.006074943043407138,
+              "display_mae": 0.11583632203218196
+            }
+          },
+          "cornea": {
+            "clean": {
+              "pixels": 441,
+              "linear_mae": 6.744081382278505e-05,
+              "linear_max": 0.0016961061868569216,
+              "display_mae": 0.029966072197960065
+            },
+            "source": {
+              "pixels": 441,
+              "linear_mae": 0.0002591005275775041,
+              "linear_max": 0.010043146539179232,
+              "display_mae": 0.11186787140211504
+            }
+          }
+        }
+      },
+      {
+        "frame": 16,
+        "regions": {
+          "iris": {
+            "clean": {
+              "pixels": 0,
+              "linear_mae": null,
+              "display_mae": null,
+              "linear_max": null
+            },
+            "source": {
+              "pixels": 0,
+              "linear_mae": null,
+              "display_mae": null,
+              "linear_max": null
+            }
+          },
+          "pupil": {
+            "clean": {
+              "pixels": 0,
+              "linear_mae": null,
+              "display_mae": null,
+              "linear_max": null
+            },
+            "source": {
+              "pixels": 0,
+              "linear_mae": null,
+              "display_mae": null,
+              "linear_max": null
+            }
+          },
+          "sclera": {
+            "clean": {
+              "pixels": 0,
+              "linear_mae": null,
+              "display_mae": null,
+              "linear_max": null
+            },
+            "source": {
+              "pixels": 0,
+              "linear_mae": null,
+              "display_mae": null,
+              "linear_max": null
+            }
+          },
+          "lid": {
+            "clean": {
+              "pixels": 3000,
+              "linear_mae": 2.7540326118583036e-06,
+              "linear_max": 3.2958388329479282e-06,
+              "display_mae": 0.0015519525575113935
+            },
+            "source": {
+              "pixels": 3000,
+              "linear_mae": 2.7540326118583036e-06,
+              "linear_max": 3.2958388329479282e-06,
+              "display_mae": 0.0015519525575113935
+            }
+          },
+          "full": {
+            "clean": {
+              "pixels": 9216,
+              "linear_mae": 4.186607075691851e-06,
+              "linear_max": 0.0007626947760582398,
+              "display_mae": 0.003915431795153684
+            },
+            "source": {
+              "pixels": 9216,
+              "linear_mae": 4.186607075691851e-06,
+              "linear_max": 0.0007626947760582398,
+              "display_mae": 0.003915431795153684
+            }
+          },
+          "mixed": {
+            "clean": {
+              "pixels": 252,
+              "linear_mae": 0.00012032409910317933,
+              "linear_max": 0.0007626947760582398,
+              "display_mae": 0.12471730853810385
+            },
+            "source": {
+              "pixels": 252,
+              "linear_mae": 0.00012032409910317933,
+              "linear_max": 0.0007626947760582398,
+              "display_mae": 0.12471730853810385
+            }
+          },
+          "cornea": {
+            "clean": {
+              "pixels": 0,
+              "linear_mae": null,
+              "display_mae": null,
+              "linear_max": null
+            },
+            "source": {
+              "pixels": 0,
+              "linear_mae": null,
+              "display_mae": null,
+              "linear_max": null
+            }
+          }
+        }
+      },
+      {
+        "frame": 20,
+        "regions": {
+          "iris": {
+            "clean": {
+              "pixels": 267,
+              "linear_mae": 2.9223297019107986e-05,
+              "linear_max": 0.0003352002053495229,
+              "display_mae": 0.013274948237421333
+            },
+            "source": {
+              "pixels": 267,
+              "linear_mae": 0.00019085763173693745,
+              "linear_max": 0.006998138258061032,
+              "display_mae": 0.06875894025674627
+            }
+          },
+          "pupil": {
+            "clean": {
+              "pixels": 53,
+              "linear_mae": 5.099103265588495e-06,
+              "linear_max": 0.00016694229410643864,
+              "display_mae": 0.006564062828932621
+            },
+            "source": {
+              "pixels": 53,
+              "linear_mae": 0.0006895151879068492,
+              "linear_max": 0.012210740522001093,
+              "display_mae": 0.37344618400025215
+            }
+          },
+          "sclera": {
+            "clean": {
+              "pixels": 140,
+              "linear_mae": 1.8239205791990642e-05,
+              "linear_max": 0.0003593933582308195,
+              "display_mae": 0.004151096421548852
+            },
+            "source": {
+              "pixels": 140,
+              "linear_mae": 1.8239276749901092e-05,
+              "linear_max": 0.0003593933582308195,
+              "display_mae": 0.004151113494942682
+            }
+          },
+          "lid": {
+            "clean": {
+              "pixels": 2336,
+              "linear_mae": 2.7540326118583036e-06,
+              "linear_max": 3.2958388329479282e-06,
+              "display_mae": 0.0015519525575113935
+            },
+            "source": {
+              "pixels": 2336,
+              "linear_mae": 2.7540326118583036e-06,
+              "linear_max": 3.2958388329479282e-06,
+              "display_mae": 0.0015519525575113935
+            }
+          },
+          "full": {
+            "clean": {
+              "pixels": 9216,
+              "linear_mae": 9.434880521578322e-06,
+              "linear_max": 0.0021989316370699813,
+              "display_mae": 0.005945428840366639
+            },
+            "source": {
+              "pixels": 9216,
+              "linear_mae": 2.0034538928210244e-05,
+              "linear_max": 0.012210740522001093,
+              "display_mae": 0.010440370123658836
+            }
+          },
+          "mixed": {
+            "clean": {
+              "pixels": 456,
+              "linear_mae": 0.00015327209894190375,
+              "linear_max": 0.0021989316370699813,
+              "display_mae": 0.10239967326783019
+            },
+            "source": {
+              "pixels": 456,
+              "linear_mae": 0.00019330723509489736,
+              "linear_max": 0.007232629623245307,
+              "display_mae": 0.11811545876192243
+            }
+          },
+          "cornea": {
+            "clean": {
+              "pixels": 445,
+              "linear_mae": 7.170679812745675e-05,
+              "linear_max": 0.0021989316370699813,
+              "display_mae": 0.030691769980404737
+            },
+            "source": {
+              "pixels": 445,
+              "linear_mae": 0.00029122727467353015,
+              "linear_max": 0.012210740522001093,
+              "display_mae": 0.12378247273401932
+            }
+          }
+        }
+      }
+    ],
+    "no_empty_open_iris_or_pupil_masks": true,
+    "production_repairs": 0
+  },
+  "source_evidence": {
+    "frozen_source_records": 6,
+    "independent_human_truth": false,
+    "real_geometry_validated": false,
+    "complete_boundary_evidence": false,
+    "thresholds_tuned": false
+  },
+  "exact_source": {
+    "exact_keyed_eye_fallbacks": 300,
+    "protected_hashes_unchanged": 304
+  },
+  "code_sha256": "658c28939e1ca632502795770e54d00043cdc4f1310065e3833025c3d3674912",
+  "videos": {
+    "synthetic": {
+      "frames": 72,
+      "fps": 24.0,
+      "sha256": "f1a9e62f81fad79369b16282ff604ac261f502aeef8f735d9fd2eeec97a04e13",
+      "maximum_decoded_frame_mae": 0.5923411320546738,
+      "source_frame_sha256": {
+        "0": "024599ac0929af0832ed683be8591fb8c5ad4c606ead44b95ed03e46bd11ee78",
+        "1": "34621bc711bc761969b1e54eefbb7e195db23cdc522a53937c04364df69e85ee",
+        "2": "d6ef1337cd128e276dd862edda334783488570775e6a26e21337424a0f0bef31",
+        "3": "b4cf59dc57b93767bc7d2c01366e037416c2255b2300628e077f5fc2fcfd092d",
+        "4": "c296a37f259b7a1fb7240abc881283a68c40729c00f7cf0d8518b1ddc2d9b1c0",
+        "5": "deb8c4ab99688d2d46e423cc54fc2ebc254e8fb36fac5b464fb8dd593eac34b0",
+        "6": "461ef6af5ea090f7f69d9f6d0278a0b3657c5576f8a653e34b7d9c6730e02171",
+        "7": "65fa5d2e37a5a2e6826169f15572e833a5a0435aaa43b2dcb61f28edded1ad54",
+        "8": "7bdbd6d40b9ba89efa1e7371e253976db19359358a786edd50d02629ddbea2ad",
+        "9": "e951406802c2187804234518fbfe9f95c16a38d149661c12cee4f21d6b6dc4e6",
+        "10": "e7aa6d0fe35aa2cfdc912fadb0aecec70df99f962390867da10b2c27cd0a6ad0",
+        "11": "70a06c1d9211dcf8ef8a4308e1dd62c2bf32112b6f52d8230e6279b64f2f1c39",
+        "12": "5cade04c6af8bd68c2d2a7bbd71fe0a5eb4f75481e14afa01a34f53bfb125cce",
+        "13": "ec59d06802255ae1db8f59e84bf2a145de851321e8acc82e6e77fd709350e800",
+        "14": "5d83851fbdc9d405af7de20b8e3e10cb636a66a0e6ec4794b8f191f8af7000b8",
+        "15": "3f58beb069c51a320b405cd6965ac286585d01bd18d15e50f63b80c1f4148a64",
+        "16": "55765ea74fe14e7e42698db9105df53d8b2a89071b9e52e159d1660e18729012",
+        "17": "8325a0b0a80943a0c32b61beb11e05fe7ce12c8fff96dd22c2c6a620d60b7348",
+        "18": "260ff588835cc3e73eefefbea63948a8931f4dd0fca4f04352bc1a1120b6ed28",
+        "19": "f44e6917099360252f66727d7286ce076f80edc7d90f5c84b2a951281f222160",
+        "20": "cc7412c362d9c8cf85bfe205c6abe1c41b4e97dd26fcf7a52b573fa85077c9c3",
+        "21": "487f916a171724ff70977e76a0c627d016cb18fa877a88adf0ecc616c1cc12d4",
+        "22": "a0987b7b27b5c01d42ad26087194072fd8c7af0f1908490bad73a573b3a68c8f",
+        "23": "0323fd488140d0c5c9bc223ef35b613bf22a26215654ae01b88c35a301fa5127",
+        "24": "024599ac0929af0832ed683be8591fb8c5ad4c606ead44b95ed03e46bd11ee78",
+        "25": "34621bc711bc761969b1e54eefbb7e195db23cdc522a53937c04364df69e85ee",
+        "26": "d6ef1337cd128e276dd862edda334783488570775e6a26e21337424a0f0bef31",
+        "27": "b4cf59dc57b93767bc7d2c01366e037416c2255b2300628e077f5fc2fcfd092d",
+        "28": "c296a37f259b7a1fb7240abc881283a68c40729c00f7cf0d8518b1ddc2d9b1c0",
+        "29": "deb8c4ab99688d2d46e423cc54fc2ebc254e8fb36fac5b464fb8dd593eac34b0",
+        "30": "461ef6af5ea090f7f69d9f6d0278a0b3657c5576f8a653e34b7d9c6730e02171",
+        "31": "65fa5d2e37a5a2e6826169f15572e833a5a0435aaa43b2dcb61f28edded1ad54",
+        "32": "7bdbd6d40b9ba89efa1e7371e253976db19359358a786edd50d02629ddbea2ad",
+        "33": "e951406802c2187804234518fbfe9f95c16a38d149661c12cee4f21d6b6dc4e6",
+        "34": "e7aa6d0fe35aa2cfdc912fadb0aecec70df99f962390867da10b2c27cd0a6ad0",
+        "35": "70a06c1d9211dcf8ef8a4308e1dd62c2bf32112b6f52d8230e6279b64f2f1c39",
+        "36": "5cade04c6af8bd68c2d2a7bbd71fe0a5eb4f75481e14afa01a34f53bfb125cce",
+        "37": "ec59d06802255ae1db8f59e84bf2a145de851321e8acc82e6e77fd709350e800",
+        "38": "5d83851fbdc9d405af7de20b8e3e10cb636a66a0e6ec4794b8f191f8af7000b8",
+        "39": "3f58beb069c51a320b405cd6965ac286585d01bd18d15e50f63b80c1f4148a64",
+        "40": "55765ea74fe14e7e42698db9105df53d8b2a89071b9e52e159d1660e18729012",
+        "41": "8325a0b0a80943a0c32b61beb11e05fe7ce12c8fff96dd22c2c6a620d60b7348",
+        "42": "260ff588835cc3e73eefefbea63948a8931f4dd0fca4f04352bc1a1120b6ed28",
+        "43": "f44e6917099360252f66727d7286ce076f80edc7d90f5c84b2a951281f222160",
+        "44": "cc7412c362d9c8cf85bfe205c6abe1c41b4e97dd26fcf7a52b573fa85077c9c3",
+        "45": "487f916a171724ff70977e76a0c627d016cb18fa877a88adf0ecc616c1cc12d4",
+        "46": "a0987b7b27b5c01d42ad26087194072fd8c7af0f1908490bad73a573b3a68c8f",
+        "47": "0323fd488140d0c5c9bc223ef35b613bf22a26215654ae01b88c35a301fa5127",
+        "48": "024599ac0929af0832ed683be8591fb8c5ad4c606ead44b95ed03e46bd11ee78",
+        "49": "34621bc711bc761969b1e54eefbb7e195db23cdc522a53937c04364df69e85ee",
+        "50": "d6ef1337cd128e276dd862edda334783488570775e6a26e21337424a0f0bef31",
+        "51": "b4cf59dc57b93767bc7d2c01366e037416c2255b2300628e077f5fc2fcfd092d",
+        "52": "c296a37f259b7a1fb7240abc881283a68c40729c00f7cf0d8518b1ddc2d9b1c0",
+        "53": "deb8c4ab99688d2d46e423cc54fc2ebc254e8fb36fac5b464fb8dd593eac34b0",
+        "54": "461ef6af5ea090f7f69d9f6d0278a0b3657c5576f8a653e34b7d9c6730e02171",
+        "55": "65fa5d2e37a5a2e6826169f15572e833a5a0435aaa43b2dcb61f28edded1ad54",
+        "56": "7bdbd6d40b9ba89efa1e7371e253976db19359358a786edd50d02629ddbea2ad",
+        "57": "e951406802c2187804234518fbfe9f95c16a38d149661c12cee4f21d6b6dc4e6",
+        "58": "e7aa6d0fe35aa2cfdc912fadb0aecec70df99f962390867da10b2c27cd0a6ad0",
+        "59": "70a06c1d9211dcf8ef8a4308e1dd62c2bf32112b6f52d8230e6279b64f2f1c39",
+        "60": "5cade04c6af8bd68c2d2a7bbd71fe0a5eb4f75481e14afa01a34f53bfb125cce",
+        "61": "ec59d06802255ae1db8f59e84bf2a145de851321e8acc82e6e77fd709350e800",
+        "62": "5d83851fbdc9d405af7de20b8e3e10cb636a66a0e6ec4794b8f191f8af7000b8",
+        "63": "3f58beb069c51a320b405cd6965ac286585d01bd18d15e50f63b80c1f4148a64",
+        "64": "55765ea74fe14e7e42698db9105df53d8b2a89071b9e52e159d1660e18729012",
+        "65": "8325a0b0a80943a0c32b61beb11e05fe7ce12c8fff96dd22c2c6a620d60b7348",
+        "66": "260ff588835cc3e73eefefbea63948a8931f4dd0fca4f04352bc1a1120b6ed28",
+        "67": "f44e6917099360252f66727d7286ce076f80edc7d90f5c84b2a951281f222160",
+        "68": "cc7412c362d9c8cf85bfe205c6abe1c41b4e97dd26fcf7a52b573fa85077c9c3",
+        "69": "487f916a171724ff70977e76a0c627d016cb18fa877a88adf0ecc616c1cc12d4",
+        "70": "a0987b7b27b5c01d42ad26087194072fd8c7af0f1908490bad73a573b3a68c8f",
+        "71": "0323fd488140d0c5c9bc223ef35b613bf22a26215654ae01b88c35a301fa5127"
+      }
+    },
+    "source": {
+      "frames": 150,
+      "fps": 59.94005994005994,
+      "sha256": "06688295d34fea27cd4fa0c8783b6cfa1856bbccb053d1e885e14626fab26fb9",
+      "maximum_decoded_frame_mae": 2.0498354063609843,
+      "source_frame_sha256": {
+        "0": "b252170140a1316d29b36a7be9814fd6eff2ffb9a7d53826db76a651820e8195",
+        "1": "81dcf3cd8e978f53938feeacd5fae2f119e1896800ebeb3f6331f07d8fb70f08",
+        "2": "d2e7ba96f51792b99138c1ad2cf6c97784c7cad74aeaa258c0a79e4a3a7b2e13",
+        "3": "23079260d441a68dc5e82a5322a22ce1fb40586ca0443d3744e493795141fd15",
+        "4": "e48b98b79fb2edd885feea95df974606a39b152563ea7533c2b2458cc4fa1bb7",
+        "5": "06db8056024a3c051f95e8072fe78fd7bedc517f12b08dcdfbd1299fb1ec2bb5",
+        "6": "927b6e34c3360825023e681212970caa84f4c1d22e70eda2d50fd10da7b244eb",
+        "7": "2de6b390eb62f78d7af4d34a9a64cc7c9dd2a176f3fd88e10cccf7f453edbddb",
+        "8": "9e47532724c3901fa21eeaa299db371547d40b492efac04873916ed62e950104",
+        "9": "d4aedb3a0c2d7e6a5ad41f4a8750964a20a9daa12d2aa0b0f963b7e4c57e92f5",
+        "10": "ff618d1d0448930b553864505238e364350a84481f2a23abdbe3fe514d59db82",
+        "11": "21751824fdbd53fec542241e34302cfc68d68bc8c9d0625b07dd4afc615eeaf0",
+        "12": "a55e76ecfbc15a1899634a1b9dadeab351572280d9cf9ca8e848072b516b9c4b",
+        "13": "24533f8f2990c837ac5879fba6b86cb5f61f8df91b5c6d81ce58f372444339f5",
+        "14": "1704a43912adcbf38269f6fdc619d2e1e6a6c9351d2d402f31411c2973a3103b",
+        "15": "d17a2409bb8c6c58afef2db76e201f5044cd912dc5d924bfdc0bc5d91f9c03ec",
+        "16": "5216481df55695c0b41c58fb11ebd77175b6d26ce90079d73a6fb3fb1da9ac8d",
+        "17": "6934975b071da327cd21b21ae040b804e5aa1afbfb1f0ab350e5abc8198426af",
+        "18": "6dd8eefbfb858b296cf5a9c7e33899717bbf8cfee196d43e1b97ab7a59a55785",
+        "19": "876f0011f39ff03f6ba57a92268c4064d8a18f2f724796a3319287f275fe3c1f",
+        "20": "ace8f433c61c37e2a2a85e0f391e6aa469cf85a0c980f4c7949fabc1fe92be2a",
+        "21": "c430d2c92a8decf8ee8138e3714302e1d3a030ba41773637fd8d0fe2000779cd",
+        "22": "ae82bda1a0f59f23299f5b8b73e2f783841d8367fc0a3b888cb20f1727486494",
+        "23": "fecb6c1225ade84d087b01a09e827f66ffc27a729f39d6bc29a5b1aaf1178f25",
+        "24": "3d4197078a2eb44624e28397fdb50dbb8f8970a823028c6bdc8e6e57c53a56f9",
+        "25": "e9f9c947cc9933d8613ee03f8885498c21c21bcc5118c61b55b9909af65708e4",
+        "26": "2f2baa46dc8439dec0fafb84e360e290e16d2ceff8a3b2e44780039e2f025ed9",
+        "27": "b662942cb86d4b9ebd03c6a29e832970073791478948f9d40441296fcb40dfc4",
+        "28": "e3380635f33a628a76ab49510aab7ae8865793a824e4dfece0897f3fe9d644a1",
+        "29": "b4b9897ac3242c11e7b21418a82c6fdf4c3786986282b3d426aff1837c90781b",
+        "30": "96db45a5fcbbd5b0aa39a7c7fbe9388ad05713143dffa3380882f85ca4be9d59",
+        "31": "41035ce1ae1256a552f77b53f9cef0388a4101c011f03cbab0332e338de41413",
+        "32": "9bfbb99d9821c6e463a3b9810327efba6d9a20f14bac691a6e6d6b0963498c70",
+        "33": "5290190a0cd4316da7271ce59f833eeeab516a7ececb97e9e8f8265aa28dadf1",
+        "34": "b59c0ec818472eed6617a1751f8542dec4b2e9c0e2ce7d1b120d12ca6d266445",
+        "35": "66e05bd82521dff8afe6e8649402e2df627abc0ec11627726489810217735e3c",
+        "36": "c0445c33d79537baac30783c80e684ba5c443c23eb94dea5fcf902f6bcf3f469",
+        "37": "33f1d3497a769b075468338573397db3f5f6513d68b7512b04f26fe49d7d802b",
+        "38": "150f5c2855a6cb6c2ac3c0a7bbe6df83e313ba0d2a2d77cecb883c8ac36ca43f",
+        "39": "207b7733a0ca89104a17556c211c77ada38af65749daeb75f481b47e033fb1c0",
+        "40": "0172bb392899421982fc8757a578497167c348ab01db6c8b9017311aeaa2d2a2",
+        "41": "84bbf2bb5d98ea49b9d61f12d9bd59ccef730dde4d388afc808d3e40a5379ecd",
+        "42": "344fa78d8cce89b52fd96bf3c440ac94db4a89ff73654e6c09d036c32c324f61",
+        "43": "de5daca4982f327571aa41832713321122e73d077118367f2692bc3963852c39",
+        "44": "fd54885c00356fd15d33c79987888b3a9490b3f0188ffec4d6c8c6f65404af60",
+        "45": "fb0b97572b6b60ef4fb64a417040c3ed5f7e44879748fab9862cda0f45c5e883",
+        "46": "60b39739ac81d49836d89ddac4bffe2b233a810ed561d76c43d5d754aa512660",
+        "47": "146f99c1048cf56c57d3fc7e953bcecb8a35c8062e4887ff9ce71a382c47c7c9",
+        "48": "238c5afe40a778e530c58aa8bc37c47ff8bd5c1c968eaeb8ccab005e52579ae9",
+        "49": "5656d7c67fa4704c105f424aa266667bdadc609826cbba88c4074719f8f094d7",
+        "50": "776fa6b32c2ffbf9e492ad1aa0c417ff2b4e5ef88fb5516d0a72023959e603b2",
+        "51": "166c09e30001909019d3e9329cb3bb5987484ba53e7c40e0e0c1c1db9af23239",
+        "52": "3fa3c60734774dca4cc483b96f48614d427f8c7cf670db88af2188fb9fd4570c",
+        "53": "3ce2034553e2a9faf3e11008845075b3296a08b416d3b42e1bbbdf1afa7ae3e3",
+        "54": "ae0144996940598790e89384f680fe215b780387c25ad31a3ea4b2ee6a126044",
+        "55": "77f878661c9cef585563d4b6a72cbec46cfe1f28feb4a329636eed1843f8a35f",
+        "56": "1ac58f96abcec4b65893d359d0b3df91998ee4a1ad656ed57846eb04ea3d86fb",
+        "57": "5648baf409d23778244e00408060ed4956012ccaf14645a7d37f12168cf39829",
+        "58": "312e4bc3030db9d3176aba69d22c39647847e062b0809d2b08b0fc739106050a",
+        "59": "2750aa37b64316656a446cec53b1a632dad95e0a583601fc2aee466cd482b2fe",
+        "60": "70cbf96019ad12986e083b07c7877b8a069261504d38dc9811f46726562653d5",
+        "61": "de6782098455e6ad781d250b646f3062f752978a41270d2da8c643d8fb32e96a",
+        "62": "95efe8288fbfe3f4d6ffbba841c9afc74353d623d6d2e02664cac882601885ef",
+        "63": "29b1831ec73e71c20c21921438d5c3a0878c4b2675bfbd855c493c9f9d708bea",
+        "64": "675d5543d6c2d6f3fcdf75134cf8f9827dd59a5d33f018672c0a1d460b3f2475",
+        "65": "1f7870b0e7ddfdc6200f5cf0047474e503bbaf20d3db40d1c2c24e21a40bffd7",
+        "66": "00a1be3094de50bb1b8294f2a026454bd0359bc06fd34c42a7a3e8397afc680b",
+        "67": "198a4d1b2fa20da6885407b8c313070acfd0d5280163b710b472839f72e3d8b4",
+        "68": "35174fd8e25260e22dd7c5b741fcb933a17637da70b78bacadd716a611f9db56",
+        "69": "d09329058a51253a62431d54869cd69798af6ddaf2fe7432e89042966af39b3b",
+        "70": "c2c2c4a6f858ec3c07d106cb34c26d8912356667e76c15c2a2854094259e50a9",
+        "71": "8f49141706d3f5b727fab3f8356c203df40388c844c646550f19a2a654f9b299",
+        "72": "946b7a83a12cc9de089cf32413bbbf7e17c4a07e1ec6f2cf183abb0cda750cd5",
+        "73": "13ffbff66c316f84e53354e43ca3322ac730a0238651ca0a7061ee6253f3e314",
+        "74": "e50672d68a197457da12bc6c64a73636a45c977eaefe3eb5c8bbf3e288784d58",
+        "75": "8145aee452ecd7230218ccf2e69c23b3e43111655f8810c4c2fa805489ee42af",
+        "76": "c1f919d000aed808fa0c388cb1f51fd341b8dce0ebe7475400e47a8e0592de9c",
+        "77": "d1b105da74209094203a000a81101e1934a5d4a455cdf56929c7eefb87ba9c5f",
+        "78": "dc00904d1b7265436729977435c0b61a34accaf29ed5855199f34b0a50e05f50",
+        "79": "8561c982dc83269c132454d1878812a16bb2858c6cf999cc57fbc01602b8a5e4",
+        "80": "cde4edc1c4b899e8fe4c295e1b4690be0095ae750b0cd1a66d5f799bab3c0da2",
+        "81": "f23e9e3bd4d60a301a39296b1ee3a4cf61f52f45ab3550c95b106f33e6cba661",
+        "82": "1bc8080780c31025ba6bbec8d209f80947eb7ef49ab0ae1a4b7ab0cd34ea0994",
+        "83": "67d51d3f662a078617ad60f76b5c9f0cfbef58d29a024489965d8ce1cfedecfa",
+        "84": "4aaa09aa592cae0c4e6f1ba950ef847ad4168c237f611007ab0fa9bcc39eeb2f",
+        "85": "b32b6ba48eaa4594845beb179ced17d10e1f704cd574fe5ab936231bb9f7d9e8",
+        "86": "b29afa24971b44a0ed7150f250dfe8679a5dc4ec7ea37f27361c6ced3e0ae57f",
+        "87": "2da0d1ca2e52a46b027d0e3316cecaacca5da5396df84689f440f884e382ab80",
+        "88": "ed199c7f89c0fc324513b43517e0a0fbb18adfe4dfc002edcb135d9dd3d50849",
+        "89": "2f1a0933b9743b63dc3c7980ba02bddc0b444469edfbff0bb7533f409b44f2b4",
+        "90": "76705b00d53ea45e518739e0fb3d3a933a3d31dfbaa8fbb9e94819c198809334",
+        "91": "c6091a09e8c0bb58d0dd3e10d1039e913f3b17195bb7c750a1ea3a6176128f1c",
+        "92": "6e994b03d1279c750bf4cb29bb9afe6dd2f041ff044853c6ace10b4fe17d2c6b",
+        "93": "32ee7dd3fb15d4286a999f6fcd5410008557e2a38ad168f1ccd08b652f71d8be",
+        "94": "94e02908d2ba438b91f525ffb571f76104060d6b46893a9fc13e3008a257e124",
+        "95": "f5a4068fb07124af23ceb75c89c74fc66a1ab029cdfe33936daa73dd1b3e0802",
+        "96": "d1a9b7c847c96995a6178ffec3b9f1d811b5fd1df2cc523ad1f142e5fa4a12e0",
+        "97": "82f236d97acb96947d05039545d22358feed73729feb8766a8e3515b992ccc43",
+        "98": "a8c4cfed933b41df33cb36aa906c6d7379a994f0419c084e4cb74221c60ce388",
+        "99": "59557d8634326c30feeb3164ba2e143df90537e5938ba4807afb061e80afe663",
+        "100": "c4d67d5ed554b3aae0d4f8fc71997eaef3dda4e0afc34f615cbbc5ef63c39cde",
+        "101": "0ad8186215dac0d5746a7e69a95135225ac563e8cf5e68b6b26d387590af772d",
+        "102": "e922d2eed894ca426f9a0ac60509b955d0bfb4c5a105fe1206af55c0da939e3d",
+        "103": "11adb9b232eef1c26be97846b17e5393ea05474bf2ab8cc4a2e627c88abc0c12",
+        "104": "563a3ff87922169af327c82eab34ef44bcdf176ed805ec674f6f7ec97674f88b",
+        "105": "b595db9425f0f1449b915ae0e6825be260d7adf5717c56d0830a333c3f85aabf",
+        "106": "c11f8e8b9a6e6b2676f5288341164c9b72b38a0d7c1a0264ffb7e7918536f3e6",
+        "107": "5fafc1c7aa79bf46198747408bf854b7c32087e3402ebf70173bb5e10b7331bd",
+        "108": "5b886327e4887fa4074765608c608f99287d1d7a4604d5130484cc3c79ff70bf",
+        "109": "5c64bc8ecb20d8de601719e5be5dd73b89b0a7f466fee8fc7cb09ad594afcae7",
+        "110": "e5f44291da87dbf307fbec72cd3bf83fed002c69a756f8edc4ec0cf737c4ef23",
+        "111": "ca7f42393d6dd4a12dc21f78a58fba2939e48e93cc1170392473113148398675",
+        "112": "8a81902799f2081ccad6f04d48e375c1676ad90e19f3fb85638bff99d2aa3547",
+        "113": "0f33a86b727ee7792dff4b359d815a1d2652febe9506934c02f1e51adccf5d28",
+        "114": "1764c1d42554897199cf887269a96a429b6f4442bc514043e202ca3dda559756",
+        "115": "d1a6dd06f2078a14436f7001fea38ed3566448968a889a81263c1db7deb27b20",
+        "116": "4aaa307b8d563351fdbc50f40ec00d6702abb7e4a7488204e25668a96a62433a",
+        "117": "3bdfc8f2732221bf5a7d3fdedb1b340fd34ebd5a04ee257510e99548324e31a0",
+        "118": "4624e2b966936442bc61223736e3b3467b8cb1aab09b40351aa80ed0f958fbaf",
+        "119": "20c6771449898cd8993f251a84ba910ee6dbe02f117864d9e9929bd52aa469aa",
+        "120": "770fab1edd9c712bec1c3332205d074f9d32de5a51fc42df9737792b672aeffe",
+        "121": "7ddff8cda1533664e480e7c576a7352653dcd5fc54f46b5b489fa6f47b580bbc",
+        "122": "6816be9cf022ab0bba7357c7e18a6ada3577703574531d50fc1eef243da10466",
+        "123": "142c479207b0e81cb8332e9bc3923a71324c9b3734ada18732cb9ec2baba9472",
+        "124": "6f57beef9ec508daa206ec3f0d71aaafc739279ade779770853ec570555b8c90",
+        "125": "ca2d4274908000cf2caa32027cd1c5d737e3583b0df5f81e7f71515635a3a90e",
+        "126": "d8b444c17bfb17a871b13698db4a8258a38900a148961282869db74c63b77247",
+        "127": "02309e473b0f4d5a668961f499d75df8d78ff36039913bae60a80ecc47ba2582",
+        "128": "ff607d5daa0381c3b52783997c16deff663c969e368bd3c88277190c780214c2",
+        "129": "a1b340ed0e060e350a2c77fe726f1edc6393ce2b38464d8bc4631d740fabca93",
+        "130": "bffa8641f628fed7d13ed5dde0a6f75434841c88dcff543ddd7f8bf6c579556c",
+        "131": "2c4998cdcc6129531ee56c1803f6839dde96635c37d4a8bd510f77173c060eb0",
+        "132": "b9f7e5ada6aa27177dcab456b4ecc79677c0fe7ed588d34d0e80451c8f5736d0",
+        "133": "58a139a8578ab8dc51d9412f3edf9573b5ac8223d4c0d7158c1d447b5c4434e3",
+        "134": "36e3c2122c38910ff23e272fb64ef6c5597158ccd4a2ed64cfe5284179c8aebb",
+        "135": "03da20313cd7a241b394b9daa346420e3b2058d62b748a9406a798144d981d59",
+        "136": "9cf56b89892f443940f19c7a0303c704ed1f92d85a0d748aef198072cae03198",
+        "137": "19a9482513f27ec9023cad327d14b9a88022b3e099f6e8903fe48d85f0c692f8",
+        "138": "d42826fab183fe92e241c38e35a2d62120c9b2ed565806dfb9ce733f3560d393",
+        "139": "6573785348b4d014f49647c17805ece7a7f8f54cff71e225668743dc9eaa6290",
+        "140": "43f0c887e0a7f90ebe19bdd436d4362e511c362268a4a0e316063890eb55761a",
+        "141": "dca96e9772b8b8acc7633ae0baffd603c0910fc98be08a055278b28b72424a79",
+        "142": "02bc3d64b04347d611f9a4000d8c7e1aa7b21e34f2f6d0e0380ebb6f453e3529",
+        "143": "b703be5a14055408494ac5ed3feae6c9d0761e18b8c7e4dcb70e44ea2be6662f",
+        "144": "f2745ef15f74118dabc792955e2caf7419bc23953cab2bf5b04b8e966bb8aa2c",
+        "145": "cb006e0a831cdeb8177d6cda8d7926551041712f98dad5f2e95fa9da75d79b64",
+        "146": "93e102bd381e58d3bbe16e39c248c17e0f113364fef9ceb49155fbf2e1234f58",
+        "147": "62a776851b8000ab8803d237c8ca52a5da0ecd844adc2fabc5819ec64364ae6e",
+        "148": "d35264fb349db0a08f0142d03a08e22a843dbfa10df510ef0193c44b15645968",
+        "149": "f60480cd00c29bbf90c8ce59e82259dd6b4dc7e589799e84c475ca094144b2ba"
+      }
+    }
+  }
+}

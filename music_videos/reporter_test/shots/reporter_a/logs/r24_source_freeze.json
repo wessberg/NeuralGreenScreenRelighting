@@ -1,0 +1,75 @@
+{
+  "labels_sha256": "02c81b5c17ffc42bec5576721f8950adf5c48eca55dac33eda7bfb93e62d429a",
+  "protocol_sha256": "c6284b4f42c72ee5d0b525714d72772d5656db86aa9b5e5ecdef82af53fe3a37",
+  "records": [
+    {
+      "frame": 15,
+      "side": "left",
+      "source_frame": 715,
+      "rgb_sha256": "e97af36d23c570f5aa465e71943ff9603a55165429334f65ac89e81d0a9c571e",
+      "origin_xy": [
+        1031,
+        234
+      ],
+      "archive_sha256": "dcddecf6f200e7a760701bd4d1b8dc3f9ebfbba0be5da1adca92a4517d3acb7b"
+    },
+    {
+      "frame": 15,
+      "side": "right",
+      "source_frame": 715,
+      "rgb_sha256": "be353ba315fc1afe41f20d5a71dc51deb78a0b84264836e9291b2efa526c37a1",
+      "origin_xy": [
+        900,
+        248
+      ],
+      "archive_sha256": "a2fbb8dbfc52a9bbc53e61d171b6f21e33ce186f831618e1407ce2917ac09648"
+    },
+    {
+      "frame": 75,
+      "side": "left",
+      "source_frame": 775,
+      "rgb_sha256": "0657a9eb6cde9cfe50bec53c5be799495f4673cc064e593c0328cbdf820238fc",
+      "origin_xy": [
+        998,
+        265
+      ],
+      "archive_sha256": "f4dbc896ebd61331f7b5213869f79cd37884bfe0cc1d16b978648659cb264e7e"
+    },
+    {
+      "frame": 75,
+      "side": "right",
+      "source_frame": 775,
+      "rgb_sha256": "e5699c1ca26a5c83d917abd91f56f0bdb0382dfd22f0c517018c1c962a876c5d",
+      "origin_xy": [
+        867,
+        280
+      ],
+      "archive_sha256": "f8637d8ce36434a0410dadfaa66b0a6c135f4b543800807166d3528d27e12862"
+    },
+    {
+      "frame": 135,
+      "side": "left",
+      "source_frame": 835,
+      "rgb_sha256": "b07281f991584751457261c91bcc9b67f8bd86fcf1b0b0cbc0cb2e16454e985a",
+      "origin_xy": [
+        1001,
+        232
+      ],
+      "archive_sha256": "e004e547d13d9ca4bd97fd36363b79e8af82a06827f149e4b1a51db72f1e4aa6"
+    },
+    {
+      "frame": 135,
+      "side": "right",
+      "source_frame": 835,
+      "rgb_sha256": "714d1e15fefd719f1952a7547ee8d2be6761f344bc819a174f07d9e6007d3890",
+      "origin_xy": [
+        870,
+        247
+      ],
+      "archive_sha256": "247872d727754f6644c36b9727af1b28e0819dd54db88ffa5fa3431cd5b8db03"
+    }
+  ],
+  "provenance": "Assistant annotations from source-only 8x nearest-neighbour keyed RGB, before loading these frames' predicted contours. Reused footage, not independent human or anatomical truth.",
+  "independent_human_truth": false,
+  "geometry_fitted": false
+}

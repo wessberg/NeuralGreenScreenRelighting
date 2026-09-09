@@ -1,0 +1,67 @@
+{
+  "display_mae_weighted_by_native_pixels": {
+    "full": {
+      "clean": 0.009328879031656136,
+      "source": 0.013424502452971677,
+      "target": 0.013310241620952056,
+      "coupled": 0.01017958572651846,
+      "add_only": 0.1910645959836012
+    },
+    "cornea": {
+      "clean": 0.05844047328404435,
+      "source": 0.1553784177025449,
+      "target": 0.15267405831497216,
+      "coupled": 0.24093494982952413,
+      "add_only": 4.5222479630668255
+    },
+    "iris": {
+      "clean": 0.018219462694185225,
+      "source": 0.06844809871347347,
+      "target": 0.06696191887784696,
+      "coupled": 0.1045097507724807,
+      "add_only": 2.162378805725625
+    },
+    "pupil": {
+      "clean": 0.004979464880591686,
+      "source": 0.4429100624183903,
+      "target": 0.40087233743897915,
+      "coupled": 1.124018171094994,
+      "add_only": 20.318341406947766
+    },
+    "mixed": {
+      "clean": 0.18224630253694868,
+      "source": 0.19486214797606743,
+      "target": 0.19789711167296217,
+      "coupled": 0.03844307349318168,
+      "add_only": 0.6994834680873254
+    }
+  },
+  "pixels": {
+    "iris": 5540,
+    "pupil": 1140,
+    "sclera": 3264,
+    "lid": 57928,
+    "full": 221184,
+    "mixed": 10176,
+    "cornea": 9345
+  },
+  "negative_coupled_channels": 1,
+  "source_arc_support": {
+    "limbus": {
+      "attempted": 35,
+      "within_2px": 24
+    },
+    "pupil": {
+      "attempted": 12,
+      "within_2px": 9
+    }
+  },
+  "source_proposal_counts": {
+    "proposed_eye_pixels": 3020,
+    "outside_lid_uncertainty_pixels": 915,
+    "proposed_pupil_pixels": 300,
+    "reflection_overlap_pixels": 92,
+    "reflection_pixels": 148
+  },
+  "scope": "Forward fixture transport and assistant sparse source observations, no real repair"
+}

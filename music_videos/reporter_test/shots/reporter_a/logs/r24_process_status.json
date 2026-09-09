@@ -1,0 +1,11 @@
+{
+  "render_initial_shell_exit": 1,
+  "render_oriented_shell_exit": 1,
+  "native_blender_exit_separately_captured": false,
+  "render_logs_completed": true,
+  "rendered_images_verified": 72,
+  "stderr": "PowerShell NativeCommandError for Blender deprecation warnings; OptiX cache warnings also present",
+  "audit_exit": 0,
+  "encodes_exit": 0,
+  "initial_verifier_exit": 0
+}

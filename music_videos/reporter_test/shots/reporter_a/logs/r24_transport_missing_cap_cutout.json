@@ -1,0 +1,261 @@
+{
+  "records": [
+    {
+      "frame": 0,
+      "info": {
+        "light_occluded_camera_visible_subrays": 33262,
+        "maximum_pupil_aperture_radius": 0.0,
+        "maximum_backing_aperture_xy_separation": 0.0,
+        "internal_wall_subrays": 100574,
+        "quadrature": 16
+      },
+      "scores": {
+        "iris": {
+          "clean": {
+            "pixels": 0,
+            "linear_mae": null,
+            "display_mae": null,
+            "linear_max": null
+          },
+          "source": {
+            "pixels": 0,
+            "linear_mae": null,
+            "display_mae": null,
+            "linear_max": null
+          },
+          "target": {
+            "pixels": 0,
+            "linear_mae": null,
+            "display_mae": null,
+            "linear_max": null
+          },
+          "coupled": {
+            "pixels": 0,
+            "linear_mae": null,
+            "display_mae": null,
+            "linear_max": null
+          },
+          "add_only": {
+            "pixels": 0,
+            "linear_mae": null,
+            "display_mae": null,
+            "linear_max": null
+          }
+        },
+        "pupil": {
+          "clean": {
+            "pixels": 0,
+            "linear_mae": null,
+            "display_mae": null,
+            "linear_max": null
+          },
+          "source": {
+            "pixels": 0,
+            "linear_mae": null,
+            "display_mae": null,
+            "linear_max": null
+          },
+          "target": {
+            "pixels": 0,
+            "linear_mae": null,
+            "display_mae": null,
+            "linear_max": null
+          },
+          "coupled": {
+            "pixels": 0,
+            "linear_mae": null,
+            "display_mae": null,
+            "linear_max": null
+          },
+          "add_only": {
+            "pixels": 0,
+            "linear_mae": null,
+            "display_mae": null,
+            "linear_max": null
+          }
+        },
+        "sclera": {
+          "clean": {
+            "pixels": 158,
+            "linear_mae": 1.4549327802084011e-05,
+            "linear_max": 0.0002308857440948553,
+            "display_mae": 0.0033151335836097123
+          },
+          "source": {
+            "pixels": 158,
+            "linear_mae": 1.4549390676181876e-05,
+            "linear_max": 0.0002308857440948553,
+            "display_mae": 0.003315147287356784
+          },
+          "target": {
+            "pixels": 158,
+            "linear_mae": 1.4549327802084011e-05,
+            "linear_max": 0.0002308857440948553,
+            "display_mae": 0.0033151335836097123
+          },
+          "coupled": {
+            "pixels": 158,
+            "linear_mae": 6.28740978643361e-11,
+            "linear_max": 2.9802322387695312e-08,
+            "display_mae": 1.37037470717019e-08
+          },
+          "add_only": {
+            "pixels": 158,
+            "linear_mae": 6.28740978643361e-11,
+            "linear_max": 2.9802322387695312e-08,
+            "display_mae": 1.37037470717019e-08
+          }
+        },
+        "lid": {
+          "clean": {
+            "pixels": 2336,
+            "linear_mae": 2.7540326118837464e-06,
+            "linear_max": 3.2958388329479282e-06,
+            "display_mae": 0.0015519525575255488
+          },
+          "source": {
+            "pixels": 2336,
+            "linear_mae": 2.7540326118837464e-06,
+            "linear_max": 3.2958388329479282e-06,
+            "display_mae": 0.0015519525575255488
+          },
+          "target": {
+            "pixels": 2336,
+            "linear_mae": 2.7540326118837464e-06,
+            "linear_max": 3.2958388329479282e-06,
+            "display_mae": 0.0015519525575255488
+          },
+          "coupled": {
+            "pixels": 2336,
+            "linear_mae": 0.0,
+            "linear_max": 0.0,
+            "display_mae": 0.0
+          },
+          "add_only": {
+            "pixels": 2336,
+            "linear_mae": 0.0,
+            "linear_max": 0.0,
+            "display_mae": 0.0
+          }
+        },
+        "full": {
+          "clean": {
+            "pixels": 9216,
+            "linear_mae": 0.008897217249773767,
+            "linear_max": 0.3019364303065193,
+            "display_mae": 2.9597645845043177
+          },
+          "source": {
+            "pixels": 9216,
+            "linear_mae": 0.008898068442764846,
+            "linear_max": 0.3066603300092721,
+            "display_mae": 2.81666054779009
+          },
+          "target": {
+            "pixels": 9216,
+            "linear_mae": 0.008898376865439202,
+            "linear_max": 0.303140815354556,
+            "display_mae": 2.8419373667799954
+          },
+          "coupled": {
+            "pixels": 9216,
+            "linear_mae": 1.5710332375480034e-05,
+            "linear_max": 0.012907626465435196,
+            "display_mae": 0.009460994201673997
+          },
+          "add_only": {
+            "pixels": 9216,
+            "linear_mae": 0.0004483703919283491,
+            "linear_max": 0.13280676913426281,
+            "display_mae": 0.20764416868202748
+          }
+        },
+        "mixed": {
+          "clean": {
+            "pixels": 406,
+            "linear_mae": 0.019784952814910984,
+            "linear_max": 0.24512651243945366,
+            "display_mae": 6.388863713610828
+          },
+          "source": {
+            "pixels": 406,
+            "linear_mae": 0.019785183249434898,
+            "linear_max": 0.24512654969235664,
+            "display_mae": 6.388203601812407
+          },
+          "target": {
+            "pixels": 406,
+            "linear_mae": 0.01978506674147302,
+            "linear_max": 0.24512652734061485,
+            "display_mae": 6.388532164909972
+          },
+          "coupled": {
+            "pixels": 406,
+            "linear_mae": 1.2850963604246325e-07,
+            "linear_max": 2.172313446621721e-05,
+            "display_mae": 4.759937885894747e-05
+          },
+          "add_only": {
+            "pixels": 406,
+            "linear_mae": 3.987800278146657e-06,
+            "linear_max": 0.0011933939885578476,
+            "display_mae": 0.0016480505880880963
+          }
+        },
+        "cornea": {
+          "clean": {
+            "pixels": 441,
+            "linear_mae": 0.18572952839026363,
+            "linear_max": 0.3019364303065193,
+            "display_mae": 61.708503136623314
+          },
+          "source": {
+            "pixels": 441,
+            "linear_mae": 0.1857473156996748,
+            "linear_max": 0.3066603300092721,
+            "display_mae": 58.717920542607956
+          },
+          "target": {
+            "pixels": 441,
+            "linear_mae": 0.18575376194324025,
+            "linear_max": 0.303140815354556,
+            "display_mae": 59.24615468032244
+          },
+          "coupled": {
+            "pixels": 441,
+            "linear_mae": 0.0003283068283747422,
+            "linear_max": 0.012907626465435196,
+            "display_mae": 0.1977131767475579
+          },
+          "add_only": {
+            "pixels": 441,
+            "linear_mae": 0.00937001909331633,
+            "linear_max": 0.13280676913426281,
+            "display_mae": 4.339337067928823
+          }
+        }
+      },
+      "negative_coupled_channels": 0,
+      "geometry_supplied": true,
+      "material_supplied": true,
+      "real_replacement_allowed": false
+    }
+  ],
+  "code_sha256": {
+    "audit_r24_eyes.py": "9979a594e1d803873c635774863a690f1ebca32a754ca941c27af1b4b7af00fd",
+    "connected_eye.py": "abfc130d98189cf21b45170a4b97e61dbfe66ef40ff0a2d969202e33b304757c"
+  },
+  "protocol_sha256": "c6284b4f42c72ee5d0b525714d72772d5656db86aa9b5e5ecdef82af53fe3a37",
+  "correction_sha256": "8149354b4b0448beb3c5b1736996500473b1f8bc279a9751e72a88aa69cae684",
+  "quadrature": 16,
+  "review_shape": [
+    672,
+    864,
+    3
+  ],
+  "source_reflection_inferred": false,
+  "new_reflection_from_scene": true,
+  "geometry_inferred": false,
+  "production_repairs": 0,
+  "scope": "Forward transport with supplied material/geometry; no inverse acceptance test"
+}

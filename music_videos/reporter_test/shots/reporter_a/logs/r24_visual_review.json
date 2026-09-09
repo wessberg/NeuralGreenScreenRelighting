@@ -1,0 +1,36 @@
+{
+  "method": "Assistant inspection of decoded ordered contact sheets and native boards; no live playback or artist acceptance",
+  "synthetic": {
+    "video_sha256": "f1a9e62f81fad79369b16282ff604ac261f502aeef8f735d9fd2eeec97a04e13",
+    "contact_sheets": [
+      0,
+      24,
+      48
+    ],
+    "native_decoded_boards": [
+      5,
+      35,
+      49
+    ],
+    "finding": "Chronological gaze and blink preserved. Supplied scene reflection changes pupil appearance; this is a visibly simplified nonperformer fixture."
+  },
+  "source": {
+    "video_sha256": "06688295d34fea27cd4fa0c8783b6cfa1856bbccb053d1e885e14626fab26fb9",
+    "contact_sheets": [
+      0,
+      24,
+      48,
+      72,
+      96,
+      120,
+      144
+    ],
+    "native_decoded_boards": [
+      75,
+      135
+    ],
+    "finding": "Source catchlights remain. Complete ellipses extend over closed lids; source arcs are partial and annotation uncertainty is visible."
+  },
+  "artist_acceptance": false,
+  "production_repairs": 0
+}

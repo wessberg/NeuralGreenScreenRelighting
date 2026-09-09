@@ -1,0 +1,300 @@
+{
+  "evidence": {
+    "labels_sha256": "02c81b5c17ffc42bec5576721f8950adf5c48eca55dac33eda7bfb93e62d429a",
+    "protocol_sha256": "c6284b4f42c72ee5d0b525714d72772d5656db86aa9b5e5ecdef82af53fe3a37",
+    "records": [
+      {
+        "frame": 15,
+        "side": "left",
+        "source_frame": 715,
+        "rgb_sha256": "e97af36d23c570f5aa465e71943ff9603a55165429334f65ac89e81d0a9c571e",
+        "origin_xy": [
+          1031,
+          234
+        ],
+        "archive_sha256": "dcddecf6f200e7a760701bd4d1b8dc3f9ebfbba0be5da1adca92a4517d3acb7b"
+      },
+      {
+        "frame": 15,
+        "side": "right",
+        "source_frame": 715,
+        "rgb_sha256": "be353ba315fc1afe41f20d5a71dc51deb78a0b84264836e9291b2efa526c37a1",
+        "origin_xy": [
+          900,
+          248
+        ],
+        "archive_sha256": "a2fbb8dbfc52a9bbc53e61d171b6f21e33ce186f831618e1407ce2917ac09648"
+      },
+      {
+        "frame": 75,
+        "side": "left",
+        "source_frame": 775,
+        "rgb_sha256": "0657a9eb6cde9cfe50bec53c5be799495f4673cc064e593c0328cbdf820238fc",
+        "origin_xy": [
+          998,
+          265
+        ],
+        "archive_sha256": "f4dbc896ebd61331f7b5213869f79cd37884bfe0cc1d16b978648659cb264e7e"
+      },
+      {
+        "frame": 75,
+        "side": "right",
+        "source_frame": 775,
+        "rgb_sha256": "e5699c1ca26a5c83d917abd91f56f0bdb0382dfd22f0c517018c1c962a876c5d",
+        "origin_xy": [
+          867,
+          280
+        ],
+        "archive_sha256": "f8637d8ce36434a0410dadfaa66b0a6c135f4b543800807166d3528d27e12862"
+      },
+      {
+        "frame": 135,
+        "side": "left",
+        "source_frame": 835,
+        "rgb_sha256": "b07281f991584751457261c91bcc9b67f8bd86fcf1b0b0cbc0cb2e16454e985a",
+        "origin_xy": [
+          1001,
+          232
+        ],
+        "archive_sha256": "e004e547d13d9ca4bd97fd36363b79e8af82a06827f149e4b1a51db72f1e4aa6"
+      },
+      {
+        "frame": 135,
+        "side": "right",
+        "source_frame": 835,
+        "rgb_sha256": "714d1e15fefd719f1952a7547ee8d2be6761f344bc819a174f07d9e6007d3890",
+        "origin_xy": [
+          870,
+          247
+        ],
+        "archive_sha256": "247872d727754f6644c36b9727af1b28e0819dd54db88ffa5fa3431cd5b8db03"
+      }
+    ],
+    "provenance": "Assistant annotations from source-only 8x nearest-neighbour keyed RGB, before loading these frames' predicted contours. Reused footage, not independent human or anatomical truth.",
+    "independent_human_truth": false,
+    "geometry_fitted": false
+  },
+  "records": [
+    {
+      "frame": 15,
+      "side": "left",
+      "limbus": {
+        "samples": 5,
+        "median_px": 2.4863656811198753,
+        "maximum_px": 4.414635445939459,
+        "within_2px": 1,
+        "distances_px": [
+          4.414635445939459,
+          3.044056242419379,
+          2.340344721008926,
+          2.4863656811198753,
+          1.4017556667980713
+        ]
+      },
+      "pupil": {
+        "samples": 0,
+        "median_px": null,
+        "maximum_px": null,
+        "within_2px": 0
+      },
+      "proposed_eye_pixels": 512,
+      "outside_lid_uncertainty_pixels": 185,
+      "proposed_pupil_pixels": 71,
+      "reflection_overlap_pixels": 21,
+      "reflection_pixels": 21,
+      "complete_boundary_observed": false,
+      "geometry_validated": false,
+      "clean_material_certified": false
+    },
+    {
+      "frame": 15,
+      "side": "right",
+      "limbus": {
+        "samples": 6,
+        "median_px": 0.9545679659614044,
+        "maximum_px": 2.2808888368636753,
+        "within_2px": 4,
+        "distances_px": [
+          0.5738727801311926,
+          0.05811555717343203,
+          0.47140293797899235,
+          2.162121619240509,
+          2.2808888368636753,
+          1.335263151791616
+        ]
+      },
+      "pupil": {
+        "samples": 4,
+        "median_px": 2.26156687976936,
+        "maximum_px": 3.125375626810777,
+        "within_2px": 2,
+        "distances_px": [
+          0.8666586451859841,
+          1.7997626573700929,
+          2.7233711021686275,
+          3.125375626810777
+        ]
+      },
+      "proposed_eye_pixels": 509,
+      "outside_lid_uncertainty_pixels": 192,
+      "proposed_pupil_pixels": 48,
+      "reflection_overlap_pixels": 21,
+      "reflection_pixels": 21,
+      "complete_boundary_observed": false,
+      "geometry_validated": false,
+      "clean_material_certified": false
+    },
+    {
+      "frame": 75,
+      "side": "left",
+      "limbus": {
+        "samples": 7,
+        "median_px": 0.42385102596506885,
+        "maximum_px": 1.0035731620615997,
+        "within_2px": 7,
+        "distances_px": [
+          1.0035731620615997,
+          0.32118253116595646,
+          0.16529781574517818,
+          0.42713950676962015,
+          0.12578185580830595,
+          0.64344811429963,
+          0.42385102596506885
+        ]
+      },
+      "pupil": {
+        "samples": 4,
+        "median_px": 0.965383538050286,
+        "maximum_px": 1.3831073312246174,
+        "within_2px": 4,
+        "distances_px": [
+          1.3831073312246174,
+          0.44753496400428194,
+          0.6248761353436083,
+          1.3058909407569637
+        ]
+      },
+      "proposed_eye_pixels": 495,
+      "outside_lid_uncertainty_pixels": 53,
+      "proposed_pupil_pixels": 30,
+      "reflection_overlap_pixels": 7,
+      "reflection_pixels": 30,
+      "complete_boundary_observed": false,
+      "geometry_validated": false,
+      "clean_material_certified": false
+    },
+    {
+      "frame": 75,
+      "side": "right",
+      "limbus": {
+        "samples": 7,
+        "median_px": 0.44474645832677484,
+        "maximum_px": 1.3100667148583716,
+        "within_2px": 7,
+        "distances_px": [
+          1.3100667148583716,
+          0.49832148936603726,
+          0.31758934744149764,
+          0.44474645832677484,
+          0.4940758492939435,
+          0.3722019069897528,
+          0.03564162729192666
+        ]
+      },
+      "pupil": {
+        "samples": 4,
+        "median_px": 0.6482975004334086,
+        "maximum_px": 2.1273442693909184,
+        "within_2px": 3,
+        "distances_px": [
+          0.20211718404585347,
+          0.5300606983658788,
+          0.7665343025009383,
+          2.1273442693909184
+        ]
+      },
+      "proposed_eye_pixels": 505,
+      "outside_lid_uncertainty_pixels": 68,
+      "proposed_pupil_pixels": 45,
+      "reflection_overlap_pixels": 18,
+      "reflection_pixels": 34,
+      "complete_boundary_observed": false,
+      "geometry_validated": false,
+      "clean_material_certified": false
+    },
+    {
+      "frame": 135,
+      "side": "left",
+      "limbus": {
+        "samples": 5,
+        "median_px": 2.4478411892849135,
+        "maximum_px": 3.0107285335048393,
+        "within_2px": 2,
+        "distances_px": [
+          2.4478411892849135,
+          3.0107285335048393,
+          2.804291762317842,
+          1.6337751849600282,
+          0.8487332145246845
+        ]
+      },
+      "pupil": {
+        "samples": 0,
+        "median_px": null,
+        "maximum_px": null,
+        "within_2px": 0
+      },
+      "proposed_eye_pixels": 479,
+      "outside_lid_uncertainty_pixels": 180,
+      "proposed_pupil_pixels": 42,
+      "reflection_overlap_pixels": 5,
+      "reflection_pixels": 21,
+      "complete_boundary_observed": false,
+      "geometry_validated": false,
+      "clean_material_certified": false
+    },
+    {
+      "frame": 135,
+      "side": "right",
+      "limbus": {
+        "samples": 5,
+        "median_px": 0.8336658893186577,
+        "maximum_px": 2.9515395134103324,
+        "within_2px": 3,
+        "distances_px": [
+          0.7052170812016623,
+          0.7259066713138693,
+          0.8336658893186577,
+          2.9515395134103324,
+          2.8170046978059324
+        ]
+      },
+      "pupil": {
+        "samples": 0,
+        "median_px": null,
+        "maximum_px": null,
+        "within_2px": 0
+      },
+      "proposed_eye_pixels": 520,
+      "outside_lid_uncertainty_pixels": 237,
+      "proposed_pupil_pixels": 64,
+      "reflection_overlap_pixels": 20,
+      "reflection_pixels": 21,
+      "complete_boundary_observed": false,
+      "geometry_validated": false,
+      "clean_material_certified": false
+    }
+  ],
+  "frames": 150,
+  "review_shape": [
+    876,
+    768,
+    3
+  ],
+  "source_fps": "60000/1001",
+  "code_sha256": "3410d890fcdbac7d45f533dfc6c4f43b396fb1fc010ad194e72a15152c8509e8",
+  "production_repairs": 0,
+  "interpretation": "Sparse visible-arc compatibility only; reflection overlap leaves pupil material unknown. No 3D fit.",
+  "thresholds_fitted": false,
+  "full_neural_method_run": false
+}

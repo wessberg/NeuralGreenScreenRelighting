@@ -1,0 +1,261 @@
+{
+  "records": [
+    {
+      "frame": 0,
+      "info": {
+        "light_occluded_camera_visible_subrays": 33262,
+        "maximum_pupil_aperture_radius": 1.7999412821617071,
+        "maximum_backing_aperture_xy_separation": 0.4093256166188895,
+        "internal_wall_subrays": 0,
+        "quadrature": 16
+      },
+      "scores": {
+        "iris": {
+          "clean": {
+            "pixels": 266,
+            "linear_mae": 4.11286970212156e-05,
+            "linear_max": 0.0006210286719237484,
+            "display_mae": 0.018555043332642445
+          },
+          "source": {
+            "pixels": 266,
+            "linear_mae": 0.00014929955371761154,
+            "linear_max": 0.007023791742165442,
+            "display_mae": 0.06024351905550001
+          },
+          "target": {
+            "pixels": 266,
+            "linear_mae": 0.00018163838212527006,
+            "linear_max": 0.012877165067615381,
+            "display_mae": 0.0677565395192223
+          },
+          "coupled": {
+            "pixels": 266,
+            "linear_mae": 0.000257654703835927,
+            "linear_max": 0.012907626465435196,
+            "display_mae": 0.10150707071045739
+          },
+          "add_only": {
+            "pixels": 266,
+            "linear_mae": 0.0043931505234645835,
+            "linear_max": 0.12573072198788526,
+            "display_mae": 1.660930034213822
+          }
+        },
+        "pupil": {
+          "clean": {
+            "pixels": 52,
+            "linear_mae": 2.049425033308056e-06,
+            "linear_max": 3.138446678710438e-05,
+            "display_mae": 0.00242089511986491
+          },
+          "source": {
+            "pixels": 52,
+            "linear_mae": 0.0005471063530582402,
+            "linear_max": 0.0072401425765585975,
+            "display_mae": 0.3127211977867569
+          },
+          "target": {
+            "pixels": 52,
+            "linear_mae": 0.0008456602396974861,
+            "linear_max": 0.008290239937080536,
+            "display_mae": 0.588567574558768
+          },
+          "coupled": {
+            "pixels": 52,
+            "linear_mae": 0.0012115990175904595,
+            "linear_max": 0.007859409205186157,
+            "display_mae": 0.9966981066830265
+          },
+          "add_only": {
+            "pixels": 52,
+            "linear_mae": 0.0440202361532208,
+            "linear_max": 0.13280676913426281,
+            "display_mae": 21.82319883034652
+          }
+        },
+        "sclera": {
+          "clean": {
+            "pixels": 158,
+            "linear_mae": 1.4549327802084011e-05,
+            "linear_max": 0.0002308857440948553,
+            "display_mae": 0.0033151335836097123
+          },
+          "source": {
+            "pixels": 158,
+            "linear_mae": 1.4549390676181876e-05,
+            "linear_max": 0.0002308857440948553,
+            "display_mae": 0.003315147287356784
+          },
+          "target": {
+            "pixels": 158,
+            "linear_mae": 1.4549327802084011e-05,
+            "linear_max": 0.0002308857440948553,
+            "display_mae": 0.0033151335836097123
+          },
+          "coupled": {
+            "pixels": 158,
+            "linear_mae": 6.28740978643361e-11,
+            "linear_max": 2.9802322387695312e-08,
+            "display_mae": 1.37037470717019e-08
+          },
+          "add_only": {
+            "pixels": 158,
+            "linear_mae": 6.28740978643361e-11,
+            "linear_max": 2.9802322387695312e-08,
+            "display_mae": 1.37037470717019e-08
+          }
+        },
+        "lid": {
+          "clean": {
+            "pixels": 2336,
+            "linear_mae": 2.7540326118837464e-06,
+            "linear_max": 3.2958388329479282e-06,
+            "display_mae": 0.0015519525575255488
+          },
+          "source": {
+            "pixels": 2336,
+            "linear_mae": 2.7540326118837464e-06,
+            "linear_max": 3.2958388329479282e-06,
+            "display_mae": 0.0015519525575255488
+          },
+          "target": {
+            "pixels": 2336,
+            "linear_mae": 2.7540326118837464e-06,
+            "linear_max": 3.2958388329479282e-06,
+            "display_mae": 0.0015519525575255488
+          },
+          "coupled": {
+            "pixels": 2336,
+            "linear_mae": 0.0,
+            "linear_max": 0.0,
+            "display_mae": 0.0
+          },
+          "add_only": {
+            "pixels": 2336,
+            "linear_mae": 0.0,
+            "linear_max": 0.0,
+            "display_mae": 0.0
+          }
+        },
+        "full": {
+          "clean": {
+            "pixels": 9216,
+            "linear_mae": 1.6723573588614416e-05,
+            "linear_max": 0.005462611711430365,
+            "display_mae": 0.009780088099025872
+          },
+          "source": {
+            "pixels": 9216,
+            "linear_mae": 2.3720778890570595e-05,
+            "linear_max": 0.0072401425765585975,
+            "display_mae": 0.013091609726313937
+          },
+          "target": {
+            "pixels": 9216,
+            "linear_mae": 2.5915793579886207e-05,
+            "linear_max": 0.012877165067615381,
+            "display_mae": 0.014665312710570524
+          },
+          "coupled": {
+            "pixels": 9216,
+            "linear_mae": 1.5710332375480034e-05,
+            "linear_max": 0.012907626465435196,
+            "display_mae": 0.009460994201673997
+          },
+          "add_only": {
+            "pixels": 9216,
+            "linear_mae": 0.0004483703919283491,
+            "linear_max": 0.13280676913426281,
+            "display_mae": 0.20764416868202748
+          }
+        },
+        "mixed": {
+          "clean": {
+            "pixels": 440,
+            "linear_mae": 0.00030533053797546683,
+            "linear_max": 0.005462611711430365,
+            "display_mae": 0.1839150262893558
+          },
+          "source": {
+            "pixels": 440,
+            "linear_mae": 0.00032208014249860973,
+            "linear_max": 0.005462611711430365,
+            "display_mae": 0.1914019146323928
+          },
+          "target": {
+            "pixels": 440,
+            "linear_mae": 0.000313221812610342,
+            "linear_max": 0.005462611711430365,
+            "display_mae": 0.1872218551610429
+          },
+          "coupled": {
+            "pixels": 440,
+            "linear_mae": 3.010707523467287e-05,
+            "linear_max": 0.003880158284567406,
+            "display_mae": 0.01900758645667382
+          },
+          "add_only": {
+            "pixels": 440,
+            "linear_mae": 0.0015330709156102197,
+            "linear_max": 0.12573156380463538,
+            "display_mae": 0.7659884730215398
+          }
+        },
+        "cornea": {
+          "clean": {
+            "pixels": 441,
+            "linear_mae": 0.000145334014475987,
+            "linear_max": 0.005462611711430365,
+            "display_mae": 0.059847538275977975
+          },
+          "source": {
+            "pixels": 441,
+            "linear_mae": 0.0002915604383021702,
+            "linear_max": 0.0072401425765585975,
+            "display_mae": 0.1290513063364031
+          },
+          "target": {
+            "pixels": 441,
+            "linear_mae": 0.00033743260479250056,
+            "linear_max": 0.012877165067615381,
+            "display_mae": 0.16193869323894444
+          },
+          "coupled": {
+            "pixels": 441,
+            "linear_mae": 0.0003283068283747422,
+            "linear_max": 0.012907626465435196,
+            "display_mae": 0.1977131767475579
+          },
+          "add_only": {
+            "pixels": 441,
+            "linear_mae": 0.00937001909331633,
+            "linear_max": 0.13280676913426281,
+            "display_mae": 4.339337067928823
+          }
+        }
+      },
+      "negative_coupled_channels": 0,
+      "geometry_supplied": true,
+      "material_supplied": true,
+      "real_replacement_allowed": false
+    }
+  ],
+  "code_sha256": {
+    "audit_r24_eyes.py": "068db170fe7535af69eef758cea1515abaf9a5c084292c925677dd9a0094600d",
+    "connected_eye.py": "d11635665da255d103b94cd782173a12dc46f861117f9e9e867d181bda3dd305"
+  },
+  "protocol_sha256": "c6284b4f42c72ee5d0b525714d72772d5656db86aa9b5e5ecdef82af53fe3a37",
+  "correction_sha256": "2ef814487183991364026d2328a3a7eb5415fff00cbea55a29b4b1250c8c3b08",
+  "quadrature": 16,
+  "review_shape": [
+    672,
+    864,
+    3
+  ],
+  "source_reflection_inferred": false,
+  "new_reflection_from_scene": true,
+  "geometry_inferred": false,
+  "production_repairs": 0,
+  "scope": "Forward transport with supplied material/geometry; no inverse acceptance test"
+}

@@ -1,0 +1,428 @@
+{
+  "protocol_sha256": "c6284b4f42c72ee5d0b525714d72772d5656db86aa9b5e5ecdef82af53fe3a37",
+  "records": [
+    {
+      "frame": 0,
+      "files": {
+        "source": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000000_source.exr",
+          "sha256": "cad24f7148d8d9d380340b123415263524fe0600a26d3f5dd8935b0f7153a974"
+        },
+        "clean": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000000_clean.exr",
+          "sha256": "93e57e2d4862274c073ba9f2115b384320737413c3d0de0c822b50c8610e1ecc"
+        },
+        "target": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000000_target.exr",
+          "sha256": "b2f02f533a2fd1f0b8ac8736bad478e4a45817a14fe5937a0af363203c02d951"
+        }
+      }
+    },
+    {
+      "frame": 1,
+      "files": {
+        "source": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000001_source.exr",
+          "sha256": "8d1fdc9add00ab09fcdba1987995f620b76c0b0cbebe6af94d612df3baca93a3"
+        },
+        "clean": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000001_clean.exr",
+          "sha256": "fbb4a585517594cb82e1fc4385b1627b44b6bb5836b2a5f237bc23c648c20736"
+        },
+        "target": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000001_target.exr",
+          "sha256": "64e5bcaf11a64a2f0282d5d542c1b3691e29b72975d692e02f2063f535ae8347"
+        }
+      }
+    },
+    {
+      "frame": 2,
+      "files": {
+        "source": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000002_source.exr",
+          "sha256": "37d0f56a964331ce2211c0df1e23eb230e59b506acfcf7ff5655195880f318a9"
+        },
+        "clean": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000002_clean.exr",
+          "sha256": "2dcb15fca487612a365336a8dee21368a95b21a2dd250c9a06b719d6a4467578"
+        },
+        "target": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000002_target.exr",
+          "sha256": "1e466094214ae130574008312eaa72b236f15c6490caa5483a704c419bfef9f8"
+        }
+      }
+    },
+    {
+      "frame": 3,
+      "files": {
+        "source": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000003_source.exr",
+          "sha256": "c421cbec9b637e33f880ac5e35b0f5e283ee6e63612a1770dd80b3646bc9a755"
+        },
+        "clean": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000003_clean.exr",
+          "sha256": "62e3461d054100bcfadd3d0c2dbf9ff68489da288ee68e031c9581138ecf454f"
+        },
+        "target": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000003_target.exr",
+          "sha256": "0788f52e85c3b0102fdb74bf25ab45b5463e8ca2dac0437f1195b0918871f1e1"
+        }
+      }
+    },
+    {
+      "frame": 4,
+      "files": {
+        "source": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000004_source.exr",
+          "sha256": "549e5b33cae624b0dc1a08809126b2fc84eac3dabbe5cdd694891e45e1f57cb5"
+        },
+        "clean": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000004_clean.exr",
+          "sha256": "e9ddbe1fdc2a6d71faa897479396247c6f6189e6e7ccf68a0d992cce551103c2"
+        },
+        "target": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000004_target.exr",
+          "sha256": "5c476a042b3811a423e258e9efa662ff2ad9b9c077ad750c1caa683d38325066"
+        }
+      }
+    },
+    {
+      "frame": 5,
+      "files": {
+        "source": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000005_source.exr",
+          "sha256": "81633346ca73188e6a2d031d93f1d4941cc42bb06d30749b53cc3c2a92431d2e"
+        },
+        "clean": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000005_clean.exr",
+          "sha256": "e034b25ca066487a8526f57ce9bdc07c4cbda7a43e8d4bf199f59dff497521d8"
+        },
+        "target": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000005_target.exr",
+          "sha256": "4d91bee2dcc82bfeddcd2b637aaec989362f72672d9e256c4f33d97240398382"
+        }
+      }
+    },
+    {
+      "frame": 6,
+      "files": {
+        "source": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000006_source.exr",
+          "sha256": "c787518caed753f461473db110edbb83816ef241219a3227b43153b514dfdfc0"
+        },
+        "clean": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000006_clean.exr",
+          "sha256": "2d047f49e5e7be71c0c07cce6c20af5218bcf540528957ff63dfc00ac47f37fc"
+        },
+        "target": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000006_target.exr",
+          "sha256": "4ae300d82900acb6e31eeaa0c5594f03d2c9e96bad2e38b9d8115c179220ecfe"
+        }
+      }
+    },
+    {
+      "frame": 7,
+      "files": {
+        "source": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000007_source.exr",
+          "sha256": "fb06f14865aa993193a30103b443d8336679e6b45a508416571d8d174667e3ef"
+        },
+        "clean": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000007_clean.exr",
+          "sha256": "6dd1941556e4bccd3e0ee4fef507f646b73061979e790acd269333f4ca09a159"
+        },
+        "target": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000007_target.exr",
+          "sha256": "1dd3b3bd59f1190cc0121366afae4458af9b49ae433d7340eca690ab369f60dd"
+        }
+      }
+    },
+    {
+      "frame": 8,
+      "files": {
+        "source": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000008_source.exr",
+          "sha256": "e06fb2d7710c7d80a99d0ec1cd1b1234f705172dd97b1160b4b760b5c58ca41e"
+        },
+        "clean": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000008_clean.exr",
+          "sha256": "830149e16d9068abac51a342200f686f26c29c2a4e98684f42cd74a507413171"
+        },
+        "target": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000008_target.exr",
+          "sha256": "d0e1818775bad99a69b20315a35360c0a0ff0f6440e9e285b3e80adb45c72a05"
+        }
+      }
+    },
+    {
+      "frame": 9,
+      "files": {
+        "source": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000009_source.exr",
+          "sha256": "7c56f0a2144dea2ac5c8aede55268069f5c901809649eaa323c06df3946505d9"
+        },
+        "clean": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000009_clean.exr",
+          "sha256": "84452b3beccb9c0065efbaf415551bc891d253ff56841c53ade21c852410b00d"
+        },
+        "target": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000009_target.exr",
+          "sha256": "a77eaebc13501bbbeb2b8cdab456983a33fadd716ca4457581b986f48aea9e5d"
+        }
+      }
+    },
+    {
+      "frame": 10,
+      "files": {
+        "source": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000010_source.exr",
+          "sha256": "0552fd1031ca546bcec31312d870894eabb260b490a4b4d669c3c50263cf338a"
+        },
+        "clean": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000010_clean.exr",
+          "sha256": "f87a8172198f083db23eb09b78dcb89adcd6bd381a0e685ffe9291fbba4208f8"
+        },
+        "target": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000010_target.exr",
+          "sha256": "d147a8419c2560dc94099d79cf93a780c190558f65d60a510383adc3a0b7ff89"
+        }
+      }
+    },
+    {
+      "frame": 11,
+      "files": {
+        "source": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000011_source.exr",
+          "sha256": "7e820f364c01919c27162322d212fa5d23f8f6b7666decb9391fde58a29d62cf"
+        },
+        "clean": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000011_clean.exr",
+          "sha256": "45b8ef7e326cf34500b00416cbcccad00913b7a43befe350a27f986738d24c3a"
+        },
+        "target": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000011_target.exr",
+          "sha256": "5d3363917338c9f3aa5b90d6879ef3aa2acb2810c66671abc41544fd80b17d94"
+        }
+      }
+    },
+    {
+      "frame": 12,
+      "files": {
+        "source": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000012_source.exr",
+          "sha256": "07b53343cf803ff57ce2bf7e8405211d33e5ad9c5c6655c0c4a9c088ac598f94"
+        },
+        "clean": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000012_clean.exr",
+          "sha256": "94e3edd03f0d0b29e07f438dbf233dc7095eeeab00c614696b031c2c3f2c9b54"
+        },
+        "target": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000012_target.exr",
+          "sha256": "30eef8131f1e2ba26be21d1fd07fa3f2b5d9743cc7f1246e522a5b4e86bdb8a3"
+        }
+      }
+    },
+    {
+      "frame": 13,
+      "files": {
+        "source": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000013_source.exr",
+          "sha256": "65c6965b7123f01ab356eae42c791fc13e964ae587eb6c79dfa0cd4c0ac014cf"
+        },
+        "clean": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000013_clean.exr",
+          "sha256": "9bfcf7e001d6ef5d42b09b88c6f795602cf29300fa1731baa34472d376210ce6"
+        },
+        "target": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000013_target.exr",
+          "sha256": "bc0c80d2a753d052e3cb43361f8d0bf371f59163ec5b1891e54d1c8b08a3a0a8"
+        }
+      }
+    },
+    {
+      "frame": 14,
+      "files": {
+        "source": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000014_source.exr",
+          "sha256": "61c13d3bba9d463363f83b88f6cd275bf0a3f4eb39b8f8931fdc280394fe1e5c"
+        },
+        "clean": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000014_clean.exr",
+          "sha256": "7d8f220379e5fdf6d1e1ba10243136f07089b6dd5fdf046483f3dc78e10b2328"
+        },
+        "target": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000014_target.exr",
+          "sha256": "db9ec19e44a370a1d440d520470fee7d8a9e2c8356b2ffe7d03237262e291c6d"
+        }
+      }
+    },
+    {
+      "frame": 15,
+      "files": {
+        "source": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000015_source.exr",
+          "sha256": "2845c729f1a8d8744e32fd2f54d408dcf3fc181622a2d0d9b855458dc0464f84"
+        },
+        "clean": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000015_clean.exr",
+          "sha256": "ebbbc73172743ac71ab1a026ea9d8f4290569e75b58d26be3d78b7d839e55d83"
+        },
+        "target": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000015_target.exr",
+          "sha256": "5e5e877f68e6e0154a9af3eace126479791e9d821d2e84e9a69bac6204210823"
+        }
+      }
+    },
+    {
+      "frame": 16,
+      "files": {
+        "source": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000016_source.exr",
+          "sha256": "f5a67132e3d16cd05f0c507676f83d119e2489ed69a95b1a27aaa38473ffb81d"
+        },
+        "clean": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000016_clean.exr",
+          "sha256": "d515eb80e4e528318b190d432f5d89abbc7a8650db5382a48504504df44515f8"
+        },
+        "target": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000016_target.exr",
+          "sha256": "7c7bf387357f5e3563ae26ae0ce2a0c75251944bd766a42de6928e64cc0be2c1"
+        }
+      }
+    },
+    {
+      "frame": 17,
+      "files": {
+        "source": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000017_source.exr",
+          "sha256": "2566479133fc605c9d16735db94310ee04b55dae5f36865a72f2a6ff18085b43"
+        },
+        "clean": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000017_clean.exr",
+          "sha256": "15c659b126126f858e72489e31fd2d12b87ec2b804105499faea57ef9b798b84"
+        },
+        "target": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000017_target.exr",
+          "sha256": "5100c80f68f3c0fb7c04786db70e782a6f6b8f288a3ac7a397ae12754be0651e"
+        }
+      }
+    },
+    {
+      "frame": 18,
+      "files": {
+        "source": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000018_source.exr",
+          "sha256": "4939831fdc3f77f31f049836b373a99f4456051ce972061cba1728e9747f458c"
+        },
+        "clean": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000018_clean.exr",
+          "sha256": "98db1f0af05f6ff0f582fc712563ced4cbd89703360db74963b9bc4823b40e84"
+        },
+        "target": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000018_target.exr",
+          "sha256": "31fb4e5ffbf5c54d1efc5352fe8614c2946e2a6914ae93af7e0314573c170af0"
+        }
+      }
+    },
+    {
+      "frame": 19,
+      "files": {
+        "source": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000019_source.exr",
+          "sha256": "4c58d88dd3cdff5fdb12b6ddf09087533e947709378e38f94d2140b35cf27ba6"
+        },
+        "clean": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000019_clean.exr",
+          "sha256": "fdb7ff020d05c2bb3e2670bd15e5bf61bdfab6ef45edad95639084d77f568d3a"
+        },
+        "target": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000019_target.exr",
+          "sha256": "ab473ab5dc52c90e7fc86405cbbfbc1db33997a64da80dd6d1e642a268291931"
+        }
+      }
+    },
+    {
+      "frame": 20,
+      "files": {
+        "source": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000020_source.exr",
+          "sha256": "03cbf2c06c5cc3db795483c40dd0a3794913c65ad23caf9beb2b530b6cd49adf"
+        },
+        "clean": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000020_clean.exr",
+          "sha256": "140b651b34e6e4e262d12ea70fedae02fd7fee91e42d07ca019288b2c6553edc"
+        },
+        "target": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000020_target.exr",
+          "sha256": "b2513685a1141d616cf8d432a0172579471d44f5adeb4960cf0eed7b337446e5"
+        }
+      }
+    },
+    {
+      "frame": 21,
+      "files": {
+        "source": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000021_source.exr",
+          "sha256": "2443a2c9a73ca44f770b6284abccce04cd9cf03d7cea83a103a03cff6b54f00f"
+        },
+        "clean": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000021_clean.exr",
+          "sha256": "9048db79ed01319a52e4abc767786e53055049b4c11fcdb1cfe38d22713c8c06"
+        },
+        "target": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000021_target.exr",
+          "sha256": "8b681b60831d6da981d4fa431d3b69f11989bfbb86f4b9a0998b71313504f034"
+        }
+      }
+    },
+    {
+      "frame": 22,
+      "files": {
+        "source": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000022_source.exr",
+          "sha256": "72e2fb69625fc0f8b1be9c2e2c7edb7622bd3329ca17c00c8b2407fb821782a1"
+        },
+        "clean": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000022_clean.exr",
+          "sha256": "1707294b26c7348559ab25b13f09f5625aecf0d2f177379d3822c8b9708948e4"
+        },
+        "target": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000022_target.exr",
+          "sha256": "548c9f92c9ce3fa98ebda2d3e48a5bb0fdf42834487ab48254dd091f98848305"
+        }
+      }
+    },
+    {
+      "frame": 23,
+      "files": {
+        "source": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000023_source.exr",
+          "sha256": "e803bbf48ea5378a8611174234763155b29d2889010af1ab38b514de9c0caaf5"
+        },
+        "clean": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000023_clean.exr",
+          "sha256": "7bff6f46f65c02272c14052a7054f2432e5e58396d1e7351a8f09617694a04f4"
+        },
+        "target": {
+          "path": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r24_eyes\\cycles_oriented\\000023_target.exr",
+          "sha256": "e6bca3811f697c831977297c640bcd9366a48771bbc174838c7f782e43fa7ade"
+        }
+      }
+    }
+  ],
+  "code_sha256": {
+    "render_r24_eyes.py": "fcb1b769022be6721d3e12884a8a0536fc3b979758161e57e0f03bfc14c80572",
+    "connected_eye.py": "abfc130d98189cf21b45170a4b97e61dbfe66ef40ff0a2d969202e33b304757c",
+    "render_r23_eyes.py": "0d1263b9b51c28ebd75aa436b515159c2bac2ba9c9ba207f2f190f63617b281a",
+    "render_r20_transport.py": "49427d37b951a57fc0611c85beb54972ef5a84cf018f609eb49d2522f9e55c95"
+  },
+  "blender": "5.2.1 LTS",
+  "samples": 4096,
+  "seed": 24,
+  "device": "OPTIX",
+  "filter": "BOX",
+  "filter_width": 1,
+  "persistent_data": false,
+  "denoising": false,
+  "scope": "Supplied gross topology; single interface and radiance emitters, no real reconstruction"
+}
