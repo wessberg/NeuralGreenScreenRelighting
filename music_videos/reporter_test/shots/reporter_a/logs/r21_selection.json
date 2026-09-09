@@ -1,0 +1,21 @@
+{
+  "selected": "yaw_minus",
+  "source_sum_display_mae": {
+    "supplied": 7.330040060407805,
+    "yaw_minus": 7.0283896288732635,
+    "yaw_plus": 7.275168047807796,
+    "radius_minus": 7.4498040826029674,
+    "radius_plus": 7.331875774712471,
+    "pupil_minus": 7.398990030144133,
+    "pupil_plus": 7.346794278743877,
+    "lid_minus": 7.413309066500712,
+    "lid_plus": 7.383112162963424
+  },
+  "frames": [
+    3,
+    9,
+    15,
+    21
+  ],
+  "scope": "Finite one-at-a-time hypotheses; not real geometry calibration"
+}

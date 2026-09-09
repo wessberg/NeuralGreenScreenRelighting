@@ -1,0 +1,126 @@
+{
+  "cases": [
+    {
+      "frame": 0,
+      "clean": {
+        "pixels": 228,
+        "linear_mae": 2.395372519697444e-05,
+        "display_mae": 0.0096159740057055,
+        "display_p95": 0.025858591211864693
+      },
+      "source": {
+        "pixels": 228,
+        "linear_mae": 5.894309907765786e-05,
+        "display_mae": 0.02230035294338278,
+        "display_p95": 0.03608755081031221
+      }
+    },
+    {
+      "frame": 5,
+      "clean": {
+        "pixels": 219,
+        "linear_mae": 2.211393711932645e-05,
+        "display_mae": 0.009019096437050319,
+        "display_p95": 0.02434907089356167
+      },
+      "source": {
+        "pixels": 219,
+        "linear_mae": 5.929919945001032e-05,
+        "display_mae": 0.02260444506277432,
+        "display_p95": 0.14484474876596343
+      }
+    },
+    {
+      "frame": 6,
+      "clean": {
+        "pixels": 220,
+        "linear_mae": 2.32893847299501e-05,
+        "display_mae": 0.00925424986834105,
+        "display_p95": 0.024352570962677542
+      },
+      "source": {
+        "pixels": 220,
+        "linear_mae": 6.34484935846794e-05,
+        "display_mae": 0.023869201374547764,
+        "display_p95": 0.14819711919993345
+      }
+    },
+    {
+      "frame": 11,
+      "clean": {
+        "pixels": 0,
+        "linear_mae": null,
+        "display_mae": null,
+        "display_p95": null
+      },
+      "source": {
+        "pixels": 0,
+        "linear_mae": null,
+        "display_mae": null,
+        "display_p95": null
+      }
+    },
+    {
+      "frame": 12,
+      "clean": {
+        "pixels": 72,
+        "linear_mae": 1.6660807742799496e-05,
+        "display_mae": 0.007497114810482407,
+        "display_p95": 0.023449260489220095
+      },
+      "source": {
+        "pixels": 72,
+        "linear_mae": 0.00011368632335298077,
+        "display_mae": 0.06391536809651739,
+        "display_p95": 0.2583627912322223
+      }
+    },
+    {
+      "frame": 17,
+      "clean": {
+        "pixels": 219,
+        "linear_mae": 2.313955584746924e-05,
+        "display_mae": 0.009340538936064052,
+        "display_p95": 0.0254861989184626
+      },
+      "source": {
+        "pixels": 219,
+        "linear_mae": 3.599855480340427e-05,
+        "display_mae": 0.013690857534596616,
+        "display_p95": 0.036681695962397995
+      }
+    },
+    {
+      "frame": 18,
+      "clean": {
+        "pixels": 220,
+        "linear_mae": 2.058027976889903e-05,
+        "display_mae": 0.008415098734142175,
+        "display_p95": 0.021845137422101778
+      },
+      "source": {
+        "pixels": 220,
+        "linear_mae": 4.380157270713538e-05,
+        "display_mae": 0.016330553230223754,
+        "display_p95": 0.05430600295923354
+      }
+    },
+    {
+      "frame": 23,
+      "clean": {
+        "pixels": 219,
+        "linear_mae": 2.261790368813745e-05,
+        "display_mae": 0.00919225482294556,
+        "display_p95": 0.02366937033003568
+      },
+      "source": {
+        "pixels": 219,
+        "linear_mae": 5.061427940967698e-05,
+        "display_mae": 0.019999254885378195,
+        "display_p95": 0.03981273293458941
+      }
+    }
+  ],
+  "texture_definition_sha256": "fed9bb68fadd5648b1fdaeccc8529b04ccd98fd04072f5fc120d53f7b51b1659",
+  "scope": "512px physical UV and signed motion sanity; fixture texture is read only by this verifier"
+}

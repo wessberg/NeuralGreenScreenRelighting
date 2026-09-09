@@ -1,0 +1,35 @@
+{
+  "video_sha256": "271068843740438082ad86728a4735ac74c2e641ef4bae7e7db44fc2176aff4e",
+  "decoded_thumbnails_inspected": 96,
+  "ordered_contact_sheets": 4,
+  "inspected_files": {
+    "contact_000.jpg": "bab94551a30fa96fe9522d2a5e322df27e8fd76b37aaaf0b2c2829d8cadc6828",
+    "contact_024.jpg": "656fb063e13f1866a606a99165850a5955af8474bda2f2569ae5b765dffce8b8",
+    "contact_048.jpg": "c97b7466a211bb902c9921dc648d9da410202991533a844cf02ed11b08fc0f79",
+    "contact_072.jpg": "20e8b47ff7af5ddf2ebf65666fd82f39f8ef6e6332f8607ae06c9e1493814475",
+    "decoded_005.png": "15bee2be1dcc7113d77d52e7dd334fd830df0d9817dce810cb9ba1459653e81d",
+    "decoded_017.png": "f55519ac89d30f8263105d8d057463763912bb386c645c3e7cfbb510bbe79531",
+    "review/000000.png": "cfa847c969bb508ee33a3231cca52ef2c4824be79e632070b423586b9e6d1d88",
+    "review/000011.png": "6360a1ccff8c97d941ab2a9d876a3019391a9bfc717cbb618822236f63f38245"
+  },
+  "findings": [
+    "All chronological frames and four loops present; frame 11 closure is intentional.",
+    "Fitted iris loses fine source texture; pupil is patchy.",
+    "Full boards 5 and 17 show experimental outputs fail the visual bar.",
+    "Source panels precede fitted panels; known references and oracle new reflection are labelled."
+  ],
+  "live_playback": false,
+  "artist_acceptance": false,
+  "real_repair": false,
+  "reused_real_video": {
+    "path": "final/r20_source_fallback.mp4",
+    "sha256": "f0cb4ef3487ff3596a9de98ab374c6508827993e3bd38004c48b6b34e4b42005",
+    "unchanged": true
+  },
+  "filter_bug_frame0_clean_change": {
+    "pixels": 228,
+    "linear_mae": 0.011442328596280681,
+    "display_mae": 4.50452808809499,
+    "display_p95": 11.261826366793088
+  }
+}

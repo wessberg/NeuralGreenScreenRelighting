@@ -1,0 +1,13 @@
+{
+  "blender": "5.2.1 LTS",
+  "after_render_property_only": {
+    "render_filter_size": 0.009999999776482582,
+    "cycles_filter_width": 1.5
+  },
+  "after_cycles_property": {
+    "render_filter_size": 0.009999999776482582,
+    "cycles_filter_width": 0.009999999776482582
+  },
+  "pixel_filter_type": "BLACKMAN_HARRIS",
+  "scope": "Factory-startup property probe; first run was archived and rerendered with frozen intended .01 width"
+}

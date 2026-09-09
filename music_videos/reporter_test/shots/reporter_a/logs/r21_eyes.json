@@ -1,0 +1,1626 @@
+{
+  "protocol_sha256": "14d56d4821c7a1b827ced54afc82863bf84051982c4041895625d203e952e424",
+  "code_sha256": {
+    "render_r21_eyes.py": "fed9bb68fadd5648b1fdaeccc8529b04ccd98fd04072f5fc120d53f7b51b1659",
+    "render_r20_transport.py": "49427d37b951a57fc0611c85beb54972ef5a84cf018f609eb49d2522f9e55c95",
+    "corneal_transport.py": "580cf13503d98210834768d6f5c1f49544f882641e647bb55e2882a28557039b",
+    "eye_layer_fit.py": "0efd957306a01668f212cc5659ba84d5cbe98de25648839b44b2b003713ca879",
+    "observation_eye_fit.py": "c96f6d3f61afcd8d596eb7003b86b46d1cdf3fd0367056096273cbbd1fbe1172",
+    "audit_r21_eyes.py": "9bd72f8af65269578ae2c4fc262988006d05077d9cb228222eaa7a08e208ae14",
+    "coupled_eye_relight.py": "7d9b359414f3c1ba1252f617cf2d848f2e05234ad0ed9f683fa0ddec11bb1891"
+  },
+  "arms": {
+    "continuous": {
+      "solvers": [
+        {
+          "success": false,
+          "status": 0,
+          "iterations": 200,
+          "cost": 0.4077975879254465,
+          "optimality": 1.4679304944132661e-06
+        },
+        {
+          "success": false,
+          "status": 0,
+          "iterations": 200,
+          "cost": 0.7008858722720233,
+          "optimality": 1.976144116382769e-06
+        },
+        {
+          "success": false,
+          "status": 0,
+          "iterations": 200,
+          "cost": 0.880990959484685,
+          "optimality": 2.061306774996338e-06
+        }
+      ],
+      "observations": 3171,
+      "active_parameters": 206,
+      "total_parameters": 288,
+      "train_linear_mae": 0.01546769383626308,
+      "seconds": 6.444090799999685,
+      "test": {
+        "interior": {
+          "sum_fit": {
+            "pixels": 657,
+            "linear_mae": 0.016284929108896253,
+            "display_mae": 7.283132879195915,
+            "display_p95": 19.930536966718265
+          },
+          "interior": {
+            "pixels": 657,
+            "linear_mae": 0.014533133206995901,
+            "display_mae": 8.198378489732429,
+            "display_p95": 25.566749602224007
+          },
+          "old_reflection": {
+            "pixels": 657,
+            "linear_mae": 0.00515214625090708,
+            "display_mae": 6.515956291022394,
+            "display_p95": 36.76470139684321
+          },
+          "coupled_known_scene": {
+            "pixels": 657,
+            "linear_mae": 0.014533133206995901,
+            "display_mae": 7.198545568450359,
+            "display_p95": 21.127069032663755
+          },
+          "missing_visibility": 0
+        },
+        "iris": {
+          "sum_fit": {
+            "pixels": 579,
+            "linear_mae": 0.016230424021171527,
+            "display_mae": 6.2372905016319224,
+            "display_p95": 14.08067218886707
+          },
+          "interior": {
+            "pixels": 579,
+            "linear_mae": 0.015099490638995999,
+            "display_mae": 5.9722540573453315,
+            "display_p95": 13.101231086593339
+          },
+          "old_reflection": {
+            "pixels": 579,
+            "linear_mae": 0.0031634623604009145,
+            "display_mae": 4.139275925193906,
+            "display_p95": 25.772138801568435
+          },
+          "coupled_known_scene": {
+            "pixels": 579,
+            "linear_mae": 0.015099490638995999,
+            "display_mae": 5.8922178545646675,
+            "display_p95": 13.0299176214329
+          },
+          "missing_visibility": 0
+        },
+        "pupil": {
+          "sum_fit": {
+            "pixels": 78,
+            "linear_mae": 0.01668952456777594,
+            "display_mae": 15.046501297267088,
+            "display_p95": 40.71010287270274
+          },
+          "interior": {
+            "pixels": 78,
+            "linear_mae": 0.01032901842330287,
+            "display_mae": 24.723071391682804,
+            "display_p95": 32.62302157891941
+          },
+          "old_reflection": {
+            "pixels": 78,
+            "linear_mae": 0.019914299745818227,
+            "display_mae": 24.158237468133873,
+            "display_p95": 62.43574387292015
+          },
+          "coupled_known_scene": {
+            "pixels": 78,
+            "linear_mae": 0.01032901842330287,
+            "display_mae": 16.895516675371063,
+            "display_p95": 28.01745788713108
+          },
+          "missing_visibility": 0
+        },
+        "full_visible": {
+          "sum_fit": {
+            "pixels": 1194,
+            "linear_mae": 0.021447037294085317,
+            "display_mae": 9.837646520708553,
+            "display_p95": 31.475301892494862
+          },
+          "interior": {
+            "pixels": 1194,
+            "linear_mae": 0.020161319366624304,
+            "display_mae": 11.09373275814529,
+            "display_p95": 32.540665489715074
+          },
+          "old_reflection": {
+            "pixels": 1194,
+            "linear_mae": 0.005826913539115378,
+            "display_mae": 7.308778050496363,
+            "display_p95": 37.601750208760656
+          },
+          "coupled_known_scene": {
+            "pixels": 1194,
+            "linear_mae": 0.020161319366624304,
+            "display_mae": 9.979467191578344,
+            "display_p95": 29.486493085861852
+          },
+          "missing_visibility": 0
+        }
+      }
+    },
+    "supplied": {
+      "solvers": [
+        {
+          "success": false,
+          "status": 0,
+          "iterations": 200,
+          "cost": 0.40108658860758234,
+          "optimality": 1.1920608762680234e-06
+        },
+        {
+          "success": false,
+          "status": 0,
+          "iterations": 200,
+          "cost": 0.684571182055623,
+          "optimality": 1.5390877438849425e-06
+        },
+        {
+          "success": false,
+          "status": 0,
+          "iterations": 200,
+          "cost": 0.8567092662187388,
+          "optimality": 1.566073036075051e-06
+        }
+      ],
+      "observations": 3171,
+      "active_parameters": 262,
+      "total_parameters": 432,
+      "train_linear_mae": 0.015360438861274884,
+      "seconds": 8.443785599996772,
+      "test": {
+        "interior": {
+          "sum_fit": {
+            "pixels": 657,
+            "linear_mae": 0.016213557203292477,
+            "display_mae": 7.171928876453848,
+            "display_p95": 18.03318662491744
+          },
+          "interior": {
+            "pixels": 657,
+            "linear_mae": 0.013935969295404827,
+            "display_mae": 6.913607105670943,
+            "display_p95": 17.736093652849114
+          },
+          "old_reflection": {
+            "pixels": 657,
+            "linear_mae": 0.004772294937970156,
+            "display_mae": 6.001147562007132,
+            "display_p95": 35.34871552416736
+          },
+          "coupled_known_scene": {
+            "pixels": 657,
+            "linear_mae": 0.013935969295404827,
+            "display_mae": 6.335606851482098,
+            "display_p95": 14.420336705156178
+          },
+          "missing_visibility": 0
+        },
+        "iris": {
+          "sum_fit": {
+            "pixels": 579,
+            "linear_mae": 0.016108003572338978,
+            "display_mae": 6.185046613218315,
+            "display_p95": 13.579479266943702
+          },
+          "interior": {
+            "pixels": 579,
+            "linear_mae": 0.014918428197501913,
+            "display_mae": 5.896405166276333,
+            "display_p95": 12.747907068942007
+          },
+          "old_reflection": {
+            "pixels": 579,
+            "linear_mae": 0.0030283949688380044,
+            "display_mae": 3.9613884332137212,
+            "display_p95": 24.903433773238174
+          },
+          "coupled_known_scene": {
+            "pixels": 579,
+            "linear_mae": 0.014918428197501913,
+            "display_mae": 5.81941122508705,
+            "display_p95": 12.663943038730235
+          },
+          "missing_visibility": 0
+        },
+        "pupil": {
+          "sum_fit": {
+            "pixels": 78,
+            "linear_mae": 0.016997089925370377,
+            "display_mae": 14.497631830471452,
+            "display_p95": 41.72685684683264
+          },
+          "interior": {
+            "pixels": 78,
+            "linear_mae": 0.006643101291376445,
+            "display_mae": 14.464375348100171,
+            "display_p95": 29.84086531501696
+          },
+          "old_reflection": {
+            "pixels": 78,
+            "linear_mae": 0.017717398554989588,
+            "display_mae": 21.142436479588987,
+            "display_p95": 59.153471452404084
+          },
+          "coupled_known_scene": {
+            "pixels": 78,
+            "linear_mae": 0.006643101291376445,
+            "display_mae": 10.167366693568404,
+            "display_p95": 25.212093191197834
+          },
+          "missing_visibility": 0
+        },
+        "full_visible": {
+          "sum_fit": {
+            "pixels": 1194,
+            "linear_mae": 0.018631502307886603,
+            "display_mae": 8.528366558998338,
+            "display_p95": 24.584469001564976
+          },
+          "interior": {
+            "pixels": 1194,
+            "linear_mae": 0.016339183439887692,
+            "display_mae": 9.279146413516075,
+            "display_p95": 27.795881582034944
+          },
+          "old_reflection": {
+            "pixels": 1194,
+            "linear_mae": 0.005476043215743684,
+            "display_mae": 6.739044508132602,
+            "display_p95": 36.24751312320215
+          },
+          "coupled_known_scene": {
+            "pixels": 1194,
+            "linear_mae": 0.016339183439887692,
+            "display_mae": 8.33455285497293,
+            "display_p95": 25.217407630546546
+          },
+          "missing_visibility": 0
+        }
+      }
+    },
+    "yaw_minus": {
+      "solvers": [
+        {
+          "success": false,
+          "status": 0,
+          "iterations": 200,
+          "cost": 0.3728796180162143,
+          "optimality": 2.9687365919079133e-06
+        },
+        {
+          "success": false,
+          "status": 0,
+          "iterations": 200,
+          "cost": 0.6591743753809836,
+          "optimality": 1.3050299473103636e-06
+        },
+        {
+          "success": false,
+          "status": 0,
+          "iterations": 200,
+          "cost": 0.8338243078107104,
+          "optimality": 1.0518766726983502e-06
+        }
+      ],
+      "observations": 3171,
+      "active_parameters": 257,
+      "total_parameters": 432,
+      "train_linear_mae": 0.01503087585893939,
+      "seconds": 8.062227499998698,
+      "test": {
+        "interior": {
+          "sum_fit": {
+            "pixels": 657,
+            "linear_mae": 0.01595637364972503,
+            "display_mae": 7.091408129979906,
+            "display_p95": 16.386249706845334
+          },
+          "interior": {
+            "pixels": 657,
+            "linear_mae": 0.013905301965291002,
+            "display_mae": 6.7830570344233045,
+            "display_p95": 16.191570072433517
+          },
+          "old_reflection": {
+            "pixels": 657,
+            "linear_mae": 0.004345437241116468,
+            "display_mae": 5.609859442449318,
+            "display_p95": 30.635765112239525
+          },
+          "coupled_known_scene": {
+            "pixels": 657,
+            "linear_mae": 0.013905301965291002,
+            "display_mae": 6.245579949402367,
+            "display_p95": 14.107251671571216
+          },
+          "missing_visibility": 0
+        },
+        "iris": {
+          "sum_fit": {
+            "pixels": 579,
+            "linear_mae": 0.01606495519127541,
+            "display_mae": 6.172677712205258,
+            "display_p95": 13.481191196657681
+          },
+          "interior": {
+            "pixels": 579,
+            "linear_mae": 0.014856141251118287,
+            "display_mae": 5.873744722650974,
+            "display_p95": 12.723726171874613
+          },
+          "old_reflection": {
+            "pixels": 579,
+            "linear_mae": 0.003012888935807951,
+            "display_mae": 4.040136181650017,
+            "display_p95": 22.4957155512697
+          },
+          "coupled_known_scene": {
+            "pixels": 579,
+            "linear_mae": 0.014856141251118287,
+            "display_mae": 5.79629754525627,
+            "display_p95": 12.68481000006723
+          },
+          "missing_visibility": 0
+        },
+        "pupil": {
+          "sum_fit": {
+            "pixels": 78,
+            "linear_mae": 0.015150364514370268,
+            "display_mae": 13.911214692691724,
+            "display_p95": 41.713569037449325
+          },
+          "interior": {
+            "pixels": 78,
+            "linear_mae": 0.006847148805111549,
+            "display_mae": 13.532952271810219,
+            "display_p95": 25.22653503545827
+          },
+          "old_reflection": {
+            "pixels": 78,
+            "linear_mae": 0.014237045815137373,
+            "display_mae": 17.26203595530566,
+            "display_p95": 63.40402111657564
+          },
+          "coupled_known_scene": {
+            "pixels": 78,
+            "linear_mae": 0.006847148805111549,
+            "display_mae": 9.580637795563764,
+            "display_p95": 22.671929906876553
+          },
+          "missing_visibility": 0
+        },
+        "full_visible": {
+          "sum_fit": {
+            "pixels": 1194,
+            "linear_mae": 0.01975285158066995,
+            "display_mae": 9.207954206171436,
+            "display_p95": 26.87639902488492
+          },
+          "interior": {
+            "pixels": 1194,
+            "linear_mae": 0.017370266798572762,
+            "display_mae": 9.763019476432133,
+            "display_p95": 27.52090492453307
+          },
+          "old_reflection": {
+            "pixels": 1194,
+            "linear_mae": 0.005048807112890712,
+            "display_mae": 6.33750861869848,
+            "display_p95": 32.79373748310102
+          },
+          "coupled_known_scene": {
+            "pixels": 1194,
+            "linear_mae": 0.017370266798572762,
+            "display_mae": 8.853744535540155,
+            "display_p95": 24.754394894503058
+          },
+          "missing_visibility": 4
+        }
+      }
+    },
+    "yaw_plus": {
+      "solvers": [
+        {
+          "success": true,
+          "status": 2,
+          "iterations": 200,
+          "cost": 0.3705295673910176,
+          "optimality": 2.411100771870403e-08
+        },
+        {
+          "success": true,
+          "status": 2,
+          "iterations": 183,
+          "cost": 0.6580395314528125,
+          "optimality": 6.645045461788602e-08
+        },
+        {
+          "success": true,
+          "status": 2,
+          "iterations": 163,
+          "cost": 0.8326959683228309,
+          "optimality": 9.873016108991563e-08
+        }
+      ],
+      "observations": 3171,
+      "active_parameters": 262,
+      "total_parameters": 432,
+      "train_linear_mae": 0.015179548145593089,
+      "seconds": 7.672142300001724,
+      "test": {
+        "interior": {
+          "sum_fit": {
+            "pixels": 657,
+            "linear_mae": 0.01597366608460838,
+            "display_mae": 7.127581806292862,
+            "display_p95": 16.736740197871818
+          },
+          "interior": {
+            "pixels": 657,
+            "linear_mae": 0.014056670636051193,
+            "display_mae": 6.959793084813781,
+            "display_p95": 17.29982661129853
+          },
+          "old_reflection": {
+            "pixels": 657,
+            "linear_mae": 0.004049608126821637,
+            "display_mae": 5.0847426657885215,
+            "display_p95": 29.913127197612116
+          },
+          "coupled_known_scene": {
+            "pixels": 657,
+            "linear_mae": 0.014056670636051193,
+            "display_mae": 6.3939815910909505,
+            "display_p95": 14.847952398643246
+          },
+          "missing_visibility": 0
+        },
+        "iris": {
+          "sum_fit": {
+            "pixels": 579,
+            "linear_mae": 0.015937338792695176,
+            "display_mae": 6.126026383673569,
+            "display_p95": 13.43769213268741
+          },
+          "interior": {
+            "pixels": 579,
+            "linear_mae": 0.014795606869079029,
+            "display_mae": 5.844272906847757,
+            "display_p95": 12.727592121862216
+          },
+          "old_reflection": {
+            "pixels": 579,
+            "linear_mae": 0.002560290034562328,
+            "display_mae": 3.418687238796736,
+            "display_p95": 19.762208186961068
+          },
+          "coupled_known_scene": {
+            "pixels": 579,
+            "linear_mae": 0.014795606869079029,
+            "display_mae": 5.767103303048875,
+            "display_p95": 12.685491084788335
+          },
+          "missing_visibility": 0
+        },
+        "pupil": {
+          "sum_fit": {
+            "pixels": 78,
+            "linear_mae": 0.016243326366887165,
+            "display_mae": 14.562204751120694,
+            "display_p95": 41.090086897244504
+          },
+          "interior": {
+            "pixels": 78,
+            "linear_mae": 0.008571490137036867,
+            "display_mae": 15.240385175100037,
+            "display_p95": 27.382646965505852
+          },
+          "old_reflection": {
+            "pixels": 78,
+            "linear_mae": 0.015104930888592662,
+            "display_mae": 17.45200025845832,
+            "display_p95": 57.38555346706684
+          },
+          "coupled_known_scene": {
+            "pixels": 78,
+            "linear_mae": 0.008571490137036867,
+            "display_mae": 11.047347344634051,
+            "display_p95": 25.08048345338124
+          },
+          "missing_visibility": 0
+        },
+        "full_visible": {
+          "sum_fit": {
+            "pixels": 1194,
+            "linear_mae": 0.01959239601808426,
+            "display_mae": 9.386528479354734,
+            "display_p95": 26.996083514982647
+          },
+          "interior": {
+            "pixels": 1194,
+            "linear_mae": 0.01754560980462654,
+            "display_mae": 10.129761147913808,
+            "display_p95": 28.818639951474964
+          },
+          "old_reflection": {
+            "pixels": 1194,
+            "linear_mae": 0.004808412108576424,
+            "display_mae": 5.838429595277458,
+            "display_p95": 30.49280042865067
+          },
+          "coupled_known_scene": {
+            "pixels": 1194,
+            "linear_mae": 0.01754560980462654,
+            "display_mae": 9.09502279679278,
+            "display_p95": 26.27306463941837
+          },
+          "missing_visibility": 5
+        }
+      }
+    },
+    "radius_minus": {
+      "solvers": [
+        {
+          "success": false,
+          "status": 0,
+          "iterations": 200,
+          "cost": 0.38810517655717186,
+          "optimality": 1.9533825907753824e-06
+        },
+        {
+          "success": false,
+          "status": 0,
+          "iterations": 200,
+          "cost": 0.6722607884902086,
+          "optimality": 1.4605447793467708e-06
+        },
+        {
+          "success": false,
+          "status": 0,
+          "iterations": 200,
+          "cost": 0.8442745429109436,
+          "optimality": 2.2028483914168285e-06
+        }
+      ],
+      "observations": 3171,
+      "active_parameters": 268,
+      "total_parameters": 432,
+      "train_linear_mae": 0.015259795645964792,
+      "seconds": 8.566638899999816,
+      "test": {
+        "interior": {
+          "sum_fit": {
+            "pixels": 657,
+            "linear_mae": 0.01633257888583527,
+            "display_mae": 7.184331084156707,
+            "display_p95": 16.48701705118421
+          },
+          "interior": {
+            "pixels": 657,
+            "linear_mae": 0.013930228298450871,
+            "display_mae": 6.920154710785078,
+            "display_p95": 19.271882754491443
+          },
+          "old_reflection": {
+            "pixels": 657,
+            "linear_mae": 0.004549363039459194,
+            "display_mae": 5.6415821442084795,
+            "display_p95": 35.515329086323334
+          },
+          "coupled_known_scene": {
+            "pixels": 657,
+            "linear_mae": 0.013930228298450871,
+            "display_mae": 6.383468571870134,
+            "display_p95": 14.841084070792677
+          },
+          "missing_visibility": 0
+        },
+        "iris": {
+          "sum_fit": {
+            "pixels": 579,
+            "linear_mae": 0.01627181822472046,
+            "display_mae": 6.2288817809394175,
+            "display_p95": 13.503559128491048
+          },
+          "interior": {
+            "pixels": 579,
+            "linear_mae": 0.014910402474828104,
+            "display_mae": 5.8930093215634285,
+            "display_p95": 12.72311035722125
+          },
+          "old_reflection": {
+            "pixels": 579,
+            "linear_mae": 0.002829750738098754,
+            "display_mae": 3.650246622088425,
+            "display_p95": 21.107177684253152
+          },
+          "coupled_known_scene": {
+            "pixels": 579,
+            "linear_mae": 0.0149104024748281,
+            "display_mae": 5.816174907236643,
+            "display_p95": 12.579377122911566
+          },
+          "missing_visibility": 0
+        },
+        "pupil": {
+          "sum_fit": {
+            "pixels": 78,
+            "linear_mae": 0.01678360994718751,
+            "display_mae": 14.276704758038893,
+            "display_p95": 44.59283242850775
+          },
+          "interior": {
+            "pixels": 78,
+            "linear_mae": 0.0066543199891891105,
+            "display_mae": 14.54473394616116,
+            "display_p95": 28.31297048011888
+          },
+          "old_reflection": {
+            "pixels": 78,
+            "linear_mae": 0.017314177430327066,
+            "display_mae": 20.423418904561206,
+            "display_p95": 62.54658809230106
+          },
+          "coupled_known_scene": {
+            "pixels": 78,
+            "linear_mae": 0.006654319989189111,
+            "display_mae": 10.594533082418732,
+            "display_p95": 24.76472970395363
+          },
+          "missing_visibility": 0
+        },
+        "full_visible": {
+          "sum_fit": {
+            "pixels": 1194,
+            "linear_mae": 0.020290915626772234,
+            "display_mae": 10.35739299320701,
+            "display_p95": 30.0591046085724
+          },
+          "interior": {
+            "pixels": 1194,
+            "linear_mae": 0.018074765315555002,
+            "display_mae": 11.083473214914244,
+            "display_p95": 30.94030690600137
+          },
+          "old_reflection": {
+            "pixels": 1194,
+            "linear_mae": 0.005235411120456478,
+            "display_mae": 6.48176346209912,
+            "display_p95": 38.1751700846849
+          },
+          "coupled_known_scene": {
+            "pixels": 1194,
+            "linear_mae": 0.018074765315555002,
+            "display_mae": 10.18768065210681,
+            "display_p95": 28.689106324748607
+          },
+          "missing_visibility": 28
+        }
+      }
+    },
+    "radius_plus": {
+      "solvers": [
+        {
+          "success": false,
+          "status": 0,
+          "iterations": 200,
+          "cost": 0.4211931618184041,
+          "optimality": 2.1659985129709045e-06
+        },
+        {
+          "success": false,
+          "status": 0,
+          "iterations": 200,
+          "cost": 0.7051314597303163,
+          "optimality": 1.5860810241264744e-06
+        },
+        {
+          "success": false,
+          "status": 0,
+          "iterations": 200,
+          "cost": 0.8777322117623462,
+          "optimality": 2.142009884405786e-06
+        }
+      ],
+      "observations": 3171,
+      "active_parameters": 260,
+      "total_parameters": 432,
+      "train_linear_mae": 0.015560436449173525,
+      "seconds": 8.226597400000173,
+      "test": {
+        "interior": {
+          "sum_fit": {
+            "pixels": 657,
+            "linear_mae": 0.016485452252752615,
+            "display_mae": 7.287114707885575,
+            "display_p95": 18.52824424420324
+          },
+          "interior": {
+            "pixels": 657,
+            "linear_mae": 0.013995396784030943,
+            "display_mae": 6.912358492651606,
+            "display_p95": 16.233009031321306
+          },
+          "old_reflection": {
+            "pixels": 657,
+            "linear_mae": 0.005063062274372373,
+            "display_mae": 6.416264397132078,
+            "display_p95": 36.85067667835146
+          },
+          "coupled_known_scene": {
+            "pixels": 657,
+            "linear_mae": 0.013995396784030943,
+            "display_mae": 6.3178716970210385,
+            "display_p95": 13.87273090513371
+          },
+          "missing_visibility": 0
+        },
+        "iris": {
+          "sum_fit": {
+            "pixels": 579,
+            "linear_mae": 0.016394019403176693,
+            "display_mae": 6.288235991722337,
+            "display_p95": 14.197407556657254
+          },
+          "interior": {
+            "pixels": 579,
+            "linear_mae": 0.014946237311873826,
+            "display_mae": 5.907966566166479,
+            "display_p95": 12.834325316580475
+          },
+          "old_reflection": {
+            "pixels": 579,
+            "linear_mae": 0.003399873396182508,
+            "display_mae": 4.495560526511626,
+            "display_p95": 25.907015520582124
+          },
+          "coupled_known_scene": {
+            "pixels": 579,
+            "linear_mae": 0.014946237311873826,
+            "display_mae": 5.830204552141997,
+            "display_p95": 12.707486213216226
+          },
+          "missing_visibility": 0
+        },
+        "pupil": {
+          "sum_fit": {
+            "pixels": 78,
+            "linear_mae": 0.017164165328450793,
+            "display_mae": 14.701868254789614,
+            "display_p95": 39.97711145497865
+          },
+          "interior": {
+            "pixels": 78,
+            "linear_mae": 0.006937234404274157,
+            "display_mae": 14.368037023868121,
+            "display_p95": 30.266009741991216
+          },
+          "old_reflection": {
+            "pixels": 78,
+            "linear_mae": 0.01740904125478175,
+            "display_mae": 20.673796975199288,
+            "display_p95": 61.46156545105777
+          },
+          "coupled_known_scene": {
+            "pixels": 78,
+            "linear_mae": 0.00693723440427416,
+            "display_mae": 9.937862426315462,
+            "display_p95": 25.439773721576852
+          },
+          "missing_visibility": 0
+        },
+        "full_visible": {
+          "sum_fit": {
+            "pixels": 1194,
+            "linear_mae": 0.02003695171910575,
+            "display_mae": 8.98601152870429,
+            "display_p95": 26.351601476478297
+          },
+          "interior": {
+            "pixels": 1194,
+            "linear_mae": 0.017411949702470755,
+            "display_mae": 9.593335843253692,
+            "display_p95": 28.894536629861758
+          },
+          "old_reflection": {
+            "pixels": 1194,
+            "linear_mae": 0.00570339444679769,
+            "display_mae": 6.851154760670412,
+            "display_p95": 36.096661321180406
+          },
+          "coupled_known_scene": {
+            "pixels": 1194,
+            "linear_mae": 0.017411949702470755,
+            "display_mae": 8.644698823575197,
+            "display_p95": 25.674663522212658
+          },
+          "missing_visibility": 0
+        }
+      }
+    },
+    "pupil_minus": {
+      "solvers": [
+        {
+          "success": false,
+          "status": 0,
+          "iterations": 200,
+          "cost": 0.3955663774976039,
+          "optimality": 1.2023233765333491e-06
+        },
+        {
+          "success": false,
+          "status": 0,
+          "iterations": 200,
+          "cost": 0.6790864551691965,
+          "optimality": 1.4886550888314996e-06
+        },
+        {
+          "success": false,
+          "status": 0,
+          "iterations": 200,
+          "cost": 0.8506867278639972,
+          "optimality": 1.536443355540956e-06
+        }
+      ],
+      "observations": 3171,
+      "active_parameters": 286,
+      "total_parameters": 432,
+      "train_linear_mae": 0.01537648062684713,
+      "seconds": 9.423656999999366,
+      "test": {
+        "interior": {
+          "sum_fit": {
+            "pixels": 657,
+            "linear_mae": 0.016220276041721767,
+            "display_mae": 7.292098171155681,
+            "display_p95": 18.338822050613228
+          },
+          "interior": {
+            "pixels": 657,
+            "linear_mae": 0.014012886208433542,
+            "display_mae": 7.016682533028617,
+            "display_p95": 19.05437571562031
+          },
+          "old_reflection": {
+            "pixels": 657,
+            "linear_mae": 0.0046509336482940585,
+            "display_mae": 5.778345727815118,
+            "display_p95": 35.01443266387942
+          },
+          "coupled_known_scene": {
+            "pixels": 657,
+            "linear_mae": 0.014012886208433542,
+            "display_mae": 6.381890171332673,
+            "display_p95": 14.757299436792302
+          },
+          "missing_visibility": 0
+        },
+        "iris": {
+          "sum_fit": {
+            "pixels": 579,
+            "linear_mae": 0.016076254547526123,
+            "display_mae": 6.1712978792489475,
+            "display_p95": 13.530121167505174
+          },
+          "interior": {
+            "pixels": 579,
+            "linear_mae": 0.014898077602907971,
+            "display_mae": 5.887609770411153,
+            "display_p95": 12.724853881327082
+          },
+          "old_reflection": {
+            "pixels": 579,
+            "linear_mae": 0.0029646963462021127,
+            "display_mae": 3.8461762524510905,
+            "display_p95": 24.937164403090485
+          },
+          "coupled_known_scene": {
+            "pixels": 579,
+            "linear_mae": 0.014898077602907971,
+            "display_mae": 5.8096949492202725,
+            "display_p95": 12.642896352172691
+          },
+          "missing_visibility": 0
+        },
+        "pupil": {
+          "sum_fit": {
+            "pixels": 78,
+            "linear_mae": 0.017289358671712503,
+            "display_mae": 15.61188495338643,
+            "display_p95": 41.71188034485553
+          },
+          "interior": {
+            "pixels": 78,
+            "linear_mae": 0.00744204239560411,
+            "display_mae": 15.397876501689028,
+            "display_p95": 28.85424192616734
+          },
+          "old_reflection": {
+            "pixels": 78,
+            "linear_mae": 0.01716800285228427,
+            "display_mae": 20.12098837186348,
+            "display_p95": 58.75681817056882
+          },
+          "coupled_known_scene": {
+            "pixels": 78,
+            "linear_mae": 0.007442042395604109,
+            "display_mae": 10.629339320090104,
+            "display_p95": 25.345236342998003
+          },
+          "missing_visibility": 0
+        },
+        "full_visible": {
+          "sum_fit": {
+            "pixels": 1194,
+            "linear_mae": 0.023517639342584603,
+            "display_mae": 10.582923775103456,
+            "display_p95": 37.43240530291829
+          },
+          "interior": {
+            "pixels": 1194,
+            "linear_mae": 0.021330355130243193,
+            "display_mae": 11.099732965901053,
+            "display_p95": 38.19803676678669
+          },
+          "old_reflection": {
+            "pixels": 1194,
+            "linear_mae": 0.005368430815773067,
+            "display_mae": 6.524771450300666,
+            "display_p95": 36.03042505542003
+          },
+          "coupled_known_scene": {
+            "pixels": 1194,
+            "linear_mae": 0.021330355130243193,
+            "display_mae": 10.158769293567628,
+            "display_p95": 34.190211778446226
+          },
+          "missing_visibility": 0
+        }
+      }
+    },
+    "pupil_plus": {
+      "solvers": [
+        {
+          "success": false,
+          "status": 0,
+          "iterations": 200,
+          "cost": 0.3989336851836574,
+          "optimality": 1.2202807387309627e-06
+        },
+        {
+          "success": false,
+          "status": 0,
+          "iterations": 200,
+          "cost": 0.6824680942386872,
+          "optimality": 1.5432492241825743e-06
+        },
+        {
+          "success": false,
+          "status": 0,
+          "iterations": 200,
+          "cost": 0.8541813114310493,
+          "optimality": 1.6617695974061524e-06
+        }
+      ],
+      "observations": 3171,
+      "active_parameters": 254,
+      "total_parameters": 432,
+      "train_linear_mae": 0.01536479719410119,
+      "seconds": 8.13327610000124,
+      "test": {
+        "interior": {
+          "sum_fit": {
+            "pixels": 657,
+            "linear_mae": 0.01616766188987243,
+            "display_mae": 7.184347021291702,
+            "display_p95": 17.923452333749417
+          },
+          "interior": {
+            "pixels": 657,
+            "linear_mae": 0.013967165415852557,
+            "display_mae": 6.991256690568097,
+            "display_p95": 18.951842725642237
+          },
+          "old_reflection": {
+            "pixels": 657,
+            "linear_mae": 0.004707331274160121,
+            "display_mae": 5.88330015817823,
+            "display_p95": 35.03487900766673
+          },
+          "coupled_known_scene": {
+            "pixels": 657,
+            "linear_mae": 0.013967165415852557,
+            "display_mae": 6.417708059744358,
+            "display_p95": 14.841889586101866
+          },
+          "missing_visibility": 0
+        },
+        "iris": {
+          "sum_fit": {
+            "pixels": 579,
+            "linear_mae": 0.016088497195465956,
+            "display_mae": 6.176471826482576,
+            "display_p95": 13.5619704879664
+          },
+          "interior": {
+            "pixels": 579,
+            "linear_mae": 0.014906977770824963,
+            "display_mae": 5.891408965479878,
+            "display_p95": 12.727824611815867
+          },
+          "old_reflection": {
+            "pixels": 579,
+            "linear_mae": 0.002986486818336274,
+            "display_mae": 3.890855555587719,
+            "display_p95": 24.942727841185096
+          },
+          "coupled_known_scene": {
+            "pixels": 579,
+            "linear_mae": 0.014906977770824963,
+            "display_mae": 5.813951190062269,
+            "display_p95": 12.640336102051137
+          },
+          "missing_visibility": 0
+        },
+        "pupil": {
+          "sum_fit": {
+            "pixels": 78,
+            "linear_mae": 0.01675530750604357,
+            "display_mae": 14.66588212122099,
+            "display_p95": 42.653432754296354
+          },
+          "interior": {
+            "pixels": 78,
+            "linear_mae": 0.006990866011634318,
+            "display_mae": 15.155510957569103,
+            "display_p95": 29.276573787968896
+          },
+          "old_reflection": {
+            "pixels": 78,
+            "linear_mae": 0.01748129204239099,
+            "display_mae": 20.67336970817701,
+            "display_p95": 59.040097455853754
+          },
+          "coupled_known_scene": {
+            "pixels": 78,
+            "linear_mae": 0.006990866011634317,
+            "display_mae": 10.899441746230632,
+            "display_p95": 26.3288992585507
+          },
+          "missing_visibility": 0
+        },
+        "full_visible": {
+          "sum_fit": {
+            "pixels": 1194,
+            "linear_mae": 0.02385966749476136,
+            "display_mae": 11.990589890068732,
+            "display_p95": 52.37892600599095
+          },
+          "interior": {
+            "pixels": 1194,
+            "linear_mae": 0.02211957399874738,
+            "display_mae": 13.988646625525469,
+            "display_p95": 72.69930794716394
+          },
+          "old_reflection": {
+            "pixels": 1194,
+            "linear_mae": 0.0054097111514845005,
+            "display_mae": 6.619677089143628,
+            "display_p95": 36.11185856768773
+          },
+          "coupled_known_scene": {
+            "pixels": 1194,
+            "linear_mae": 0.02211957399874738,
+            "display_mae": 12.363920505490722,
+            "display_p95": 60.44199484085912
+          },
+          "missing_visibility": 0
+        }
+      }
+    },
+    "lid_minus": {
+      "solvers": [
+        {
+          "success": false,
+          "status": 0,
+          "iterations": 200,
+          "cost": 0.443079357412474,
+          "optimality": 1.7024442715328385e-06
+        },
+        {
+          "success": false,
+          "status": 0,
+          "iterations": 200,
+          "cost": 0.7269444076660201,
+          "optimality": 1.8818644682962178e-06
+        },
+        {
+          "success": false,
+          "status": 0,
+          "iterations": 200,
+          "cost": 0.898887288299699,
+          "optimality": 2.0227733917627304e-06
+        }
+      ],
+      "observations": 3171,
+      "active_parameters": 251,
+      "total_parameters": 432,
+      "train_linear_mae": 0.015668147754988343,
+      "seconds": 8.008498700000928,
+      "test": {
+        "interior": {
+          "sum_fit": {
+            "pixels": 657,
+            "linear_mae": 0.01672935732898783,
+            "display_mae": 7.32237613508923,
+            "display_p95": 18.654179875011565
+          },
+          "interior": {
+            "pixels": 657,
+            "linear_mae": 0.01411093340921447,
+            "display_mae": 6.992284296127454,
+            "display_p95": 18.7054011019658
+          },
+          "old_reflection": {
+            "pixels": 657,
+            "linear_mae": 0.005063816477463218,
+            "display_mae": 6.202188801419456,
+            "display_p95": 36.46897463677914
+          },
+          "coupled_known_scene": {
+            "pixels": 657,
+            "linear_mae": 0.01411093340921447,
+            "display_mae": 6.4180163645588655,
+            "display_p95": 14.698965571647808
+          },
+          "missing_visibility": 0
+        },
+        "iris": {
+          "sum_fit": {
+            "pixels": 579,
+            "linear_mae": 0.016558121853041417,
+            "display_mae": 6.337888441956164,
+            "display_p95": 14.254674648894786
+          },
+          "interior": {
+            "pixels": 579,
+            "linear_mae": 0.014973019700160125,
+            "display_mae": 5.917959844305118,
+            "display_p95": 12.852949763904759
+          },
+          "old_reflection": {
+            "pixels": 579,
+            "linear_mae": 0.003351920598429194,
+            "display_mae": 4.164669433544953,
+            "display_p95": 24.665587493167887
+          },
+          "coupled_known_scene": {
+            "pixels": 579,
+            "linear_mae": 0.014973019700160125,
+            "display_mae": 5.841255988745922,
+            "display_p95": 12.726773597323827
+          },
+          "missing_visibility": 0
+        },
+        "pupil": {
+          "sum_fit": {
+            "pixels": 78,
+            "linear_mae": 0.01800045143889774,
+            "display_mae": 14.630304011038527,
+            "display_p95": 41.75010712743395
+          },
+          "interior": {
+            "pixels": 78,
+            "linear_mae": 0.007711600557194795,
+            "display_mae": 14.967077342347098,
+            "display_p95": 30.47113257442086
+          },
+          "old_reflection": {
+            "pixels": 78,
+            "linear_mae": 0.017771351271831166,
+            "display_mae": 21.326851801410957,
+            "display_p95": 58.9798980370811
+          },
+          "coupled_known_scene": {
+            "pixels": 78,
+            "linear_mae": 0.007711600557194795,
+            "display_mae": 10.699353000401107,
+            "display_p95": 25.58050217245375
+          },
+          "missing_visibility": 0
+        },
+        "full_visible": {
+          "sum_fit": {
+            "pixels": 1194,
+            "linear_mae": 0.02955544183376558,
+            "display_mae": 16.915557803791632,
+            "display_p95": 96.61458788572634
+          },
+          "interior": {
+            "pixels": 1194,
+            "linear_mae": 0.026985685265855607,
+            "display_mae": 17.661311839242078,
+            "display_p95": 96.99601862260533
+          },
+          "old_reflection": {
+            "pixels": 1194,
+            "linear_mae": 0.005635005619833629,
+            "display_mae": 6.819851049276646,
+            "display_p95": 37.070950150544064
+          },
+          "coupled_known_scene": {
+            "pixels": 1194,
+            "linear_mae": 0.026985685265855607,
+            "display_mae": 16.726514262533478,
+            "display_p95": 96.995729418156
+          },
+          "missing_visibility": 108
+        }
+      }
+    },
+    "lid_plus": {
+      "solvers": [
+        {
+          "success": false,
+          "status": 0,
+          "iterations": 200,
+          "cost": 0.4228476941706429,
+          "optimality": 8.008540564224109e-08
+        },
+        {
+          "success": true,
+          "status": 2,
+          "iterations": 194,
+          "cost": 0.7057565429877652,
+          "optimality": 4.3074420337332996e-08
+        },
+        {
+          "success": true,
+          "status": 2,
+          "iterations": 128,
+          "cost": 0.8777752540093187,
+          "optimality": 5.6239744621745566e-08
+        }
+      ],
+      "observations": 3171,
+      "active_parameters": 265,
+      "total_parameters": 432,
+      "train_linear_mae": 0.01555125720829566,
+      "seconds": 7.411496700002317,
+      "test": {
+        "interior": {
+          "sum_fit": {
+            "pixels": 657,
+            "linear_mae": 0.01652354550429994,
+            "display_mae": 7.277381601204236,
+            "display_p95": 18.242793618050094
+          },
+          "interior": {
+            "pixels": 657,
+            "linear_mae": 0.014001356530069481,
+            "display_mae": 6.928526375365132,
+            "display_p95": 18.552685259077194
+          },
+          "old_reflection": {
+            "pixels": 657,
+            "linear_mae": 0.00522722944415985,
+            "display_mae": 6.660407697525479,
+            "display_p95": 37.06971318051295
+          },
+          "coupled_known_scene": {
+            "pixels": 657,
+            "linear_mae": 0.014001356530069481,
+            "display_mae": 6.354544310332248,
+            "display_p95": 14.636569298818483
+          },
+          "missing_visibility": 0
+        },
+        "iris": {
+          "sum_fit": {
+            "pixels": 579,
+            "linear_mae": 0.01644136532224618,
+            "display_mae": 6.317255357308589,
+            "display_p95": 14.189438487129179
+          },
+          "interior": {
+            "pixels": 579,
+            "linear_mae": 0.01498041341136922,
+            "display_mae": 5.9267211352734686,
+            "display_p95": 12.872630736965792
+          },
+          "old_reflection": {
+            "pixels": 579,
+            "linear_mae": 0.0035422503619516902,
+            "display_mae": 4.703407705706599,
+            "display_p95": 28.330978815981485
+          },
+          "coupled_known_scene": {
+            "pixels": 579,
+            "linear_mae": 0.01498041341136922,
+            "display_mae": 5.8494279779271405,
+            "display_p95": 12.845892459256053
+          },
+          "missing_visibility": 0
+        },
+        "pupil": {
+          "sum_fit": {
+            "pixels": 78,
+            "linear_mae": 0.017133575317237474,
+            "display_mae": 14.404472565506534,
+            "display_p95": 41.85058475110731
+          },
+          "interior": {
+            "pixels": 78,
+            "linear_mae": 0.0067337419881137285,
+            "display_mae": 14.36500373450709,
+            "display_p95": 30.445314849662136
+          },
+          "old_reflection": {
+            "pixels": 78,
+            "linear_mae": 0.017734958785166573,
+            "display_mae": 21.187369175257935,
+            "display_p95": 59.01236694752118
+          },
+          "coupled_known_scene": {
+            "pixels": 78,
+            "linear_mae": 0.006733741988113729,
+            "display_mae": 10.104061700877839,
+            "display_p95": 25.815947926835072
+          },
+          "missing_visibility": 0
+        },
+        "full_visible": {
+          "sum_fit": {
+            "pixels": 1194,
+            "linear_mae": 0.019860253867392874,
+            "display_mae": 8.920095703801922,
+            "display_p95": 25.981830174266758
+          },
+          "interior": {
+            "pixels": 1194,
+            "linear_mae": 0.017485803366692854,
+            "display_mae": 9.702259606727898,
+            "display_p95": 28.62224558227991
+          },
+          "old_reflection": {
+            "pixels": 1194,
+            "linear_mae": 0.005699515740444478,
+            "display_mae": 6.995530207973343,
+            "display_p95": 36.74193054928111
+          },
+          "coupled_known_scene": {
+            "pixels": 1194,
+            "linear_mae": 0.017485803366692854,
+            "display_mae": 8.756858484327761,
+            "display_p95": 26.19472718079345
+          },
+          "missing_visibility": 0
+        }
+      }
+    }
+  },
+  "selection": {
+    "selected": "yaw_minus",
+    "source_sum_display_mae": {
+      "supplied": 7.330040060407805,
+      "yaw_minus": 7.0283896288732635,
+      "yaw_plus": 7.275168047807796,
+      "radius_minus": 7.4498040826029674,
+      "radius_plus": 7.331875774712471,
+      "pupil_minus": 7.398990030144133,
+      "pupil_plus": 7.346794278743877,
+      "lid_minus": 7.413309066500712,
+      "lid_plus": 7.383112162963424
+    },
+    "frames": [
+      3,
+      9,
+      15,
+      21
+    ],
+    "scope": "Finite one-at-a-time hypotheses; not real geometry calibration"
+  },
+  "reference_subtraction": {
+    "new_negative_channels": 7762,
+    "new_min": -6.705522537231445e-07,
+    "old_negative_channels": 7791,
+    "old_min": -6.258487701416016e-07,
+    "raw_differences_scored": true
+  },
+  "controls": {
+    "interior": {
+      "source_as_interior": {
+        "pixels": 657,
+        "linear_mae": 0.008526751733059465,
+        "display_mae": 3.977116944173033,
+        "display_p95": 35.38516337057456
+      },
+      "add_only": {
+        "pixels": 657,
+        "linear_mae": 0.008526751733059465,
+        "display_mae": 3.7573759021520403,
+        "display_p95": 34.7909607063392
+      }
+    },
+    "iris": {
+      "source_as_interior": {
+        "pixels": 579,
+        "linear_mae": 0.0061370694498324024,
+        "display_mae": 2.051766214488029,
+        "display_p95": 10.336025122900066
+      },
+      "add_only": {
+        "pixels": 579,
+        "linear_mae": 0.0061370694498324024,
+        "display_mae": 2.014995347441254,
+        "display_p95": 10.288653432914817
+      }
+    },
+    "pupil": {
+      "source_as_interior": {
+        "pixels": 78,
+        "linear_mae": 0.026265547143168047,
+        "display_mae": 18.2691435145271,
+        "display_p95": 79.77285005854205
+      },
+      "add_only": {
+        "pixels": 78,
+        "linear_mae": 0.026265547143168047,
+        "display_mae": 16.69120078904365,
+        "display_p95": 78.3632921712624
+      }
+    },
+    "full_visible": {
+      "source_as_interior": {
+        "pixels": 1194,
+        "linear_mae": 0.010982698685786515,
+        "display_mae": 5.504379480959368,
+        "display_p95": 40.23773888186474
+      },
+      "add_only": {
+        "pixels": 1194,
+        "linear_mae": 0.010982698685786515,
+        "display_mae": 5.212005339978124,
+        "display_p95": 39.80362037912339
+      }
+    }
+  },
+  "disabled_coupled_fallbacks": 24,
+  "production_repairs": 0,
+  "scope": "Independent rendered nonperformer RGB; supplied simplified geometry, oracle scoring region and new reflection",
+  "real_review": "final/r20_source_fallback.mp4 (unchanged original catchlights)",
+  "reference_sha256": {
+    "0": {
+      "source": "6689d96ead3722968650e252d91f269fd688ad6e8c26b3637153a43f7be19003",
+      "clean": "06cd614c2206b31c48b181bca1d78438e4efbc0f1d80b85f8820661d27fc63dd",
+      "target": "908e7766306821a2a8fa9a950f5b738b2552a3e5e993b9070ae401c0c7f40955"
+    },
+    "1": {
+      "source": "4c49665bacba4fef21ff4d0bfc50e1ceb6a3c504ded27a0cc46f7eb3681aa468",
+      "clean": "6018d48a9a8fe14b0be0625fcaff12450d3005d40f2937bd2f842b57b779b3a1",
+      "target": "a0752e19d774e90c7884572d368fc2475ad8df84deee71d15678cda56d90a4d0"
+    },
+    "2": {
+      "source": "0d47e3f2fb3b4e664666a33754bee6315c84a82bba074e2e94323966153fc7ca",
+      "clean": "6a84cc6c5f10e749bc411bcbcf50aabfbf0a7f4b6607406f3110428650382052",
+      "target": "2e963c23608084a94478399b3998bfe090ced17335ee55df4995b04e41e5ae56"
+    },
+    "3": {
+      "source": "2ee4bdc14a741c918dc34ddef0c8a9f2dae0830b94b302f146a9f2f5c9202c7b",
+      "clean": "ab42728489b6d3544410ca10529aa12194a9e9fa401121fb7e0c3fc3539815e5",
+      "target": "727253a54e7d3d9b75bede37fa90c3f03791c719935f6f2b97f5fd270cdeb0fe"
+    },
+    "4": {
+      "source": "58a81586cf1bb768d4f69332c85fc9efcb718a396fc83ad21e8f4d738d093d51",
+      "clean": "505ecb94ace42568a610c6019d255d3a722919ca4d829e97013a76ea3c60740b",
+      "target": "98724d2fb45cd14c77ad5c5356c294996134c0db130da3acc0c3faeb35f267ec"
+    },
+    "5": {
+      "source": "a4f28a8ed9806f92aaeac887c1125e404c69b31c27a2b4a12d8afb55b63c9fc2",
+      "clean": "58e04b25194d2d31dabe0589d23b73dd39883846c1d46f2a93ebd820563e340f",
+      "target": "e956a93140e6903f29c7b93d09c27f61cc386992fcb4f78076cd4d7b646c1a5c"
+    },
+    "6": {
+      "source": "bad933a0281b82eeb3cdad8deae1a0b23db6fc0694a1485e6eb4be7f980977de",
+      "clean": "1e2ed1f635090fea70458e78e8d6648c3e0fb1c79625dbd482b50ee2d6367539",
+      "target": "77ffa35fffa917dce4d02281d4f3443d6a7886db7e40d63076c197d4c39a8eeb"
+    },
+    "7": {
+      "source": "5c11f8d998750d15d409c040eb8c8b45aa17f4d5c18e5fc451bd25ddb33b4fdd",
+      "clean": "b3a3bf94abf655cfbe56cd57af086267dcc130305b59fbfaf1ef12f788991733",
+      "target": "e0e70c26c1c4a888bf682ece3f26d10dd0fbb7dd9609a87a38b7f1a70ad3d6f9"
+    },
+    "8": {
+      "source": "246a52c5a55937323bc0124d2dca6717a35cd4e4dda3ffb383f3a1b3dd7230af",
+      "clean": "f1a71115789415e6ad147cd41f02c9fa22f1bc50fd3688c9ccedf3e5dc7de1fc",
+      "target": "7f1646ee1979de57e2eec6469230d566549961abcff9668de17cf420c3d4a322"
+    },
+    "9": {
+      "source": "a9cd2f60d9fbb6615caab0694df99c40fccea83cc0e6793a02b1564a6549c0fc",
+      "clean": "1cc5d968e321d9b4b52befeecb255b705bf7e34aaf9e2b8669b47798c678b415",
+      "target": "4c2c891f00c3717537ad8fd9fbfb6e66b77f87360ec72471fff990913cfe3f51"
+    },
+    "10": {
+      "source": "a774abdd2c44c33f188efb90a845677cf1c9bc95ebf8713da9b831611afd6af1",
+      "clean": "1f75deffaa14fac4b5a1d2fcbd544a6a25c60ff87c9c24f44d4e87ed220dcf4f",
+      "target": "266e5ac94aec5b151ffb7c120b9138490512ab1be77255a8dd1e6c162102257a"
+    },
+    "11": {
+      "source": "9279a152983a3ae1c9d700fd4e7d509cb68f103639cf97073d091982e7179d35",
+      "clean": "bf52da7db188c69c9372a1b25a180dfeedbc8d0140c5b304d961e2d013281314",
+      "target": "7558f69aa962746247de7f1a255c5efb16e0692877b3117c4acf5ade644e128c"
+    },
+    "12": {
+      "source": "3ed7a8eac9cca3902d5bf1786028b60f90ce3f0a61636c44bbae0ac64f14ed81",
+      "clean": "4fc429ab5b8fedd7a3fd7f9cb6e8b033cf8059a03c5d1fbf93c6324864d9d535",
+      "target": "bb2ab22475e6e943868868843a0344b04e2f2845124cab7d0468c9699e889865"
+    },
+    "13": {
+      "source": "fe230adad4b13b263bd2c5ff467b9a5bec1aaa3076a206778392888569b70aeb",
+      "clean": "b526521e624ef2f02b0bef90c07b234dde8829244fd38ac9c6a6c895eaf82033",
+      "target": "6d95c55e6bd745ebfbe9a3370adf818f147754c1850bd82b976d58f3efcfb9dd"
+    },
+    "14": {
+      "source": "a02d65ff58d9784d8c232b553991310bc1377361065eec9a17277d2eac9d71f4",
+      "clean": "721af21d2342130418a6b8ed54b03212df1e82f1a2db666d94f5c32cf25b9a4c",
+      "target": "7c8c4666c24c401b53287a189b92b22c6017e892bdbd457acc361a19c1ff74e2"
+    },
+    "15": {
+      "source": "511f57045b0a8ac473f7843ca4db4348422878fb03913f667ba85e9a2a506a59",
+      "clean": "a40796b51435e3cea6f1c1f77a59ad85a993cbf9c2942f3767eaa3062bf8a252",
+      "target": "05c77c16a8b2973b91cbdce0997b8f71088a53d999d3e8e45d44e1f44d8547e5"
+    },
+    "16": {
+      "source": "e3308f72e33c0311637c697c25a8dd07eadc9fc77f18fc219a36bd6975dd8bb1",
+      "clean": "c8329c171a350cbc58dbd73f6ccffbcefe4eb09ca77abd00a631e395734d9465",
+      "target": "0a5819cab3da8d2e0d3515fcacdb2e07d8f883656122bef5d1b814a99f500c05"
+    },
+    "17": {
+      "source": "b3cabf517e576829f8f3a4ece003de3c8f7af9a74f9f46f43c56cffc21e350a0",
+      "clean": "1c7dcdbfa1c3be495f4683fa66294ebf7bd1013e80592c5f24f4ef74edf645dc",
+      "target": "1955705ec19f9c9d74a2424350d9a2553ab5a9ee664c6a37f13ed5fe0e182660"
+    },
+    "18": {
+      "source": "8e8b6faee347f546909813f668f1e4dddc36e3e62fd99f6fa4235dcd76dfc442",
+      "clean": "53b9454d3876f06e606e2472d25a55ce59fcee11cacbaa09b4eb91324914c5a6",
+      "target": "a830654b509f5e2f0d073a8ed2bdd6ded396b6f02c28d327ca85f84a99c4ff90"
+    },
+    "19": {
+      "source": "7b99740e39037c20752e9034020c92d49c4eeb236277cc438460399a53d376d0",
+      "clean": "188aa50f0f44a89400fb11217270fd5538c8fc77a45d2ae98815e93a76dff473",
+      "target": "5ea4554554adc73720ad9fbecacedf1d90528ed96f0ebd90006b4f8c42f52f0f"
+    },
+    "20": {
+      "source": "ff7a161713b2fb6122b574f93a09c7f34e6423de422136e993e90ba6416e8071",
+      "clean": "ff7d9c1ec37f45ac0019eab6e49df5ac10dcecbd333587d1c81fa4075e413589",
+      "target": "bd3f967c495b8515b413740f4806a8cf59947d2c2a631c5a4c5c75c43c983b95"
+    },
+    "21": {
+      "source": "583d2fda13feaa06cc08bf896a97c67847b0e24ed3754343caad3a7f99cc4dbc",
+      "clean": "b1f248d7cfaf2a09e4f17f6be7fc118af10f042f951ec71c0b90a057eb63d3c1",
+      "target": "6157fda8d8c7bad6117d2bfebb78b92f41b67e61c9920bae2d39ca2161029341"
+    },
+    "22": {
+      "source": "726bbc6d3ae4271b072581c7d071f59304f8a8f9d3fbbff562f0a6664fa87dfe",
+      "clean": "2e23e4395f99cbb12c1c61575cbd2deaef2d4990a090b02c0866dc0bd9cc0ade",
+      "target": "f9f3b4f2740f9c4a26ee6c270a50375d41bbddff2f2fde6c9433bd39ecbaa097"
+    },
+    "23": {
+      "source": "cc6251cc4a8f55bb700acabf87fca7a0a971113e5b491fde47a1d9834202e333",
+      "clean": "3e34748e8e4a6131e550d537ca8fc0ba43a4ec6a6831c7124755df6fd7423b9c",
+      "target": "06f8da99b40a9928320ede5fe45fca022f261493cc0d8cb4792648b4c7a873a8"
+    }
+  }
+}

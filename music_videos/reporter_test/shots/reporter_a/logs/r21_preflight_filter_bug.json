@@ -1,0 +1,247 @@
+{
+  "protocol_sha256": "14d56d4821c7a1b827ced54afc82863bf84051982c4041895625d203e952e424",
+  "code_sha256": {
+    "render_r21_eyes.py": "11873beb12cd7b85f276cc78e725aa5ad71d36e053c767eafd44d4cacb5f0f15",
+    "render_r20_transport.py": "49427d37b951a57fc0611c85beb54972ef5a84cf018f609eb49d2522f9e55c95",
+    "corneal_transport.py": "580cf13503d98210834768d6f5c1f49544f882641e647bb55e2882a28557039b",
+    "eye_layer_fit.py": "0efd957306a01668f212cc5659ba84d5cbe98de25648839b44b2b003713ca879",
+    "observation_eye_fit.py": "c96f6d3f61afcd8d596eb7003b86b46d1cdf3fd0367056096273cbbd1fbe1172",
+    "audit_r21_eyes.py": "9bd72f8af65269578ae2c4fc262988006d05077d9cb228222eaa7a08e208ae14",
+    "coupled_eye_relight.py": "7d9b359414f3c1ba1252f617cf2d848f2e05234ad0ed9f683fa0ddec11bb1891"
+  },
+  "train": [
+    0,
+    1,
+    2,
+    4,
+    6,
+    7,
+    8,
+    10,
+    12,
+    13,
+    14,
+    16,
+    18,
+    19,
+    20,
+    22
+  ],
+  "selection": [
+    3,
+    9,
+    15,
+    21
+  ],
+  "test": [
+    5,
+    11,
+    17,
+    23
+  ],
+  "arms": {
+    "continuous": {
+      "split_pupil": false
+    },
+    "supplied": {},
+    "yaw_minus": {
+      "yaw_bias": -2
+    },
+    "yaw_plus": {
+      "yaw_bias": 2
+    },
+    "radius_minus": {
+      "radius_scale": 0.95
+    },
+    "radius_plus": {
+      "radius_scale": 1.05
+    },
+    "pupil_minus": {
+      "pupil_bias": -0.3
+    },
+    "pupil_plus": {
+      "pupil_bias": 0.3
+    },
+    "lid_minus": {
+      "lid_bias": -0.4
+    },
+    "lid_plus": {
+      "lid_bias": 0.4
+    }
+  },
+  "source_sha256": {
+    "0": "303148bf1717844eb9e182a5f19f1d134dddd67bae64a8617a3182d62c3731fb",
+    "1": "6a98922d9c363a3eb262f89d7481834504294985447ef3eb8e86791df6d5c364",
+    "2": "e836d39a322f0fdbf6545538dbb22934765c58edf4029318c57cf357a94febae",
+    "3": "860769d57a94d9bf595256705ff7f0f329a187abeeb2e61e0267e0d0320f1bda",
+    "4": "3d93f4ecf5174cd7d4d830a32eb49a157746173ab0818a8c8edfb278e75a9287",
+    "5": "19dbd33cbaa670f4d09c051631428219912a3546cd6ca196f0c4633ed37c1757",
+    "6": "2f46ea3acf5049cfaa061ae0aa909d5183c5849c0393944064f2269784086f69",
+    "7": "f5ba43cb10113d74bf3d399bbeeeaa039f1658efb3880c37b808876ebaff0e62",
+    "8": "e64fa0c4e4b7cc8988eda0d3d162ad3cad462bf137bd1107eb3606601c2e0274",
+    "9": "f70582aa6a71dcff361bc82c2aa1b0c6dcbdd8bbdae698b58a3ea6fcdb94d8d7",
+    "10": "295519aa2f996860d7b879798793b6c214d5b265ff9b1ef1cce3d18a0d295d87",
+    "11": "80813659814d94c54fc62e7117a2d0a519484b154da4c725b6a527d1b1be9728",
+    "12": "4ba2846785dc33b56f91be31b2c3f21909bb50a3aae85a1d368606bef3734c25",
+    "13": "8ec69c3f48e4f098546b7a77098afc88ad199d114c08998836676d76f48b39dd",
+    "14": "d49ad67c1e0bfd86c1974202fdb38e43ea80dd0546bcdbdb3fbaf7c93c5a6315",
+    "15": "75b065aabb1cbcf7ed793b0f5ad0a0abcb6dd7c431f5398668dc75d7c3d242fb",
+    "16": "04607594d60342bf6b71a3219e6b7a7c6bcb6f6467c4c17f836121f5a401991c",
+    "17": "144dec4cc78b5f2c9f534f081e049ce9b6bec83f52123598362d75b2f9fd2551",
+    "18": "c5b48f78f90a0c32dbbe45ab46f8d9aca4993b92e4407f9e0849465554f0b932",
+    "19": "02186920c02b311840e700c713ba2cdcf21b548c21b76283ef8bb0fc999062b3",
+    "20": "08363da035a7ddeee7f2160df53c75f48823d81fec01e0d21f0842469f5288c1",
+    "21": "4c1a57c506aa42bc7cdf8bcb3bb33646f3643b025a4312d24010ddd4ea5641aa",
+    "22": "1b41fce11e2b2c3a1a399b3b4d2662b9c30c48fc7f928cf21f932b92e57317d0",
+    "23": "cee77ba817b752ca31b1d91d31f50a9d1bddaf6bd81f4cb3436e552315c7131a"
+  },
+  "region_pixels": {
+    "0": {
+      "interior": 228,
+      "iris": 200,
+      "pupil": 28,
+      "full_visible": 408
+    },
+    "1": {
+      "interior": 219,
+      "iris": 195,
+      "pupil": 24,
+      "full_visible": 402
+    },
+    "2": {
+      "interior": 217,
+      "iris": 194,
+      "pupil": 23,
+      "full_visible": 404
+    },
+    "3": {
+      "interior": 218,
+      "iris": 194,
+      "pupil": 24,
+      "full_visible": 402
+    },
+    "4": {
+      "interior": 219,
+      "iris": 193,
+      "pupil": 26,
+      "full_visible": 401
+    },
+    "5": {
+      "interior": 219,
+      "iris": 192,
+      "pupil": 27,
+      "full_visible": 396
+    },
+    "6": {
+      "interior": 220,
+      "iris": 194,
+      "pupil": 26,
+      "full_visible": 396
+    },
+    "7": {
+      "interior": 219,
+      "iris": 192,
+      "pupil": 27,
+      "full_visible": 396
+    },
+    "8": {
+      "interior": 219,
+      "iris": 193,
+      "pupil": 26,
+      "full_visible": 401
+    },
+    "9": {
+      "interior": 180,
+      "iris": 156,
+      "pupil": 24,
+      "full_visible": 360
+    },
+    "10": {
+      "interior": 64,
+      "iris": 41,
+      "pupil": 23,
+      "full_visible": 174
+    },
+    "11": {
+      "interior": 0,
+      "iris": 0,
+      "pupil": 0,
+      "full_visible": 0
+    },
+    "12": {
+      "interior": 72,
+      "iris": 46,
+      "pupil": 26,
+      "full_visible": 178
+    },
+    "13": {
+      "interior": 183,
+      "iris": 159,
+      "pupil": 24,
+      "full_visible": 362
+    },
+    "14": {
+      "interior": 217,
+      "iris": 194,
+      "pupil": 23,
+      "full_visible": 404
+    },
+    "15": {
+      "interior": 218,
+      "iris": 194,
+      "pupil": 24,
+      "full_visible": 402
+    },
+    "16": {
+      "interior": 219,
+      "iris": 193,
+      "pupil": 26,
+      "full_visible": 401
+    },
+    "17": {
+      "interior": 219,
+      "iris": 192,
+      "pupil": 27,
+      "full_visible": 396
+    },
+    "18": {
+      "interior": 220,
+      "iris": 194,
+      "pupil": 26,
+      "full_visible": 396
+    },
+    "19": {
+      "interior": 219,
+      "iris": 192,
+      "pupil": 27,
+      "full_visible": 396
+    },
+    "20": {
+      "interior": 219,
+      "iris": 193,
+      "pupil": 26,
+      "full_visible": 401
+    },
+    "21": {
+      "interior": 218,
+      "iris": 194,
+      "pupil": 24,
+      "full_visible": 402
+    },
+    "22": {
+      "interior": 217,
+      "iris": 194,
+      "pupil": 23,
+      "full_visible": 404
+    },
+    "23": {
+      "interior": 219,
+      "iris": 195,
+      "pupil": 24,
+      "full_visible": 402
+    }
+  },
+  "source_channels_above_one": 0,
+  "oracle_geometry_mask": true,
+  "reference_rgb_read": false
+}

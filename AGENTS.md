@@ -268,6 +268,11 @@ Each of these produces a wrong result with no error message.
     check the tail of a background log, not just its status.
 11. **numpy 2.x removed `ndarray.ptp()`.** `np.ptp(a)` is fine; `a.ptp()` raises `AttributeError`.
     The pipeline venv is numpy 2.4.
+12. **`scene.render.filter_size` does not set Cycles' pixel filter width.** In 5.2.1,
+    setting it to .01 leaves `scene.cycles.filter_width` at 1.5. Set and verify the
+    Cycles property explicitly when a diagnostic specifies its pixel footprint.
+    Round 21 caught this with textured eyes; round 20's constant-emitter checks
+    away from boundaries did not expose it. See `rounds/round21.md`.
 
 ## GPU: what is accelerated, and why the card still looks idle
 
