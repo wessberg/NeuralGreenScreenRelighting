@@ -1,0 +1,29 @@
+{
+  "held_model_indices": {
+    "left": [
+      16,
+      5,
+      6,
+      3
+    ],
+    "right": [
+      8,
+      17,
+      18,
+      15
+    ]
+  },
+  "display_clipped_pixels": {
+    "left_0": 0,
+    "right_0": 0,
+    "left_1": 0,
+    "right_1": 0,
+    "left_2": 0,
+    "right_2": 0,
+    "left_3": 0,
+    "right_3": 30
+  },
+  "continuous_frames": 150,
+  "held_frames": 96,
+  "source_not_replaced": true
+}

@@ -1,0 +1,22 @@
+{
+  "docs\\r27-eye-protocol.md": "4f34e2c013035f40c77db8c9cb3197b37b871d523ad3e3905b744c759d2e7400",
+  "scripts\\data\\r27_source_boundaries.json": "aadd242acc21b7a9eac30049b16aeb30d4906e9dce555b3087b58806880e18d2",
+  "music_videos\\reporter_test\\shots\\reporter_a\\logs\\r27_preflight.json": "355744b0ec7118abd2e7ecbb96e0b2cbc384f200274d6649674aaafd752a26f2",
+  "music_videos\\reporter_test\\shots\\reporter_a\\shot.json": "85abd77527760f0607409aa0929e80bc485dd4f6edcf90cb6713cbf80fc3601d",
+  "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r26_joint\\geometry_left.json": "30ae54e3e404c1ce5d5c37b086ca7b04ac2d1bcece659d14556c7961f3539c8a",
+  "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r26_joint\\family_left.npz": "28788cf79bcfe60d19f81fa8b79febccba65a919869101b40fed209d7eb18927",
+  "music_videos\\reporter_test\\shots\\reporter_a\\relight\\neural_iris_observations\\000030_left.npz": "4d3d0ec6c8e3933882102c3824b542f01c271755817afddd35ca5d4144b4d351",
+  "music_videos\\reporter_test\\shots\\reporter_a\\relight\\neural_iris_observations\\000060_left.npz": "342db7684eb1bf574f85f4f50fa8e40066eb35dec45b3f88a70eb9f847516ede",
+  "music_videos\\reporter_test\\shots\\reporter_a\\relight\\neural_iris_observations\\000090_left.npz": "0d16648c62949befd06e08f024ed1cbb7a1935e545ea72134520d91612036ded",
+  "music_videos\\reporter_test\\shots\\reporter_a\\relight\\neural_iris_observations\\000120_left.npz": "510fe986e564ab4bcc41ed50065031a2e9f59a25d07539b383b6b1f801e23e00",
+  "music_videos\\reporter_test\\shots\\reporter_a\\relight\\neural_iris_observations\\000105_left.npz": "10d1c0afb3aed0c8bdc47baaaffa090358efb148dda0dc1b4ac3b478fae7e10e",
+  "music_videos\\reporter_test\\shots\\reporter_a\\relight\\neural_iris_observations\\000115_left.npz": "be3ca9def5e32470d4bff71a66a72f1c053b803e05551148b6449831e0f3cc79",
+  "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r26_joint\\geometry_right.json": "bf0c8f8d4ac54ad18f5acc407a85487f483994dedcdac14b2b3702e509fa5572",
+  "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r26_joint\\family_right.npz": "0de5885cbca26212e2ab0e0f222e8b828e6e84cd37ba2468129fb5b817e45ea9",
+  "music_videos\\reporter_test\\shots\\reporter_a\\relight\\neural_iris_observations\\000030_right.npz": "22cdfc9e2e95e4df66476863aeb19d5ef7a9c6426cace6dc92be75aa007a450a",
+  "music_videos\\reporter_test\\shots\\reporter_a\\relight\\neural_iris_observations\\000060_right.npz": "0e4bcec86905940e0a1f9d04eddee5958bc06955ee2d4d0c980b21d0aa1d291a",
+  "music_videos\\reporter_test\\shots\\reporter_a\\relight\\neural_iris_observations\\000090_right.npz": "2e5e1632e1c6caf737459cc1879aa7aff0470aaab5574fb63f6e7d15f18a3f7c",
+  "music_videos\\reporter_test\\shots\\reporter_a\\relight\\neural_iris_observations\\000120_right.npz": "e494f38ea2f3935bef3f521f3bd8532082f7865333424e0d5f9708adaf55adb7",
+  "music_videos\\reporter_test\\shots\\reporter_a\\relight\\neural_iris_observations\\000105_right.npz": "8ac9ffa0c82d2013b1eed4f0fbc14b938c3a71ded04856f254a8fa44177f07e2",
+  "music_videos\\reporter_test\\shots\\reporter_a\\relight\\neural_iris_observations\\000115_right.npz": "1fb8abfcf768ff14c544319b38ea6349ef490ce74f7cf875d6b2dc09a37178ff"
+}

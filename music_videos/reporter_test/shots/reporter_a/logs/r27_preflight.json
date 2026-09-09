@@ -1,0 +1,33 @@
+{
+  "records": [
+    {
+      "side": "left",
+      "archive_sha256": "be3ca9def5e32470d4bff71a66a72f1c053b803e05551148b6449831e0f3cc79",
+      "rgb_sha256": "0ecbc34bb3814464fcf31ab7ac8c9967df7826c288cb17d5b9d8c135ea3e63fc",
+      "origin_xy": [
+        990,
+        261
+      ],
+      "shape": [
+        70,
+        70,
+        3
+      ]
+    },
+    {
+      "side": "right",
+      "archive_sha256": "1fb8abfcf768ff14c544319b38ea6349ef490ce74f7cf875d6b2dc09a37178ff",
+      "rgb_sha256": "3d1802d79483903206ee558f6d5836201d90e9c5cab18b4fd1595809ffa9dc98",
+      "origin_xy": [
+        859,
+        276
+      ],
+      "shape": [
+        70,
+        70,
+        3
+      ]
+    }
+  ],
+  "protocol_sha256": "4f34e2c013035f40c77db8c9cb3197b37b871d523ad3e3905b744c759d2e7400"
+}

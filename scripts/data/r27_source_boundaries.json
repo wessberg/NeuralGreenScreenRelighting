@@ -1,0 +1,8 @@
+{
+  "provenance": "Assistant source-only native RGB judgments at source 815, after protocol freeze, before numerical fitting. Reused footage, not independent human/anatomical truth; reflection polygons incomplete.",
+  "uncertainty_px": 2.0,
+  "records": [
+    {"frame":115,"side":"left","limbus":[[20,31],[21,36],[24,41],[28,44],[33,45],[38,44],[42,40],[44,34],[43,28]],"pupil":[[32,28],[35,33],[33,37],[29,37]],"lid":[[7,43],[15,33],[23,26],[32,24],[42,24],[53,27],[62,33],[54,39],[44,44],[33,47],[21,47],[10,47]],"reflection":[[27,29],[30,29],[32,31],[31,35],[28,35],[26,32]]},
+    {"frame":115,"side":"right","limbus":[[21,30],[21,36],[24,41],[28,44],[33,45],[38,44],[42,40],[44,34],[43,28]],"pupil":[[35,28],[37,33],[35,37],[31,38]],"lid":[[8,36],[17,28],[26,25],[35,24],[44,26],[52,31],[60,39],[51,43],[40,46],[29,47],[19,43],[10,40]],"reflection":[[30,28],[33,28],[35,30],[34,34],[31,35],[29,32]]}
+  ]
+}

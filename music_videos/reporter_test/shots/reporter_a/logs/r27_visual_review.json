@@ -1,0 +1,11 @@
+{
+  "continuous_contact_sheets_inspected": [0, 24, 48, 72, 96, 120, 144],
+  "continuous_native_decoded_frame_inspected": 115,
+  "held_distinct_decoded_frames_inspected": [0, 24, 48, 72],
+  "continuous_findings": "Source/catchlights preserved through motion and both blinks. Sparse observation annotations; green check pixels at source 815 exclude the original catchlight. No continuous fitted/repaired output.",
+  "held_findings": "Identical small lower/side iris support. Material-only prediction has texture/brightness mismatch. Two-layer alternatives assign broad iris appearance to the reflected layer; last right-eye panel has a blown-out coloured lower rim. Black is unscored, not recovered material or black pupil truth.",
+  "live_playback": false,
+  "artist_acceptance": false,
+  "clean_material_certified": false,
+  "production_repairs": 0
+}
