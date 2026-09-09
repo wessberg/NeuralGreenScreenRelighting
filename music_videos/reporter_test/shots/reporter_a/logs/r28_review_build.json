@@ -1,0 +1,25 @@
+{
+  "choices": {
+    "left": [
+      0,
+      0,
+      3
+    ],
+    "right": [
+      1,
+      8,
+      1
+    ]
+  },
+  "clipped_pixels": {
+    "left_0": 0,
+    "right_0": 0,
+    "left_1": 0,
+    "right_1": 0,
+    "left_2": 0,
+    "right_2": 0
+  },
+  "continuous_frames": 150,
+  "held_frames": 72,
+  "source_not_replaced": true
+}

@@ -82,7 +82,7 @@ def lid_blocked(o,d,eye):
 
 
 def trace_connected(xy,eye,*,focal=(3000.,3000.),centre=(47.5,47.5),
-                    environment_z=1100.,environment_half=250.):
+                    environment_z=1100.,environment_half=250.,pupil_offset=(0.,0.)):
     xy=np.asarray(xy,float)
     if xy.shape[-1]!=2 or not np.isfinite(xy).all() or min(focal)<=0:
         raise ValueError('Finite native pixel coordinates and positive focal required')
@@ -105,6 +105,10 @@ def trace_connected(xy,eye,*,focal=(3000.,3000.),centre=(47.5,47.5),
     ti=(eye.iris_depth-q[...,2])/np.where(td[...,2]>1e-12,td[...,2],1e-12)
     interior=q+ti[...,None]*td
     ri=np.linalg.norm(interior[...,:2],axis=-1)
+    pupil_offset=np.asarray(pupil_offset,float)
+    if pupil_offset.shape!=(2,) or not np.isfinite(pupil_offset).all():
+        raise ValueError('Finite two-dimensional pupil offset required')
+    rp=np.linalg.norm(interior[...,:2]-pupil_offset,axis=-1)
     # The iris annulus extends to its physical contact with the globe at its depth.
     iris_outer=np.sqrt(eye.globe_radius**2-(eye.iris_depth-eye.centre_depth)**2)
     g1,g2,gh=sphere_hits(q+td*1e-6,td,centre_local,eye.globe_radius)
@@ -113,8 +117,8 @@ def trace_connected(xy,eye,*,focal=(3000.,3000.),centre=(47.5,47.5),
         wall_point=q+td*1e-6+g[...,None]*td
         valid=gh&(g>0)&(wall_point[...,2]>=eye.sag-1e-8)
         wall=np.minimum(wall,np.where(valid,g,np.inf))
-    iris=cornea&(ti>0)&(ti<wall)&(ri>=eye.pupil_radius)&(ri<=iris_outer)
-    through=cornea&(ti>0)&(ti<wall)&(ri<eye.pupil_radius)
+    iris=cornea&(ti>0)&(ti<wall)&(rp>=eye.pupil_radius)&(ri<=iris_outer)
+    through=cornea&(ti>0)&(ti<wall)&(rp<eye.pupil_radius)&(ri<=iris_outer)
     tb=(eye.backing_depth-q[...,2])/np.where(td[...,2]>1e-12,td[...,2],1e-12)
     backing=q+tb[...,None]*td
     pupil=through&(tb<wall)&(tb>ti)

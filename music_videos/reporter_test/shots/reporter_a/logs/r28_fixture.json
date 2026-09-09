@@ -1,0 +1,29 @@
+{
+  "sphere_gram_quadrature_max_error": 2.1094237467877974e-15,
+  "excited_fixture_sum_max_error": 0.00026617068877457517,
+  "excited_fixture_layer_max_error": 0.0002775673133957324,
+  "duplicate_observation_coefficient_max_error": 1.6720125446938877e-15,
+  "exposure_scaled_coefficient_max_error": 5.329070518200751e-15,
+  "unseen_tail_old_max_linear": 2181619.863648759,
+  "unseen_tail_regularized_max_linear": 0.11999956793244167,
+  "angular_positive": 10,
+  "unseen_direction_rejections": 10,
+  "single_frame_rejections": 10,
+  "one_bad_box_node_rejections": 10,
+  "ambiguous_sum_error": 0.0,
+  "withheld_bright_lobe_rejected": true,
+  "withheld_bright_lobe_prediction_max_error": 0.478919482577591,
+  "ambiguous_transmitted_difference": 0.019600000000000003,
+  "angular_coverage_does_not_resolve_ambiguity": true,
+  "signed_pupil_offset_changed_pixels": [
+    32,
+    32,
+    32,
+    32
+  ],
+  "closed_rejected": 1296,
+  "pupil_box_max_error": 2.220446049250313e-16,
+  "mixed_pupil_box_pixels": 1,
+  "clean_performer_material_validated": false,
+  "code_sha256": "ad18dfa5897b4480e8d792f6d11aed9c44695e520ebbcd39119e3fdd1d9ad252"
+}

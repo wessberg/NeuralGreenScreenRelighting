@@ -1,0 +1,22 @@
+{
+  "reviewer": "Codex source/decoded-image inspection, not artist acceptance",
+  "date": "2026-09-09",
+  "temporal_video_sha256": "e174f120a762c0150e120ddc36a2c0353299495162de5a29b795a16fa3011461",
+  "held_video_sha256": "58665b3efa97bbd7764263686708633946081caaa03de76a0849367848449f1a",
+  "inspected_temporal_contact_starts": [0, 24, 48, 72, 96, 120, 144],
+  "inspected_decoded_temporal_frame": 115,
+  "inspected_decoded_held_frames": [0, 24, 48],
+  "observations": [
+    "Temporal source eyes and original catchlights persist; both blink sequences remain photographed.",
+    "Seen-815 overlay marks sampling coverage and reflection checks, not replacement.",
+    "Selected left appearance model has a flat grey pupil instead of the source's dark pupil and compact catchlight.",
+    "Selected right reflected model has a broad glow instead of the source's compact bright reflection.",
+    "Right appearance-only control fits a bright flat backing; competing failed explanations remain visible.",
+    "Held source and predicted panels use identical support; black regions are unscored.",
+    "All three holds are explicitly labelled as held frames rather than temporal reconstruction."
+  ],
+  "live_playback_performed": false,
+  "artist_approval": false,
+  "photorealism_achieved": false,
+  "production_replacement_enabled": false
+}
