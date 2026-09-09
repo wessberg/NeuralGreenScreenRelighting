@@ -1,0 +1,120 @@
+{
+  "8": {
+    "full_visible": {
+      "clean": {
+        "pixels": 483,
+        "linear_mae": 0.00035102605973022467,
+        "display_mae": 0.3079782773417097,
+        "display_p95": 1.8830802993334004
+      },
+      "source": {
+        "pixels": 483,
+        "linear_mae": 0.0005376879183367663,
+        "display_mae": 0.3983772273149114,
+        "display_p95": 2.3316440970861483
+      }
+    },
+    "iris": {
+      "clean": {
+        "pixels": 306,
+        "linear_mae": 8.650919756879105e-05,
+        "display_mae": 0.033968226944589515,
+        "display_p95": 0.08837636861458666
+      },
+      "source": {
+        "pixels": 306,
+        "linear_mae": 0.00021297501077234836,
+        "display_mae": 0.07492273159637837,
+        "display_p95": 0.13180182865592602
+      }
+    },
+    "pupil": {
+      "clean": {
+        "pixels": 47,
+        "linear_mae": 1.538297596653015e-06,
+        "display_mae": 0.002320954786256147,
+        "display_p95": 0.00650638385092675
+      },
+      "source": {
+        "pixels": 47,
+        "linear_mae": 0.0008439673168790084,
+        "display_mae": 0.6540800495192646,
+        "display_p95": 3.144395767245632
+      }
+    },
+    "mixed": {
+      "clean": {
+        "pixels": 130,
+        "linear_mae": 0.00110001132620466,
+        "display_mae": 1.0634626587388258,
+        "display_p95": 3.604954160388158
+      },
+      "source": {
+        "pixels": 130,
+        "linear_mae": 0.001191280364361586,
+        "display_mae": 1.0672929430554228,
+        "display_p95": 3.604939097199333
+      }
+    }
+  },
+  "32": {
+    "full_visible": {
+      "clean": {
+        "pixels": 483,
+        "linear_mae": 6.82532582233346e-05,
+        "display_mae": 0.045805066725301956,
+        "display_p95": 0.20447629558956726
+      },
+      "source": {
+        "pixels": 483,
+        "linear_mae": 0.0002911569068497465,
+        "display_mae": 0.16085569066703304,
+        "display_p95": 0.5562576679068858
+      }
+    },
+    "iris": {
+      "clean": {
+        "pixels": 306,
+        "linear_mae": 4.6376172989135194e-05,
+        "display_mae": 0.018173875303576965,
+        "display_p95": 0.04557204985578164
+      },
+      "source": {
+        "pixels": 306,
+        "linear_mae": 0.00016904276323220885,
+        "display_mae": 0.058381933176572205,
+        "display_p95": 0.10764546461786623
+      }
+    },
+    "pupil": {
+      "clean": {
+        "pixels": 47,
+        "linear_mae": 1.3386331255797254e-06,
+        "display_mae": 0.002054594439920069,
+        "display_p95": 0.004495615435854833
+      },
+      "source": {
+        "pixels": 47,
+        "linear_mae": 0.0009256611820768997,
+        "display_mae": 0.7254109495069543,
+        "display_p95": 4.2276480321926995
+      }
+    },
+    "mixed": {
+      "clean": {
+        "pixels": 130,
+        "linear_mae": 0.00014394076177148458,
+        "display_mae": 0.12666211882115427,
+        "display_p95": 0.39547920938920056
+      },
+      "source": {
+        "pixels": 130,
+        "linear_mae": 0.00034919711462890276,
+        "display_mae": 0.19795471087168467,
+        "display_p95": 0.5614185381344976
+      }
+    }
+  },
+  "quadrature_max_difference": 0.006897825597748736,
+  "scope": "Training frame 0 only; finite integration and Monte Carlo error, not camera PSF validation"
+}

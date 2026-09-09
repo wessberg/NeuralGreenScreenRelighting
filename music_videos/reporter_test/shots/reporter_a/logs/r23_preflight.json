@@ -1,0 +1,46 @@
+{
+  "protocol_sha256": "b9f28dbfb2d80fdf2148643eb95c67b0f4de0e05afff92ca272eca0da254787a",
+  "amendment_sha256": "205667eb62e8c673907ee2b608698583ba2746dd9c7a124a886d4866e3e3b71c",
+  "code_sha256": {
+    "audit_r23_eyes.py": "bfe6aec097fda8ab01ce6a735bf86ec4b7c367cb1545d804a4f0147fa434ff80",
+    "eye_residual.py": "37db07117ce2799ac9d1bd8b437f8b2d06111312c1233a904a3b7e6bf7b69a2b",
+    "eye_detail_fit.py": "f79f16f149b56555dd9a3252028478e0fd39629942a970c6aca8892cb4875bac",
+    "corneal_transport.py": "580cf13503d98210834768d6f5c1f49544f882641e647bb55e2882a28557039b",
+    "render_r23_eyes.py": "0d1263b9b51c28ebd75aa436b515159c2bac2ba9c9ba207f2f190f63617b281a",
+    "render_r20_transport.py": "49427d37b951a57fc0611c85beb54972ef5a84cf018f609eb49d2522f9e55c95",
+    "observation_eye_fit.py": "c96f6d3f61afcd8d596eb7003b86b46d1cdf3fd0367056096273cbbd1fbe1172",
+    "coupled_eye_relight.py": "7d9b359414f3c1ba1252f617cf2d848f2e05234ad0ed9f683fa0ddec11bb1891",
+    "finite_cornea_transport.py": "777b27d3451b16afd7fcc55c746d0a863c7d14a963c9bcefc9484ebb9c0be61d"
+  },
+  "train": [
+    0,
+    1,
+    3,
+    4,
+    6,
+    7,
+    9,
+    10,
+    12,
+    13,
+    15,
+    16,
+    18,
+    19,
+    21,
+    22
+  ],
+  "selection": [
+    2,
+    8,
+    14,
+    20
+  ],
+  "test": [
+    5,
+    11,
+    17,
+    23
+  ],
+  "arms": {}
+}

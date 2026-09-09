@@ -1,0 +1,7 @@
+{
+  "method": "highs-ipm",
+  "crossover": false,
+  "ipm_optimality_tolerance": 1e-10,
+  "runner_sha256": "7d30f943ea752590186486f8df4a295e532711a8be93689a82a58a254f51b9e8",
+  "change": "LP algorithm only; fixed objective, bounds and observations"
+}

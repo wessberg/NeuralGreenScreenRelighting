@@ -1,0 +1,19 @@
+{
+  "inspected_contact_sheets": {
+    "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r23_eyes\\contact_000.jpg": "fabf459167cbf475b64263a8b5aba59cc3579e5c8f0715506ab12b60b0cab5f8",
+    "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r23_eyes\\contact_024.jpg": "07e57acce67111e35886c8c48ae3f16dcf796f25f4697feee17d65e4fdf6d170",
+    "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r23_eyes\\contact_048.jpg": "38c19be7d6054a8d1193d4d64bf956c4551364464bfd78c130d2095cd60f0131",
+    "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r23_geometry\\contact_000.jpg": "dd516cd82adb4cbf29faa2a6fbe11929efa55ab1425477b3c20cecd095a18f24",
+    "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r23_geometry\\contact_024.jpg": "612818f510182c6669c480fb8a4a09450a79ad1c86dd6ca163211cd2e772279d"
+  },
+  "inspected_native_boards": {
+    "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r23_eyes\\decoded_005.png": "934b9adefd46d50356e608e0d2fbf4438eb39718e8e25da350a0aa985ef9771a",
+    "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r23_eyes\\decoded_023.png": "de7f4990995450f375afb0bd7ccbc2a69814ed625b0ae19dfd669d1a419a4a9c",
+    "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r23_geometry\\decoded_000.png": "46150f437e8155af51753abd910b0d3351ddd2ccd01079f8f7504af31160986f"
+  },
+  "synthetic_findings": "Residual iris resembles source detail more closely, but the pupil has dark patches; coupled oracle reflection retains these defects. Closed frame remains black.",
+  "real_findings": "Predicted pupil contours surround bright catchlights in source 700; complete contours cross lids in narrowed source 849. These are rejected geometry proposals.",
+  "live_playback": false,
+  "artist_acceptance": false,
+  "real_review_is_sampled_snapshots": true
+}

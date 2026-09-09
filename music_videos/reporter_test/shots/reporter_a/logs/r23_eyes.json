@@ -1,0 +1,797 @@
+{
+  "protocol_sha256": "b9f28dbfb2d80fdf2148643eb95c67b0f4de0e05afff92ca272eca0da254787a",
+  "amendment_sha256": "205667eb62e8c673907ee2b608698583ba2746dd9c7a124a886d4866e3e3b71c",
+  "code_sha256": {
+    "audit_r23_eyes.py": "bfe6aec097fda8ab01ce6a735bf86ec4b7c367cb1545d804a4f0147fa434ff80",
+    "eye_residual.py": "37db07117ce2799ac9d1bd8b437f8b2d06111312c1233a904a3b7e6bf7b69a2b",
+    "eye_detail_fit.py": "f79f16f149b56555dd9a3252028478e0fd39629942a970c6aca8892cb4875bac",
+    "corneal_transport.py": "580cf13503d98210834768d6f5c1f49544f882641e647bb55e2882a28557039b",
+    "render_r23_eyes.py": "0d1263b9b51c28ebd75aa436b515159c2bac2ba9c9ba207f2f190f63617b281a",
+    "render_r20_transport.py": "49427d37b951a57fc0611c85beb54972ef5a84cf018f609eb49d2522f9e55c95",
+    "observation_eye_fit.py": "c96f6d3f61afcd8d596eb7003b86b46d1cdf3fd0367056096273cbbd1fbe1172",
+    "coupled_eye_relight.py": "7d9b359414f3c1ba1252f617cf2d848f2e05234ad0ed9f683fa0ddec11bb1891",
+    "finite_cornea_transport.py": "777b27d3451b16afd7fcc55c746d0a863c7d14a963c9bcefc9484ebb9c0be61d"
+  },
+  "train": [
+    0,
+    1,
+    3,
+    4,
+    6,
+    7,
+    9,
+    10,
+    12,
+    13,
+    15,
+    16,
+    18,
+    19,
+    21,
+    22
+  ],
+  "selection": [
+    2,
+    8,
+    14,
+    20
+  ],
+  "test": [
+    5,
+    11,
+    17,
+    23
+  ],
+  "arms": {
+    "nominal": {
+      "solvers": [
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 3693,
+          "evaluations": 3782,
+          "cost": 0.007886223796868642,
+          "projected_gradient": 9.974230440711052e-09,
+          "certified": true
+        },
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 4399,
+          "evaluations": 4508,
+          "cost": 0.009575448719794986,
+          "projected_gradient": 9.33074689735136e-09,
+          "certified": true
+        },
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 4540,
+          "evaluations": 4653,
+          "cost": 0.010702031955840621,
+          "projected_gradient": 9.766014610716744e-09,
+          "certified": true
+        }
+      ],
+      "observations": 7009,
+      "active_parameters": 3479,
+      "total_parameters": 5264,
+      "train_linear_mae": 0.0009529002935787493,
+      "train_max_abs": 0.013299566684769615,
+      "certified": true,
+      "selection_source": {
+        "pixels": 1896,
+        "linear_mae": 0.0014696998057951284,
+        "display_mae": 0.8121519913297075,
+        "display_p95": 2.8276280559404596
+      },
+      "test": {
+        "full_visible": {
+          "fitted_clean": {
+            "pixels": 1440,
+            "linear_mae": 0.0014546129152793136,
+            "display_mae": 0.995982805215535,
+            "display_p95": 3.6529893918661984
+          },
+          "residual_clean": {
+            "pixels": 1440,
+            "linear_mae": 0.0006965533715879399,
+            "display_mae": 0.7184415738339557,
+            "display_p95": 3.1952826700041057
+          },
+          "fitted_coupled": {
+            "pixels": 1440,
+            "linear_mae": 0.0014546129152793136,
+            "display_mae": 0.8729598380654375,
+            "display_p95": 3.0119555957341198
+          },
+          "residual_coupled": {
+            "pixels": 1440,
+            "linear_mae": 0.00069655337158794,
+            "display_mae": 0.5034214911746151,
+            "display_p95": 2.3522632452522942
+          },
+          "negative_residual_channels": 15,
+          "complete_support": 1397
+        },
+        "iris": {
+          "fitted_clean": {
+            "pixels": 909,
+            "linear_mae": 0.001278717095721045,
+            "display_mae": 0.5119923774952257,
+            "display_p95": 1.4719308279823007
+          },
+          "residual_clean": {
+            "pixels": 909,
+            "linear_mae": 0.0004331421907976997,
+            "display_mae": 0.1816679185530372,
+            "display_p95": 0.8470124305728018
+          },
+          "fitted_coupled": {
+            "pixels": 909,
+            "linear_mae": 0.001278717095721045,
+            "display_mae": 0.5035148616049593,
+            "display_p95": 1.453939829636848
+          },
+          "residual_coupled": {
+            "pixels": 909,
+            "linear_mae": 0.0004331421907976997,
+            "display_mae": 0.1717387171181744,
+            "display_p95": 0.8189090473756028
+          },
+          "negative_residual_channels": 0,
+          "complete_support": 887
+        },
+        "pupil": {
+          "fitted_clean": {
+            "pixels": 149,
+            "linear_mae": 0.0016090660951765358,
+            "display_mae": 2.821567452043288,
+            "display_p95": 6.404375422175381
+          },
+          "residual_clean": {
+            "pixels": 149,
+            "linear_mae": 0.0028574873353489068,
+            "display_mae": 5.050114132950091,
+            "display_p95": 18.70447787971322
+          },
+          "fitted_coupled": {
+            "pixels": 149,
+            "linear_mae": 0.0016090660951765358,
+            "display_mae": 1.822242628333113,
+            "display_p95": 4.685965074581055
+          },
+          "residual_coupled": {
+            "pixels": 149,
+            "linear_mae": 0.0028574873353489068,
+            "display_mae": 3.1430903295730968,
+            "display_p95": 11.765723004394161
+          },
+          "negative_residual_channels": 15,
+          "complete_support": 149
+        },
+        "mixed": {
+          "fitted_clean": {
+            "pixels": 382,
+            "linear_mae": 0.0018129264654724562,
+            "display_mae": 1.4356037120752883,
+            "display_p95": 4.156341910995992
+          },
+          "residual_clean": {
+            "pixels": 382,
+            "linear_mae": 0.0004804842688076895,
+            "display_mae": 0.3061589595461303,
+            "display_p95": 1.9092567542973957
+          },
+          "fitted_coupled": {
+            "pixels": 382,
+            "linear_mae": 0.0018129264654724562,
+            "display_mae": 1.3818141518159377,
+            "display_p95": 4.027722420542675
+          },
+          "residual_coupled": {
+            "pixels": 382,
+            "linear_mae": 0.0004804842688076895,
+            "display_mae": 0.2630785191744338,
+            "display_p95": 1.63748253076503
+          },
+          "negative_residual_channels": 0,
+          "complete_support": 361
+        }
+      },
+      "temporal": {
+        "fitted": {
+          "mean_absolute_linear_error_change": 0.0010980929984717768,
+          "pixels": 9298,
+          "scope": "Seen full chronological sequence; screen-space error change, not tracked material flicker"
+        },
+        "residual": {
+          "mean_absolute_linear_error_change": 0.0008584564016394843,
+          "pixels": 9298,
+          "scope": "Seen full chronological sequence; screen-space error change, not tracked material flicker"
+        }
+      }
+    },
+    "cornea": {
+      "solvers": [
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 2739,
+          "evaluations": 2790,
+          "cost": 0.017058600648670055,
+          "projected_gradient": 9.557785780704708e-09,
+          "certified": true
+        },
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 3079,
+          "evaluations": 3137,
+          "cost": 0.018336586617589655,
+          "projected_gradient": 9.967952803446867e-09,
+          "certified": true
+        },
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 3368,
+          "evaluations": 3453,
+          "cost": 0.01926100430030687,
+          "projected_gradient": 9.003828717974935e-09,
+          "certified": true
+        }
+      ],
+      "observations": 7009,
+      "active_parameters": 3437,
+      "total_parameters": 5264,
+      "train_linear_mae": 0.0012465368787431606,
+      "train_max_abs": 0.022825745707027417,
+      "certified": true,
+      "selection_source": {
+        "pixels": 1896,
+        "linear_mae": 0.0017828790635357535,
+        "display_mae": 0.9825909130046712,
+        "display_p95": 3.5946583499126015
+      },
+      "test": {
+        "full_visible": {
+          "fitted_clean": {
+            "pixels": 1440,
+            "linear_mae": 0.0016481559615208461,
+            "display_mae": 1.1888426557125098,
+            "display_p95": 4.652318638460096
+          },
+          "residual_clean": {
+            "pixels": 1440,
+            "linear_mae": 0.0009499497538727007,
+            "display_mae": 0.9055615616218659,
+            "display_p95": 3.978883074833702
+          },
+          "fitted_coupled": {
+            "pixels": 1440,
+            "linear_mae": 0.0016481559615208461,
+            "display_mae": 1.0197619850688904,
+            "display_p95": 3.577871259613375
+          },
+          "residual_coupled": {
+            "pixels": 1440,
+            "linear_mae": 0.0009499497538727007,
+            "display_mae": 0.6734868816554619,
+            "display_p95": 3.3006374297321077
+          },
+          "negative_residual_channels": 20,
+          "complete_support": 1409
+        },
+        "iris": {
+          "fitted_clean": {
+            "pixels": 909,
+            "linear_mae": 0.0013612353622880328,
+            "display_mae": 0.5496104526983578,
+            "display_p95": 1.5789793615334597
+          },
+          "residual_clean": {
+            "pixels": 909,
+            "linear_mae": 0.0005668094171752847,
+            "display_mae": 0.2382235534504071,
+            "display_p95": 1.0654692913043615
+          },
+          "fitted_coupled": {
+            "pixels": 909,
+            "linear_mae": 0.0013612353622880328,
+            "display_mae": 0.5409678484484408,
+            "display_p95": 1.570823626968998
+          },
+          "residual_coupled": {
+            "pixels": 909,
+            "linear_mae": 0.0005668094171752848,
+            "display_mae": 0.22612048511031313,
+            "display_p95": 0.98938343000454
+          },
+          "negative_residual_channels": 0,
+          "complete_support": 899
+        },
+        "pupil": {
+          "fitted_clean": {
+            "pixels": 149,
+            "linear_mae": 0.0026297967933538663,
+            "display_mae": 4.143734027515042,
+            "display_p95": 12.59870599192367
+          },
+          "residual_clean": {
+            "pixels": 149,
+            "linear_mae": 0.003920816467926256,
+            "display_mae": 6.088476441934068,
+            "display_p95": 22.92961599161786
+          },
+          "fitted_coupled": {
+            "pixels": 149,
+            "linear_mae": 0.002629796793353866,
+            "display_mae": 2.7422707168040295,
+            "display_p95": 9.742437368169048
+          },
+          "residual_coupled": {
+            "pixels": 149,
+            "linear_mae": 0.003920816467926256,
+            "display_mae": 4.069434307530683,
+            "display_p95": 16.10270426080093
+          },
+          "negative_residual_channels": 20,
+          "complete_support": 149
+        },
+        "mixed": {
+          "fitted_clean": {
+            "pixels": 382,
+            "linear_mae": 0.0019480154923048967,
+            "display_mae": 1.5573852162917947,
+            "display_p95": 5.113696198206597
+          },
+          "residual_clean": {
+            "pixels": 382,
+            "linear_mae": 0.0007028697163438297,
+            "display_mae": 0.4719383476463104,
+            "display_p95": 2.2527120139670327
+          },
+          "fitted_coupled": {
+            "pixels": 382,
+            "linear_mae": 0.0019480154923048967,
+            "display_mae": 1.4872228990988712,
+            "display_p95": 4.863400607977498
+          },
+          "residual_coupled": {
+            "pixels": 382,
+            "linear_mae": 0.0007028697163438298,
+            "display_mae": 0.41343423245161925,
+            "display_p95": 1.9589157311189613
+          },
+          "negative_residual_channels": 0,
+          "complete_support": 361
+        }
+      },
+      "temporal": {
+        "fitted": {
+          "mean_absolute_linear_error_change": 0.0012771058694375904,
+          "pixels": 9298,
+          "scope": "Seen full chronological sequence; screen-space error change, not tracked material flicker"
+        },
+        "residual": {
+          "mean_absolute_linear_error_change": 0.001101758098958787,
+          "pixels": 9298,
+          "scope": "Seen full chronological sequence; screen-space error change, not tracked material flicker"
+        }
+      }
+    },
+    "pupil": {
+      "solvers": [
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 2900,
+          "evaluations": 2968,
+          "cost": 0.008286698314603018,
+          "projected_gradient": 9.882417759121687e-09,
+          "certified": true
+        },
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 3312,
+          "evaluations": 3402,
+          "cost": 0.010739446085870226,
+          "projected_gradient": 9.221873494003052e-09,
+          "certified": true
+        },
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 3453,
+          "evaluations": 3541,
+          "cost": 0.012277911469239063,
+          "projected_gradient": 8.85019005411776e-09,
+          "certified": true
+        }
+      ],
+      "observations": 7009,
+      "active_parameters": 3411,
+      "total_parameters": 5264,
+      "train_linear_mae": 0.001016056073573796,
+      "train_max_abs": 0.015110012453151404,
+      "certified": true,
+      "selection_source": {
+        "pixels": 1896,
+        "linear_mae": 0.0015327995526701562,
+        "display_mae": 0.8562476375833018,
+        "display_p95": 2.9431178884159643
+      },
+      "test": {
+        "full_visible": {
+          "fitted_clean": {
+            "pixels": 1440,
+            "linear_mae": 0.0014995954449435714,
+            "display_mae": 1.0181393897907498,
+            "display_p95": 3.7156826391909514
+          },
+          "residual_clean": {
+            "pixels": 1440,
+            "linear_mae": 0.000705157376988384,
+            "display_mae": 0.719172125827444,
+            "display_p95": 3.1611771412763026
+          },
+          "fitted_coupled": {
+            "pixels": 1440,
+            "linear_mae": 0.0014995954449435714,
+            "display_mae": 0.8870989205985496,
+            "display_p95": 3.0107215877302997
+          },
+          "residual_coupled": {
+            "pixels": 1440,
+            "linear_mae": 0.000705157376988384,
+            "display_mae": 0.5051814617550389,
+            "display_p95": 2.3918980228921405
+          },
+          "negative_residual_channels": 17,
+          "complete_support": 1397
+        },
+        "iris": {
+          "fitted_clean": {
+            "pixels": 909,
+            "linear_mae": 0.0013282349033246765,
+            "display_mae": 0.5304978043774511,
+            "display_p95": 1.5904376461752054
+          },
+          "residual_clean": {
+            "pixels": 909,
+            "linear_mae": 0.00044631696045827545,
+            "display_mae": 0.18641247446480197,
+            "display_p95": 0.9006804974277991
+          },
+          "fitted_coupled": {
+            "pixels": 909,
+            "linear_mae": 0.0013282349033246765,
+            "display_mae": 0.5204452710746353,
+            "display_p95": 1.570848998460066
+          },
+          "residual_coupled": {
+            "pixels": 909,
+            "linear_mae": 0.00044631696045827545,
+            "display_mae": 0.17649729744272996,
+            "display_p95": 0.8691544026680825
+          },
+          "negative_residual_channels": 0,
+          "complete_support": 887
+        },
+        "pupil": {
+          "fitted_clean": {
+            "pixels": 149,
+            "linear_mae": 0.0016703869150567808,
+            "display_mae": 2.922006721714732,
+            "display_p95": 7.332752243932949
+          },
+          "residual_clean": {
+            "pixels": 149,
+            "linear_mae": 0.002853649226384862,
+            "display_mae": 5.011917567967926,
+            "display_p95": 18.937656497397303
+          },
+          "fitted_coupled": {
+            "pixels": 149,
+            "linear_mae": 0.0016703869150567806,
+            "display_mae": 1.8581511692355852,
+            "display_p95": 4.743598532024659
+          },
+          "residual_coupled": {
+            "pixels": 149,
+            "linear_mae": 0.0028536492263848616,
+            "display_mae": 3.1157556487807914,
+            "display_p95": 11.58009787475027
+          },
+          "negative_residual_channels": 17,
+          "complete_support": 149
+        },
+        "mixed": {
+          "fitted_clean": {
+            "pixels": 382,
+            "linear_mae": 0.001840744144641758,
+            "display_mae": 1.4359141769216799,
+            "display_p95": 4.154701726920015
+          },
+          "residual_clean": {
+            "pixels": 382,
+            "linear_mae": 0.0004830648457470057,
+            "display_mae": 0.3125214771617629,
+            "display_p95": 1.9651633669035875
+          },
+          "fitted_coupled": {
+            "pixels": 382,
+            "linear_mae": 0.001840744144641758,
+            "display_mae": 1.380819816855931,
+            "display_p95": 3.9904541039991255
+          },
+          "residual_coupled": {
+            "pixels": 382,
+            "linear_mae": 0.0004830648457470057,
+            "display_mae": 0.2690514918415614,
+            "display_p95": 1.6988637046839346
+          },
+          "negative_residual_channels": 0,
+          "complete_support": 361
+        }
+      },
+      "temporal": {
+        "fitted": {
+          "mean_absolute_linear_error_change": 0.0012210000200520445,
+          "pixels": 9298,
+          "scope": "Seen full chronological sequence; screen-space error change, not tracked material flicker"
+        },
+        "residual": {
+          "mean_absolute_linear_error_change": 0.0008889002954573788,
+          "pixels": 9298,
+          "scope": "Seen full chronological sequence; screen-space error change, not tracked material flicker"
+        }
+      }
+    },
+    "lid": {
+      "solvers": [
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 1619,
+          "evaluations": 1645,
+          "cost": 0.08606510469721913,
+          "projected_gradient": 9.024914232602654e-09,
+          "certified": true
+        },
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 2076,
+          "evaluations": 2112,
+          "cost": 0.2771654543407489,
+          "projected_gradient": 9.688451966041733e-09,
+          "certified": true
+        },
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 1986,
+          "evaluations": 2024,
+          "cost": 0.4131568928279313,
+          "projected_gradient": 9.686233717887127e-09,
+          "certified": true
+        }
+      ],
+      "observations": 7009,
+      "active_parameters": 3355,
+      "total_parameters": 5264,
+      "train_linear_mae": 0.00434435595050366,
+      "train_max_abs": 0.06657098187508956,
+      "certified": true,
+      "selection_source": {
+        "pixels": 1896,
+        "linear_mae": 0.004798997467654641,
+        "display_mae": 3.415445695938441,
+        "display_p95": 17.202035718580458
+      },
+      "test": {
+        "full_visible": {
+          "fitted_clean": {
+            "pixels": 1440,
+            "linear_mae": 0.005203586310544554,
+            "display_mae": 3.886488696591456,
+            "display_p95": 23.488495607501417
+          },
+          "residual_clean": {
+            "pixels": 1440,
+            "linear_mae": 0.0006799464286861607,
+            "display_mae": 0.7073000341874575,
+            "display_p95": 3.111861059903697
+          },
+          "fitted_coupled": {
+            "pixels": 1440,
+            "linear_mae": 0.005203586310544554,
+            "display_mae": 3.7819896909103052,
+            "display_p95": 23.488490696363083
+          },
+          "residual_coupled": {
+            "pixels": 1440,
+            "linear_mae": 0.0006799464286861609,
+            "display_mae": 0.5092144088625555,
+            "display_p95": 2.5469198135662348
+          },
+          "negative_residual_channels": 22,
+          "complete_support": 1410
+        },
+        "iris": {
+          "fitted_clean": {
+            "pixels": 909,
+            "linear_mae": 0.004196639149031636,
+            "display_mae": 1.639089210483977,
+            "display_p95": 5.0228975313926485
+          },
+          "residual_clean": {
+            "pixels": 909,
+            "linear_mae": 0.0004142600228882893,
+            "display_mae": 0.17154284997570288,
+            "display_p95": 0.8382786983361317
+          },
+          "fitted_coupled": {
+            "pixels": 909,
+            "linear_mae": 0.004196639149031637,
+            "display_mae": 1.6242761607582161,
+            "display_p95": 5.022898275662456
+          },
+          "residual_coupled": {
+            "pixels": 909,
+            "linear_mae": 0.0004142600228882893,
+            "display_mae": 0.1634627236914246,
+            "display_p95": 0.8081054614364737
+          },
+          "negative_residual_channels": 0,
+          "complete_support": 889
+        },
+        "pupil": {
+          "fitted_clean": {
+            "pixels": 149,
+            "linear_mae": 0.0012614681951676236,
+            "display_mae": 2.2042756702906305,
+            "display_p95": 5.718267107728606
+          },
+          "residual_clean": {
+            "pixels": 149,
+            "linear_mae": 0.002762491770296598,
+            "display_mae": 4.9562097935953275,
+            "display_p95": 20.747875250688086
+          },
+          "fitted_coupled": {
+            "pixels": 149,
+            "linear_mae": 0.0012614681951676236,
+            "display_mae": 1.4596183606980093,
+            "display_p95": 4.373314674994864
+          },
+          "residual_coupled": {
+            "pixels": 149,
+            "linear_mae": 0.0027624917702965975,
+            "display_mae": 3.1895808044987963,
+            "display_p95": 13.342050928661987
+          },
+          "negative_residual_channels": 22,
+          "complete_support": 149
+        },
+        "mixed": {
+          "fitted_clean": {
+            "pixels": 382,
+            "linear_mae": 0.009137331255587496,
+            "display_mae": 9.890509308608529,
+            "display_p95": 45.755938065591344
+          },
+          "residual_clean": {
+            "pixels": 382,
+            "linear_mae": 0.0004998670752052969,
+            "display_mae": 0.32488046951916505,
+            "display_p95": 1.9521007494749902
+          },
+          "fitted_coupled": {
+            "pixels": 382,
+            "linear_mae": 0.009137331255587496,
+            "display_mae": 9.822290547218893,
+            "display_p95": 45.75591956470561
+          },
+          "residual_coupled": {
+            "pixels": 382,
+            "linear_mae": 0.0004998670752052972,
+            "display_mae": 0.2864753744928128,
+            "display_p95": 1.650830148041564
+          },
+          "negative_residual_channels": 0,
+          "complete_support": 372
+        }
+      },
+      "temporal": {
+        "fitted": {
+          "mean_absolute_linear_error_change": 0.0033228741613081096,
+          "pixels": 9298,
+          "scope": "Seen full chronological sequence; screen-space error change, not tracked material flicker"
+        },
+        "residual": {
+          "mean_absolute_linear_error_change": 0.0009902034445751356,
+          "pixels": 9298,
+          "scope": "Seen full chronological sequence; screen-space error change, not tracked material flicker"
+        }
+      }
+    }
+  },
+  "feasibility": {
+    "fixed_radius": 0.002,
+    "fixed_success": false,
+    "fixed_status": 2,
+    "fixed_message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+    "minimax_success": true,
+    "minimax_message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "minimum_uniform_radius": 0.007833426511634338,
+    "witness_violation": -0.0
+  },
+  "selection_policy": "All fixed sensitivity arms reported; none certifies material",
+  "controls": {
+    "full_visible": {
+      "source": {
+        "pixels": 1440,
+        "linear_mae": 0.009082486579998456,
+        "display_mae": 5.063706478840877,
+        "display_p95": 41.75530099116436
+      },
+      "add_only": {
+        "pixels": 1440,
+        "linear_mae": 0.009082486579998456,
+        "display_mae": 4.402394696110729,
+        "display_p95": 37.73774603154627
+      }
+    },
+    "iris": {
+      "source": {
+        "pixels": 909,
+        "linear_mae": 0.003825826883906185,
+        "display_mae": 1.387648496659012,
+        "display_p95": 6.259371503140918
+      },
+      "add_only": {
+        "pixels": 909,
+        "linear_mae": 0.003825826883906185,
+        "display_mae": 1.3193051860602996,
+        "display_p95": 5.664654885407934
+      }
+    },
+    "pupil": {
+      "source": {
+        "pixels": 149,
+        "linear_mae": 0.045797068947588636,
+        "display_mae": 31.759905206844127,
+        "display_p95": 81.15617899638129
+      },
+      "add_only": {
+        "pixels": 149,
+        "linear_mae": 0.045797068947588636,
+        "display_mae": 26.53808055645127,
+        "display_p95": 77.05637802710847
+      }
+    },
+    "mixed": {
+      "source": {
+        "pixels": 382,
+        "linear_mae": 0.007270525561613475,
+        "display_mae": 3.3982695556231577,
+        "display_p95": 24.358525198850973
+      },
+      "add_only": {
+        "pixels": 382,
+        "linear_mae": 0.007270525561613475,
+        "display_mae": 3.1047799616738216,
+        "display_p95": 20.869434086375293
+      }
+    }
+  },
+  "production_repairs": 0,
+  "disabled_coupled_fallbacks": 24,
+  "oracle_new_min": -4.917383193969727e-07,
+  "raw_negative_values_retained": true,
+  "scope": "Simplified geometry sensitivity; no inferred scene or real repair"
+}

@@ -1,0 +1,230 @@
+{
+  "protocol_sha256": "b9f28dbfb2d80fdf2148643eb95c67b0f4de0e05afff92ca272eca0da254787a",
+  "amendment_sha256": "205667eb62e8c673907ee2b608698583ba2746dd9c7a124a886d4866e3e3b71c",
+  "code_sha256": {
+    "audit_r23_eyes.py": "bfe6aec097fda8ab01ce6a735bf86ec4b7c367cb1545d804a4f0147fa434ff80",
+    "eye_residual.py": "37db07117ce2799ac9d1bd8b437f8b2d06111312c1233a904a3b7e6bf7b69a2b",
+    "eye_detail_fit.py": "f79f16f149b56555dd9a3252028478e0fd39629942a970c6aca8892cb4875bac",
+    "corneal_transport.py": "580cf13503d98210834768d6f5c1f49544f882641e647bb55e2882a28557039b",
+    "render_r23_eyes.py": "0d1263b9b51c28ebd75aa436b515159c2bac2ba9c9ba207f2f190f63617b281a",
+    "render_r20_transport.py": "49427d37b951a57fc0611c85beb54972ef5a84cf018f609eb49d2522f9e55c95",
+    "observation_eye_fit.py": "c96f6d3f61afcd8d596eb7003b86b46d1cdf3fd0367056096273cbbd1fbe1172",
+    "coupled_eye_relight.py": "7d9b359414f3c1ba1252f617cf2d848f2e05234ad0ed9f683fa0ddec11bb1891",
+    "finite_cornea_transport.py": "777b27d3451b16afd7fcc55c746d0a863c7d14a963c9bcefc9484ebb9c0be61d"
+  },
+  "train": [
+    0,
+    1,
+    3,
+    4,
+    6,
+    7,
+    9,
+    10,
+    12,
+    13,
+    15,
+    16,
+    18,
+    19,
+    21,
+    22
+  ],
+  "selection": [
+    2,
+    8,
+    14,
+    20
+  ],
+  "test": [
+    5,
+    11,
+    17,
+    23
+  ],
+  "arms": {
+    "nominal": {
+      "solvers": [
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 3693,
+          "evaluations": 3782,
+          "cost": 0.007886223796868642,
+          "projected_gradient": 9.974230440711052e-09,
+          "certified": true
+        },
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 4399,
+          "evaluations": 4508,
+          "cost": 0.009575448719794986,
+          "projected_gradient": 9.33074689735136e-09,
+          "certified": true
+        },
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 4540,
+          "evaluations": 4653,
+          "cost": 0.010702031955840621,
+          "projected_gradient": 9.766014610716744e-09,
+          "certified": true
+        }
+      ],
+      "observations": 7009,
+      "active_parameters": 3479,
+      "total_parameters": 5264,
+      "train_linear_mae": 0.0009529002935787493,
+      "train_max_abs": 0.013299566684769615,
+      "certified": true,
+      "selection_source": {
+        "pixels": 1896,
+        "linear_mae": 0.0014696998057951284,
+        "display_mae": 0.8121519913297075,
+        "display_p95": 2.8276280559404596
+      }
+    },
+    "cornea": {
+      "solvers": [
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 2739,
+          "evaluations": 2790,
+          "cost": 0.017058600648670055,
+          "projected_gradient": 9.557785780704708e-09,
+          "certified": true
+        },
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 3079,
+          "evaluations": 3137,
+          "cost": 0.018336586617589655,
+          "projected_gradient": 9.967952803446867e-09,
+          "certified": true
+        },
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 3368,
+          "evaluations": 3453,
+          "cost": 0.01926100430030687,
+          "projected_gradient": 9.003828717974935e-09,
+          "certified": true
+        }
+      ],
+      "observations": 7009,
+      "active_parameters": 3437,
+      "total_parameters": 5264,
+      "train_linear_mae": 0.0012465368787431606,
+      "train_max_abs": 0.022825745707027417,
+      "certified": true,
+      "selection_source": {
+        "pixels": 1896,
+        "linear_mae": 0.0017828790635357535,
+        "display_mae": 0.9825909130046712,
+        "display_p95": 3.5946583499126015
+      }
+    },
+    "pupil": {
+      "solvers": [
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 2900,
+          "evaluations": 2968,
+          "cost": 0.008286698314603018,
+          "projected_gradient": 9.882417759121687e-09,
+          "certified": true
+        },
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 3312,
+          "evaluations": 3402,
+          "cost": 0.010739446085870226,
+          "projected_gradient": 9.221873494003052e-09,
+          "certified": true
+        },
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 3453,
+          "evaluations": 3541,
+          "cost": 0.012277911469239063,
+          "projected_gradient": 8.85019005411776e-09,
+          "certified": true
+        }
+      ],
+      "observations": 7009,
+      "active_parameters": 3411,
+      "total_parameters": 5264,
+      "train_linear_mae": 0.001016056073573796,
+      "train_max_abs": 0.015110012453151404,
+      "certified": true,
+      "selection_source": {
+        "pixels": 1896,
+        "linear_mae": 0.0015327995526701562,
+        "display_mae": 0.8562476375833018,
+        "display_p95": 2.9431178884159643
+      }
+    },
+    "lid": {
+      "solvers": [
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 1619,
+          "evaluations": 1645,
+          "cost": 0.08606510469721913,
+          "projected_gradient": 9.024914232602654e-09,
+          "certified": true
+        },
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 2076,
+          "evaluations": 2112,
+          "cost": 0.2771654543407489,
+          "projected_gradient": 9.688451966041733e-09,
+          "certified": true
+        },
+        {
+          "success": true,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 1986,
+          "evaluations": 2024,
+          "cost": 0.4131568928279313,
+          "projected_gradient": 9.686233717887127e-09,
+          "certified": true
+        }
+      ],
+      "observations": 7009,
+      "active_parameters": 3355,
+      "total_parameters": 5264,
+      "train_linear_mae": 0.00434435595050366,
+      "train_max_abs": 0.06657098187508956,
+      "certified": true,
+      "selection_source": {
+        "pixels": 1896,
+        "linear_mae": 0.004798997467654641,
+        "display_mae": 3.415445695938441,
+        "display_p95": 17.202035718580458
+      }
+    }
+  },
+  "feasibility": {
+    "fixed_radius": 0.002,
+    "fixed_success": false,
+    "fixed_status": 2,
+    "fixed_message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+    "minimax_success": true,
+    "minimax_message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "minimum_uniform_radius": 0.007833426511634338,
+    "witness_violation": -0.0
+  },
+  "selection_policy": "All fixed sensitivity arms reported; none certifies material"
+}

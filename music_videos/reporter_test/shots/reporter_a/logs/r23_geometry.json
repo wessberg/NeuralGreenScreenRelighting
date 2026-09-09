@@ -1,0 +1,1615 @@
+{
+  "camera": {
+    "motion": "locked",
+    "status": "ASSUMED, not measured",
+    "lens_mm": 50.0,
+    "sensor_width_mm": 36.0,
+    "actor_distance_m": 1.3,
+    "height_m": 1.55,
+    "aperture_fstop": 2.0,
+    "degeneracy_note": "Apparent facial scale fixes only the RATIO of focal length to distance, not either alone: 35mm/0.91m, 50mm/1.30m and 85mm/2.20m all reproduce the measured 129.7 px IPD. 50mm was chosen because it maximises panorama detail: at 39.6 deg hFOV a 16K equirect shows 1802 px across frame, 94% of the plate real 1920 px, where 85mm would show only 57%. This is a defensible working assumption, not a measurement. Resolve it properly by recording the lens on set.",
+    "derivation": "Z = fx*IPD/ipd_px, fx = 1920*50/36 = 2666.7 px, IPD prior 63 mm, measured ipd_px 129.7",
+    "ipd_source": "adult prior 63 mm (SD 3.5 mm, ~5.5% 1-sigma distance error). Measure the performer with a ruler to remove this."
+  },
+  "focal_pixels": [
+    2666.6666666666665,
+    2666.6666666666665
+  ],
+  "centre_pixels": [
+    959.5,
+    539.5
+  ],
+  "pixel_aspect": 1.0,
+  "manifest_sha256": "073092bc638a1eb2a3166dad774e7aa382794207e0bfd6265de591438ff2b36c",
+  "shot_config_sha256": "85abd77527760f0607409aa0929e80bc485dd4f6edcf90cb6713cbf80fc3601d",
+  "frames": [
+    0,
+    30,
+    60,
+    89,
+    119,
+    149
+  ],
+  "records": [
+    {
+      "frame": 0,
+      "source_frame": 700,
+      "side": "left",
+      "archive_sha256": "8ac2a939947123744cc60a93c43e443095a3a24088f759f458c822914271b612",
+      "origin_xy": [
+        1036,
+        248
+      ],
+      "profiles": [
+        {
+          "radius_mm": 7.2,
+          "parameters": [
+            31.36332993292688,
+            29.728218291163536,
+            1168.5625081792691,
+            0.02287567293186808,
+            -0.1935271665805468,
+            1.8045824925692207
+          ],
+          "success": true,
+          "evaluations": 14,
+          "first_order_optimality": 0.0006283100191437571,
+          "train_radial_rms_px": 0.14081746271617748,
+          "check_radial_rms_px": 0.14081746271526288,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 0.594886736420112,
+              "success": true
+            },
+            {
+              "cost": 0.5948867341746609,
+              "success": true
+            },
+            {
+              "cost": 30.780889653544577,
+              "success": true
+            }
+          ]
+        },
+        {
+          "radius_mm": 7.8,
+          "parameters": [
+            31.377134775429987,
+            29.729182212728,
+            1179.1542018677467,
+            0.018504691284741238,
+            -0.20565903914337968,
+            1.8391239340487053
+          ],
+          "success": true,
+          "evaluations": 16,
+          "first_order_optimality": 0.0004703217523566356,
+          "train_radial_rms_px": 0.1285034586694462,
+          "check_radial_rms_px": 0.1285034586684532,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 0.49539416675130443,
+              "success": true
+            },
+            {
+              "cost": 0.49539416670030223,
+              "success": true
+            },
+            {
+              "cost": 0.49539416670440134,
+              "success": true
+            }
+          ]
+        },
+        {
+          "radius_mm": 8.4,
+          "parameters": [
+            31.38991356211872,
+            29.736417883745574,
+            1186.3911463813033,
+            0.014511191439153243,
+            -0.2134265629380752,
+            1.8659541192760407
+          ],
+          "success": true,
+          "evaluations": 18,
+          "first_order_optimality": 0.000655774149274593,
+          "train_radial_rms_px": 0.1218580716735132,
+          "check_radial_rms_px": 0.1218580716740754,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 0.44548168895961243,
+              "success": true
+            },
+            {
+              "cost": 0.4454816894490014,
+              "success": true
+            },
+            {
+              "cost": 0.44548168899909113,
+              "success": true
+            }
+          ]
+        }
+      ],
+      "complete_visible_proposal_iou": 0.6569767441860465,
+      "complete_pixels": 516,
+      "visible_proposal_pixels": 339,
+      "geometry_validated": false,
+      "lid_3d_validated": false,
+      "production_replacement": false,
+      "profile_reflection_angle_deg": {
+        "median": 5.2760642626263525,
+        "maximum": 7.697564792801211,
+        "scope": "Same proposed pupil-boundary pixels, radius endpoints; not measured ray accuracy"
+      }
+    },
+    {
+      "frame": 0,
+      "source_frame": 700,
+      "side": "right",
+      "archive_sha256": "e078fb814409af2f7d160a5fbb282186a152036fe54395d1922f9402cc505b62",
+      "origin_xy": [
+        907,
+        262
+      ],
+      "profiles": [
+        {
+          "radius_mm": 7.2,
+          "parameters": [
+            33.407922682252966,
+            28.67704846253075,
+            1195.8615398763875,
+            -0.3169481185222749,
+            0.061423125471743646,
+            1.5997575585922195
+          ],
+          "success": true,
+          "evaluations": 15,
+          "first_order_optimality": 0.0004894899654209284,
+          "train_radial_rms_px": 0.1403201624791576,
+          "check_radial_rms_px": 0.14032016247979232,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 0.5906924399453157,
+              "success": true
+            },
+            {
+              "cost": 0.5906924401993203,
+              "success": true
+            },
+            {
+              "cost": 29.093763622445792,
+              "success": true
+            }
+          ]
+        },
+        {
+          "radius_mm": 7.8,
+          "parameters": [
+            33.403864695072244,
+            28.69051393876082,
+            1206.7163993801441,
+            -0.3294736927501463,
+            0.06370776773225902,
+            1.630913453130557
+          ],
+          "success": true,
+          "evaluations": 14,
+          "first_order_optimality": 0.0004757553373578513,
+          "train_radial_rms_px": 0.13412196651217043,
+          "check_radial_rms_px": 0.13412196651033004,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 0.5396610570327529,
+              "success": true
+            },
+            {
+              "cost": 0.539661059987584,
+              "success": true
+            },
+            {
+              "cost": 1.6346645936904582,
+              "success": true
+            }
+          ]
+        },
+        {
+          "radius_mm": 8.4,
+          "parameters": [
+            33.39498233248736,
+            28.70397904779937,
+            1214.1436201200918,
+            -0.3376122949425985,
+            0.06637421182160834,
+            1.6551764352468619
+          ],
+          "success": true,
+          "evaluations": 15,
+          "first_order_optimality": 0.0007912518102714258,
+          "train_radial_rms_px": 0.13193834371812402,
+          "check_radial_rms_px": 0.13193834371945642,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 0.5222317962924551,
+              "success": true
+            },
+            {
+              "cost": 0.5222318001231355,
+              "success": true
+            },
+            {
+              "cost": 1.4649722797592064,
+              "success": true
+            }
+          ]
+        }
+      ],
+      "complete_visible_proposal_iou": 0.7495029821073559,
+      "complete_pixels": 503,
+      "visible_proposal_pixels": 377,
+      "geometry_validated": false,
+      "lid_3d_validated": false,
+      "production_replacement": false,
+      "profile_reflection_angle_deg": {
+        "median": 5.048757368165042,
+        "maximum": 7.2418132522803385,
+        "scope": "Same proposed pupil-boundary pixels, radius endpoints; not measured ray accuracy"
+      }
+    },
+    {
+      "frame": 30,
+      "source_frame": 730,
+      "side": "left",
+      "archive_sha256": "4d3d0ec6c8e3933882102c3824b542f01c271755817afddd35ca5d4144b4d351",
+      "origin_xy": [
+        1015,
+        247
+      ],
+      "profiles": [
+        {
+          "radius_mm": 7.2,
+          "parameters": [
+            31.734167658656197,
+            32.477268943582246,
+            1188.4502124669057,
+            0.041028301561833375,
+            -0.22475544482086213,
+            1.8828071262255424
+          ],
+          "success": true,
+          "evaluations": 21,
+          "first_order_optimality": 0.001444660479802018,
+          "train_radial_rms_px": 0.10336566648041594,
+          "check_radial_rms_px": 0.1033656664820161,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 1.2313105702152516,
+              "success": true
+            },
+            {
+              "cost": 0.320533831132057,
+              "success": true
+            },
+            {
+              "cost": 0.32053383020821746,
+              "success": true
+            }
+          ]
+        },
+        {
+          "radius_mm": 7.8,
+          "parameters": [
+            31.733636159350073,
+            32.48309274984028,
+            1199.2541918954946,
+            0.0416364616679301,
+            -0.23788088318422987,
+            1.9190956187526915
+          ],
+          "success": true,
+          "evaluations": 15,
+          "first_order_optimality": 0.0002577095154975868,
+          "train_radial_rms_px": 0.07734386806031429,
+          "check_radial_rms_px": 0.0773438680598582,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 0.9391334598402759,
+              "success": true
+            },
+            {
+              "cost": 0.1794622177959392,
+              "success": true
+            },
+            {
+              "cost": 0.17946221809806145,
+              "success": true
+            }
+          ]
+        },
+        {
+          "radius_mm": 8.4,
+          "parameters": [
+            31.73313845569587,
+            32.49246082370236,
+            1206.621016505331,
+            0.042130898065704796,
+            -0.24666022187845246,
+            1.9473385604077704
+          ],
+          "success": true,
+          "evaluations": 12,
+          "first_order_optimality": 0.0007319497629554736,
+          "train_radial_rms_px": 0.05973157093390086,
+          "check_radial_rms_px": 0.05973157093382486,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 0.7548495423160521,
+              "success": true
+            },
+            {
+              "cost": 0.10703581707107897,
+              "success": true
+            },
+            {
+              "cost": 0.10703581698694893,
+              "success": true
+            }
+          ]
+        }
+      ],
+      "complete_visible_proposal_iou": 0.6608187134502924,
+      "complete_pixels": 509,
+      "visible_proposal_pixels": 343,
+      "geometry_validated": false,
+      "lid_3d_validated": false,
+      "production_replacement": false,
+      "profile_reflection_angle_deg": {
+        "median": 5.520828299770202,
+        "maximum": 8.086591925039084,
+        "scope": "Same proposed pupil-boundary pixels, radius endpoints; not measured ray accuracy"
+      }
+    },
+    {
+      "frame": 30,
+      "source_frame": 730,
+      "side": "right",
+      "archive_sha256": "22cdfc9e2e95e4df66476863aeb19d5ef7a9c6426cace6dc92be75aa007a450a",
+      "origin_xy": [
+        886,
+        261
+      ],
+      "profiles": [
+        {
+          "radius_mm": 7.2,
+          "parameters": [
+            32.41413829976836,
+            31.77871878915812,
+            1185.7599000287585,
+            -0.1254613968216664,
+            -0.17432925093995424,
+            1.6857011282694205
+          ],
+          "success": true,
+          "evaluations": 17,
+          "first_order_optimality": 0.0014996367917487889,
+          "train_radial_rms_px": 0.13093011353127182,
+          "check_radial_rms_px": 0.13093011353402037,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 0.5142808389098105,
+              "success": true
+            },
+            {
+              "cost": 0.5142808388793519,
+              "success": true
+            },
+            {
+              "cost": 37.39260313906746,
+              "success": true
+            }
+          ]
+        },
+        {
+          "radius_mm": 7.8,
+          "parameters": [
+            32.39572441065474,
+            31.781002431659882,
+            1196.7711375304104,
+            -0.12543924212811886,
+            -0.18490659195987133,
+            1.718448240394557
+          ],
+          "success": true,
+          "evaluations": 13,
+          "first_order_optimality": 0.0006648613174532942,
+          "train_radial_rms_px": 0.1345362302040339,
+          "check_radial_rms_px": 0.13453623020328706,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 0.5429999171253842,
+              "success": true
+            },
+            {
+              "cost": 0.5429999171695113,
+              "success": true
+            },
+            {
+              "cost": 0.5429999171393076,
+              "success": true
+            }
+          ]
+        },
+        {
+          "radius_mm": 8.4,
+          "parameters": [
+            32.37597878294112,
+            31.789717007865402,
+            1204.390387690936,
+            -0.12388006589474608,
+            -0.19132526563188512,
+            1.7438391380814755
+          ],
+          "success": true,
+          "evaluations": 12,
+          "first_order_optimality": 0.0003159560906344714,
+          "train_radial_rms_px": 0.13879368966997516,
+          "check_radial_rms_px": 0.13879368966917058,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 0.5779106500644178,
+              "success": true
+            },
+            {
+              "cost": 0.5779106487661612,
+              "success": true
+            },
+            {
+              "cost": 0.5779106491684135,
+              "success": true
+            }
+          ]
+        }
+      ],
+      "complete_visible_proposal_iou": 0.7427466150870407,
+      "complete_pixels": 517,
+      "visible_proposal_pixels": 384,
+      "geometry_validated": false,
+      "lid_3d_validated": false,
+      "production_replacement": false,
+      "profile_reflection_angle_deg": {
+        "median": 4.745269987125962,
+        "maximum": 6.864928516133361,
+        "scope": "Same proposed pupil-boundary pixels, radius endpoints; not measured ray accuracy"
+      }
+    },
+    {
+      "frame": 60,
+      "source_frame": 760,
+      "side": "left",
+      "archive_sha256": "342db7684eb1bf574f85f4f50fa8e40066eb35dec45b3f88a70eb9f847516ede",
+      "origin_xy": [
+        1000,
+        294
+      ],
+      "profiles": [
+        {
+          "radius_mm": 7.2,
+          "parameters": [
+            33.19501462862862,
+            32.61681700325201,
+            1189.6750467021486,
+            -0.1315093617686312,
+            0.000982700653168846,
+            1.7655898834251553
+          ],
+          "success": true,
+          "evaluations": 17,
+          "first_order_optimality": 0.0005004978288534999,
+          "train_radial_rms_px": 0.11799277691800238,
+          "check_radial_rms_px": 0.11799277691817021,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 0.4176688621446442,
+              "success": true
+            },
+            {
+              "cost": 0.4176688629870635,
+              "success": true
+            },
+            {
+              "cost": 0.41766886582226614,
+              "success": true
+            }
+          ]
+        },
+        {
+          "radius_mm": 7.8,
+          "parameters": [
+            33.23221086991329,
+            32.65532909676184,
+            1200.5154352729762,
+            -0.1438314440646051,
+            0.005569042416287454,
+            1.7984032016557387
+          ],
+          "success": true,
+          "evaluations": 23,
+          "first_order_optimality": 0.00043617935089273015,
+          "train_radial_rms_px": 0.1215132522884076,
+          "check_radial_rms_px": 0.12151325228995717,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 0.44296411507809935,
+              "success": true
+            },
+            {
+              "cost": 0.4429641201529252,
+              "success": true
+            },
+            {
+              "cost": 0.44296411445118594,
+              "success": true
+            }
+          ]
+        },
+        {
+          "radius_mm": 8.4,
+          "parameters": [
+            33.252471446435905,
+            32.69261064039831,
+            1207.904169336488,
+            -0.15188126799393434,
+            0.011035033999247967,
+            1.823700077817804
+          ],
+          "success": true,
+          "evaluations": 25,
+          "first_order_optimality": 0.0004907358722912802,
+          "train_radial_rms_px": 0.12428695178524034,
+          "check_radial_rms_px": 0.12428695178585447,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 0.46341739733644205,
+              "success": true
+            },
+            {
+              "cost": 0.4634173930740473,
+              "success": true
+            },
+            {
+              "cost": 0.46341739152199957,
+              "success": true
+            }
+          ]
+        }
+      ],
+      "complete_visible_proposal_iou": 0.6513409961685823,
+      "complete_pixels": 522,
+      "visible_proposal_pixels": 340,
+      "geometry_validated": false,
+      "lid_3d_validated": false,
+      "production_replacement": false,
+      "profile_reflection_angle_deg": {
+        "median": 4.787219578468923,
+        "maximum": 6.654722189463954,
+        "scope": "Same proposed pupil-boundary pixels, radius endpoints; not measured ray accuracy"
+      }
+    },
+    {
+      "frame": 60,
+      "source_frame": 760,
+      "side": "right",
+      "archive_sha256": "0e4bcec86905940e0a1f9d04eddee5958bc06955ee2d4d0c980b21d0aa1d291a",
+      "origin_xy": [
+        871,
+        307
+      ],
+      "profiles": [
+        {
+          "radius_mm": 7.2,
+          "parameters": [
+            34.94592875909609,
+            34.72987190727775,
+            1173.308525401648,
+            -0.29182914533898063,
+            -0.05861051368303817,
+            1.6627735041203744
+          ],
+          "success": true,
+          "evaluations": 19,
+          "first_order_optimality": 0.001291440041014646,
+          "train_radial_rms_px": 0.08651771360747333,
+          "check_radial_rms_px": 0.08651771360997369,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 0.22455944303594333,
+              "success": true
+            },
+            {
+              "cost": 0.22455944333840838,
+              "success": true
+            },
+            {
+              "cost": 52.56009840710638,
+              "success": true
+            }
+          ]
+        },
+        {
+          "radius_mm": 7.8,
+          "parameters": [
+            34.92883565435019,
+            34.73796898326512,
+            1184.4451879805474,
+            -0.29915280656445203,
+            -0.06232150936566919,
+            1.695566634133793
+          ],
+          "success": true,
+          "evaluations": 15,
+          "first_order_optimality": 0.000848838058412197,
+          "train_radial_rms_px": 0.10756541392042832,
+          "check_radial_rms_px": 0.10756541392289057,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 0.3471095489737246,
+              "success": true
+            },
+            {
+              "cost": 0.34710954815619216,
+              "success": true
+            },
+            {
+              "cost": 0.34710954829855245,
+              "success": true
+            }
+          ]
+        },
+        {
+          "radius_mm": 8.4,
+          "parameters": [
+            34.9068520712187,
+            34.74835311927627,
+            1192.2285856856402,
+            -0.30243408113386794,
+            -0.06406828024335615,
+            1.7209736191210143
+          ],
+          "success": true,
+          "evaluations": 18,
+          "first_order_optimality": 0.0008452081601052136,
+          "train_radial_rms_px": 0.12226843847902291,
+          "check_radial_rms_px": 0.1222684384789272,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 0.4484871314429583,
+              "success": true
+            },
+            {
+              "cost": 0.4484871319218599,
+              "success": true
+            },
+            {
+              "cost": 0.44848713313082045,
+              "success": true
+            }
+          ]
+        }
+      ],
+      "complete_visible_proposal_iou": 0.8011695906432749,
+      "complete_pixels": 513,
+      "visible_proposal_pixels": 411,
+      "geometry_validated": false,
+      "lid_3d_validated": false,
+      "production_replacement": false,
+      "profile_reflection_angle_deg": {
+        "median": 4.476922760183829,
+        "maximum": 6.384313034251558,
+        "scope": "Same proposed pupil-boundary pixels, radius endpoints; not measured ray accuracy"
+      }
+    },
+    {
+      "frame": 89,
+      "source_frame": 789,
+      "side": "left",
+      "archive_sha256": "3646db7530516e46753f3b348b3e2c9a6c0286341ededeab4460ec9226d2b452",
+      "origin_xy": [
+        990,
+        261
+      ],
+      "profiles": [
+        {
+          "radius_mm": 7.2,
+          "parameters": [
+            31.95462895727892,
+            33.68264464592913,
+            1226.8525698569213,
+            -0.05307777554315593,
+            0.28095901369675336,
+            1.651636966319852
+          ],
+          "success": true,
+          "evaluations": 17,
+          "first_order_optimality": 0.0008205221975403084,
+          "train_radial_rms_px": 0.09041422127789599,
+          "check_radial_rms_px": 0.09041422127741737,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 0.24524194227865026,
+              "success": true
+            },
+            {
+              "cost": 0.3756968068933795,
+              "success": true
+            },
+            {
+              "cost": 0.3756968084223068,
+              "success": true
+            }
+          ]
+        },
+        {
+          "radius_mm": 7.8,
+          "parameters": [
+            31.957864393766325,
+            33.71286114387824,
+            1237.6476425622275,
+            -0.056788179399931346,
+            0.2944148018239297,
+            1.6825352963658604
+          ],
+          "success": true,
+          "evaluations": 17,
+          "first_order_optimality": 0.0003411324243118594,
+          "train_radial_rms_px": 0.07660062726455902,
+          "check_radial_rms_px": 0.07660062726421553,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 0.1760296829197171,
+              "success": true
+            },
+            {
+              "cost": 0.28800024623558346,
+              "success": true
+            },
+            {
+              "cost": 0.288000248876212,
+              "success": true
+            }
+          ]
+        },
+        {
+          "radius_mm": 8.4,
+          "parameters": [
+            31.957064620512707,
+            33.72887211252282,
+            1244.9650948390702,
+            -0.058912753284316575,
+            0.3035153424968275,
+            1.7064990125842598
+          ],
+          "success": true,
+          "evaluations": 15,
+          "first_order_optimality": 0.0003406075033076397,
+          "train_radial_rms_px": 0.06730442747257886,
+          "check_radial_rms_px": 0.06730442747365165,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 0.13589657872234884,
+              "success": true
+            },
+            {
+              "cost": 0.23326796525696694,
+              "success": true
+            },
+            {
+              "cost": 0.23326796578373135,
+              "success": true
+            }
+          ]
+        }
+      ],
+      "complete_visible_proposal_iou": 0.6089613034623218,
+      "complete_pixels": 490,
+      "visible_proposal_pixels": 300,
+      "geometry_validated": false,
+      "lid_3d_validated": false,
+      "production_replacement": false,
+      "profile_reflection_angle_deg": {
+        "median": 4.886170443119131,
+        "maximum": 7.110154751705709,
+        "scope": "Same proposed pupil-boundary pixels, radius endpoints; not measured ray accuracy"
+      }
+    },
+    {
+      "frame": 89,
+      "source_frame": 789,
+      "side": "right",
+      "archive_sha256": "dd55099a079a670ac0928b90d37f5148ccaf5c98eab5d6bf7b8c8fc4cfb6789d",
+      "origin_xy": [
+        859,
+        275
+      ],
+      "profiles": [
+        {
+          "radius_mm": 7.2,
+          "parameters": [
+            32.79046380563802,
+            32.977571913822544,
+            1206.007485768181,
+            0.029394486184728435,
+            0.09268279145886009,
+            1.7318859066415262
+          ],
+          "success": true,
+          "evaluations": 67,
+          "first_order_optimality": 0.00036462845959109514,
+          "train_radial_rms_px": 0.05399640940474517,
+          "check_radial_rms_px": 0.053996409409257304,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 0.08746838511062802,
+              "success": true
+            },
+            {
+              "cost": 0.08746836685814562,
+              "success": true
+            },
+            {
+              "cost": 36.86535695469031,
+              "success": true
+            }
+          ]
+        },
+        {
+          "radius_mm": 7.8,
+          "parameters": [
+            32.74765483199046,
+            33.19522843098854,
+            1216.710289198034,
+            0.03876602964891648,
+            0.13006094219996056,
+            1.7634207576387224
+          ],
+          "success": true,
+          "evaluations": 97,
+          "first_order_optimality": 0.0004297131480886056,
+          "train_radial_rms_px": 0.052451941248243365,
+          "check_radial_rms_px": 0.0524519412478298,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 0.08253619876957252,
+              "success": true
+            },
+            {
+              "cost": 0.08253618452672078,
+              "success": true
+            },
+            {
+              "cost": 0.08253618422127523,
+              "success": true
+            }
+          ]
+        },
+        {
+          "radius_mm": 8.4,
+          "parameters": [
+            32.737529030559664,
+            33.31501952830968,
+            1223.7208805382681,
+            0.04221972807071796,
+            0.15240859456345654,
+            1.7876550157025382
+          ],
+          "success": true,
+          "evaluations": 37,
+          "first_order_optimality": 0.0001822039403977039,
+          "train_radial_rms_px": 0.05096994331471477,
+          "check_radial_rms_px": 0.050969943315895855,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 0.07793805364515712,
+              "success": true
+            },
+            {
+              "cost": 0.08188523269875043,
+              "success": true
+            },
+            {
+              "cost": 0.08188523464056997,
+              "success": true
+            }
+          ]
+        }
+      ],
+      "complete_visible_proposal_iou": 0.83399209486166,
+      "complete_pixels": 506,
+      "visible_proposal_pixels": 422,
+      "geometry_validated": false,
+      "lid_3d_validated": false,
+      "production_replacement": false,
+      "profile_reflection_angle_deg": {
+        "median": 6.237327325932356,
+        "maximum": 9.140446893118849,
+        "scope": "Same proposed pupil-boundary pixels, radius endpoints; not measured ray accuracy"
+      }
+    },
+    {
+      "frame": 119,
+      "source_frame": 819,
+      "side": "left",
+      "archive_sha256": "b75ebf236881b929cedb8a7ada6c66e8f4b38d745983654a1b40f4276a429f89",
+      "origin_xy": [
+        992,
+        261
+      ],
+      "profiles": [
+        {
+          "radius_mm": 7.2,
+          "parameters": [
+            33.207378905163345,
+            33.837371357508715,
+            1219.470160775024,
+            -0.051934313446537705,
+            0.15171451376865813,
+            1.7950687055989167
+          ],
+          "success": true,
+          "evaluations": 29,
+          "first_order_optimality": 0.00021614172545085774,
+          "train_radial_rms_px": 0.07447531059754699,
+          "check_radial_rms_px": 0.07447531060017765,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 0.1663971566580328,
+              "success": true
+            },
+            {
+              "cost": 0.16639717924603326,
+              "success": true
+            },
+            {
+              "cost": 46.149649663612,
+              "success": true
+            }
+          ]
+        },
+        {
+          "radius_mm": 7.8,
+          "parameters": [
+            33.23622275734914,
+            33.801645125668244,
+            1231.0238514055336,
+            -0.05936851274636278,
+            0.14735495153135547,
+            1.8280699783806844
+          ],
+          "success": true,
+          "evaluations": 35,
+          "first_order_optimality": 0.0009522071806514258,
+          "train_radial_rms_px": 0.07689430818502897,
+          "check_radial_rms_px": 0.07689430818924944,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 0.17738203893762636,
+              "success": true
+            },
+            {
+              "cost": 0.1773820390857133,
+              "success": true
+            },
+            {
+              "cost": 0.1773820587503821,
+              "success": true
+            }
+          ]
+        },
+        {
+          "radius_mm": 8.4,
+          "parameters": [
+            33.280885561663375,
+            33.72759364053319,
+            1238.7863845257666,
+            -0.06908674256178941,
+            0.1352270851094165,
+            1.85337358646695
+          ],
+          "success": true,
+          "evaluations": 42,
+          "first_order_optimality": 0.0002590272087542263,
+          "train_radial_rms_px": 0.07875045587660111,
+          "check_radial_rms_px": 0.07875045587779315,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 0.186049029023175,
+              "success": true
+            },
+            {
+              "cost": 0.18604903375287524,
+              "success": true
+            },
+            {
+              "cost": 0.18604904933417107,
+              "success": true
+            }
+          ]
+        }
+      ],
+      "complete_visible_proposal_iou": 0.69921875,
+      "complete_pixels": 512,
+      "visible_proposal_pixels": 358,
+      "geometry_validated": false,
+      "lid_3d_validated": false,
+      "production_replacement": false,
+      "profile_reflection_angle_deg": {
+        "median": 4.589645849389566,
+        "maximum": 6.158231006489765,
+        "scope": "Same proposed pupil-boundary pixels, radius endpoints; not measured ray accuracy"
+      }
+    },
+    {
+      "frame": 119,
+      "source_frame": 819,
+      "side": "right",
+      "archive_sha256": "6a53054e81de5b55887af5285aa7a0e0763cb64b818d5d2db83ee9bdc15bbe41",
+      "origin_xy": [
+        862,
+        275
+      ],
+      "profiles": [
+        {
+          "radius_mm": 7.2,
+          "parameters": [
+            35.64925486983362,
+            33.68096564484166,
+            1198.416437037322,
+            -0.2664854691158957,
+            0.0501165996997866,
+            1.4372965940051032
+          ],
+          "success": true,
+          "evaluations": 18,
+          "first_order_optimality": 0.0009061960258247236,
+          "train_radial_rms_px": 0.14965384671888476,
+          "check_radial_rms_px": 0.14965384671990722,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 0.6718882170058366,
+              "success": true
+            },
+            {
+              "cost": 0.6718882151327835,
+              "success": true
+            },
+            {
+              "cost": 44.89126391541825,
+              "success": true
+            }
+          ]
+        },
+        {
+          "radius_mm": 7.8,
+          "parameters": [
+            35.62890919627065,
+            33.69475290170509,
+            1209.9998903639728,
+            -0.2712197850371037,
+            0.05177067041765412,
+            1.4655691471841668
+          ],
+          "success": true,
+          "evaluations": 19,
+          "first_order_optimality": 0.001390358919122489,
+          "train_radial_rms_px": 0.16313327884519704,
+          "check_radial_rms_px": 0.16313327884602402,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 0.7983740018063974,
+              "success": true
+            },
+            {
+              "cost": 0.7983740000035443,
+              "success": true
+            },
+            {
+              "cost": 0.7983740005227123,
+              "success": true
+            }
+          ]
+        },
+        {
+          "radius_mm": 8.4,
+          "parameters": [
+            35.601883402084326,
+            33.70820263685127,
+            1218.0948953198329,
+            -0.27198497813541456,
+            0.05387410750930817,
+            1.4873926286017796
+          ],
+          "success": true,
+          "evaluations": 17,
+          "first_order_optimality": 0.0005772508978902417,
+          "train_radial_rms_px": 0.1723607455989569,
+          "check_radial_rms_px": 0.17236074559931555,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 0.8912468027153686,
+              "success": true
+            },
+            {
+              "cost": 0.8912468037125362,
+              "success": true
+            },
+            {
+              "cost": 0.8912467987028502,
+              "success": true
+            }
+          ]
+        }
+      ],
+      "complete_visible_proposal_iou": 0.7719298245614035,
+      "complete_pixels": 513,
+      "visible_proposal_pixels": 396,
+      "geometry_validated": false,
+      "lid_3d_validated": false,
+      "production_replacement": false,
+      "profile_reflection_angle_deg": {
+        "median": 3.631196824628633,
+        "maximum": 5.001390224992298,
+        "scope": "Same proposed pupil-boundary pixels, radius endpoints; not measured ray accuracy"
+      }
+    },
+    {
+      "frame": 149,
+      "source_frame": 849,
+      "side": "left",
+      "archive_sha256": "9b7d4bc2a9f504af5c1e9c0c954b5f2189b61a4c8a45254704acad057d344c4d",
+      "origin_xy": [
+        991,
+        215
+      ],
+      "profiles": [
+        {
+          "radius_mm": 7.2,
+          "parameters": [
+            28.142980936010023,
+            32.0170038033763,
+            1179.2940912056627,
+            -0.14140150559517164,
+            -0.09289736645094401,
+            1.8930491260012672
+          ],
+          "success": true,
+          "evaluations": 25,
+          "first_order_optimality": 0.0031637867280064915,
+          "train_radial_rms_px": 0.4548052605956235,
+          "check_radial_rms_px": 0.4548052605970847,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 6.349136419716826,
+              "success": true
+            },
+            {
+              "cost": 6.205434751963587,
+              "success": true
+            },
+            {
+              "cost": 40.33243967936103,
+              "success": true
+            }
+          ]
+        },
+        {
+          "radius_mm": 7.8,
+          "parameters": [
+            28.064426166440366,
+            31.948760423340616,
+            1189.8578505809896,
+            -0.12970037834253684,
+            -0.11312833352744055,
+            1.928295359323858
+          ],
+          "success": true,
+          "evaluations": 20,
+          "first_order_optimality": 0.0020214637724432502,
+          "train_radial_rms_px": 0.4546084562659678,
+          "check_radial_rms_px": 0.4546084562656378,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 6.322580351156866,
+              "success": true
+            },
+            {
+              "cost": 6.200065470745775,
+              "success": true
+            },
+            {
+              "cost": 6.200065455255791,
+              "success": true
+            }
+          ]
+        },
+        {
+          "radius_mm": 8.4,
+          "parameters": [
+            27.99477698577371,
+            31.910459963900422,
+            1197.1629433112114,
+            -0.1175441178044729,
+            -0.12652103607525286,
+            1.9553073030259873
+          ],
+          "success": true,
+          "evaluations": 24,
+          "first_order_optimality": 0.0017705926564950437,
+          "train_radial_rms_px": 0.4537946745243562,
+          "check_radial_rms_px": 0.4537946745247092,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 6.283257328289208,
+              "success": true
+            },
+            {
+              "cost": 6.1778882241101005,
+              "success": true
+            },
+            {
+              "cost": 6.177888198799989,
+              "success": true
+            }
+          ]
+        }
+      ],
+      "complete_visible_proposal_iou": 0.49809885931558934,
+      "complete_pixels": 525,
+      "visible_proposal_pixels": 263,
+      "geometry_validated": false,
+      "lid_3d_validated": false,
+      "production_replacement": false,
+      "profile_reflection_angle_deg": {
+        "median": 6.066551931671041,
+        "maximum": 8.755742573270368,
+        "scope": "Same proposed pupil-boundary pixels, radius endpoints; not measured ray accuracy"
+      }
+    },
+    {
+      "frame": 149,
+      "source_frame": 849,
+      "side": "right",
+      "archive_sha256": "93ab92f05d3065208388dc95f6040548e114aedfb8bb59c01b81c45c1c6e25f1",
+      "origin_xy": [
+        862,
+        232
+      ],
+      "profiles": [
+        {
+          "radius_mm": 7.2,
+          "parameters": [
+            27.928609525041576,
+            33.41221447396821,
+            1148.5966171505404,
+            0.04604532728886366,
+            0.33344029801860203,
+            1.7715795997139356
+          ],
+          "success": true,
+          "evaluations": 19,
+          "first_order_optimality": 0.0006374989408862427,
+          "train_radial_rms_px": 0.1312224092713983,
+          "check_radial_rms_px": 0.1312224092717549,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 0.5165796208497108,
+              "success": true
+            },
+            {
+              "cost": 0.5165796217466576,
+              "success": true
+            },
+            {
+              "cost": 43.18209682644291,
+              "success": true
+            }
+          ]
+        },
+        {
+          "radius_mm": 7.8,
+          "parameters": [
+            27.90775832647993,
+            33.39280472620046,
+            1159.4799307859043,
+            0.05326986875290705,
+            0.338047105399814,
+            1.8054136063600892
+          ],
+          "success": true,
+          "evaluations": 14,
+          "first_order_optimality": 0.0009929903443432408,
+          "train_radial_rms_px": 0.1423184956829577,
+          "check_radial_rms_px": 0.14231849568218757,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 0.6076366264038017,
+              "success": true
+            },
+            {
+              "cost": 0.6076366265604878,
+              "success": true
+            },
+            {
+              "cost": 68.5647816384685,
+              "success": true
+            }
+          ]
+        },
+        {
+          "radius_mm": 8.4,
+          "parameters": [
+            27.89213630313058,
+            33.36584366340636,
+            1167.0434978994042,
+            0.05881714711557699,
+            0.33876664937075546,
+            1.8315046655874687
+          ],
+          "success": true,
+          "evaluations": 20,
+          "first_order_optimality": 0.0018998870917662457,
+          "train_radial_rms_px": 0.1504475369723761,
+          "check_radial_rms_px": 0.15044753697419974,
+          "actual_conic_hit_fraction": 0.5,
+          "limbus_conic_hit_fraction": 0.0,
+          "pupil_conic_hit_fraction": 1.0,
+          "complete_conic_support": false,
+          "fit_warning": "Residual uses conic continuation outside finite cap; reject unless every contour ray hits",
+          "at_bound": false,
+          "starts": [
+            {
+              "cost": 0.6790338429749672,
+              "success": true
+            },
+            {
+              "cost": 0.6790338414316339,
+              "success": true
+            },
+            {
+              "cost": 0.6790338416471446,
+              "success": true
+            }
+          ]
+        }
+      ],
+      "complete_visible_proposal_iou": 0.48717948717948717,
+      "complete_pixels": 546,
+      "visible_proposal_pixels": 266,
+      "geometry_validated": false,
+      "lid_3d_validated": false,
+      "production_replacement": false,
+      "profile_reflection_angle_deg": {
+        "median": 4.491402672788784,
+        "maximum": 6.239376894225082,
+        "scope": "Same proposed pupil-boundary pixels, radius endpoints; not measured ray accuracy"
+      }
+    }
+  ],
+  "contour_split": "Alternating samples from same predicted ellipse; NOT independent source or withheld RGB",
+  "priors": "Fixed 5.85mm iris, conic eccentricity .5, depth 3mm, IOR 1.376; profiled radii are assumptions",
+  "lid_status": "RITnet 2D visible-part comparison only; no 3D lid fit or scene-light visibility validation",
+  "optical_status": "Fixed finite cap max_sag 2.18mm. Out-of-cap contour fits are rejected, not physical solutions.",
+  "full_eyenerf_run": false,
+  "geometry_validated": false,
+  "production_repairs": 0,
+  "code_sha256": "d00903fe549dffa663639a89f08719138c96c43eb1629b307a9f5e1201932893"
+}
