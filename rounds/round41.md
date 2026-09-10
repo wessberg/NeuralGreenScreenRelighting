@@ -201,23 +201,38 @@ $S = "music_videos/reporter_test/shots/reporter_a"
 
 ## 8. Starter prompt for round 42
 
-> Read round41.md §4 and §6 first. Round 41 put the bulb tour's own reflection into her corneas
-> on top of the accepted removal: `stress_proxy.py --corneal` (round 34's dielectric cap, lit by
-> the tour, anchored on the fitted iris centre behind the measured gaze — chosen because the
-> plate's own softbox glint grades it at 1.31 px rms vs 1.87 for a camera-axis gaze),
-> `composite_ratio.py --eye-removal --corneal-dir --corneal-blur 0.35` (the pass added through
-> the fitted lids and limbus, in the ratio's own units, softened to the plate's measured 0.47 px
-> PSF). Validated: 0.20 px median against an independent reflection model, wrong conventions at
-> 1.3–5.5 px. Run `r41_tour`; videos `r41_tour_compare.mp4`, `r41_tour_eyes.mp4`,
-> `r41_tour_panel.mp4`. **Ask for / record his verdict first**, especially on the fill panel's
-> reflection: a soft grey square at "behind rim" and frame 127, and a pink crescent cut at the
-> limbus at camera left/right (frames 52–85). Whatever he raises outranks this list.
+> **The eye is not wet enough.** Read round41.md §4, §6 and the verdict at the top first. Round
+> 41 put the bulb tour's own reflection into her corneas on top of the accepted removal
+> (`stress_proxy.py --corneal`, `composite_ratio.py --eye-removal --corneal-dir --corneal-blur
+> 0.35`; run `r41_tour`, videos `r41_tour_compare.mp4` / `r41_tour_eyes.mp4` /
+> `r41_tour_panel.mp4`). The artist: *"looks decent enough. Maybe slightly unrealistic? Maybe the
+> eye didn't become 'wet' enough?"* — and the construction says why: the mirror is a cap that
+> stops at the limbus, so only the cornea reflects the new light; the capture room's own glint
+> on the SCLERA is still in the photograph (camera right, frame 80: old glint on one side, new
+> bulb on the other); and the tear line along the lower lid margin is a photographed highlight
+> of the old light that the ratio can only recolour.
 >
-> Then the two known limits, both new construction: the reflection must continue past the
-> limbus onto the wet sclera (a second, larger, rougher glossy sphere matted by the lids only),
-> and a geometric socket so a source across the nose bridge does not reflect in the nasal eye
-> (measure which softbox directions the plate itself shows in which eye before building it).
-> Keep: GENERIC tool, GPU first, the plate's pixels outside the eye pass's weight exact, p95 and
-> max, every changed eye looked at against the previous run before a video. Do not dim the bulb
+> Build the wet eye as ONE construction on the existing geometry: a second glossy surface for
+> the sclera (a larger sphere, ~12 mm, centre ~5.6 mm behind the corneal centre, tear-film
+> lobe rougher and dimmer than the cornea's, dielectric, never a white mirror), matted by the
+> fitted lids only, so the fill's sheen and the bulb continue past the limbus the way they do on
+> a real eye and the pink crescent at 52–85 stops being cut off. Remove the capture room's
+> scleral glint with the same tools the iris removal uses (round 38 logged it,
+> `audit_r38_sclera.py`), and let the lid margin respond to the new light. Measure before
+> building: which directions the plate's own softbox appears from on the WHITE of the eye and
+> along the lower lid, per frame, so the new lobe's width and level are fitted to her eye, not
+> dialled. Validate the way round 41 did — the photograph grades the geometry
+> (`validate_tour_catchlight.py --plate-glint` pattern, extended to the scleral glint), an
+> independent model grades the render with wrong-convention controls, sharpness measured on
+> the glint — and put every changed eye against `r41_tour` at eye scale before a video. Then a
+> cheap geometric socket (a cone of allowed directions per eye, wider temporally than nasally)
+> so a source across the nose bridge stops reflecting in the nasal eye; measure it against the
+> plate first.
+>
+> Keep: GENERIC tool, GPU first, the plate's pixels outside the eye pass's weight exact, p95
+> and max, `stress_proxy.py --corneal` and `--ratio` lit by the same code. Do not dim the bulb
 > to make its clipped spot prettier; that is a review tone-map decision. Cycles renders are not
-> bit-reproducible (0.013 linear); never gate on a render hash.
+> bit-reproducible (0.013 linear); never gate on a render hash. On his own footage the chain is
+> `eye_geometry.py`, `limbus_fit.py`, `limbus_trust.py`, `eyelid_fit.py --lower-iris-edge`, the
+> eye pass, then `--corneal` and the composite flags; `import_overlap_eyes.py` is only for the
+> two reporter shots.
