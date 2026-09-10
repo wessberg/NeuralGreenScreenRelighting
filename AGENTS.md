@@ -46,6 +46,15 @@ complaint for the other. **Do not build a sixth. The way out is a geometrically 
 lash line** — `eyelid_fit.py` right on the frames where it now sits on the LID CREASE
 (seven pixels high at source 727 left, abstaining at 723 left).
 
+**The LID SHADOW model is DEFAULT OFF, rejected on sight.** Round 35 §7 asked for it,
+round 36 fitted it (`1 + A·exp(-depth/tau)`, one shape per eye, A = +0.44 left / -0.115
+right), and one look at the face-scale panel killed it: at +0.44 it puts a light washed
+band across the top of the iris and **erases the lid shadow the artist explicitly asked to
+keep**, and the bright band above the pupil makes the pupil read as displaced. The pooled
+depth profile that motivated it is real; applying it as a per-eye constant over-brightens
+every frame that was already right. **Validate a correction like this at FACE SCALE on
+frames before believing it** -- a pooled profile cannot see a halo.
+
 **A metric must be built from what the EYE does, not from what the repair believes.** The
 atlas's softbox test located the specular in the SOURCE by a threshold and checked those
 pixels in the result, so when the guard sheared off the highlight's corner it reported

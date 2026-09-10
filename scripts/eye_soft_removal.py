@@ -835,21 +835,31 @@ def main():
                          "bright lobe and leaving the dark one puts a black crescent "
                          "round the fill, which is the artefact rounds 32-34 were "
                          "rejected for.")
+    ap.add_argument('--lash-halo', type=float, default=0.06,
+                    help="display above this eye's own iris level at which a pixel NEXT "
+                         "TO an exempted specular is taken to be the reflection falling "
+                         "off rather than a lash. A lash beside the highlight is darker "
+                         "than the iris; the highlight's halo is brighter.")
     ap.add_argument('--no-lash-guard', dest='lash_guard', action='store_false',
                     help='disable the image-derived LASH CEILING. It is on by default: '
                          "the artist's rule is that a corneal specular is never on a lash "
                          'or a lid, so nothing may be painted there, and the fitted lid '
                          'margin alone does not enforce it -- it abstains on some frames '
                          'and lands on the lid crease on others. See lash_ceiling().')
-    ap.add_argument('--lid-shadow', type=float, default=1.0,
-                    help='strength of the fitted LID SHADOW, one shape per eye for the '
+    ap.add_argument('--lid-shadow', type=float, default=0.0,
+                    help='OFF BY DEFAULT -- see below. Strength of the fitted LID SHADOW, one shape per eye for the '
                          'shot, as a multiple of the fitted amplitude. 0 disables it and '
                          "restores round 34's scalar-only fill. The canonical iris is "
                          'painted with one scalar gain per frame, so it cannot carry the '
                          "shadow her lid casts on her own iris; round 35 measured the "
                          'resulting step at up to 0.20 display three to six pixels below '
                          'the lash, which is the artist\'s "not seamless around the upper '
-                         'eyelid". See fit_lid_shadow().')
+                         'eyelid". It is DEFAULT OFF because it was rejected on '
+                         'sight: at A=+0.44 on the left eye it put a light washed band '
+                         'across the top of the iris and ERASED the very lid shadow the '
+                         'artist asked to keep, and the bright band above the pupil made '
+                         'the pupil read as displaced. The fit is still computed and '
+                         'reported; only its application is off. See fit_lid_shadow().')
     ap.add_argument('--shadow-inset', type=float, default=1.0,
                     help='native px inside the fitted opening that the lid-shadow '
                          'evidence is pooled from. Smaller than --atlas-lid-inset on '
@@ -1657,6 +1667,18 @@ def main():
                     k = int(2 * np.ceil(args.lash_ring) + 1)
                     near_core = cv2.dilate(core, cv2.getStructuringElement(
                         cv2.MORPH_ELLIPSE, (k, k))) > 0
+                    # The specular's HALO as well as its core. A single level cannot take
+                    # it: the highlight falls off through 0.30-0.45, which is also where
+                    # her lashes live, so `--lash-bright` alone left grey specks inside
+                    # the pupil at source 721. Next to the core, though, the question is
+                    # local and has an answer -- a pixel brighter than the iris around it
+                    # is the reflection falling off, and a lash there is darker than the
+                    # iris, not brighter.
+                    iris_sel = (d['state']['rho'] > 0.45) & (d['state']['rho'] < 0.95)
+                    if iris_sel.sum() > 40:
+                        iris_lv = float(np.median(here_src[iris_sel]))
+                        halo = near_core & (here_src > iris_lv + args.lash_halo)
+                        bright = np.maximum(bright, halo.astype(np.float32))
                     bright = np.maximum(bright, (near_core & (here_src < 0.22)
                                                  ).astype(np.float32))
                 allow = np.maximum(allow, bright.astype(np.float32))

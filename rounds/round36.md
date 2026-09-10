@@ -45,6 +45,7 @@ lash), fragments = bright blobs left in the iris of the RESULT:
 | `r36_final` | guard, +2 px offset | 4 950 | 3 818 | 1 376 |
 | `r36d` | guard, bright source exempt | 1 950 | **597** | 1 327 |
 | `r36e` | + the specular's black ring exempt | 3 277 | 1 924 | 1 318 |
+| `r36g` | + halo exempt by local contrast, **lid shadow OFF** | — | — | — |
 
 **Every variant trades one of his complaints for the other.** The way out is not another
 threshold; it is a lash line that is geometrically right — `eyelid_fit.py` correct on the
@@ -125,6 +126,27 @@ Not one of these was visible in a number, and two of them were my own "fixes":
 Verification: 150 frames, exact source outside the weight, **300 exact keyed-eye
 fallbacks**, **304 protected hashes unchanged**. `production_enabled` and
 `artist_accepted` false.
+
+## 4b. The lid shadow was REJECTED ON SIGHT and is now default OFF
+
+Round 35 §7 asked for it and this round fitted it, and looking at the face-scale panel
+killed it in one frame. At A = +0.44 on the left eye it puts a **light washed band across
+the top of the iris** where her source and r35 both have a dark lid shadow — so it erased
+**the very thing the artist asked to preserve**:
+
+> it's both correct to preserve a shadow from the bottom of the eyelid along the arc of
+> the eye for natural depth and separation
+
+and the bright band above the pupil is what made the pupil read as displaced and
+misshapen — his *"the pupil and iris still shifts around"*. `--lid-shadow` now defaults to
+**0**. The fit is still computed and reported in `removal.json`, because the measurement
+in §4 is real and round 37 may want it; only its application is off.
+
+**Why the number and the picture disagreed.** §4's depth profile says the fill is too dark
+3-5 px below the lid margin, which is true *pooled over the shot*. Applying a per-eye
+constant correction then over-brightens the frames that were already right, and a 20 %
+lift over a band a few pixels wide reads as a halo. A correction of this kind has to be
+validated at face scale on frames before it is believed, not on a pooled profile.
 
 ## 5. The tracker — reproduced, diagnosed, NOT fixed
 
