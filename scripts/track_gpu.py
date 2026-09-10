@@ -125,6 +125,72 @@ def limbus_fields(patch, meta):
     return gx, gy, lid
 
 
+def edge_support(shot, items, points, topology, margin=10, io_workers=12):
+    """Daugman's operator -- the limbus fit's own objective -- at GIVEN centres: the mean
+    radial derivative of display luma around the circle of the given radius, over the
+    angles clear of the eyelid polygon by limbus_fit.LID_MIN (its `valid_angles` gate).
+
+    `items`: list of (frame, side, radius, [centre, ...]). Returns one list of scores per
+    item, NaN where fewer than limbus_fit.MIN_ANGLES angles are clear or the window leaves
+    the frame. The window is centred between the item's centres, so every circle is scored
+    on the same fields."""
+    import cv2
+    from concurrent.futures import ThreadPoolExecutor
+    import limbus_fit as lf
+    th = np.arange(lf.ANGLES, dtype=np.float32) * (2 * np.pi / lf.ANGLES)
+    cos_t, sin_t = as_t(np.cos(th)), as_t(np.sin(th))
+    out = [[float('nan')] * len(it[3]) for it in items]
+
+    def read(i):
+        raw = cv2.imread(str(shot.fg(i)), cv2.IMREAD_UNCHANGED)
+        return None if raw is None else raw[..., ::-1]
+
+    frames = sorted({it[0] for it in items})
+    groups = {}
+    with ThreadPoolExecutor(max_workers=io_workers) as pool:
+        imgs = dict(zip(frames, pool.map(read, frames)))
+    for n, (i, side, radius, centres) in enumerate(items):
+        img = imgs.get(i)
+        if img is None:
+            continue
+        H, W = img.shape[:2]
+        c = np.asarray(centres, float)
+        mid = c.mean(0)
+        reach = radius * 1.7 + margin + float(np.hypot(*(c - mid).T).max())
+        x0 = int(np.floor(mid[0] - reach)); x1 = int(np.ceil(mid[0] + reach)) + 1
+        y0 = int(np.floor(mid[1] - reach)); y1 = int(np.ceil(mid[1] + reach)) + 1
+        if x0 < 0 or y0 < 0 or x1 > W or y1 > H:
+            continue
+        poly = np.asarray(points[i])[topology['eyelid_' + side], :2]
+        groups.setdefault((y1 - y0, x1 - x0), []).append(dict(
+            n=n, x0=x0, y0=y0, poly=poly, radius=radius, centres=c,
+            patch=torch.as_tensor(np.ascontiguousarray(img[y0:y1, x0:x1]), device=DEV).half()))
+    for (h, w), lst in groups.items():
+        B = len(lst)
+        gx, gy, lid = limbus_fields(torch.stack([m['patch'] for m in lst]), lst)
+        samp = G.CubicSampler([gx, gy, lid], as_t(np.array([[h, w]] * B)))
+        K = max(len(m['centres']) for m in lst)
+        for k in range(K):
+            cx = as_t(np.float32([m['centres'][min(k, len(m['centres']) - 1)][0] for m in lst]))
+            cy = as_t(np.float32([m['centres'][min(k, len(m['centres']) - 1)][1] for m in lst]))
+            rad = as_t(np.float32([[m['radius']] for m in lst]))
+            x0 = as_t(np.float32([m['x0'] for m in lst]))
+            y0 = as_t(np.float32([m['y0'] for m in lst]))
+            mx, my = _polar_maps(cx, cy, x0, y0, rad, cos_t.view(1, -1).expand(B, -1),
+                                 sin_t.view(1, -1).expand(B, -1))
+            sgx, sgy, slid = samp(mx, my)
+            keep = slid[:, 0] > lf.LID_MIN
+            d = sgx[:, 0] * cos_t + sgy[:, 0] * sin_t
+            cnt = keep.sum(1)
+            score = (torch.where(keep, d, torch.zeros_like(d)).sum(1).to(F64)
+                     / cnt.clamp(min=1).to(F64))
+            score = torch.where(cnt >= lf.MIN_ANGLES, score, torch.full_like(score, float('nan')))
+            for m, s in zip(lst, score.cpu().numpy()):
+                if k < len(m['centres']):
+                    out[m['n']][k] = float(s)
+    return out
+
+
 def limbus_group(fields, meta, th_cos, th_sin, radius_given, model='circle', min_arc=0.12,
                  min_angles=14, max_se=0.60, lid_min=1.25, chunk=6):
     """limbus_fit.fit_eye for a batch of eyes of ANY window shapes.

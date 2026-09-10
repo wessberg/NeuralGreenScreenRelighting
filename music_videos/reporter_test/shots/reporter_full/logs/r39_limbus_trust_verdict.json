@@ -1,0 +1,767 @@
+{
+ "track": "relight/limbus_track_tv.json",
+ "summary": {
+  "source_track": "limbus_track.json",
+  "source_sha256": "b735ba0ea0851cd35a4883c928990602747f3ac859492f53e010c062767ab586",
+  "ratio": 2.5,
+  "window_s": 1.0,
+  "max_gap_s": 0.25,
+  "verified": true,
+  "rederived": {
+   "left": 43,
+   "right": 10
+  },
+  "bridge_refused": {
+   "left": 33,
+   "right": 2
+  },
+  "code_sha256": "a9e8cda01aa7bacd1dfe7c6ba02c36f2555cb9dab536cc6fcbe3e9f9c657db8a"
+ },
+ "runs": [
+  {
+   "side": "left",
+   "anchors": [
+    12,
+    27
+   ],
+   "frames": [
+    13,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26
+   ],
+   "kept_bridge": false,
+   "edge_fit": [
+    0.03047,
+    0.04393,
+    0.04525,
+    0.05147,
+    0.0512,
+    0.05446,
+    0.0573
+   ],
+   "edge_bridge": [
+    0.02726,
+    0.04006,
+    0.0362,
+    0.04046,
+    0.04486,
+    0.05642,
+    0.06399
+   ],
+   "run_median_gain": -0.00387
+  },
+  {
+   "side": "left",
+   "anchors": [
+    32,
+    36
+   ],
+   "frames": [
+    33,
+    34,
+    35
+   ],
+   "kept_bridge": true,
+   "edge_fit": [
+    0.06871,
+    0.06784,
+    0.07064
+   ],
+   "edge_bridge": [
+    0.07668,
+    0.07619,
+    0.0791
+   ],
+   "run_median_gain": 0.00836
+  },
+  {
+   "side": "left",
+   "anchors": [
+    36,
+    38
+   ],
+   "frames": [
+    37
+   ],
+   "kept_bridge": true,
+   "edge_fit": [
+    0.07352
+   ],
+   "edge_bridge": [
+    0.07782
+   ],
+   "run_median_gain": 0.0043
+  },
+  {
+   "side": "left",
+   "anchors": [
+    77,
+    82
+   ],
+   "frames": [
+    78,
+    79,
+    80
+   ],
+   "kept_bridge": false,
+   "edge_fit": [
+    0.05218,
+    0.04919,
+    0.06903
+   ],
+   "edge_bridge": [
+    0.04897,
+    0.03335,
+    0.05598
+   ],
+   "run_median_gain": -0.01305
+  },
+  {
+   "side": "left",
+   "anchors": [
+    109,
+    137
+   ],
+   "frames": [
+    122,
+    123,
+    124
+   ],
+   "kept_bridge": false,
+   "edge_fit": [
+    0.0024,
+    -0.00212,
+    0.00976
+   ],
+   "edge_bridge": [
+    0.0016,
+    -0.00347,
+    -0.00201
+   ],
+   "run_median_gain": -0.00135
+  },
+  {
+   "side": "left",
+   "anchors": [
+    242,
+    246
+   ],
+   "frames": [
+    243,
+    244,
+    245
+   ],
+   "kept_bridge": true,
+   "edge_fit": [
+    0.00277,
+    0.02384,
+    0.00758
+   ],
+   "edge_bridge": [
+    0.07308,
+    0.07244,
+    0.07711
+   ],
+   "run_median_gain": 0.06953
+  },
+  {
+   "side": "left",
+   "anchors": [
+    294,
+    299
+   ],
+   "frames": [
+    295,
+    296,
+    297
+   ],
+   "kept_bridge": false,
+   "edge_fit": [
+    0.05794,
+    0.05233,
+    0.06754
+   ],
+   "edge_bridge": [
+    0.04524,
+    0.03566,
+    0.05096
+   ],
+   "run_median_gain": -0.01658
+  },
+  {
+   "side": "left",
+   "anchors": [
+    367,
+    378
+   ],
+   "frames": [
+    369
+   ],
+   "kept_bridge": false,
+   "edge_fit": [
+    0.03613
+   ],
+   "edge_bridge": [
+    0.02234
+   ],
+   "run_median_gain": -0.01379
+  },
+  {
+   "side": "left",
+   "anchors": [
+    441,
+    444
+   ],
+   "frames": [
+    442,
+    443
+   ],
+   "kept_bridge": true,
+   "edge_fit": [
+    0.0149,
+    0.00069
+   ],
+   "edge_bridge": [
+    0.08327,
+    0.0839
+   ],
+   "run_median_gain": 0.07579
+  },
+  {
+   "side": "left",
+   "anchors": [
+    451,
+    454
+   ],
+   "frames": [
+    452,
+    453
+   ],
+   "kept_bridge": true,
+   "edge_fit": [
+    0.04013,
+    0.04329
+   ],
+   "edge_bridge": [
+    0.05358,
+    0.05507
+   ],
+   "run_median_gain": 0.01261
+  },
+  {
+   "side": "left",
+   "anchors": [
+    492,
+    500
+   ],
+   "frames": [
+    493,
+    494,
+    495,
+    496,
+    497,
+    498,
+    499
+   ],
+   "kept_bridge": true,
+   "edge_fit": [
+    0.02859,
+    0.04996,
+    0.04637,
+    0.04687,
+    0.04982,
+    0.04717,
+    0.03511
+   ],
+   "edge_bridge": [
+    0.07772,
+    0.07357,
+    0.07722,
+    0.07571,
+    0.07552,
+    0.07711,
+    0.07978
+   ],
+   "run_median_gain": 0.02994
+  },
+  {
+   "side": "left",
+   "anchors": [
+    534,
+    536
+   ],
+   "frames": [
+    535
+   ],
+   "kept_bridge": true,
+   "edge_fit": [
+    0.06942
+   ],
+   "edge_bridge": [
+    0.07271
+   ],
+   "run_median_gain": 0.00329
+  },
+  {
+   "side": "left",
+   "anchors": [
+    536,
+    548
+   ],
+   "frames": [
+    537,
+    538,
+    547
+   ],
+   "kept_bridge": true,
+   "edge_fit": [
+    0.06811,
+    0.0675,
+    0.04867
+   ],
+   "edge_bridge": [
+    0.06959,
+    0.06777,
+    0.0771
+   ],
+   "run_median_gain": 0.00148
+  },
+  {
+   "side": "left",
+   "anchors": [
+    548,
+    553
+   ],
+   "frames": [
+    549,
+    550,
+    551,
+    552
+   ],
+   "kept_bridge": true,
+   "edge_fit": [
+    0.06989,
+    0.07558,
+    0.0722,
+    0.07445
+   ],
+   "edge_bridge": [
+    0.08638,
+    0.08058,
+    0.08136,
+    0.08175
+   ],
+   "run_median_gain": 0.00823
+  },
+  {
+   "side": "left",
+   "anchors": [
+    586,
+    597
+   ],
+   "frames": [
+    595
+   ],
+   "kept_bridge": true,
+   "edge_fit": [
+    0.0731
+   ],
+   "edge_bridge": [
+    0.08611
+   ],
+   "run_median_gain": 0.01301
+  },
+  {
+   "side": "left",
+   "anchors": [
+    617,
+    622
+   ],
+   "frames": [
+    618,
+    620
+   ],
+   "kept_bridge": true,
+   "edge_fit": [
+    0.04156,
+    null
+   ],
+   "edge_bridge": [
+    0.05359,
+    null
+   ],
+   "run_median_gain": 0.01203
+  },
+  {
+   "side": "left",
+   "anchors": [
+    844,
+    847
+   ],
+   "frames": [
+    845,
+    846
+   ],
+   "kept_bridge": true,
+   "edge_fit": [
+    0.06842,
+    0.06933
+   ],
+   "edge_bridge": [
+    0.07723,
+    0.07873
+   ],
+   "run_median_gain": 0.00911
+  },
+  {
+   "side": "left",
+   "anchors": [
+    847,
+    858
+   ],
+   "frames": [
+    848,
+    849,
+    850,
+    851,
+    852,
+    853
+   ],
+   "kept_bridge": false,
+   "edge_fit": [
+    0.06099,
+    0.06495,
+    0.04155,
+    0.03032,
+    0.03402,
+    0.03528
+   ],
+   "edge_bridge": [
+    0.07309,
+    0.05928,
+    0.02362,
+    0.01099,
+    0.01399,
+    0.02939
+   ],
+   "run_median_gain": -0.01191
+  },
+  {
+   "side": "left",
+   "anchors": [
+    865,
+    867
+   ],
+   "frames": [
+    866
+   ],
+   "kept_bridge": true,
+   "edge_fit": [
+    0.01038
+   ],
+   "edge_bridge": [
+    0.01785
+   ],
+   "run_median_gain": 0.00747
+  },
+  {
+   "side": "left",
+   "anchors": [
+    960,
+    964
+   ],
+   "frames": [
+    961,
+    962,
+    963
+   ],
+   "kept_bridge": false,
+   "edge_fit": [
+    0.04424,
+    0.04804,
+    0.04879
+   ],
+   "edge_bridge": [
+    -0.0003,
+    -0.03827,
+    0.00278
+   ],
+   "run_median_gain": -0.04601
+  },
+  {
+   "side": "left",
+   "anchors": [
+    977,
+    986
+   ],
+   "frames": [
+    985
+   ],
+   "kept_bridge": true,
+   "edge_fit": [
+    0.03902
+   ],
+   "edge_bridge": [
+    0.05461
+   ],
+   "run_median_gain": 0.01559
+  },
+  {
+   "side": "left",
+   "anchors": [
+    1048,
+    1052
+   ],
+   "frames": [
+    1049,
+    1050,
+    1051
+   ],
+   "kept_bridge": false,
+   "edge_fit": [
+    0.06072,
+    0.04365,
+    0.02019
+   ],
+   "edge_bridge": [
+    0.00727,
+    -0.02627,
+    0.03693
+   ],
+   "run_median_gain": -0.05345
+  },
+  {
+   "side": "left",
+   "anchors": [
+    1052,
+    1056
+   ],
+   "frames": [
+    1053,
+    1054,
+    1055
+   ],
+   "kept_bridge": false,
+   "edge_fit": [
+    0.04479,
+    0.04562,
+    0.06181
+   ],
+   "edge_bridge": [
+    0.00557,
+    -0.03381,
+    0.01566
+   ],
+   "run_median_gain": -0.04614
+  },
+  {
+   "side": "left",
+   "anchors": [
+    1099,
+    1106
+   ],
+   "frames": [
+    1100
+   ],
+   "kept_bridge": false,
+   "edge_fit": [
+    0.06045
+   ],
+   "edge_bridge": [
+    0.03958
+   ],
+   "run_median_gain": -0.02086
+  },
+  {
+   "side": "left",
+   "anchors": [
+    1152,
+    1163
+   ],
+   "frames": [
+    1153,
+    1154,
+    1155,
+    1156,
+    1157,
+    1158,
+    1159,
+    1160,
+    1161,
+    1162
+   ],
+   "kept_bridge": true,
+   "edge_fit": [
+    0.07079,
+    0.065,
+    0.05691,
+    0.05711,
+    0.05782,
+    0.05923,
+    0.06347,
+    0.06424,
+    0.06491,
+    0.06434
+   ],
+   "edge_bridge": [
+    0.08426,
+    0.0796,
+    0.0719,
+    0.07144,
+    0.06743,
+    0.07014,
+    0.07,
+    0.06922,
+    0.07047,
+    0.06809
+   ],
+   "run_median_gain": 0.01026
+  },
+  {
+   "side": "right",
+   "anchors": [
+    28,
+    31
+   ],
+   "frames": [
+    29,
+    30
+   ],
+   "kept_bridge": true,
+   "edge_fit": [
+    0.06068,
+    0.0561
+   ],
+   "edge_bridge": [
+    0.0643,
+    0.05886
+   ],
+   "run_median_gain": 0.00319
+  },
+  {
+   "side": "right",
+   "anchors": [
+    703,
+    713
+   ],
+   "frames": [
+    704
+   ],
+   "kept_bridge": true,
+   "edge_fit": [
+    0.05176
+   ],
+   "edge_bridge": [
+    0.0656
+   ],
+   "run_median_gain": 0.01385
+  },
+  {
+   "side": "right",
+   "anchors": [
+    716,
+    719
+   ],
+   "frames": [
+    717,
+    718
+   ],
+   "kept_bridge": true,
+   "edge_fit": [
+    0.05092,
+    0.049
+   ],
+   "edge_bridge": [
+    0.07646,
+    0.06955
+   ],
+   "run_median_gain": 0.02305
+  },
+  {
+   "side": "right",
+   "anchors": [
+    844,
+    850
+   ],
+   "frames": [
+    845
+   ],
+   "kept_bridge": true,
+   "edge_fit": [
+    0.06891
+   ],
+   "edge_bridge": [
+    0.07177
+   ],
+   "run_median_gain": 0.00286
+  },
+  {
+   "side": "right",
+   "anchors": [
+    850,
+    853
+   ],
+   "frames": [
+    851,
+    852
+   ],
+   "kept_bridge": false,
+   "edge_fit": [
+    0.03333,
+    0.04697
+   ],
+   "edge_bridge": [
+    0.03566,
+    0.03906
+   ],
+   "run_median_gain": -0.00279
+  },
+  {
+   "side": "right",
+   "anchors": [
+    865,
+    867
+   ],
+   "frames": [
+    866
+   ],
+   "kept_bridge": true,
+   "edge_fit": [
+    0.02017
+   ],
+   "edge_bridge": [
+    0.02831
+   ],
+   "run_median_gain": 0.00814
+  },
+  {
+   "side": "right",
+   "anchors": [
+    1049,
+    1053
+   ],
+   "frames": [
+    1050,
+    1051,
+    1052
+   ],
+   "kept_bridge": true,
+   "edge_fit": [
+    -0.00463,
+    -0.00358,
+    0.02143
+   ],
+   "edge_bridge": [
+    0.01772,
+    0.00327,
+    0.03277
+   ],
+   "run_median_gain": 0.01133
+  }
+ ],
+ "note": "A run is the frames bridged from the same two trusted frames. The bridge is kept where the median over the run of edge(bridge) - edge(fit) >= 0 (Daugman mean radial derivative at the shot radius over lid-free angles; track_gpu.edge_support)."
+}

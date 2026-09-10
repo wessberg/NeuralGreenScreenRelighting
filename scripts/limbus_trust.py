@@ -36,11 +36,16 @@ import eye_reflection_repair as r32
 import eye_soft_removal as esr
 
 
-def rederive(rows, corners, rate, ratio=2.5, window_s=1.0, max_gap_s=0.25, min_move=1.0):
-    """Mutates `rows` (limbus_fit rows). Returns {side: [(frame, moved_px), ...]}."""
+def rederive(rows, corners, rate, ratio=2.5, window_s=1.0, max_gap_s=0.25, min_move=1.0,
+             verify=None):
+    """Mutates `rows` (limbus_fit rows). Returns {side: [(frame, moved_px), ...]}.
+
+    `verify(proposals)`, if given, returns the set of (frame, side) whose bridge the image
+    accepts (see `image_verdict`); the others keep their fit and say why."""
     half = max(1, int(round(window_s * float(rate))))
     gap = max(1, int(round(max_gap_s * float(rate))))
     done = {}
+    proposals = []
     for side in r32.SIDES:
         eye = {}
         for row in rows:
@@ -77,12 +82,64 @@ def rederive(rows, corners, rate, ratio=2.5, window_s=1.0, max_gap_s=0.25, min_m
             if moved <= min_move:
                 eye[i]['trust'] = dict(distrusted=True, rederived=False, moved_px=round(moved, 3))
                 continue
-            eye[i]['trust'] = dict(distrusted=True, rederived=True, from_frames=[a, b],
-                                   fit_centre=[round(float(c), 4) for c in centre[i]],
-                                   moved_px=round(moved, 3))
-            eye[i]['smoothed_centre'] = [round(float(pred[0]), 4), round(float(pred[1]), 4)]
-            done[side].append((i, round(moved, 2)))
+            proposals.append(dict(frame=i, side=side, eye=eye[i], pred=pred, fit=centre[i],
+                                  from_frames=[a, b], moved=moved))
+    accepted = verify(proposals) if verify is not None else None
+    for p in proposals:
+        e, i, side = p['eye'], p['frame'], p['side']
+        trust = dict(distrusted=True, rederived=True, from_frames=p['from_frames'],
+                     fit_centre=[round(float(c), 4) for c in p['fit']],
+                     moved_px=round(p['moved'], 3))
+        trust.update(p.get('evidence', {}))
+        if accepted is not None and (i, side) not in accepted:
+            trust.update(rederived=False, bridge_centre=[round(float(c), 4) for c in p['pred']],
+                         reason='the image supports the fit over the bridge on this run')
+            e['trust'] = trust
+            continue
+        e['trust'] = trust
+        e['smoothed_centre'] = [round(float(p['pred'][0]), 4), round(float(p['pred'][1]), 4)]
+        done[side].append((i, round(p['moved'], 2)))
     return done
+
+
+def image_verdict(shot, points, topology):
+    """`verify` for `rederive`: ask the IMAGE whether each bridged run is right.
+
+    Round 39's first version trusted the bridge whenever the fit's SE was high, and at
+    source 1049-1055 left (a fast glance) that painted a displaced canonical iris over her
+    eye -- nightmare fuel on frames round 38 had left alone. The fits there were uncertain
+    because of motion blur but RIGHT: the eye moved against its corners, which is exactly
+    what the bridge assumes it does not do. A true slide (243-245 left) is the opposite: the
+    fit sits on the wrong edge and the bridge on the iris.
+
+    So both centres are scored with the fit's own objective -- Daugman's mean radial
+    derivative around the circle of the shot radius, over the angles clear of the lids
+    (track_gpu.edge_support) -- and the bridge is kept only where the image supports it at
+    least as well as the fit. Decided per RUN (the frames bridged from the same two trusted
+    frames), by the median gain: a run is one hypothesis, and single frames inside a glance
+    can happen to prefer either circle (1051 left). A run where no frame can be judged (the
+    lids cover the arc) keeps the bridge; the eye pass does not paint a closed eye anyway."""
+    import track_gpu as T
+
+    def verify(proposals):
+        items = [(p['frame'], p['side'], float(p['eye']['axes'][0]), [p['fit'], p['pred']])
+                 for p in proposals]
+        scores = T.edge_support(shot, items, points, topology)
+        runs = {}
+        for p, (sf, sp) in zip(proposals, scores):
+            p['evidence'] = dict(edge_fit=None if not np.isfinite(sf) else round(sf, 5),
+                                 edge_bridge=None if not np.isfinite(sp) else round(sp, 5))
+            runs.setdefault((p['side'],) + tuple(p['from_frames']), []).append((p, sp - sf))
+        accepted = set()
+        for key, lst in runs.items():
+            gains = [g for _, g in lst if np.isfinite(g)]
+            gain = float(np.median(gains)) if gains else None
+            for p, _ in lst:
+                p['evidence']['run_median_gain'] = None if gain is None else round(gain, 5)
+                if gain is None or gain >= 0:
+                    accepted.add((p['frame'], p['side']))
+        return accepted
+    return verify
 
 
 def main():
@@ -94,21 +151,34 @@ def main():
     ap.add_argument('--ratio', type=float, default=2.5)
     ap.add_argument('--window', type=float, default=1.0, help='seconds')
     ap.add_argument('--max-gap', type=float, default=0.25, help='seconds')
+    ap.add_argument('--no-verify', action='store_true',
+                    help="bridge every distrusted run without asking the image (round 39's "
+                         "first version, which wrote limbus_track_t.json for r39_fixE and "
+                         "broke 848-853 and 1049-1055 left); see image_verdict()")
     args = ap.parse_args()
     shot = from_args(args)
     data = json.loads((shot.relight / args.track).read_text(encoding='utf-8'))
     meta = json.loads((shot.relight / 'face_landmarks.json').read_text())
     with np.load(shot.relight / 'face_landmarks.npz') as z:
-        corners = esr.eye_corners_mid(z['points'], z['found'], meta['topology'])
+        points = z['points']
+        corners = esr.eye_corners_mid(points, z['found'], meta['topology'])
+    verify = None if args.no_verify else image_verdict(shot, points, meta['topology'])
     done = rederive(data['rows'], corners, shot.frame_rate, args.ratio, args.window,
-                    args.max_gap)
+                    args.max_gap, verify=verify)
+    kept = {s: sorted(int(row['frame']) for row in data['rows'] for e in row['eyes']
+                      if e['side'] == s and (e.get('trust') or {}).get('bridge_centre'))
+            for s in r32.SIDES}
     data['trust'] = dict(source_track=args.track, source_sha256=r32.sha(shot.relight / args.track),
                          ratio=args.ratio, window_s=args.window, max_gap_s=args.max_gap,
+                         verified=not args.no_verify,
                          rederived={s: len(v) for s, v in done.items()},
+                         bridge_refused={s: len(v) for s, v in kept.items()},
                          code_sha256=r32.sha(Path(__file__)))
     r32.write_json(shot.relight / args.out, data)
     for s, v in done.items():
         print(s, len(v), 'rederived:', v)
+    for s, v in kept.items():
+        print(s, len(v), 'bridge refused by the image (fit kept):', v)
     print('wrote', shot.relight / args.out)
 
 
