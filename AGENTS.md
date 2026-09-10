@@ -33,6 +33,48 @@ and **rejected**, for colour AND shape flicker and a sometimes-brown pupil, beca
 every term of the fill was refit per frame from a few dozen pixels. **No per-frame-refit
 fill can be temporally stable at a 24-pixel iris.** See `rounds/round32.md`.
 
+**Round 36 — the artist was right that we were PAINTING ON HER LASHES, and round 35's
+"it is illumination, not masking" was the wrong half.** Measured over all 300 eyes,
+**263 of 273 had paint on or above the lash line** — the normal case, not an occasional
+failure. `eye_soft_removal.lash_ceiling()` now reads a lash line from her own photograph
+per column and is applied LAST, after the fill, after the removal's excursion past the
+fitted lid and after the footprint union, so it outranks all three; it can only ever
+REMOVE paint. Eyes painting above the lash: **263 → 0**.
+
+**His rule is physical and settled: a corneal reflection is never on a lash or a lid, so
+nothing may be drawn there.** `eyelid_fit.py` is audited to 0.43 px and is still
+confidently wrong where it matters — seven pixels high on the LID CREASE at source 727
+left, abstaining entirely at 723 left — so a lid fit alone cannot be the bound.
+
+**Do not rebuild the specular clamp.** Five versions are recorded in `rounds/round36.md`
+§3 with the damage each did: by level it took her LID SKIN (the specular is BRIGHTER than
+her eyelid), narrowed to compact blobs it took her WET LID MARGIN highlight, per column it
+punched a comb through the fill, bounded to the round-32 footprint it still put a median
+24 px on her lashes, and grown to the footprint's bright component 164 eyes. What is
+needed instead is a lash line that is right on a HALF-CLOSED eye. Also do not set the
+undershoot mask above legal black: at 0.22 it swallows the lash itself (real undershoot
+clips at 0.02–0.09), which made a nearly-correct ceiling look hopeless for a pass.
+
+**The lid shadow is modelled and only a quarter corrected.** `fit_lid_shadow()` fits
+`1 + A·exp(−depth/tau)` below the fitted lid margin, ONE shape per eye for the shot with
+only a scalar amplitude per frame. A is signed and must be: the canonical iris is too dark
+near the lash on the left eye (A=+0.44) and too bright on the right (A=−0.115). The
+residual is a DIP — too dark 3–5 px below the margin, slightly bright at 6–8 — which one
+exponential cannot make.
+
+**`ncc = 0.0` is a placeholder, not a correlation.** `atl.build`'s `register()` returns
+None when it finds no overlap and leaves `ncc` at its initialiser; source 843, 846 and 848
+left carried exactly 0.0 between neighbours at 0.985/0.988/0.975 and were declined
+outright, leaving the whole softbox in frame — the artist's "glimpses in the last seconds".
+With the registration FROZEN every frame uses the same median offset, so an unregistered
+frame is placed as well as its neighbours and is no longer vetoed.
+
+**`review_r36_atlas.py` is the artist's acceptance tool and he asked for it by name:** all
+300 eyes, source above result at eye scale, SOFTBOX / LASH / STEP burned onto each tile.
+Run it before and after every change and look at the sheets, not just the summary line.
+Give its LASH test an independent lash reference first — it currently calls
+`lash_ceiling()`, so it shares code with what it grades.
+
 **Round 35 — all three eye anchors now fit the IMAGE; the remaining seam is the LID
 SHADOW, not the mask.** The limbus (`limbus_fit.py`) and both eyelid margins
 (`eyelid_fit.py`) are fitted to the photograph and audited by estimators that share
@@ -467,7 +509,7 @@ Every stage takes `--shot`. Interpreter is the pipeline venv unless the row says
 | 5 | face track | `face_track.py` (facetrack venv) | `relight/face_track.json`, `relight/face_landmarks.npz` + `.json` | mediapipe; needs its own venv. Also stores ALL 478 landmarks, blink, eyelid aperture, head pose |
 | 5b | **corneal geometry** | `eye_geometry.py` | `relight/eye_geometry.json` | corneal sphere per eye, and the PLATE's key light solved from its own catchlights |
 | 5c | **limbus track** | `limbus_fit.py` | `relight/limbus_track.json` | the limbus fitted to the IMAGE EDGE, one radius per shot, no smoothing. Audited by `audit_r35_limbus.py`; drawn on every frame by `review_r35_track.py` |
-| 5d | **eyelid track** | `eyelid_fit.py` | `relight/eyelid_track.json` | both lid margins fitted to the IMAGE, robust parabola per lid, curvature one per eye per shot |
+| 5d | **eyelid track** | `eyelid_fit.py` | `relight/eyelid_track.json` | both lid margins fitted to the IMAGE, robust parabola per lid, curvature one per eye per shot. **Not the paint bound** — see `lash_ceiling()` |
 | 6 | **normals** | `neural_normals.py` | `relight/normals/*.npz` | see below |
 | 7 | **albedo + skin mask** | `make_albedo.py` | `relight/albedo/`, `relight/skin_mask/` | plate ÷ `E_source(normals)`; needed before the plate can be re-lit, or it is lit twice |
 | 7b | **proxy geometry** | `make_proxy_mesh.py` | `relight/proxy/*.npz` | see below; carries UVs |
@@ -479,7 +521,7 @@ Every stage takes `--shot`. Interpreter is the pipeline venv unless the row says
 | 11c | **ratio irradiance** | `stress_proxy.py --ratio` (Blender) | `composite/ratio_render/*.exr` | neutral albedo at PLATE resolution and the PLATE lens |
 | 11d | ~~catchlight~~ | `stress_proxy.py --catchlight` (Blender) | `composite/catchlight_render/*.exr` | renderer looks sound and its validator passes; **the compositing of it is rejected and `--catchlight` defaults to 0** |
 | 11e | **corneal catchlight** | `render_eye_catchlight.py` (Blender) | `composite/r34_catchlight/*.exr` | the scene's own reflection in a corneal cap; validated by `validate_eye_catchlight.py`. PARKED by the artist |
-| 11f | **eye: one canonical iris** | `eye_soft_removal.py --fill-iris` | `composite/<name>/` | built once in the registered eye frame from `eye_video_inpaint.py` / `unreflect_diffuse.py` material; audited by `audit_r34_track.py`, `audit_r34_flicker.py`, `audit_r35_defects.py` |
+| 11f | **eye: one canonical iris** | `eye_soft_removal.py --fill-iris` | `composite/<name>/` | built once in the registered eye frame; the LASH CEILING (`lash_ceiling()`) has the last word on where paint may land and the LID SHADOW (`fit_lid_shadow()`) gives it her lid's gradient. Audited by `review_r36_atlas.py` (all 300 eyes), `audit_r35_defects.py`, `audit_r36_seam.py`, `audit_r34_track.py`, `audit_r34_flicker.py` |
 | 12 | **ratio composite** | `composite_ratio.py` | `composite/ratio/` | `out = plate × R` by default. `--plate-specular remove` and `--catchlight` are rejected experiments |
 | 12b | composite (gain map) | `composite_shot.py` | `composite/`, `intermediate/linear_4k/` | legacy path; loads background **per frame** |
 | 12c | **review video** | `review_video.py` | `final/*.mp4` | what the artist watches; `--compare` puts the before on the LEFT with both halves labelled |
