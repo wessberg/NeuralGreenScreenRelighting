@@ -184,6 +184,292 @@ def remap_single(src, mx, my):
     return out
 
 
+_CUBIC_TAB = None
+
+
+def _cubic_tab():
+    """cv2's float bicubic table: 32 fractional positions x 4 coefficients, a = -0.75."""
+    global _CUBIC_TAB
+    if _CUBIC_TAB is None:
+        A = np.float32(-0.75)
+        rows = []
+        for k in range(32):
+            x = np.float32(k / 32.0)
+            c0 = ((A * (x + 1) - 5 * A) * (x + 1) + 8 * A) * (x + 1) - 4 * A
+            c1 = ((A + 2) * x - (A + 3)) * x * x + 1
+            c2 = ((A + 2) * (1 - x) - (A + 3)) * (1 - x) * (1 - x) + 1
+            c3 = np.float32(1) - c0 - c1 - c2
+            rows.append(np.array([c0, c1, c2, c3], np.float32))
+        _CUBIC_TAB = torch.as_tensor(np.stack(rows), device=DEV)
+    return _CUBIC_TAB
+
+
+def remap_cubic(src, mx, my, hw=None):
+    """cv2.remap(src, mx, my, INTER_CUBIC, BORDER_REPLICATE) for float32, bit exact.
+
+    src (B, H, W); mx, my (B, ...) float32. `hw` (B, 2) int optionally gives each item's
+    TRUE height and width inside a larger canvas, so the replicate border is its own. cv2
+    sums the 16 taps row by row where the 4x4 block is inside the image and one tap at a
+    time from zero where it touches the border; both are reproduced.
+    """
+    B, H, W = src.shape
+    shape = mx.shape
+    mxf, myf = mx.reshape(B, -1), my.reshape(B, -1)
+    ix = torch.round(mxf * 32).to(torch.int64)
+    iy = torch.round(myf * 32).to(torch.int64)
+    x0, y0 = (ix >> 5) - 1, (iy >> 5) - 1
+    tab = _cubic_tab()
+    cx, cy = tab[ix & 31], tab[iy & 31]               # (B, N, 4)
+    if hw is None:
+        hh = torch.full((B, 1), H, device=DEV, dtype=torch.int64)
+        ww = torch.full((B, 1), W, device=DEV, dtype=torch.int64)
+    else:
+        hh, ww = hw[:, 0:1].to(torch.int64), hw[:, 1:2].to(torch.int64)
+    flat = src.reshape(B, H * W)
+    interior = (x0 >= 0) & (x0 < ww - 3) & (y0 >= 0) & (y0 < hh - 3)
+    total = None
+    seq = None
+    for i in range(4):
+        yy = torch.minimum(torch.clamp_min(y0 + i, 0), hh - 1)
+        row = None
+        for j in range(4):
+            xx = torch.minimum(torch.clamp_min(x0 + j, 0), ww - 1)
+            v = torch.gather(flat, 1, yy * W + xx)
+            t = v * (cy[..., i] * cx[..., j])
+            row = t if row is None else row + t
+            seq = t if seq is None else seq + t
+        total = row if total is None else total + row
+    return torch.where(interior, total, seq).reshape(shape)
+
+
+def filter_sep(x, kx, ky, border='reflect101'):
+    """cv2.sepFilter2D-style separable filter on (B, h, w) float32 with the given 1-D
+    kernels (numpy), rows then columns, BORDER_REPLICATE or BORDER_REFLECT_101."""
+    B, h, w = x.shape
+    rx, ry = len(kx) // 2, len(ky) // 2
+
+    def idx(n, r):
+        i = np.arange(-r, n + r)
+        if border == 'replicate':
+            i = np.clip(i, 0, n - 1)
+        else:
+            i = np.abs(i)
+            i = np.where(i >= n, 2 * (n - 1) - i, i)
+        return torch.as_tensor(i, device=DEV)
+
+    xp = x[:, :, idx(w, rx)]
+    row = None
+    for k, c in enumerate(kx):
+        if c == 0:
+            continue
+        t = float(np.float32(c)) * xp[:, :, k:k + w]
+        row = t if row is None else row + t
+    yp = row[:, idx(h, ry), :]
+    col = None
+    for k, c in enumerate(ky):
+        if c == 0:
+            continue
+        t = float(np.float32(c)) * yp[:, k:k + h, :]
+        col = t if col is None else col + t
+    return col
+
+
+def gaussian_k(x, ksize, sigma, border='reflect101'):
+    """cv2.GaussianBlur(x, (ksize, ksize), sigma, borderType) on float32 (B, h, w)."""
+    import cv2
+    k = cv2.getGaussianKernel(ksize, sigma, cv2.CV_32F)[:, 0]
+    return filter_sep(x, k, k, border)
+
+
+def sobel3(x, dx, dy):
+    """cv2.Sobel(x, CV_32F, dx, dy, ksize=3), BORDER_REFLECT_101."""
+    d, s = np.array([-1.0, 0.0, 1.0]), np.array([1.0, 2.0, 1.0])
+    return filter_sep(x, d if dx else s, d if dy else s, 'reflect101')
+
+
+# --------------------------------------------------------------------------- exact cv2/numpy
+# cv2's float separable filters and numpy's float32 matmul run 8-wide SIMD with FMA on this
+# machine's build, and plain multiply-add on each row's scalar tail. Reproduced below, so the
+# trackers' gradient fields are the CPU's bit for bit (pinned by probe, round 39; checked by
+# --selftest). An FMA is a float64 multiply-add rounded once to float32.
+def fma32(a, b, c):
+    """round32(a * b + c) with the product exact (float64)."""
+    return (a.to(F64) * b + c.to(F64)).to(F32)
+
+
+def _tail_mask(w, vec=8):
+    nv = (w // vec) * vec
+    return torch.arange(w, device=DEV) >= nv          # True on the scalar tail
+
+
+def luma_dot_np(s, coeff):
+    """numpy's `s @ coeff` for float32 s (B, h, w, 3), coeff (3,) -- the BLAS gemv each
+    image row goes through: 8-pixel blocks an FMA chain from x0; then a 4-pixel block and a
+    last single pixel an FMA chain from x1; a 2-pixel block plain (x0 + x1) + x2."""
+    c0, c1, c2 = (float(np.float32(c)) for c in coeff)
+    x0, x1, x2 = s[..., 0], s[..., 1], s[..., 2]
+    p0, p1, p2 = x0 * c0, x1 * c1, x2 * c2
+    v8 = fma32(x2, c2, fma32(x1, c1, p0))
+    v41 = fma32(x2, c2, fma32(x0, c0, p1))
+    v2 = (p0 + p1) + p2
+    w = s.shape[2]
+    nv8 = (w // 8) * 8
+    kind = np.zeros(w, np.int64)                      # 0: 8-block, 1: 4/1 chain, 2: pair
+    rest = w - nv8
+    pos = nv8
+    if rest >= 4:
+        kind[pos:pos + 4] = 1
+        pos += 4
+    if w - pos >= 2:
+        kind[pos:pos + 2] = 2
+        pos += 2
+    kind[pos:] = 1
+    kt = torch.as_tensor(kind, device=DEV).view(1, 1, -1)
+    return torch.where(kt == 0, v8, torch.where(kt == 2, v2, v41))
+
+
+def _pad_idx(n, r, border):
+    i = np.arange(-r, n + r)
+    if border == 'replicate':
+        i = np.clip(i, 0, n - 1)
+    else:
+        i = np.abs(i)
+        i = np.where(i >= n, 2 * (n - 1) - i, i)
+    return torch.as_tensor(i, device=DEV)
+
+
+def cv_gaussian(x, ksize, sigma, border):
+    """cv2.GaussianBlur(x, (k, k), sigma, border) for float32 (B, h, w), k >= 7 (the
+    generic row filter and the symmetric column filter), bit exact."""
+    import cv2
+    k = cv2.getGaussianKernel(ksize, sigma, cv2.CV_32F)[:, 0]
+    r = ksize // 2
+    B, h, w = x.shape
+    tail = _tail_mask(w).view(1, 1, -1)
+    xp = x[:, :, _pad_idx(w, r, border)]
+    taps = [xp[:, :, j:j + w] for j in range(ksize)]
+    kf = [float(np.float32(c)) for c in k]
+    vec = taps[0] * kf[0]
+    for j in range(1, ksize):
+        vec = fma32(taps[j], kf[j], vec)
+    sc = taps[0] * kf[0]
+    for j in range(1, ksize):
+        sc = sc + taps[j] * kf[j]
+    row = torch.where(tail, sc, vec)
+    yp = row[:, _pad_idx(h, r, border), :]
+    ctr = yp[:, r:r + h, :] * kf[r]
+    vec, sc = ctr, ctr
+    for j in range(1, r + 1):
+        pair = yp[:, r + j:r + j + h, :] + yp[:, r - j:r - j + h, :]
+        vec = fma32(pair, kf[r + j], vec)
+        sc = sc + pair * kf[r + j]
+    return torch.where(tail, sc, vec)
+
+
+def cv_sobel3(x, dx, dy):
+    """cv2.Sobel(x, CV_32F, dx, dy, ksize=3) (BORDER_REFLECT_101), bit exact: cv2's small
+    symmetric filters sum (a+c)+2b on 8-wide vectors, (a+2b)+c on the scalar tail in pairs
+    and (a+c)+2b on a trailing odd pixel; the antisymmetric tap is one subtraction."""
+    B, h, w = x.shape
+    if dy:                          # smooth along x, derivative along y
+        xp = x[:, :, _pad_idx(w, 1, 'reflect101')]
+        a, b, c = xp[:, :, :w], xp[:, :, 1:w + 1], xp[:, :, 2:w + 2]
+        v1 = (a + c) + 2 * b
+        v2 = (a + 2 * b) + c
+        nv = (w // 8) * 8
+        col = torch.arange(w, device=DEV)
+        odd_last = ((w - nv) % 2 == 1) & (col == w - 1)
+        row = torch.where((col < nv) | odd_last, v1, v2)
+        yp = row[:, _pad_idx(h, 1, 'reflect101'), :]
+        return yp[:, 2:h + 2, :] - yp[:, :h, :]
+    xp = x[:, :, _pad_idx(w, 1, 'reflect101')]
+    row = xp[:, :, 2:w + 2] - xp[:, :, :w]
+    yp = row[:, _pad_idx(h, 1, 'reflect101'), :]
+    a, b, c = yp[:, :h, :], yp[:, 1:h + 1, :], yp[:, 2:h + 2, :]
+    v1 = (a + c) + (b + b)
+    v2 = (a + 2 * b) + c
+    return torch.where(_tail_mask(w).view(1, 1, -1), v2, v1)
+
+
+_CUBIC_TAB16 = None
+
+
+def _cubic_tab16():
+    """cv2's BicubicTab_f: for each (fy, fx) the 16 weights vy[i] * vx[j], float32."""
+    global _CUBIC_TAB16
+    if _CUBIC_TAB16 is None:
+        t = _cubic_tab().cpu().numpy()                 # (32, 4)
+        tab = (t[:, None, :, None] * t[None, :, None, :]).astype(np.float32)  # fy,fx,i,j
+        _CUBIC_TAB16 = torch.as_tensor(tab.reshape(32 * 32, 16), device=DEV)
+    return _CUBIC_TAB16
+
+
+class CubicSampler:
+    """cv2.remap INTER_CUBIC / BORDER_REPLICATE of several fields at shared points, bit
+    exact, with ONE gather of a precomputed 4x4 neighbourhood per sample.
+
+    fields: list of (B, H, W) float32 canvases; hw (B, 2) each item's true size (its
+    replicate border). Bases (the 4x4 block's top-left tap) are clamped to [-3, W-1] --
+    beyond that every tap clamps to the same edge pixel, so the value is unchanged.
+    """
+
+    def __init__(self, fields, hw):
+        self.nf = len(fields)
+        B, H, W = fields[0].shape
+        self.B, self.H, self.W = B, H, W
+        self.hw = hw.to(torch.int64)
+        self.P = 3
+        by = torch.arange(-3, H, device=DEV)          # base rows
+        bx = torch.arange(-3, W, device=DEV)
+        self.NY, self.NX = by.numel(), bx.numel()
+        hh = self.hw[:, 0].view(B, 1, 1)
+        ww = self.hw[:, 1].view(B, 1, 1)
+        nb = []
+        for f in fields:
+            flat = f.reshape(B, H * W)
+            taps = []
+            for i in range(4):
+                yy = torch.minimum(torch.clamp_min(by.view(1, -1, 1) + i, 0), hh - 1)
+                for j in range(4):
+                    xx = torch.minimum(torch.clamp_min(bx.view(1, 1, -1) + j, 0), ww - 1)
+                    idx = (yy * W + xx).expand(B, self.NY, self.NX).reshape(B, -1)
+                    taps.append(torch.gather(flat, 1, idx))
+            nb.append(torch.stack(taps, -1))           # (B, NY*NX, 16)
+        self.nb = torch.cat(nb, -1)                    # (B, NY*NX, 16 * nf)
+
+    def __call__(self, mx, my, items=None):
+        """Samples at float32 maps (b, ...) for the items `items` (a slice; all if None)."""
+        items = slice(0, self.B) if items is None else items
+        nb, hw = self.nb[items], self.hw[items]
+        B = nb.shape[0]
+        shape = mx.shape
+        mxf, myf = mx.reshape(B, -1), my.reshape(B, -1)
+        ix = torch.round(mxf * 32).to(torch.int64)
+        iy = torch.round(myf * 32).to(torch.int64)
+        x0, y0 = (ix >> 5) - 1, (iy >> 5) - 1
+        ww, hh = hw[:, 1:2], hw[:, 0:1]
+        interior = (x0 >= 0) & (x0 < ww - 3) & (y0 >= 0) & (y0 < hh - 3)
+        xb = torch.clamp(x0, -3, self.W - 1) + 3
+        yb = torch.clamp(y0, -3, self.H - 1) + 3
+        base = yb * self.NX + xb
+        vals = nb[torch.arange(B, device=DEV).view(B, 1), base]           # (B, N, 16*nf)
+        tab = _cubic_tab()
+        cy, cx = tab[iy & 31], tab[ix & 31]                              # (B, N, 4)
+        wts = (cy[..., :, None] * cx[..., None, :]).reshape(B, -1, 16)   # cv2's table entries
+        outs = []
+        for f in range(self.nf):
+            v = vals[..., 16 * f:16 * (f + 1)]
+            t = v * wts
+            rows = [((t[..., 4 * i] + t[..., 4 * i + 1]) + t[..., 4 * i + 2]) + t[..., 4 * i + 3]
+                    for i in range(4)]
+            total = ((rows[0] + rows[1]) + rows[2]) + rows[3]
+            seq = t[..., 0]
+            for q in range(1, 16):
+                seq = seq + t[..., q]
+            outs.append(torch.where(interior, total, seq).reshape(shape))
+        return outs
+
+
 def remap_nearest(src, mx, my):
     """cv2.remap(..., INTER_NEAREST, BORDER_CONSTANT): cvRound of the map, 0 outside."""
     squeeze = src.dim() == 3
@@ -357,16 +643,19 @@ def edt_precise(mask, chunk=48):
 
 
 def resize_area_int(x, f):
-    """cv2.resize(x, (w/f, h/f), INTER_AREA) for an integer factor: the block summed in
-    row-major order in float32, times 1/f^2."""
+    """cv2.resize(x, (w/f, h/f), INTER_AREA) for an integer factor, bit exact for f = 4:
+    cv2's fast area path adds each block ROW as ((a0 + a1) + a2) + a3 and the rows into the
+    running sum in order, in float32, then multiplies by 1/f^2."""
     B, H, W = x.shape
     h, w = H // f, W // f
     blocks = x[:, :h * f, :w * f].reshape(B, h, f, w, f)
     acc = None
     for j in range(f):
+        row = None
         for i in range(f):
             v = blocks[:, :, j, :, i]
-            acc = v if acc is None else acc + v
+            row = v if row is None else row + v
+        acc = row if acc is None else acc + row
     return acc * float(np.float32(1.0 / (f * f)))
 
 
@@ -494,6 +783,23 @@ def rgb8_half(x16):
     return _LUT8[idx]
 
 
+_SRGB_LUT = None
+
+
+def srgb_half(x16):
+    """color_pipeline.linear_to_srgb of a HALF-float tensor, float32, bit exact: numpy's own
+    result for each of the 65536 halves."""
+    global _SRGB_LUT
+    if _SRGB_LUT is None:
+        from color_pipeline import linear_to_srgb
+        allh = np.arange(65536, dtype=np.uint16).view(np.float16).astype(np.float32)
+        with np.errstate(invalid='ignore', over='ignore'):
+            lut = linear_to_srgb(np.nan_to_num(allh, nan=0.0, posinf=0.0, neginf=0.0))
+        _SRGB_LUT = torch.as_tensor(lut.astype(np.float32), device=DEV)
+    idx = x16.contiguous().view(torch.int16).to(torch.int64) & 0xFFFF
+    return _SRGB_LUT[idx]
+
+
 def interp(x, xp, fp):
     """np.interp(x, xp, fp) for float64: x (B, ...), xp (K,) shared, fp (B, K)."""
     B = x.shape[0]
@@ -547,6 +853,51 @@ def selftest():
                             cv2.INTER_LINEAR, borderMode=cv2.BORDER_CONSTANT)
             bad += int((ref != got[b, k]).sum())
     report['remap_separable_mismatch'] = bad
+    img2 = rng.random((B, 50, 57), dtype=np.float32)
+    mx2 = rng.uniform(-3, 59, (B, 30, 40)).astype(np.float32)
+    my2 = rng.uniform(-3, 52, (B, 30, 40)).astype(np.float32)
+    ref = np.stack([cv2.remap(img2[b], mx2[b], my2[b], cv2.INTER_CUBIC,
+                              borderMode=cv2.BORDER_REPLICATE) for b in range(B)])
+    got = remap_cubic(as_t(img2), as_t(mx2), as_t(my2)).cpu().numpy()
+    report['remap_cubic_replicate_mismatch'] = int((ref != got).sum())
+    canvas = np.zeros((B, 60, 64), np.float32)
+    canvas[:, :50, :57] = img2
+    got = remap_cubic(as_t(canvas), as_t(mx2), as_t(my2),
+                      hw=as_t(np.array([[50, 57]] * B))).cpu().numpy()
+    report['remap_cubic_canvas_mismatch'] = int((ref != got).sum())
+    ref = np.stack([cv2.GaussianBlur(img2[b], (7, 7), 1.0, borderType=cv2.BORDER_REPLICATE)
+                    for b in range(B)])
+    got = gaussian_k(as_t(img2), 7, 1.0, 'replicate').cpu().numpy()
+    report['gauss7_replicate_maxdiff'] = float(np.abs(ref - got).max())
+    for wdt in (57, 61, 64, 70, 99):
+        im = rng.random((B, 41, wdt), dtype=np.float32)
+        ref = np.stack([cv2.GaussianBlur(im[b], (7, 7), 1.0, borderType=cv2.BORDER_REPLICATE)
+                        for b in range(B)])
+        got = cv_gaussian(as_t(im), 7, 1.0, 'replicate').cpu().numpy()
+        report['cv_gauss7_w%d_mismatch' % wdt] = int((ref != got).sum())
+        for dx, dy in ((1, 0), (0, 1)):
+            ref = np.stack([cv2.Sobel(im[b], cv2.CV_32F, dx, dy, ksize=3) for b in range(B)])
+            got = cv_sobel3(as_t(im), dx, dy).cpu().numpy()
+            report['cv_sobel_%d%d_w%d_mismatch' % (dx, dy, wdt)] = int((ref != got).sum())
+        s3 = rng.random((B, 41, wdt, 3), dtype=np.float32)
+        L = np.float32([0.2126, 0.7152, 0.0722])
+        ref = s3 @ L
+        got = luma_dot_np(as_t(s3), L).cpu().numpy()
+        report['luma_dot_w%d_mismatch' % wdt] = int((ref != got).sum())
+    samp = CubicSampler([as_t(canvas), as_t(canvas * 2)], as_t(np.array([[50, 57]] * B)))
+    g1, g2 = samp(as_t(mx2), as_t(my2))
+    ref = np.stack([cv2.remap(img2[b], mx2[b], my2[b], cv2.INTER_CUBIC,
+                              borderMode=cv2.BORDER_REPLICATE) for b in range(B)])
+    ref2 = np.stack([cv2.remap(img2[b] * 2, mx2[b], my2[b], cv2.INTER_CUBIC,
+                               borderMode=cv2.BORDER_REPLICATE) for b in range(B)])
+    report['cubic_sampler_mismatch'] = int((ref != g1.cpu().numpy()).sum()
+                                           + (ref2 != g2.cpu().numpy()).sum())
+    ref = np.stack([cv2.Sobel(img2[b], cv2.CV_32F, 0, 1, ksize=3) for b in range(B)])
+    got = sobel3(as_t(img2), 0, 1).cpu().numpy()
+    report['sobel_dy_maxdiff'] = float(np.abs(ref - got).max())
+    ref = np.stack([cv2.Sobel(img2[b], cv2.CV_32F, 1, 0, ksize=3) for b in range(B)])
+    got = sobel3(as_t(img2), 1, 0).cpu().numpy()
+    report['sobel_dx_maxdiff'] = float(np.abs(ref - got).max())
     ref = np.stack([cv2.remap(src[b, ..., 0], mx[b], my[b], cv2.INTER_NEAREST,
                               borderMode=cv2.BORDER_CONSTANT) for b in range(B)])
     got = remap_nearest(as_t(src[..., 0]), as_t(mx), as_t(my)).cpu().numpy()

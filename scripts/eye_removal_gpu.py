@@ -841,7 +841,9 @@ def lid_line(raw, excl, group, curvature, min_span=0.6, tukey=2.0, iterations=6)
         r_1 = (wgt * target).sum(1)
         M = torch.stack([torch.stack([s_uu, s_u], -1), torch.stack([s_u, s_1], -1)], -2)
         det = s_uu * s_1 - s_u * s_u
-        good &= det != 0
+        # numpy raises on an exactly zero LU pivot, which a single weighted sample gives;
+        # the GPU determinant of that rank-1 matrix is tiny but not zero (track_gpu.py).
+        good &= (det != 0) & ((wgt > 0).sum(1) >= 2)
         Mi = torch.where(good.view(B, 1, 1), M, torch.eye(2, dtype=F64, device=DEV).expand(B, 2, 2))
         beta = torch.linalg.solve(Mi, torch.stack([r_u, r_1], -1))
         resid = target - (beta[:, :1] * u_all + beta[:, 1:])

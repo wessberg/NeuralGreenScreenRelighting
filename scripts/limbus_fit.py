@@ -492,6 +492,116 @@ class Track:
         return self.rows.get((int(frame), side))
 
 
+def gpu_pass_factory(shot, indices, landmarks, topology, margin=10, io_workers=12):
+    """`pass_over` on the GPU: every eye of the clip fitted in batches (track_gpu.py).
+
+    Each frame is read once (threaded) and only a crop around each eye's landmark is kept
+    on the device, wide enough for either pass's window (the first pass sizes it from the
+    landmark, the second from the shot radius)."""
+    import torch
+    from concurrent.futures import ThreadPoolExecutor
+    import track_gpu as T
+    import eye_gpu as G
+    th = np.arange(ANGLES, dtype=np.float32) * (2 * np.pi / ANGLES)
+    th_cos, th_sin = G.as_t(np.cos(th)), G.as_t(np.sin(th))
+    H = W = None
+    crops = {}
+    base = {}
+    for i in indices:
+        if not (landmarks['found'][i] and np.isfinite(landmarks['points'][i]).all()):
+            continue
+        for side in r32.SIDES:
+            lm, lax, lay = r32.limbus_ellipse(landmarks['points'][i], topology['iris_' + side])
+            base[(i, side)] = (lm, lax, lay)
+
+    def read(i):
+        raw = cv2.imread(str(shot.fg(i)), cv2.IMREAD_UNCHANGED)
+        if raw is None or raw.dtype != np.float32 or raw.ndim != 3:
+            raise ValueError('Expected scene-linear keyed RGB EXR at %s' % shot.fg(i))
+        return raw[..., ::-1]
+
+    with ThreadPoolExecutor(max_workers=io_workers) as pool:
+        futures = {i: pool.submit(read, i) for i in indices}
+        for i in indices:
+            rgb = futures.pop(i).result()
+            H, W = rgb.shape[:2]
+            for side in r32.SIDES:
+                got = base.get((i, side))
+                if got is None:
+                    continue
+                lm, lax, lay = got
+                if not np.isfinite([lax, lay]).all() or min(lax, lay) < 4:
+                    continue
+                half = int(np.ceil(max(lax, lay) * 1.7 * 1.6 + margin + 4))
+                cx, cy = int(np.floor(lm[0])), int(np.floor(lm[1]))
+                bx0, by0 = max(0, cx - half), max(0, cy - half)
+                bx1, by1 = min(W, cx + half + 1), min(H, cy + half + 1)
+                crops[(i, side)] = (torch.as_tensor(np.ascontiguousarray(
+                    rgb[by0:by1, bx0:bx1]), device=G.DEV).half(), bx0, by0)
+
+    def pass_over(radius_by_side):
+        recs = {}
+        groups = {}
+        for (i, side), (lm, lax, lay) in base.items():
+            rec = dict(side=side, landmark_centre=[float(lm[0]), float(lm[1])],
+                       landmark_axes=[float(lax), float(lay)], fitted=False, reason=None)
+            recs[(i, side)] = rec
+            if not np.isfinite([lax, lay]).all() or min(lax, lay) < 4:
+                rec['reason'] = 'degenerate_landmark'
+                continue
+            radius = (radius_by_side or {}).get(side)
+            r0 = float(radius) if radius else float(0.5 * (lax + lay))
+            reach = r0 * 1.7 + margin
+            x0 = int(np.floor(lm[0] - reach)); x1 = int(np.ceil(lm[0] + reach)) + 1
+            y0 = int(np.floor(lm[1] - reach)); y1 = int(np.ceil(lm[1] + reach)) + 1
+            if x0 < 0 or y0 < 0 or x1 > W or y1 > H:
+                rec['reason'] = 'eye_crop_leaves_frame'
+                continue
+            big, bx0, by0 = crops[(i, side)]
+            ox, oy = x0 - bx0, y0 - by0
+            if ox < 0 or oy < 0 or ox + (x1 - x0) > big.shape[1] or oy + (y1 - y0) > big.shape[0]:
+                raise ValueError('limbus window left its kept crop at %d %s' % (i, side))
+            poly = np.asarray(landmarks['points'][i])[topology['eyelid_' + side], :2]
+            m = dict(landmark=lm, x0=x0, y0=y0, r0=r0, radius=radius, poly=poly, rec=rec,
+                     patch=big[oy:oy + (y1 - y0), ox:ox + (x1 - x0)])
+            groups.setdefault((y1 - y0, x1 - x0), []).append(m)
+        # Fields per window shape (every border rule is the window's own), then one batch
+        # over all eyes on a common canvas: the bicubic sampler clamps to each true window.
+        order = []
+        fields = []
+        for (h, w), lst in sorted(groups.items()):
+            patch = torch.stack([m['patch'] for m in lst]).float()
+            fields.append((T.limbus_fields(patch, lst), h, w))
+            order += lst
+        if order:
+            Hm = max(f[1] for f in fields)
+            Wm = max(f[2] for f in fields)
+            canv = [torch.zeros((len(order), Hm, Wm), dtype=torch.float32, device=G.DEV)
+                    for _ in range(3)]
+            hw = torch.zeros((len(order), 2), dtype=torch.int64, device=G.DEV)
+            n0 = 0
+            for (gxy, h, w) in fields:
+                nb = gxy[0].shape[0]
+                for c, f in zip(canv, gxy):
+                    c[n0:n0 + nb, :h, :w] = f
+                hw[n0:n0 + nb, 0], hw[n0:n0 + nb, 1] = h, w
+                n0 += nb
+            free = radius_by_side is None
+            for s0 in range(0, len(order), 512):
+                sl = slice(s0, min(len(order), s0 + 512))
+                T.limbus_group((canv[0][sl], canv[1][sl], canv[2][sl], hw[sl]), order[sl],
+                               th_cos, th_sin, None if free else True)
+        rows = []
+        for i in indices:
+            eyes = []
+            if landmarks['found'][i] and np.isfinite(landmarks['points'][i]).all():
+                eyes = [recs[(i, s)] for s in r32.SIDES]
+            rows.append(dict(frame=i, source_frame=shot.source_start_frame + i, eyes=eyes))
+        return rows
+
+    return pass_over
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -528,6 +638,9 @@ def main():
                          'is the default and the measured right answer: the per-frame '
                          'fit is already smooth to 0.05 px, and smoothing only adds lag')
     ap.add_argument('--out', default='limbus_track.json')
+    ap.add_argument('--device', choices=('cuda', 'cpu'), default='cuda',
+                    help="'cuda' runs every per-eye fit batched on the GPU (track_gpu.py); "
+                         "'cpu' is the numpy reference it is validated against")
     args = ap.parse_args()
     shot = from_args(args)
 
@@ -539,25 +652,30 @@ def main():
     if min(indices) < 0 or max(indices) >= shot.frame_count:
         raise ValueError('Requested interval leaves the shot')
 
-    # Packed, bit exact (frame_store): as float32 the 1200-frame clip is ~30 GB.
-    values = frame_store.half()
-    for i in indices:
-        raw = cv2.imread(str(shot.fg(i)), cv2.IMREAD_UNCHANGED)
-        if raw is None or raw.dtype != np.float32 or raw.ndim != 3:
-            raise ValueError('Expected scene-linear keyed RGB EXR at %s' % shot.fg(i))
-        values[i] = raw[..., ::-1].astype(np.float32)
-
-    def pass_over(radius_by_side):
-        rows = []
+    if args.device == 'cuda':
+        if args.model != 'circle':
+            raise SystemExit('--device cuda implements the circle model; use --device cpu')
+        pass_over = gpu_pass_factory(shot, indices, landmarks, topology)
+    else:
+        # Packed, bit exact (frame_store): as float32 the 1200-frame clip is ~30 GB.
+        values = frame_store.half()
         for i in indices:
-            eyes = []
-            if landmarks['found'][i] and np.isfinite(landmarks['points'][i]).all():
-                for side in r32.SIDES:
-                    eyes.append(fit_eye(values[i], landmarks['points'][i], topology, side,
-                                        model=args.model,
-                                        radius=(radius_by_side or {}).get(side)))
-            rows.append(dict(frame=i, source_frame=shot.source_start_frame + i, eyes=eyes))
-        return rows
+            raw = cv2.imread(str(shot.fg(i)), cv2.IMREAD_UNCHANGED)
+            if raw is None or raw.dtype != np.float32 or raw.ndim != 3:
+                raise ValueError('Expected scene-linear keyed RGB EXR at %s' % shot.fg(i))
+            values[i] = raw[..., ::-1].astype(np.float32)
+
+        def pass_over(radius_by_side):
+            rows = []
+            for i in indices:
+                eyes = []
+                if landmarks['found'][i] and np.isfinite(landmarks['points'][i]).all():
+                    for side in r32.SIDES:
+                        eyes.append(fit_eye(values[i], landmarks['points'][i], topology, side,
+                                            model=args.model,
+                                            radius=(radius_by_side or {}).get(side)))
+                rows.append(dict(frame=i, source_frame=shot.source_start_frame + i, eyes=eyes))
+            return rows
 
     rows = pass_over(None)
     free = {}
