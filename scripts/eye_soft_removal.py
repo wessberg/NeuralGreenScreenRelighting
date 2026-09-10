@@ -74,6 +74,172 @@ import eye_sequence_atlas as atl
 from eye_atlas_repair import predict
 
 
+def eye_corners_mid(points, found, topology):
+    """(frame, side) -> midpoint of the two eye corners, from the landmark polygon.
+
+    The corners are the one part of the mediapipe eye contour round 35 found to be right:
+    sharp, never covered by a lid, nowhere near a lash. They move with her head and not
+    with her eyelids or her gaze, which is what makes them a reference for both.
+    """
+    out = {}
+    for i in range(len(points)):
+        if not found[i] or not np.isfinite(points[i]).all():
+            continue
+        for side in r32.SIDES:
+            poly = np.asarray(points[i])[topology['eyelid_' + side], :2]
+            a, b = poly[np.argmin(poly[:, 0])], poly[np.argmax(poly[:, 0])]
+            out[(i, side)] = ((a + b) / 2.0).astype(np.float64)
+    return out
+
+
+def gate_limbus(track, corners, n_frames, gate=1.0):
+    """Replace a limbus centre that jumped for ONE frame, measured against the eye corners.
+
+    Round 36 section 6: when the lids cover most of the circle the image fit slides DOWN
+    and snaps back, confidently -- its own standard error does not flag it. Against the
+    eye corners it is plain: at source 716/717/718 right the limbus sits -3.0 / +0.7 /
+    -3.0 px from the corner midpoint, a 3.7 px single-frame slide, while the slow change
+    either side of it (her eye rolling back after the blink, the same on both eyes) is
+    real and is kept. So this is an OUTLIER GATE, not a smoother: a frame whose offset
+    from the corners departs from the mean of its two neighbours' by more than `gate` px
+    takes that mean; every other frame keeps its fit exactly. The slide put the
+    canonical pupil low and, through the lid smoothing measured against it, let the fill
+    run over her lower lid at 717 right.
+    """
+    offs = {}
+    for (i, side), c in corners.items():
+        got = track.get(i, side)
+        if got is not None:
+            offs[(i, side)] = np.asarray(got[0], np.float64) - c
+    # **The limbus must itself break from its neighbours, and the corners must not.**
+    # Both halves are measured, not assumed:
+    # * The mediapipe corners JITTER. At source 764-770 left her limbus moves a smooth 3-4
+    #   px a frame while the corner midpoint stalls and jumps (322.0, 321.6, 318.7); gating
+    #   on the offset alone flagged 767/768 and would have written that jitter INTO a
+    #   correct limbus.
+    # * A slide is the limbus leaving the line through its two neighbours while the head
+    #   (the corners) does not: 717 right breaks 3.3 px from its neighbours' mean with the
+    #   corners off theirs by 0.35; 843 left, 2.3 against 0.3.
+    # The replacement is the corners at this frame plus the mean of the neighbours'
+    # offsets -- the neighbours' limbus, carried along by the head's own motion here.
+    # ITERATIVE, worst frame first: a slid frame also breaks the line through its
+    # NEIGHBOURS, and testing all frames at once flagged 718 beside 717 and 842/844
+    # beside 843 and repaired them toward the slide. Fixing the worst and re-testing
+    # clears the neighbours by itself.
+    centre = {k: np.asarray(track.get(*k)[0], float) for k in offs}
+    fixes = {}
+
+    def score(i, side):
+        k, kp, kn = (i, side), (i - 1, side), (i + 1, side)
+        if kp not in centre or kn not in centre:
+            return 0.0
+        dev_l = centre[k] - 0.5 * (centre[kp] + centre[kn])
+        dev_c = corners[k] - 0.5 * (corners[kp] + corners[kn])
+        if np.hypot(*dev_l) <= gate:
+            return 0.0
+        return float(np.hypot(*(dev_l - dev_c)))
+
+    for _ in range(len(centre)):
+        worst, best = None, gate
+        for k in centre:
+            s = score(*k)
+            if s > best:
+                worst, best = k, s
+        if worst is None:
+            break
+        i, side = worst
+        off_p = centre[(i - 1, side)] - corners[(i - 1, side)]
+        off_n = centre[(i + 1, side)] - corners[(i + 1, side)]
+        centre[worst] = corners[worst] + 0.5 * (off_p + off_n)
+        got = track.get(i, side)
+        fixes[worst] = (centre[worst], got[1], got[2], best)
+    return fixes
+
+
+def load_lids(payload, temporal=False, bridge=4, half=1, ref=None):
+    """Fitted lid parabolas per (frame, side), optionally bridged and median-of-3 filtered.
+
+    Without `temporal` this is exactly what rounds 35-36 did: a frame is used only when
+    BOTH lids fitted, and otherwise the eye falls back to the mediapipe polygon.
+
+    With it, each lid is a series of its own. A frame whose upper lid abstained still has a
+    perfectly good LOWER lid, and discarding it put the fill's bottom edge on the polygon
+    -- which jitters by a pixel or two between frames, and on the stabilised frame-to-frame
+    strips of source 836-842 left that is a line flickering along the bottom of the iris,
+    in R36g as much as in round 37's first runs. So a missing lid is bridged from its
+    neighbours (within `bridge` frames), and both lids' height and slope are median-of-3
+    filtered in the eye's own coordinates -- height relative to the limbus centre, so her
+    head moving is not mistaken for the lid moving. A median of three adds no lag on a
+    monotone blink and outvotes a single frame whose fit jumped.
+    """
+    raw = {}
+    for row in payload['rows']:
+        for e in row['eyes']:
+            if not e.get('centre'):
+                continue
+            # Lid HEIGHT is measured against `ref` -- the eye corners -- when given, not
+            # against the limbus centre: the limbus itself slides on exactly the frames
+            # where the lid is low (gate_limbus), and a lid measured against it inherits
+            # the slide.
+            key = (int(row['frame']), e['side'])
+            ref_y = (float(ref[key][1]) if ref is not None and key in ref
+                     else e['centre'][1])
+            rec = dict(centre=e['centre'], rms=0.0, ref_y=ref_y)
+            for name in ('upper', 'lower'):
+                got = e.get(name) or {}
+                if got.get('coef') is not None:
+                    a, b, c = got['coef']
+                    rec[name] = (a, b, c - ref_y)
+                    rec['rms'] = max(rec['rms'], got.get('rms', 0.0))
+                else:
+                    rec[name] = None
+            if not temporal and not e.get('fitted'):
+                continue
+            raw[(int(row['frame']), e['side'])] = rec
+    out = {}
+    for (i, side), rec in raw.items():
+        entry = dict(centre=rec['centre'], rms=rec['rms'])
+        ok = True
+        for name in ('lower', 'upper'):
+            coef = rec[name]
+            if temporal:
+                if coef is None:
+                    prev = [j for j in range(i - bridge, i)
+                            if raw.get((j, side), {}).get(name) is not None]
+                    nxt = [j for j in range(i + 1, i + bridge + 1)
+                           if raw.get((j, side), {}).get(name) is not None]
+                    # Only BETWEEN two fitted frames. Copying one neighbour's lid was
+                    # tried and it is wrong exactly at a blink: source 705 left, the last
+                    # frame before the eye shuts, took 704's more open upper lid and the
+                    # fill painted iris onto the closing lid. One-sided, the eye keeps the
+                    # landmark polygon, as it did before round 37.
+                    if prev and nxt:
+                        pa, pb = raw[(prev[-1], side)][name], raw[(nxt[0], side)][name]
+                        t = (i - prev[-1]) / float(nxt[0] - prev[-1])
+                        coef = tuple((1 - t) * x + t * y for x, y in zip(pa, pb))
+                if coef is not None:
+                    trio = [raw.get((j, side), {}).get(name)
+                            for j in range(i - half, i + half + 1)]
+                    trio = [x for x in trio if x is not None]
+                    if len(trio) >= 3:
+                        coef = (coef[0], float(np.median([x[1] for x in trio])),
+                                float(np.median([x[2] for x in trio])))
+            if coef is None:
+                # A missing UPPER lid still leaves a good lower one, which beats the
+                # landmark polygon's lower edge; the top is then bounded by the image's
+                # own lash line (and the fill abstains without one). A missing lower lid
+                # gives up the frame as before.
+                if temporal and name == 'upper' and entry.get('lower') is not None:
+                    entry['upper'] = None
+                    continue
+                ok = False
+                break
+            entry[name] = [coef[0], coef[1], coef[2] + rec['ref_y']]
+        if ok:
+            out[(i, side)] = entry
+    return out
+
+
 def residual_scale(signed, inside):
     """Robust scale of the eye's residual against the atlas, for ONE frame.
 
@@ -249,7 +415,7 @@ def local_gain(patch, base, ring, lo=0.5, hi=2.0):
 
 def lash_ceiling(patch, geom, state, footprint=None, clamp_to_footprint=False,
                  guard=0.0, lash_run=3, smooth=9, pupil_rho=0.42, spec_level=0.45,
-                 spec_reach=1.05, ring_px=3.0, ring_level=0.10):
+                 spec_reach=1.05, ring_px=3.0, ring_level=0.10, raw=False):
     """The highest row the paint may touch, per column, read off HER OWN image.
 
     **The artist's rule, and it is a statement about physics rather than a tolerance:**
@@ -384,6 +550,9 @@ def lash_ceiling(patch, geom, state, footprint=None, clamp_to_footprint=False,
         ceiling[x] = float(got)
     if not np.isfinite(ceiling).any():
         return None
+    if raw:
+        # The per-column samples, unfiltered, for `lid_line()` to fit a curve through.
+        return ceiling
     # Median-filtered along x over the columns that reported, then held flat outward.
     known = np.nonzero(np.isfinite(ceiling))[0]
     vals = ceiling[known]
@@ -488,6 +657,518 @@ def lash_ceiling(patch, geom, state, footprint=None, clamp_to_footprint=False,
         pad2 = np.pad(closed, 1, mode='edge')
         out = np.array([min(pad2[i:i + 3]) for i in range(out.size)], np.float32)
     return out.astype(np.float32)
+
+
+def sclera_level(lum, rho):
+    """Her sclera's display level in a ring just outside the limbus (p90), or 0.5."""
+    ring = (rho > 1.15) & (rho < 1.55)
+    return float(np.percentile(lum[ring], 90)) if ring.sum() > 40 else 0.5
+
+
+def corneal_specular(lum, rho, opening=None, sclera=None,
+                     tiers=((0.45, 0.40, 0.18), (0.30, 0.40, 0.18), (0.20, 0.20, 0.10)),
+                     rho_seed=0.85, max_area=90):
+    """Try the usual level first and fall back to dimmer ones; see `_corneal_specular`.
+
+    Each tier is (level, ring_max, contrast). The last is for a reflection almost shut
+    away by a closing lid -- 0.28 display at source 713 left, on a 0.09-0.17 surround,
+    left standing as a grey-purple smudge -- and it is only allowed where the WHOLE
+    surround is pupil- or lash-dark (under 0.20), which her iris texture never is.
+    """
+    for level, ring_max, contrast in tiers:
+        got = _corneal_specular(lum, rho, level, rho_seed, max_area, ring_max, contrast)
+        if got is not None:
+            return got
+    return None
+
+
+def _corneal_specular(lum, rho, level, rho_seed, max_area, ring_max, contrast):
+    """The corneal highlight as ONE compact blob, or None.
+
+    A compact bright component on the iris whose SURROUND IS DARK. Every simpler rule
+    took something else on this plate, and each is recorded because each looks right:
+
+    * **Level against the sclera** (round 36's `sclera + 0.06`). On a squint the ring
+      outside the limbus is lid skin, not sclera, the threshold rises past the highlight
+      itself, and at source 718/720/842 left no highlight was found at all.
+    * **Inside the fitted opening.** Where the lid fit abstains the opening is the
+      mediapipe polygon, which sits below the softbox on exactly those frames.
+    * **Brightest compact blob.** At source 838 left that was a patch of LID SKIN.
+
+    Skin is bright on bright; lid-margin wetness sits on the lid; the reflection is the one
+    bright thing sitting in the dark iris, pupil and lash. So the discriminator is the
+    median of a two-pixel ring round the blob, and the choice among survivors is by peak.
+
+    A CONTRAST of 0.18 over that ring is required too, and the level is tried at 0.45 and
+    then, only if nothing qualifies, at 0.30: half-occluded by a closing lid the
+    reflection is dim -- 0.40 display at source 714 left, on a 0.10-0.20 surround -- and a
+    0.45 floor left it standing for a frame in every result up to round 36. The low level
+    is a fallback rather than the rule because at 0.30 the reflection's falloff can join
+    the brighter lower iris into one component too large to be a reflection.
+    """
+    hot = (lum > level) & (rho < 1.0)
+    cand = hot & (rho < rho_seed)
+    if not cand.any():
+        return None
+    n, labels, stats, _ = cv2.connectedComponentsWithStats(hot.astype(np.uint8),
+                                                           connectivity=8)
+    kern = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
+    best = None
+    for lab in np.unique(labels[cand]):
+        if lab == 0 or stats[lab, cv2.CC_STAT_AREA] > max_area:
+            continue
+        comp = labels == lab
+        ring = (cv2.dilate(comp.astype(np.uint8), kern) > 0) & ~comp
+        if ring.sum() < 6:
+            continue
+        ring_med = float(np.median(lum[ring]))
+        peak = float(lum[comp].max())
+        if ring_med > ring_max or peak - ring_med < contrast:
+            continue
+        # Dark ABOVE as well. On a nearly closed eye a highlight on the lid skin just over
+        # the lash has a mostly dark ring -- the lash under it -- and passed the test
+        # above: source 712/713 left came out with a brown block painted on the lid. A
+        # corneal reflection has lash or shadowed iris above it; a skin highlight has skin.
+        top_row = int(np.nonzero(comp.any(axis=1))[0].min())
+        rows_idx = np.arange(comp.shape[0])[:, None]
+        above = ring & (rows_idx <= top_row)
+        if above.sum() >= 2 and float(np.median(lum[above])) > ring_max:
+            continue
+        if best is None or peak > best[1]:
+            best = (lab, peak)
+    return None if best is None else (labels == best[0])
+
+
+def specular_region(core, rho, reach_px=2.0, rho_max=1.02):
+    """Everything the highlight CONTAMINATES: the blob and a fixed disc around it.
+
+    **This region is replaced whole, and nothing -- no lid line, no lash guard -- may cut
+    into it.** Round 36's guard was a per-column ceiling read from level, and on every
+    frame where the lid is low it fell to the LOWER iris in exactly the columns the
+    highlight crosses (the walk jumps the blocked highlight and pupil and lands on the
+    next dark row). The fill became a U with the softbox in the notch, and three
+    photometric exemptions patched the notch pixel by pixel. What they missed -- the
+    highlight's falloff at 0.30-0.45, which is also a lash's level -- is the grey OUTLINE
+    of the softbox the artist sees, and the patchwork of exempted and unexempted pixels is
+    his "small colour variations within the spot".
+
+    The falloff is not a level, it is a DISTANCE: the codec and the lens blur the
+    highlight's edge and ring around it over a fixed couple of pixels whatever sits
+    underneath. So the region is geometric -- the blob dilated by a disc -- and the level
+    question never arises. Where that disc reaches a lash, the lash pixel is already
+    contaminated by the highlight's blur and ringing; what is painted there is darkened to
+    her own lid shadow by `top_shading()`, not canonical iris.
+    """
+    if core is None or not core.any():
+        return None
+    dist = cv2.distanceTransform((~core).astype(np.uint8), cv2.DIST_L2, 5)
+    w = np.clip(reach_px + 1.0 - dist, 0.0, 1.0).astype(np.float32)
+    return w * (rho < rho_max).astype(np.float32)
+
+
+def lid_line(raw, geom, curvature, exclude=None, max_row=None, min_span=0.6,
+             tukey=2.0, iterations=6):
+    """A SMOOTH lash line through the trustworthy per-column lash samples, or None.
+
+    `lash_ceiling()` read each column on its own and median-filtered the result along x.
+    A median can only return a value a neighbour measured -- which is its virtue -- but in
+    the columns the highlight crosses every neighbour is wrong the same way, so the
+    median faithfully reproduces the error: a ragged ceiling that drops to the lower iris
+    under the softbox. A lid margin is a smooth arc; round 35 measured its curvature as
+    one number per eye for the shot. So: y = a u^2 + b u + c with `a` fixed, fitted
+    robustly to the columns that can be trusted -- NOT the highlight's columns, and not
+    any sample below the eye centre, which on this plate is always the walk having gone
+    through the lash and out the other side.
+    """
+    if raw is None:
+        return None
+    ok = np.isfinite(raw)
+    if exclude is not None:
+        ok &= ~exclude
+    if max_row is not None:
+        ok &= raw <= max_row
+    if ok.sum() < 5:
+        return None
+    x_native = np.arange(raw.size, dtype=np.float64) + geom['window'][1].start
+    u_all = x_native - float(geom['limbus'][0])
+    u, y = u_all[ok], raw[ok].astype(np.float64)
+    if (u.max() - u.min()) < min_span * geom['ax']:
+        return None
+    basis = np.column_stack([u, np.ones_like(u)])
+    target = y - curvature * u ** 2
+    wgt = np.ones_like(u)
+    beta = None
+    for _ in range(iterations):
+        try:
+            beta = np.linalg.solve(basis.T @ (wgt[:, None] * basis), basis.T @ (wgt * target))
+        except np.linalg.LinAlgError:
+            return None
+        resid = target - basis @ beta
+        scale = max(1.4826 * float(np.median(np.abs(resid - np.median(resid)))), 0.5)
+        wgt = (1 - np.clip(resid / (tukey * scale), -1, 1) ** 2) ** 2
+        if wgt.sum() < 3:
+            return None
+    line = curvature * u_all ** 2 + beta[0] * u_all + beta[1]
+    return line.astype(np.float32)
+
+
+def top_shading(patch, base, w, rho, sigma=1.5, decay=2.5, lo=-1.6, hi=0.35, sides='top',
+                exclude=None):
+    """Her OWN lid shadow, carried a few pixels into the fill from its top edge.
+
+    The canonical iris is painted with one scalar gain per frame, so it cannot carry the
+    shadow her lid casts (round 35 section 7), and wherever the fill meets that shadow --
+    under the lash line, and above the highlight where its region reaches the lash -- it is
+    too bright. Round 36 fitted ONE shape per eye for the shot and it was rejected on
+    sight: a per-eye constant over-brightens every frame that was already right and reads
+    as a halo.
+
+    This takes the correction from THIS frame's pixels instead, and only from the fill's
+    TOP boundary: the source pixels directly above it (shadowed iris or lash), divided by
+    the canonical iris at the same place, in log luminance. The ratio is averaged along
+    the boundary (a Gaussian of `sigma` px, so one lash strand cannot stripe the fill) and
+    fades with depth into the fill over `decay` px. It is bounded twice -- by what the
+    boundary actually shows, and by [lo, hi] -- so it cannot invent a shadow and cannot
+    brighten by more than 42 %. Luminance only: one factor for all three channels keeps
+    the canonical colour, so it cannot put colour variation inside the spot.
+
+    `sides='all'` takes EVERY edge of the fill that lies inside the iris, not only the top.
+    The fill's bottom edge is the lower-lid fit, which moves by a pixel between frames;
+    wherever the canonical iris and her own lower iris differ in level, that edge reads
+    as a line that comes and goes -- visible at source 715-717 and 836-842 left on the
+    stabilised frame-difference strips (`review_r37_temporal.py`) and in no number. The
+    limbus is excluded by `rho < 0.97`: past it is sclera, not iris.
+
+    Returns the multiplicative field, 1 where there is nothing to match.
+    """
+    fill = w >= 0.5
+    if sides == 'all':
+        below = cv2.dilate(fill.astype(np.uint8), np.ones((3, 3), np.uint8)) > 0
+    else:
+        below = np.zeros_like(fill)
+        below[:-1] = fill[1:]
+        below[:-1, 1:] |= fill[1:, :-1]
+        below[:-1, :-1] |= fill[1:, 1:]
+    top = (~fill) & below & (rho < 0.97)
+    if exclude is not None:
+        # **Never read her shadow off the reflection.** In the highlight's columns the
+        # pixel just above the lid line IS the highlight, so without this the fill under
+        # it was BRIGHTENED toward the softbox (to the +0.35 clamp) instead of darkened
+        # toward her lid shadow -- a lighter column above the pupil, measured as the
+        # region's upper half standing +0.03 display above the rows beside it (median over
+        # all eyes, +0.11 at 845-849 right) where R36g stood at +0.006.
+        top &= ~exclude
+        # Nor off her lid SKIN. On the frame before a blink the lid comes down onto the
+        # fill's top edge, and a few skin pixels there brightened the fill toward them --
+        # 19 lightened lash pixels at source 826 right. Nothing brighter than any iris or
+        # lash on this plate (0.45 display) is a shadow reference.
+        disp = np.clip(linear_to_srgb(np.clip(patch, 0, 1)), 0, 1).max(-1)
+        top &= disp <= 0.45
+    if top.sum() < 3:
+        return None, 0
+    coeff = np.array([0.2126, 0.7152, 0.0722], np.float32)
+    ls = np.maximum((patch * coeff).sum(-1), 1e-4)
+    lb = np.maximum((base * coeff).sum(-1), 1e-4)
+    d = np.clip(np.log(ls) - np.log(lb), lo, hi).astype(np.float32)
+    topf = top.astype(np.float32)
+    num = cv2.GaussianBlur(d * topf, (0, 0), sigma)
+    den = cv2.GaussianBlur(topf, (0, 0), sigma)
+    avg = np.where(den > 1e-3, num / np.maximum(den, 1e-6), 0.0)
+    dist = cv2.distanceTransform((~top).astype(np.uint8), cv2.DIST_L2, 5)
+    m = avg * np.exp(-np.maximum(dist - 1.0, 0.0) / max(decay, 1e-3))
+    return np.exp(m).astype(np.float32), int(top.sum())
+
+
+def region_rows(patch, base, inside_fill, region, lo=-1.6, hi=0.35, hot=None):
+    """Shading for the highlight's region above the lid line, ROW BY ROW from its sides.
+
+    A lid shadow is a function of depth below the lid; across the few pixels a
+    reflection spans it barely changes sideways. So the right value for a pixel in the
+    region is what her eye shows at the same height just left and right of it -- not a
+    membrane that also pulls in the fill below (`region_shading`), which left the
+    region's upper half a little lighter than the rows beside it on most frames. Each
+    run of region pixels in a row takes the linear interpolation of log(photograph /
+    canonical) between its two ends; boundary pixels still carrying the reflection's
+    falloff (`hot`) do not count, one good end is used alone, and a row with neither
+    falls back to the membrane. A 3-row median then removes row-to-row banding.
+    """
+    omega = region & ~inside_fill
+    if not omega.any():
+        return None
+    coeff = np.array([0.2126, 0.7152, 0.0722], np.float32)
+    ls = np.maximum((patch * coeff).sum(-1), 1e-4)
+    lb = np.maximum((base * coeff).sum(-1), 1e-4)
+    d = np.clip(np.log(ls) - np.log(lb), lo, hi).astype(np.float32)
+    usable = ~omega if hot is None else (~omega & ~hot)
+    m = np.full(omega.shape, np.nan, np.float32)
+    h, w = omega.shape
+    for y in range(h):
+        xs = np.nonzero(omega[y])[0]
+        if not xs.size:
+            continue
+        runs = np.split(xs, np.nonzero(np.diff(xs) > 1)[0] + 1)
+        for run in runs:
+            a, b = int(run[0]), int(run[-1])
+            # Two pixels each side, not one: a single codec-noisy pixel per row made the
+            # region's shading change frame to frame on its own.
+            lv = [d[y, x] for x in (a - 1, a - 2) if 0 <= x < w and usable[y, x]]
+            rv = [d[y, x] for x in (b + 1, b + 2) if 0 <= x < w and usable[y, x]]
+            left = float(np.mean(lv)) if lv else None
+            right = float(np.mean(rv)) if rv else None
+            if left is None and right is None:
+                continue
+            if left is None:
+                m[y, a:b + 1] = right
+            elif right is None:
+                m[y, a:b + 1] = left
+            else:
+                t = (np.arange(a, b + 1) - (a - 1)) / float(b + 1 - (a - 1))
+                m[y, a:b + 1] = (1 - t) * left + t * right
+    if np.isnan(m[omega]).any():
+        fb = region_shading(patch, base, inside_fill, region, lo, hi, closed_top=True,
+                            hot=hot)
+        if fb is not None:
+            fill = np.log(np.maximum(fb, 1e-4))
+            m = np.where(np.isnan(m) & omega, fill, m)
+    m = np.where(omega, np.nan_to_num(m), 0.0).astype(np.float32)
+    # 3-row median inside the region only.
+    up = np.roll(m, 1, 0); dn = np.roll(m, -1, 0)
+    up_ok = np.roll(omega, 1, 0); dn_ok = np.roll(omega, -1, 0)
+    up = np.where(up_ok, up, m); dn = np.where(dn_ok, dn, m)
+    m = np.where(omega, np.median(np.stack([up, m, dn]), 0), m)
+    field = np.ones(omega.shape, np.float32)
+    field[omega] = np.exp(m[omega])
+    return field
+
+
+def region_shading(patch, base, inside_fill, region, lo=-1.6, hi=0.35, iterations=400,
+                   closed_top=False, hot=None):
+    """Shading for the part of the highlight's region the canonical fill does not reach.
+
+    Where the highlight sits above the lid line -- which is every squinting frame -- the
+    pixels it contaminated are not covered by the whole-iris fill, and what belongs there
+    is her upper iris IN LID SHADOW. The first version took that shadow from the pixels
+    directly ABOVE, like `top_shading()` does along the lid line, and on this plate the
+    pixel above a highlight is her lash: the fill came out lash-black, the pupil read as
+    carrying a dark cap, and single lash strands ran down it as vertical streaks.
+
+    A lash is an OCCLUDER, not shading. So this is a membrane -- the harmonic
+    interpolation of log(photograph / canonical) across the region -- with its values
+    fixed by the neighbours to the LEFT, RIGHT and BELOW (her shadowed iris at the same
+    depth under the lid, or the already-shaded canonical fill) and NO FLUX through the
+    top, so nothing is taken from the lash. Luminance only, bounded to [lo, hi].
+
+    **`closed_top`** reverses the no-flux top, and it is what the artist's R37k
+    screenshot at source 717 right asked for. There the softbox sits right up under the
+    lid, its region reaches INTO the lash band, and with nothing taken from above, the
+    membrane only knew the shaded fill below and her iris to the sides: a tan block
+    above the pupil where her photograph has lash. The dark cap the no-flux top was
+    brought in to prevent came from `top_shading()` darkening the FILL below the region,
+    which no longer happens -- the fill's shading is computed without the region -- so
+    the lash above can now bound the region's lightness without reaching the pupil.
+    A pure RGB heal of the region from its surroundings was tried first: it fixed 717
+    and painted a grey smudge at 718, because a ring pixel still carrying the softbox's
+    faint falloff hands its colour straight in. Here the colour stays the canonical
+    iris's and only lightness is interpolated, and `hot` -- boundary pixels still
+    bright enough to be the reflection's falloff -- contribute nothing.
+
+    `patch` must already hold the composite outside `region` (source above the lid line,
+    shaded canonical below it). Returns the multiplicative field over `region`, else 1.
+    """
+    omega = region & ~inside_fill
+    if not omega.any():
+        return None
+    coeff = np.array([0.2126, 0.7152, 0.0722], np.float32)
+    ls = np.maximum((patch * coeff).sum(-1), 1e-4)
+    lb = np.maximum((base * coeff).sum(-1), 1e-4)
+    d = np.clip(np.log(ls) - np.log(lb), lo, hi).astype(np.float32)
+    h, w = omega.shape
+    m = np.zeros((h, w), np.float32)
+    # Start from the mean of the fixed values next to it, so few iterations are needed.
+    ring = (cv2.dilate(omega.astype(np.uint8), np.ones((3, 3), np.uint8)) > 0) & ~omega
+    if hot is not None and (ring & ~hot).any():
+        ring = ring & ~hot
+    if ring.any():
+        m[omega] = float(np.mean(d[ring]))
+    fixed = ~omega
+    for _ in range(iterations):
+        acc = np.zeros((h, w), np.float32)
+        cnt = np.zeros((h, w), np.float32)
+        # (dy, dx) of the neighbour; the UP neighbour (-1, 0) contributes only when it is
+        # itself inside the region -- a no-flux top edge.
+        for dy, dx in ((1, 0), (0, 1), (0, -1), (-1, 0)):
+            src = np.full((h, w), np.nan, np.float32)
+            ys = slice(max(0, dy), h + min(0, dy)); yd = slice(max(0, -dy), h + min(0, -dy))
+            xs = slice(max(0, dx), w + min(0, dx)); xd = slice(max(0, -dx), w + min(0, -dx))
+            nb_val = np.where(fixed, d, m)
+            src[yd, xd] = nb_val[ys, xs]
+            nb_in = np.zeros((h, w), bool)
+            nb_in[yd, xd] = omega[ys, xs]
+            ok = np.isfinite(src)
+            if dy == -1 and not closed_top:
+                ok &= nb_in
+            if hot is not None:
+                nb_hot = np.zeros((h, w), bool)
+                nb_hot[yd, xd] = (hot & fixed)[ys, xs]
+                ok &= ~nb_hot
+            acc += np.where(ok, src, 0.0)
+            cnt += ok
+        upd = np.where(cnt > 0, acc / np.maximum(cnt, 1), m)
+        m = np.where(omega, upd, m)
+    field = np.ones((h, w), np.float32)
+    field[omega] = np.exp(m[omega])
+    return field
+
+
+def symmetric_canonical(atlas, count, rho, v, lo_votes=10, hi_votes=60, bin_width=0.04):
+    """Rebuild the cells of the canonical eye that too few frames saw, from the ones many did.
+
+    **The canonical iris is only as good as the number of frames that voted for each
+    cell, and on this plate its top half had almost none.** Measured on round 37's own
+    pool: the band from the eye centre to 0.6 radii below it gets ~128 votes a cell, while
+    the band above the centre gets 6-19 and the top of the iris zero -- because the lid
+    covers it on most frames and the pooling mask stays inset from the lid. A per-cell
+    median of six frames is whatever those six frames held, and what they held is lash
+    shadow, lid skin and the lash itself: looked at, the left canonical carried a dark
+    band across the top of the PUPIL, a mauve patch and diagonal lash streaks, and the
+    right one straight mask edges and a reddish lid-skin patch. Every repaired frame paints
+    from this one image, so those were in every frame -- the artist's "small colour
+    variations within the spot" and "not always a round-ish pupil".
+
+    The iris is a disc, so a ring at radius rho is the same ring above and below the
+    centre. Cells with fewer than `hi_votes` take, in proportion, their MIRROR across the
+    horizontal diameter (which maps each ring onto itself, so the pupil comes out round),
+    and where the mirror was poorly seen too, her measured RADIAL PROFILE from the
+    well-seen cells. The lid shadow is not in here on purpose: it is applied per frame
+    from her own pixels by `top_shading()` and `region_shading()`. Still one image for the
+    shot, built once.
+    """
+    rel = np.clip((count.astype(np.float32) - lo_votes) / max(hi_votes - lo_votes, 1),
+                  0.0, 1.0)
+    mirror = atlas[::-1]
+    rel_m = rel[::-1]
+    good = rel >= 1.0
+    bins = np.arange(0.0, float(rho.max()) + bin_width, bin_width)
+    centres, prof = [], []
+    for k in range(len(bins) - 1):
+        sel = good & (rho >= bins[k]) & (rho < bins[k + 1])
+        if sel.sum() >= 6:
+            centres.append(0.5 * (bins[k] + bins[k + 1]))
+            prof.append(np.median(atlas[sel], axis=0))
+    if len(centres) < 4:
+        return atlas, dict(applied=False, reason='too few well-voted rings')
+    centres = np.asarray(centres); prof = np.asarray(prof)
+    radial = np.stack([np.interp(rho, centres, prof[:, c]) for c in range(3)], -1)
+    fallback = rel_m[..., None] * mirror + (1 - rel_m[..., None]) * radial
+    out = rel[..., None] * atlas + (1 - rel[..., None]) * fallback
+    # `v` rows are mirrored about the grid's own centre; it must be the eye centre.
+    assert abs(float(v[0, 0] + v[-1, 0])) < 1e-4
+    return out.astype(np.float32), dict(
+        applied=True, lo_votes=lo_votes, hi_votes=hi_votes,
+        cells_rebuilt=int((rel < 1.0).sum()),
+        cells_from_mirror=int(((rel < 1.0) & (rel_m >= 1.0)).sum()),
+        radial_rings=len(centres))
+
+
+def _lid_v(rec, u):
+    """The lash line of one stored frame, in eye coordinates, at eye abscissae `u`."""
+    ceil = rec.get('ceil')
+    if ceil is None:
+        return None
+    g = rec['geom']
+    xs = np.arange(g['window'][1].start, g['window'][1].stop, dtype=np.float64)
+    cu = (xs - float(g['limbus'][0])) / g['ax']
+    cv = (ceil.astype(np.float64) + g['window'][0].start - float(g['limbus'][1])) / g['ay']
+    ok = np.isfinite(cv)
+    if ok.sum() < 2:
+        return None
+    return np.interp(u, cu[ok], cv[ok])
+
+
+def filter_shading(store, half, symmetric=True, lid_registered=False):
+    """Temporal MEDIAN of each frame's shading field, in the eye's own coordinates.
+
+    `top_shading()` and `region_shading()` read her photograph at the fill's edges on every
+    frame, and her photograph there is noisy: measured over source 746-778 in the eye's
+    own coordinates, the fill's local frame-to-frame L* change was 0.60 (left) against
+    R36g's 0.29, concentrated in the top band and round the highlight's region -- exactly
+    where the shading takes its values -- and the whole fill's mean jumped up to 0.89 L*
+    (p95) between frames against R36g's 0.32. The artist saw it at once as small colour
+    variations here and there that make the eye look unstable in motion.
+
+    A lid moves smoothly except in a blink, so the field is filtered over +/-`half`
+    frames at the SAME PLACE ON HER EYE -- each neighbour's field is resampled through
+    the limbus into this frame's pixels -- and the median is taken. On monotone lid motion
+    the median of an odd window is the middle sample, so it adds no lag; a frame whose
+    edge pixels were mostly codec noise or a lash strand is outvoted.
+
+    **The window is always SYMMETRIC**, shrunk at the ends of a run. The median is
+    lag-free only over a window centred on the frame; at source 826 -- the frame before a
+    blink, whose later neighbours have no fill -- a one-sided window took the shadow from
+    frames where the lid was still higher and left a lighter band under the lash.
+
+    **`lid_registered`** is the better answer to the same problem: the lid shadow is cast
+    by the LID, so in the upper half of the eye each neighbour's field is sampled at the
+    same depth below ITS OWN lash line rather than at the same place on the iris. The
+    shadow then moves with the lid and a one-sided window at the end of a run no longer
+    lags, so the run-end frames keep their filtering (with `symmetric` they got none, and
+    the blink edges -- 703/704, 825/826, 835 -- became the worst flicker in the shot). The
+    weight of the lid registration falls from 1 above the eye centre to 0 at half a radius
+    below it, where the fill's edges belong to the lower lid.
+    """
+    out = {}
+    for (i, side), rec in store.items():
+        g = rec['geom']
+        ys, xs = g['window']
+        h, w = rec['log'].shape
+        yy, xx = np.mgrid[ys.start:ys.stop, xs.start:xs.stop].astype(np.float32)
+        u = (xx - float(g['limbus'][0])) / g['ax']
+        v = (yy - float(g['limbus'][1])) / g['ay']
+        if symmetric:
+            radius = 0
+            for k in range(1, half + 1):
+                if all((i + s * m, side) in store
+                       for m in range(1, k + 1) for s in (-1, 1)):
+                    radius = k
+                else:
+                    break
+        else:
+            radius = half
+        lid_i = _lid_v(rec, u[0]) if lid_registered else None
+        lid_w = np.clip(1.0 - v / 0.5, 0.0, 1.0)
+        stack = []
+        for j in range(i - radius, i + radius + 1):
+            other = store.get((j, side))
+            if other is None:
+                continue
+            go = other['geom']
+            vj = v
+            if lid_i is not None and j != i:
+                lid_j = _lid_v(other, u[0])
+                if lid_j is not None:
+                    vj = v + (lid_j - lid_i)[None, :].astype(np.float32) * lid_w
+            mx = (float(go['limbus'][0]) + u * go['ax'] - go['window'][1].start)
+            my = (float(go['limbus'][1]) + vj * go['ay'] - go['window'][0].start)
+            mx, my = mx.astype(np.float32), my.astype(np.float32)
+            got = cv2.remap(other['log'], mx, my, cv2.INTER_LINEAR,
+                            borderMode=cv2.BORDER_REPLICATE)
+            # **Only frames that PAINTED this spot vote on it.** A neighbour where the
+            # same place on her eye was source, not fill, has no shading there to
+            # contribute -- its field is whatever the boundary decay left -- and letting
+            # it vote pulled the median toward "no shading" wherever the painted region
+            # changed shape between frames: the tan block above the pupil at 717 right.
+            if j != i and other.get('valid') is not None:
+                ok = cv2.remap(other['valid'].astype(np.float32), mx, my,
+                               cv2.INTER_NEAREST, borderMode=cv2.BORDER_CONSTANT) > 0.5
+                got = np.where(ok, got, np.nan)
+            stack.append(got)
+        if len(stack) >= 3:
+            with np.errstate(invalid='ignore'):
+                med = np.nanmedian(np.stack(stack), 0)
+            out[(i, side)] = np.where(np.isfinite(med), med, rec['log']).astype(np.float32)
+        else:
+            out[(i, side)] = rec['log']
+    return out
 
 
 def lid_depth(cfg, geom):
@@ -840,6 +1521,88 @@ def main():
                          "TO an exempted specular is taken to be the reflection falling "
                          "off rather than a lash. A lash beside the highlight is darker "
                          "than the iris; the highlight's halo is brighter.")
+    ap.add_argument('--lid-line', choices=('ceiling', 'parabola'), default='ceiling',
+                    help="how the lash guard's per-column samples become a bound. "
+                         "'ceiling' is round 36's median filter along x, which reproduces "
+                         "the samples' error in every column the highlight crosses and "
+                         "drops the bound to the lower iris there. 'parabola' fits the "
+                         "lid's own shape (shot curvature from eyelid_fit) through the "
+                         "trustworthy columns only. See lid_line().")
+    ap.add_argument('--lid-line-window', type=int, default=1,
+                    help="half-window, frames, of the temporal median over the lash line "
+                         "in the eye's own coordinates (1 is round 36's median of three)")
+    ap.add_argument('--lid-line-margin', type=float, default=1.0,
+                    help='native px the parabola lash line is moved DOWN, away from the '
+                         'lash, before it bounds the fill')
+    ap.add_argument('--specular-reach', type=float, default=0.0,
+                    help="native px around the corneal highlight blob that are replaced "
+                         "WHOLE, whatever the lid line or lash guard says. 0 is off. "
+                         "See specular_region().")
+    ap.add_argument('--top-shading', type=float, default=0.0,
+                    help="decay length, native px, over which the fill takes her own lid "
+                         "shadow from the pixels directly above its top edge. 0 is off. "
+                         "See top_shading().")
+    ap.add_argument('--gain-ring', choices=('around', 'lower'), default='around',
+                    help="where the per-frame level of the canonical iris is measured: "
+                         "the iris ring around the footprint (rounds 34-36), or only its "
+                         "part BELOW the eye centre, out of the lid's shadow")
+    ap.add_argument('--soft-lids', action='store_true',
+                    help="bound the fill by the fitted lids' soft ~1 px matte instead of a "
+                         "threshold on it, so a lid moving sub-pixel does not toggle whole "
+                         "pixels")
+    ap.add_argument('--lid-window', type=int, default=1,
+                    help="half-window, frames, of the median over each lid fit with "
+                         "--lid-temporal")
+    ap.add_argument('--lid-temporal', action='store_true',
+                    help="keep a frame's fitted LOWER lid when only its upper lid "
+                         "abstained, bridge a missing lid from its neighbours, and "
+                         "median-of-3 filter both lids. See load_lids().")
+    ap.add_argument('--gain-temporal', action='store_true',
+                    help="take the per-frame level from a median of three frames, and "
+                         "bridge a frame whose ring is too small from its neighbours, "
+                         "instead of falling back to round 33's per-frame ramp")
+    ap.add_argument('--shading-temporal', type=int, default=0,
+                    help="half-window, frames, of the temporal median applied to the "
+                         "shading field in the eye's own coordinates; 0 is off. See "
+                         "filter_shading().")
+    ap.add_argument('--limbus-gate', type=float, default=0.0,
+                    help="px: a frame whose limbus-to-eye-corner offset departs from the "
+                         "mean of its two neighbours' by more than this takes that mean "
+                         "(a one-frame slide under a low lid); 0 is off. Also measures the "
+                         "smoothed lid heights against the corners. See gate_limbus().")
+    ap.add_argument('--pupil-colour', action='store_true',
+                    help="darken the canonical pupil per channel to the COLOUR of her own "
+                         "darkest observed pupil pixels, not by one scalar that keeps the "
+                         "iris's warm hue")
+    ap.add_argument('--region-rows', action='store_true',
+                    help="shade the highlight's region above the lid line ROW BY ROW from "
+                         "her pixels beside it (region_rows), and keep the reflection out "
+                         "of the lid line's own shading reference (top_shading exclude)")
+    ap.add_argument('--region-heal', action='store_true',
+                    help="bound the lightness of the highlight's region ABOVE the lid line "
+                         "by the lash above it as well as by its sides and the fill below, "
+                         "ignoring boundary pixels still carrying the reflection's falloff "
+                         "(region_shading closed_top/hot)")
+    ap.add_argument('--shading-lid', action='store_true',
+                    help="register each neighbour's shading to its own LASH LINE in the "
+                         "upper half of the eye and keep one-sided windows at the ends of "
+                         "a run, instead of shrinking to a symmetric window")
+    ap.add_argument('--level-window', type=int, default=1,
+                    help="half-window, frames, of the median over the per-frame level "
+                         "when --gain-temporal is on")
+    ap.add_argument('--shading-sides', choices=('top', 'all'), default='top',
+                    help="which edges of the fill take her own shading (--top-shading): "
+                         "only the top, or every edge inside the iris")
+    ap.add_argument('--canonical-votes', type=int, default=0,
+                    help="frames a canonical-eye cell must be seen clean on before it is "
+                         "trusted as it is; fewer, and it is rebuilt from its mirror "
+                         "across the horizontal diameter or her radial profile. 0 is off. "
+                         "See symmetric_canonical().")
+    ap.add_argument('--no-lash-exempt', dest='lash_exempt', action='store_false',
+                    help="drop round 36's photometric exemptions from the lash guard "
+                         "(--lash-bright, --lash-ring, --lash-halo). With --specular-reach "
+                         "the highlight is protected geometrically and they only add "
+                         "patchwork.")
     ap.add_argument('--no-lash-guard', dest='lash_guard', action='store_false',
                     help='disable the image-derived LASH CEILING. It is on by default: '
                          "the artist's rule is that a corneal specular is never on a lash "
@@ -944,10 +1707,32 @@ def main():
     shot = from_args(args)
     track = (LimbusTrack.load(shot.relight / args.limbus_track)
              if getattr(args, 'limbus_track', '') else None)
-    lids = {}
-    if getattr(args, 'eyelid_track', ''):
-        for row in json.loads((shot.relight / args.eyelid_track)
+    meta = json.loads((shot.relight / 'face_landmarks.json').read_text())
+    topology = meta['topology']
+    with np.load(shot.relight / 'face_landmarks.npz') as z:
+        landmarks = {k: z[k] for k in ('points', 'found', 'eyelid_aperture')}
+    corners = eye_corners_mid(landmarks['points'], landmarks['found'], topology)
+    open_arc = {}
+    if getattr(args, 'limbus_track', ''):
+        for row in json.loads((shot.relight / args.limbus_track)
                               .read_text(encoding='utf-8'))['rows']:
+            for e in row['eyes']:
+                if e.get('open_arc') is not None:
+                    open_arc[(int(row['frame']), e['side'])] = float(e['open_arc'])
+    limbus_fix = {}
+    if track is not None and args.limbus_gate > 0:
+        limbus_fix = gate_limbus(track, corners, shot.frame_count, args.limbus_gate)
+        print('R37_LIMBUS_GATE', {s: sorted((i + int(shot.source_start_frame),
+                                             round(v[3], 2))
+                                            for (i, sd), v in limbus_fix.items() if sd == s)
+                                  for s in r32.SIDES}, flush=True)
+    lids = {}
+    lid_curvature = {}
+    if getattr(args, 'eyelid_track', ''):
+        lid_payload = json.loads((shot.relight / args.eyelid_track).read_text(encoding='utf-8'))
+        lid_curvature = {s: (lid_payload.get('curvature') or {}).get('%s_upper' % s)
+                         for s in r32.SIDES}
+        for row in ([] if args.lid_temporal else lid_payload['rows']):
             for e in row['eyes']:
                 if e.get('fitted'):
                     lids[(int(row['frame']), e['side'])] = dict(
@@ -956,6 +1741,11 @@ def main():
                         lower=(e['lower'] or {}).get('coef'),
                         rms=max((e['upper'] or {}).get('rms', 0.0),
                                 (e['lower'] or {}).get('rms', 0.0)))
+        if args.lid_temporal:
+            lids = load_lids(lid_payload, temporal=True, half=args.lid_window,
+                             ref=corners if args.limbus_gate > 0 else None)
+            print('R37_LIDS temporal', {s: sum(1 for k in lids if k[1] == s)
+                                        for s in r32.SIDES}, flush=True)
     if Path(args.name).name != args.name:
         raise ValueError('Expected a directory name, not a path')
     root = shot.composite / args.name
@@ -963,10 +1753,6 @@ def main():
     for sub in subs:
         (root / sub).mkdir(parents=True, exist_ok=True)
 
-    meta = json.loads((shot.relight / 'face_landmarks.json').read_text())
-    topology = meta['topology']
-    with np.load(shot.relight / 'face_landmarks.npz') as z:
-        landmarks = {k: z[k] for k in ('points', 'found', 'eyelid_aperture')}
     indices = list(range(args.start, args.start + args.count))
     if min(indices) < 0 or max(indices) >= shot.frame_count:
         raise ValueError('Requested interval leaves the shot')
@@ -1000,6 +1786,8 @@ def main():
             # wrong anchor is the bug this replaces, and silently reinstating it on the
             # hardest frames is how it would come back.
             override = track.get(i, side) if track is not None else None
+            if (i, side) in limbus_fix:
+                override = limbus_fix[(i, side)][:3]
             if track is not None and override is None:
                 continue
             geom, record = r32.eye_frame(sources[i], landmarks['points'][i], topology,
@@ -1038,6 +1826,10 @@ def main():
                     lid_cfg.get('upper'), lid_cfg.get('lower'), lid_cfg['centre'],
                     geom['window'], (float(poly[:, 0].min()), float(poly[:, 0].max())),
                     inset=args.lid_inset + args.atlas_lid_inset) > 0.5)
+                if lid_cfg.get('upper') is None:
+                    # No fitted upper lid: nothing bounds the top, so pool nothing above
+                    # the eye centre from this frame (it would pool lash).
+                    strict = strict & (geom['yy'] > geom['limbus'][1])
             usable = (strict & ~collar
                       if (atlas_dir is None or holes_mode) else strict)
             base_patch = sources[i][geom['window']] if (atlas_dir is None or holes_mode)                 else pooled[i][geom['window']]
@@ -1104,6 +1896,12 @@ def main():
         core = rho < min(args.sample_reach, atl.ATLAS_REACH - 0.02)
         holes_before = int((core & ~aw).sum())
         atlas, aw = atl.fill_atlas_holes(atlas, aw, core)
+        symmetry = None
+        if args.canonical_votes > 0:
+            votes = np.stack([f['valid'] for f in frames]).sum(0)
+            atlas, symmetry = symmetric_canonical(atlas, votes, rho, v,
+                                                  hi_votes=args.canonical_votes)
+            print('R37_CANONICAL', side, symmetry, flush=True)
         # **The canonical iris may not be brighter than her own iris.** Cells near the
         # atlas rim are observed on few frames and only when the lid is high, so what
         # gets pooled there is partly lid margin and lash specular. With the eyelid
@@ -1138,12 +1936,14 @@ def main():
             # shot sits well above the darkest observation because the highlight's own
             # bleed lifts most frames; the artist reads that as 'the pupil is not black
             # enough', and he is right -- the plate contains darker pupil than the pool.
-            obs = []
+            obs, dark_rgb = [], []
             for fr in frames:
                 lum = fr['rgb'].max(-1)
                 sel = (fr['w'] > 0.98) & (np.hypot(*atl.atlas_grid()) < args.pupil_target)
                 if sel.sum() >= 8:
                     obs.append(float(np.percentile(lum[sel], 5)))
+                    cut = np.percentile(lum[sel], 10)
+                    dark_rgb.append(fr['rgb'][sel & (lum <= cut)])
             if obs:
                 target = float(np.percentile(obs, 5))
                 sel = rho < args.pupil_target
@@ -1152,11 +1952,51 @@ def main():
                     ramp = np.clip((args.pupil_target - rho) /
                                    max(args.pupil_target * 0.45, 1e-6), 0.0, 1.0)
                     k = target / cur
-                    atlas = atlas * (1.0 - ramp[..., None] * (1.0 - k))
+                    if args.pupil_colour and dark_rgb:
+                        # **Her pupil's COLOUR, not only its level.** One scalar keeps the
+                        # iris's warm hue, so the canonical pupil came out a saturated
+                        # red-brown black (0.067/0.027/0.016 display at source 760 left)
+                        # while her own darkest pupil is a more neutral dark brown
+                        # (0.094/0.055/0.031). On a squint the lid line crosses the pupil
+                        # and her own pupil top meets the canonical one, and the two read
+                        # as different materials -- source 843-847 left. The target is the
+                        # median colour of her darkest observed pupil pixels, scaled to
+                        # the measured level, and each channel is darkened to it.
+                        px = np.concatenate(dark_rgb)
+                        hue = np.median(px, axis=0)
+                        hue = hue / max(float(hue.max()), 1e-6)
+                        cur_rgb = np.median(atlas[sel], axis=0)
+                        k = np.clip(target * hue / np.maximum(cur_rgb, 1e-6), 0.0, 1.0)
+                        pupil_rgb = [round(float(x), 5) for x in target * hue]
+                        atlas = atlas * (1.0 - ramp[..., None] * (1.0 - k[None, None, :]))
+                    else:
+                        pupil_rgb = None
+                        atlas = atlas * (1.0 - ramp[..., None] * (1.0 - k))
                     pupil_before, pupil_after = round(cur, 5), round(target, 5)
                     print('R34_PUPIL', side, 'atlas centre', pupil_before, '->',
-                          pupil_after, flush=True)
-        fitted[side] = dict(atlas=atlas, aw=aw, history=history,
+                          pupil_after, 'rgb', pupil_rgb, flush=True)
+        # The canonical eye itself, written once, so it can be LOOKED at: every pixel the
+        # fill paints comes from this one image.
+        shown = np.clip(linear_to_srgb(np.clip(atlas, 0, 1)), 0, 1)
+        shown = np.where(aw[..., None], shown, 0.0)
+        cv2.imwrite(str(root / ('canonical_%s.png' % side)),
+                    cv2.resize((shown[..., ::-1] * 255).astype(np.uint8), None, fx=4, fy=4,
+                               interpolation=cv2.INTER_NEAREST))
+        # How many frames voted for each cell, and how much they disagreed (luma MAD over
+        # frames, display). A cell a lash crosses on some frames and not others is a
+        # cell whose votes disagree.
+        valid = np.stack([f['valid'] for f in frames]).astype(bool)
+        lum_f = np.stack([np.clip(linear_to_srgb(np.clip(
+            (f['rgb_w'] / np.maximum(f['gain'], 1e-3)).max(-1), 0, 1)), 0, 1)
+            for f in frames])
+        lum_f = np.where(valid, lum_f, np.nan)
+        with np.errstate(invalid='ignore'):
+            spread = np.nanmedian(np.abs(lum_f - np.nanmedian(lum_f, axis=0)), axis=0)
+        count = valid.sum(0)
+        np.savez_compressed(root / ('canonical_%s_votes.npz' % side), count=count,
+                            spread=np.nan_to_num(spread).astype(np.float32),
+                            atlas=atlas.astype(np.float32), aw=aw)
+        fitted[side] = dict(atlas=atlas, aw=aw, history=history, symmetry=symmetry,
                             frozen_registration=registration, atlas_cap=atlas_cap,
                             atlas_holes_interpolated=holes_before - int((core & ~aw).sum()),
                             atlas_holes_remaining=int((core & ~aw).sum()),
@@ -1191,6 +2031,19 @@ def main():
                     else np.zeros(state['inside'].shape, bool))
             near_foot = cv2.dilate(foot.astype(np.uint8), np.ones((9, 9), np.uint8)) > 0
             ring = state['inside'] & support & ~near_foot & (state['rho'] < 0.85)
+            if args.gain_ring == 'lower':
+                # **Level the canonical iris on her UNSHADOWED iris.** The ring round the
+                # footprint reaches up under the lid, and her iris there is in lid shadow.
+                # The contaminated canonical of rounds 34-36 carried that shadow in its
+                # own top half, so the two cancelled; the rebuilt canonical does not
+                # (symmetric_canonical), and levelled on the whole ring it came out a
+                # quarter too dark on every squinting frame -- source 835-838 left, the
+                # whole fill visibly darker than her iris, with its bottom edge stepping
+                # against her lighter lower iris as the lower-lid fit moved. Her shadow
+                # is applied at the edges from her own pixels instead (top_shading).
+                lower = ring & (geom['yy'] > geom['limbus'][1]) & (state['rho'] > 0.40)
+                if lower.sum() >= 40:
+                    ring = lower
             k0 = local_gain(patch, base0, ring)
             prepass[side][i] = dict(base0=base0, support=support, state=state, foot=foot,
                                     near_foot=near_foot, ring=ring, k0=k0)
@@ -1248,6 +2101,41 @@ def main():
         if shadow[side]:
             print('R36_LID_SHADOW_BINS', side, shadow[side]['observed'], flush=True)
 
+    # --- the per-frame LEVEL, as a series: bridged, and median-of-3 ---------------------
+    # `local_gain` is one ratio per channel per frame. Where the eye is reopening after a
+    # blink its ring can hold fewer than 40 usable pixels and it returns None, and the old
+    # answer to that was round 33's fitted RAMP -- the field round 34 measured swinging the
+    # fill/iris ratio up to 10x. At source 834-836 left that painted a dark cup into her
+    # lower iris for exactly the frames after the blink. The level of an iris does not
+    # jump between frames; the neighbouring frames' level is the better estimate, and a
+    # median of three outvotes a frame whose ring was mostly lash without adding lag.
+    gain_series = {s: {} for s in r32.SIDES}
+    if args.gain_temporal:
+        for side in r32.SIDES:
+            raw_k = {i: p['k0'] for i, p in prepass[side].items() if p['k0'] is not None}
+            have = sorted(raw_k)
+            for i in sorted(prepass[side]):
+                if i in raw_k:
+                    # A SYMMETRIC window, shrunk at the ends of a run: only a median
+                    # centred on the frame is lag-free (see filter_shading).
+                    radius = 0
+                    for k_ in range(1, args.level_window + 1):
+                        if all(i + s * m in raw_k for m in range(1, k_ + 1) for s in (-1, 1)):
+                            radius = k_
+                        else:
+                            break
+                    near = list(range(i - radius, i + radius + 1))
+                    gain_series[side][i] = np.median(np.stack([raw_k[j] for j in near]), 0)
+                    continue
+                prev = [j for j in have if i - 6 <= j < i]
+                nxt = [j for j in have if i < j <= i + 6]
+                if prev or nxt:
+                    pick = [raw_k[prev[-1]]] if prev else []
+                    pick += [raw_k[nxt[0]]] if nxt else []
+                    gain_series[side][i] = np.mean(np.stack(pick), 0)
+            print('R37_GAIN_SERIES', side, 'measured', len(raw_k), 'of',
+                  len(prepass[side]), 'filled', len(gain_series[side]), flush=True)
+
     # --- pass A: predict once per frame, and pool ONE residual scale per eye -----------
     detail = {s: {} for s in r32.SIDES}
     scales = {s: [] for s in r32.SIDES}
@@ -1274,6 +2162,8 @@ def main():
                 if shadow_field is not None:
                     base0 = np.maximum(base0 * shadow_field[..., None], 0.0)
                 k = local_gain(patch, base0, ring)
+                if args.gain_temporal and shadow_field is None:
+                    k = gain_series[side].get(i)
                 if k is None:
                     # Not enough observed ring -- fall back to round 33's fitted field
                     # rather than levelling the fill on nothing.
@@ -1348,11 +2238,32 @@ def main():
     if args.lash_guard:
         grid_u = np.linspace(-1.25, 1.25, 101)
         curves, geoms_by = {s: {} for s in r32.SIDES}, {s: {} for s in r32.SIDES}
+        line_stats = {s: dict(fitted=0, abstained=0, bridged=0) for s in r32.SIDES}
         for side in r32.SIDES:
             for i, d in detail[side].items():
                 geom = d['geom']
-                c = lash_ceiling(sources[i][geom['window']], geom, d['state'],
-                                 footprint=d.get('footprint'))
+                if args.lid_line == 'parabola' and lid_curvature.get(side) is not None:
+                    here = sources[i][geom['window']]
+                    raw = lash_ceiling(here, geom, d['state'], raw=True)
+                    lum_h = np.clip(linear_to_srgb(np.clip(here, 0, 1)), 0, 1).max(-1)
+                    rho_h = d['state']['rho']
+                    core = corneal_specular(lum_h, rho_h, d['visible'] & d['support'],
+                                            sclera_level(lum_h, rho_h))
+                    excl = None
+                    if core is not None:
+                        cols = core.any(axis=0)
+                        excl = cv2.dilate(cols.astype(np.uint8)[None, :],
+                                          np.ones((1, 5), np.uint8))[0] > 0
+                    c = lid_line(raw, geom, lid_curvature[side], exclude=excl,
+                                 max_row=float(geom['limbus'][1] - geom['window'][0].start))
+                    if c is None:
+                        line_stats[side]['abstained'] += 1
+                        continue
+                    line_stats[side]['fitted'] += 1
+                    c = c + float(args.lid_line_margin)
+                else:
+                    c = lash_ceiling(sources[i][geom['window']], geom, d['state'],
+                                     footprint=d.get('footprint'))
                 if c is None:
                     continue
                 ys, xs = geom['window']
@@ -1366,8 +2277,55 @@ def main():
                 curve[(grid_u < u[ok].min()) | (grid_u > u[ok].max())] = np.nan
                 curves[side][i] = curve
                 geoms_by[side][i] = geom
-            for i, curve in curves[side].items():
-                stack = [curves[side][j] for j in (i - 1, i, i + 1) if j in curves[side]]
+            if args.lid_line == 'parabola':
+                # A frame whose lash samples cannot carry a line is BRIDGED from its
+                # neighbours in the eye's own coordinates, never left unguarded: with no
+                # bound at all the fill would run to the fitted lid, which is the anchor
+                # that lands on the lid crease.
+                have = sorted(curves[side])
+                for i in sorted(detail[side]):
+                    if i in curves[side]:
+                        continue
+                    prev = [j for j in have if i - 8 <= j < i]
+                    nxt = [j for j in have if i < j <= i + 8]
+                    # Between two fitted frames, or copied from ONE side only when that
+                    # frame is no more open than this one (its visible limbus arc is not
+                    # larger). At the edge of a blink the nearest fitted frame is always
+                    # the more open one -- source 704/705 left copied 703's lash line and
+                    # painted iris onto the closing lid -- while inside a squint the lid
+                    # barely moves and a neighbour's line is a good one.
+                    if prev and nxt:
+                        a, b = prev[-1], nxt[0]
+                        t = (i - a) / float(b - a)
+                        curves[side][i] = (1 - t) * curves[side][a] + t * curves[side][b]
+                    elif prev or nxt:
+                        src_j = prev[-1] if prev else nxt[0]
+                        if args.lid_temporal:
+                            here_arc = open_arc.get((i, side))
+                            src_arc = open_arc.get((src_j, side))
+                            if (here_arc is None or src_arc is None
+                                    or src_arc > here_arc + 0.02):
+                                continue
+                        curves[side][i] = curves[side][src_j]
+                    else:
+                        continue
+                    geoms_by[side][i] = detail[side][i]['geom']
+                    line_stats[side]['bridged'] += 1
+                print('R37_LID_LINE', side, line_stats[side], flush=True)
+            for i, curve in sorted(curves[side].items()):
+                half_w = args.lid_line_window
+                if args.lid_line == 'parabola':
+                    # Symmetric, shrunk at the ends of a run: lag-free (filter_shading).
+                    radius = 0
+                    for k_ in range(1, half_w + 1):
+                        if all(i + s * m in curves[side]
+                               for m in range(1, k_ + 1) for s in (-1, 1)):
+                            radius = k_
+                        else:
+                            break
+                    half_w = radius
+                stack = [curves[side][j] for j in range(i - half_w, i + half_w + 1)
+                         if j in curves[side]]
                 med = (np.nanmedian(np.vstack(stack), axis=0) if len(stack) > 1
                        else curve)
                 med = np.where(np.isfinite(med), med, curve)
@@ -1435,7 +2393,19 @@ def main():
 
     rng = np.random.default_rng(args.seed)
     rows, sheet_tiles = [], []
-    for i in indices:
+    # **Two passes when the shading is filtered in time.** The first computes, for every
+    # frame, the shading it WOULD apply and writes nothing; the second applies the
+    # temporal median of it. See filter_shading().
+    shade_passes = 2 if (args.shading_temporal > 0 and args.top_shading > 0) else 1
+    shade_store, shade_filtered = {}, None
+    for pass_no, i in [(p, j) for p in range(shade_passes) for j in indices]:
+        dry = pass_no < shade_passes - 1
+        if not dry and shade_passes > 1 and shade_filtered is None:
+            shade_filtered = filter_shading(shade_store, args.shading_temporal,
+                                            symmetric=not args.shading_lid,
+                                            lid_registered=args.shading_lid)
+            print('R37_SHADING_FILTERED', len(shade_filtered), 'eye-frames, half-window',
+                  args.shading_temporal, flush=True)
         values = sources[i]
         out = values.copy()
         combined = np.zeros(values.shape[:2], np.float32)
@@ -1506,7 +2476,26 @@ def main():
                 # lives in that ring on the frames where it sits high on the iris. The
                 # fill is bounded by its own radius and by the lids, which is what it
                 # meant to say.
-                w *= (d['visible'] & d['support']).astype(np.float32)
+                if args.soft_lids and geom_.get('opening') is not None:
+                    # The lid edge anti-aliased: the fitted parabolas' own ~1 px ramp,
+                    # not a threshold on it. A binary edge toggles whole pixels between
+                    # fill and photograph each time the lid moves a fraction of a pixel,
+                    # which the stabilised strips showed as short dashes flickering along
+                    # the bottom of the iris (source 837-842 right).
+                    w *= (geom_['opening'] * d['support']).astype(np.float32)
+                else:
+                    w *= (d['visible'] & d['support']).astype(np.float32)
+                # **No trustworthy upper bound, no whole-iris fill.** With neither a
+                # fitted (or two-sided bridged) upper lid nor an image-read lash line, the
+                # only top bound left is the landmark polygon, and on a closing eye that is
+                # wider than the opening: source 704/705 left came out with iris painted
+                # onto the closing lid. Such a frame gets the softbox's own region only.
+                lid_here = lids.get((i, side))
+                no_upper_bound = (args.lid_temporal and ceil_map is None
+                                  and (lid_here is None or lid_here.get('upper') is None))
+                if no_upper_bound:
+                    w = np.zeros_like(w)
+                    record['fill_abstained'] = 'no_upper_bound'
                 sup = np.clip(cv2.distanceTransform(d['support'].astype(np.uint8),
                                                     cv2.DIST_L2, 3) / 2.0, 0.0, 1.0)
                 w = (w * sup).astype(np.float32)
@@ -1569,6 +2558,12 @@ def main():
                                      rim_reach=args.rim_reach, rim=not args.keep_rim,
                                      rim_region=d['visible'])
                 above_lid = 0
+                if ws is not None and no_upper_bound:
+                    # The excess-based removal has no bound either: over a near-closed
+                    # eye her lid skin is far brighter than the predicted iris, and with
+                    # no lash line to cut it this painted a block on the lid at source
+                    # 712/713 left. Only the softbox's own region is replaced here.
+                    ws = None
                 if ws is not None:
                     above_lid = int(((ws > 0) & ~(d['visible'] & d['support'])).sum())
                     w = np.maximum(w, ws)
@@ -1662,6 +2657,8 @@ def main():
                 here_src = np.clip(linear_to_srgb(np.clip(sources[i][geom['window']],
                                                           0, 1)), 0, 1).max(-1)
                 bright = np.clip((here_src - args.lash_bright) / 0.06, 0.0, 1.0)
+                if not args.lash_exempt:
+                    bright = np.zeros_like(bright)
                 core = (bright > 0.5).astype(np.uint8)
                 if core.any():
                     k = int(2 * np.ceil(args.lash_ring) + 1)
@@ -1684,8 +2681,29 @@ def main():
                 allow = np.maximum(allow, bright.astype(np.float32))
                 lash_px = int(((w > 0) & (allow < 1.0)).sum())
                 w = np.rint(np.clip(w * allow, 0, 1) * 255.0).astype(np.float32) / 255.0
+            # **The highlight's own region is replaced whole, AFTER every guard.** The lid
+            # line and the lash guard bound the canonical iris; neither may cut into the
+            # reflection, which is on the cornea by definition. See specular_region().
+            spec_px = 0
+            wb = None
+            w_fill = w
+            if w is not None and args.specular_reach > 0:
+                here = sources[i][geom['window']]
+                lum_h = np.clip(linear_to_srgb(np.clip(here, 0, 1)), 0, 1).max(-1)
+                rho_h = d['state']['rho']
+                core_s = corneal_specular(lum_h, rho_h, d['visible'] & d['support'],
+                                          sclera_level(lum_h, rho_h))
+                wb = specular_region(core_s, rho_h, args.specular_reach)
+                if wb is not None:
+                    taper = np.clip(cv2.distanceTransform(d['support'].astype(np.uint8),
+                                                          cv2.DIST_L2, 3) / 2.0, 0.0, 1.0)
+                    wb = wb * taper.astype(np.float32)
+                    spec_px = int((wb > w).sum())
+                    w = np.maximum(w, wb)
+                    w = np.rint(np.clip(w, 0, 1) * 255.0).astype(np.float32) / 255.0
             if info is not None:
                 info['lash_guard_pixels'] = lash_px
+                info['specular_region_added'] = spec_px
             if w is None or w.max() <= 0:
                 record.update(repaired=False, reason='no_reflection_found')
                 eyes.append(record)
@@ -1711,7 +2729,61 @@ def main():
                               weighted_pixels=round(float(w.sum()), 3))
                 eyes.append(record)
                 continue
-            blended = patch * (1 - w[..., None]) + d['base'] * w[..., None]
+            base_used = d['base']
+            shade_range, shade_boundary, region_range = None, 0, None
+            if args.top_shading > 0:
+                # The lid line's own edge first, from the lid-bounded fill ALONE: the
+                # highlight's region above it has its own rule, below.
+                shade, shade_boundary = top_shading(
+                    patch, d['base'], w_fill, d['state']['rho'], decay=args.top_shading,
+                    sides=args.shading_sides,
+                    exclude=(wb > 0) if (wb is not None and args.region_rows) else None)
+                top_log = (np.zeros(w_fill.shape, np.float32) if shade is None
+                           else np.log(np.maximum(shade, 1e-4)).astype(np.float32))
+                sel = w_fill > 0
+                if sel.any():
+                    shade_range = [round(float(np.exp(top_log[sel].min())), 4),
+                                   round(float(np.exp(top_log[sel].max())), 4)]
+                comp_log = top_log.copy()
+                if wb is not None:
+                    omega = (wb > 0) & (w_fill < 0.5)
+                    base_top = d['base'] * np.exp(top_log)[..., None]
+                    comp = patch * (1 - w_fill[..., None]) + base_top * w_fill[..., None]
+                    hot = None
+                    if args.region_heal or args.region_rows:
+                        # Boundary pixels still bright enough to be the reflection's
+                        # falloff: her lash, lid shadow and iris sit below 0.35 display.
+                        hot = np.clip(linear_to_srgb(np.clip(patch, 0, 1)), 0, 1).max(-1) > 0.35
+                        hot &= ~(w_fill >= 0.5)
+                    if args.region_rows:
+                        rf = region_rows(comp, d['base'], w_fill >= 0.5, wb > 0, hot=hot)
+                    else:
+                        rf = region_shading(comp, d['base'], w_fill >= 0.5, wb > 0,
+                                            closed_top=args.region_heal, hot=hot)
+                    if rf is not None:
+                        comp_log = np.where(omega, np.log(np.maximum(rf, 1e-4)),
+                                            comp_log).astype(np.float32)
+                        region_range = [round(float(rf[omega].min()), 4),
+                                        round(float(rf[omega].max()), 4)]
+                if shade_passes > 1:
+                    # The whole shading field -- the lid line's and the region's -- is
+                    # filtered in time, stored with where this frame actually painted,
+                    # so a neighbour that did not paint a spot cannot vote on it.
+                    if dry:
+                        shade_store[(i, side)] = dict(log=comp_log, valid=w > 0,
+                                                      geom=geom, ceil=ceil_map)
+                        eyes.append(record)
+                        continue
+                    filt = (shade_filtered or {}).get((i, side))
+                    if filt is not None:
+                        record['shading_temporal_change_p95'] = round(float(
+                            np.percentile(np.abs(filt - comp_log)[w > 0], 95)), 4)
+                        comp_log = filt
+                base_used = d['base'] * np.exp(comp_log)[..., None]
+            if dry:
+                eyes.append(record)
+                continue
+            blended = patch * (1 - w[..., None]) + base_used * w[..., None]
             grain = None
             if args.grain > 0:
                 clean = d['inside'] & (w <= 0.0)
@@ -1760,6 +2832,10 @@ def main():
                     blended[bright].max(), 0, 1))), 4),
                 highlight_pixels_above_lid=info.get('highlight_pixels_above_lid'),
                 lash_guard_pixels=info.get('lash_guard_pixels'),
+                specular_region_added=info.get('specular_region_added'),
+                top_shading_range=shade_range,
+                region_shading_range=region_range,
+                top_shading_boundary_px=shade_boundary,
                 rim_pixels_removed=int(((d['under'] > args.k_lo * sigma[side]) & (w > 0.5)).sum()),
                 floor_pixels_removed=int((((patch <= 1e-6).sum(axis=-1) >= 2) & (w > 0.5)).sum()),
                 grain_scale=None if grain is None else [round(float(g), 6) for g in grain],
@@ -1767,6 +2843,8 @@ def main():
                               for c in d['base'][heavy].mean(axis=0)])
             eyes.append(record)
 
+        if dry:
+            continue
         untouched = combined == 0
         assert np.isfinite(out).all() and (out >= 0).all()
         assert np.array_equal(out[untouched], values[untouched]), 'source changed outside weight'
@@ -1873,6 +2951,22 @@ def main():
         lid_inset_px=args.lid_inset,
         atlas_lid_inset_px=args.atlas_lid_inset,
         lash_guard=bool(args.lash_guard), lash_bright=args.lash_bright,
+        lash_exempt=bool(args.lash_exempt), lid_line=args.lid_line,
+        lid_line_margin_px=args.lid_line_margin, lid_line_curvature=lid_curvature,
+        specular_reach_px=args.specular_reach, top_shading_decay_px=args.top_shading,
+        shading_sides=args.shading_sides, canonical_votes=args.canonical_votes,
+        gain_ring=args.gain_ring, gain_temporal=bool(args.gain_temporal),
+        level_window=args.level_window, shading_temporal=args.shading_temporal,
+        shading_lid=bool(args.shading_lid), region_heal=bool(args.region_heal),
+        region_rows=bool(args.region_rows), pupil_colour=bool(args.pupil_colour),
+        limbus_gate_px=args.limbus_gate,
+        limbus_gated={'%d_%s' % (i + int(shot.source_start_frame), sd): round(v[3], 3)
+                      for (i, sd), v in limbus_fix.items()},
+        lid_line_window=args.lid_line_window, soft_lids=bool(args.soft_lids),
+        lid_window=args.lid_window,
+        lid_temporal=bool(args.lid_temporal),
+        canonical_symmetry={k: (v.get('symmetry') if v else None)
+                            for k, v in fitted.items()},
         lash_guard_rule='no paint on or above the lash: per-column ceiling read from the '
                         'SOURCE by walking down from lid skin to the first dark run that '
                         'reaches legal-lash level, masked against the specular, its '

@@ -33,6 +33,42 @@ and **rejected**, for colour AND shape flicker and a sometimes-brown pupil, beca
 every term of the fill was refit per frame from a few dozen pixels. **No per-frame-refit
 fill can be temporally stable at a 24-pixel iris.** See `rounds/round32.md`.
 
+**Round 37 — accepted "based on just the presented frames" (source 700–849, 150 of the
+clip's 1200). Round 38 runs the whole 20 s clip. Read `rounds/round37.md` §0, §5, §6.**
+The command is in round37.md §7; every piece is a flag and defaults are unchanged. What it
+established, none of which should be re-derived:
+
+* **The softbox is replaced whole by GEOMETRY** — its blob plus a 2 px disc
+  (`--specular-reach`), after every guard. The per-column lash ceiling dropped to the lower
+  iris in every column the softbox crosses; the photometric exemptions that patched the
+  notch left its falloff standing as the grey OUTLINE the artist saw. The lash line is now a
+  shot-curvature parabola through the trustworthy walk samples (`--lid-line parabola`).
+  **Do not bring back `--lash-bright/ring/halo`.**
+* **The canonical iris's top half was pooled from 6–19 frames** (the band below the eye
+  centre gets ~128). It carried a dark band through the pupil, lid-skin patches and lash
+  streaks into every frame. `--canonical-votes 60` rebuilds poorly seen cells from their
+  mirror across the horizontal diameter. **Look at `composite/<run>/canonical_<side>.png`
+  whenever the atlas changes.**
+* **Shading comes from HER pixels at the fill's edges** (`--top-shading`, `--region-rows`).
+  It is never read off the reflection or anything brighter than 0.45 display, and is
+  **filtered in time** (`--shading-temporal`): a 5-frame median in the eye's own coordinates,
+  SYMMETRIC windows only (one-sided lags at a blink), and only frames that PAINTED a spot
+  vote on it. Unfiltered, it was the "flicker … small color variation here and there" the
+  artist found in R37h and **no static tool could see**. Use `audit_r37_flicker.py` and
+  `review_r37_temporal.py`: stabilised, CIELAB, global vs local.
+* **At a blink the nearest good frame is always the more OPEN one.** Never copy a lid or a
+  lash line from one side there; it paints iris onto a closing lid (704/705 left). A frame
+  with no trustworthy upper bound gets only the softbox's own region.
+* **The limbus fit slides on single frames under a low lid** (3.7 px at 717 right).
+  `gate_limbus()` catches it against the eye corners, but **only when the limbus itself
+  breaks from its neighbours AND the corners do not**. The corners jitter too (764–770 left).
+* **Any measurement that rides the limbus track inherits its slides.** R37r's worst
+  "flicker" was exactly where the gate had fixed the track. Check in corner-stabilised crops.
+* Tools that found things, in `scripts/`: `review_r37_sheets.py` (stacked tight crops of
+  every frame), `audit_r37_eyes.py` (fragments, lid shadow, lash, **region standout**,
+  flicker, departure), `audit_r37_flicker.py`, `review_r37_temporal.py`,
+  `review_r37_panel.py` (face scale).
+
 **Round 36 was REJECTED, and its most important finding is about the AGENT, not the code.
 Read `rounds/round36.md` §1 first.** The artist's closing words were *"Apparently you can't
 see it. Hand off the round, I'll tackle it fresh in the next one."* Round 36 repeatedly
@@ -530,7 +566,7 @@ Every stage takes `--shot`. Interpreter is the pipeline venv unless the row says
 | 11c | **ratio irradiance** | `stress_proxy.py --ratio` (Blender) | `composite/ratio_render/*.exr` | neutral albedo at PLATE resolution and the PLATE lens |
 | 11d | ~~catchlight~~ | `stress_proxy.py --catchlight` (Blender) | `composite/catchlight_render/*.exr` | renderer looks sound and its validator passes; **the compositing of it is rejected and `--catchlight` defaults to 0** |
 | 11e | **corneal catchlight** | `render_eye_catchlight.py` (Blender) | `composite/r34_catchlight/*.exr` | the scene's own reflection in a corneal cap; validated by `validate_eye_catchlight.py`. PARKED by the artist |
-| 11f | **eye: one canonical iris** | `eye_soft_removal.py --fill-iris` | `composite/<name>/` | built once in the registered eye frame; the LASH CEILING (`lash_ceiling()`) has the last word on where paint may land. `--lid-shadow` is DEFAULT OFF (round 36 §4). Audited by `review_r36_atlas.py` (all 300 eyes) and **looked at** with `review_r36_ab.py`, which is the only round-36 tool that found anything |
+| 11f | **eye: one canonical iris** | `eye_soft_removal.py --fill-iris` | `composite/<name>/` | built once in the registered eye frame. **Round 37's accepted command is in `rounds/round37.md` §7** (softbox region, parabola lash line, rebuilt canonical, temporally filtered edge shading, limbus gate, lid bridging rules). `--lid-shadow` is DEFAULT OFF (round 36 §4). Holds every frame in RAM (≈50 MB/frame), so it needs eye-window storage before a full clip. Audited by `audit_r37_eyes.py` + `audit_r37_flicker.py`; **looked at** with `review_r37_sheets.py`, `review_r37_temporal.py`, `review_r37_panel.py` |
 | 12 | **ratio composite** | `composite_ratio.py` | `composite/ratio/` | `out = plate × R` by default. `--plate-specular remove` and `--catchlight` are rejected experiments |
 | 12b | composite (gain map) | `composite_shot.py` | `composite/`, `intermediate/linear_4k/` | legacy path; loads background **per frame** |
 | 12c | **review video** | `review_video.py` | `final/*.mp4` | what the artist watches; `--compare` puts the before on the LEFT with both halves labelled |

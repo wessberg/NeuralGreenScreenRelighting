@@ -464,14 +464,17 @@ def eye_frame(values, points, topology, side, margin=6, limbus_override=None,
         record['lid_inset_px'] = float(lid_inset)
         record['lid_source'] = 'image_fit'
     else:
+        opening = None
         record['lid_source'] = 'landmark'
     record['visible_pixels'] = int((visible & (np.hypot((xx - limbus[0]) / ax,
                                                         (yy - limbus[1]) / ay) < RHO_MAX)).sum())
     if record['visible_pixels'] < 90:
         record.update(repaired=False, reason='eye_closed_or_occluded')
         return None, record
+    # `opening` is the SOFT matte `visible` thresholds; kept so a caller can anti-alias
+    # the lid edge instead of toggling whole pixels as the lid moves sub-pixel.
     return dict(limbus=limbus, ax=ax, ay=ay, xx=xx, yy=yy, visible=visible,
-                window=window), record
+                opening=opening, window=window), record
 
 
 def solve_eye(patch, geom, offset=None):
