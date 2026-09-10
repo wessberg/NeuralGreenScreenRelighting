@@ -506,6 +506,16 @@ def main():
                          'on the shot radius')
     ap.add_argument('--calib-rms', type=float, default=0.35,
                     help='maximum edge residual, native px, for a calibration frame')
+    ap.add_argument('--trust-se', type=float, default=0.35,
+                    help='centre standard error, native px, at which a frame is half '
+                         'trusted against its neighbours. The fit reports its own '
+                         'uncertainty along the worst-determined axis, which on this '
+                         'plate is VERTICAL and is large exactly where the lid hides the '
+                         'top of the iris; 0 disables the shrinkage.')
+    ap.add_argument('--trust-half', type=int, default=2,
+                    help='half-width, in frames, of the zero-lag local-linear predictor '
+                         'the uncertain frames lean on. It is fitted over CONFIDENT '
+                         'frames only.')
     ap.add_argument('--bridge-gap', type=int, default=3,
                     help='interpolate the centre across failed runs of at most this many '
                          'frames. A single dropped frame puts the softbox back for one '
@@ -599,6 +609,43 @@ def main():
         sy = local_linear(t, np.nan_to_num(cy), ok, args.smooth_half)
         sa = local_linear(t, np.nan_to_num(ax), ok, args.smooth_half)
         sb = local_linear(t, np.nan_to_num(ay), ok, args.smooth_half)
+        # **The centre's error is VERTICAL, and it is worst exactly where the lid hides
+        # the top of the iris.** Measured against the independent estimator in
+        # `audit_r35_limbus.py`: |offset_x| is 0.05 px median and |offset_y| 0.42-0.50,
+        # with excursions to -4.94 px, and every one of those sits on a frame with a
+        # short arc. The geometry says why -- with the radius held at the shot constant,
+        # a visible arc that is only the sides carries almost no information about the
+        # centre's HEIGHT, so the circle slides down and snaps back when the lid opens.
+        # That is the artist's *"the iris didn't follow along at the exact right time"*
+        # and *"jump into position ... as it corrects the mask offset suddenly"*.
+        #
+        # `centre_se_px` already measures precisely that: it is the standard error along
+        # the worst-determined axis, the small eigenvalue of sum(u u^T). So the fix is
+        # not to smooth the track -- round 35 measured that as 3.4 px of LAG at a fast
+        # head move and set `--smooth-half 0` for good reason -- but to shrink each
+        # frame's centre toward its neighbours IN PROPORTION TO ITS OWN UNCERTAINTY.
+        # A frame the fit resolved (se ~ 0.1 px) is untouched; a frame where the lid left
+        # only two side arcs (se > 1 px) leans on the frames either side of it, which is
+        # what a human tracker would do and what `--bridge-gap` already does for a frame
+        # that failed outright.
+        #
+        # The predictor is the same zero-lag local linear one, run over the CONFIDENT
+        # frames only, so an uncertain frame cannot pull its own reference.
+        se = np.array([ (next((e for e in row['eyes'] if e['side'] == side), None) or {})
+                        .get('centre_se_px', np.nan) for row in rows ], float)
+        conf = ok & np.isfinite(se) & (se <= args.trust_se)
+        if conf.sum() >= 5 and args.trust_se > 0:
+            px = local_linear(t, np.nan_to_num(cx), conf, max(args.trust_half, 1))
+            py = local_linear(t, np.nan_to_num(cy), conf, max(args.trust_half, 1))
+            lam = np.where(np.isfinite(se), se ** 2 / (se ** 2 + args.trust_se ** 2), 0.0)
+            lam = np.clip(lam, 0.0, 1.0) * ok
+            sx = (1 - lam) * sx + lam * px
+            sy = (1 - lam) * sy + lam * py
+            moved = np.hypot(sx - np.nan_to_num(cx), sy - np.nan_to_num(cy))[ok]
+            print('LIMBUS_TRUST %s confident %d of %d, shrunk %d frames, moved median '
+                  '%.3f px p95 %.3f max %.3f' % (side, int(conf.sum()), int(ok.sum()),
+                  int((lam > 0.05).sum()), float(np.median(moved)),
+                  float(np.percentile(moved, 95)), float(moved.max())), flush=True)
         for j, row in enumerate(rows):
             e = next((e for e in row['eyes'] if e['side'] == side), None)
             if e is None or not ok[j]:
@@ -617,6 +664,7 @@ def main():
                    radius_model=args.radius_model, fitted=fitted,
                    free_radius=free, shot_radius=fixed,
                    smooth_half_frames=args.smooth_half, sigma_px=SIGMA,
+                   trust_se_px=args.trust_se, trust_half_frames=args.trust_half,
                    angles=ANGLES, lid_min_px=LID_MIN,
                    method='Daugman integro-differential global search, then per-angle '
                           'sub-pixel edges and a robust geometric fit; zero-lag centred '

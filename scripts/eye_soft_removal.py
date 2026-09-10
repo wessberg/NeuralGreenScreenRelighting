@@ -248,7 +248,7 @@ def local_gain(patch, base, ring, lo=0.5, hi=2.0):
 
 
 def lash_ceiling(patch, geom, state, footprint=None, clamp_to_footprint=False,
-                 guard=2.0, smooth=9, pupil_rho=0.42, spec_level=0.45,
+                 guard=0.0, lash_run=3, smooth=9, pupil_rho=0.42, spec_level=0.45,
                  spec_reach=1.05, ring_px=3.0, ring_level=0.10):
     """The highest row the paint may touch, per column, read off HER OWN image.
 
@@ -363,7 +363,21 @@ def lash_ceiling(patch, geom, state, footprint=None, clamp_to_footprint=False,
             # frames like source 727 left.
             if float(vals.min()) > floor_v:
                 continue
-            got = int(run[int(np.argmin(vals))])
+            j = int(np.argmin(vals))
+            # **The ceiling is the lash's OWN inner edge, not the darkest row plus a
+            # fixed margin.** A fixed +2 px offset is what produced the artist's white
+            # "tetris block": at source 721 left the lash minimum is at row 14 and the
+            # highlight starts at row 17, so +2 landed inside the specular and sheared off
+            # its upper-left corner at 0.45-0.62 display. Walking down from the minimum
+            # while the column is still lash-dark ends exactly where the eye begins --
+            # row 16 on that column, leaving the whole highlight reachable -- and on a
+            # column with a thick lash it reaches further, which a fixed offset cannot.
+            # The walk is capped so it cannot run on into a dark upper iris.
+            k = j
+            while (k + 1 < len(run) and k - j < lash_run
+                   and float(vals[k + 1]) < floor_v):
+                k += 1
+            got = int(run[k])
             break
         if got is None:
             continue
@@ -807,6 +821,20 @@ def main():
                          "flicker; it exists because the atlas rim pools lid margin and "
                          "lash specular on the few frames those cells are visible, and "
                          "the fitted eyelid is what finally renders them.")
+    ap.add_argument('--lash-bright', type=float, default=0.45,
+                    help='source display luma above which the LASH GUARD does not apply. '
+                         'Her lashes run 0.13-0.35 and her lid-shadowed iris 0.15-0.30, '
+                         'while a corneal specular is 0.45-0.90, so this exempts the '
+                         'reflection from the guard without exempting any lash. It is '
+                         'needed because lash and shadowed iris merge into one dark run '
+                         'on this plate, so the photometric lash line can land inside the '
+                         'highlight -- source 740 left.')
+    ap.add_argument('--lash-ring', type=float, default=2.0,
+                    help="native px around an exempted specular within which its own "
+                         "legal-black coding undershoot is exempted too. Removing the "
+                         "bright lobe and leaving the dark one puts a black crescent "
+                         "round the fill, which is the artefact rounds 32-34 were "
+                         "rejected for.")
     ap.add_argument('--no-lash-guard', dest='lash_guard', action='store_false',
                     help='disable the image-derived LASH CEILING. It is on by default: '
                          "the artist's rule is that a corneal specular is never on a lash "
@@ -1287,6 +1315,74 @@ def main():
               'p95', None if not scales[side] else round(float(np.percentile(scales[side], 95)), 6),
               flush=True)
 
+    # --- pass A2: the lash ceiling for every frame, then ONE temporal median ----------
+    # **A per-frame boundary moves, and the artist saw it move.** His words on the first
+    # version: *"I do see some temporal instability in the colors in the region that
+    # changes from frame to frame"* and *"the retina/iris/pupil jump into position a few
+    # times as it corrects the mask offset suddenly"*. Measured, the painted disc's own
+    # centre stepped up to 0.35 iris radii between adjacent frames and its top edge up to
+    # 0.52 -- five or six pixels -- because the ceiling is read from the image on every
+    # frame and its per-column argmin flips between adjacent rows.
+    #
+    # This is the lesson rounds 32-35 each had to learn again: anything refit per frame
+    # moves. The ceiling cannot simply be frozen, because a lid MOVES -- that is what a
+    # lid does -- so it is stabilised instead, in the eye's own coordinates so her head
+    # motion is not mistaken for lid motion, by a THREE-FRAME MEDIAN.
+    #
+    # A median of three is the right filter and a mean is not: on smooth motion the
+    # median of (previous, current, next) IS the current value, so it adds no lag on a
+    # blink, while a single frame whose argmin flipped a row is outvoted. That is the same
+    # rule round 33 learned about its temporal vote and round 35 about smoothing the
+    # limbus: filter the spikes, never the motion.
+    ceilings = {s: {} for s in r32.SIDES}
+    if args.lash_guard:
+        grid_u = np.linspace(-1.25, 1.25, 101)
+        curves, geoms_by = {s: {} for s in r32.SIDES}, {s: {} for s in r32.SIDES}
+        for side in r32.SIDES:
+            for i, d in detail[side].items():
+                geom = d['geom']
+                c = lash_ceiling(sources[i][geom['window']], geom, d['state'],
+                                 footprint=d.get('footprint'))
+                if c is None:
+                    continue
+                ys, xs = geom['window']
+                u = ((np.arange(xs.start, xs.stop) - geom['limbus'][0])
+                     / geom['ax']).astype(np.float64)
+                v = ((c + ys.start - geom['limbus'][1]) / geom['ay']).astype(np.float64)
+                ok = np.isfinite(v)
+                if ok.sum() < 8:
+                    continue
+                curve = np.interp(grid_u, u[ok], v[ok], left=np.nan, right=np.nan)
+                curve[(grid_u < u[ok].min()) | (grid_u > u[ok].max())] = np.nan
+                curves[side][i] = curve
+                geoms_by[side][i] = geom
+            for i, curve in curves[side].items():
+                stack = [curves[side][j] for j in (i - 1, i, i + 1) if j in curves[side]]
+                med = (np.nanmedian(np.vstack(stack), axis=0) if len(stack) > 1
+                       else curve)
+                med = np.where(np.isfinite(med), med, curve)
+                geom = geoms_by[side][i]
+                ys, xs = geom['window']
+                u = ((np.arange(xs.start, xs.stop) - geom['limbus'][0])
+                     / geom['ax']).astype(np.float64)
+                good = np.isfinite(med)
+                if good.sum() < 4:
+                    continue
+                back = np.interp(u, grid_u[good], med[good])
+                ceilings[side][i] = (back * geom['ay'] + geom['limbus'][1]
+                                     - ys.start).astype(np.float32)
+            steps = []
+            ks = sorted(curves[side])
+            for x, y in zip(ks, ks[1:]):
+                if y == x + 1:
+                    dd = np.abs(curves[side][y] - curves[side][x])
+                    if np.isfinite(dd).any():
+                        steps.append(float(np.nanmax(dd)))
+            print('R36_CEILING', side, 'frames', len(curves[side]),
+                  'raw frame-to-frame max (iris radii) p95',
+                  None if not steps else round(float(np.percentile(steps, 95)), 4),
+                  'max', None if not steps else round(max(steps), 4), flush=True)
+
     catch, catch_gain, catch_gain_source = None, 1.0, None
     if args.catchlight:
         catch = Path(args.catchlight)
@@ -1373,9 +1469,7 @@ def main():
                               registration_frozen=bool(args.freeze_registration))
                 eyes.append(record)
                 continue
-            ceil_map = (lash_ceiling(sources[i][geom['window']], geom, d['state'],
-                                     footprint=d.get('footprint'))
-                        if args.lash_guard else None)
+            ceil_map = ceilings[side].get(i)
             if args.fill_iris > 0:
                 # The whole iris, as one image. No detection at all: there is nothing to
                 # detect when every pixel of the disc is being replaced.
@@ -1507,10 +1601,65 @@ def main():
             # (source 723 left) or landed on the lid crease seven pixels high (source 727
             # left), and both of those frames are in the set the artist flagged. See
             # lash_ceiling().
+            #
+            # **The footprint is exempt from the guard, PER PIXEL.** The artist's
+            # rejection of the first version was a white "tetris block" in the corner of
+            # her eye, and it is the guard eating the specular: at source 721 left the
+            # lash minimum is at patch row 14 and **the highlight starts at row 15-17**,
+            # so the +2 px guard offset lands inside it and shears off its upper-left
+            # corner at 0.45-0.62 display. R35 removed those pixels and R36 left them.
+            #
+            # **Exempting the footprint from the guard was tried and it is NOT safe.**
+            # The argument for it -- the footprint is where the plate is brighter than the
+            # canonical iris, and a lash is darker -- is false once the lid shadow is
+            # modelled: the canonical iris near the lash is then DARKER than a lash, so
+            # the detector marks lash pixels as excess. Measured, it changed 1333 pixels
+            # above the lash line and **70 % of them had a source luma below 0.35, which
+            # is lash**. The offset below is the fix instead.
             lash_px = 0
             if w is not None and ceil_map is not None:
                 rows_here = np.arange(w.shape[0], dtype=np.float32)[:, None]
                 allow = np.clip(rows_here - ceil_map[None, :], 0.0, 1.0)
+                # **A lash is never BRIGHT, and that is the one discriminator on this
+                # plate that cannot fail.** The photometric lash line can and does land
+                # inside the highlight: at source 740 left the lash and the lid-shadowed
+                # upper iris form ONE continuous dark run from row 11 to row 16, so the
+                # walk's "first dark run below skin" ends mid-iris and the ceiling came
+                # out at row 19 with the specular at rows 18-22 -- it blocked the
+                # brightest part of the reflection and left the white blob the artist
+                # rejected.
+                #
+                # So the guard is not applied to pixels the SOURCE shows as bright. Her
+                # lashes run 0.13-0.35 display and her lid-shadowed iris 0.15-0.30; a
+                # corneal specular is 0.45-0.90. Exempting above `lash_bright` therefore
+                # cannot repaint a lash by construction, and it is a statement about her
+                # photograph rather than about any tracker.
+                # The exemption carries the highlight's OWN COAT OF BLACK with it. Round
+                # 34 established that the undershoot beside the specular is that
+                # specular's coding ringing and has to go WITH it -- delete the bright
+                # lobe and keep the dark one and what is left is a hard black crescent,
+                # which is what the artist rejected in rounds 32, 33 and 34. Exempting
+                # only the bright lobe reproduced it exactly: source 736-745 left came
+                # back with a dark ring round the top of the pupil.
+                #
+                # The ring is admitted by ADJACENCY and by LEGAL BLACK, not by level
+                # alone: only pixels within `ring_px` of the exempted core and below 0.22
+                # display, which is where the undershoot clips (green and blue at exactly
+                # 0, red 8-26). Her lashes sit at 0.13-0.35, so a few lash pixels within
+                # two of the specular can be caught -- that is a handful of pixels where
+                # the reflection touches the lash, against a black crescent on every
+                # treated frame.
+                here_src = np.clip(linear_to_srgb(np.clip(sources[i][geom['window']],
+                                                          0, 1)), 0, 1).max(-1)
+                bright = np.clip((here_src - args.lash_bright) / 0.06, 0.0, 1.0)
+                core = (bright > 0.5).astype(np.uint8)
+                if core.any():
+                    k = int(2 * np.ceil(args.lash_ring) + 1)
+                    near_core = cv2.dilate(core, cv2.getStructuringElement(
+                        cv2.MORPH_ELLIPSE, (k, k))) > 0
+                    bright = np.maximum(bright, (near_core & (here_src < 0.22)
+                                                 ).astype(np.float32))
+                allow = np.maximum(allow, bright.astype(np.float32))
                 lash_px = int(((w > 0) & (allow < 1.0)).sum())
                 w = np.rint(np.clip(w * allow, 0, 1) * 255.0).astype(np.float32) / 255.0
             if info is not None:
@@ -1701,7 +1850,7 @@ def main():
         lid_extend_px=args.lid_extend,
         lid_inset_px=args.lid_inset,
         atlas_lid_inset_px=args.atlas_lid_inset,
-        lash_guard=bool(args.lash_guard),
+        lash_guard=bool(args.lash_guard), lash_bright=args.lash_bright,
         lash_guard_rule='no paint on or above the lash: per-column ceiling read from the '
                         'SOURCE by walking down from lid skin to the first dark run that '
                         'reaches legal-lash level, masked against the specular, its '

@@ -44,7 +44,7 @@ import eye_reflection_repair as r32
 from limbus_fit import Track as LimbusTrack
 from eye_soft_removal import lash_ceiling, lid_inset_for
 
-SURVIVE = 0.15      # display above the surrounding iris before a specular counts
+SURVIVE = 0.10      # display above its own neighbourhood before a pixel is a fragment
 CHANGED = 2 / 255.  # display; below this the result is the photograph
 
 
@@ -108,13 +108,32 @@ def main():
             rho = np.hypot((xx - cx) / ax, (yy - cy) / ay)
             changed = np.abs(lr[sub] - ls[sub]) > CHANGED
 
-            # --- surviving softbox, located in the SOURCE by level ---------------------
-            outer = (rho > 1.15) & (rho < 1.55)
-            sclera = float(np.percentile(ls[sub][outer], 90)) if outer.sum() > 40 else 0.5
-            spec = (rho < 0.98) & (ls[sub] > max(0.45, sclera + 0.06))
-            iris = (rho > 0.45) & (rho < 0.95) & ~spec
-            iris_lv = float(np.median(ls[sub][iris])) if iris.sum() > 40 else 0.4
-            survive = int((spec & (lr[sub] > iris_lv + SURVIVE)).sum())
+            # --- a BRIGHT FRAGMENT anywhere in the iris of the RESULT ------------------
+            # **This asks the question the eye asks, and the previous version did not.**
+            # It used to locate the specular in the SOURCE by level and then check those
+            # pixels in the result -- so it could only find what its own threshold had
+            # already decided was the softbox, and when the guard sheared off the
+            # highlight's upper-left corner at 0.45-0.62 display the test reported no
+            # change on every frame while the artist could see a white block in the corner
+            # of her eye. A metric that shares an assumption with the bug is blind to it,
+            # which is written in AGENTS.md and happened anyway.
+            #
+            # The replacement reads the RESULT alone: is there anything inside her iris
+            # that is much brighter than the iris around it? A repaired eye has no such
+            # thing, whatever the source had and wherever the repair thought the specular
+            # was. `iris_lv` is the result's own iris level, so it needs no reference
+            # image and no model of the reflection.
+            # The test is LOCAL contrast, not a level. A level cannot work: her iris is
+            # darker at the top than the bottom by more than a leftover fragment is bright,
+            # so any single threshold either floods or misses. A surviving specular is a
+            # bright BLOB against a smooth iris, which is exactly what a pixel minus its
+            # own neighbourhood measures, and a correctly repaired iris has none.
+            med = cv2.medianBlur((lr[sub] * 255).astype(np.uint8), 7).astype(np.float32) / 255.
+            local = lr[sub] - med
+            # rho < 0.90: the limbal ring and the wet caruncle at the nasal corner both sit
+            # outside it, are not on the cornea, and are correctly left alone -- round 35
+            # chased thirty of the caruncle before catching that.
+            survive = int(((rho < 0.90) & (local > SURVIVE)).sum())
 
             # --- paint on or above the lash -------------------------------------------
             lash = None
@@ -157,7 +176,7 @@ def main():
             top = cv2.copyMakeBorder(top, 16, 2, 2, 2, cv2.BORDER_CONSTANT, value=colour)
             label = '%d%s' % (i + int(shot.source_start_frame), side[0].upper())
             if survive:
-                label += ' SOFTBOX%d' % survive
+                label += ' BRIGHT%d' % survive
             if lash:
                 label += ' LASH%d' % lash
             if step is not None:
