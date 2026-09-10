@@ -1476,8 +1476,64 @@ def skin_runs(counts, high, low, max_neutral=2):
     return gate
 
 
+def load_floors(payload, ref=None):
+    """Every eye's `lower_iris` fit (eyelid_fit.py --lower-iris-edge) in the eye's own
+    coordinates: height relative to `ref` (the eye corners, as load_lids measures the lids)
+    and u relative to the lid fit's centre; plus, for EVERY eye with a centre, the centre
+    and reference a neighbour's floor is carried by."""
+    out = {}
+    for row in payload['rows']:
+        for e in row['eyes']:
+            if not e.get('centre'):
+                continue
+            key = (int(row['frame']), e['side'])
+            ref_y = float(ref[key][1]) if ref is not None and key in ref else float(e['centre'][1])
+            rec = dict(centre=float(e['centre'][0]), ref_y=ref_y, coef=None)
+            li = e.get('lower_iris')
+            if li:
+                a, b, c = li['coef']
+                rec.update(coef=(a, b, c - ref_y), span=tuple(li['u_span']))
+            out[key] = rec
+    return out
+
+
+def floor_rows(g, side, floors, margin, release=1.0):
+    """--lid-floor: per eye, the row of the lower lid over her iris in each window column
+    (float32, inf where there is none), and which eyes have one.
+
+    **A per-column median over the frame and its two neighbours, a missing floor counting
+    as no bound.** So an ISOLATED fit is never a floor (round 40, 858 right: 13 columns on
+    a blink), a one-frame gap takes the lower of its neighbours' floors, and nothing is
+    interpolated across a run of frames without one -- load_lids' bridging carried 858's
+    and 866's lone fits across 862 right and cut into an open iris. Each fit holds only
+    over the columns its samples span and releases `release` px per px beyond them: past
+    them a tilted parabola is an extrapolation and climbs into the disc (21-22, 386,
+    836-837 left)."""
+    rows, has = [], []
+    for e in g.eyes:
+        here = floors.get((e.i, side))
+        if here is None:
+            rows.append(np.full(g.w, np.inf, np.float32))
+            has.append(False)
+            continue
+        u = np.arange(e.x0, e.x0 + g.w, dtype=np.float64) - here['centre']
+        cand = []
+        for j in (e.i - 1, e.i, e.i + 1):
+            f = floors.get((j, side))
+            if f is None or f['coef'] is None:
+                cand.append(np.full(g.w, np.inf))
+                continue
+            a, b, h = f['coef']
+            uu = np.clip(u, f['span'][0], f['span'][1])
+            cand.append(a * uu * uu + b * uu + h + here['ref_y'] + release * np.abs(u - uu))
+        y = np.median(np.stack(cand), axis=0)
+        rows.append((y - e.y0 - margin).astype(np.float32))
+        has.append(bool(np.isfinite(y).any()))
+    return as_t(np.stack(rows)), torch.as_tensor(has, device=DEV)
+
+
 def final_weights(g, side, fit, reg, sg, args, ceil_dict, lids, store, measure=False,
-                  gate_set=None):
+                  gate_set=None, floors=None):
     """The per-eye body of eye_soft_removal's last loop, up to the shading, batched: the
     whole-iris fill bounded by the lids, the excess-based removal, the lash line, the
     specular region replaced whole, the gates, and the edge / region shading. Eyes that
@@ -1587,6 +1643,19 @@ def final_weights(g, side, fit, reg, sg, args, ceil_dict, lids, store, measure=F
     lash_px = ((wt > 0) & (allow < 1.0)).sum((1, 2))
     wt = torch.where(has_ceil_t.view(B, 1, 1), quantize(wt * allow), wt)
     lash_px = torch.where(has_ceil_t, lash_px, torch.zeros_like(lash_px))
+    # **The lower lid over her iris bounds the fill from below** (--lid-floor, round 40) --
+    # the mirror of the lash line. Where her lower lid covers the iris the lid parabola was
+    # an extrapolation of the sclera columns and sat below it: 76 % of every pixel of lid
+    # skin the fill painted, clip-wide, was there (933-955 right, 866-867, 11, 584, 977),
+    # and the skin gate handed those eyes the softbox region only. The floor is measured in
+    # her image (eyelid_fit.iris_edge_samples) and filtered in time like the lids.
+    floor_px = torch.zeros(B, dtype=torch.int64, device=DEV)
+    if floors is not None:
+        fl_t, has_fl = floor_rows(g, side, floors, args.floor_margin)
+        allow_f = torch.clamp(fl_t[:, None, :] - rows_f, 0.0, 1.0)
+        floor_px = torch.where(has_fl, ((wt > 0) & (allow_f < 1.0)).sum((1, 2)), floor_px)
+        wt = torch.where(has_fl.view(B, 1, 1), quantize(wt * allow_f), wt)
+        g.floor_rows = fl_t
     # the specular's own region (replaced whole below)
     spec_px = torch.zeros(B, dtype=torch.int64, device=DEV)
     wb = torch.zeros_like(wt)
@@ -1718,7 +1787,8 @@ def final_weights(g, side, fit, reg, sg, args, ceil_dict, lids, store, measure=F
     g.recs = recs
     g.info = dict(top=top.cpu().numpy(), above_lid=above_lid.cpu().numpy(),
                   lash_px=lash_px.cpu().numpy(), spec_px=spec_px.cpu().numpy(),
-                  wsok=wsok.cpu().numpy(), peak_excess=peak_excess.cpu().numpy())
+                  wsok=wsok.cpu().numpy(), peak_excess=peak_excess.cpu().numpy(),
+                  floor_px=floor_px.cpu().numpy() if floors is not None else None)
     g.bright = bright
     g.shade_range, g.region_range, g.shade_boundary = shade_range, region_range, shade_boundary
     for n, e in enumerate(g.eyes):
@@ -1821,6 +1891,8 @@ def blend_group(g, side, sg, args, results, shade_filtered):
             grain_scale=None,
             fill_display=[int(round(float(linear_to_srgb(np.clip(c, 0, 1)) * 255)))
                           for c in vals['fill_mean'][n]])
+        if info.get('floor_px') is not None:
+            rec['floor_pixels'] = int(info['floor_px'][n])
         res = results[(e.i, side)]
         res['out8'] = out8_np[n]
         res['w'] = wt_np[n]
@@ -1896,6 +1968,7 @@ def write_record(root, shot, args, rows, sheets, sigma, fitted, lids, lid_curvat
         limbus_track=args.limbus_track,
         limbus_track_sha256=r32.sha(shot.relight / args.limbus_track),
         limbus_source='image_fit',
+        lid_floor=bool(args.lid_floor), floor_margin_px=args.floor_margin,
         lid_claim_radii=args.lid_claim, skin_gate_px=args.skin_gate,
         skin_gate_low_px=args.skin_gate_low,
         skin_counts=getattr(args, '_skin_counts', None) or None,
@@ -1920,7 +1993,7 @@ def write_record(root, shot, args, rows, sheets, sigma, fitted, lids, lid_curvat
 
 def dump_state(root, groups, fitted, sigma, ceilings, lids):
     """diag.npz: what the pass believed about every eye it treated (see --dump)."""
-    keys, win, ceil, lidc, status = [], [], [], [], []
+    keys, win, ceil, lidc, status, floor = [], [], [], [], [], []
     planes = {k: [] for k in ('w_final', 'w_fill', 'wb', 'visible', 'support')}
     codes = {None: 0, 'shade': 1}
     for side in r32.SIDES:
@@ -1945,13 +2018,17 @@ def dump_state(root, groups, fitted, sigma, ceilings, lids):
                             + list(lo if lo is not None else (np.nan,) * 3)
                             + list(lid.get('centre', (np.nan, np.nan))))
                 status.append(codes.get(g.status[n], 0))
+                fr = getattr(g, 'floor_rows', None)
+                fl = (np.full(e.w, np.nan, np.float32) if fr is None
+                      else fr[n].cpu().numpy().astype(np.float32))
+                floor.append(np.where(np.isfinite(fl), fl, np.nan).astype(np.float32))
                 for name, arr in (('w_final', wf), ('w_fill', wl), ('wb', wbb),
                                   ('visible', vis), ('support', sup)):
                     planes[name].append(arr[n].ravel())
     np.savez_compressed(
         root / 'diag.npz', keys=np.array(keys, np.int32), window=np.array(win, np.float64),
         ceiling=np.concatenate(ceil), status=np.array(status, np.int8),
-        lids=np.array(lidc, np.float64),
+        lids=np.array(lidc, np.float64), floor_rows=np.concatenate(floor),
         **{k: np.concatenate(v) for k, v in planes.items()})
     log('dumped', len(keys), 'eyes to diag.npz')
 
@@ -1966,7 +2043,9 @@ def load_diag(path):
         w, h = int(w), int(h)
         rec = dict(x0=int(x0), y0=int(y0), w=w, h=h, limbus=(lx, ly), ax=ax,
                    ceiling=z['ceiling'][co:co + w], lids=z['lids'][n],
-                   status=int(z['status'][n]))
+                   status=int(z['status'][n]),
+                   floor_rows=(z['floor_rows'][co:co + w] if 'floor_rows' in z.files
+                               else np.full(w, np.nan, np.float32)))
         for k in ('w_final', 'w_fill', 'wb', 'visible', 'support'):
             rec[k] = z[k][po:po + w * h].reshape(h, w)
         po += w * h
@@ -1997,6 +2076,13 @@ def main():
                          "neighbours while they still show at least this many skin pixels "
                          "under the fill (hysteresis, so a run is treated one way). 0 is a "
                          "per-frame gate. See skin_runs().")
+    ap.add_argument('--lid-floor', action='store_true',
+                    help="round 40: bound the fill from below by the lower lid where it "
+                         "covers her iris -- the eyelid track's `lower_iris` fits "
+                         "(eyelid_fit.py --lower-iris-edge), bridged and median-of-3 filtered "
+                         "in time like the lids. The mirror of the lash line.")
+    ap.add_argument('--floor-margin', type=float, default=0.0,
+                    help='native px to pull the floor up (positive) or let it down')
     ap.add_argument('--limbus-trust', type=float, default=0.0,
                     help="with --limbus-gate: a frame whose limbus fit reports a centre "
                          "standard error above this multiple of its eye's local median is "
@@ -2071,6 +2157,14 @@ def main():
     lids = esr.load_lids(lid_payload, temporal=True, half=args.lid_window,
                          ref=corners if args.limbus_gate > 0 else None)
     log('R37_LIDS temporal', {s: sum(1 for k in lids if k[1] == s) for s in r32.SIDES})
+    floors = None
+    if args.lid_floor:
+        if not lid_payload.get('lower_iris_edge'):
+            raise SystemExit('--lid-floor needs an eyelid track fitted with '
+                             'eyelid_fit.py --lower-iris-edge')
+        floors = load_floors(lid_payload, corners if args.limbus_gate > 0 else None)
+        log('R40_FLOOR', {s: sum(1 for k, v in floors.items() if k[1] == s and v.get('coef'))
+                          for s in r32.SIDES}, 'eyes with a lower lid over the iris fitted')
     if Path(args.name).name != args.name:
         raise ValueError('Expected a directory name, not a path')
     root = shot.composite / args.name
@@ -2157,8 +2251,11 @@ def main():
             raise ValueError('eye %d %s moved outside its kept crop' % (e.i, e.side))
         return big[oy:oy + e.h, ox:ox + e.w].float()
 
+    dropped = {}
+
     def collect_groups(eyes):
-        """Eye frame, polar frame and footprint for every eye, batched per window shape."""
+        """Eye frame, polar frame and footprint for every eye, batched per window shape.
+        Every eye dropped here is recorded in `dropped` with the stage that dropped it."""
         groups = {s: [] for s in r32.SIDES}
         for side in r32.SIDES:
             shapes = {}
@@ -2168,20 +2265,23 @@ def main():
             for shape, lst in sorted(shapes.items()):
                 g = Group(side, lst)
                 g.patch = torch.stack([cut(e) for e in lst])
-                keep = eye_frame(g)
-                g = g.subset(keep)
-                if not g.B:
-                    continue
-                keep = solve_eye(g)
-                g = g.subset(keep)
-                if not g.B:
-                    continue
-                anomaly, alive = detect_anomaly(g.patch, g.rho, g.theta, g.inside)
-                g.anomaly = anomaly
-                g = g.subset(alive.tolist())
-                if not g.B:
-                    continue
-                groups[side].append(g)
+                for stage, fn in (('lid_opening_under_90px', eye_frame),
+                                  ('inside_under_60px', solve_eye),
+                                  ('anomaly_not_found', None)):
+                    if fn is None:
+                        anomaly, alive = detect_anomaly(g.patch, g.rho, g.theta, g.inside)
+                        g.anomaly = anomaly
+                        keep = alive.tolist()
+                    else:
+                        keep = fn(g)
+                    for e, k in zip(g.eyes, keep):
+                        if not k:
+                            dropped[(e.i, side)] = stage
+                    g = g.subset(keep)
+                    if not g.B:
+                        break
+                if g.B:
+                    groups[side].append(g)
         return groups
 
     groups = collect_groups(eyes)
@@ -2518,7 +2618,7 @@ def main():
             for g in groups[side]:
                 skin_counts.update(final_weights(g, side, fit, fit['frozen_registration'],
                                                  sigma[side], args, ceilings[side], lids, {},
-                                                 measure=True))
+                                                 measure=True, floors=floors))
         gate_set = skin_runs(skin_counts, args.skin_gate, args.skin_gate_low)
         log('R39_SKIN_GATE', {s: sum(1 for k in gate_set if k[1] == s) for s in r32.SIDES},
             'eyes gated (hysteresis %d/%d)' % (args.skin_gate, args.skin_gate_low))
@@ -2530,7 +2630,7 @@ def main():
         sg = sigma[side]
         for g in groups[side]:
             results.update(final_weights(g, side, fit, reg, sg, args, ceilings[side], lids,
-                                         store, gate_set=gate_set))
+                                         store, gate_set=gate_set, floors=floors))
     log('dry pass', len(store), 'eye-frames stored for the temporal shading')
     shade_filtered = filter_shading(store, args.shading_temporal) if (
         args.shading_temporal > 0 and args.top_shading > 0) else None
@@ -2560,7 +2660,10 @@ def main():
         for side in r32.SIDES:
             res = results.get((i, side))
             if res is None:
-                eyes_rec.append(dict(side=side, repaired=False, reason='no_eye_frame'))
+                eyes_rec.append(dict(side=side, repaired=False, reason='no_eye_frame',
+                                     drop_stage=dropped.get((i, side), (
+                                         'no_limbus_or_window' if (i, side) not in eyes
+                                         else 'no_canonical'))))
                 continue
             eyes_rec.append(res['record'])
             if res.get('out8') is not None:

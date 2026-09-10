@@ -378,9 +378,11 @@ def limbus_group(fields, meta, th_cos, th_sin, radius_given, model='circle', min
                    edge_points=[[round(float(a), 3), round(float(b), 3)] for a, b in pts])
 
 # =========================================================================== eyelid
-def lid_fields(patch16, meta):
+def lid_fields(patch16, meta, iris_edge=False):
     """eyelid_fit.fit_eye's fields for one window shape: blurred luma, gy, and the
-    specular map (for the upper lid), plus `sclera` per eye. Bit exact."""
+    specular map, plus `sclera` per eye. Bit exact. With `iris_edge`, also each eye's
+    eyelid_fit.iris_edge_threshold (np.float32 or None) as a fourth value."""
+    import eyelid_fit as ef
     B, h, w = patch16.shape[:3]
     luma = display_luma(patch16)
     blur = G.cv_gaussian(luma, 7, 1.0, 'replicate')
@@ -396,15 +398,28 @@ def lid_fields(patch16, meta):
     sclera = [float(p) if c > 30 else 0.5 for p, c in zip(pct.cpu().numpy(), n.cpu().numpy())]
     thr = as_t(np.float32([max(0.42, s + 0.06) for s in sclera])).view(B, 1, 1)
     spec = G.cv_gaussian(((luma > thr) & (rho < 1.0)).to(F32), 7, 0.8, 'reflect101')
-    return blur, gy, spec
+    if not iris_edge:
+        return blur, gy, spec
+    sel = (rho > 0.45) & (rho < 0.85) & ~(luma > thr)
+    band = (rho > 1.3) & (rho < 1.65) & (yy > ly)
+    iris, n_sel = G.median(luma.reshape(B, -1), sel.reshape(B, -1), dim=1)
+    skin, _ = G.percentile(luma, band, 75)
+    n_band = band.sum((1, 2))
+    iris, skin = iris.cpu().numpy(), skin.cpu().numpy()
+    n_sel, n_band = n_sel.cpu().numpy(), n_band.cpu().numpy()
+    thrs = []
+    for k in range(B):
+        if n_sel[k] <= 20 or n_band[k] <= 20:
+            thrs.append(None)
+            continue
+        a, b = np.float32(iris[k]), np.float32(skin[k])
+        thrs.append(np.float32(0.5 * (a + b)) if (b - a >= ef.IRIS_EDGE_CONTRAST) else None)
+    return blur, gy, spec, thrs
 
 
-def lid_boundary(samp, meta, sign, with_spec, min_step=0.030, column_step=0.5,
-                 sample_step=0.1, inner=0.15, outer=1.80):
-    """eyelid_fit.lid_boundary for a batch: per eye (xs, out_y, out_s) as padded tensors.
-
-    The walk is the CPU's: the FIRST sample under -min_step outward, then down while the
-    gradient keeps falling, then a parabolic refinement -- found for every column at once."""
+def _walk_grid(samp, meta, sign, column_step, sample_step, inner, outer):
+    """The column walk's float32 sample points (the order eyelid_fit writes them in), and
+    the fields sampled there: gy, spec[, blurred luma]."""
     B = len(meta)
     xs_l = [np.arange(m['x_lo'], m['x_hi'] + 1e-9, column_step, dtype=np.float32) for m in meta]
     ss_l = [np.arange(inner * m['radius'], outer * m['radius'], sample_step, dtype=np.float32)
@@ -425,25 +440,41 @@ def lid_boundary(samp, meta, sign, with_spec, min_step=0.030, column_step=0.5,
     yy = cy + sg * torch.nan_to_num(ss_t).view(B, S, 1)            # float32, as numpy
     xx = torch.nan_to_num(xs_t).view(B, 1, C)
     yy, xx = torch.broadcast_tensors(yy, xx)
-    if with_spec:
-        gys, specs = samp(xx.contiguous(), yy.contiguous())
-    else:
-        gys = samp(xx.contiguous(), yy.contiguous())[0]
-    grad = gys * sg
+    smp = samp(xx.contiguous(), yy.contiguous())
     rows = torch.arange(S, device=DEV).view(1, S, 1)
     vrow = rows < nss.view(B, 1, 1)
+    colv = torch.arange(C, device=DEV).view(1, C) < ncol.view(B, 1)
+    return dict(B=B, C=C, S=S, xs_t=xs_t, ss_t=ss_t, nss=nss, cy=cy, sg=sg, xx=xx, yy=yy,
+                smp=smp, rows=rows, vrow=vrow, colv=colv)
+
+
+def _spec_block(specs, vrow):
+    """eyelid_fit._spec_block: the specular and a 5-sample collar along each column."""
+    hit_spec = (specs > 0.05) & vrow          # padded rows must not spread into real ones
+    block = hit_spec.clone()
+    for sh in range(1, 6):
+        block[:, sh:] |= hit_spec[:, :-sh]
+        block[:, :-sh] |= hit_spec[:, sh:]
+    # the CPU's shifts stay inside each eye's own ss length; padded rows carry nothing
+    return block & vrow
+
+
+def lid_boundary(samp, meta, sign, with_spec, min_step=0.030, column_step=0.5,
+                 sample_step=0.1, inner=0.15, outer=1.80):
+    """eyelid_fit.lid_boundary for a batch: per eye (xs, out_y, out_s) as padded tensors.
+
+    The walk is the CPU's: the FIRST sample under -min_step outward, then down while the
+    gradient keeps falling, then a parabolic refinement -- found for every column at once."""
+    w = _walk_grid(samp, meta, sign, column_step, sample_step, inner, outer)
+    B, C, S = w['B'], w['C'], w['S']
+    rows, vrow, cy, sg = w['rows'], w['vrow'], w['cy'], w['sg']
+    grad = w['smp'][0] * sg
     if with_spec:
-        hit_spec = (specs > 0.05) & vrow          # padded rows must not spread into real ones
-        block = hit_spec.clone()
-        for sh in range(1, 6):
-            block[:, sh:] |= hit_spec[:, :-sh]
-            block[:, :-sh] |= hit_spec[:, sh:]
-        # the CPU's shifts stay inside each eye's own ss length; padded rows carry nothing
-        grad = torch.where(block & vrow, torch.zeros_like(grad), grad)
+        grad = torch.where(_spec_block(w['smp'][1], vrow), torch.zeros_like(grad), grad)
     hit = (grad < -min_step) & vrow
     anyhit = hit.any(1)
     first = torch.where(hit, rows.expand_as(hit), torch.full_like(hit, S, dtype=torch.int64)).min(1).values
-    L = nss.view(B, 1)
+    L = w['nss'].view(B, 1)
     nxt = torch.cat([grad[:, 1:], torch.full_like(grad[:, :1], float('inf'))], 1)
     stop = ((rows + 1) >= (L.view(B, 1, 1) - 1)) | ~(nxt < grad)
     cand = stop & (rows >= first.view(B, 1, C))
@@ -455,12 +486,59 @@ def lid_boundary(samp, meta, sign, with_spec, min_step=0.030, column_step=0.5,
     denom = (a_ - 2 * b_) + c_
     shift = torch.where(denom.abs() < 1e-9, torch.zeros_like(denom),
                         torch.clamp((0.5 * (a_ - c_)) / torch.where(denom == 0, torch.ones_like(denom), denom), -1, 1))
-    ssk = torch.gather(torch.nan_to_num(ss_t), 1, kc)
+    ssk = torch.gather(torch.nan_to_num(w['ss_t']), 1, kc)
     step32 = (shift.to(F64) * sample_step).to(F32)                  # python float, cast weakly
     yv = cy.view(B, 1) + sg * (ssk - step32)
-    colv = torch.arange(C, device=DEV).view(1, C) < ncol.view(B, 1)
+    colv = w['colv']
     good &= colv
     out_y = torch.where(good, yv, torch.full_like(yv, float('nan')))
     out_s = torch.where(good, -b_, torch.zeros_like(b_))
-    return xs_t, out_y, out_s, colv
+    return w['xs_t'], out_y, out_s, colv
 
+
+def iris_edge_samples(samp, meta, iris_thr, min_step=0.030, column_step=0.5, sample_step=0.1,
+                      inner=0.15, outer=1.80):
+    """eyelid_fit.iris_edge_samples for a batch (round 40, --lower-iris-edge): the lower
+    walk's samples, the specular blocked, and per column the first up-crossing of the eye's
+    iris/lid-skin threshold inside the limbus (eyelid_fit.iris_edge_first). `samp` samples
+    (gy, spec, blurred luma); `iris_thr` per eye np.float32 (no None). Bit exact."""
+    import eyelid_fit as ef
+    w = _walk_grid(samp, meta, 1.0, column_step, sample_step, inner, outer)
+    B, C, S = w['B'], w['C'], w['S']
+    rows, vrow, xx, yy = w['rows'], w['vrow'], w['xx'], w['yy']
+    gys, specs, lum = w['smp'][0], w['smp'][1], w['smp'][2]
+    block = _spec_block(specs, vrow)
+    grad = torch.where(block, torch.zeros_like(gys), gys * w['sg'])
+    thr32 = as_t(np.float32(list(iris_thr))).view(B, 1, 1)
+    cx = as_t(np.array([float(m['local'][0]) for m in meta], np.float64)).view(B, 1, 1)
+    cyd = as_t(np.array([float(m['local'][1]) for m in meta], np.float64)).view(B, 1, 1)
+    lo = as_t(np.array([ef.IRIS_EDGE_RHO_LO * float(m['radius']) for m in meta])).view(B, 1, 1)
+    hi = as_t(np.array([float(m['radius']) - ef.IRIS_EDGE_INSET for m in meta])).view(B, 1, 1)
+    dx = xx.to(F64) - cx
+    dy = yy.to(F64) - cyd
+    d2 = dx * dx + dy * dy
+    inside = (d2 >= lo * lo) & (d2 <= hi * hi)
+    bright = lum > thr32
+    bext = bright | ~vrow                     # past the end of the walk counts as held
+    hold = torch.ones_like(bright)
+    for h_ in range(ef.IRIS_EDGE_HOLD):
+        sh_ = torch.ones_like(bright)
+        sh_[:, :S - h_] = bext[:, h_:]
+        hold &= sh_
+    cross = torch.zeros_like(bright)
+    cross[:, 1:] = (~bright[:, :-1] & bright[:, 1:] & inside[:, :-1] & inside[:, 1:]
+                    & hold[:, 1:] & vrow[:, 1:] & ~block[:, :-1] & ~block[:, 1:])
+    strength = torch.zeros_like(grad)
+    strength[:, 1:] = torch.maximum(grad[:, :-1], grad[:, 1:])
+    cross &= strength > min_step
+    ek = torch.where(cross, rows.expand_as(cross),
+                     torch.full_like(cross, S, dtype=torch.int64)).min(1).values   # (B, C)
+    ekc = ek.clamp(1, S - 1)
+    gl = lambda t, k: torch.gather(t, 1, k.view(B, 1, C))[:, 0]
+    l0, l1 = gl(lum, ekc - 1).to(F64), gl(lum, ekc).to(F64)
+    y0_, y1_ = gl(yy, ekc - 1).to(F64), gl(yy, ekc).to(F64)
+    t_ = (thr32.view(B, 1).to(F64) - l0) / torch.where(l1 > l0, l1 - l0, torch.ones_like(l1))
+    got = (ek < S) & w['colv']
+    out_y = torch.where(got, (y0_ + t_ * (y1_ - y0_)).to(F32), torch.full_like(l0, float('nan'), dtype=F32))
+    out_s = torch.where(got, gl(strength, ekc), torch.zeros_like(out_y))
+    return w['xs_t'], out_y, out_s, w['colv']

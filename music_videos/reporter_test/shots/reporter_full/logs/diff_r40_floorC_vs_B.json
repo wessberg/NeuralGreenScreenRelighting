@@ -1,0 +1,275 @@
+{
+ "ref": "r40_floorB",
+ "test": "r40_floorC",
+ "frames": 1200,
+ "sigma": {
+  "ref": {
+   "left": 0.007715136966131426,
+   "right": 0.007579662757382895
+  },
+  "test": {
+   "left": 0.007715136966131426,
+   "right": 0.007579662757382895
+  }
+ },
+ "frozen_registration": {
+  "ref": {
+   "left": {
+    "du": 0.0,
+    "dv": 0.0019499985501170158,
+    "scale": 1.0,
+    "du_p95": 0.040300009027123454,
+    "dv_p95": 0.043550013564527035
+   },
+   "right": {
+    "du": 0.0,
+    "dv": 0.0025999993085861206,
+    "scale": 0.985,
+    "du_p95": 0.03380000861361623,
+    "dv_p95": 0.0655850169248878
+   }
+  },
+  "test": {
+   "left": {
+    "du": 0.0,
+    "dv": 0.0019499985501170158,
+    "scale": 1.0,
+    "du_p95": 0.040300009027123454,
+    "dv_p95": 0.043550013564527035
+   },
+   "right": {
+    "du": 0.0,
+    "dv": 0.0025999993085861206,
+    "scale": 0.985,
+    "du_p95": 0.03380000861361623,
+    "dv_p95": 0.0655850169248878
+   }
+  }
+ },
+ "canonical_symmetry": {
+  "ref": {
+   "left": {
+    "applied": true,
+    "lo_votes": 78,
+    "hi_votes": 465,
+    "cells_rebuilt": 13406,
+    "cells_from_mirror": 1153,
+    "radial_rings": 23
+   },
+   "right": {
+    "applied": true,
+    "lo_votes": 76,
+    "hi_votes": 454,
+    "cells_rebuilt": 13257,
+    "cells_from_mirror": 1334,
+    "radial_rings": 19
+   }
+  },
+  "test": {
+   "left": {
+    "applied": true,
+    "lo_votes": 78,
+    "hi_votes": 465,
+    "cells_rebuilt": 13406,
+    "cells_from_mirror": 1153,
+    "radial_rings": 23
+   },
+   "right": {
+    "applied": true,
+    "lo_votes": 76,
+    "hi_votes": 454,
+    "cells_rebuilt": 13257,
+    "cells_from_mirror": 1334,
+    "radial_rings": 19
+   }
+  }
+ },
+ "pupil_level": {
+  "ref": {
+   "left": [
+    0.03007,
+    0.00738
+   ],
+   "right": [
+    0.03165,
+    0.01075
+   ]
+  },
+  "test": {
+   "left": [
+    0.03007,
+    0.00738
+   ],
+   "right": [
+    0.03165,
+    0.01075
+   ]
+  }
+ },
+ "canonical": {
+  "left": {
+   "atlas_max_abs": 0.0,
+   "atlas_max_abs_display": 0.0,
+   "aw_equal": true,
+   "count_equal": true,
+   "spread_max_abs": 0.0
+  },
+  "right": {
+   "atlas_max_abs": 0.0,
+   "atlas_max_abs_display": 0.0,
+   "aw_equal": true,
+   "count_equal": true,
+   "spread_max_abs": 0.0
+  }
+ },
+ "pixels": {
+  "px_diff": 0,
+  "px_diff_outside_weights": 0,
+  "weight_diff_px": 0,
+  "max_level": 0,
+  "frames_identical": 1200,
+  "source_diff_px": 0
+ },
+ "level_histogram_nonzero": {},
+ "per_frame": {
+  "px_diff_p95": 0.0,
+  "px_diff_max": 0,
+  "max_level_p95": 0.0,
+  "max_level_max": 0
+ },
+ "worst_frames": [
+  {
+   "frame": 0,
+   "px_diff": 0,
+   "max_level": 0,
+   "px_diff_outside_weights": 0,
+   "weight_diff_px": 0,
+   "weight_max_step": 0
+  },
+  {
+   "frame": 1,
+   "px_diff": 0,
+   "max_level": 0,
+   "px_diff_outside_weights": 0,
+   "weight_diff_px": 0,
+   "weight_max_step": 0
+  },
+  {
+   "frame": 2,
+   "px_diff": 0,
+   "max_level": 0,
+   "px_diff_outside_weights": 0,
+   "weight_diff_px": 0,
+   "weight_max_step": 0
+  },
+  {
+   "frame": 3,
+   "px_diff": 0,
+   "max_level": 0,
+   "px_diff_outside_weights": 0,
+   "weight_diff_px": 0,
+   "weight_max_step": 0
+  },
+  {
+   "frame": 4,
+   "px_diff": 0,
+   "max_level": 0,
+   "px_diff_outside_weights": 0,
+   "weight_diff_px": 0,
+   "weight_max_step": 0
+  },
+  {
+   "frame": 5,
+   "px_diff": 0,
+   "max_level": 0,
+   "px_diff_outside_weights": 0,
+   "weight_diff_px": 0,
+   "weight_max_step": 0
+  },
+  {
+   "frame": 6,
+   "px_diff": 0,
+   "max_level": 0,
+   "px_diff_outside_weights": 0,
+   "weight_diff_px": 0,
+   "weight_max_step": 0
+  },
+  {
+   "frame": 7,
+   "px_diff": 0,
+   "max_level": 0,
+   "px_diff_outside_weights": 0,
+   "weight_diff_px": 0,
+   "weight_max_step": 0
+  },
+  {
+   "frame": 8,
+   "px_diff": 0,
+   "max_level": 0,
+   "px_diff_outside_weights": 0,
+   "weight_diff_px": 0,
+   "weight_max_step": 0
+  },
+  {
+   "frame": 9,
+   "px_diff": 0,
+   "max_level": 0,
+   "px_diff_outside_weights": 0,
+   "weight_diff_px": 0,
+   "weight_max_step": 0
+  },
+  {
+   "frame": 10,
+   "px_diff": 0,
+   "max_level": 0,
+   "px_diff_outside_weights": 0,
+   "weight_diff_px": 0,
+   "weight_max_step": 0
+  },
+  {
+   "frame": 11,
+   "px_diff": 0,
+   "max_level": 0,
+   "px_diff_outside_weights": 0,
+   "weight_diff_px": 0,
+   "weight_max_step": 0
+  }
+ ],
+ "decision_differences": [],
+ "numeric_field_max_abs": {
+  "frame_residual_scale": 0.0,
+  "registration_ncc": 0.0,
+  "sequence_residual_scale": 0.0,
+  "peak_excess_sigmas": 0.0,
+  "weighted_pixels": 0.0,
+  "pixels_touched": 0,
+  "pixels_full_weight": 0,
+  "residual_pixels_above_2sigma": 0,
+  "residual_peak_display": 0.0,
+  "peak_removed_display": 0.0,
+  "lash_guard_pixels": 0,
+  "specular_region_added": 0,
+  "top_shading_boundary_px": 0,
+  "rim_pixels_removed": 0,
+  "shading_temporal_change_p95": 0.0,
+  "highlight_pixels_above_lid": 0
+ },
+ "numeric_field_n_differ": {
+  "frame_residual_scale": 0,
+  "registration_ncc": 0,
+  "sequence_residual_scale": 0,
+  "peak_excess_sigmas": 0,
+  "weighted_pixels": 0,
+  "pixels_touched": 0,
+  "pixels_full_weight": 0,
+  "residual_pixels_above_2sigma": 0,
+  "residual_peak_display": 0,
+  "peak_removed_display": 0,
+  "lash_guard_pixels": 0,
+  "specular_region_added": 0,
+  "top_shading_boundary_px": 0,
+  "rim_pixels_removed": 0,
+  "shading_temporal_change_p95": 0,
+  "highlight_pixels_above_lid": 0
+ }
+}

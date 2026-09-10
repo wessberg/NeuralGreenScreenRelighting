@@ -85,6 +85,15 @@ def overlay(t, x0, y0, d, rec):
             ys = a * u ** 2 + b * u + c
             pts = np.array([P(x, y, x0, y0) for x, y in zip(xs, ys)], np.int32)
             cv2.polylines(t, [pts], False, colr, 1, cv2.LINE_AA, 4)
+    fl = d.get('floor_rows')
+    if fl is not None and np.isfinite(fl).any():
+        # the lower lid over her iris (--lid-floor), white; drawn only inside the window
+        cols = np.arange(d['w'])
+        ok = np.isfinite(fl) & (fl > -2) & (fl < d['h'] + 2)
+        if ok.sum() > 1:
+            pts = np.array([P(d['x0'] + x, d['y0'] + y - 0.5, x0, y0)
+                            for x, y in zip(cols[ok], fl[ok])], np.int32)
+            cv2.polylines(t, [pts], False, (255, 255, 255), 1, cv2.LINE_AA, 4)
     ce = d['ceiling']
     if np.isfinite(ce).any():
         cols = np.arange(d['w'])

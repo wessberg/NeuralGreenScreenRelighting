@@ -62,9 +62,117 @@ MIN_COLUMNS = 10
 MAX_RESIDUAL = 1.5
 LID_BAND = (-0.30, 1.70)   # limbus radii from the eye centre a lid edge may occupy       # native px; a parabola that misses its own columns abstains
 
+# Round 40, `--lower-iris-edge`: where the lower lid covers her IRIS the column walk never
+# sees it -- iris into lid skin is a DARK-to-bright step, and the walk only takes
+# bright-to-dark ones (sclera into the lid margin). Under the iris the lower lid was an
+# extrapolation of the sclera columns, and at source 933-955 right it sat 3-5 px below her
+# lid: 76 % of every skin pixel the fill painted, clip-wide, was there (rounds/round40.md).
+IRIS_EDGE_RHO_LO = 0.35    # limbus radii; nearer the centre a column is still in the pupil
+IRIS_EDGE_INSET = 1.5      # native px inside the limbus a lid edge must be to be told from it
+IRIS_EDGE_HOLD = 10        # samples (1 px) the column must stay at lid level past the edge
+IRIS_EDGE_CONTRAST = 0.12  # display luma her lid skin must stand above her iris, or no rule
+
+
+def iris_edge_threshold(luma, rho, below, spec_level):
+    """Halfway between HER iris and HER lower-lid skin, in display luma, or None.
+
+    The iris level is the median of the disc annulus 0.45-0.85 radii with the specular out;
+    the skin level the 75th percentile of the band 1.3-1.65 radii below the centre (lashes
+    are the dark quarter). Relative to her own two levels, so a light iris raises it -- and
+    where the two do not separate (a light iris against darker skin) there is no rule and
+    the walk is the one it always was."""
+    sel = (rho > 0.45) & (rho < 0.85) & ~(luma > spec_level)
+    band = (rho > 1.3) & (rho < 1.65) & below
+    if sel.sum() <= 20 or band.sum() <= 20:
+        return None
+    iris = np.median(luma[sel])
+    skin = np.percentile(luma[band], 75)
+    if not (skin - iris >= IRIS_EDGE_CONTRAST):
+        return None
+    return np.float32(0.5 * (iris + skin))
+
+
+def iris_edge_first(lum, grad, xx, yy, centre, radius, thr, block=None):
+    """Per column, the first sample index where the walk leaves her iris for lid skin while
+    still inside the limbus, and the position of that edge; -1 where there is none.
+
+    An up-crossing of `thr` between two samples both at least IRIS_EDGE_RHO_LO radii out and
+    IRIS_EDGE_INSET px inside the limbus, that stays above `thr` for IRIS_EDGE_HOLD samples
+    and is a real step (gradient over MIN_STEP). Inside the limbus the only thing brighter
+    than her iris is a lid (or the specular, which is blocked). `lum` and `grad` (S, C)
+    float32 at float32 points xx, yy. Returns (k (C,) int64, y (C,) float64 at the
+    crossing, strength (C,) float32)."""
+    S, C = lum.shape
+    dx = xx.astype(np.float64) - float(centre[0])
+    dy = yy.astype(np.float64) - float(centre[1])
+    d2 = dx * dx + dy * dy
+    lo = IRIS_EDGE_RHO_LO * float(radius)
+    hi = float(radius) - IRIS_EDGE_INSET
+    inside = (d2 >= lo * lo) & (d2 <= hi * hi)
+    bright = lum > thr
+    hold = np.ones((S, C), bool)
+    for h in range(IRIS_EDGE_HOLD):
+        sh = np.ones((S, C), bool)
+        sh[:S - h] = bright[h:]
+        hold &= sh
+    cross = np.zeros((S, C), bool)
+    cross[1:] = ~bright[:-1] & bright[1:] & inside[:-1] & inside[1:] & hold[1:]
+    if block is not None:
+        cross[1:] &= ~block[:-1] & ~block[1:]
+    strength = np.zeros((S, C), np.float32)
+    strength[1:] = np.maximum(grad[:-1], grad[1:])
+    cross &= strength > MIN_STEP
+    anyc = cross.any(0)
+    k = np.where(anyc, cross.argmax(0), -1)
+    kc = np.clip(k, 1, S - 1)
+    cols = np.arange(C)
+    l0 = lum[kc - 1, cols].astype(np.float64)
+    l1 = lum[kc, cols].astype(np.float64)
+    y0 = yy[kc - 1, cols].astype(np.float64)
+    y1 = yy[kc, cols].astype(np.float64)
+    t = (np.float64(thr) - l0) / np.where(l1 > l0, l1 - l0, 1.0)
+    y = y0 + t * (y1 - y0)
+    return k, y, strength[kc, cols]
+
 
 def _profile(field, xs, ys):
     return lf._sample(field, xs, ys)
+
+
+def _spec_block(spec, xx, yy):
+    """The specular and a 5-sample collar along each column, not eligible as a lid edge."""
+    hit_spec = _profile(spec, xx, yy) > 0.05
+    block = hit_spec.copy()
+    for shift in (1, 2, 3, 4, 5):
+        block[shift:] |= hit_spec[:-shift]
+        block[:-shift] |= hit_spec[shift:]
+    return block
+
+
+def iris_edge_samples(luma, gy, spec, centre, radius, x_lo, x_hi, thr, inner=0.15,
+                      outer=1.80):
+    """`--lower-iris-edge`: where the LOWER lid covers her iris, per column -- the same
+    columns and samples as the lower walk, the crossing found by `iris_edge_first`, the
+    specular blocked. Returns (xs, ys, strength) with NaN where a column has none. Kept
+    apart from the walk's own samples: the lower lid parabola is unchanged by it."""
+    cx, cy = centre
+    xs = np.arange(x_lo, x_hi + 1e-9, COLUMN_STEP, dtype=np.float32)
+    if not len(xs):
+        return xs, np.zeros(0, np.float32), np.zeros(0, np.float32)
+    ss = np.arange(inner * radius, outer * radius, SAMPLE_STEP, dtype=np.float32)
+    yy = np.broadcast_to(cy + 1.0 * ss[:, None], (len(ss), len(xs)))
+    xx = np.broadcast_to(xs[None, :], (len(ss), len(xs)))
+    grad = _profile(gy, xx, yy) * 1.0
+    block = _spec_block(spec, xx, yy)
+    grad = np.where(block, 0.0, grad)
+    lum = _profile(luma, xx, yy)
+    k, y, s = iris_edge_first(lum, grad, xx, yy, centre, radius, thr, block)
+    out_y = np.full(len(xs), np.nan, np.float32)
+    out_s = np.zeros(len(xs), np.float32)
+    got = k >= 0
+    out_y[got] = y[got]
+    out_s[got] = s[got]
+    return xs, out_y, out_s
 
 
 def lid_boundary(luma, gy, centre, radius, sign, x_lo, x_hi, spec=None,
@@ -100,12 +208,7 @@ def lid_boundary(luma, gy, centre, radius, sign, x_lo, x_hi, spec=None,
         # upper lid landed just above the softbox, across the middle of the iris -- the
         # very error being repaired, reproduced by the repair's own tracker. The specular
         # and a two-pixel collar are simply not eligible to be a lid edge.
-        hit_spec = _profile(spec, xx, yy) > 0.05
-        block = hit_spec.copy()
-        for shift in (1, 2, 3, 4, 5):
-            block[shift:] |= hit_spec[:-shift]
-            block[:-shift] |= hit_spec[shift:]
-        grad = np.where(block, 0.0, grad)
+        grad = np.where(_spec_block(spec, xx, yy), 0.0, grad)
     out_y = np.full(len(xs), np.nan, np.float32)
     out_s = np.zeros(len(xs), np.float32)
     # **The FIRST strong step outward, not the strongest.** Above the eye the lid crease
@@ -187,8 +290,14 @@ def opening_mask(shape, offset, coef_upper, coef_lower, centre, feather=0.8):
     return m.astype(np.float32)
 
 
-def fit_eye(values, centre, radius, corners, margin=14):
-    """Both lids for one eye in one frame, or the reason it abstains."""
+def fit_eye(values, centre, radius, corners, margin=14, lower_iris_edge=False,
+            lower_spec=False):
+    """Both lids for one eye in one frame, or the reason it abstains.
+
+    `lower_spec` blocks the specular for the LOWER walk too (round 40: at a sideways glance
+    the softbox sits beside the pupil and its lower edge was taken for the lower lid at
+    961-964 and 1050-1054 left, collapsing the opening on an open eye). `lower_iris_edge`
+    adds the lid over her iris (`iris_edge_first`)."""
     rec = dict(fitted=False, reason=None)
     h, w = values.shape[:2]
     reach = radius * 2.9 + margin
@@ -219,14 +328,20 @@ def fit_eye(values, centre, radius, corners, margin=14):
     out = {}
     for name, sign in (('upper', -1.0), ('lower', 1.0)):
         xs, ys, ss = lid_boundary(blur, gy, local, radius, sign, x_lo, x_hi,
-                                  spec=spec if sign < 0 else None)
+                                  spec=spec if (sign < 0 or lower_spec) else None)
         out[name] = dict(xs=xs, ys=ys, ss=ss)
+    if lower_iris_edge:
+        iris_thr = iris_edge_threshold(luma, rho, yy_ > local[1], max(0.42, sclera + 0.06))
+        rec['iris_edge_thr'] = None if iris_thr is None else float(iris_thr)
+        if iris_thr is not None:
+            xs, ys, ss = iris_edge_samples(blur, gy, spec, local, radius, x_lo, x_hi, iris_thr)
+            out['lower_iris'] = dict(xs=xs, ys=ys, ss=ss)
     rec.update(window=(x0, y0, x1, y1), local_centre=local, samples=out)
     return rec
 
 
 def raw_fits_gpu(shot, data, track, topology, points, only=None, margin=14, io_workers=12,
-                 chunk=384):
+                 chunk=384, lower_iris_edge=False, lower_spec=False):
     """Every eye's `fit_eye` record on the GPU (track_gpu.py): the fields, the column
     samples and the walk batched; the same records, bit for bit, as fit_eye on the CPU
     (the parabolas are fitted afterwards by this file's own numpy code). `only`: a set of
@@ -286,9 +401,13 @@ def raw_fits_gpu(shot, data, track, topology, points, only=None, margin=14, io_w
         by_shape.setdefault(m['shape'], []).append(m)
     fields = []
     for shape, lst in sorted(by_shape.items()):
-        blur, gy, spec = T.lid_fields(torch.stack([m['patch'] for m in lst]), lst)
+        got = T.lid_fields(torch.stack([m['patch'] for m in lst]), lst,
+                           iris_edge=lower_iris_edge)
+        blur, gy, spec = got[:3]
         for n, m in enumerate(lst):
             m['gy'], m['spec'] = gy[n], spec[n]
+            if lower_iris_edge:
+                m['blur'], m['iris_thr'] = blur[n], got[3][n]
             del m['patch']
         fields += lst
     for s0 in range(0, len(fields), chunk):
@@ -297,34 +416,75 @@ def raw_fits_gpu(shot, data, track, topology, points, only=None, margin=14, io_w
         Wm = max(m['shape'][1] for m in part)
         cg = torch.zeros((len(part), Hm, Wm), dtype=torch.float32, device=G.DEV)
         cs = torch.zeros_like(cg)
+        cl = torch.zeros_like(cg) if lower_iris_edge else None
         hw = torch.zeros((len(part), 2), dtype=torch.int64, device=G.DEV)
         for n, m in enumerate(part):
             h, w = m['shape']
             cg[n, :h, :w], cs[n, :h, :w] = m['gy'], m['spec']
+            if cl is not None:
+                cl[n, :h, :w] = m['blur']
             hw[n, 0], hw[n, 1] = h, w
-        samp = G.CubicSampler([cg, cs], hw)
+        samp = G.CubicSampler([cg, cs] + ([cl] if cl is not None else []), hw)
         samples = {}
         for name, sign in (('upper', -1.0), ('lower', 1.0)):
-            xs, ys, ss, colv = T.lid_boundary(samp, part, sign, with_spec=(sign < 0))
+            xs, ys, ss, colv = T.lid_boundary(samp, part, sign,
+                                              with_spec=(sign < 0 or lower_spec))
             samples[name] = (xs.cpu().numpy(), ys.cpu().numpy(), ss.cpu().numpy(),
                              colv.sum(1).cpu().numpy())
+        if lower_iris_edge:
+            # an eye without a threshold samples at 0: every sample bright, no crossing
+            thr = [np.float32(0.0) if m['iris_thr'] is None else m['iris_thr'] for m in part]
+            xs, ys, ss, colv = T.iris_edge_samples(samp, part, thr)
+            samples['lower_iris'] = (xs.cpu().numpy(), ys.cpu().numpy(), ss.cpu().numpy(),
+                                     colv.sum(1).cpu().numpy())
         for n, m in enumerate(part):
             smp = {}
-            for name in ('upper', 'lower'):
+            for name in samples:
+                if name == 'lower_iris' and m['iris_thr'] is None:
+                    continue
                 xs, ys, ss, nc = samples[name]
                 k = int(nc[n])
                 smp[name] = dict(xs=xs[n, :k].copy(), ys=ys[n, :k].copy(), ss=ss[n, :k].copy())
             m['rec'].update(window=m['window'], local_centre=m['local'], samples=smp)
-        del samp, cg, cs
+            if lower_iris_edge:
+                m['rec']['iris_edge_thr'] = (None if m['iris_thr'] is None
+                                             else float(m['iris_thr']))
+        del samp, cg, cs, cl
     for m in fields:
-        m.pop('gy', None); m.pop('spec', None)
+        m.pop('gy', None); m.pop('spec', None); m.pop('blur', None)
     return out
+
+
+def fit_lower_iris(rec, curv_lower):
+    """`lower_iris`: the lower lid where it covers her iris, fitted through the iris-edge
+    samples ONLY (`iris_edge_samples`) at the lower lid's curvature. None where fewer than
+    MIN_COLUMNS columns (5 px) saw it or the fit misses its own columns."""
+    d = (rec.get('samples') or {}).get('lower_iris')
+    if d is None or curv_lower is None:
+        return None
+    f = fit_parabola(d['xs'], d['ys'], d['ss'], rec['local_centre'], curvature=curv_lower)
+    if f is None or f['rms'] > MAX_RESIDUAL:
+        return None
+    a, b, c = f['coef']
+    # The columns the fit is measured over: its inliers. Past them it is an extrapolation
+    # of a few pixels of lid, and a tilted parabola climbs into the disc there (round 40:
+    # 21-22, 386, 836-837 left), so the consumer holds it to this span.
+    ok = np.isfinite(d['ys']) & (d['ss'] > 0)
+    u = (d['xs'][ok] - rec['local_centre'][0]).astype(np.float64)
+    resid = d['ys'][ok].astype(np.float64) - (a * u * u + b * u + c)
+    scale = max(1.4826 * np.median(np.abs(resid - np.median(resid))), 0.25)
+    inl = np.abs(resid) < 2 * scale
+    return dict(coef=[a, b, float(c + rec['window'][1])], columns=f['columns'],
+                rms=round(f['rms'], 4),
+                u_span=[round(float(u[inl].min()), 3), round(float(u[inl].max()), 3)])
 
 
 def fit_lids(rec, radius, curv_upper, curv_lower):
     """Both parabolas for one eye's samples at the given curvatures, as main() makes them."""
     entry = {}
     reason = None
+    if 'lower_iris' in (rec.get('samples') or {}):
+        entry['lower_iris'] = fit_lower_iris(rec, curv_lower)
     for name, curv in (('upper', curv_upper), ('lower', curv_lower)):
         d = rec['samples'][name]
         f = fit_parabola(d['xs'], d['ys'], d['ss'], rec['local_centre'], curvature=curv)
@@ -348,6 +508,13 @@ def update_track(args, shot, track, data, topology, points):
     """--update: refit only the eyes whose limbus centre moved (see the flag's help)."""
     base = json.loads((shot.relight / args.update).read_text(encoding='utf-8'))
     base_rows = {int(r['frame']): r for r in base['rows']}
+    # an update refits with the construction the base track was built with
+    walk = dict(lower_iris_edge=bool(base.get('lower_iris_edge', False)),
+                lower_spec=bool(base.get('lower_spec', False)))
+    for k, v in walk.items():
+        if getattr(args, k) and not v:
+            raise SystemExit('--%s: the base track %s was fitted without it; refit it instead '
+                             'of updating' % (k.replace('_', '-'), args.update))
 
     def moved(i, be):
         got = track.get(i, be['side'])
@@ -360,7 +527,7 @@ def update_track(args, shot, track, data, topology, points):
         fits = raw_fits_gpu(shot, data, track, topology, points,
                             only={(int(row['frame']), be['side']) for row in data['rows']
                                   for be in base_rows[int(row['frame'])]['eyes']
-                                  if moved(int(row['frame']), be)})
+                                  if moved(int(row['frame']), be)}, **walk)
     rows, refit = [], []
     cache = {}
     for row in data['rows']:
@@ -383,7 +550,7 @@ def update_track(args, shot, track, data, topology, points):
                     cache[i] = img[..., ::-1].astype(np.float32)
                 poly = np.asarray(points[i])[topology['eyelid_' + side], :2]
                 corners = (float(poly[:, 0].min()), float(poly[:, 0].max()))
-                rec = fit_eye(cache[i], centre, radius, corners)
+                rec = fit_eye(cache[i], centre, radius, corners, **walk)
             if 'samples' not in rec:
                 eyes.append(dict(side=side, fitted=False, reason=rec['reason'], refit=True))
                 refit.append((i, side, 'abstained'))
@@ -441,6 +608,15 @@ def main():
                          "it recorded for them; every other eye is copied unchanged. Round 39: "
                          "a full refit after limbus_trust.py moved 88 centres changed the "
                          "window-pooled curvature, and so the lids, on 1333 eyes.")
+    ap.add_argument('--lower-iris-edge', action='store_true',
+                    help="round 40: the lower lid ALSO where it covers her iris -- a column "
+                         "that leaves her iris for lid-skin level while still inside the "
+                         "limbus (iris_edge_first). Without it the lower lid under the iris "
+                         "is an extrapolation of the sclera columns.")
+    ap.add_argument('--lower-spec', action='store_true',
+                    help="round 40: block the corneal specular for the LOWER walk as the "
+                         "upper one always has; at a sideways glance the softbox's lower edge "
+                         "was taken for the lower lid.")
     args = ap.parse_args()
     shot = from_args(args)
     track = lf.Track.load(shot.relight / args.track)
@@ -453,8 +629,9 @@ def main():
         return
 
     raw_fits = {}
+    walk = dict(lower_iris_edge=args.lower_iris_edge, lower_spec=args.lower_spec)
     if args.device == 'cuda':
-        raw_fits = raw_fits_gpu(shot, data, track, topology, points)
+        raw_fits = raw_fits_gpu(shot, data, track, topology, points, **walk)
     for row in ([] if args.device == 'cuda' else data['rows']):
         i = row['frame']
         img = cv2.imread(str(shot.fg(i)), cv2.IMREAD_UNCHANGED)
@@ -468,7 +645,7 @@ def main():
             centre, radius = got[0], got[1]
             poly = np.asarray(points[i])[topology['eyelid_' + side], :2]
             corners = (float(poly[:, 0].min()), float(poly[:, 0].max()))
-            raw_fits[(i, side)] = (fit_eye(values, centre, radius, corners), centre,
+            raw_fits[(i, side)] = (fit_eye(values, centre, radius, corners, **walk), centre,
                                    radius, row['source_frame'])
 
     # One curvature per eye for the shot, from the frames that fit it freely and well.
@@ -535,6 +712,9 @@ def main():
             if local:
                 entry['curvature'] = {name: local.get(((side, name), i))
                                       for name in ('upper', 'lower')}
+            if args.lower_iris_edge:
+                entry['lower_iris'] = fit_lower_iris(
+                    rec, local.get(((side, 'lower'), i), curvature.get((side, 'lower'))))
             for name in ('upper', 'lower'):
                 d = rec['samples'][name]
                 f = fit_parabola(d['xs'], d['ys'], d['ss'], rec['local_centre'],
@@ -576,6 +756,8 @@ def main():
                                                for (k, _), v in local.items())}
                        if local else None),
                    min_step=MIN_STEP, column_step=COLUMN_STEP,
+                   lower_iris_edge=bool(args.lower_iris_edge),
+                   lower_spec=bool(args.lower_spec),
                    method='per-column dark-to-bright step below the lash minimum, robust '
                           'parabola per lid, curvature held per eye for the shot',
                    limbus_track=args.track,
