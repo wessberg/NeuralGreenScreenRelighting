@@ -139,7 +139,9 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 import numpy as np, cv2
 from shot_paths import add_shot_argument, from_args
-from color_pipeline import linear_to_srgb
+from color_pipeline import linear_to_srgb, srgb_to_linear
+from eyelid_fit import evaluate as lid_evaluate
+from eye_reflection_repair import lid_distance as landmark_lid_distance
 import gpu_image
 from ratio_edges import extend_irradiance
 from separate_specular import load_layers, specular_dir
@@ -275,6 +277,84 @@ def detail_sigma(E_t, E_s, mask, scales=(2, 4, 8, 16, 32, 64)):
     return cross, table
 
 
+# ---- round 41: the eye pass under the ratio, and the tour reflected in her corneas ---------
+# `plate = D + S` was the round 5 lesson: the ratio can recolour a highlight but cannot move or
+# delete it. Rounds 33-40 built the removal that deletes the capture room's softbox from her
+# corneas (accepted: r40_floorB). This is the other half. The eye pass's frames are substituted
+# for the plate where it changed a pixel (it is exact source everywhere else), the ratio
+# multiplies THAT, and the tour's own reflection -- rendered by stress_proxy.py --corneal in
+# a corneal cap that sees the same bulb and fill the ratio pass was lit by -- is ADDED through
+# the tracked eyelids and the limbus, in the same exposure units as the ratio's anchor.
+
+def load_eye_tracks(shot, limbus_name, eyelid_name):
+    """{(frame, side): (centre, radius, lid record or None)} from the fitted tracks."""
+    limbus = json.loads((shot.relight / limbus_name).read_text(encoding='utf-8'))
+    lids = json.loads((shot.relight / eyelid_name).read_text(encoding='utf-8'))
+    lid_by = {(int(r['frame']), e['side']): e for r in lids['rows'] for e in r['eyes']
+              if e.get('fitted')}
+    out = {}
+    for r in limbus['rows']:
+        for e in r['eyes']:
+            if e.get('fitted'):
+                key = (int(r['frame']), e['side'])
+                out[key] = (tuple(e['smoothed_centre']), float(e['smoothed_axes'][0]),
+                            lid_by.get(key))
+    return out
+
+
+def corneal_matte(shape, centre, radius, lid, feather=1.0, iris_feather=1.5, reach=2.9,
+                  landmarks=None):
+    """Soft matte of the OPEN CORNEA for one eye: inside the fitted lids AND inside the limbus.
+
+    The lid matte is what got stage 11d rejected when it was missing (silver arcs on the upper
+    lid); the limbus gate is round 34's (a cap aimed down an imperfect gaze puts its edge a
+    pixel or two past the iris, onto sclera). Both feathered about a pixel: a hard edge on a
+    25-pixel eye is a step. Returns (window slices, matte, source) or None if the eye's opening is unknown -- then it
+    gets nothing, never a glint on a closed lid. Where round 40's `lower_iris` fit exists (the
+    lower lid over her iris, which the lower walk cannot see), it is the lower bound; it is at
+    or above `lower` by construction.
+
+    Without a lid fit (the eyelid fit abstains around a blink and on a few open eyes -- 42 of
+    300 on the tour), the eye pass falls back to the mediapipe eyelid polygon, and so does
+    this: `landmarks` is (points, lid_ids) for the frame. Round 35 measured that polygon
+    8.34 px INSIDE the true opening on the left eye, so a glint near a lid can be clipped
+    there; it never paints one on a closed lid.
+    """
+    have_fit = lid is not None and lid.get('upper') is not None and lid.get('lower') is not None
+    if not have_fit and landmarks is None:
+        return None
+    h, w = shape
+    cx, cy = centre
+    r = radius * reach + 14
+    x0, x1 = max(0, int(np.floor(cx - r))), min(w, int(np.ceil(cx + r)) + 1)
+    y0, y1 = max(0, int(np.floor(cy - r))), min(h, int(np.ceil(cy + r)) + 1)
+    if x1 <= x0 or y1 <= y0:
+        return None
+    yy, xx = np.mgrid[y0:y1, x0:x1]
+    xx = xx.astype(np.float64)
+    yy = yy.astype(np.float64)
+    m = np.ones(xx.shape, np.float32)
+    if have_fit:
+        c = lid['centre']
+        edges = [(lid['upper']['coef'], 1.0), (lid['lower']['coef'], -1.0)]
+        if lid.get('lower_iris'):
+            edges.append((lid['lower_iris']['coef'], -1.0))
+        for coef, sign in edges:
+            edge = lid_evaluate(coef, xx, c)
+            m = np.minimum(m, np.clip(sign * (yy - edge) / max(feather, 1e-6) + 0.5, 0.0, 1.0)
+                           .astype(np.float32))
+        source = 'image_fit'
+    else:
+        points, lid_ids = landmarks
+        d = landmark_lid_distance(points, lid_ids, (slice(y0, y1), slice(x0, x1)))
+        m = np.clip(d / max(feather, 1e-6), 0.0, 1.0).astype(np.float32)
+        source = 'mediapipe_polygon'
+    rho = np.hypot(xx - cx, yy - cy) / max(radius, 1e-6)
+    m *= np.clip((1.0 - rho) / max(iris_feather / max(radius, 1e-6), 1e-6), 0.0, 1.0
+                 ).astype(np.float32)
+    return (slice(y0, y1), slice(x0, x1)), m, source
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     add_shot_argument(ap)
@@ -339,6 +419,21 @@ def main():
     # extension of the reliable interior. It does suppress the dotted silhouette, but radius 8
     # leaves dots and radius 24 flattens real rim light, so it is not the fix -- the fix is the
     # mesh. Left on by default it would have shipped silently in the next production run.
+    ap.add_argument('--eye-removal', default='',
+                    help='round 41: composite/<run> holding removal/ and weight/ PNGs from the eye '
+                         'pass (eye_removal_gpu.py; exact source outside the weight). Its pixels '
+                         'replace the plate wherever the weight is non-zero, BEFORE the ratio')
+    ap.add_argument('--corneal-dir', default='',
+                    help='round 41: composite/<dir> of stress_proxy.py --corneal EXRs -- the tour '
+                         'reflected in her corneas. ADDED after the ratio through the tracked lids '
+                         'and limbus, scaled by the same anchor the plate is multiplied by')
+    ap.add_argument('--limbus-track', default='limbus_track_tv_import.json')
+    ap.add_argument('--eyelid-track', default='eyelid_track_wtv40_import.json')
+    ap.add_argument('--corneal-blur', type=float, default=0.0,
+                    help='Gaussian sigma in plate pixels applied to the corneal pass before it is '
+                         'added: the render is sharper than the photograph (measure_glint_psf.py)')
+    ap.add_argument('--corneal-gain', type=float, default=1.0)
+    ap.add_argument('--corneal-feather', type=float, default=1.0)
     ap.add_argument('--extend-edges', action='store_true',
                     help='experimental: nearest-extend irradiance from the eroded reliable interior')
     ap.add_argument('--edge-radius', type=int, default=8,
@@ -396,6 +491,29 @@ def main():
     cdir = Path(args.catchlight_dir) if args.catchlight_dir else (shot.composite /
                                                                   'catchlight_render')
 
+    eye_tracks, removal_dir, corneal_dir = None, None, None
+    if args.eye_removal:
+        removal_dir = Path(args.eye_removal)
+        if not removal_dir.is_absolute():
+            removal_dir = shot.composite / args.eye_removal
+        if not (removal_dir / 'removal').is_dir() or not (removal_dir / 'weight').is_dir():
+            raise SystemExit('No removal/ and weight/ under %s' % removal_dir)
+    if args.corneal_dir:
+        corneal_dir = Path(args.corneal_dir)
+        if not corneal_dir.is_absolute():
+            corneal_dir = shot.composite / args.corneal_dir
+        if not corneal_dir.is_dir():
+            raise SystemExit('No corneal pass at %s. Run stress_proxy.py --corneal.' % corneal_dir)
+        eye_tracks = load_eye_tracks(shot, args.limbus_track, args.eyelid_track)
+        lm_points, lm_found, lm_topology = None, None, None
+        if (shot.relight / 'face_landmarks.npz').exists():
+            with np.load(shot.relight / 'face_landmarks.npz') as z:
+                lm_points, lm_found = z['points'], z['found']
+            lm_topology = json.loads((shot.relight / 'face_landmarks.json').read_text())['topology']
+        print('corneal pass: %s through %s + %s, blur sigma %.2f px, gain %.2f' % (
+            corneal_dir.name, args.limbus_track, args.eyelid_track, args.corneal_blur,
+            args.corneal_gain), flush=True)
+
     anchor, stats = None, []
     sigma = None if args.source_detail_sigma >= 0 else 0.0
     sigma_table = []
@@ -419,6 +537,21 @@ def main():
             # cache must never affect keep mode, even through a subtract/add round trip.
             fg = cv2.imread(str(shot.fg(fi)), -1)[..., ::-1].astype(np.float32)
             S_plate = np.zeros_like(fg)
+        removal_px = 0
+        if removal_dir is not None:
+            # The eye pass wrote 8-bit sRGB of the SAME linear fg (its removal.json records the
+            # fg's sha256 per frame); where its weight is zero the pixel is the untouched fg.
+            rem = cv2.imread(str(removal_dir / 'removal' / ('%06d.png' % fi)), -1)
+            wgt = cv2.imread(str(removal_dir / 'weight' / ('%06d.png' % fi)), -1)
+            if rem is None or wgt is None:
+                raise SystemExit('No eye removal frame %06d under %s' % (fi, removal_dir))
+            if wgt.ndim == 3:
+                wgt = wgt[..., 0]
+            changed = wgt > 0
+            removal_px = int(changed.sum())
+            if removal_px:
+                fg = fg.copy()
+                fg[changed] = srgb_to_linear(rem[..., ::-1].astype(np.float32) / 255.0)[changed]
         alpha = cv2.imread(str(shot.alpha(fi)), -1)
         if alpha.ndim == 3:
             alpha = alpha[..., 0]
@@ -619,6 +752,42 @@ def main():
                 else:
                     cl_log = {'source': src, 'eyes': sorted(eyes)}
 
+        corneal_log = None
+        if corneal_dir is not None:
+            cp = corneal_dir / ('%06d.exr' % n)
+            if not cp.exists():
+                raise SystemExit('No corneal frame %s' % cp)
+            cimg = cv2.imread(str(cp), -1)
+            cr = cimg[..., 2::-1].astype(np.float32)
+            if cr.shape[:2] != (h, w):
+                raise SystemExit('corneal pass %s is %s, plate is %s' % (cp, cr.shape[:2], (h, w)))
+            if args.corneal_blur > 0:
+                cr = cv2.GaussianBlur(cr, (0, 0), args.corneal_blur)
+            corneal_log = {'eyes': {}, 'scale': float(anchor * args.exposure * args.corneal_gain)}
+            for side in ('left', 'right'):
+                tr = eye_tracks.get((fi, side))
+                if tr is None:
+                    corneal_log['eyes'][side] = {'added': False, 'why': 'no limbus fit'}
+                    continue
+                centre, radius, lid_rec = tr
+                lm = None
+                if (lm_points is not None and fi < len(lm_found) and lm_found[fi]
+                        and np.isfinite(lm_points[fi]).all()):
+                    lm = (lm_points[fi], lm_topology['eyelid_' + side])
+                mt = corneal_matte((h, w), centre, radius, lid_rec, args.corneal_feather,
+                                   landmarks=lm)
+                if mt is None:
+                    corneal_log['eyes'][side] = {'added': False, 'why': 'no lid fit or polygon'}
+                    continue
+                win, m, lid_source = mt
+                add = cr[win] * m[..., None] * (anchor * args.exposure * args.corneal_gain)
+                e_all = float((cr[win] @ LUMA).sum())
+                e_kept = float(((cr[win] @ LUMA) * m).sum())
+                lit[win] = lit[win] + add
+                corneal_log['eyes'][side] = {
+                    'added': True, 'lid_source': lid_source, 'energy_rendered': e_all, 'lid_limbus_kept': e_kept / max(e_all, 1e-9),
+                    'peak_added_linear': float((add @ LUMA).max()),
+                    'peak_added_display': float(linear_to_srgb(np.clip((add @ LUMA).max(), 0, 1)))}
         out_rgb = np.clip(lit * alpha[..., None], 0, None)
         if out_res is not None and (out_res[0], out_res[1]) != (w, h):
             # Downscale AFTER compositing, so the matte's fractional alpha and the ratio's shadow
@@ -631,6 +800,7 @@ def main():
         if m.any():
             rl = R[m] @ LUMA
             stats.append({'frame': n, 'shot_frame': fi, 'catchlight': cl_log,
+                          'eye_removal_px': removal_px, 'corneal': corneal_log,
                           'station': pf[n]['station'] if n in pf else None,
                           'ratio_luma_median': float(np.median(rl)),
                           'ratio_luma_p5': float(np.percentile(rl, 5)),
@@ -645,6 +815,19 @@ def main():
     dev = gpu_image.describe()
     summary = {
         'shot': shot.name, 'frames': len(stats), 'output': str(out_dir),
+        'eye_removal': (str(removal_dir) if removal_dir is not None else None),
+        'corneal': ({'dir': str(corneal_dir), 'limbus_track': args.limbus_track,
+                     'eyelid_track': args.eyelid_track, 'blur_sigma_px': args.corneal_blur,
+                     'gain': args.corneal_gain, 'feather_px': args.corneal_feather,
+                     'matte': 'tracked upper/lower(/lower_iris) parabolas AND the limbus disc, '
+                              'feathered; without a lid fit the mediapipe eyelid polygon, as '
+                              'the eye pass does; with neither, nothing',
+                     'eyes_on_polygon': int(sum(1 for st in stats for e in ((st.get('corneal') or {}).get('eyes') or {}).values() if e.get('lid_source') == 'mediapipe_polygon')),
+                     'scale': 'anchor x exposure x gain -- the same anchor the plate is '
+                              'multiplied by, so render and plate share units',
+                     'eyes_added': int(sum(1 for st in stats for e in ((st.get('corneal') or {}).get('eyes') or {}).values() if e.get('added'))),
+                     'peak_added_display_max': max([e['peak_added_display'] for st in stats for e in ((st.get('corneal') or {}).get('eyes') or {}).values() if e.get('added')] or [0.0])}
+                    if corneal_dir is not None else None),
         'formula': 'out = plate x R,  R = E_target(rendered) / E_source(assumed)',
         'why': 'the plate keeps every pore, hair strand and eye specular; the renderer supplies '
                'only the change in light. Rendering the proxy instead shows the proxy.',

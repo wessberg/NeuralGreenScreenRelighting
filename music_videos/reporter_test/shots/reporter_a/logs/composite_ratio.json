@@ -1,7 +1,21 @@
 {
   "shot": "reporter_a",
   "frames": 150,
-  "output": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\ratio_r5",
+  "output": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r41_tour",
+  "eye_removal": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r40_floorB_import",
+  "corneal": {
+    "dir": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r41_corneal",
+    "limbus_track": "limbus_track_tv_import.json",
+    "eyelid_track": "eyelid_track_wtv40_import.json",
+    "blur_sigma_px": 0.35,
+    "gain": 1.0,
+    "feather_px": 1.0,
+    "matte": "tracked upper/lower(/lower_iris) parabolas AND the limbus disc, feathered; without a lid fit the mediapipe eyelid polygon, as the eye pass does; with neither, nothing",
+    "eyes_on_polygon": 42,
+    "scale": "anchor x exposure x gain -- the same anchor the plate is multiplied by, so render and plate share units",
+    "eyes_added": 272,
+    "peak_added_display_max": 0.9999999403953552
+  },
   "formula": "out = plate x R,  R = E_target(rendered) / E_source(assumed)",
   "why": "the plate keeps every pore, hair strand and eye specular; the renderer supplies only the change in light. Rendering the proxy instead shows the proxy.",
   "E_source": {
@@ -31,7 +45,7 @@
     ]
   },
   "plate_specular": {
-    "mode": "remove",
+    "mode": "keep",
     "layer": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\key\\specular",
     "present": true,
     "why": "a smooth R can recolour a highlight but cannot move or delete one, so with the plate specular left in, every shot keeps reporting where the ORIGINAL room's lamps were -- the crown sheen, the lip gloss, and the corneal catchlight most of all"
@@ -60,7 +74,7 @@
     }
   },
   "catchlight": {
-    "gain": 1.0,
+    "gain": 0.0,
     "render_dir": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\catchlight_render",
     "render_present": true,
     "eye_geometry": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\relight\\eye_geometry.json",
@@ -84,14 +98,28 @@
     {
       "frame": 0,
       "shot_frame": 0,
-      "catchlight": {
-        "source": "rendered (scene key 89.4 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 89.42217818637016,
-        "peak_added": 0.7205972671508789
+      "catchlight": null,
+      "eye_removal_px": 594,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.609760582447052,
+            "lid_limbus_kept": 1.0,
+            "peak_added_linear": 2.9127767086029053,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.5919522643089294,
+            "lid_limbus_kept": 1.0,
+            "peak_added_linear": 3.9233601093292236,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "front far",
       "ratio_luma_median": 0.9991422891616821,
@@ -102,14 +130,28 @@
     {
       "frame": 1,
       "shot_frame": 1,
-      "catchlight": {
-        "source": "rendered (scene key 90.2 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 90.15837769434981,
-        "peak_added": 0.6077492237091064
+      "catchlight": null,
+      "eye_removal_px": 587,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.5302509665489197,
+            "lid_limbus_kept": 1.0,
+            "peak_added_linear": 2.5966238975524902,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.7077547311782837,
+            "lid_limbus_kept": 1.0,
+            "peak_added_linear": 4.074247360229492,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "front far",
       "ratio_luma_median": 0.8869973421096802,
@@ -120,14 +162,28 @@
     {
       "frame": 2,
       "shot_frame": 2,
-      "catchlight": {
-        "source": "rendered (scene key 90.4 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 90.36721199992587,
-        "peak_added": 1.0982944965362549
+      "catchlight": null,
+      "eye_removal_px": 538,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.5940138101577759,
+            "lid_limbus_kept": 1.0,
+            "peak_added_linear": 3.6725311279296875,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.5777937769889832,
+            "lid_limbus_kept": 1.0,
+            "peak_added_linear": 3.9839062690734863,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "front far",
       "ratio_luma_median": 0.7932160496711731,
@@ -138,14 +194,28 @@
     {
       "frame": 3,
       "shot_frame": 3,
-      "catchlight": {
-        "source": "rendered (scene key 91.1 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 91.14898675753119,
-        "peak_added": 0.9853562712669373
+      "catchlight": null,
+      "eye_removal_px": 317,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.4803396761417389,
+            "lid_limbus_kept": 1.0,
+            "peak_added_linear": 2.201399564743042,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.3595924377441406,
+            "lid_limbus_kept": 0.9999998342438869,
+            "peak_added_linear": 1.7425168752670288,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "front far",
       "ratio_luma_median": 0.7178107500076294,
@@ -156,14 +226,28 @@
     {
       "frame": 4,
       "shot_frame": 4,
-      "catchlight": {
-        "source": "rendered (scene key 91.1 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 91.14090695155063,
-        "peak_added": 1.2827532291412354
+      "catchlight": null,
+      "eye_removal_px": 30,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.4776105582714081,
+            "lid_limbus_kept": 0.9983836216646363,
+            "peak_added_linear": 2.662976026535034,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.5406930446624756,
+            "lid_limbus_kept": 0.9941424206653847,
+            "peak_added_linear": 2.3096327781677246,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "front far",
       "ratio_luma_median": 0.6529985070228577,
@@ -174,14 +258,20 @@
     {
       "frame": 5,
       "shot_frame": 5,
-      "catchlight": {
-        "source": "rendered (scene key 91.1 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 91.09833511153096,
-        "peak_added": 2.0776994228363037
+      "catchlight": null,
+      "eye_removal_px": 0,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": false,
+            "why": "no limbus fit"
+          },
+          "right": {
+            "added": false,
+            "why": "no limbus fit"
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "front far",
       "ratio_luma_median": 0.601966381072998,
@@ -193,6 +283,20 @@
       "frame": 6,
       "shot_frame": 6,
       "catchlight": null,
+      "eye_removal_px": 0,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": false,
+            "why": "no limbus fit"
+          },
+          "right": {
+            "added": false,
+            "why": "no limbus fit"
+          }
+        },
+        "scale": 10.224953391950688
+      },
       "station": "front far",
       "ratio_luma_median": 0.5599601864814758,
       "ratio_luma_p5": 0.18472474813461304,
@@ -203,6 +307,20 @@
       "frame": 7,
       "shot_frame": 7,
       "catchlight": null,
+      "eye_removal_px": 0,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": false,
+            "why": "no limbus fit"
+          },
+          "right": {
+            "added": false,
+            "why": "no limbus fit"
+          }
+        },
+        "scale": 10.224953391950688
+      },
       "station": "front far",
       "ratio_luma_median": 0.5242465138435364,
       "ratio_luma_p5": 0.17187772691249847,
@@ -213,6 +331,20 @@
       "frame": 8,
       "shot_frame": 8,
       "catchlight": null,
+      "eye_removal_px": 0,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": false,
+            "why": "no limbus fit"
+          },
+          "right": {
+            "added": false,
+            "why": "no limbus fit"
+          }
+        },
+        "scale": 10.224953391950688
+      },
       "station": "front far",
       "ratio_luma_median": 0.49260014295578003,
       "ratio_luma_p5": 0.16173267364501953,
@@ -223,6 +355,20 @@
       "frame": 9,
       "shot_frame": 9,
       "catchlight": null,
+      "eye_removal_px": 0,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": false,
+            "why": "no limbus fit"
+          },
+          "right": {
+            "added": false,
+            "why": "no limbus fit"
+          }
+        },
+        "scale": 10.224953391950688
+      },
       "station": "front far",
       "ratio_luma_median": 0.46528127789497375,
       "ratio_luma_p5": 0.1520376205444336,
@@ -233,6 +379,20 @@
       "frame": 10,
       "shot_frame": 10,
       "catchlight": null,
+      "eye_removal_px": 0,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": false,
+            "why": "no limbus fit"
+          },
+          "right": {
+            "added": false,
+            "why": "no limbus fit"
+          }
+        },
+        "scale": 10.224953391950688
+      },
       "station": "front far",
       "ratio_luma_median": 0.44174841046333313,
       "ratio_luma_p5": 0.14330925047397614,
@@ -243,6 +403,20 @@
       "frame": 11,
       "shot_frame": 11,
       "catchlight": null,
+      "eye_removal_px": 0,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": false,
+            "why": "no limbus fit"
+          },
+          "right": {
+            "added": false,
+            "why": "no limbus fit"
+          }
+        },
+        "scale": 10.224953391950688
+      },
       "station": "front close",
       "ratio_luma_median": 0.4180658459663391,
       "ratio_luma_p5": 0.13570864498615265,
@@ -253,6 +427,24 @@
       "frame": 12,
       "shot_frame": 12,
       "catchlight": null,
+      "eye_removal_px": 0,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.0,
+            "lid_limbus_kept": 0.0,
+            "peak_added_linear": 0.0,
+            "peak_added_display": 0.0
+          },
+          "right": {
+            "added": false,
+            "why": "no limbus fit"
+          }
+        },
+        "scale": 10.224953391950688
+      },
       "station": "front close",
       "ratio_luma_median": 0.3941519856452942,
       "ratio_luma_p5": 0.13407282531261444,
@@ -262,14 +454,28 @@
     {
       "frame": 13,
       "shot_frame": 13,
-      "catchlight": {
-        "source": "rendered (scene key 75.4 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 75.4309637240722,
-        "peak_added": 0.5298131704330444
+      "catchlight": null,
+      "eye_removal_px": 0,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.27170759439468384,
+            "lid_limbus_kept": 0.9999835472086523,
+            "peak_added_linear": 1.4500339031219482,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.25085049867630005,
+            "lid_limbus_kept": 0.9139228427307784,
+            "peak_added_linear": 1.5589348077774048,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "front close",
       "ratio_luma_median": 0.3604171872138977,
@@ -280,14 +486,28 @@
     {
       "frame": 14,
       "shot_frame": 14,
-      "catchlight": {
-        "source": "rendered (scene key 41.7 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 41.659587195011184,
-        "peak_added": 0.6338376402854919
+      "catchlight": null,
+      "eye_removal_px": 75,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.2564146816730499,
+            "lid_limbus_kept": 1.0,
+            "peak_added_linear": 0.6563865542411804,
+            "peak_added_display": 0.8302561640739441
+          },
+          "right": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.22576916217803955,
+            "lid_limbus_kept": 0.9999978219420462,
+            "peak_added_linear": 0.9709292054176331,
+            "peak_added_display": 0.9871107935905457
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "front close",
       "ratio_luma_median": 0.3301568925380707,
@@ -298,14 +518,28 @@
     {
       "frame": 15,
       "shot_frame": 15,
-      "catchlight": {
-        "source": "plate (kept: scene key 13.8 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 13.78271700252574,
-        "peak_added": 0.306238055229187
+      "catchlight": null,
+      "eye_removal_px": 286,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.2591864764690399,
+            "lid_limbus_kept": 1.0,
+            "peak_added_linear": 1.045894980430603,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.2177972048521042,
+            "lid_limbus_kept": 0.9999955528562533,
+            "peak_added_linear": 0.878524661064148,
+            "peak_added_display": 0.9445778131484985
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "front close",
       "ratio_luma_median": 0.3114522695541382,
@@ -316,14 +550,28 @@
     {
       "frame": 16,
       "shot_frame": 16,
-      "catchlight": {
-        "source": "rendered (scene key 15.1 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 15.071826442525738,
-        "peak_added": 0.433582603931427
+      "catchlight": null,
+      "eye_removal_px": 102,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.2636859714984894,
+            "lid_limbus_kept": 1.0,
+            "peak_added_linear": 1.2957279682159424,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.22935231029987335,
+            "lid_limbus_kept": 0.9999956469686366,
+            "peak_added_linear": 1.254568338394165,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "front close",
       "ratio_luma_median": 0.3099786341190338,
@@ -334,14 +582,28 @@
     {
       "frame": 17,
       "shot_frame": 17,
-      "catchlight": {
-        "source": "rendered (scene key 18.2 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 18.159810495101894,
-        "peak_added": 0.525822639465332
+      "catchlight": null,
+      "eye_removal_px": 115,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.26256507635116577,
+            "lid_limbus_kept": 1.0,
+            "peak_added_linear": 1.2624871730804443,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.22980588674545288,
+            "lid_limbus_kept": 0.9999944883974932,
+            "peak_added_linear": 0.9450343251228333,
+            "peak_added_display": 0.9754388928413391
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "front close",
       "ratio_luma_median": 0.3080587387084961,
@@ -352,14 +614,28 @@
     {
       "frame": 18,
       "shot_frame": 18,
-      "catchlight": {
-        "source": "rendered (scene key 19.4 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 19.415018354366573,
-        "peak_added": 0.4348307251930237
+      "catchlight": null,
+      "eye_removal_px": 277,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.2538982033729553,
+            "lid_limbus_kept": 1.0,
+            "peak_added_linear": 1.0536749362945557,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.24085596203804016,
+            "lid_limbus_kept": 0.999996102346202,
+            "peak_added_linear": 0.8832057118415833,
+            "peak_added_display": 0.9467934966087341
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "front close",
       "ratio_luma_median": 0.3102041482925415,
@@ -370,14 +646,28 @@
     {
       "frame": 19,
       "shot_frame": 19,
-      "catchlight": {
-        "source": "rendered (scene key 20.5 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 20.49298391690472,
-        "peak_added": 0.8234541416168213
+      "catchlight": null,
+      "eye_removal_px": 459,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.2677876353263855,
+            "lid_limbus_kept": 1.0,
+            "peak_added_linear": 1.4390369653701782,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.24027954041957855,
+            "lid_limbus_kept": 0.9999991937927999,
+            "peak_added_linear": 1.239058256149292,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "front close",
       "ratio_luma_median": 0.31050610542297363,
@@ -388,14 +678,28 @@
     {
       "frame": 20,
       "shot_frame": 20,
-      "catchlight": {
-        "source": "rendered (scene key 22.9 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 22.896801024197252,
-        "peak_added": 0.6622263789176941
+      "catchlight": null,
+      "eye_removal_px": 515,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.2625611424446106,
+            "lid_limbus_kept": 1.0,
+            "peak_added_linear": 1.115934133529663,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.22969451546669006,
+            "lid_limbus_kept": 0.9999992215141317,
+            "peak_added_linear": 0.9522416591644287,
+            "peak_added_display": 0.9787061810493469
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "front close",
       "ratio_luma_median": 0.3126510977745056,
@@ -406,14 +710,28 @@
     {
       "frame": 21,
       "shot_frame": 21,
-      "catchlight": {
-        "source": "rendered (scene key 24.0 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 24.01716025975333,
-        "peak_added": 0.5523174405097961
+      "catchlight": null,
+      "eye_removal_px": 531,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.26492616534233093,
+            "lid_limbus_kept": 1.0,
+            "peak_added_linear": 0.7601652145385742,
+            "peak_added_display": 0.8860891461372375
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.23986275494098663,
+            "lid_limbus_kept": 0.9999983847838688,
+            "peak_added_linear": 1.1839267015457153,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "front close",
       "ratio_luma_median": 0.31473350524902344,
@@ -424,14 +742,28 @@
     {
       "frame": 22,
       "shot_frame": 22,
-      "catchlight": {
-        "source": "rendered (scene key 27.2 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 27.154364647095317,
-        "peak_added": 0.7415220141410828
+      "catchlight": null,
+      "eye_removal_px": 544,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.26661553978919983,
+            "lid_limbus_kept": 0.9999758554897407,
+            "peak_added_linear": 0.8444742560386658,
+            "peak_added_display": 0.9282488822937012
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.23933975398540497,
+            "lid_limbus_kept": 0.9999518734459653,
+            "peak_added_linear": 1.0304081439971924,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "front close",
       "ratio_luma_median": 0.3165295720100403,
@@ -442,14 +774,28 @@
     {
       "frame": 23,
       "shot_frame": 23,
-      "catchlight": {
-        "source": "rendered (scene key 44.5 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 44.47474005721746,
-        "peak_added": 0.7546120882034302
+      "catchlight": null,
+      "eye_removal_px": 545,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.27343571186065674,
+            "lid_limbus_kept": 0.9997195634213917,
+            "peak_added_linear": 1.3880369663238525,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.23539961874485016,
+            "lid_limbus_kept": 0.9995015002784319,
+            "peak_added_linear": 0.7040327191352844,
+            "peak_added_display": 0.8564848303794861
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "front close",
       "ratio_luma_median": 0.33418703079223633,
@@ -460,14 +806,28 @@
     {
       "frame": 24,
       "shot_frame": 24,
-      "catchlight": {
-        "source": "rendered (scene key 64.0 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 63.98837031125452,
-        "peak_added": 0.9026085734367371
+      "catchlight": null,
+      "eye_removal_px": 557,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.2700808048248291,
+            "lid_limbus_kept": 0.9988333122940393,
+            "peak_added_linear": 1.198129415512085,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.22577457129955292,
+            "lid_limbus_kept": 0.9986229723508767,
+            "peak_added_linear": 1.1208891868591309,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "front close",
       "ratio_luma_median": 0.3649510443210602,
@@ -478,14 +838,28 @@
     {
       "frame": 25,
       "shot_frame": 25,
-      "catchlight": {
-        "source": "rendered (scene key 79.8 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 79.84043584323916,
-        "peak_added": 0.4021991789340973
+      "catchlight": null,
+      "eye_removal_px": 577,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.2671833336353302,
+            "lid_limbus_kept": 0.9982573700375397,
+            "peak_added_linear": 0.8094951510429382,
+            "peak_added_display": 0.9110695123672485
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.2521451711654663,
+            "lid_limbus_kept": 0.9977737953910532,
+            "peak_added_linear": 1.3104803562164307,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "front close",
       "ratio_luma_median": 0.41006842255592346,
@@ -496,14 +870,28 @@
     {
       "frame": 26,
       "shot_frame": 26,
-      "catchlight": {
-        "source": "rendered (scene key 89.0 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 88.99002738871461,
-        "peak_added": 0.4112749397754669
+      "catchlight": null,
+      "eye_removal_px": 568,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.27034932374954224,
+            "lid_limbus_kept": 0.9975778869411596,
+            "peak_added_linear": 1.275421380996704,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.24935747683048248,
+            "lid_limbus_kept": 0.9967541720356945,
+            "peak_added_linear": 1.3382737636566162,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "below chin",
       "ratio_luma_median": 0.4325389862060547,
@@ -514,14 +902,28 @@
     {
       "frame": 27,
       "shot_frame": 27,
-      "catchlight": {
-        "source": "rendered (scene key 94.3 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 94.26630975927725,
-        "peak_added": 0.16667088866233826
+      "catchlight": null,
+      "eye_removal_px": 568,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.28187036514282227,
+            "lid_limbus_kept": 0.9970786635652358,
+            "peak_added_linear": 1.2472912073135376,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.2510795593261719,
+            "lid_limbus_kept": 0.9959125594433218,
+            "peak_added_linear": 1.2889273166656494,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "below chin",
       "ratio_luma_median": 0.40825411677360535,
@@ -532,14 +934,28 @@
     {
       "frame": 28,
       "shot_frame": 28,
-      "catchlight": {
-        "source": "rendered (scene key 99.8 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 99.79865954287189,
-        "peak_added": 0.26564836502075195
+      "catchlight": null,
+      "eye_removal_px": 574,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.28708943724632263,
+            "lid_limbus_kept": 0.9966442865932471,
+            "peak_added_linear": 1.5905776023864746,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.25447890162467957,
+            "lid_limbus_kept": 0.9950313243106983,
+            "peak_added_linear": 0.877709686756134,
+            "peak_added_display": 0.9441912770271301
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "below chin",
       "ratio_luma_median": 0.3498705327510834,
@@ -550,14 +966,28 @@
     {
       "frame": 29,
       "shot_frame": 29,
-      "catchlight": {
-        "source": "rendered (scene key 101.2 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 101.19496623913514,
-        "peak_added": 0.3599127531051636
+      "catchlight": null,
+      "eye_removal_px": 573,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.28590160608291626,
+            "lid_limbus_kept": 0.9964027892065122,
+            "peak_added_linear": 1.2945564985275269,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.2648831605911255,
+            "lid_limbus_kept": 0.9949553353036295,
+            "peak_added_linear": 0.9477025866508484,
+            "peak_added_display": 0.9766501784324646
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "below chin",
       "ratio_luma_median": 0.3005066514015198,
@@ -568,14 +998,28 @@
     {
       "frame": 30,
       "shot_frame": 30,
-      "catchlight": {
-        "source": "rendered (scene key 105.3 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 105.33272406488159,
-        "peak_added": 2.579970121383667
+      "catchlight": null,
+      "eye_removal_px": 577,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.0488567352294922,
+            "lid_limbus_kept": 0.9986441927030767,
+            "peak_added_linear": 4.029977321624756,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.0313551425933838,
+            "lid_limbus_kept": 0.9986325126559907,
+            "peak_added_linear": 5.977469444274902,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "below chin",
       "ratio_luma_median": 1.003951907157898,
@@ -586,14 +1030,28 @@
     {
       "frame": 31,
       "shot_frame": 31,
-      "catchlight": {
-        "source": "rendered (scene key 104.8 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 104.80265927082345,
-        "peak_added": 1.8347890377044678
+      "catchlight": null,
+      "eye_removal_px": 589,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.9261074066162109,
+            "lid_limbus_kept": 0.9983981983206569,
+            "peak_added_linear": 3.858603000640869,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.8402057886123657,
+            "lid_limbus_kept": 0.9983358060837748,
+            "peak_added_linear": 3.725630521774292,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "below chin",
       "ratio_luma_median": 0.8717283606529236,
@@ -604,14 +1062,28 @@
     {
       "frame": 32,
       "shot_frame": 32,
-      "catchlight": {
-        "source": "rendered (scene key 105.3 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 105.25838403833927,
-        "peak_added": 1.6076210737228394
+      "catchlight": null,
+      "eye_removal_px": 579,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.7876142859458923,
+            "lid_limbus_kept": 0.9982302070345979,
+            "peak_added_linear": 3.551469564437866,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.7635510563850403,
+            "lid_limbus_kept": 0.9982322764540082,
+            "peak_added_linear": 3.361753463745117,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "below chin",
       "ratio_luma_median": 0.7598235607147217,
@@ -622,14 +1094,28 @@
     {
       "frame": 33,
       "shot_frame": 33,
-      "catchlight": {
-        "source": "rendered (scene key 104.7 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 104.72939703497448,
-        "peak_added": 1.1320431232452393
+      "catchlight": null,
+      "eye_removal_px": 578,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.7224118113517761,
+            "lid_limbus_kept": 0.9980711315019176,
+            "peak_added_linear": 4.198846817016602,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.6664366126060486,
+            "lid_limbus_kept": 0.9979945355274341,
+            "peak_added_linear": 2.477759838104248,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "below chin",
       "ratio_luma_median": 0.6689660549163818,
@@ -640,14 +1126,28 @@
     {
       "frame": 34,
       "shot_frame": 34,
-      "catchlight": {
-        "source": "rendered (scene key 104.3 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 104.31658315306608,
-        "peak_added": 0.8772487044334412
+      "catchlight": null,
+      "eye_removal_px": 582,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.6719350814819336,
+            "lid_limbus_kept": 0.9978308732214456,
+            "peak_added_linear": 3.8178460597991943,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.589663028717041,
+            "lid_limbus_kept": 0.9976163723007926,
+            "peak_added_linear": 3.6174283027648926,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "below chin",
       "ratio_luma_median": 0.6013462543487549,
@@ -658,14 +1158,28 @@
     {
       "frame": 35,
       "shot_frame": 35,
-      "catchlight": {
-        "source": "rendered (scene key 103.2 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 103.1838371630157,
-        "peak_added": 0.6778520941734314
+      "catchlight": null,
+      "eye_removal_px": 596,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.56234210729599,
+            "lid_limbus_kept": 0.9975137089427301,
+            "peak_added_linear": 2.142713785171509,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.5326775908470154,
+            "lid_limbus_kept": 0.9975357080634815,
+            "peak_added_linear": 2.3987021446228027,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "below chin",
       "ratio_luma_median": 0.5404232740402222,
@@ -676,14 +1190,28 @@
     {
       "frame": 36,
       "shot_frame": 36,
-      "catchlight": {
-        "source": "rendered (scene key 103.5 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 103.4851975340725,
-        "peak_added": 0.5861861109733582
+      "catchlight": null,
+      "eye_removal_px": 589,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.4889377951622009,
+            "lid_limbus_kept": 0.9971373330415707,
+            "peak_added_linear": 2.0077402591705322,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.4745084345340729,
+            "lid_limbus_kept": 0.9972463646052431,
+            "peak_added_linear": 2.586183547973633,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "below chin",
       "ratio_luma_median": 0.493610680103302,
@@ -694,14 +1222,28 @@
     {
       "frame": 37,
       "shot_frame": 37,
-      "catchlight": {
-        "source": "rendered (scene key 102.9 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 102.93181952120088,
-        "peak_added": 0.5825502276420593
+      "catchlight": null,
+      "eye_removal_px": 584,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.4457166790962219,
+            "lid_limbus_kept": 0.9969114261585996,
+            "peak_added_linear": 1.8570815324783325,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.4328136444091797,
+            "lid_limbus_kept": 0.9969443942552189,
+            "peak_added_linear": 1.4435635805130005,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "below chin",
       "ratio_luma_median": 0.466447651386261,
@@ -712,14 +1254,28 @@
     {
       "frame": 38,
       "shot_frame": 38,
-      "catchlight": {
-        "source": "rendered (scene key 98.4 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 98.43893756059896,
-        "peak_added": 1.07970130443573
+      "catchlight": null,
+      "eye_removal_px": 571,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.4253682792186737,
+            "lid_limbus_kept": 0.9968207084275468,
+            "peak_added_linear": 1.7596657276153564,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.36577191948890686,
+            "lid_limbus_kept": 0.99637985609213,
+            "peak_added_linear": 1.6504499912261963,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "below chin",
       "ratio_luma_median": 0.5452497601509094,
@@ -730,14 +1286,28 @@
     {
       "frame": 39,
       "shot_frame": 39,
-      "catchlight": {
-        "source": "rendered (scene key 87.5 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 87.49676007239718,
-        "peak_added": 1.526133418083191
+      "catchlight": null,
+      "eye_removal_px": 576,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.3845861852169037,
+            "lid_limbus_kept": 0.9964599365604637,
+            "peak_added_linear": 1.27303147315979,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.3272661864757538,
+            "lid_limbus_kept": 0.9958924459379828,
+            "peak_added_linear": 1.7962250709533691,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "below chin",
       "ratio_luma_median": 0.5830424427986145,
@@ -748,14 +1318,28 @@
     {
       "frame": 40,
       "shot_frame": 40,
-      "catchlight": {
-        "source": "rendered (scene key 42.8 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 42.75980643245209,
-        "peak_added": 1.4306886196136475
+      "catchlight": null,
+      "eye_removal_px": 599,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.35171809792518616,
+            "lid_limbus_kept": 0.9962226631567771,
+            "peak_added_linear": 1.4287587404251099,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.3040672242641449,
+            "lid_limbus_kept": 0.9957598906888626,
+            "peak_added_linear": 0.9805569648742676,
+            "peak_added_display": 0.991404116153717
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "below chin",
       "ratio_luma_median": 0.41779834032058716,
@@ -766,14 +1350,28 @@
     {
       "frame": 41,
       "shot_frame": 41,
-      "catchlight": {
-        "source": "rendered (scene key 42.2 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 42.19543288294277,
-        "peak_added": 0.4385063648223877
+      "catchlight": null,
+      "eye_removal_px": 585,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.3385959267616272,
+            "lid_limbus_kept": 0.9960488123200375,
+            "peak_added_linear": 1.3940577507019043,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.2965395450592041,
+            "lid_limbus_kept": 0.9957103443784537,
+            "peak_added_linear": 1.0266716480255127,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "above head",
       "ratio_luma_median": 0.29413679242134094,
@@ -784,14 +1382,28 @@
     {
       "frame": 42,
       "shot_frame": 42,
-      "catchlight": {
-        "source": "rendered (scene key 51.2 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 51.212818476737894,
-        "peak_added": 0.12346766144037247
+      "catchlight": null,
+      "eye_removal_px": 591,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.3463680148124695,
+            "lid_limbus_kept": 0.9905374051103313,
+            "peak_added_linear": 1.549597978591919,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.3160668909549713,
+            "lid_limbus_kept": 0.9395760385349224,
+            "peak_added_linear": 1.1221492290496826,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "above head",
       "ratio_luma_median": 0.2581295967102051,
@@ -802,14 +1414,28 @@
     {
       "frame": 43,
       "shot_frame": 43,
-      "catchlight": {
-        "source": "rendered (scene key 52.6 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 52.62339798280478,
-        "peak_added": 0.14962594211101532
+      "catchlight": null,
+      "eye_removal_px": 579,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.3740308880805969,
+            "lid_limbus_kept": 0.5624472426921417,
+            "peak_added_linear": 1.2545528411865234,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.3353201746940613,
+            "lid_limbus_kept": 0.04882465774718664,
+            "peak_added_linear": 0.07026807218790054,
+            "peak_added_display": 0.29392731189727783
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "above head",
       "ratio_luma_median": 0.251303493976593,
@@ -820,14 +1446,28 @@
     {
       "frame": 44,
       "shot_frame": 44,
-      "catchlight": {
-        "source": "rendered (scene key 51.0 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 50.95208533744442,
-        "peak_added": 0.20594343543052673
+      "catchlight": null,
+      "eye_removal_px": 594,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.35820114612579346,
+            "lid_limbus_kept": 0.3150086037082557,
+            "peak_added_linear": 0.5755912065505981,
+            "peak_added_display": 0.7831079959869385
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.33489373326301575,
+            "lid_limbus_kept": 0.03454208806951288,
+            "peak_added_linear": 0.05979299917817116,
+            "peak_added_display": 0.27122965455055237
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "above head",
       "ratio_luma_median": 0.25578027963638306,
@@ -838,14 +1478,28 @@
     {
       "frame": 45,
       "shot_frame": 45,
-      "catchlight": {
-        "source": "rendered (scene key 51.3 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 51.31105750200387,
-        "peak_added": 0.23428751528263092
+      "catchlight": null,
+      "eye_removal_px": 583,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.36097297072410583,
+            "lid_limbus_kept": 0.1492358393073851,
+            "peak_added_linear": 0.36806467175483704,
+            "peak_added_display": 0.6406447291374207
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.33165475726127625,
+            "lid_limbus_kept": 0.027594238551925342,
+            "peak_added_linear": 0.022550124675035477,
+            "peak_added_display": 0.1623024046421051
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "above head",
       "ratio_luma_median": 0.25588861107826233,
@@ -856,14 +1510,28 @@
     {
       "frame": 46,
       "shot_frame": 46,
-      "catchlight": {
-        "source": "rendered (scene key 51.5 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 51.46190552293271,
-        "peak_added": 0.30331695079803467
+      "catchlight": null,
+      "eye_removal_px": 565,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.3457311689853668,
+            "lid_limbus_kept": 0.11848255807588658,
+            "peak_added_linear": 0.29090026021003723,
+            "peak_added_display": 0.5756849646568298
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.3368726670742035,
+            "lid_limbus_kept": 0.03286100361558308,
+            "peak_added_linear": 0.03524736687541008,
+            "peak_added_display": 0.20675110816955566
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "above head",
       "ratio_luma_median": 0.25496694445610046,
@@ -874,14 +1542,28 @@
     {
       "frame": 47,
       "shot_frame": 47,
-      "catchlight": {
-        "source": "rendered (scene key 51.3 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 51.30588578688806,
-        "peak_added": 0.06142164394259453
+      "catchlight": null,
+      "eye_removal_px": 550,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.3023286759853363,
+            "lid_limbus_kept": 0.2546343735949853,
+            "peak_added_linear": 0.45900189876556396,
+            "peak_added_display": 0.707679033279419
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.3146823048591614,
+            "lid_limbus_kept": 0.08404333285412065,
+            "peak_added_linear": 0.13937467336654663,
+            "peak_added_display": 0.40915432572364807
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "above head",
       "ratio_luma_median": 0.2495591640472412,
@@ -892,14 +1574,28 @@
     {
       "frame": 48,
       "shot_frame": 48,
-      "catchlight": {
-        "source": "rendered (scene key 50.7 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 50.664472447367686,
-        "peak_added": 0.10729464143514633
+      "catchlight": null,
+      "eye_removal_px": 539,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.31857237219810486,
+            "lid_limbus_kept": 0.3787057691579085,
+            "peak_added_linear": 0.37756094336509705,
+            "peak_added_display": 0.6480675935745239
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.292315810918808,
+            "lid_limbus_kept": 0.15143204749843783,
+            "peak_added_linear": 0.23490606248378754,
+            "peak_added_display": 0.5219325423240662
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "above head",
       "ratio_luma_median": 0.24597564339637756,
@@ -910,14 +1606,28 @@
     {
       "frame": 49,
       "shot_frame": 49,
-      "catchlight": {
-        "source": "rendered (scene key 50.9 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 50.89601840373817,
-        "peak_added": 0.25301334261894226
+      "catchlight": null,
+      "eye_removal_px": 545,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.3076273500919342,
+            "lid_limbus_kept": 0.4803810909257187,
+            "peak_added_linear": 0.9400655031204224,
+            "peak_added_display": 0.973177969455719
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.3159518241882324,
+            "lid_limbus_kept": 0.24632304946128805,
+            "peak_added_linear": 0.4725863039493561,
+            "peak_added_display": 0.7170040011405945
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "above head",
       "ratio_luma_median": 0.24086692929267883,
@@ -928,14 +1638,28 @@
     {
       "frame": 50,
       "shot_frame": 50,
-      "catchlight": {
-        "source": "rendered (scene key 50.7 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 50.66211457344748,
-        "peak_added": 0.2058967649936676
+      "catchlight": null,
+      "eye_removal_px": 559,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.301453173160553,
+            "lid_limbus_kept": 0.42221977263672394,
+            "peak_added_linear": 0.6266524791717529,
+            "peak_added_display": 0.8133209347724915
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.31102892756462097,
+            "lid_limbus_kept": 0.09084224117916534,
+            "peak_added_linear": 0.17209075391292572,
+            "peak_added_display": 0.4517784118652344
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "above head",
       "ratio_luma_median": 0.236527681350708,
@@ -946,14 +1670,28 @@
     {
       "frame": 51,
       "shot_frame": 51,
-      "catchlight": {
-        "source": "rendered (scene key 50.8 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 50.842219106982014,
-        "peak_added": 0.23088382184505463
+      "catchlight": null,
+      "eye_removal_px": 542,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.3112972378730774,
+            "lid_limbus_kept": 0.31391082411189153,
+            "peak_added_linear": 0.67635577917099,
+            "peak_added_display": 0.8413798809051514
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.34471696615219116,
+            "lid_limbus_kept": 0.023975391340478276,
+            "peak_added_linear": 0.05475243553519249,
+            "peak_added_display": 0.25947579741477966
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "above head",
       "ratio_luma_median": 0.2282903790473938,
@@ -964,14 +1702,28 @@
     {
       "frame": 52,
       "shot_frame": 52,
-      "catchlight": {
-        "source": "rendered (scene key 55.6 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 55.64667194419131,
-        "peak_added": 0.03449206426739693
+      "catchlight": null,
+      "eye_removal_px": 563,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.28600144386291504,
+            "lid_limbus_kept": 0.2370997755875613,
+            "peak_added_linear": 0.3282405138015747,
+            "peak_added_display": 0.6082325577735901
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.3245953917503357,
+            "lid_limbus_kept": 0.010163051247501059,
+            "peak_added_linear": 0.007315843366086483,
+            "peak_added_display": 0.08094479888677597
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "above head",
       "ratio_luma_median": 0.20762069523334503,
@@ -982,14 +1734,28 @@
     {
       "frame": 53,
       "shot_frame": 53,
-      "catchlight": {
-        "source": "rendered (scene key 134.1 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 134.06909071198183,
-        "peak_added": 0.015749294310808182
+      "catchlight": null,
+      "eye_removal_px": 560,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.30873411893844604,
+            "lid_limbus_kept": 0.07235710632027073,
+            "peak_added_linear": 0.11053003370761871,
+            "peak_added_display": 0.3664078116416931
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.29097068309783936,
+            "lid_limbus_kept": 0.011414709757587453,
+            "peak_added_linear": 0.004101965576410294,
+            "peak_added_display": 0.05182325839996338
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "above head",
       "ratio_luma_median": 0.17707811295986176,
@@ -1000,14 +1766,28 @@
     {
       "frame": 54,
       "shot_frame": 54,
-      "catchlight": {
-        "source": "rendered (scene key 141.8 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 141.82211243775663,
-        "peak_added": 0.033878594636917114
+      "catchlight": null,
+      "eye_removal_px": 586,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.5232585668563843,
+            "lid_limbus_kept": 0.14179529155506285,
+            "peak_added_linear": 0.1794530600309372,
+            "peak_added_display": 0.46070176362991333
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.3104158639907837,
+            "lid_limbus_kept": 0.0378948389892767,
+            "peak_added_linear": 0.035285238176584244,
+            "peak_added_display": 0.2068682610988617
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "above head",
       "ratio_luma_median": 0.21894897520542145,
@@ -1018,14 +1798,28 @@
     {
       "frame": 55,
       "shot_frame": 55,
-      "catchlight": {
-        "source": "rendered (scene key 139.6 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 139.58984894274795,
-        "peak_added": 0.008693276904523373
+      "catchlight": null,
+      "eye_removal_px": 625,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.9306361675262451,
+            "lid_limbus_kept": 0.2842114226395595,
+            "peak_added_linear": 0.32746514678001404,
+            "peak_added_display": 0.6075793504714966
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.4481984078884125,
+            "lid_limbus_kept": 0.31574090186456677,
+            "peak_added_linear": 0.49707189202308655,
+            "peak_added_display": 0.7334250807762146
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "above head",
       "ratio_luma_median": 0.24205657839775085,
@@ -1036,14 +1830,28 @@
     {
       "frame": 56,
       "shot_frame": 56,
-      "catchlight": {
-        "source": "rendered (scene key 140.3 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 140.32784928459427,
-        "peak_added": 0.011235172860324383
+      "catchlight": null,
+      "eye_removal_px": 649,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.417238712310791,
+            "lid_limbus_kept": 0.38307172549303287,
+            "peak_added_linear": 0.4643023610115051,
+            "peak_added_display": 0.7113364338874817
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.5680058598518372,
+            "lid_limbus_kept": 0.712721325870657,
+            "peak_added_linear": 1.7737292051315308,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "camera left",
       "ratio_luma_median": 0.2677769958972931,
@@ -1054,14 +1862,28 @@
     {
       "frame": 57,
       "shot_frame": 57,
-      "catchlight": {
-        "source": "rendered (scene key 142.5 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 142.52369503226612,
-        "peak_added": 0.04084035009145737
+      "catchlight": null,
+      "eye_removal_px": 644,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.4416807889938354,
+            "lid_limbus_kept": 0.5045485271457565,
+            "peak_added_linear": 1.5170795917510986,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.6413598656654358,
+            "lid_limbus_kept": 0.719991100564458,
+            "peak_added_linear": 2.011296033859253,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "camera left",
       "ratio_luma_median": 0.3175148367881775,
@@ -1072,14 +1894,28 @@
     {
       "frame": 58,
       "shot_frame": 58,
-      "catchlight": {
-        "source": "rendered (scene key 143.8 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 143.75104353846677,
-        "peak_added": 0.008397700265049934
+      "catchlight": null,
+      "eye_removal_px": 644,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.382491111755371,
+            "lid_limbus_kept": 0.5623403490642894,
+            "peak_added_linear": 1.9825197458267212,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.683941125869751,
+            "lid_limbus_kept": 0.6891118387454478,
+            "peak_added_linear": 1.3834658861160278,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "camera left",
       "ratio_luma_median": 0.3429265022277832,
@@ -1090,14 +1926,28 @@
     {
       "frame": 59,
       "shot_frame": 59,
-      "catchlight": {
-        "source": "rendered (scene key 143.7 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 143.65617056506994,
-        "peak_added": 0.12516352534294128
+      "catchlight": null,
+      "eye_removal_px": 644,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.2648468017578125,
+            "lid_limbus_kept": 0.5308881819031764,
+            "peak_added_linear": 1.8381445407867432,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.737028181552887,
+            "lid_limbus_kept": 0.669680818414074,
+            "peak_added_linear": 1.5429679155349731,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "camera left",
       "ratio_luma_median": 0.3424395024776459,
@@ -1108,14 +1958,28 @@
     {
       "frame": 60,
       "shot_frame": 60,
-      "catchlight": {
-        "source": "rendered (scene key 55.5 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 55.514020861750495,
-        "peak_added": 0.5622298121452332
+      "catchlight": null,
+      "eye_removal_px": 632,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 2.114513874053955,
+            "lid_limbus_kept": 0.7238876710271405,
+            "peak_added_linear": 4.731419086456299,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.6854640245437622,
+            "lid_limbus_kept": 0.8569017357115722,
+            "peak_added_linear": 8.272858619689941,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "camera left",
       "ratio_luma_median": 0.9538066387176514,
@@ -1126,14 +1990,28 @@
     {
       "frame": 61,
       "shot_frame": 61,
-      "catchlight": {
-        "source": "rendered (scene key 60.6 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 60.59361545204028,
-        "peak_added": 2.16312575340271
+      "catchlight": null,
+      "eye_removal_px": 642,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 2.08176326751709,
+            "lid_limbus_kept": 0.7067798287314002,
+            "peak_added_linear": 6.205935478210449,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.580196738243103,
+            "lid_limbus_kept": 0.8404474438863847,
+            "peak_added_linear": 5.943060398101807,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "camera left",
       "ratio_luma_median": 0.8768088221549988,
@@ -1144,14 +2022,28 @@
     {
       "frame": 62,
       "shot_frame": 62,
-      "catchlight": {
-        "source": "rendered (scene key 71.3 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 71.25441190765902,
-        "peak_added": 0.06327033042907715
+      "catchlight": null,
+      "eye_removal_px": 641,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 2.0629444122314453,
+            "lid_limbus_kept": 0.6933159867489785,
+            "peak_added_linear": 5.235915184020996,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.4356467723846436,
+            "lid_limbus_kept": 0.7995676852711574,
+            "peak_added_linear": 6.420448303222656,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "camera left",
       "ratio_luma_median": 0.8061217665672302,
@@ -1162,14 +2054,28 @@
     {
       "frame": 63,
       "shot_frame": 63,
-      "catchlight": {
-        "source": "rendered (scene key 85.8 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 85.75105439756645,
-        "peak_added": 0.25118228793144226
+      "catchlight": null,
+      "eye_removal_px": 624,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.8868718147277832,
+            "lid_limbus_kept": 0.6781865917018632,
+            "peak_added_linear": 3.6068334579467773,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.2719659805297852,
+            "lid_limbus_kept": 0.7949362625613589,
+            "peak_added_linear": 3.4429759979248047,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "camera left",
       "ratio_luma_median": 0.7419833540916443,
@@ -1180,14 +2086,28 @@
     {
       "frame": 64,
       "shot_frame": 64,
-      "catchlight": {
-        "source": "rendered (scene key 105.6 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 105.63417668916226,
-        "peak_added": 0.04256536811590195
+      "catchlight": null,
+      "eye_removal_px": 645,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.7991583347320557,
+            "lid_limbus_kept": 0.669779440479912,
+            "peak_added_linear": 4.5838518142700195,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.0844281911849976,
+            "lid_limbus_kept": 0.8074461107001627,
+            "peak_added_linear": 4.265182971954346,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "camera left",
       "ratio_luma_median": 0.6808054447174072,
@@ -1198,14 +2118,28 @@
     {
       "frame": 65,
       "shot_frame": 65,
-      "catchlight": {
-        "source": "rendered (scene key 124.2 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 124.15453340651733,
-        "peak_added": 0.0032715951092541218
+      "catchlight": null,
+      "eye_removal_px": 647,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.7437224388122559,
+            "lid_limbus_kept": 0.6596549189452893,
+            "peak_added_linear": 3.213078260421753,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.9951660633087158,
+            "lid_limbus_kept": 0.8118011398579167,
+            "peak_added_linear": 3.4128317832946777,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "camera left",
       "ratio_luma_median": 0.6259030699729919,
@@ -1216,14 +2150,28 @@
     {
       "frame": 66,
       "shot_frame": 66,
-      "catchlight": {
-        "source": "rendered (scene key 136.4 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 136.38791939370327,
-        "peak_added": 0.024376356974244118
+      "catchlight": null,
+      "eye_removal_px": 646,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.6393613815307617,
+            "lid_limbus_kept": 0.6359314599518905,
+            "peak_added_linear": 3.4236361980438232,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.8531959652900696,
+            "lid_limbus_kept": 0.8266480968304808,
+            "peak_added_linear": 3.8100366592407227,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "camera left",
       "ratio_luma_median": 0.5846213102340698,
@@ -1234,14 +2182,28 @@
     {
       "frame": 67,
       "shot_frame": 67,
-      "catchlight": {
-        "source": "rendered (scene key 139.8 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 139.8240960161795,
-        "peak_added": 0.0035338029265403748
+      "catchlight": null,
+      "eye_removal_px": 631,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.6919877529144287,
+            "lid_limbus_kept": 0.6591485830548828,
+            "peak_added_linear": 2.335679054260254,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.7845968008041382,
+            "lid_limbus_kept": 0.8449096164730103,
+            "peak_added_linear": 3.4882922172546387,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "camera left",
       "ratio_luma_median": 0.5498169660568237,
@@ -1252,14 +2214,28 @@
     {
       "frame": 68,
       "shot_frame": 68,
-      "catchlight": {
-        "source": "rendered (scene key 143.9 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 143.86865547605527,
-        "peak_added": 0.001003662240691483
+      "catchlight": null,
+      "eye_removal_px": 642,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.689245581626892,
+            "lid_limbus_kept": 0.6363938144666011,
+            "peak_added_linear": 2.0359392166137695,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.7326456308364868,
+            "lid_limbus_kept": 0.8196154104613548,
+            "peak_added_linear": 1.9994490146636963,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "camera left",
       "ratio_luma_median": 0.5419518947601318,
@@ -1270,14 +2246,28 @@
     {
       "frame": 69,
       "shot_frame": 69,
-      "catchlight": {
-        "source": "rendered (scene key 146.6 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 146.6018678418948,
-        "peak_added": 0.004556483123451471
+      "catchlight": null,
+      "eye_removal_px": 636,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.6468250751495361,
+            "lid_limbus_kept": 0.5929027106887873,
+            "peak_added_linear": 2.0106208324432373,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.7431612014770508,
+            "lid_limbus_kept": 0.7717505752244755,
+            "peak_added_linear": 2.0695290565490723,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "camera left",
       "ratio_luma_median": 0.4792633652687073,
@@ -1288,14 +2278,28 @@
     {
       "frame": 70,
       "shot_frame": 70,
-      "catchlight": {
-        "source": "rendered (scene key 153.6 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 153.61923370639602,
-        "peak_added": 0.009606718085706234
+      "catchlight": null,
+      "eye_removal_px": 642,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.903593897819519,
+            "lid_limbus_kept": 0.6561419386416303,
+            "peak_added_linear": 1.1648459434509277,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.7436670660972595,
+            "lid_limbus_kept": 0.7050159966651339,
+            "peak_added_linear": 1.1015524864196777,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "camera left",
       "ratio_luma_median": 0.35569652915000916,
@@ -1306,14 +2310,28 @@
     {
       "frame": 71,
       "shot_frame": 71,
-      "catchlight": {
-        "source": "rendered (scene key 42.6 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 42.62982400558064,
-        "peak_added": 0.8740438222885132
+      "catchlight": null,
+      "eye_removal_px": 636,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.6065256595611572,
+            "lid_limbus_kept": 0.7617614201205761,
+            "peak_added_linear": 1.104791522026062,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.4425275325775146,
+            "lid_limbus_kept": 0.6366553263677321,
+            "peak_added_linear": 0.9314823746681213,
+            "peak_added_display": 0.9692561030387878
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "camera right",
       "ratio_luma_median": 0.5621436238288879,
@@ -1324,14 +2342,28 @@
     {
       "frame": 72,
       "shot_frame": 72,
-      "catchlight": {
-        "source": "rendered (scene key 52.3 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 52.27390058955133,
-        "peak_added": 0.6375249028205872
+      "catchlight": null,
+      "eye_removal_px": 642,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.6159267425537109,
+            "lid_limbus_kept": 0.7417688388563218,
+            "peak_added_linear": 1.656818151473999,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 2.1398935317993164,
+            "lid_limbus_kept": 0.7119879483439334,
+            "peak_added_linear": 1.3274677991867065,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "camera right",
       "ratio_luma_median": 0.696841835975647,
@@ -1342,14 +2374,28 @@
     {
       "frame": 73,
       "shot_frame": 73,
-      "catchlight": {
-        "source": "rendered (scene key 54.8 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 54.827676793565516,
-        "peak_added": 0.01466427743434906
+      "catchlight": null,
+      "eye_removal_px": 637,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.5873414278030396,
+            "lid_limbus_kept": 0.7088023751683842,
+            "peak_added_linear": 1.9925354719161987,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 2.0299956798553467,
+            "lid_limbus_kept": 0.722094014870539,
+            "peak_added_linear": 1.9723721742630005,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "camera right",
       "ratio_luma_median": 0.6331700682640076,
@@ -1360,14 +2406,28 @@
     {
       "frame": 74,
       "shot_frame": 74,
-      "catchlight": {
-        "source": "rendered (scene key 55.5 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 55.479322620774475,
-        "peak_added": 0.022654373198747635
+      "catchlight": null,
+      "eye_removal_px": 643,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.5748831629753113,
+            "lid_limbus_kept": 0.7174525416905176,
+            "peak_added_linear": 2.22005033493042,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.9055569171905518,
+            "lid_limbus_kept": 0.7318636819462282,
+            "peak_added_linear": 2.084298610687256,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "camera right",
       "ratio_luma_median": 0.581451952457428,
@@ -1378,14 +2438,28 @@
     {
       "frame": 75,
       "shot_frame": 75,
-      "catchlight": {
-        "source": "rendered (scene key 55.4 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 55.4302031945485,
-        "peak_added": 0.031972140073776245
+      "catchlight": null,
+      "eye_removal_px": 636,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.5972981452941895,
+            "lid_limbus_kept": 0.6947827562119548,
+            "peak_added_linear": 2.105865240097046,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.891444206237793,
+            "lid_limbus_kept": 0.7251238199728436,
+            "peak_added_linear": 1.3736929893493652,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "camera right",
       "ratio_luma_median": 0.5667121410369873,
@@ -1396,14 +2470,28 @@
     {
       "frame": 76,
       "shot_frame": 76,
-      "catchlight": {
-        "source": "rendered (scene key 55.4 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 55.420962333828356,
-        "peak_added": 0.04618131369352341
+      "catchlight": null,
+      "eye_removal_px": 651,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.6272130012512207,
+            "lid_limbus_kept": 0.663545026802528,
+            "peak_added_linear": 1.9039831161499023,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.892716646194458,
+            "lid_limbus_kept": 0.7319112657865735,
+            "peak_added_linear": 1.136155128479004,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "camera right",
       "ratio_luma_median": 0.5517021417617798,
@@ -1414,14 +2502,28 @@
     {
       "frame": 77,
       "shot_frame": 77,
-      "catchlight": {
-        "source": "rendered (scene key 55.2 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 55.22031299106069,
-        "peak_added": 0.07286383211612701
+      "catchlight": null,
+      "eye_removal_px": 641,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.6311444044113159,
+            "lid_limbus_kept": 0.607179054261437,
+            "peak_added_linear": 1.2062625885009766,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.9399515390396118,
+            "lid_limbus_kept": 0.7184889562431372,
+            "peak_added_linear": 1.6920157670974731,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "camera right",
       "ratio_luma_median": 0.5408227443695068,
@@ -1432,14 +2534,28 @@
     {
       "frame": 78,
       "shot_frame": 78,
-      "catchlight": {
-        "source": "rendered (scene key 54.9 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 54.865807702965036,
-        "peak_added": 0.08252327144145966
+      "catchlight": null,
+      "eye_removal_px": 652,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.6842256784439087,
+            "lid_limbus_kept": 0.6280304061134891,
+            "peak_added_linear": 2.2777109146118164,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.9181290864944458,
+            "lid_limbus_kept": 0.728486175605094,
+            "peak_added_linear": 1.1775188446044922,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "camera right",
       "ratio_luma_median": 0.5350748300552368,
@@ -1450,14 +2566,28 @@
     {
       "frame": 79,
       "shot_frame": 79,
-      "catchlight": {
-        "source": "rendered (scene key 54.7 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 54.70797176206653,
-        "peak_added": 0.13328419625759125
+      "catchlight": null,
+      "eye_removal_px": 641,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.706261157989502,
+            "lid_limbus_kept": 0.5809663454494757,
+            "peak_added_linear": 1.1288197040557861,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.9603772163391113,
+            "lid_limbus_kept": 0.7244688849435774,
+            "peak_added_linear": 1.5956101417541504,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "camera right",
       "ratio_luma_median": 0.5334606766700745,
@@ -1468,14 +2598,28 @@
     {
       "frame": 80,
       "shot_frame": 80,
-      "catchlight": {
-        "source": "rendered (scene key 54.5 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 54.51045675049733,
-        "peak_added": 0.16244253516197205
+      "catchlight": null,
+      "eye_removal_px": 641,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.7033012509346008,
+            "lid_limbus_kept": 0.604720801509428,
+            "peak_added_linear": 2.1325087547302246,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.9426207542419434,
+            "lid_limbus_kept": 0.7194815574288574,
+            "peak_added_linear": 0.8949035406112671,
+            "peak_added_display": 0.9523008465766907
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "camera right",
       "ratio_luma_median": 0.521479606628418,
@@ -1486,14 +2630,28 @@
     {
       "frame": 81,
       "shot_frame": 81,
-      "catchlight": {
-        "source": "rendered (scene key 54.5 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 54.505821907989336,
-        "peak_added": 0.014886531047523022
+      "catchlight": null,
+      "eye_removal_px": 651,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.700258731842041,
+            "lid_limbus_kept": 0.5554077102636684,
+            "peak_added_linear": 1.243180513381958,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.9788188934326172,
+            "lid_limbus_kept": 0.7251338832603513,
+            "peak_added_linear": 1.4322168827056885,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "camera right",
       "ratio_luma_median": 0.5153133273124695,
@@ -1504,14 +2662,28 @@
     {
       "frame": 82,
       "shot_frame": 82,
-      "catchlight": {
-        "source": "rendered (scene key 53.7 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 53.685150397986355,
-        "peak_added": 0.014524586498737335
+      "catchlight": null,
+      "eye_removal_px": 645,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.8229645490646362,
+            "lid_limbus_kept": 0.6008843740308396,
+            "peak_added_linear": 1.718207836151123,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 2.0829968452453613,
+            "lid_limbus_kept": 0.723092940349939,
+            "peak_added_linear": 0.5636964440345764,
+            "peak_added_display": 0.7758474946022034
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "camera right",
       "ratio_luma_median": 0.5330880880355835,
@@ -1522,14 +2694,28 @@
     {
       "frame": 83,
       "shot_frame": 83,
-      "catchlight": {
-        "source": "rendered (scene key 51.5 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 51.487337606034714,
-        "peak_added": 0.06776120513677597
+      "catchlight": null,
+      "eye_removal_px": 654,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.233568787574768,
+            "lid_limbus_kept": 0.6512777682482237,
+            "peak_added_linear": 1.4638793468475342,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 2.7619826793670654,
+            "lid_limbus_kept": 0.7430965864581368,
+            "peak_added_linear": 1.3518813848495483,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "camera right",
       "ratio_luma_median": 0.6505362391471863,
@@ -1540,14 +2726,28 @@
     {
       "frame": 84,
       "shot_frame": 84,
-      "catchlight": {
-        "source": "rendered (scene key 49.2 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 49.197174063668434,
-        "peak_added": 0.2091771960258484
+      "catchlight": null,
+      "eye_removal_px": 642,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 2.1342928409576416,
+            "lid_limbus_kept": 0.7818867626920087,
+            "peak_added_linear": 3.740346670150757,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 3.208177089691162,
+            "lid_limbus_kept": 0.8042590444312493,
+            "peak_added_linear": 0.5901319980621338,
+            "peak_added_display": 0.7918657660484314
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "camera right",
       "ratio_luma_median": 0.9375516176223755,
@@ -1558,14 +2758,28 @@
     {
       "frame": 85,
       "shot_frame": 85,
-      "catchlight": {
-        "source": "rendered (scene key 47.0 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 47.01905721734318,
-        "peak_added": 0.32639041543006897
+      "catchlight": null,
+      "eye_removal_px": 630,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 3.428635358810425,
+            "lid_limbus_kept": 0.5687500830103377,
+            "peak_added_linear": 1.0746737718582153,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 3.724177837371826,
+            "lid_limbus_kept": 0.8806944845097422,
+            "peak_added_linear": 0.5809722542762756,
+            "peak_added_display": 0.7863638401031494
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "camera right",
       "ratio_luma_median": 1.2755892276763916,
@@ -1576,14 +2790,28 @@
     {
       "frame": 86,
       "shot_frame": 86,
-      "catchlight": {
-        "source": "rendered (scene key 45.9 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 45.908047317613295,
-        "peak_added": 0.41016945242881775
+      "catchlight": null,
+      "eye_removal_px": 633,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 2.6475932598114014,
+            "lid_limbus_kept": 0.8545562819574327,
+            "peak_added_linear": 0.4477490484714508,
+            "peak_added_display": 0.6998318433761597
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 3.059554100036621,
+            "lid_limbus_kept": 0.9878277369532522,
+            "peak_added_linear": 0.47991982102394104,
+            "peak_added_display": 0.721973180770874
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "behind rim",
       "ratio_luma_median": 1.7099446058273315,
@@ -1594,14 +2822,28 @@
     {
       "frame": 87,
       "shot_frame": 87,
-      "catchlight": {
-        "source": "rendered (scene key 45.0 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 45.027397996010826,
-        "peak_added": 0.4929620623588562
+      "catchlight": null,
+      "eye_removal_px": 620,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 2.396085500717163,
+            "lid_limbus_kept": 0.9472776425582277,
+            "peak_added_linear": 0.44221940636634827,
+            "peak_added_display": 0.6959335803985596
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 2.472735643386841,
+            "lid_limbus_kept": 0.9994184973009925,
+            "peak_added_linear": 0.442780077457428,
+            "peak_added_display": 0.6963301301002502
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "behind rim",
       "ratio_luma_median": 2.017345666885376,
@@ -1612,14 +2854,28 @@
     {
       "frame": 88,
       "shot_frame": 88,
-      "catchlight": {
-        "source": "rendered (scene key 45.2 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 45.18373174056731,
-        "peak_added": 0.4686204791069031
+      "catchlight": null,
+      "eye_removal_px": 609,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 2.0100247859954834,
+            "lid_limbus_kept": 0.9966556572413413,
+            "peak_added_linear": 0.4327116012573242,
+            "peak_added_display": 0.6891637444496155
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 2.0943355560302734,
+            "lid_limbus_kept": 0.999343030959851,
+            "peak_added_linear": 0.4319118857383728,
+            "peak_added_display": 0.6885903477668762
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "behind rim",
       "ratio_luma_median": 2.0609607696533203,
@@ -1630,14 +2886,28 @@
     {
       "frame": 89,
       "shot_frame": 89,
-      "catchlight": {
-        "source": "rendered (scene key 44.4 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 44.38405851791511,
-        "peak_added": 0.4992023706436157
+      "catchlight": null,
+      "eye_removal_px": 635,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.877540946006775,
+            "lid_limbus_kept": 0.9988299014187659,
+            "peak_added_linear": 0.4350499212741852,
+            "peak_added_display": 0.6908366680145264
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.9260870218276978,
+            "lid_limbus_kept": 0.9993200549922391,
+            "peak_added_linear": 0.43557485938072205,
+            "peak_added_display": 0.6912115216255188
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "behind rim",
       "ratio_luma_median": 2.031111240386963,
@@ -1648,14 +2918,28 @@
     {
       "frame": 90,
       "shot_frame": 90,
-      "catchlight": {
-        "source": "rendered (scene key 44.0 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 44.04007829718856,
-        "peak_added": 0.4733678102493286
+      "catchlight": null,
+      "eye_removal_px": 627,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.8867120742797852,
+            "lid_limbus_kept": 0.9989500146838721,
+            "peak_added_linear": 0.4409514367580414,
+            "peak_added_display": 0.6950356960296631
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.9308998584747314,
+            "lid_limbus_kept": 0.9992932887060411,
+            "peak_added_linear": 0.44152966141700745,
+            "peak_added_display": 0.6954452991485596
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "behind rim",
       "ratio_luma_median": 2.1003265380859375,
@@ -1666,14 +2950,28 @@
     {
       "frame": 91,
       "shot_frame": 91,
-      "catchlight": {
-        "source": "rendered (scene key 44.0 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 43.95282942568327,
-        "peak_added": 0.48205021023750305
+      "catchlight": null,
+      "eye_removal_px": 617,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.9314900636672974,
+            "lid_limbus_kept": 0.999041630147126,
+            "peak_added_linear": 0.4495387077331543,
+            "peak_added_display": 0.701087474822998
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.9664039611816406,
+            "lid_limbus_kept": 0.9993536376704476,
+            "peak_added_linear": 0.4490840435028076,
+            "peak_added_display": 0.700768768787384
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "behind rim",
       "ratio_luma_median": 2.114348888397217,
@@ -1684,14 +2982,28 @@
     {
       "frame": 92,
       "shot_frame": 92,
-      "catchlight": {
-        "source": "rendered (scene key 44.5 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 44.54490467662191,
-        "peak_added": 0.4765934348106384
+      "catchlight": null,
+      "eye_removal_px": 640,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.9546103477478027,
+            "lid_limbus_kept": 0.9991684180609717,
+            "peak_added_linear": 0.4554569125175476,
+            "peak_added_display": 0.7052191495895386
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 2.0133259296417236,
+            "lid_limbus_kept": 0.9993321097362651,
+            "peak_added_linear": 0.4550457298755646,
+            "peak_added_display": 0.7049331665039062
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "behind rim",
       "ratio_luma_median": 2.1304285526275635,
@@ -1702,14 +3014,28 @@
     {
       "frame": 93,
       "shot_frame": 93,
-      "catchlight": {
-        "source": "rendered (scene key 44.4 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 44.35947491831838,
-        "peak_added": 0.029035180807113647
+      "catchlight": null,
+      "eye_removal_px": 645,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.11976060271263123,
+            "lid_limbus_kept": 0.9991865743900894,
+            "peak_added_linear": 0.02778005786240101,
+            "peak_added_display": 0.1820325255393982
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.12345711141824722,
+            "lid_limbus_kept": 0.9993892022471998,
+            "peak_added_linear": 0.02769249677658081,
+            "peak_added_display": 0.18172094225883484
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "behind rim",
       "ratio_luma_median": 0.13207386434078217,
@@ -1720,14 +3046,28 @@
     {
       "frame": 94,
       "shot_frame": 94,
-      "catchlight": {
-        "source": "rendered (scene key 44.8 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 44.75656988628834,
-        "peak_added": 0.029331661760807037
+      "catchlight": null,
+      "eye_removal_px": 648,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.1220884919166565,
+            "lid_limbus_kept": 0.9990778350880362,
+            "peak_added_linear": 0.028198465704917908,
+            "peak_added_display": 0.1835135519504547
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.1250869482755661,
+            "lid_limbus_kept": 0.9993884049245435,
+            "peak_added_linear": 0.028095033019781113,
+            "peak_added_display": 0.18314862251281738
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "behind rim",
       "ratio_luma_median": 0.13380871713161469,
@@ -1738,14 +3078,28 @@
     {
       "frame": 95,
       "shot_frame": 95,
-      "catchlight": {
-        "source": "rendered (scene key 44.7 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 44.66519871816983,
-        "peak_added": 0.032111428678035736
+      "catchlight": null,
+      "eye_removal_px": 633,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.12351236492395401,
+            "lid_limbus_kept": 0.9991818452776101,
+            "peak_added_linear": 0.028622426092624664,
+            "peak_added_display": 0.18500125408172607
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.12728233635425568,
+            "lid_limbus_kept": 0.9993521251384226,
+            "peak_added_linear": 0.028584638610482216,
+            "peak_added_display": 0.18486914038658142
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "behind rim",
       "ratio_luma_median": 0.13576284050941467,
@@ -1756,14 +3110,28 @@
     {
       "frame": 96,
       "shot_frame": 96,
-      "catchlight": {
-        "source": "rendered (scene key 44.5 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 44.47788406374692,
-        "peak_added": 0.032663121819496155
+      "catchlight": null,
+      "eye_removal_px": 634,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.1262538731098175,
+            "lid_limbus_kept": 0.9990671274062719,
+            "peak_added_linear": 0.028987621888518333,
+            "peak_added_display": 0.18627244234085083
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.12950411438941956,
+            "lid_limbus_kept": 0.9993608237790583,
+            "peak_added_linear": 0.0289684496819973,
+            "peak_added_display": 0.1862059235572815
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "behind rim",
       "ratio_luma_median": 0.13731059432029724,
@@ -1774,14 +3142,28 @@
     {
       "frame": 97,
       "shot_frame": 97,
-      "catchlight": {
-        "source": "rendered (scene key 44.4 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 44.35137569387411,
-        "peak_added": 0.5098897814750671
+      "catchlight": null,
+      "eye_removal_px": 642,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 2.0564663410186768,
+            "lid_limbus_kept": 0.9990941916619954,
+            "peak_added_linear": 0.47255852818489075,
+            "peak_added_display": 0.7169851660728455
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 2.107570171356201,
+            "lid_limbus_kept": 0.9993403689454161,
+            "peak_added_linear": 0.4725436866283417,
+            "peak_added_display": 0.7169750332832336
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "behind rim",
       "ratio_luma_median": 2.1656789779663086,
@@ -1792,14 +3174,28 @@
     {
       "frame": 98,
       "shot_frame": 98,
-      "catchlight": {
-        "source": "rendered (scene key 44.3 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 44.294834118319876,
-        "peak_added": 0.4673234522342682
+      "catchlight": null,
+      "eye_removal_px": 637,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.8378798961639404,
+            "lid_limbus_kept": 0.9987764358036781,
+            "peak_added_linear": 0.43082255125045776,
+            "peak_added_display": 0.6878083944320679
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.8941650390625,
+            "lid_limbus_kept": 0.9991863762325192,
+            "peak_added_linear": 0.4312918782234192,
+            "peak_added_display": 0.6881453990936279
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "behind rim",
       "ratio_luma_median": 1.9378674030303955,
@@ -1810,14 +3206,28 @@
     {
       "frame": 99,
       "shot_frame": 99,
-      "catchlight": {
-        "source": "rendered (scene key 44.3 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 44.31169308340715,
-        "peak_added": 0.38330918550491333
+      "catchlight": null,
+      "eye_removal_px": 640,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.5210047960281372,
+            "lid_limbus_kept": 0.9980280760896153,
+            "peak_added_linear": 0.3619499206542969,
+            "peak_added_display": 0.6358057856559753
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.5724077224731445,
+            "lid_limbus_kept": 0.9988657584445311,
+            "peak_added_linear": 0.3604367673397064,
+            "peak_added_display": 0.6346009969711304
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "behind rim",
       "ratio_luma_median": 1.586687445640564,
@@ -1828,14 +3238,28 @@
     {
       "frame": 100,
       "shot_frame": 100,
-      "catchlight": {
-        "source": "rendered (scene key 44.7 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 44.73399199060717,
-        "peak_added": 0.29047849774360657
+      "catchlight": null,
+      "eye_removal_px": 634,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.1178367137908936,
+            "lid_limbus_kept": 0.997220887409255,
+            "peak_added_linear": 0.2738468647003174,
+            "peak_added_display": 0.5600078701972961
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 1.1637040376663208,
+            "lid_limbus_kept": 0.9982631378435476,
+            "peak_added_linear": 0.273681640625,
+            "peak_added_display": 0.5598532557487488
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "behind rim",
       "ratio_luma_median": 1.1659400463104248,
@@ -1846,14 +3270,28 @@
     {
       "frame": 101,
       "shot_frame": 101,
-      "catchlight": {
-        "source": "rendered (scene key 44.9 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 44.94288093420238,
-        "peak_added": 0.18716904520988464
+      "catchlight": null,
+      "eye_removal_px": 641,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.7318313121795654,
+            "lid_limbus_kept": 0.9955537879989822,
+            "peak_added_linear": 0.18039749562740326,
+            "peak_added_display": 0.46183091402053833
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.7560166716575623,
+            "lid_limbus_kept": 0.996866646614929,
+            "peak_added_linear": 0.1797507107257843,
+            "peak_added_display": 0.46105802059173584
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.7645524740219116,
@@ -1864,14 +3302,28 @@
     {
       "frame": 102,
       "shot_frame": 102,
-      "catchlight": {
-        "source": "rendered (scene key 45.8 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 45.75520257827077,
-        "peak_added": 0.09879237413406372
+      "catchlight": null,
+      "eye_removal_px": 643,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.38720017671585083,
+            "lid_limbus_kept": 0.9913796513961135,
+            "peak_added_linear": 0.09713049978017807,
+            "peak_added_display": 0.3443165123462677
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.40344372391700745,
+            "lid_limbus_kept": 0.9936047188052293,
+            "peak_added_linear": 0.09722154587507248,
+            "peak_added_display": 0.3444724380970001
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.4147590100765228,
@@ -1882,14 +3334,28 @@
     {
       "frame": 103,
       "shot_frame": 103,
-      "catchlight": {
-        "source": "rendered (scene key 65.4 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 65.4397520015104,
-        "peak_added": 0.03513230383396149
+      "catchlight": null,
+      "eye_removal_px": 621,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.13832300901412964,
+            "lid_limbus_kept": 0.9765952793906946,
+            "peak_added_linear": 0.03407716006040573,
+            "peak_added_display": 0.20309457182884216
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.14362642168998718,
+            "lid_limbus_kept": 0.9807979494130168,
+            "peak_added_linear": 0.03412272408604622,
+            "peak_added_display": 0.20323830842971802
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.1512891948223114,
@@ -1900,14 +3366,28 @@
     {
       "frame": 104,
       "shot_frame": 104,
-      "catchlight": {
-        "source": "rendered (scene key 137.9 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 137.90540517388646,
-        "peak_added": 0.0014131644275039434
+      "catchlight": null,
+      "eye_removal_px": 626,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.01532003004103899,
+            "lid_limbus_kept": 0.7944852923967205,
+            "peak_added_linear": 0.001969067845493555,
+            "peak_added_display": 0.025440357625484467
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.01544574648141861,
+            "lid_limbus_kept": 0.820176965046913,
+            "peak_added_linear": 0.0019781778100878,
+            "peak_added_display": 0.02555805817246437
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.01361779309809208,
@@ -1918,14 +3398,28 @@
     {
       "frame": 105,
       "shot_frame": 105,
-      "catchlight": {
-        "source": "rendered (scene key 138.0 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 137.99980474859316,
-        "peak_added": 9.930492524290457e-05
+      "catchlight": null,
+      "eye_removal_px": 630,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007808392867445946,
+            "lid_limbus_kept": 0.5988529851036438,
+            "peak_added_linear": 0.0002478888491168618,
+            "peak_added_display": 0.003202724037691951
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007594670634716749,
+            "lid_limbus_kept": 0.6263979411666784,
+            "peak_added_linear": 0.00026532376068644226,
+            "peak_added_display": 0.0034279830288141966
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.004561122972518206,
@@ -1936,14 +3430,28 @@
     {
       "frame": 106,
       "shot_frame": 106,
-      "catchlight": {
-        "source": "rendered (scene key 138.1 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 138.1309442144671,
-        "peak_added": 0.00014078355161473155
+      "catchlight": null,
+      "eye_removal_px": 629,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007802699692547321,
+            "lid_limbus_kept": 0.5973058282411792,
+            "peak_added_linear": 0.00025720783742144704,
+            "peak_added_display": 0.003323125187307596
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007588815875351429,
+            "lid_limbus_kept": 0.6344448113863421,
+            "peak_added_linear": 0.00026109261671081185,
+            "peak_added_display": 0.0033733167219907045
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.004555745981633663,
@@ -1954,14 +3462,28 @@
     {
       "frame": 107,
       "shot_frame": 107,
-      "catchlight": {
-        "source": "rendered (scene key 138.2 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 138.23297699821518,
-        "peak_added": 0.00014995678793638945
+      "catchlight": null,
+      "eye_removal_px": 624,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007800009101629257,
+            "lid_limbus_kept": 0.6018622131350717,
+            "peak_added_linear": 0.00023765927471686155,
+            "peak_added_display": 0.0030705579556524754
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007580510340631008,
+            "lid_limbus_kept": 0.6310469388148747,
+            "peak_added_linear": 0.0002727400278672576,
+            "peak_added_display": 0.0035238012205809355
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.004565503913909197,
@@ -1972,14 +3494,28 @@
     {
       "frame": 108,
       "shot_frame": 108,
-      "catchlight": {
-        "source": "rendered (scene key 137.9 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 137.89248727450604,
-        "peak_added": 5.3759336879011244e-05
+      "catchlight": null,
+      "eye_removal_px": 637,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007793856784701347,
+            "lid_limbus_kept": 0.6017110409280416,
+            "peak_added_linear": 0.00024232518626376987,
+            "peak_added_display": 0.0031308415345847607
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007581259123980999,
+            "lid_limbus_kept": 0.6368146687198223,
+            "peak_added_linear": 0.00026756979059427977,
+            "peak_added_display": 0.003457001643255353
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.004543012008070946,
@@ -1990,14 +3526,28 @@
     {
       "frame": 109,
       "shot_frame": 109,
-      "catchlight": {
-        "source": "rendered (scene key 137.6 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 137.5854171228051,
-        "peak_added": 7.393792475340888e-05
+      "catchlight": null,
+      "eye_removal_px": 642,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007788798771798611,
+            "lid_limbus_kept": 0.6010108142150592,
+            "peak_added_linear": 0.00023511146719101816,
+            "peak_added_display": 0.0030376401264220476
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007586035877466202,
+            "lid_limbus_kept": 0.6343628413626071,
+            "peak_added_linear": 0.0002624884364195168,
+            "peak_added_display": 0.003391350619494915
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.004557862877845764,
@@ -2008,14 +3558,28 @@
     {
       "frame": 110,
       "shot_frame": 110,
-      "catchlight": {
-        "source": "rendered (scene key 137.6 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 137.56312343754286,
-        "peak_added": 7.917470065876842e-05
+      "catchlight": null,
+      "eye_removal_px": 635,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007788781076669693,
+            "lid_limbus_kept": 0.6059413091255198,
+            "peak_added_linear": 0.00024242582730948925,
+            "peak_added_display": 0.003132141660898924
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.00757739320397377,
+            "lid_limbus_kept": 0.6325343859833701,
+            "peak_added_linear": 0.0002770169812720269,
+            "peak_added_display": 0.0035790593829005957
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.004549606703221798,
@@ -2026,14 +3590,28 @@
     {
       "frame": 111,
       "shot_frame": 111,
-      "catchlight": {
-        "source": "rendered (scene key 137.7 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 137.71522199206765,
-        "peak_added": 5.593574678641744e-05
+      "catchlight": null,
+      "eye_removal_px": 636,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007788590155541897,
+            "lid_limbus_kept": 0.6024561951037525,
+            "peak_added_linear": 0.00024887072504498065,
+            "peak_added_display": 0.003215409815311432
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007565055508166552,
+            "lid_limbus_kept": 0.6399631216201718,
+            "peak_added_linear": 0.000271105847787112,
+            "peak_added_display": 0.0035026876721531153
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.004581335466355085,
@@ -2044,14 +3622,28 @@
     {
       "frame": 112,
       "shot_frame": 112,
-      "catchlight": {
-        "source": "rendered (scene key 137.0 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 137.03319978558747,
-        "peak_added": 0.0001215449083247222
+      "catchlight": null,
+      "eye_removal_px": 628,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007755083031952381,
+            "lid_limbus_kept": 0.600564648046099,
+            "peak_added_linear": 0.00026102695846930146,
+            "peak_added_display": 0.00337246828712523
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007547446060925722,
+            "lid_limbus_kept": 0.6340823803430118,
+            "peak_added_linear": 0.0002652276598382741,
+            "peak_added_display": 0.0034267413429915905
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.0044911750592291355,
@@ -2062,14 +3654,28 @@
     {
       "frame": 113,
       "shot_frame": 113,
-      "catchlight": {
-        "source": "rendered (scene key 132.1 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 132.1014903800798,
-        "peak_added": 0.00018956897838506848
+      "catchlight": null,
+      "eye_removal_px": 633,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007647411897778511,
+            "lid_limbus_kept": 0.6035000839082898,
+            "peak_added_linear": 0.0002482749696355313,
+            "peak_added_display": 0.0032077126670628786
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007438024505972862,
+            "lid_limbus_kept": 0.6306793523785961,
+            "peak_added_linear": 0.00027653222787193954,
+            "peak_added_display": 0.0035727964714169502
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.004258367232978344,
@@ -2080,14 +3686,28 @@
     {
       "frame": 114,
       "shot_frame": 114,
-      "catchlight": {
-        "source": "rendered (scene key 116.9 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 116.8716279310537,
-        "peak_added": 0.00031306929304264486
+      "catchlight": null,
+      "eye_removal_px": 633,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007533967029303312,
+            "lid_limbus_kept": 0.5904508361450419,
+            "peak_added_linear": 0.000253754376899451,
+            "peak_added_display": 0.0032785064540803432
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007340847980231047,
+            "lid_limbus_kept": 0.6234554153228382,
+            "peak_added_linear": 0.000265725189819932,
+            "peak_added_display": 0.00343316956423223
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.004044775385409594,
@@ -2098,14 +3718,28 @@
     {
       "frame": 115,
       "shot_frame": 115,
-      "catchlight": {
-        "source": "rendered (scene key 89.1 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 89.05101110872629,
-        "peak_added": 0.0006661899969913065
+      "catchlight": null,
+      "eye_removal_px": 633,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007448434364050627,
+            "lid_limbus_kept": 0.5856518918480955,
+            "peak_added_linear": 0.00025599508080631495,
+            "peak_added_display": 0.0033074563834816217
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007890602573752403,
+            "lid_limbus_kept": 0.6232389728143033,
+            "peak_added_linear": 0.0037783212028443813,
+            "peak_added_display": 0.048227086663246155
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.004027064424008131,
@@ -2116,14 +3750,28 @@
     {
       "frame": 116,
       "shot_frame": 116,
-      "catchlight": {
-        "source": "rendered (scene key 66.3 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 66.30485094342261,
-        "peak_added": 0.00010061103967018425
+      "catchlight": null,
+      "eye_removal_px": 628,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007480263710021973,
+            "lid_limbus_kept": 0.5913000107571436,
+            "peak_added_linear": 0.00024964369367808104,
+            "peak_added_display": 0.0032253966201096773
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.0073729148134589195,
+            "lid_limbus_kept": 0.6287963391387245,
+            "peak_added_linear": 0.00026437282213009894,
+            "peak_added_display": 0.0034156967885792255
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.004350111819803715,
@@ -2134,14 +3782,28 @@
     {
       "frame": 117,
       "shot_frame": 117,
-      "catchlight": {
-        "source": "rendered (scene key 56.1 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 56.09066846286,
-        "peak_added": 9.140964539255947e-05
+      "catchlight": null,
+      "eye_removal_px": 630,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007598757743835449,
+            "lid_limbus_kept": 0.5950573739469432,
+            "peak_added_linear": 0.0002525585296098143,
+            "peak_added_display": 0.0032630562782287598
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007489506620913744,
+            "lid_limbus_kept": 0.6299618499423605,
+            "peak_added_linear": 0.0002600559964776039,
+            "peak_added_display": 0.003359923604875803
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.005047551356256008,
@@ -2152,14 +3814,28 @@
     {
       "frame": 118,
       "shot_frame": 118,
-      "catchlight": {
-        "source": "rendered (scene key 55.1 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 55.08260481359641,
-        "peak_added": 8.860671368893236e-05
+      "catchlight": null,
+      "eye_removal_px": 631,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007689854595810175,
+            "lid_limbus_kept": 0.5969498185067468,
+            "peak_added_linear": 0.0002533385995775461,
+            "peak_added_display": 0.003273134818300605
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007575893774628639,
+            "lid_limbus_kept": 0.6347354753561166,
+            "peak_added_linear": 0.0002634299744386226,
+            "peak_added_display": 0.0034035153221338987
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.005827285815030336,
@@ -2170,14 +3846,28 @@
     {
       "frame": 119,
       "shot_frame": 119,
-      "catchlight": {
-        "source": "rendered (scene key 54.6 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 54.60079331812553,
-        "peak_added": 0.00018388571334071457
+      "catchlight": null,
+      "eye_removal_px": 631,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007745244074612856,
+            "lid_limbus_kept": 0.6029604182342284,
+            "peak_added_linear": 0.0002549883211031556,
+            "peak_added_display": 0.0032944490667432547
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.00762118399143219,
+            "lid_limbus_kept": 0.6329690252596055,
+            "peak_added_linear": 0.0002614808327052742,
+            "peak_added_display": 0.003378332359716296
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.006206880323588848,
@@ -2188,14 +3878,28 @@
     {
       "frame": 120,
       "shot_frame": 120,
-      "catchlight": {
-        "source": "rendered (scene key 54.7 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 54.69930195187511,
-        "peak_added": 0.001087920623831451
+      "catchlight": null,
+      "eye_removal_px": 631,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007745750248432159,
+            "lid_limbus_kept": 0.5992994295014414,
+            "peak_added_linear": 0.00023996962409000844,
+            "peak_added_display": 0.0031004075426608324
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007637295871973038,
+            "lid_limbus_kept": 0.6412355051238439,
+            "peak_added_linear": 0.000270554592134431,
+            "peak_added_display": 0.0034955653827637434
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.006825490854680538,
@@ -2206,14 +3910,28 @@
     {
       "frame": 121,
       "shot_frame": 121,
-      "catchlight": {
-        "source": "rendered (scene key 54.7 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 54.675580754022796,
-        "peak_added": 0.001036335714161396
+      "catchlight": null,
+      "eye_removal_px": 633,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.00775496382266283,
+            "lid_limbus_kept": 0.6026418940511448,
+            "peak_added_linear": 0.0002384986582910642,
+            "peak_added_display": 0.0030814027413725853
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007641872391104698,
+            "lid_limbus_kept": 0.6332157197006166,
+            "peak_added_linear": 0.0002735034213401377,
+            "peak_added_display": 0.003533664159476757
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.006730697117745876,
@@ -2224,14 +3942,28 @@
     {
       "frame": 122,
       "shot_frame": 122,
-      "catchlight": {
-        "source": "rendered (scene key 54.6 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 54.58480421154555,
-        "peak_added": 0.000999864307232201
+      "catchlight": null,
+      "eye_removal_px": 626,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007758893072605133,
+            "lid_limbus_kept": 0.6036916964108237,
+            "peak_added_linear": 0.00025072708376683295,
+            "peak_added_display": 0.0032393939327448606
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007640655152499676,
+            "lid_limbus_kept": 0.6403591208337401,
+            "peak_added_linear": 0.0002731670392677188,
+            "peak_added_display": 0.003529318142682314
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.006626449525356293,
@@ -2242,14 +3974,28 @@
     {
       "frame": 123,
       "shot_frame": 123,
-      "catchlight": {
-        "source": "rendered (scene key 54.7 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 54.72497812782122,
-        "peak_added": 8.270982652902603e-05
+      "catchlight": null,
+      "eye_removal_px": 627,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.0077635846100747585,
+            "lid_limbus_kept": 0.5939366264897356,
+            "peak_added_linear": 0.0002676213043741882,
+            "peak_added_display": 0.0034576673060655594
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007628683932125568,
+            "lid_limbus_kept": 0.6310088451841889,
+            "peak_added_linear": 0.00027124257758259773,
+            "peak_added_display": 0.003504454158246517
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.0066342540085315704,
@@ -2260,14 +4006,28 @@
     {
       "frame": 124,
       "shot_frame": 124,
-      "catchlight": {
-        "source": "rendered (scene key 54.7 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 54.68599416189675,
-        "peak_added": 7.638737588422373e-05
+      "catchlight": null,
+      "eye_removal_px": 621,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007748960517346859,
+            "lid_limbus_kept": 0.5958348311610174,
+            "peak_added_linear": 0.00026448891730979085,
+            "peak_added_display": 0.0034171969164162874
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007621931843459606,
+            "lid_limbus_kept": 0.6364569005302673,
+            "peak_added_linear": 0.000284509762423113,
+            "peak_added_display": 0.003675866173580289
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.006552969571202993,
@@ -2278,14 +4038,28 @@
     {
       "frame": 125,
       "shot_frame": 125,
-      "catchlight": {
-        "source": "rendered (scene key 54.5 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 54.523160301267495,
-        "peak_added": 6.991050759097561e-05
+      "catchlight": null,
+      "eye_removal_px": 574,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007759731728583574,
+            "lid_limbus_kept": 0.621919650607538,
+            "peak_added_linear": 0.00027541909366846085,
+            "peak_added_display": 0.0035584147553890944
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.007638340350240469,
+            "lid_limbus_kept": 0.6070925991258662,
+            "peak_added_linear": 0.0002812880265992135,
+            "peak_added_display": 0.003634241409599781
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.006521238945424557,
@@ -2296,14 +4070,28 @@
     {
       "frame": 126,
       "shot_frame": 126,
-      "catchlight": {
-        "source": "rendered (scene key 54.5 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 54.50608616411585,
-        "peak_added": 0.00013722882431466132
+      "catchlight": null,
+      "eye_removal_px": 606,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.008917423896491528,
+            "lid_limbus_kept": 0.6809994787473351,
+            "peak_added_linear": 0.0002986131876241416,
+            "peak_added_display": 0.0038580824621021748
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.00867357850074768,
+            "lid_limbus_kept": 0.6188803421042686,
+            "peak_added_linear": 0.00029849796555936337,
+            "peak_added_display": 0.003856593742966652
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.009035047143697739,
@@ -2314,14 +4102,28 @@
     {
       "frame": 127,
       "shot_frame": 127,
-      "catchlight": {
-        "source": "rendered (scene key 60.1 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 60.114773738116114,
-        "peak_added": 0.03593089058995247
+      "catchlight": null,
+      "eye_removal_px": 0,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.15941691398620605,
+            "lid_limbus_kept": 0.987143456971807,
+            "peak_added_linear": 0.036854732781648636,
+            "peak_added_display": 0.21166005730628967
+          },
+          "right": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.14685305953025818,
+            "lid_limbus_kept": 0.9217910812446944,
+            "peak_added_linear": 0.0368318185210228,
+            "peak_added_display": 0.211590975522995
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.24928903579711914,
@@ -2333,6 +4135,20 @@
       "frame": 128,
       "shot_frame": 128,
       "catchlight": null,
+      "eye_removal_px": 0,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": false,
+            "why": "no limbus fit"
+          },
+          "right": {
+            "added": false,
+            "why": "no limbus fit"
+          }
+        },
+        "scale": 10.224953391950688
+      },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.04318494349718094,
       "ratio_luma_p5": 0.00586690241470933,
@@ -2343,6 +4159,20 @@
       "frame": 129,
       "shot_frame": 129,
       "catchlight": null,
+      "eye_removal_px": 0,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": false,
+            "why": "no limbus fit"
+          },
+          "right": {
+            "added": false,
+            "why": "no limbus fit"
+          }
+        },
+        "scale": 10.224953391950688
+      },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.057553041726350784,
       "ratio_luma_p5": 0.01048417016863823,
@@ -2353,6 +4183,20 @@
       "frame": 130,
       "shot_frame": 130,
       "catchlight": null,
+      "eye_removal_px": 0,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": false,
+            "why": "no limbus fit"
+          },
+          "right": {
+            "added": false,
+            "why": "no limbus fit"
+          }
+        },
+        "scale": 10.224953391950688
+      },
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.047576092183589935,
       "ratio_luma_p5": 0.011447420343756676,
@@ -2363,6 +4207,20 @@
       "frame": 131,
       "shot_frame": 131,
       "catchlight": null,
+      "eye_removal_px": 0,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": false,
+            "why": "no limbus fit"
+          },
+          "right": {
+            "added": false,
+            "why": "no limbus fit"
+          }
+        },
+        "scale": 10.224953391950688
+      },
       "station": "high three-quarter",
       "ratio_luma_median": 0.3970634639263153,
       "ratio_luma_p5": 0.11982133239507675,
@@ -2373,6 +4231,20 @@
       "frame": 132,
       "shot_frame": 132,
       "catchlight": null,
+      "eye_removal_px": 0,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": false,
+            "why": "no limbus fit"
+          },
+          "right": {
+            "added": false,
+            "why": "no limbus fit"
+          }
+        },
+        "scale": 10.224953391950688
+      },
       "station": "high three-quarter",
       "ratio_luma_median": 0.2335997074842453,
       "ratio_luma_p5": 0.03617088869214058,
@@ -2383,6 +4255,20 @@
       "frame": 133,
       "shot_frame": 133,
       "catchlight": null,
+      "eye_removal_px": 0,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": false,
+            "why": "no limbus fit"
+          },
+          "right": {
+            "added": false,
+            "why": "no limbus fit"
+          }
+        },
+        "scale": 10.224953391950688
+      },
       "station": "high three-quarter",
       "ratio_luma_median": 0.21334296464920044,
       "ratio_luma_p5": 0.012694728560745716,
@@ -2392,13 +4278,24 @@
     {
       "frame": 134,
       "shot_frame": 134,
-      "catchlight": {
-        "source": "rendered (scene key 135.0 deg from the measured original)",
-        "eyes": [
-          "left"
-        ],
-        "angle_to_plate_key_deg": 134.98653064430246,
-        "peak_added": 0.10027988255023956
+      "catchlight": null,
+      "eye_removal_px": 0,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.21875374019145966,
+            "lid_limbus_kept": 0.0024805246217468766,
+            "peak_added_linear": 5.306910679792054e-05,
+            "peak_added_display": 0.0006856528925709426
+          },
+          "right": {
+            "added": false,
+            "why": "no limbus fit"
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "high three-quarter",
       "ratio_luma_median": 0.20650959014892578,
@@ -2409,14 +4306,28 @@
     {
       "frame": 135,
       "shot_frame": 135,
-      "catchlight": {
-        "source": "rendered (scene key 134.4 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 134.39664944182292,
-        "peak_added": 0.06989177316427231
+      "catchlight": null,
+      "eye_removal_px": 60,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.20747782289981842,
+            "lid_limbus_kept": 0.009434002112671858,
+            "peak_added_linear": 0.009136755019426346,
+            "peak_added_display": 0.09413599222898483
+          },
+          "right": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.18347351253032684,
+            "lid_limbus_kept": 0.00327025361681464,
+            "peak_added_linear": 0.00018583412747830153,
+            "peak_added_display": 0.002400976838544011
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "high three-quarter",
       "ratio_luma_median": 0.19904440641403198,
@@ -2427,14 +4338,28 @@
     {
       "frame": 136,
       "shot_frame": 136,
-      "catchlight": {
-        "source": "rendered (scene key 132.0 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 131.99233194344094,
-        "peak_added": 0.0579562745988369
+      "catchlight": null,
+      "eye_removal_px": 445,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.1942143589258194,
+            "lid_limbus_kept": 0.5767222631210868,
+            "peak_added_linear": 0.7632200717926025,
+            "peak_added_display": 0.8876631259918213
+          },
+          "right": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.205789715051651,
+            "lid_limbus_kept": 0.8588685239162557,
+            "peak_added_linear": 0.8975855708122253,
+            "peak_added_display": 0.953557550907135
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "high three-quarter",
       "ratio_luma_median": 0.19263115525245667,
@@ -2445,14 +4370,28 @@
     {
       "frame": 137,
       "shot_frame": 137,
-      "catchlight": {
-        "source": "rendered (scene key 132.6 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 132.58700460435412,
-        "peak_added": 0.04345794767141342
+      "catchlight": null,
+      "eye_removal_px": 270,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.19257739186286926,
+            "lid_limbus_kept": 0.9790300727735586,
+            "peak_added_linear": 1.0508477687835693,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.19294294714927673,
+            "lid_limbus_kept": 0.9299329434819498,
+            "peak_added_linear": 1.0477994680404663,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "high three-quarter",
       "ratio_luma_median": 0.18911665678024292,
@@ -2463,14 +4402,28 @@
     {
       "frame": 138,
       "shot_frame": 138,
-      "catchlight": {
-        "source": "rendered (scene key 133.0 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 133.04682638555624,
-        "peak_added": 0.04332772269845009
+      "catchlight": null,
+      "eye_removal_px": 423,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.18547627329826355,
+            "lid_limbus_kept": 0.9898585228915132,
+            "peak_added_linear": 0.7252353429794312,
+            "peak_added_display": 0.8678235411643982
+          },
+          "right": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.18860316276550293,
+            "lid_limbus_kept": 0.9890919956665685,
+            "peak_added_linear": 0.722415566444397,
+            "peak_added_display": 0.8663268685340881
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "high three-quarter",
       "ratio_luma_median": 0.18663623929023743,
@@ -2481,14 +4434,28 @@
     {
       "frame": 139,
       "shot_frame": 139,
-      "catchlight": {
-        "source": "rendered (scene key 132.9 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 132.92871019513342,
-        "peak_added": 0.0747527927160263
+      "catchlight": null,
+      "eye_removal_px": 438,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.19399471580982208,
+            "lid_limbus_kept": 0.9669474024609861,
+            "peak_added_linear": 0.9009511470794678,
+            "peak_added_display": 0.9551315903663635
+          },
+          "right": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.19891317188739777,
+            "lid_limbus_kept": 0.994016482484579,
+            "peak_added_linear": 1.525922179222107,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "high three-quarter",
       "ratio_luma_median": 0.18442317843437195,
@@ -2499,14 +4466,28 @@
     {
       "frame": 140,
       "shot_frame": 140,
-      "catchlight": {
-        "source": "rendered (scene key 132.8 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 132.80761269189685,
-        "peak_added": 0.161625474691391
+      "catchlight": null,
+      "eye_removal_px": 442,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.17695574462413788,
+            "lid_limbus_kept": 0.9862672089351182,
+            "peak_added_linear": 1.0901198387145996,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.19055487215518951,
+            "lid_limbus_kept": 0.9821275874319211,
+            "peak_added_linear": 0.7536812424659729,
+            "peak_added_display": 0.882736086845398
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "high three-quarter",
       "ratio_luma_median": 0.18308597803115845,
@@ -2517,14 +4498,28 @@
     {
       "frame": 141,
       "shot_frame": 141,
-      "catchlight": {
-        "source": "rendered (scene key 133.1 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 133.0732398497852,
-        "peak_added": 0.10965045541524887
+      "catchlight": null,
+      "eye_removal_px": 442,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.1923494040966034,
+            "lid_limbus_kept": 0.989371918176994,
+            "peak_added_linear": 0.9682254195213318,
+            "peak_added_display": 0.9859007000923157
+          },
+          "right": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.20357097685337067,
+            "lid_limbus_kept": 0.9875136671400925,
+            "peak_added_linear": 1.4067137241363525,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "high three-quarter",
       "ratio_luma_median": 0.18174907565116882,
@@ -2535,14 +4530,28 @@
     {
       "frame": 142,
       "shot_frame": 142,
-      "catchlight": {
-        "source": "rendered (scene key 112.1 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 112.09430640062396,
-        "peak_added": 0.21066761016845703
+      "catchlight": null,
+      "eye_removal_px": 470,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.17338162660598755,
+            "lid_limbus_kept": 0.994898518698556,
+            "peak_added_linear": 0.8526536822319031,
+            "peak_added_display": 0.932205855846405
+          },
+          "right": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.18451832234859467,
+            "lid_limbus_kept": 0.9955126520100639,
+            "peak_added_linear": 0.6153798699378967,
+            "peak_added_display": 0.8067781329154968
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "high three-quarter",
       "ratio_luma_median": 0.18466098606586456,
@@ -2553,14 +4562,28 @@
     {
       "frame": 143,
       "shot_frame": 143,
-      "catchlight": {
-        "source": "rendered (scene key 33.8 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 33.81581037899161,
-        "peak_added": 0.5000689029693604
+      "catchlight": null,
+      "eye_removal_px": 466,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.17334379255771637,
+            "lid_limbus_kept": 0.9955386036419965,
+            "peak_added_linear": 0.8676236271858215,
+            "peak_added_display": 0.9393909573554993
+          },
+          "right": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.16588319838047028,
+            "lid_limbus_kept": 0.9956475937936261,
+            "peak_added_linear": 0.4513919949531555,
+            "peak_added_display": 0.7023847699165344
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "high three-quarter",
       "ratio_luma_median": 0.19404855370521545,
@@ -2571,14 +4594,28 @@
     {
       "frame": 144,
       "shot_frame": 144,
-      "catchlight": {
-        "source": "rendered (scene key 17.4 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 17.43034180520265,
-        "peak_added": 0.32511845231056213
+      "catchlight": null,
+      "eye_removal_px": 467,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.14790932834148407,
+            "lid_limbus_kept": 0.9959101461239225,
+            "peak_added_linear": 0.845855712890625,
+            "peak_added_display": 0.9289186596870422
+          },
+          "right": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.15769337117671967,
+            "lid_limbus_kept": 0.9963068702343455,
+            "peak_added_linear": 1.180848240852356,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "high three-quarter",
       "ratio_luma_median": 0.21281808614730835,
@@ -2589,14 +4626,28 @@
     {
       "frame": 145,
       "shot_frame": 145,
-      "catchlight": {
-        "source": "rendered (scene key 20.2 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 20.204609920738694,
-        "peak_added": 0.2391243427991867
+      "catchlight": null,
+      "eye_removal_px": 464,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.16421768069267273,
+            "lid_limbus_kept": 0.9973340500606962,
+            "peak_added_linear": 0.8372418880462646,
+            "peak_added_display": 0.9247313141822815
+          },
+          "right": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.15402120351791382,
+            "lid_limbus_kept": 0.9973495064137765,
+            "peak_added_linear": 0.6759130954742432,
+            "peak_added_display": 0.8411354422569275
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "front far",
       "ratio_luma_median": 0.23146548867225647,
@@ -2607,14 +4658,28 @@
     {
       "frame": 146,
       "shot_frame": 146,
-      "catchlight": {
-        "source": "rendered (scene key 42.8 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 42.78839506351223,
-        "peak_added": 0.5876966118812561
+      "catchlight": null,
+      "eye_removal_px": 454,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.1577392965555191,
+            "lid_limbus_kept": 0.9981928459181509,
+            "peak_added_linear": 0.7260797023773193,
+            "peak_added_display": 0.8682711124420166
+          },
+          "right": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.13970062136650085,
+            "lid_limbus_kept": 0.9981785891425737,
+            "peak_added_linear": 0.6495548486709595,
+            "peak_added_display": 0.8264053463935852
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "front far",
       "ratio_luma_median": 0.2461138218641281,
@@ -2625,14 +4690,28 @@
     {
       "frame": 147,
       "shot_frame": 147,
-      "catchlight": {
-        "source": "rendered (scene key 65.9 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 65.86828504266394,
-        "peak_added": 0.37045425176620483
+      "catchlight": null,
+      "eye_removal_px": 441,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.22583091259002686,
+            "lid_limbus_kept": 0.9993939396338801,
+            "peak_added_linear": 1.2872861623764038,
+            "peak_added_display": 0.9999999403953552
+          },
+          "right": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.1867901235818863,
+            "lid_limbus_kept": 0.9993470425414748,
+            "peak_added_linear": 1.1708859205245972,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "front far",
       "ratio_luma_median": 0.25164568424224854,
@@ -2643,14 +4722,28 @@
     {
       "frame": 148,
       "shot_frame": 148,
-      "catchlight": {
-        "source": "rendered (scene key 78.3 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 78.31866566516759,
-        "peak_added": 0.29290899634361267
+      "catchlight": null,
+      "eye_removal_px": 398,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "image_fit",
+            "energy_rendered": 0.17072592675685883,
+            "lid_limbus_kept": 0.9997619842085643,
+            "peak_added_linear": 0.603840708732605,
+            "peak_added_display": 0.8000078797340393
+          },
+          "right": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.1824796199798584,
+            "lid_limbus_kept": 0.9998231259186673,
+            "peak_added_linear": 1.0681428909301758,
+            "peak_added_display": 0.9999999403953552
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "front far",
       "ratio_luma_median": 0.25166070461273193,
@@ -2661,14 +4754,28 @@
     {
       "frame": 149,
       "shot_frame": 149,
-      "catchlight": {
-        "source": "rendered (scene key 82.7 deg from the measured original)",
-        "eyes": [
-          "left",
-          "right"
-        ],
-        "angle_to_plate_key_deg": 82.66951422176898,
-        "peak_added": 0.44785720109939575
+      "catchlight": null,
+      "eye_removal_px": 397,
+      "corneal": {
+        "eyes": {
+          "left": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.19216777384281158,
+            "lid_limbus_kept": 0.9999998449150875,
+            "peak_added_linear": 0.8646873831748962,
+            "peak_added_display": 0.9379873871803284
+          },
+          "right": {
+            "added": true,
+            "lid_source": "mediapipe_polygon",
+            "energy_rendered": 0.1552848368883133,
+            "lid_limbus_kept": 0.9980604528034719,
+            "peak_added_linear": 0.88576340675354,
+            "peak_added_display": 0.9480013251304626
+          }
+        },
+        "scale": 10.224953391950688
       },
       "station": "front far",
       "ratio_luma_median": 0.25044509768486023,

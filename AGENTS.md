@@ -33,6 +33,28 @@ and **rejected**, for colour AND shape flicker and a sometimes-brown pupil, beca
 every term of the fill was refit per frame from a few dozen pixels. **No per-frame-refit
 fill can be temporally stable at a 24-pixel iris.** See `rounds/round32.md`.
 
+**Round 41 — the softbox removal is ACCEPTED (`r40_floorB`), and the tour's bulb now reflects
+in her corneas on top of it. Read `rounds/round41.md` §4 and §6 first.** The artist: *"I'm
+pretty satisfied with our removal of the softbox reflection from the eyes now"*, then *"make
+sure the lightbulb reflects in her eyes correctly"* on the bulb-tour scene. Built:
+`stress_proxy.py --corneal` (round 34's dielectric corneal cap lit by the tour itself, bulb and
+fill visible to reflection rays only, no proxy occluder), anchored on the fitted iris centre
+behind the measured gaze (`corneal_anchor.anchor_limbus`; the plate's own softbox glint grades
+that at 1.31 px rms against 1.87 for a camera-axis gaze, `validate_tour_catchlight.py
+--plate-glint`), and `composite_ratio.py --eye-removal <run> --corneal-dir <pass>
+--corneal-blur 0.35` (the accepted removal substituted under the ratio; the pass ADDED through
+the fitted lids and the limbus in the ratio's own anchor units, softened to the plate's PSF
+measured on its glint by `measure_glint_psf.py`). Render vs an independent numpy reflection:
+0.20 px median, wrong conventions 1.3–5.5 px. Videos `reporter_a/final/r41_tour_compare.mp4`,
+`r41_tour_eyes.mp4`, `r41_tour_panel.mp4`. **Verdict not yet recorded.** Two things to ask
+about first: the 60 cm fill panel reflects as a soft grey square when it is in front (behind
+rim, frame 127) and as a pink crescent CUT AT THE LIMBUS at camera left/right (52–85) — a real
+eye carries it onto the sclera and hides part of it behind the nose; neither is built. The
+bulb itself is a 2–3 px spot that clips in the 8-bit review (physics; the master keeps it).
+`import_overlap_eyes.py` carries `reporter_full`'s accepted run and tracks onto `reporter_a`
+(same plate, offset 700, gated on fg sha256) — it exists only because removal and tour live on
+two shots of one plate. Round 40's ellipse fit is superseded by this work, not abandoned.
+
 **Round 40 — 933–955 right was the LOWER LID, not foreshortening; the real off-axis class is
 the hard sideways GLANCE, located but not built. Read `rounds/round40.md` §2, §3, §6 first.**
 76 % of every skin pixel the ungated fill paints sits below the limbus centre at rho
@@ -633,9 +655,10 @@ Every stage takes `--shot`. Interpreter is the pipeline venv unless the row says
 | 11b | stress demo | `stress_proxy.py` (Blender) | `composite/stress_proxy*/` | lightbulb tour; `--textured` uses the albedo |
 | 11c | **ratio irradiance** | `stress_proxy.py --ratio` (Blender) | `composite/ratio_render/*.exr` | neutral albedo at PLATE resolution and the PLATE lens |
 | 11d | ~~catchlight~~ | `stress_proxy.py --catchlight` (Blender) | `composite/catchlight_render/*.exr` | renderer looks sound and its validator passes; **the compositing of it is rejected and `--catchlight` defaults to 0** |
-| 11e | **corneal catchlight** | `render_eye_catchlight.py` (Blender) | `composite/r34_catchlight/*.exr` | the scene's own reflection in a corneal cap; validated by `validate_eye_catchlight.py`. PARKED by the artist |
+| 11e | **corneal catchlight** | `render_eye_catchlight.py` (Blender) | `composite/r34_catchlight/*.exr` | the scene's own reflection in a corneal cap; validated by `validate_eye_catchlight.py`. Parked in round 34; UNPARKED in round 41 for the tour (below) |
+| 11e′ | **corneal reflection of the tour** | `stress_proxy.py --corneal` (Blender) | `composite/r41_corneal/*.exr` | round 41: the same cap lit by the bulb tour, anchored on the fitted iris centre behind the measured gaze (`corneal_anchor.anchor_limbus`). Checked by `validate_tour_catchlight.py` (`--plate-glint` grades the sphere against the plate's own softbox glint; `--render` against an independent reflection model with wrong-convention controls) and `measure_glint_psf.py` (plate vs render sharpness → `--corneal-blur`) |
 | 11f | **eye: one canonical iris** | `eye_removal_gpu.py` (GPU, same CLI; `eye_soft_removal.py --fill-iris` is the CPU reference) | `composite/<name>/` | **Round 40's command is in `rounds/round40.md` §7** (round 39's plus `--lid-floor` on `eyelid_track_wtv40.json`; `removal.json` names each dropped eye's `drop_stage`). **Round 39's command is in `rounds/round39.md` §7** (adds `--lid-claim`, `--skin-gate`, the trusted tracks, `--dump` for `audit_r39_classes.py`); the GPU pass refuses flags it does not implement. Built once in the registered eye frame. **Round 37's accepted command is in `rounds/round37.md` §7** (softbox region, parabola lash line, rebuilt canonical, temporally filtered edge shading, limbus gate, lid bridging rules). `--lid-shadow` is DEFAULT OFF (round 36 §4). Holds every frame in RAM packed by `frame_store.py` (≈12 MB/frame, bit exact); the full-clip command is `rounds/round38.md` §7. Audited by `audit_r37_eyes.py` + `audit_r37_flicker.py`; **looked at** with `review_r37_sheets.py`, `review_r37_temporal.py`, `review_r37_panel.py` |
-| 12 | **ratio composite** | `composite_ratio.py` | `composite/ratio/` | `out = plate × R` by default. `--plate-specular remove` and `--catchlight` are rejected experiments |
+| 12 | **ratio composite** | `composite_ratio.py` | `composite/ratio/` | `out = plate × R` by default. Round 41: `--eye-removal <run>` substitutes the eye pass's pixels under the ratio (exact fg outside its weight); `--corneal-dir <pass> --corneal-blur 0.35` ADDS the corneal reflection through the fitted lids and limbus (mediapipe polygon where no lid fit, nothing where no limbus fit) in the ratio's own anchor units. `--plate-specular remove` and the round-5 `--catchlight` are rejected experiments |
 | 12b | composite (gain map) | `composite_shot.py` | `composite/`, `intermediate/linear_4k/` | legacy path; loads background **per frame** |
 | 12c | **review video** | `review_video.py` | `final/*.mp4` | what the artist watches; `--compare` puts the before on the LEFT with both halves labelled |
 | 13 | master | `master_export.py` | `master/*.mov` | ProRes 4444 / DNxHR 444, 4:4:4 10-bit |

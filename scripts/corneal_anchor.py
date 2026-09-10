@@ -75,3 +75,69 @@ def anchor_centre(cornea_centre, radius, gaze, iris_px, cam_pos, fx, width, heig
     cam_pos = np.asarray(cam_pos, float)
     apex2 = cam_pos + ray * float(np.linalg.norm(apex - cam_pos))
     return apex2 - radius * gaze, float(np.linalg.norm(apex2 - apex))
+
+
+# --- round 41 --------------------------------------------------------------------------------
+# The limbus-centre anchor. `anchor_centre` puts the corneal APEX (centre + R * gaze) on the ray
+# through the tracked pixel. The pixel the limbus track reports is the centre of the IRIS DISC,
+# which sits on the corneal sphere's axis a distance sqrt(R^2 - r_iris^2) = 5.16 mm in front of
+# the sphere centre, 2.64 mm behind the apex. With the gaze down the camera axis the two project
+# to the same pixel; 18 degrees off axis they differ by 0.8 mm, about 1.7 px on this plate.
+# Since the tracked point IS the iris centre, anchor that.
+#
+# The gaze decides where the sphere centre sits BEHIND the limbus, and the glint moves with the
+# sphere centre one-for-one for a distant source. So the gaze model is not cosmetic, and
+# `validate_tour_catchlight.py --plate-glint` scores the candidates against the photograph.
+
+def anchor_limbus(depth_point, radius, iris_radius, gaze, iris_px, cam_pos, fx, width, height):
+    """Corneal sphere centre such that the IRIS CENTRE lands on the camera ray through
+    `iris_px` at the depth of `depth_point` (any point on the eye, e.g. the proxy apex), and
+    the sphere axis follows `gaze`. Returns (centre, iris_centre_world)."""
+    gaze = np.asarray(gaze, float)
+    n = np.linalg.norm(gaze)
+    gaze = np.array([0.0, -1.0, 0.0]) if n < 1e-9 else gaze / n
+    ray = np.array([(float(iris_px[0]) + 0.5 - width / 2.0) / fx, 1.0,
+                    -(float(iris_px[1]) + 0.5 - height / 2.0) / fx])
+    ray /= np.linalg.norm(ray)
+    cam_pos = np.asarray(cam_pos, float)
+    depth = float(np.asarray(depth_point, float)[1] - cam_pos[1])      # along the camera axis
+    iris_w = cam_pos + ray * (depth / ray[1])
+    d = float(np.sqrt(max(radius * radius - iris_radius * iris_radius, 0.0)))
+    return iris_w - d * gaze, iris_w
+
+
+def reflect_point(centre, radius, cam_pos, source, at_infinity=False, iters=12):
+    """Where a source reflects on a sphere toward the camera: the point p on the sphere whose
+    normal bisects the directions to the camera and to the source (Alhazen, by fixed-point
+    iteration -- converges in a few steps for a cap seen nearly head-on). `source` is a
+    direction if `at_infinity`, else a position. Returns (p, normal)."""
+    C = np.asarray(centre, float)
+    cam = np.asarray(cam_pos, float)
+    n = cam - C
+    n /= np.linalg.norm(n)
+    for _ in range(iters):
+        p = C + radius * n
+        v = cam - p
+        v /= np.linalg.norm(v)
+        if at_infinity:
+            l = np.asarray(source, float)
+            l = l / np.linalg.norm(l)
+        else:
+            l = np.asarray(source, float) - p
+            l /= np.linalg.norm(l)
+        n_new = v + l
+        n_new /= np.linalg.norm(n_new)
+        if np.linalg.norm(n_new - n) < 1e-12:
+            n = n_new
+            break
+        n = n_new
+    return C + radius * n, n
+
+
+def project(p, cam_pos, fx, width, height):
+    """World point -> plate pixel, the inverse of the ray in anchor_centre / eye_geometry."""
+    p = np.asarray(p, float)
+    cam = np.asarray(cam_pos, float)
+    zc = p[1] - cam[1]
+    return np.array([(p[0] - cam[0]) * fx / zc + width / 2.0 - 0.5,
+                     (cam[2] - p[2]) * fx / zc + height / 2.0 - 0.5])

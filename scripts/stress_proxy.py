@@ -37,6 +37,7 @@ can be mistaken for photographic detail, so every value is unambiguously compute
 and light.
 """
 import bpy, bmesh, sys, json, math, argparse, colorsys
+from mathutils import Vector
 from pathlib import Path
 
 argv = sys.argv[sys.argv.index('--') + 1:] if '--' in sys.argv else []
@@ -63,6 +64,30 @@ ap.add_argument('--catchlight', action='store_true',
                      'contains -- a bulb 0.5 m away reflects as a bright disc, a window as a soft '
                      'rectangle, an overcast sky as a broad wash, an unlit corner as nothing. '
                      'No threshold decides whether to draw a catchlight; the scene does')
+ap.add_argument('--corneal', action='store_true',
+                help='round 41: render ONLY the corneal reflections of the tour, with the round '
+                     '34 construction -- a dielectric corneal CAP truncated at the limbus, '
+                     'anchored on the limbus fitted to the image (--limbus-track), no proxy '
+                     'occluder, bulb and fill hidden from camera. Same tour, same exposure '
+                     'units as --ratio, so composite_ratio.py --corneal-dir adds it with the '
+                     'same anchor it multiplies the plate by')
+ap.add_argument('--limbus-track', default='limbus_track_tv_import.json',
+                help='--corneal: relight/<track> whose smoothed_centre anchors the cornea. The '
+                     'mediapipe iris centre in eye_geometry.json sits 3.08 px from her iris '
+                     '(round 35); a mirror doubles angular error')
+ap.add_argument('--occluder', action='store_true',
+                help='--corneal: keep the proxy head in the scene as an occluder. OFF by '
+                     'default and measured (round 34): the shell has no eye sockets and buries '
+                     'the cornea, keeping 22-36 percent of the reflection energy')
+ap.add_argument('--gaze', choices=('geometry', 'camera'), default='geometry',
+                help='--corneal: where the sphere centre sits behind the tracked iris centre. '
+                     'geometry = eye_geometry.json gaze (head pose + iris); camera = toward the '
+                     'lens. Scored by validate_tour_catchlight.py --plate-glint against the '
+                     'plate softbox on 212 open eyes: geometry 1.31 px rms, camera 1.87 with a '
+                     '1.3 px lateral bias of opposite sign per eye (round 41)')
+ap.add_argument('--raw-anchor', action='store_true',
+                help='--corneal: anchor on the per-frame limbus centre instead of its local '
+                     'quadratic (+/-2 frames)')
 ap.add_argument('--ratio', action='store_true',
                 help='render the IRRADIANCE FIELD for the ratio composite instead of a picture '
                      'of her: neutral albedo, linear EXR out. composite_ratio.py turns it into '
@@ -83,6 +108,7 @@ args = ap.parse_args(argv)
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 from shot_paths import Shot
+from corneal_anchor import smoothed_iris_centres, anchor_limbus
 
 shot = Shot(args.shot)
 cfg = shot.config
@@ -128,7 +154,9 @@ try:
 except Exception as e:
     print('GPU setup skipped: %s' % e)
 scn.cycles.samples = args.samples
-scn.cycles.use_denoising = True
+# No denoiser on the corneal pass: a bulb reflects in a 7.8 mm cornea as a spot under a
+# pixel wide, and a denoiser treats exactly that as noise.
+scn.cycles.use_denoising = not args.corneal
 # Stepping frames in one process is exactly the case where persistent data serves stale lighting.
 scn.render.use_persistent_data = False
 
@@ -141,7 +169,7 @@ cam_data = bpy.data.cameras.new('cam')
 # Demonstration framing: wider than the plate camera so the bulb is visible at the extremes.
 # The ratio pass must use the PLATE's own camera, or the multiplier will not line up with the
 # photograph it multiplies. The wider demo lens exists only to keep the bulb in frame.
-cam_data.lens = LENS if (args.ratio or args.catchlight) else (
+cam_data.lens = LENS if (args.ratio or args.catchlight or args.corneal) else (
     args.demo_lens if args.demo_lens > 0 else LENS)
 cam_data.sensor_width = SENSOR
 cam_data.sensor_fit = 'HORIZONTAL'
@@ -256,7 +284,7 @@ fill_ob.visible_camera = False
 # 266x187 disc of solid emission -- coverage alpha 0.999, 458x the median irradiance -- which the
 # composite then multiplied into the plate as a hard-edged blown patch with no falloff. Anything
 # an irradiance pass can SEE ends up scaling the photograph.
-if args.ratio:
+if args.ratio or args.corneal:
     bulb_ob.visible_camera = False
 
 # A trace of ambient, so the "key off" stations read as a silhouette against something rather
@@ -307,7 +335,7 @@ def station_at(t):
 
 # The ratio and catchlight passes render at the plate's own resolution, so what they produce is
 # pixel-aligned with the photograph they will be combined with.
-_linear_pass = args.ratio or args.catchlight
+_linear_pass = args.ratio or args.catchlight or args.corneal
 _w = SRC_W if _linear_pass else args.width
 scn.render.resolution_x = _w
 scn.render.resolution_y = int(round(_w * SRC_H / SRC_W))
@@ -386,6 +414,75 @@ if args.catchlight:
             bpy.ops.object.shade_smooth()
         eye_obs.append((_side, _ob))
 
+
+# --- round 41: the corneal CAP, anchored on the fitted limbus ---------------------------
+# Same construction as render_eye_catchlight.py (round 34, validated NCC 0.942 against an
+# independent model), lit by THIS tour instead of the shot's panorama. What differs from the
+# --catchlight block above, all measured in round 34: the cornea is a cap truncated at the
+# limbus (a full sphere has a grazing rim at 100% Fresnel exactly where the lid is); the
+# proxy is NOT an occluder (no eye sockets -- it buries the cornea); and the sphere is anchored
+# on the limbus fitted to the image, not on the mediapipe landmark.
+#     sin(theta) = iris_radius / cornea_radius = 5.85 / 7.8 = 0.75  ->  theta = 48.6 deg
+CAP_COS = math.cos(math.asin(min(0.999, 5.85 / 7.8)))
+IRIS_R = 0.00585
+FX = SRC_W * LENS / SENSOR
+corneal_centres, corneal_raw = None, None
+if args.corneal:
+    egp = shot.relight / 'eye_geometry.json'
+    if not egp.exists():
+        raise SystemExit('No %s. Run scripts/eye_geometry.py --shot %s first.' % (egp, shot.name))
+    eye_geo = {r['frame']: r for r in json.loads(egp.read_text())['per_frame']}
+    tp = shot.relight / args.limbus_track
+    if not tp.exists():
+        raise SystemExit('No limbus track %s' % tp)
+    _track = json.loads(tp.read_text(encoding='utf-8'))
+    # The anchor module wants eye_geometry-shaped records: {frame: {'eyes': {side: {...}}}}.
+    corneal_raw = {}
+    for _row in _track['rows']:
+        _eyes = {}
+        for _e in _row['eyes']:
+            if _e.get('fitted'):
+                _eyes[_e['side']] = {'visible': True,
+                                     'iris_centre_px': list(_e['smoothed_centre']),
+                                     'iris_radius_px': float(_e['smoothed_axes'][0])}
+        corneal_raw[int(_row['frame'])] = {'eyes': _eyes}
+    corneal_centres = None if args.raw_anchor else smoothed_iris_centres(corneal_raw)
+    mirror = bpy.data.materials.new('cornea')
+    mirror.use_nodes = True
+    mnt = mirror.node_tree
+    for _n in list(mnt.nodes):
+        if _n.type != 'OUTPUT_MATERIAL':
+            mnt.nodes.remove(_n)
+    gl = mnt.nodes.new('ShaderNodeBsdfPrincipled')
+    gl.inputs['Base Color'].default_value = (0.0, 0.0, 0.0, 1.0)
+    gl.inputs['Metallic'].default_value = 0.0
+    gl.inputs['Roughness'].default_value = 0.02
+    if 'IOR' in gl.inputs:
+        gl.inputs['IOR'].default_value = 1.376
+    for _n, _v in (('Subsurface Weight', 0.0), ('Sheen Weight', 0.0), ('Coat Weight', 0.0),
+                   ('Transmission Weight', 0.0), ('Emission Strength', 0.0)):
+        if _n in gl.inputs:
+            gl.inputs[_n].default_value = _v
+    mnt.links.new(gl.outputs['BSDF'], next(n for n in mnt.nodes
+                                           if n.type == 'OUTPUT_MATERIAL').inputs['Surface'])
+    for _side in ('left', 'right'):
+        _me = bpy.data.meshes.new('cornea_' + _side)
+        _bm = bmesh.new()
+        bmesh.ops.create_uvsphere(_bm, u_segments=64, v_segments=32, radius=1.0)
+        _drop = [f for f in _bm.faces
+                 if (sum((v.co.z for v in f.verts)) / len(f.verts)) < CAP_COS]
+        bmesh.ops.delete(_bm, geom=_drop, context='FACES')
+        _bm.to_mesh(_me)
+        _bm.free()
+        if len(_me.polygons) == 0:
+            raise SystemExit('Corneal cap came out empty; check CAP_COS')
+        _ob = bpy.data.objects.new('cornea_' + _side, _me)
+        scn.collection.objects.link(_ob)
+        _ob.data.materials.append(mirror)
+        with bpy.context.temp_override(object=_ob, selected_editable_objects=[_ob]):
+            bpy.ops.object.shade_smooth()
+        eye_obs.append((_side, _ob))
+
 rig_log = []
 catch_log = []
 proxy_ob = None
@@ -429,7 +526,10 @@ for n, fi in enumerate(frames):
         layer.data.foreach_set('uv', flat.ravel())
         me.update()
     proxy_ob = bpy.data.objects.new('proxy', me)
-    scn.collection.objects.link(proxy_ob)
+    # The corneal pass keeps the proxy OUT of the scene unless asked (round 34: no eye
+    # sockets, it buries the cornea). Its vertices still set the tour's aim point.
+    if not args.corneal or args.occluder:
+        scn.collection.objects.link(proxy_ob)
     proxy_ob.data.materials.append(skin)
     with bpy.context.temp_override(object=proxy_ob, selected_editable_objects=[proxy_ob]):
         bpy.ops.object.shade_smooth()
@@ -474,6 +574,63 @@ for n, fi in enumerate(frames):
     fill_em.inputs['Strength'].default_value = 4.0 * (EXPOSURE / 900.0) * blackout * fill_scale
     fill_em.inputs['Color'].default_value = (fr, fg_, fb, 1.0)
 
+    corneal_rec = None
+    if args.corneal:
+        if args.occluder:
+            proxy_ob.visible_camera = False
+        for _o in (bulb_ob, fill_ob):
+            _o.visible_camera = False
+        rec = eye_geo.get(fi) or {}
+        corneal_rec = {'out_frame': n, 'shot_frame': fi,
+                       'bulb_world': [float(v) for v in bulb_ob.location],
+                       'bulb_rgb': [r, g, b], 'bulb_strength': float(strength),
+                       'bulb_radius_m': 0.04,
+                       'fill_world': [float(v) for v in fill_ob.location],
+                       'fill_rgb': [fr, fg_, fb],
+                       'fill_strength': float(fill_em.inputs['Strength'].default_value),
+                       'eyes': {}}
+        for _side, _ob in eye_obs:
+            e = ((rec.get('eyes') or {}).get(_side)) or {}
+            tr = ((corneal_raw.get(fi) or {}).get('eyes') or {}).get(_side)
+            if not e.get('visible') or tr is None:
+                _ob.hide_render = True
+                corneal_rec['eyes'][_side] = {'rendered': False,
+                                              'why': ('no limbus fit' if tr is None
+                                                      else 'eye_geometry not visible')}
+                continue
+            _ob.hide_render = False
+            depth_pt = np.asarray(e['cornea_apex_world'], float)
+            c_radius = float(e['cornea_radius_m'])
+            if args.gaze == 'camera':
+                gaze = np.array([0.0, -DIST, CAM_H]) - depth_pt
+            else:
+                gaze = np.asarray(e.get('gaze_world') or [0.0, -1.0, 0.0], float)
+            gaze = gaze / max(float(np.linalg.norm(gaze)), 1e-9)
+            px, py = tr['iris_centre_px']
+            if corneal_centres is not None:
+                sm = corneal_centres.get(_side, {}).get(fi)
+                if sm is not None:
+                    px, py = float(sm[0]), float(sm[1])
+            # The tracked pixel is the IRIS CENTRE, so that is what lands on its ray; the
+            # sphere centre sits sqrt(R^2 - r^2) = 5.16 mm behind it along the gaze
+            # (corneal_anchor.anchor_limbus). Depth from the proxy, as before.
+            centre, iris_w = anchor_limbus(depth_pt, c_radius, IRIS_R, gaze, (px, py),
+                                           (0.0, -DIST, CAM_H), FX, SRC_W, SRC_H)
+            shift = float(np.linalg.norm(iris_w - depth_pt))
+            _ob.location = tuple(centre)
+            _ob.scale = (c_radius,) * 3
+            gv = (Vector(tuple(gaze)) if float(np.linalg.norm(gaze)) > 1e-6
+                  else Vector((0.0, -1.0, 0.0)))
+            _ob.rotation_mode = 'QUATERNION'
+            _ob.rotation_quaternion = gv.normalized().to_track_quat('Z', 'Y')
+            corneal_rec['eyes'][_side] = {'rendered': True,
+                                          'centre_world': [float(v) for v in centre],
+                                          'radius_m': c_radius,
+                                          'gaze_world': [float(v) for v in gaze],
+                                          'anchor_px': [float(px), float(py)],
+                                          'anchor_shift_m': float(shift),
+                                          'iris_radius_px': tr['iris_radius_px']}
+        catch_log.append(corneal_rec)
     if args.catchlight:
         # The head stays in the scene as an OCCLUDER -- brow, nose and cheek block part of the
         # environment from reaching the cornea -- but nothing except the mirrors is allowed to
@@ -518,6 +675,21 @@ report = {'shot': shot.name, 'frames': len(frames), 'fps': str(shot.frame_rate),
                   'key_off_stations': 'fill_scale 0: no front light at all, only a source behind '
                                       'the actor -- near-silhouette with a rim'},
           'textured': args.textured, 'ratio': args.ratio, 'catchlight': args.catchlight,
+          'corneal': args.corneal,
+          'corneal_pass': ({
+              'model': 'dielectric corneal CAP truncated at the limbus (sin theta = 5.85/7.8), '
+                       'Principled black base, roughness 0.02, IOR 1.376; the round 34 construction',
+              'anchor': ('per-frame limbus centre' if args.raw_anchor else
+                         'limbus centre smoothed by a local quadratic (+/-2 frames)') +
+                        ' from relight/%s, proxy depth; sphere centre 5.16 mm behind the iris '
+                        'centre along the %s gaze' % (args.limbus_track, args.gaze),
+              'gaze': args.gaze,
+              'occluder': 'proxy mesh, camera-invisible' if args.occluder else None,
+              'visible_to_camera': 'the corneal caps only; bulb and fill hidden, proxy absent',
+              'samples': args.samples, 'denoise': False,
+              'cycles_filter': {'type': scn.cycles.pixel_filter_type,
+                                'width': scn.cycles.filter_width},
+              'per_frame': catch_log} if args.corneal else None),
           'ratio_albedo': RATIO_ALBEDO if args.ratio else None,
           'catchlight_pass': ({
               'model': 'a mirror sphere of the measured corneal radius at each eye, from '
@@ -549,6 +721,7 @@ if not args.only_output:
     # A separate log for the catchlight pass: it shares the tour and therefore the out_frame ->
     # shot_frame mapping, but overwriting stress_proxy.json would leave the ratio composite
     # reading a manifest whose 'ratio' flag says False.
-    shot.log('stress_proxy_catchlight.json' if args.catchlight
+    shot.log('stress_proxy_corneal.json' if args.corneal else
+             'stress_proxy_catchlight.json' if args.catchlight
              else 'stress_proxy.json').write_text(json.dumps(report, indent=2))
 print(json.dumps({k: report[k] for k in ('frames', 'output_dir', 'rig')}, indent=2))

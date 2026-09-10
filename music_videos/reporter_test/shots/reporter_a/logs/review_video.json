@@ -1,13 +1,13 @@
 {
   "shot": "reporter_a",
-  "output": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\final\\r36g_panel.mp4",
+  "output": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\final\\r41_tour_compare.mp4",
   "frames": 150,
-  "fps": 12.0,
+  "fps": 24.0,
   "crf": 12,
-  "bytes": 18576703,
+  "bytes": 13031058,
   "crop": null,
   "zoom": 1,
-  "source": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r36g_panel",
-  "compare": null,
+  "source": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r41_tour",
+  "compare": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\ratio",
   "purpose": "REVIEW ONLY, display-referred sRGB. Delivery is master_export + hdr_mux."
 }
