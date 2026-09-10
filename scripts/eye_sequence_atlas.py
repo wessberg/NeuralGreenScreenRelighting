@@ -53,6 +53,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from color_pipeline import linear_to_srgb
 from shot_paths import add_shot_argument, from_args
 import eye_reflection_repair as r32
+from limbus_fit import Track as LimbusTrack
 
 # The atlas grid, in the eye's normalized coordinates: 1.0 is the limbus. It reaches
 # a little past RHO_MAX so the registration has edge context, but only rho < RHO_MAX is
@@ -60,6 +61,24 @@ import eye_reflection_repair as r32
 ATLAS_REACH = 1.0
 ATLAS_N = 97                      # about 0.27 native pixels per atlas cell on this plate
 ATLAS_STEP = 2 * ATLAS_REACH / (ATLAS_N - 1)
+
+
+def configure(reach, cells=None):
+    """Resize the canonical eye's own coordinate grid.
+
+    The grid stopped at the limbus (reach 1.0) and the atlas was only ever SAMPLED out to
+    RHO_MAX = 0.88, a constant round 32 chose for its radial profile model. Round 35
+    measured the consequence: of the specular pixels still standing after removal, **92.5
+    percent sit at rho > 0.95 with zero removal weight**, median rho 1.022 -- on the
+    limbal ring, where the canonical eye simply has no material to put in their place.
+    Reaching past the limbus is what lets that ring be repaired at all.
+    """
+    global ATLAS_REACH, ATLAS_N, ATLAS_STEP
+    ATLAS_REACH = float(reach)
+    if cells:
+        ATLAS_N = int(cells)
+    ATLAS_STEP = 2 * ATLAS_REACH / (ATLAS_N - 1)
+    return dict(reach=ATLAS_REACH, cells=ATLAS_N, step=ATLAS_STEP)
 # Registration search, in normalized units, and the HARD bound on total shift.
 # The limbus landmark's own jitter was measured on this track before the search was
 # sized: 0.353 px rms and 0.578 px p95 left, 0.256 / 0.521 right, against a local
@@ -384,12 +403,22 @@ def main():
     ap.add_argument('--start', type=int, default=0)
     ap.add_argument('--count', type=int, default=150)
     ap.add_argument('--name', default='r33_atlas')
+    ap.add_argument('--limbus-track', default='limbus_track.json',
+                    help="relight/<file> from limbus_fit.py: the limbus fitted to the "
+                         "IMAGE EDGE. This is the anchor everything here sits on. The "
+                         "mediapipe four-point ellipse it replaces sits 3.08 px from her "
+                         "own iris centre on the left eye (median, independent estimator) "
+                         "and its error jumps up to 10 px between adjacent frames -- the "
+                         "artist's 'double iris' and his 'delayed, slow to react'. Pass "
+                         "'' to go back to the landmark for comparison.")
     ap.add_argument('--iterations', type=int, default=5)
     ap.add_argument('--gain-window', type=int, default=5)
     ap.add_argument('--no-register', action='store_true',
                     help='ablation: pool on the raw landmark pose, no sub-pixel search')
     args = ap.parse_args()
     shot = from_args(args)
+    track = (LimbusTrack.load(shot.relight / args.limbus_track)
+             if getattr(args, 'limbus_track', '') else None)
     root = shot.composite / args.name
     root.mkdir(parents=True, exist_ok=True)
 
@@ -414,7 +443,12 @@ def main():
                 skipped[s].append(dict(frame=i, reason='no_face_track'))
             continue
         for side in r32.SIDES:
-            geom, record = r32.eye_frame(values, landmarks['points'][i], topology, side)
+            override = track.get(i, side) if track is not None else None
+            if track is not None and override is None:
+                skipped[side].append(dict(frame=i, reason='no_limbus_fit'))
+                continue
+            geom, record = r32.eye_frame(values, landmarks['points'][i], topology, side,
+                                         limbus_override=override)
             if geom is None:
                 skipped[side].append(dict(frame=i, reason=record.get('reason')))
                 continue

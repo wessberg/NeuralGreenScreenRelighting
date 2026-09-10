@@ -381,15 +381,54 @@ def angular_fill(residual, rho, theta, mask, donor, rho_tolerance=0.075, neighbo
     return filled, supported
 
 
-def eye_frame(values, points, topology, side, margin=6):
+def parabola_opening(coef_upper, coef_lower, centre, window, x_range, feather=0.8,
+                     inset=0.0):
+    """Soft matte of the eye opening from two fitted lid parabolas.
+
+    Evaluated here rather than imported from `eyelid_fit` only to keep this module free
+    of a circular import; the arithmetic is three lines and is the same three lines.
+    The parabolas run forever sideways, so the opening is closed at the eye corners --
+    which is the one part of the mediapipe contour that is right, because a corner is
+    sharp, unoccluded and nowhere near a lash.
+    """
+    ys, xs = window
+    yy, xx = np.mgrid[ys.start:ys.stop, xs.start:xs.stop]
+    u = xx - centre[0]
+    m = np.ones(yy.shape, np.float32)
+    for coef, sign in ((coef_upper, 1.0), (coef_lower, -1.0)):
+        if coef is None:
+            continue
+        # `inset` moves each edge INTO the eye, in native pixels.
+        edge = coef[0] * u ** 2 + coef[1] * u + coef[2] + sign * inset
+        m = np.minimum(m, np.clip(sign * (yy - edge) / max(feather, 1e-6) + 0.5, 0.0, 1.0))
+    inside_x = np.clip((xx - (x_range[0] + inset)) / max(feather, 1e-6) + 0.5, 0.0, 1.0)
+    inside_x = np.minimum(inside_x, np.clip((x_range[1] - inset - xx) / max(feather, 1e-6)
+                                            + 0.5, 0.0, 1.0))
+    return (m * inside_x).astype(np.float32)
+
+
+def eye_frame(values, points, topology, side, margin=6, limbus_override=None,
+              eyelid_override=None, lid_inset=0.0):
     """Local crop, geometry and visibility for one eye, or a reason it abstains.
 
     Everything downstream works inside this crop: the centre search evaluates hundreds
     of candidate origins and a full-frame grid per candidate would cost minutes a frame.
+
+    `limbus_override` is `(centre, ax, ay)` from `limbus_fit.py`, fitted to the image edge
+    rather than to the four mediapipe iris landmarks. Round 35 measured the landmark at
+    **3.08 px from her own iris centre on the left eye** (median, by an independent
+    level-crossing estimator) against 0.42 px for the fit, and the landmark's error moves
+    up to 10 px between adjacent frames while the fit's moves 2.7. Every fill since round
+    32 is anchored here, so this is the single place that has to change.
     """
-    limbus, ax, ay = limbus_ellipse(points, topology['iris_' + side])
+    if limbus_override is not None:
+        limbus, ax, ay = limbus_override
+        limbus = np.asarray(limbus, float)
+    else:
+        limbus, ax, ay = limbus_ellipse(points, topology['iris_' + side])
     record = dict(side=side, limbus_centre=[float(limbus[0]), float(limbus[1])],
-                  limbus_axes=[round(ax, 3), round(ay, 3)])
+                  limbus_axes=[round(ax, 3), round(ay, 3)],
+                  limbus_source='image_fit' if limbus_override is not None else 'landmark')
     if not np.isfinite([ax, ay]).all() or min(ax, ay) < 4:
         record.update(repaired=False, reason='degenerate_limbus')
         return None, record
@@ -404,6 +443,28 @@ def eye_frame(values, points, topology, side, margin=6):
     lid = lid_distance(points, topology['eyelid_' + side], window)
     yy, xx = np.mgrid[y0:y1, x0:x1]
     visible = lid > 0.85
+    if eyelid_override is not None:
+        # The mediapipe eyelid contour is the second bad anchor round 35 found: measured
+        # against the image's own sclera-to-lash edge it sits 8.34 px INSIDE the true
+        # opening on the left eye and 1.01 px outside it on the right, so it crosses the
+        # middle of the iris with the softbox above it on one eye and is right on the
+        # other. `eyelid_fit.py` fits both lids to the image; this is where that lands.
+        poly = np.asarray(points)[topology['eyelid_' + side], :2]
+        opening = parabola_opening(eyelid_override.get('upper'),
+                                   eyelid_override.get('lower'),
+                                   eyelid_override['centre'], window,
+                                   (float(poly[:, 0].min()), float(poly[:, 0].max())),
+                                   inset=lid_inset)
+        # Pull the opening in by `lid_inset`. The lid fit's own column residual is
+        # 0.43 px median / 0.59 p95, so a pixel is about 1.7 sigma of it, and the two
+        # ways of being wrong are not symmetric: too far in leaves a sliver of her own
+        # eye at the lash, too far out repaints the lash itself and the junction reads
+        # as a bright band.
+        visible = opening > 0.5
+        record['lid_inset_px'] = float(lid_inset)
+        record['lid_source'] = 'image_fit'
+    else:
+        record['lid_source'] = 'landmark'
     record['visible_pixels'] = int((visible & (np.hypot((xx - limbus[0]) / ax,
                                                         (yy - limbus[1]) / ay) < RHO_MAX)).sum())
     if record['visible_pixels'] < 90:

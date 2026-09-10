@@ -69,6 +69,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from color_pipeline import linear_to_srgb, srgb_to_linear
 from shot_paths import add_shot_argument, from_args
 import eye_reflection_repair as r32
+from limbus_fit import Track as LimbusTrack
 import eye_sequence_atlas as atl
 from eye_atlas_repair import predict
 
@@ -86,8 +87,39 @@ def residual_scale(signed, inside):
     return float(np.median(np.abs(sample - np.median(sample))) * 1.4826)
 
 
+def lid_inset_for(cfg, args):
+    """How far to pull the fitted opening in, from the fit's OWN residual on that frame.
+
+    A fixed inset treats a lid fit that agreed with its columns to a tenth of a pixel the
+    same as one that missed them by a pixel and a half. The fit reports which it was, so
+    the inset follows it: where the fit is confident the fill reaches the lash line, and
+    where it is not the fill gives ground rather than repainting her lashes.
+    """
+    if cfg is None:
+        return 0.0
+    return float(args.lid_inset + args.lid_inset_rms * cfg.get('rms', 0.0))
+
+
+def signed_lid_distance(points, topology, side, window):
+    """Distance to the eyelid polygon, POSITIVE inside and NEGATIVE outside.
+
+    `r32.lid_distance` is zero everywhere outside the polygon, which is fine for a matte
+    and useless for asking "how far outside is this". Round 35 needs the second question
+    because the polygon itself is wrong: it crosses the middle of the iris, three to five
+    pixels below the actual lash line, with open eye and the softbox above it.
+    """
+    inside = r32.lid_distance(points, topology['eyelid_' + side], window)
+    ys, xs = window
+    poly = np.asarray(points)[topology['eyelid_' + side], :2]
+    filled = np.zeros((ys.stop - ys.start, xs.stop - xs.start), np.uint8)
+    cv2.fillPoly(filled, [np.rint((poly - [xs.start, ys.start]) * 4).astype(np.int32)],
+                 1, cv2.LINE_8, 2)
+    outside = cv2.distanceTransform((1 - filled).astype(np.uint8), cv2.DIST_L2, 3)
+    return np.where(filled > 0, inside, -outside).astype(np.float32)
+
+
 def soft_weight(signed, under, inside, support, sigma, k_lo, k_hi, reach, blur=0.7,
-                rim_reach=4.0, rim=True):
+                rim_reach=4.0, rim=True, rim_region=None):
     """Continuous removal weight from the residual against the fixed sequence prediction.
 
     Spatially gated to the neighbourhood of the eye's own brightest excess, the same
@@ -126,7 +158,17 @@ def soft_weight(signed, under, inside, support, sigma, k_lo, k_hi, reach, blur=0
     if rim:
         core = (w > 0.5).astype(np.uint8)
         k = int(2 * np.ceil(rim_reach) + 1)
-        collar = (cv2.dilate(core, np.ones((k, k), np.uint8)) > 0) & inside & near
+        # A CIRCULAR structuring element. A square one puts square corners on the collar,
+        # and on a half-closed eye -- where the lid shadow makes the whole lower iris
+        # darker than the canonical atlas, so `under` is large everywhere -- those corners
+        # were plainly visible in the weight map as a rectangle painted across the lashes.
+        # The undershoot ring is a ring; dilate it with a disc.
+        kern = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (k, k))
+        # The negative lobe stays INSIDE the eyelids even when the positive one is allowed
+        # past them. A highlight can sit above a polygon that is drawn too low; "darker
+        # than her iris" above the lash line is just lash.
+        region = inside if rim_region is None else (inside & rim_region)
+        collar = (cv2.dilate(core, kern) > 0) & region & near
         wn = np.clip((under - k_lo * sigma) / span, 0.0, 1.0).astype(np.float32)
         wn *= collar.astype(np.float32)
         w = np.maximum(w, wn)
@@ -374,6 +416,72 @@ def main():
     ap.add_argument('--grain', type=float, default=1.0,
                     help='fraction of the measured plate HF scale to restore; 0 is off')
     ap.add_argument('--min-ncc', type=float, default=0.5)
+    ap.add_argument('--min-ncc-frozen', type=float, default=0.2,
+                    help="the NCC floor that applies when --freeze-registration is on. "
+                         "The 0.5 gate exists because the render used to SAMPLE THE ATLAS "
+                         "through this frame's own fitted offset, so a bad fit meant bad "
+                         "material. With the offset frozen to a shot constant the NCC is "
+                         "a report on the atlas build, not on the render, and vetoing on "
+                         "it drops a single frame out of a repaired run -- the softbox "
+                         "reappears for one frame and the eye pops. Source 720 right, "
+                         "NCC 0.458 between two frames at 0.898 and 0.942, was exactly "
+                         "that. The floor stays, low, to catch a frame that is broken.")
+    ap.add_argument('--atlas-reach', type=float, default=1.25,
+                    help="how far past the limbus the canonical eye's own grid extends, "
+                         "in limbus radii. The grid used to stop AT the limbus and was "
+                         "only sampled to 0.88, so the limbal ring had no canonical "
+                         "material and a specular lapping onto it could not be repaired "
+                         "-- 92.5 percent of the softbox pixels still standing after "
+                         "removal were there, at median rho 1.022 with zero weight.")
+    ap.add_argument('--atlas-cells', type=int, default=121,
+                    help='cells across the canonical eye, kept in step with --atlas-reach '
+                         'so the cell stays about 0.27 native pixels on this plate')
+    ap.add_argument('--sample-reach', type=float, default=1.10,
+                    help='radius, in limbus radii, out to which each frame is sampled '
+                         "INTO the canonical eye. Round 32's RHO_MAX of 0.88 was a "
+                         "constant for its radial profile model, not a statement about "
+                         "how far her iris goes.")
+    ap.add_argument('--lid-inset-rms', type=float, default=2.0,
+                    help="extra lid inset per native pixel of the lid fit's own column "
+                         "residual on that frame, so an uncertain fit gives more ground")
+    ap.add_argument('--atlas-lid-inset', type=float, default=3.0,
+                    help="native pixels to pull the eye opening in before POOLING the "
+                         "canonical iris. This is separate from --lid-inset, which "
+                         "bounds where the canonical iris is PAINTED, and it is the "
+                         "reason the two exist. "
+                         "The canonical iris is a per-cell median over ~140 registered "
+                         "frames. Sampled through the same mask it is painted through, "
+                         "every cell near the lid is pooled from whatever the lid fit "
+                         "let in on the frames that reached it -- and where the fit runs "
+                         "a pixel high, that is lash and lid skin. The median does not "
+                         "save it: if the fit is high on most contributing frames, most "
+                         "votes are lash. The result is a warm arc following the top of "
+                         "the mask in the rendered eye that is nowhere in her source "
+                         "photograph, which is exactly what the artist saw at source "
+                         "726-728 left. Cells left empty by this inset are interpolated "
+                         "from clean iris by fill_atlas_holes, which is what that stage "
+                         "is for.")
+    ap.add_argument('--atlas-cap', type=float, default=0.0,
+                    help="percentile of her OWN observed clean iris radiance that the "
+                         "canonical iris may not exceed. 0 disables it. One number per "
+                         "eye, applied once to the canonical image, so it cannot "
+                         "flicker; it exists because the atlas rim pools lid margin and "
+                         "lash specular on the few frames those cells are visible, and "
+                         "the fitted eyelid is what finally renders them.")
+    ap.add_argument('--lid-inset', type=float, default=2.0,
+                    help="native pixels to pull the FITTED eye opening in before filling. "
+                         "The upper-lid fit's own column residual is 0.43 px median and "
+                         "0.59 p95, so one pixel is about 1.7x its p95: where the fit "
+                         "lands high the fill would otherwise paint canonical iris onto "
+                         "the lashes, which reads as a bright band exactly where the lid "
+                         "meets the iris. Erring inward leaves a sliver of her own eye; "
+                         "erring outward repaints her lash line. "
+                         "2.0 is where the two failures cross, measured on all 271 "
+                         "treated eyes: at 1.0 px, 140 eyes carry a brightened lash and "
+                         "4 carry a single surviving softbox pixel; at 2.0, 113 and 4; "
+                         "at 3.0 the lash count falls to 81 but the softbox comes back "
+                         "on 7 eyes at up to 4 px and ten eyes stop being treated at all."
+                         " Past 2 px the fill is buying lash safety with softbox.")
     ap.add_argument('--atlas-frames', default=None,
                     help="build the sequence atlas from THESE frames instead of the "
                          "source. Point it at a generative inpainter's output "
@@ -392,11 +500,59 @@ def main():
                          "1 / median(E_target / E_source) at the eyes, which is the same "
                          "ratio composite_ratio.py multiplies the plate by; a number "
                          "overrides it.")
+    ap.add_argument('--eyelid-track', default='eyelid_track.json',
+                    help="relight/<file> from eyelid_fit.py: both lid margins fitted to "
+                         "the IMAGE. The mediapipe contour it replaces sits 8.34 px "
+                         "inside the true opening on the left eye -- it crosses the "
+                         "middle of the iris with the softbox above it -- and 1.01 px "
+                         "outside it on the right, so nothing but a fit can serve both. "
+                         "Pass '' to go back to the polygon for comparison.")
+    ap.add_argument('--lid-extend', type=float, default=0.0,
+                    help="native pixels the highlight REMOVAL may reach outside the "
+                         "mediapipe eyelid polygon. **DEFAULTS TO 0, and that is a "
+                         "measurement, not caution.** The polygon does cross the middle "
+                         "of the iris with the softbox above it, so bounding removal by "
+                         "it leaves the highlight standing -- but its error is not a "
+                         "margin that can be added back: measured against the image's "
+                         "own sclera-to-lash edge, the polygon sits 8.34 px INSIDE the "
+                         "true opening on the left eye (p25 15.98) and 1.01 px OUTSIDE "
+                         "it on the right. No single extension is safe for both, and a "
+                         "generous one paints the canonical iris onto her lashes on "
+                         "every half-closed frame. The eyelid contour has to be FITTED "
+                         "to the image, exactly as limbus_fit.py fits the limbus. The "
+                         "iris FILL is never extended -- only the removal.")
+    ap.add_argument('--no-freeze-registration', dest='freeze_registration',
+                    action='store_false',
+                    help="refit the atlas registration per frame when rendering it back. "
+                         "OFF by default: it moves the whole painted iris up to 1.62 px "
+                         "between adjacent frames, which is the jitter the artist sees.")
+    ap.add_argument('--limbus-track', default='limbus_track.json',
+                    help="relight/<file> from limbus_fit.py: the limbus fitted to the "
+                         "IMAGE EDGE. This is the anchor everything here sits on. The "
+                         "mediapipe four-point ellipse it replaces sits 3.08 px from her "
+                         "own iris centre on the left eye (median, independent estimator) "
+                         "and its error jumps up to 10 px between adjacent frames -- the "
+                         "artist's 'double iris' and his 'delayed, slow to react'. Pass "
+                         "'' to go back to the landmark for comparison.")
     ap.add_argument('--sheet-zoom', type=int, default=4)
     ap.add_argument('--sheet-frames', type=int, default=25)
     ap.add_argument('--seed', type=int, default=20340909)
     args = ap.parse_args()
     shot = from_args(args)
+    track = (LimbusTrack.load(shot.relight / args.limbus_track)
+             if getattr(args, 'limbus_track', '') else None)
+    lids = {}
+    if getattr(args, 'eyelid_track', ''):
+        for row in json.loads((shot.relight / args.eyelid_track)
+                              .read_text(encoding='utf-8'))['rows']:
+            for e in row['eyes']:
+                if e.get('fitted'):
+                    lids[(int(row['frame']), e['side'])] = dict(
+                        centre=e['centre'],
+                        upper=(e['upper'] or {}).get('coef'),
+                        lower=(e['lower'] or {}).get('coef'),
+                        rms=max((e['upper'] or {}).get('rms', 0.0),
+                                (e['lower'] or {}).get('rms', 0.0)))
     if Path(args.name).name != args.name:
         raise ValueError('Expected a directory name, not a path')
     root = shot.composite / args.name
@@ -412,6 +568,8 @@ def main():
     if min(indices) < 0 or max(indices) >= shot.frame_count:
         raise ValueError('Requested interval leaves the shot')
 
+    atlas_grid_config = atl.configure(args.atlas_reach, args.atlas_cells)
+    print('R35_ATLAS_GRID', atlas_grid_config, flush=True)
     u, v = atl.atlas_grid()
     atlas_dir = Path(args.atlas_frames) if args.atlas_frames else None
     if atlas_dir is not None and not atlas_dir.is_dir():
@@ -434,7 +592,18 @@ def main():
         if not (landmarks['found'][i] and np.isfinite(landmarks['points'][i]).all()):
             continue
         for side in r32.SIDES:
-            geom, record = r32.eye_frame(sources[i], landmarks['points'][i], topology, side)
+            # The anchor. When a fitted track is supplied and has no fit for this eye on
+            # this frame, the eye ABSTAINS rather than falling back on the landmark: a
+            # wrong anchor is the bug this replaces, and silently reinstating it on the
+            # hardest frames is how it would come back.
+            override = track.get(i, side) if track is not None else None
+            if track is not None and override is None:
+                continue
+            geom, record = r32.eye_frame(sources[i], landmarks['points'][i], topology,
+                                         side, limbus_override=override,
+                                         eyelid_override=lids.get((i, side)),
+                                         lid_inset=lid_inset_for(lids.get((i, side)),
+                                                                 args))
             if geom is None:
                 continue
             patch = sources[i][geom['window']]
@@ -456,8 +625,18 @@ def main():
             # what makes that safe: a frame where the model failed and left the
             # highlight is outvoted rather than averaged in.
             holes_mode = atlas_dir is not None and args.atlas_mode == 'holes'
-            usable = (state['inside'] & ~collar
-                      if (atlas_dir is None or holes_mode) else state['inside'])
+            # The canonical eye is sampled out to --sample-reach, not to the round-32
+            # profile radius; `state['inside']` stops at RHO_MAX = 0.88.
+            strict = geom['visible'] & (state['rho'] < args.sample_reach)
+            if args.atlas_lid_inset > 0 and lids.get((i, side)) is not None:
+                poly = np.asarray(landmarks['points'][i])[topology['eyelid_' + side], :2]
+                lid_cfg = lids[(i, side)]
+                strict = strict & (r32.parabola_opening(
+                    lid_cfg.get('upper'), lid_cfg.get('lower'), lid_cfg['centre'],
+                    geom['window'], (float(poly[:, 0].min()), float(poly[:, 0].max())),
+                    inset=args.lid_inset + args.atlas_lid_inset) > 0.5)
+            usable = (strict & ~collar
+                      if (atlas_dir is None or holes_mode) else strict)
             base_patch = sources[i][geom['window']] if (atlas_dir is None or holes_mode)                 else pooled[i][geom['window']]
             rgb, w = atl.sample_eye(base_patch, geom, usable, u, v)
             geoms[(i, side)] = geom
@@ -482,6 +661,29 @@ def main():
             continue
         atlas, aw, history, _, rho, seed_sharp = atl.build(frames, args.iterations,
                                                           args.gain_window)
+        # **The registration is frozen after the atlas is built, and this is the last
+        # per-frame refit in the eye path.** Building the atlas WANTS a per-frame
+        # alignment: it is what makes the pooled median sharp. Rendering it back does
+        # not. With round 34's landmark anchor the per-frame offset was doing real work
+        # -- the anchor was 3.08 px off her iris and moving -- but the round 35 anchor is
+        # 0.42 px, so what is left in the offset is mostly NCC chasing the lid shadow and
+        # the highlight, and it TRANSLATES THE WHOLE PAINTED IRIS by a median 0.21 px and
+        # up to 1.62 px between adjacent frames. That is the artist's "our iris copy
+        # sometimes shifts a little bit around in-between frames", measured. One offset
+        # per eye for the shot removes it by construction, exactly as one radius per eye
+        # and one atlas per eye did.
+        registration = None
+        if args.freeze_registration:
+            registration = dict(du=float(np.median([f['du'] for f in frames])),
+                                dv=float(np.median([f['dv'] for f in frames])),
+                                scale=float(np.median([f['scale'] for f in frames])),
+                                du_p95=float(np.percentile([f['du'] for f in frames], 95)),
+                                dv_p95=float(np.percentile([f['dv'] for f in frames], 95)))
+            for f in frames:
+                f['du'], f['dv'], f['scale'] = (registration['du'], registration['dv'],
+                                                registration['scale'])
+            print('R35_FREEZE', side, {k: round(v, 5) for k, v in registration.items()},
+                  flush=True)
         generated_cells = 0
         if atlas_dir is not None and args.atlas_mode == 'holes':
             # A second atlas from the model's frames, used ONLY where her own eye was
@@ -496,9 +698,36 @@ def main():
                 aw = aw | holes
                 print('R34_HOLES', side, generated_cells, 'cells from the model of',
                       int((rho < atl.FILL_REACH).sum()), flush=True)
-        core = rho < atl.FILL_REACH
+        core = rho < min(args.sample_reach, atl.ATLAS_REACH - 0.02)
         holes_before = int((core & ~aw).sum())
         atlas, aw = atl.fill_atlas_holes(atlas, aw, core)
+        # **The canonical iris may not be brighter than her own iris.** Cells near the
+        # atlas rim are observed on few frames and only when the lid is high, so what
+        # gets pooled there is partly lid margin and lash specular. With the eyelid
+        # bounded by the mediapipe polygon those cells were never rendered; with the
+        # fitted lid they are, and the artist saw the result at once -- source 727 left,
+        # a pixel at 0.298 display coming out at 0.976, "the point where the eyelid meets
+        # the iris becomes really bright".
+        #
+        # The cap is ONE number per eye, measured from her own well-supported observed
+        # iris, applied to the canonical image once. It cannot flicker, because nothing
+        # about it is per frame. A per-pixel clamp against each frame's own source would
+        # fix the same artefact and reintroduce exactly the per-frame dependence that
+        # rounds 31-34 were rejected for.
+        atlas_cap = None
+        if args.atlas_cap > 0:
+            obs = np.concatenate([fr['rgb'].max(-1)[(fr['w'] > 0.98) & core]
+                                  for fr in frames if ((fr['w'] > 0.98) & core).any()])
+            if obs.size >= 200:
+                atlas_cap = float(np.percentile(obs, args.atlas_cap))
+                luma = atlas.max(-1)
+                over = luma > atlas_cap
+                if over.any():
+                    scale = np.ones_like(luma)
+                    scale[over] = atlas_cap / np.maximum(luma[over], 1e-6)
+                    atlas = atlas * scale[..., None]
+                print('R35_ATLAS_CAP', side, round(atlas_cap, 5), 'clamped',
+                      int(over.sum()), 'of', int(core.sum()), 'cells', flush=True)
         pupil_before = pupil_after = None
         if args.pupil_target > 0:
             # Measure the darkest pupil her plate actually shows, from clean pixels only,
@@ -525,6 +754,7 @@ def main():
                     print('R34_PUPIL', side, 'atlas centre', pupil_before, '->',
                           pupil_after, flush=True)
         fitted[side] = dict(atlas=atlas, aw=aw, history=history,
+                            frozen_registration=registration, atlas_cap=atlas_cap,
                             atlas_holes_interpolated=holes_before - int((core & ~aw).sum()),
                             atlas_holes_remaining=int((core & ~aw).sum()),
                             seed_sharpness=seed_sharp,
@@ -587,6 +817,10 @@ def main():
             if s is not None:
                 scales[side].append(s)
             detail[side][i] = dict(base=base, support=support, inside=state['inside'],
+                                   visible=geom['visible'],
+                                   lid_signed=signed_lid_distance(
+                                       landmarks['points'][i], topology, side,
+                                       geom['window']),
                                    signed=signed, under=under, geom=geom, frame_scale=s,
                                    footprint=foot, gain_used=gain_used,
                                    local_gain=None if k is None else [round(float(x), 4) for x in k])
@@ -662,7 +896,9 @@ def main():
                           registration_ncc=round(float(f['ncc']), 5),
                           frame_residual_scale=None if d['frame_scale'] is None
                           else round(d['frame_scale'], 6))
-            if not f['registered'] or f['ncc'] < args.min_ncc:
+            ncc_floor = (args.min_ncc_frozen if args.freeze_registration
+                         else args.min_ncc)
+            if not f['registered'] or f['ncc'] < ncc_floor:
                 record.update(repaired=False, reason='registration_below_threshold')
                 eyes.append(record)
                 continue
@@ -685,13 +921,83 @@ def main():
                 rho = np.hypot(au, av)
                 edge = 1.5 / max(min(geom_['ax'], geom_['ay']), 1e-6)
                 w = np.clip((args.fill_iris - rho) / max(edge, 1e-6), 0.0, 1.0).astype(np.float32)
-                w *= (d['inside'] & d['support']).astype(np.float32)
+                # `inside` stops at RHO_MAX = 0.88, which is the radius the round-32
+                # PROFILE model needed and has nothing to do with how far the iris goes.
+                # Multiplying the fill by it silently capped --fill-iris 0.95 at 0.88 and
+                # left an unfilled ring 1.5 px wide all the way round -- and the softbox
+                # lives in that ring on the frames where it sits high on the iris. The
+                # fill is bounded by its own radius and by the lids, which is what it
+                # meant to say.
+                w *= (d['visible'] & d['support']).astype(np.float32)
                 sup = np.clip(cv2.distanceTransform(d['support'].astype(np.uint8),
                                                     cv2.DIST_L2, 3) / 2.0, 0.0, 1.0)
                 w = (w * sup).astype(np.float32)
+                # **The iris fill is bounded by the lids; the highlight REMOVAL is not.**
+                # The mediapipe eyelid contour is the next bad anchor after the iris
+                # landmark: at source 770 it crosses the middle of the iris, three to
+                # five pixels below the actual lash line, with open eye and the softbox
+                # itself sitting above it. Bounding the fill by it left the highlight
+                # standing on exactly the frames the artist flagged.
+                #
+                # Widening the lid mask by guesswork would paint canonical iris onto her
+                # lashes. Physics gives a bound that needs no lid fit at all: **a lash is
+                # DARKER than her own pooled iris and a specular highlight is brighter**,
+                # so the removal may extend over the whole limbus disc while the fill
+                # stays inside the lids, and the two share the same canonical material.
+                # The rim collar goes with it, as round 34 established -- the black beside
+                # the highlight is that highlight's own coding ringing.
+                # How far past the polygon the removal may reach is a MEASURED shot
+                # constant, not a dial: the corneal specular's outermost pixel sits a
+                # median 3.2 px (left) / 4.4 px (right) INSIDE the polygon, and where the
+                # polygon errs it is the specular that ends up outside. Four pixels covers
+                # that error and stops short of the lash.
+                # **The removal follows the specular BLOB, not a lid.** The fill is
+                # bounded by the fitted eyelid, which is right: painting iris past a lid
+                # can only damage a lash. Removal is a different question. Where the
+                # fitted lid crosses the softbox -- and it does, on 30 eyes, by one to
+                # three pixels -- bounding removal by it leaves a speck of the capture
+                # room standing at half a stop above her iris, which is the artist's
+                # "glimpses of the softbox suddenly appearing for a few frames".
+                #
+                # So removal may leave the opening, but only along the source's own
+                # specular, and only on the component of it that reaches inside the
+                # opening. A lash is not bright, so this cannot repaint one; round 35's
+                # first attempt let removal have the whole disc and did exactly that.
+                # `patch` is not bound yet in this loop -- it is set below, and the name
+                # is still holding a different eye from the previous pass. Read the
+                # window explicitly.
+                here = sources[i][geom_['window']]
+                lum = np.clip(linear_to_srgb(np.clip(here, 0, 1)), 0, 1).max(-1)
+                ring_out = (rho > 1.15) & (rho < 1.55)
+                sclera = (float(np.percentile(lum[ring_out], 90))
+                          if ring_out.sum() > 40 else 0.5)
+                hot = (lum > max(0.45, sclera + 0.06)) & (rho < 1.05)
+                blob = np.zeros(hot.shape, bool)
+                if hot.any():
+                    n, labels = cv2.connectedComponents(hot.astype(np.uint8))
+                    inside_opening = d['visible'] & d['support']
+                    keep_ids = set(np.unique(labels[hot & inside_opening])) - {0}
+                    if keep_ids:
+                        blob = np.isin(labels, list(keep_ids))
+                        blob = cv2.dilate(blob.astype(np.uint8),
+                                          cv2.getStructuringElement(
+                                              cv2.MORPH_ELLIPSE, (5, 5))) > 0
+                        blob &= (rho < 1.05)
+                wide = ((rho < args.fill_iris) & d['support']
+                        & (d['lid_signed'] > -args.lid_extend)) | (blob & d['support'])
+                wide &= d['support']
+                ws, wi = soft_weight(d['signed'], d['under'], wide, d['support'],
+                                     sigma[side], args.k_lo, args.k_hi, args.reach,
+                                     rim_reach=args.rim_reach, rim=not args.keep_rim,
+                                     rim_region=d['visible'])
+                above_lid = 0
+                if ws is not None:
+                    above_lid = int(((ws > 0) & ~(d['visible'] & d['support'])).sum())
+                    w = np.maximum(w, ws)
                 w = np.rint(np.clip(w, 0, 1) * 255.0).astype(np.float32) / 255.0
-                info = dict(peak_excess=float(np.where(d['inside'], d['signed'], -np.inf).max()),
-                            seed=[0, 0])
+                info = dict(peak_excess=float(np.where(wide, d['signed'], -np.inf).max()),
+                            seed=(wi or {}).get('seed', [0, 0]),
+                            highlight_pixels_above_lid=above_lid)
             else:
                 w, info = soft_weight(d['signed'], d['under'], d['inside'], d['support'],
                                       sigma[side], args.k_lo, args.k_hi, args.reach,
@@ -786,6 +1092,7 @@ def main():
                     patch[bright].max(), 0, 1))), 4),
                 peak_removed_display=round(float(linear_to_srgb(np.clip(
                     blended[bright].max(), 0, 1))), 4),
+                highlight_pixels_above_lid=info.get('highlight_pixels_above_lid'),
                 rim_pixels_removed=int(((d['under'] > args.k_lo * sigma[side]) & (w > 0.5)).sum()),
                 floor_pixels_removed=int((((patch <= 1e-6).sum(axis=-1) >= 2) & (w > 0.5)).sum()),
                 grain_scale=None if grain is None else [round(float(g), 6) for g in grain],
@@ -895,7 +1202,28 @@ def main():
         rim_reach_px=args.rim_reach,
         production_enabled=False, artist_accepted=False,
         source_outside_weight_exact=True,
+        lid_extend_px=args.lid_extend,
+        lid_inset_px=args.lid_inset,
+        atlas_lid_inset_px=args.atlas_lid_inset,
+        atlas_grid=atlas_grid_config, sample_reach=args.sample_reach,
+        atlas_cap_percentile=args.atlas_cap,
+        atlas_cap_level={k: (v.get('atlas_cap') if v else None)
+                         for k, v in fitted.items()},
+        ncc_floor=args.min_ncc_frozen if args.freeze_registration else args.min_ncc,
+        eyelid_track=args.eyelid_track or None,
+        eyelid_track_sha256=(r32.sha(shot.relight / args.eyelid_track)
+                             if args.eyelid_track else None),
+        eyelid_source='image_fit' if lids else 'mediapipe_polygon',
+        eyelid_fitted_eyes=len(lids),
+        freeze_registration=bool(args.freeze_registration),
+        frozen_registration={k: (v['frozen_registration'] if v else None)
+                             for k, v in fitted.items()},
+        limbus_track=args.limbus_track or None,
+        limbus_track_sha256=(r32.sha(shot.relight / args.limbus_track)
+                             if args.limbus_track else None),
+        limbus_source='image_fit' if track is not None else 'mediapipe_landmark',
         code_sha256=r32.sha(__file__), atlas_code_sha256=r32.sha(atl.__file__),
+        limbus_code_sha256=r32.sha(Path(__file__).parent / 'limbus_fit.py'),
         track_sha256=r32.sha(shot.relight / 'face_landmarks.npz'))
     r32.write_json(root / 'removal.json', record)
     r32.write_json(shot.log(args.name + '.json'), record)

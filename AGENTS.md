@@ -33,6 +33,31 @@ and **rejected**, for colour AND shape flicker and a sometimes-brown pupil, beca
 every term of the fill was refit per frame from a few dozen pixels. **No per-frame-refit
 fill can be temporally stable at a 24-pixel iris.** See `rounds/round32.md`.
 
+**Round 35 — all three eye anchors now fit the IMAGE; the remaining seam is the LID
+SHADOW, not the mask.** The limbus (`limbus_fit.py`) and both eyelid margins
+(`eyelid_fit.py`) are fitted to the photograph and audited by estimators that share
+nothing with them; the atlas registration, the last per-frame refit in the eye path, is
+frozen to one offset per eye. Measured against her own image, the mediapipe iris ellipse
+sat **3.08 px** from her iris centre and the mediapipe eyelid contour **8.34 px inside**
+the true opening on the left eye. Both are replaced. **Do not put a mediapipe contour back
+and do not re-derive these anchors.**
+
+What the artist still rejects is the upper eyelid and lashes, and round 35 measured why:
+**her iris darkens toward the lash by +0.082 display across the fill boundary and the
+repair flattens it to −0.004**, because the canonical iris is painted with ONE scalar gain
+per frame. That is a systematic step at the lash line on essentially every treated frame,
+and **no adjustment to the eyelid mask removes it — moving the boundary only moves where
+the step lands.** Round 36 should model the lid shadow against depth below the fitted lid
+margin. See `rounds/round35.md` §7.
+
+Three other things round 35 established, all of which cost a cycle first: **the canonical
+iris must not be pooled through the same mask it is painted through** (lid and lash got
+into its upper cells and drew a warm arc that is nowhere in her photograph); **the
+canonical eye's grid must reach past the limbus** (92.5 % of surviving softbox pixels sat
+at rho > 0.95 where there was no material at all); and **`audit_r35_defects.py` is the
+artist's acceptance test** — a brighter lid or any surviving softbox, over all 300 eyes,
+read from the photograph and the result only. Run it before and after every change.
+
 **Round 34 — the construction is settled and the artist endorsed it; the TRACKER is the
 blocker.** The eye is now generated **once**, in the eye's own registered frame, and
 rendered into every frame (`eye_soft_removal.py --fill-iris`); only a scalar illumination
@@ -441,6 +466,8 @@ Every stage takes `--shot`. Interpreter is the pipeline venv unless the row says
 | 4 | depth | `video_depth.py` | `relight/depth/*.npy` | Video Depth Anything; **affine-invariant disparity**, not metric |
 | 5 | face track | `face_track.py` (facetrack venv) | `relight/face_track.json`, `relight/face_landmarks.npz` + `.json` | mediapipe; needs its own venv. Also stores ALL 478 landmarks, blink, eyelid aperture, head pose |
 | 5b | **corneal geometry** | `eye_geometry.py` | `relight/eye_geometry.json` | corneal sphere per eye, and the PLATE's key light solved from its own catchlights |
+| 5c | **limbus track** | `limbus_fit.py` | `relight/limbus_track.json` | the limbus fitted to the IMAGE EDGE, one radius per shot, no smoothing. Audited by `audit_r35_limbus.py`; drawn on every frame by `review_r35_track.py` |
+| 5d | **eyelid track** | `eyelid_fit.py` | `relight/eyelid_track.json` | both lid margins fitted to the IMAGE, robust parabola per lid, curvature one per eye per shot |
 | 6 | **normals** | `neural_normals.py` | `relight/normals/*.npz` | see below |
 | 7 | **albedo + skin mask** | `make_albedo.py` | `relight/albedo/`, `relight/skin_mask/` | plate ÷ `E_source(normals)`; needed before the plate can be re-lit, or it is lit twice |
 | 7b | **proxy geometry** | `make_proxy_mesh.py` | `relight/proxy/*.npz` | see below; carries UVs |
@@ -452,7 +479,7 @@ Every stage takes `--shot`. Interpreter is the pipeline venv unless the row says
 | 11c | **ratio irradiance** | `stress_proxy.py --ratio` (Blender) | `composite/ratio_render/*.exr` | neutral albedo at PLATE resolution and the PLATE lens |
 | 11d | ~~catchlight~~ | `stress_proxy.py --catchlight` (Blender) | `composite/catchlight_render/*.exr` | renderer looks sound and its validator passes; **the compositing of it is rejected and `--catchlight` defaults to 0** |
 | 11e | **corneal catchlight** | `render_eye_catchlight.py` (Blender) | `composite/r34_catchlight/*.exr` | the scene's own reflection in a corneal cap; validated by `validate_eye_catchlight.py`. PARKED by the artist |
-| 11f | **eye: one canonical iris** | `eye_soft_removal.py --fill-iris` | `composite/<name>/` | built once in the registered eye frame from `eye_video_inpaint.py` / `unreflect_diffuse.py` material; audited by `audit_r34_track.py`, `audit_r34_flicker.py` |
+| 11f | **eye: one canonical iris** | `eye_soft_removal.py --fill-iris` | `composite/<name>/` | built once in the registered eye frame from `eye_video_inpaint.py` / `unreflect_diffuse.py` material; audited by `audit_r34_track.py`, `audit_r34_flicker.py`, `audit_r35_defects.py` |
 | 12 | **ratio composite** | `composite_ratio.py` | `composite/ratio/` | `out = plate × R` by default. `--plate-specular remove` and `--catchlight` are rejected experiments |
 | 12b | composite (gain map) | `composite_shot.py` | `composite/`, `intermediate/linear_4k/` | legacy path; loads background **per frame** |
 | 12c | **review video** | `review_video.py` | `final/*.mp4` | what the artist watches; `--compare` puts the before on the LEFT with both halves labelled |

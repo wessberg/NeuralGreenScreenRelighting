@@ -39,7 +39,10 @@ def main():
                          "the artist rejected")
     ap.add_argument('--zoom', type=int, default=4)
     ap.add_argument('--rows', default='source,removal,replace',
-                    help='subdirectories of --from-name to stack, in order')
+                    help="subdirectories of --from-name to stack, in order. An entry "
+                         "containing a slash is read as '<composite dir>/<sub>' instead, "
+                         "so two rounds' results can be stacked against one source -- "
+                         "which is the only honest way to show that a change helped.")
     ap.add_argument('--labels', default='',
                     help='PIPE-separated row labels (a label may contain commas); defaults to the built-in three')
     ap.add_argument('--stack', choices=('h', 'v'), default='v',
@@ -48,7 +51,7 @@ def main():
     shot = from_args(args)
     src = shot.composite / args.from_name
     names = [x.strip() for x in args.rows.split(',') if x.strip()]
-    dirs = [src / n for n in names]
+    dirs = [(shot.composite / n) if '/' in n else (src / n) for n in names]
     for d in dirs:
         if not d.is_dir():
             raise SystemExit('No %s. Run the producing stage first.' % d)
