@@ -875,6 +875,11 @@ def selftest():
                         for b in range(B)])
         got = cv_gaussian(as_t(im), 7, 1.0, 'replicate').cpu().numpy()
         report['cv_gauss7_w%d_mismatch' % wdt] = int((ref != got).sum())
+        # eyelid_fit's specular map: a 0/1 mask, (0, 0) kernel at sigma 0.8, default border
+        mk = (im > 0.7).astype(np.float32)
+        ref = np.stack([cv2.GaussianBlur(mk[b], (0, 0), 0.8) for b in range(B)])
+        got = cv_gaussian(as_t(mk), 7, 0.8, 'reflect101').cpu().numpy()
+        report['cv_gauss_s08_w%d_mismatch' % wdt] = int((ref != got).sum())
         for dx, dy in ((1, 0), (0, 1)):
             ref = np.stack([cv2.Sobel(im[b], cv2.CV_32F, dx, dy, ksize=3) for b in range(B)])
             got = cv_sobel3(as_t(im), dx, dy).cpu().numpy()

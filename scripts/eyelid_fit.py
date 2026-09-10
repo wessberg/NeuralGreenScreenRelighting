@@ -225,6 +225,102 @@ def fit_eye(values, centre, radius, corners, margin=14):
     return rec
 
 
+def raw_fits_gpu(shot, data, track, topology, points, only=None, margin=14, io_workers=12,
+                 chunk=384):
+    """Every eye's `fit_eye` record on the GPU (track_gpu.py): the fields, the column
+    samples and the walk batched; the same records, bit for bit, as fit_eye on the CPU
+    (the parabolas are fitted afterwards by this file's own numpy code). `only`: a set of
+    (frame, side) to fit instead of every tracked eye."""
+    import torch
+    from concurrent.futures import ThreadPoolExecutor
+    import eye_gpu as G
+    import track_gpu as T
+    frames = [int(row['frame']) for row in data['rows']]
+    src = {int(row['frame']): row['source_frame'] for row in data['rows']}
+    todo = []
+    for i in frames:
+        for side in r32.SIDES:
+            got = track.get(i, side)
+            if got is not None and (only is None or (i, side) in only):
+                todo.append((i, side, got))
+    need = {}
+    for i, side, got in todo:
+        need.setdefault(i, []).append((side, got))
+
+    def read(i):
+        img = cv2.imread(str(shot.fg(i)), cv2.IMREAD_UNCHANGED)
+        return None if img is None else img[..., ::-1]
+
+    out = {}
+    metas = []
+    with ThreadPoolExecutor(max_workers=io_workers) as pool:
+        futures = {i: pool.submit(read, i) for i in need}
+        for i in sorted(need):
+            img = futures.pop(i).result()
+            if img is None:
+                continue
+            h, w = img.shape[:2]
+            for side, got in need[i]:
+                centre, radius = got[0], got[1]
+                poly = np.asarray(points[i])[topology['eyelid_' + side], :2]
+                corners = (float(poly[:, 0].min()), float(poly[:, 0].max()))
+                rec = dict(fitted=False, reason=None)
+                reach = radius * 2.9 + margin
+                x0 = int(np.floor(centre[0] - reach)); x1 = int(np.ceil(centre[0] + reach)) + 1
+                y0 = int(np.floor(centre[1] - reach)); y1 = int(np.ceil(centre[1] + reach)) + 1
+                out[(i, side)] = (rec, centre, radius, src[i])
+                if x0 < 0 or y0 < 0 or x1 > w or y1 > h:
+                    rec['reason'] = 'lid_crop_leaves_frame'
+                    continue
+                local = (centre[0] - x0, centre[1] - y0)
+                inset = 0.16 * (corners[1] - corners[0])
+                ww = x1 - x0
+                x_lo = max(1.0, corners[0] + inset - x0)
+                x_hi = min(float(ww - 2), corners[1] - inset - x0)
+                metas.append(dict(rec=rec, local=local, radius=radius, x_lo=x_lo, x_hi=x_hi,
+                                  window=(x0, y0, x1, y1), shape=(y1 - y0, ww),
+                                  patch=torch.as_tensor(np.ascontiguousarray(
+                                      img[y0:y1, x0:x1]), device=G.DEV).half()))
+    by_shape = {}
+    for m in metas:
+        by_shape.setdefault(m['shape'], []).append(m)
+    fields = []
+    for shape, lst in sorted(by_shape.items()):
+        blur, gy, spec = T.lid_fields(torch.stack([m['patch'] for m in lst]), lst)
+        for n, m in enumerate(lst):
+            m['gy'], m['spec'] = gy[n], spec[n]
+            del m['patch']
+        fields += lst
+    for s0 in range(0, len(fields), chunk):
+        part = fields[s0:s0 + chunk]
+        Hm = max(m['shape'][0] for m in part)
+        Wm = max(m['shape'][1] for m in part)
+        cg = torch.zeros((len(part), Hm, Wm), dtype=torch.float32, device=G.DEV)
+        cs = torch.zeros_like(cg)
+        hw = torch.zeros((len(part), 2), dtype=torch.int64, device=G.DEV)
+        for n, m in enumerate(part):
+            h, w = m['shape']
+            cg[n, :h, :w], cs[n, :h, :w] = m['gy'], m['spec']
+            hw[n, 0], hw[n, 1] = h, w
+        samp = G.CubicSampler([cg, cs], hw)
+        samples = {}
+        for name, sign in (('upper', -1.0), ('lower', 1.0)):
+            xs, ys, ss, colv = T.lid_boundary(samp, part, sign, with_spec=(sign < 0))
+            samples[name] = (xs.cpu().numpy(), ys.cpu().numpy(), ss.cpu().numpy(),
+                             colv.sum(1).cpu().numpy())
+        for n, m in enumerate(part):
+            smp = {}
+            for name in ('upper', 'lower'):
+                xs, ys, ss, nc = samples[name]
+                k = int(nc[n])
+                smp[name] = dict(xs=xs[n, :k].copy(), ys=ys[n, :k].copy(), ss=ss[n, :k].copy())
+            m['rec'].update(window=m['window'], local_centre=m['local'], samples=smp)
+        del samp, cg, cs
+    for m in fields:
+        m.pop('gy', None); m.pop('spec', None)
+    return out
+
+
 def fit_lids(rec, radius, curv_upper, curv_lower):
     """Both parabolas for one eye's samples at the given curvatures, as main() makes them."""
     entry = {}
@@ -252,6 +348,19 @@ def update_track(args, shot, track, data, topology, points):
     """--update: refit only the eyes whose limbus centre moved (see the flag's help)."""
     base = json.loads((shot.relight / args.update).read_text(encoding='utf-8'))
     base_rows = {int(r['frame']): r for r in base['rows']}
+
+    def moved(i, be):
+        got = track.get(i, be['side'])
+        same = (got is not None and be.get('centre') is not None
+                and np.allclose([round(float(c), 4) for c in got[0]], be['centre']))
+        return got is not None and not same
+
+    fits = None
+    if args.device == 'cuda':
+        fits = raw_fits_gpu(shot, data, track, topology, points,
+                            only={(int(row['frame']), be['side']) for row in data['rows']
+                                  for be in base_rows[int(row['frame'])]['eyes']
+                                  if moved(int(row['frame']), be)})
     rows, refit = [], []
     cache = {}
     for row in data['rows']:
@@ -261,19 +370,20 @@ def update_track(args, shot, track, data, topology, points):
         for be in brow['eyes']:
             side = be['side']
             got = track.get(i, side)
-            same = (got is not None and be.get('centre') is not None
-                    and np.allclose([round(float(c), 4) for c in got[0]], be['centre']))
-            if got is None or same:
+            if not moved(i, be):
                 eyes.append(be)
                 continue
-            if i not in cache:
-                img = cv2.imread(str(shot.fg(i)), cv2.IMREAD_UNCHANGED)
-                cache.clear()
-                cache[i] = img[..., ::-1].astype(np.float32)
             centre, radius = got[0], got[1]
-            poly = np.asarray(points[i])[topology['eyelid_' + side], :2]
-            corners = (float(poly[:, 0].min()), float(poly[:, 0].max()))
-            rec = fit_eye(cache[i], centre, radius, corners)
+            if fits is not None:
+                rec = fits[(i, side)][0]
+            else:
+                if i not in cache:
+                    img = cv2.imread(str(shot.fg(i)), cv2.IMREAD_UNCHANGED)
+                    cache.clear()
+                    cache[i] = img[..., ::-1].astype(np.float32)
+                poly = np.asarray(points[i])[topology['eyelid_' + side], :2]
+                corners = (float(poly[:, 0].min()), float(poly[:, 0].max()))
+                rec = fit_eye(cache[i], centre, radius, corners)
             if 'samples' not in rec:
                 eyes.append(dict(side=side, fitted=False, reason=rec['reason'], refit=True))
                 refit.append((i, side, 'abstained'))
@@ -321,6 +431,9 @@ def main():
                          "the stretch round 37 was accepted on. The window is shifted, not "
                          "cut, at the ends of the shot, so a shot shorter than the window "
                          "gets its own median back (of the anatomically possible fits).")
+    ap.add_argument('--device', choices=('cuda', 'cpu'), default='cuda',
+                    help="'cuda' computes every eye's column samples on the GPU "
+                         "(track_gpu.py; identical records); 'cpu' is the numpy reference")
     ap.add_argument('--update', default=None,
                     help="an existing eyelid track (relight/<file>) to UPDATE rather than "
                          "refit: only the eyes whose limbus centre in --track differs from the "
@@ -340,7 +453,9 @@ def main():
         return
 
     raw_fits = {}
-    for row in data['rows']:
+    if args.device == 'cuda':
+        raw_fits = raw_fits_gpu(shot, data, track, topology, points)
+    for row in ([] if args.device == 'cuda' else data['rows']):
         i = row['frame']
         img = cv2.imread(str(shot.fg(i)), cv2.IMREAD_UNCHANGED)
         if img is None:

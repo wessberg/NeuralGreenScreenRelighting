@@ -5,12 +5,16 @@ Round 39, after the eye pass: the two trackers were the rest of the CPU time per
 (limbus 3 min, eyelid 67 s on the 1200-frame reporter clip, single-threaded numpy). Same
 construction, same outputs; this module holds only the per-pixel and per-sample maths.
 
-Reproduction, per primitive (`eye_gpu.py --selftest`): the bicubic remap every sample goes
-through is BIT EXACT against cv2 (fixed-point 1/32 map, cv2's a = -0.75 table, 16 taps
-summed row by row inside the image and one at a time at its border); the Gaussian and
-Sobel gradient field agree to 5e-7. numpy's float32 mean over angles is its 8-accumulator
-pairwise sum, reproduced. The small robust fits are float64 on both sides. End to end,
-`validate_track_gpu.py` compares the written tracks field by field.
+**Both write the CPU's track exactly** (reporter_full: every row of limbus_track.json,
+eyelid_track_w.json and the --update eyelid_track_wt.json identical). Every primitive the
+samples go through is cv2's or numpy's own arithmetic, pinned by probe and held by
+`eye_gpu.py --selftest`: the bicubic remap (1/32 fixed-point map, a = -0.75 table, 16 taps
+row by row inside the image and one at a time at its border), the Gaussian and Sobel
+fields (AVX2 FMA chains, plain scalar tail), the luma dot (OpenBLAS gemv order), numpy's
+float32 pairwise mean and percentile. The small robust fits (circle, centre, parabola;
+~60 points an eye) run afterwards in the CPU scripts' own numpy functions: batched on the
+GPU they agreed to 1e-15 except where an IRLS step is rank-deficient, and there the CPU's
+answer is a ratio of rounding residues no reimplementation reproduces.
 """
 import numpy as np
 import torch
@@ -75,55 +79,6 @@ def compact(mask):
 
 def median_f32(x, m, dim=-1):
     return G.median(x, m, dim=dim)[0]
-
-
-def fit_centre(pts, mask, c0, radius, iterations=8, tukey=2.5):
-    """limbus_fit.fit_centre, batched: pts (B, N, 2) float64, mask (B, N), c0 (B, 2),
-    radius (B,). Returns dict of tensors and ok (B,)."""
-    B, N, _ = pts.shape
-    c = c0.clone()
-    done = torch.zeros(B, dtype=torch.bool, device=DEV)
-    ok = torch.ones(B, dtype=torch.bool, device=DEV)
-    R = radius.view(B, 1)
-    for _ in range(iterations):
-        d = pts - c[:, None, :]
-        rho = torch.clamp_min(torch.hypot(d[..., 0], d[..., 1]), 1e-9)
-        u = d / rho[..., None]
-        resid = rho - R
-        med, _ = G.median(resid, mask, dim=1)
-        mad, _ = G.median((resid - med[:, None]).abs(), mask, dim=1)
-        scale = torch.clamp_min(1.4826 * mad, 0.05)
-        t = torch.clamp(resid / (tukey * scale[:, None]), -1, 1)
-        w = torch.where(mask, (1 - t ** 2) ** 2, torch.zeros_like(t))
-        J = -u
-        M = (J[..., :, None] * (w[..., None, None] * J[..., None, :])).sum(1)
-        rhs = -(J * (w * resid)[..., None]).sum(1)
-        det = M[:, 0, 0] * M[:, 1, 1] - M[:, 0, 1] * M[:, 1, 0]
-        # LAPACK meets an exactly zero pivot when fewer points carry weight than there are
-        # parameters; numpy raises there and the CPU fit stops. A GPU determinant of the same
-        # rank-deficient matrix comes out tiny but not zero, so the count is the test.
-        good = (det != 0) & ((w > 0).sum(1) >= 2)
-        Mi = torch.where(good.view(B, 1, 1), M, torch.eye(2, dtype=F64, device=DEV).expand(B, 2, 2))
-        step = torch.linalg.solve(Mi, rhs)
-        upd = ~done & good
-        c = torch.where(upd[:, None], c + step, c)
-        ok &= torch.isfinite(c).all(1)
-        done |= ~good | (step.abs().max(1).values < 1e-4)
-    d = pts - c[:, None, :]
-    resid = torch.hypot(d[..., 0], d[..., 1]) - R
-    med, _ = G.median(resid, mask, dim=1)
-    mad, _ = G.median((resid - med[:, None]).abs(), mask, dim=1)
-    scale = torch.clamp_min(1.4826 * mad, 0.05)
-    w = torch.where(mask, (1 - torch.clamp(resid / (tukey * scale[:, None]), -1, 1) ** 2) ** 2,
-                    torch.zeros_like(resid))
-    ok &= w.sum(1) > 1e-9
-    rms = torch.sqrt((w * resid ** 2).sum(1) / torch.clamp_min(w.sum(1), 1e-300))
-    u = d / torch.clamp_min(torch.hypot(d[..., 0], d[..., 1]), 1e-9)[..., None]
-    info = (u[..., :, None] * (w[..., None, None] * u[..., None, :])).sum(1)
-    eig = torch.linalg.eigvalsh(info)
-    se = rms / torch.sqrt(torch.clamp_min(eig[:, 0], 1e-9))
-    inl = ((resid.abs() < 2 * scale[:, None]) & mask).sum(1)
-    return dict(centre=c, rms=rms, se=se, inliers=inl), ok
 
 
 class _Win:
@@ -315,85 +270,131 @@ def limbus_group(fields, meta, th_cos, th_sin, radius_given, model='circle', min
     nstrong = strong.sum(1).cpu().numpy()
     px = (cx2t.view(B, 1) + r_edge * ci)
     py = (cy2t.view(B, 1) + r_edge * si)
-    pts = torch.stack([px, py], -1).to(F64)
-    c0 = torch.stack([as_t(np.array(cx2, np.float64)), as_t(np.array(cy2, np.float64))], 1)
-    al = alive.cpu().numpy()
-    if radius_given is not None or model == 'circle':
-        if radius_given is not None:
-            fit, fok = fit_centre(pts, strong, c0, as_t(np.array([m['radius'] for m in meta], np.float64)))
-        else:
-            fit, fok = fit_circle(pts, strong, c0, as_t(np.array(rr2, np.float64)))
-    fit = {k_: v.cpu().numpy() for k_, v in fit.items()}
-    fok = fok.cpu().numpy()
-    pts_np = pts.cpu().numpy()
+    # The robust fit itself runs in numpy -- limbus_fit's own function on the (bit-exact)
+    # float32 edge points: ~60 points an eye, milliseconds over the clip, and it makes the
+    # track the CPU's exactly. Batched on the GPU it agreed to 1e-15 except where an IRLS
+    # step is rank-deficient, and there the CPU's answer is a ratio of rounding residues.
+    import limbus_fit as lf
+    px_np, py_np = px.cpu().numpy(), py.cpu().numpy()
     strong_np = strong.cpu().numpy()
-    arc2n = arc2
+    al = alive.cpu().numpy()
     for n, m in enumerate(meta):
         rec = m['rec']
         if not al[n]:
             continue
         if nstrong[n] < min_angles:
-            rec.update(reason='too_few_edges', edges=int(nstrong[n]), open_arc=float(arc2n[n]))
+            rec.update(reason='too_few_edges', edges=int(nstrong[n]), open_arc=float(arc2[n]))
             continue
+        sel = strong_np[n]
+        pts = np.column_stack([px_np[n][sel], py_np[n][sel]])
         if radius_given is not None:
-            if not fok[n]:
+            fit = lf.fit_centre(pts, (cx2[n], cy2[n]), float(m['radius']))
+            if fit is None:
                 rec['reason'] = 'centre_fit_failed'
                 continue
-            rec.update(centre_se_px=round(float(fit['se'][n]), 4), inliers=int(fit['inliers'][n]))
-            if fit['se'][n] > max_se:
-                rec.update(reason='centre_underdetermined', open_arc=float(arc2n[n]),
-                           rms=float(fit['rms'][n]))
+            rec.update(centre_se_px=round(fit['centre_se_px'], 4), inliers=fit['inliers'])
+            if fit['centre_se_px'] > max_se:
+                rec.update(reason='centre_underdetermined', open_arc=float(arc2[n]),
+                           rms=float(fit['rms']))
                 continue
-            rec.update(fitted=True, centre=[float(fit['centre'][n, 0]), float(fit['centre'][n, 1])],
-                       axes=[float(m['radius']), float(m['radius'])])
+            rec.update(fitted=True, centre=list(fit['centre']),
+                       axes=[fit['radius'], fit['radius']])
         else:
-            if not fok[n]:
+            fit = lf.fit_circle(pts, (cx2[n], cy2[n]), rr2[n])
+            if fit is None:
                 rec['reason'] = 'circle_fit_failed'
                 continue
-            rec.update(fitted=True, centre=[float(fit['centre'][n, 0]), float(fit['centre'][n, 1])],
-                       axes=[float(fit['radius'][n]), float(fit['radius'][n])])
-        p = pts_np[n][strong_np[n]]
+            rec.update(fitted=True, centre=list(fit['centre']),
+                       axes=[fit['radius'], fit['radius']])
         rec.update(daugman=[round(cx2[n], 4), round(cy2[n], 4), round(rr2[n], 4),
                             round(float(sc2[n]), 6)],
-                   edges=int(nstrong[n]), open_arc=float(arc2n[n]), rms=float(fit['rms'][n]),
-                   edge_points=[[round(float(a), 3), round(float(b), 3)] for a, b in p])
+                   edges=int(nstrong[n]), open_arc=float(arc2[n]), rms=float(fit['rms']),
+                   edge_points=[[round(float(a), 3), round(float(b), 3)] for a, b in pts])
+
+# =========================================================================== eyelid
+def lid_fields(patch16, meta):
+    """eyelid_fit.fit_eye's fields for one window shape: blurred luma, gy, and the
+    specular map (for the upper lid), plus `sclera` per eye. Bit exact."""
+    B, h, w = patch16.shape[:3]
+    luma = display_luma(patch16)
+    blur = G.cv_gaussian(luma, 7, 1.0, 'replicate')
+    gy = G.cv_sobel3(blur, 0, 1) / G.dev_scalar(8.0)
+    lx = as_t(np.array([m['local'][0] for m in meta], np.float64)).view(B, 1, 1)
+    ly = as_t(np.array([m['local'][1] for m in meta], np.float64)).view(B, 1, 1)
+    rad = as_t(np.array([max(m['radius'], 1e-6) for m in meta], np.float64)).view(B, 1, 1)
+    yy = torch.arange(h, device=DEV, dtype=F64).view(1, h, 1)
+    xx = torch.arange(w, device=DEV, dtype=F64).view(1, 1, w)
+    rho = torch.hypot(xx - lx, yy - ly) / rad
+    ring = (rho > 1.15) & (rho < 1.55)
+    pct, n = G.percentile(luma, ring, 90)
+    sclera = [float(p) if c > 30 else 0.5 for p, c in zip(pct.cpu().numpy(), n.cpu().numpy())]
+    thr = as_t(np.float32([max(0.42, s + 0.06) for s in sclera])).view(B, 1, 1)
+    spec = G.cv_gaussian(((luma > thr) & (rho < 1.0)).to(F32), 7, 0.8, 'reflect101')
+    return blur, gy, spec
 
 
-def fit_circle(pts, mask, c0, r0, iterations=6, tukey=2.5):
-    """limbus_fit.fit_circle, batched (radius free)."""
-    B, N, _ = pts.shape
-    c = c0.clone()
-    r = r0.clone()
-    done = torch.zeros(B, dtype=torch.bool, device=DEV)
-    ok = torch.ones(B, dtype=torch.bool, device=DEV)
-    w = mask.to(F64)
-    for _ in range(iterations):
-        d = pts - c[:, None, :]
-        rho = torch.hypot(d[..., 0], d[..., 1])
-        rho = torch.where(rho < 1e-9, torch.full_like(rho, 1e-9), rho)
-        u = d / rho[..., None]
-        resid = rho - r[:, None]
-        med, _ = G.median(resid, mask, dim=1)
-        mad, _ = G.median((resid - med[:, None]).abs(), mask, dim=1)
-        scale = torch.clamp_min(1.4826 * mad, 0.05)
-        t = torch.clamp(resid / (tukey * scale[:, None]), -1, 1)
-        wn = torch.where(mask, (1 - t ** 2) ** 2, torch.zeros_like(t))
-        w = torch.where(done[:, None], w, wn)
-        J = torch.stack([-u[..., 0], -u[..., 1], -torch.ones_like(rho)], -1)
-        M = (J[..., :, None] * (wn[..., None, None] * J[..., None, :])).sum(1)
-        rhs = -(J * (wn * resid)[..., None]).sum(1)
-        # one weighted point gives LAPACK an exactly zero pivot (numpy raises, the CPU fit
-        # stops); two leave a small but non-zero one and numpy carries on -- measured.
-        good = (torch.linalg.det(M) != 0) & ((wn > 0).sum(1) >= 2)
-        Mi = torch.where(good.view(B, 1, 1), M, torch.eye(3, dtype=F64, device=DEV).expand(B, 3, 3))
-        step = torch.linalg.solve(Mi, rhs)
-        upd = ~done & good
-        c = torch.where(upd[:, None], c + step[:, :2], c)
-        r = torch.where(upd, r + step[:, 2], r)
-        ok &= torch.isfinite(c).all(1) & torch.isfinite(r) & (r > 1)
-        done |= ~good | (step.abs().max(1).values < 1e-4) | ~ok
-    d = pts - c[:, None, :]
-    resid = torch.hypot(d[..., 0], d[..., 1]) - r[:, None]
-    ok &= w.sum(1) > 1e-9
-    rms = torch.sqrt((w * resid ** 2).sum(1) / torch.clamp_min(w.sum(1), 1e-300))
-    return dict(centre=c, radius=r, rms=rms), ok
+def lid_boundary(samp, meta, sign, with_spec, min_step=0.030, column_step=0.5,
+                 sample_step=0.1, inner=0.15, outer=1.80):
+    """eyelid_fit.lid_boundary for a batch: per eye (xs, out_y, out_s) as padded tensors.
+
+    The walk is the CPU's: the FIRST sample under -min_step outward, then down while the
+    gradient keeps falling, then a parabolic refinement -- found for every column at once."""
+    B = len(meta)
+    xs_l = [np.arange(m['x_lo'], m['x_hi'] + 1e-9, column_step, dtype=np.float32) for m in meta]
+    ss_l = [np.arange(inner * m['radius'], outer * m['radius'], sample_step, dtype=np.float32)
+            for m in meta]
+    C = max(1, max(len(x) for x in xs_l))
+    S = max(len(s) for s in ss_l)
+    xs = np.full((B, C), np.nan, np.float32)
+    ss = np.full((B, S), np.nan, np.float32)
+    for n in range(B):
+        xs[n, :len(xs_l[n])] = xs_l[n]
+        ss[n, :len(ss_l[n])] = ss_l[n]
+    xs_t = as_t(xs)
+    ss_t = as_t(ss)
+    ncol = as_t(np.array([len(x) for x in xs_l]))
+    nss = as_t(np.array([len(s) for s in ss_l]))
+    cy = as_t(np.float32([m['local'][1] for m in meta])).view(B, 1, 1)
+    sg = float(np.float32(sign))
+    yy = cy + sg * torch.nan_to_num(ss_t).view(B, S, 1)            # float32, as numpy
+    xx = torch.nan_to_num(xs_t).view(B, 1, C)
+    yy, xx = torch.broadcast_tensors(yy, xx)
+    if with_spec:
+        gys, specs = samp(xx.contiguous(), yy.contiguous())
+    else:
+        gys = samp(xx.contiguous(), yy.contiguous())[0]
+    grad = gys * sg
+    rows = torch.arange(S, device=DEV).view(1, S, 1)
+    vrow = rows < nss.view(B, 1, 1)
+    if with_spec:
+        hit_spec = (specs > 0.05) & vrow          # padded rows must not spread into real ones
+        block = hit_spec.clone()
+        for sh in range(1, 6):
+            block[:, sh:] |= hit_spec[:, :-sh]
+            block[:, :-sh] |= hit_spec[:, sh:]
+        # the CPU's shifts stay inside each eye's own ss length; padded rows carry nothing
+        grad = torch.where(block & vrow, torch.zeros_like(grad), grad)
+    hit = (grad < -min_step) & vrow
+    anyhit = hit.any(1)
+    first = torch.where(hit, rows.expand_as(hit), torch.full_like(hit, S, dtype=torch.int64)).min(1).values
+    L = nss.view(B, 1)
+    nxt = torch.cat([grad[:, 1:], torch.full_like(grad[:, :1], float('inf'))], 1)
+    stop = ((rows + 1) >= (L.view(B, 1, 1) - 1)) | ~(nxt < grad)
+    cand = stop & (rows >= first.view(B, 1, C))
+    kk = torch.where(cand, rows.expand_as(cand), torch.full_like(cand, S, dtype=torch.int64)).min(1).values
+    good = anyhit & (kk >= 1) & (kk < L - 1)
+    kc = kk.clamp(1, S - 2)
+    g = lambda t: torch.gather(grad, 1, t.view(B, 1, C))[:, 0]
+    a_, b_, c_ = g(kc - 1), g(kc), g(kc + 1)
+    denom = (a_ - 2 * b_) + c_
+    shift = torch.where(denom.abs() < 1e-9, torch.zeros_like(denom),
+                        torch.clamp((0.5 * (a_ - c_)) / torch.where(denom == 0, torch.ones_like(denom), denom), -1, 1))
+    ssk = torch.gather(torch.nan_to_num(ss_t), 1, kc)
+    step32 = (shift.to(F64) * sample_step).to(F32)                  # python float, cast weakly
+    yv = cy.view(B, 1) + sg * (ssk - step32)
+    colv = torch.arange(C, device=DEV).view(1, C) < ncol.view(B, 1)
+    good &= colv
+    out_y = torch.where(good, yv, torch.full_like(yv, float('nan')))
+    out_s = torch.where(good, -b_, torch.zeros_like(b_))
+    return xs_t, out_y, out_s, colv
+

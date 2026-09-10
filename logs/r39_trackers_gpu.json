@@ -1,0 +1,42 @@
+{
+ "shot": "music_videos/reporter_test/shots/reporter_full",
+ "comparisons": [
+  {
+   "reference": "limbus_track.json",
+   "gpu_command": "limbus_fit.py --count 1200 --device cuda",
+   "frames": 1200,
+   "eyes": 2400,
+   "rows_identical": true,
+   "eyes_differing": 0,
+   "other_keys_differing": [],
+   "gpu_seconds": 72.0,
+   "cpu_seconds": 180.0,
+   "reference_sha256": "b735ba0ea0851cd35a4883c928990602747f3ac859492f53e010c062767ab586"
+  },
+  {
+   "reference": "eyelid_track_w.json",
+   "gpu_command": "eyelid_fit.py --track limbus_track.json --curvature-window 2.5 --device cuda",
+   "frames": 1200,
+   "eyes": 2400,
+   "rows_identical": true,
+   "eyes_differing": 0,
+   "other_keys_differing": [],
+   "gpu_seconds": 8.7,
+   "cpu_seconds": 67.0,
+   "reference_sha256": "69325236e4a224d9b493b1098bca39c0722b5ea16e807d3970a4b27fbbdcce6c"
+  },
+  {
+   "reference": "eyelid_track_wt.json",
+   "gpu_command": "eyelid_fit.py --track limbus_track_t.json --update eyelid_track_w.json --device cuda",
+   "frames": 1200,
+   "eyes": 2400,
+   "rows_identical": true,
+   "eyes_differing": 0,
+   "other_keys_differing": [],
+   "gpu_seconds": 2.0,
+   "cpu_seconds": null,
+   "reference_sha256": "b02554747978f504752c9e622fca403127358dc2d803488d822e08deb32bf877"
+  }
+ ],
+ "note": "GPU seconds are wall clock on the RTX 5080 including EXR reads; the limbus run measured 72 s warm and 120 s on a cold disk cache. CPU seconds are the numpy reference as measured earlier in round 39."
+}
