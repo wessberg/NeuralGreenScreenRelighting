@@ -1,0 +1,18 @@
+{
+  "frames_checked": 1200,
+  "exact_source_pixels_outside_weight": 2487788870,
+  "removed_eyes_darker_than_source": 2013,
+  "removed_eyes_not_darker": [],
+  "source_outside_weight_exact": true,
+  "replace_frames_checked": 0,
+  "reflection_pixels_inside_eyelid": 0,
+  "reflection_pixels_outside_eyelid": 0,
+  "exact_keyed_eye_fallbacks": null,
+  "protected_hashes_unchanged": null,
+  "fallback_fixtures": "absent on this shot (C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_full\\composite\\r10_iris\\correspondence_detail.json); not checked",
+  "removal_code_sha256": "f3fb195fec129bcb5ef77fabd2ec88a13e6cd9980018c2ed54df01b5434959f9",
+  "atlas_code_sha256": "0ba68bb8a45f08259e0c8966303acb9f7be1f8a35b6842e8e48b81b8c38df0ef",
+  "code_sha256": "d3f8beafb1ead09bbcc67a7e377c3f50f501d5833e1dfe3fc8e70eafdded1761",
+  "production_enabled": false,
+  "artist_accepted": false
+}

@@ -1,0 +1,63 @@
+{
+  "round": 38,
+  "shot": "music_videos/reporter_test/shots/reporter_full",
+  "frames_are": "source frame numbers of the 1200-frame clip (local == source on reporter_full)",
+  "side_convention": "SUBJECT's eye. 'left' is her left eye: the LEFT tile of review_r35_eyes.py, although it sits on the image right.",
+  "runs": {
+    "r38_full_own": "the generic run shown to the artist: canonical iris built from this clip's own pixels (final/r38_full_own_eyes.mp4)",
+    "r38_full": "diagnostic: R37w's canonical iris adopted (--canonical-from), same tracks (final/r38_full_eyes.mp4)"
+  },
+  "reproduce_sheets": "scripts/review_r37_sheets.py --shot <shot> --side left --frames A-B --dirs r38_full_own/source,r38_full_own/removal,r38_full/removal --labels 'SRC|R38 own iris|R38 R37w iris' --out <prefix>",
+  "artist_reported": [
+    {
+      "id": "e1", "frame": 137, "side": "left", "neighbours": "135-139",
+      "screenshot": "artist_137L_disc_over_squint.png", "sheet": "e1_disc_over_squint_left_0137.png",
+      "artist": "truly nightmare fuel ... the full iris and pupil was rendered and none of it was behind the eyelid",
+      "recorded": "limbus fitted with open_arc 0.17 (squint, head turned); eyelid_fit upper lid 20.17 px (1.65 limbus radii) ABOVE the centre -- on the brow crease, inside LID_BAND's 1.70 -- lower lid +13.6 px; lash guard cut 0 px; fill touched 458 px (whole disc); frame residual 3.1x the shot's, below --fill-residual-gate 8. 135-136 have no limbus fit; 138 had no upper lid and correctly got softbox-only.",
+      "class": "upper bound far above the real lid"
+    },
+    {
+      "id": "e2", "frame": 243, "side": "left", "neighbours": "240-248",
+      "screenshot": "artist_243L_double_iris.png", "sheet": "e2_double_iris_left_0240.png",
+      "artist": "our mask drifted a bit away from the iris/pupil, causing a double-iris",
+      "recorded": "limbus gate fired on SEVEN consecutive frames 241-247 (it is built for one-frame slides); limbus centre_se 0.30 px at 243-245 against ~0.04 either side; the gate replaced each frame from neighbours that had slid too. Head turning back from yaw -47 deg.",
+      "class": "multi-frame limbus slide (round 37 section 6 predicted it: 'a slow slide over several frames would pass it')"
+    },
+    {
+      "id": "e3", "frame": 304, "side": "left", "neighbours": "302-306",
+      "screenshot": "artist_304L_iris_over_lid.png", "sheet": "e3_iris_over_lid_left_0302.png",
+      "artist": "Our iris went above the eyelid here too. So I guess our eyelid detector missed a spot",
+      "recorded": "upper lid UNFITTED on 302-306; 302 correctly softbox-only (no upper bound); on 303-304 a lash line existed but cut 0 px, so the whole disc (444-448 px) was painted over the lid; 305-306 the lash line cut 225-242 px and the frames are fine. Present in both runs.",
+      "class": "upper bound far above the real lid (lash line, not lid fit)"
+    },
+    {
+      "id": "e0", "frame": null, "side": "unknown",
+      "screenshot": "artist_sclera_glint.png",
+      "artist": "a secondary visible reflection in at least one of her eyes at some angles, here visible outside the iris, in the white of her eye",
+      "recorded": "not treated by design: the fill stops at 0.99 limbus radii and the softbox region at ~1.02. scripts/audit_r38_sclera.py finds candidate glints (a blob > 0.10 display above its 9x9 median, > 0.80, 1.1-2.8 radii, inside the fitted opening) on 468 left-eye frames. Looked at: a real speck on the temporal sclera ~2 radii out on many frames (50, 95, 420, 470, 505 -- found_sclera_glint_candidates_left.png); the count also includes wet inner-corner specks (a different surface) and, at sideways gaze, the main softbox itself. An UPPER BOUND, not a verified count.",
+      "class": "scleral reflection, outside the current construction"
+    }
+  ],
+  "artist_overall": "Mostly solid results ... It does happen here and there in the frames across the full 1:40. It's really, really close to perfect overall though.",
+  "found_by_agent": [
+    {
+      "id": "e4", "frames": ["492-501", "960-965", "1049-1055"], "side": "left",
+      "sheets": ["e4_sideways_gaze_left_0492.png", "e4_sideways_gaze_left_0960.png", "e4_sideways_gaze_left_1049.png"],
+      "recorded": "gaze to the side. (a) the fitted lid opening collapses on an OPEN eye (eye_frame visible_pixels 8-83 < 90) at 494-499, 961-964, 1052-1054, the eye is dropped and the softbox stays for 4-6 frames; the shot-constant lid track fails the same way. (b) the softbox straddles the limbus, so on treated frames (493, 500) the part beyond rho 1.02 survives as a light crescent. Region-standout worst list is dominated by these (500, 965, 1050-1052).",
+      "class": "tracking at off-axis gaze; softbox beyond the disc"
+    },
+    {
+      "id": "e5", "frames": ["120-125", "200"], "side": "both",
+      "sheets": ["e5_fast_motion_left_0122.png"],
+      "recorded": "fast head motion in the turn: the limbus fit lands off the iris (124-125 left crop is sclera) or abstains; untreated, softbox pops. 125 and 1050 left are also dropped because round 32's detect_anomaly() says no_reflection_found and the collect pass discards the eye entirely.",
+      "class": "tracking under motion"
+    },
+    {
+      "id": "e6", "frame": 827, "side": "left", "neighbours": "825-829",
+      "sheets": ["e6_blink_edge_gated_left_0825.png"],
+      "recorded": "blink edge: upper-lid fit on the crease painted a pupil onto the closing lid once R37w's accidental NCC veto (-0.25 against the inpaint atlas) was gone. FIXED by --fill-residual-gate 8 (frame residual 13.5x the shot's); with the gate the adoption path reproduces R37w bit-exactly on all 150 reporter_a frames.",
+      "class": "blink edge, fixed"
+    }
+  ],
+  "open_eye_untreated_runs_left": "124-125, 295 (fill brighter), 494-499, 961-964, 1050-1054 -- from composite/r38_full_own/removal.json; every other untreated run is a blink (eyelid aperture < 0.8)"
+}

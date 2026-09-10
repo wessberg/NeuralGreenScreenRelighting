@@ -67,8 +67,9 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from color_pipeline import linear_to_srgb, srgb_to_linear
-from shot_paths import add_shot_argument, from_args
+from shot_paths import ROOT, add_shot_argument, from_args
 import eye_reflection_repair as r32
+import frame_store
 from limbus_fit import Track as LimbusTrack
 import eye_sequence_atlas as atl
 from eye_atlas_repair import predict
@@ -1389,6 +1390,50 @@ def eye_tile(source, images, weight, points, topology, zoom, source_frame, eyes,
     return np.concatenate([label, tile], axis=0)
 
 
+def load_canonical(run, grid_config):
+    """An earlier run's canonical eye, exactly as it painted it, per side.
+
+    Round 38 runs the round 37 construction over the whole 1200-frame clip. The artist
+    accepted R37w's eye, and every pixel its fill paints comes from ONE canonical image per
+    eye (`canonical_<side>_votes.npz`, saved after hole filling, the symmetric rebuild and
+    the pupil). That canonical was pooled from ProPainter's inpainted crops, which exist for
+    reporter_a's 150 frames only. Rebuilding it for the clip -- from her own pixels, or from
+    a fresh inpainter run -- would change the material of every frame, and then anything the
+    artist saw on the new frames could be the new material instead of the method meeting new
+    footage. Adopting it keeps the one thing he already judged fixed.
+
+    The canonical lives in limbus-radius units, so if this shot's limbus fit settles on a
+    different shot radius the same canonical would be painted larger or smaller. The frozen
+    `scale` is corrected by (source radius / this radius) so it lands at the same size in
+    pixels; the painted disc (`--fill-iris`, measured in canonical coordinates) follows.
+    """
+    src = Path(run)
+    src = src if src.is_absolute() else ROOT / src
+    record = json.loads((src / 'removal.json').read_text(encoding='utf-8'))
+    grid = record.get('atlas_grid') or {}
+    if (grid.get('reach'), grid.get('cells')) != (grid_config['reach'], grid_config['cells']):
+        raise ValueError('%s was painted on atlas grid %s, this run is configured for %s'
+                         % (src, grid, grid_config))
+    shot_dir = src.parents[1]
+    track_path = shot_dir / 'relight' / (record.get('limbus_track') or 'limbus_track.json')
+    track = json.loads(track_path.read_text(encoding='utf-8'))
+    if record.get('limbus_track_sha256') and r32.sha(track_path) != record['limbus_track_sha256']:
+        raise ValueError('%s changed since %s was run; its radius is not the one the '
+                         'canonical was painted at' % (track_path, src))
+    out = {}
+    for side in r32.SIDES:
+        path = src / ('canonical_%s_votes.npz' % side)
+        with np.load(path) as z:
+            atlas, aw = z['atlas'].astype(np.float32), z['aw'].astype(bool)
+        reg = (record.get('frozen_registration') or {}).get(side)
+        if reg is None:
+            raise ValueError('%s has no frozen registration for %s' % (src, side))
+        out[side] = dict(atlas=atlas, aw=aw, registration=reg,
+                         radius=float(track['shot_radius'][side]),
+                         npz=str(path), npz_sha256=r32.sha(path))
+    return dict(run=str(src), eyes=out, code_sha256=record.get('code_sha256'))
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -1598,6 +1643,24 @@ def main():
                          "trusted as it is; fewer, and it is rebuilt from its mirror "
                          "across the horizontal diameter or her radial profile. 0 is off. "
                          "See symmetric_canonical().")
+    ap.add_argument('--canonical-votes-frac', type=float, default=0.0,
+                    help="--canonical-votes as a FRACTION of the frames pooled for that eye, "
+                         "so the rebuild does not switch itself off on a longer clip. 0.44 "
+                         "is round 37's 60 of ~138. Overrides --canonical-votes when > 0.")
+    ap.add_argument('--fill-residual-gate', type=float, default=0.0,
+                    help="multiple of the shot's residual scale above which a frame's own "
+                         "residual against the canonical means its fitted opening is not "
+                         "iris (a lid fit on the crease at a blink edge); such a frame gets "
+                         "only the softbox's own region, like a frame with no upper bound. "
+                         "0 is off.")
+    ap.add_argument('--canonical-from', default=None,
+                    help="paint THIS run's canonical eye instead of building one: a "
+                         "composite/<run> directory (any shot) holding canonical_<side>_"
+                         "votes.npz and removal.json. The canonical is used exactly as that "
+                         "run painted it -- no hole fill, symmetry, cap or pupil step is "
+                         "reapplied -- with its frozen registration, and scaled so it lands "
+                         "at the same size in PIXELS when this shot's limbus radius differs. "
+                         "See load_canonical().")
     ap.add_argument('--no-lash-exempt', dest='lash_exempt', action='store_false',
                     help="drop round 36's photometric exemptions from the lash guard "
                          "(--lash-bright, --lash-ring, --lash-halo). With --specular-reach "
@@ -1713,9 +1776,11 @@ def main():
         landmarks = {k: z[k] for k in ('points', 'found', 'eyelid_aperture')}
     corners = eye_corners_mid(landmarks['points'], landmarks['found'], topology)
     open_arc = {}
+    shot_radius = {}
     if getattr(args, 'limbus_track', ''):
-        for row in json.loads((shot.relight / args.limbus_track)
-                              .read_text(encoding='utf-8'))['rows']:
+        limbus_payload = json.loads((shot.relight / args.limbus_track).read_text(encoding='utf-8'))
+        shot_radius = limbus_payload.get('shot_radius') or {}
+        for row in limbus_payload['rows']:
             for e in row['eyes']:
                 if e.get('open_arc') is not None:
                     open_arc[(int(row['frame']), e['side'])] = float(e['open_arc'])
@@ -1728,10 +1793,18 @@ def main():
                                   for s in r32.SIDES}, flush=True)
     lids = {}
     lid_curvature = {}
+    lid_curv_frame = {}
     if getattr(args, 'eyelid_track', ''):
         lid_payload = json.loads((shot.relight / args.eyelid_track).read_text(encoding='utf-8'))
         lid_curvature = {s: (lid_payload.get('curvature') or {}).get('%s_upper' % s)
                          for s in r32.SIDES}
+        # Per-frame curvature when eyelid_fit pooled it over a window (--curvature-window);
+        # the lash line must bend the way the lid fit bent on that frame.
+        for row in lid_payload['rows']:
+            for e in row['eyes']:
+                got = (e.get('curvature') or {}).get('upper')
+                if got is not None:
+                    lid_curv_frame[(int(row['frame']), e['side'])] = float(got)
         for row in ([] if args.lid_temporal else lid_payload['rows']):
             for e in row['eyes']:
                 if e.get('fitted'):
@@ -1763,7 +1836,14 @@ def main():
     atlas_dir = Path(args.atlas_frames) if args.atlas_frames else None
     if atlas_dir is not None and not atlas_dir.is_dir():
         raise ValueError('No atlas frame directory at %s' % atlas_dir)
-    sources, pooled, geoms = {}, {}, {}
+    adopted = load_canonical(args.canonical_from, atlas_grid_config) if args.canonical_from else None
+    # Every frame is revisited by five passes, so all of them stay in RAM -- packed, and
+    # bit exact (frame_store). As float32 the 1200-frame clip needed ~30 GB for the
+    # sources alone and as much again for an atlas sequence.
+    sources = frame_store.half()
+    pooled = (sources if atlas_dir is None else frame_store.encoded(
+        lambda alt: srgb_to_linear(alt[..., ::-1].astype(np.float32) / 255.0)))
+    geoms = {}
     collected = {s: [] for s in r32.SIDES}
     collected_alt = {s: [] for s in r32.SIDES}
     for i in indices:
@@ -1775,9 +1855,7 @@ def main():
             alt = cv2.imread(str(atlas_dir / ('%06d.png' % i)))
             if alt is None:
                 raise ValueError('No atlas frame %06d.png in %s' % (i, atlas_dir))
-            pooled[i] = srgb_to_linear(alt[..., ::-1].astype(np.float32) / 255.0)
-        else:
-            pooled[i] = sources[i]
+            pooled[i] = alt
         if not (landmarks['found'][i] and np.isfinite(landmarks['points'][i]).all()):
             continue
         for side in r32.SIDES:
@@ -1879,6 +1957,32 @@ def main():
                                                 registration['scale'])
             print('R35_FREEZE', side, {k: round(v, 5) for k, v in registration.items()},
                   flush=True)
+        if adopted is not None:
+            # The accepted canonical, exactly as it was painted (load_canonical). The build
+            # above still runs: every per-frame field downstream comes from it. Only the
+            # image and its placement are replaced, and nothing below may re-derive them.
+            eye = adopted['eyes'][side]
+            if eye['atlas'].shape != atlas.shape:
+                raise ValueError('adopted canonical %s is %s, this grid is %s'
+                                 % (eye['npz'], eye['atlas'].shape, atlas.shape))
+            if not args.freeze_registration or atlas_dir is not None:
+                raise ValueError('--canonical-from needs the frozen registration and no '
+                                 '--atlas-frames: the canonical is not rebuilt')
+            here_r = shot_radius.get(side)
+            if not here_r:
+                raise ValueError('--canonical-from needs a shot-radius limbus track')
+            ratio = eye['radius'] / float(here_r)
+            reg = eye['registration']
+            registration = dict(du=float(reg['du']) * ratio, dv=float(reg['dv']) * ratio,
+                                scale=float(reg['scale']) * ratio,
+                                adopted_from=adopted['run'], source_radius=eye['radius'],
+                                shot_radius=float(here_r), size_ratio=ratio)
+            for f in frames:
+                f['du'], f['dv'], f['scale'] = (registration['du'], registration['dv'],
+                                                registration['scale'])
+            atlas, aw = eye['atlas'].copy(), eye['aw'].copy()
+            print('R38_CANONICAL_ADOPTED', side, eye['npz'], 'radius', eye['radius'], '->',
+                  here_r, 'scale', round(registration['scale'], 5), flush=True)
         generated_cells = 0
         if atlas_dir is not None and args.atlas_mode == 'holes':
             # A second atlas from the model's frames, used ONLY where her own eye was
@@ -1895,12 +1999,23 @@ def main():
                       int((rho < atl.FILL_REACH).sum()), flush=True)
         core = rho < min(args.sample_reach, atl.ATLAS_REACH - 0.02)
         holes_before = int((core & ~aw).sum())
-        atlas, aw = atl.fill_atlas_holes(atlas, aw, core)
+        if adopted is None:
+            atlas, aw = atl.fill_atlas_holes(atlas, aw, core)
         symmetry = None
-        if args.canonical_votes > 0:
+        hi_votes = args.canonical_votes
+        lo_votes = 10
+        if args.canonical_votes_frac > 0:
+            # **A vote count is not a property of the eye; a vote FRACTION is.** 60 was 44
+            # percent of reporter_a's ~138 pooled frames. Over the 1200-frame clip the top of
+            # the iris -- seen on 4-14 percent of frames -- gets 50-170 votes and would pass
+            # 60 unrebuilt, bringing back exactly the lid and lash contamination the rebuild
+            # exists to remove. Scaled with the pool, lo:hi kept at round 37's 10:60.
+            hi_votes = max(int(round(args.canonical_votes_frac * len(frames))), 2)
+            lo_votes = max(int(round(hi_votes / 6.0)), 1)
+        if hi_votes > 0 and adopted is None:
             votes = np.stack([f['valid'] for f in frames]).sum(0)
-            atlas, symmetry = symmetric_canonical(atlas, votes, rho, v,
-                                                  hi_votes=args.canonical_votes)
+            atlas, symmetry = symmetric_canonical(atlas, votes, rho, v, lo_votes=lo_votes,
+                                                  hi_votes=hi_votes)
             print('R37_CANONICAL', side, symmetry, flush=True)
         # **The canonical iris may not be brighter than her own iris.** Cells near the
         # atlas rim are observed on few frames and only when the lid is high, so what
@@ -1916,7 +2031,7 @@ def main():
         # fix the same artefact and reintroduce exactly the per-frame dependence that
         # rounds 31-34 were rejected for.
         atlas_cap = None
-        if args.atlas_cap > 0:
+        if args.atlas_cap > 0 and adopted is None:
             obs = np.concatenate([fr['rgb'].max(-1)[(fr['w'] > 0.98) & core]
                                   for fr in frames if ((fr['w'] > 0.98) & core).any()])
             if obs.size >= 200:
@@ -1930,7 +2045,7 @@ def main():
                 print('R35_ATLAS_CAP', side, round(atlas_cap, 5), 'clamped',
                       int(over.sum()), 'of', int(core.sum()), 'cells', flush=True)
         pupil_before = pupil_after = None
-        if args.pupil_target > 0:
+        if args.pupil_target > 0 and adopted is None:
             # Measure the darkest pupil her plate actually shows, from clean pixels only,
             # then scale the canonical iris's centre down to it. A pooled median over the
             # shot sits well above the darkest observation because the highlight's own
@@ -2242,7 +2357,8 @@ def main():
         for side in r32.SIDES:
             for i, d in detail[side].items():
                 geom = d['geom']
-                if args.lid_line == 'parabola' and lid_curvature.get(side) is not None:
+                curv = lid_curv_frame.get((i, side), lid_curvature.get(side))
+                if args.lid_line == 'parabola' and curv is not None:
                     here = sources[i][geom['window']]
                     raw = lash_ceiling(here, geom, d['state'], raw=True)
                     lum_h = np.clip(linear_to_srgb(np.clip(here, 0, 1)), 0, 1).max(-1)
@@ -2254,7 +2370,7 @@ def main():
                         cols = core.any(axis=0)
                         excl = cv2.dilate(cols.astype(np.uint8)[None, :],
                                           np.ones((1, 5), np.uint8))[0] > 0
-                    c = lid_line(raw, geom, lid_curvature[side], exclude=excl,
+                    c = lid_line(raw, geom, curv, exclude=excl,
                                  max_row=float(geom['limbus'][1] - geom['window'][0].start))
                     if c is None:
                         line_stats[side]['abstained'] += 1
@@ -2496,6 +2612,23 @@ def main():
                 if no_upper_bound:
                     w = np.zeros_like(w)
                     record['fill_abstained'] = 'no_upper_bound'
+                # **An opening that is not iris gets the same treatment.** On the frame
+                # before a blink the upper-lid fit can land on the CREASE (round 36 section
+                # 0) and the lash line can miss it, and then the fill paints a pupil onto
+                # the closing lid -- source 827 left, found when round 38 rebuilt the NCC
+                # it had been vetoed by accident. What gives it away is in the image: the
+                # fitted opening no longer looks like her iris, so this frame's own robust
+                # residual against the canonical is many times the shot's. Measured on
+                # reporter_a's 272 eyes: median 1.0x, squints ~3.4x, and a clean gap from
+                # 6.0x to 11.3x with only 704 left (a black pupil under a shut lid, round
+                # 37 section 6) and 827 left above it.
+                off_canonical = (args.fill_residual_gate > 0 and d['frame_scale'] is not None
+                                 and d['frame_scale'] > args.fill_residual_gate * sigma[side])
+                if off_canonical and not no_upper_bound:
+                    w = np.zeros_like(w)
+                    record['fill_abstained'] = 'residual_%.1fx_shot' % (
+                        d['frame_scale'] / sigma[side])
+                    no_upper_bound = True
                 sup = np.clip(cv2.distanceTransform(d['support'].astype(np.uint8),
                                                     cv2.DIST_L2, 3) / 2.0, 0.0, 1.0)
                 w = (w * sup).astype(np.float32)
@@ -2953,8 +3086,10 @@ def main():
         lash_guard=bool(args.lash_guard), lash_bright=args.lash_bright,
         lash_exempt=bool(args.lash_exempt), lid_line=args.lid_line,
         lid_line_margin_px=args.lid_line_margin, lid_line_curvature=lid_curvature,
+        lid_line_curvature_per_frame=len(lid_curv_frame),
         specular_reach_px=args.specular_reach, top_shading_decay_px=args.top_shading,
         shading_sides=args.shading_sides, canonical_votes=args.canonical_votes,
+        canonical_votes_frac=args.canonical_votes_frac,
         gain_ring=args.gain_ring, gain_temporal=bool(args.gain_temporal),
         level_window=args.level_window, shading_temporal=args.shading_temporal,
         shading_lid=bool(args.shading_lid), region_heal=bool(args.region_heal),
@@ -2967,6 +3102,12 @@ def main():
         lid_temporal=bool(args.lid_temporal),
         canonical_symmetry={k: (v.get('symmetry') if v else None)
                             for k, v in fitted.items()},
+        fill_residual_gate=args.fill_residual_gate,
+        canonical_from=None if adopted is None else dict(
+            run=adopted['run'], code_sha256=adopted['code_sha256'],
+            eyes={s: dict(npz=e['npz'], npz_sha256=e['npz_sha256'],
+                          source_radius=e['radius'], registration=e['registration'])
+                  for s, e in adopted['eyes'].items()}),
         lash_guard_rule='no paint on or above the lash: per-column ceiling read from the '
                         'SOURCE by walking down from lid skin to the first dark run that '
                         'reaches legal-lash level, masked against the specular, its '

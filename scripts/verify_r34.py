@@ -97,6 +97,13 @@ def main():
             add_outside += int((diff & ~allowed).sum())
         print('R34_VERIFY frame', i, flush=True)
 
+    # The 300 fallbacks and 304 protected hashes are reporter_a's own fixtures (rounds 10
+    # and 13). A shot without them -- reporter_full, the whole clip -- says so in the record
+    # rather than skipping it silently or failing checks 1-4 that do apply to it.
+    fixtures = shot.composite / 'r10_iris/correspondence_detail.json'
+    standing = (fallback(shot) if fixtures.exists() else
+                dict(exact_keyed_eye_fallbacks=None, protected_hashes_unchanged=None,
+                     fallback_fixtures='absent on this shot (%s); not checked' % fixtures))
     record = dict(
         frames_checked=checked,
         exact_source_pixels_outside_weight=exact,
@@ -106,7 +113,7 @@ def main():
         replace_frames_checked=replaced_frames,
         reflection_pixels_inside_eyelid=add_inside,
         reflection_pixels_outside_eyelid=add_outside,
-        **fallback(shot),
+        **standing,
         removal_code_sha256=report['code_sha256'],
         atlas_code_sha256=report['atlas_code_sha256'],
         code_sha256=sha(__file__),

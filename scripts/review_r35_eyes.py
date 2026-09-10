@@ -56,6 +56,13 @@ def main():
     ap.add_argument('--columns', type=int, default=5)
     ap.add_argument('--per-sheet', type=int, default=20)
     ap.add_argument('--fps', type=int, default=12)
+    ap.add_argument('--fps-exact', default=None,
+                    help="an exact rate for the video instead of --fps, e.g. 60000/1001 "
+                         "to play the shot in real time")
+    ap.add_argument('--status', default=None,
+                    help="composite run whose removal.json names, on the LAST row, each eye "
+                         "that run left untreated and why -- so a softbox still standing can "
+                         "be told apart as an abstention rather than a failed repair")
     args = ap.parse_args()
     shot = from_args(args)
     names = [x.strip() for x in args.dirs.split(',') if x.strip()]
@@ -67,6 +74,26 @@ def main():
     if len(labels) != len(dirs):
         raise SystemExit('Give one label per row')
     cen, source_frame = centres(shot, args.track)
+    status = {}
+    if args.status:
+        # Short words for why an eye was left as source. L and R are the SUBJECT's eyes,
+        # in the tiles' own order (r32.SIDES: her left eye is the LEFT tile, although it
+        # sits on the image right).
+        short = {'no_eye_frame': 'no track', 'no_reflection_found': 'nothing to remove',
+                 'registration_below_threshold': 'unregistered',
+                 'no_confident_pixels': 'nothing to remove',
+                 'prediction_not_darker_than_source': 'fill brighter'}
+        rep = json.loads((shot.composite / args.status / 'removal.json').read_text())
+        for row in rep['rows']:
+            words = []
+            for e in row['eyes']:
+                tag = e['side'][0].upper()
+                if not e.get('repaired'):
+                    words.append('%s untreated (%s)' % (tag, short.get(e.get('reason'),
+                                                                        e.get('reason'))))
+                elif e.get('fill_abstained'):
+                    words.append('%s softbox only' % tag)
+            status[row['frame']] = '   '.join(words)
     out = shot.composite / args.name
     (out / 'frames').mkdir(parents=True, exist_ok=True)
     (out / 'sheets').mkdir(parents=True, exist_ok=True)
@@ -106,6 +133,11 @@ def main():
             cv2.rectangle(band, (0, 0), (band.shape[1] - 1, 17), (0, 0, 0), -1)
             cv2.putText(band, '%s   source %d' % (label, source_frame.get(i, i)),
                         (4, 13), 0, 0.42, (255, 255, 255), 1, cv2.LINE_AA)
+            note = status.get(i) if label == labels[-1] else None
+            if note:
+                size = cv2.getTextSize(note, 0, 0.42, 1)[0][0]
+                cv2.putText(band, note, (band.shape[1] - size - 6, 13), 0, 0.42,
+                            (80, 200, 255), 1, cv2.LINE_AA)
             rows_.append(band)
         frame = np.vstack(rows_)
         if frame.shape[0] % 2:
@@ -126,8 +158,10 @@ def main():
 
     video = shot.final / ('%s.mp4' % args.name)
     video.parent.mkdir(parents=True, exist_ok=True)
+    rate = args.fps_exact or str(args.fps)
     subprocess.run([ffmpeg_path(), '-y', '-hide_banner', '-loglevel', 'error',
-                    '-framerate', str(args.fps), '-i', str(out / 'frames' / '%06d.png'),
+                    '-framerate', rate, '-start_number', str(int(Path(files[0]).stem)),
+                    '-i', str(out / 'frames' / '%06d.png'),
                     '-c:v', 'libx264', '-crf', '12', '-pix_fmt', 'yuv420p',
                     '-colorspace', 'bt709', '-color_primaries', 'bt709',
                     '-color_trc', 'bt709', str(video)], check=True, capture_output=True)

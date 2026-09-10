@@ -1,0 +1,102 @@
+{
+  "shot_id": "reporter_full",
+  "video_id": "reporter_test",
+  "purpose": "The WHOLE 20.02 s reporter plate, for running the round 37 eye construction on every frame (round 38). Same plate, same key thresholds as reporter_a -- do not recalibrate. reporter_a stays the anchor for every earlier round's comparison; source frames 700-849 here are the same photograph as reporter_a's local 0-149.",
+  "source": "source/plate.mp4",
+  "source_original_name": "mixkit-female-reporter-reporting-with-microphone-in-hand-on-a-chroma-28293-full-hd.mp4",
+  "source_frame_rate": "60000/1001",
+  "source_frame_rate_decimal": 59.94006,
+  "source_frame_rate_is_fractional": true,
+  "source_resolution": [
+    1920,
+    1080
+  ],
+  "source_bit_depth": 8,
+  "source_frame_count": 1200,
+  "source_duration_seconds": 20.02,
+  "source_transfer": "bt709",
+  "source_primaries": "bt709",
+  "source_matrix": "bt709",
+  "source_color_range": "tv",
+  "source_color_tagging": "TAGGED, unlike the proof-of-concept plate which was untagged and assumed sRGB. Limited-range bt709 must be expanded on decode; do not reuse the untagged full-range assumption.",
+  "source_audio": null,
+  "source_audio_note": "No audio stream at all. Music-timeline sync for this shot cannot come from camera audio and must be defined against the song, or the shot must be treated as free-timed.",
+  "source_shutter": {
+    "seconds": null,
+    "angle_degrees": null,
+    "status": "not present in metadata; preserve photographed blur"
+  },
+  "source_white_balance": {
+    "kelvin": null,
+    "status": "not in metadata; plate reads neutral-to-slightly-cool flat frontal studio light"
+  },
+  "framing": {
+    "type": "medium close-up / bust",
+    "visible_extent": "head to approximately mid-chest",
+    "ground_contact_visible": false,
+    "grounding_note": "No feet, legs, seat or floor contact appear in frame. Contact shadow and floor interaction are UNAVAILABLE as grounding cues for this shot. Believability must come from lighting direction and colour match, perspective and scale match, depth of field, and edge integration."
+  },
+  "camera": {
+    "motion": "locked",
+    "status": "ASSUMED, not measured",
+    "lens_mm": 50.0,
+    "sensor_width_mm": 36.0,
+    "actor_distance_m": 1.3,
+    "height_m": 1.55,
+    "aperture_fstop": 2.0,
+    "degeneracy_note": "Apparent facial scale fixes only the RATIO of focal length to distance, not either alone: 35mm/0.91m, 50mm/1.30m and 85mm/2.20m all reproduce the measured 129.7 px IPD. 50mm was chosen because it maximises panorama detail: at 39.6 deg hFOV a 16K equirect shows 1802 px across frame, 94% of the plate real 1920 px, where 85mm would show only 57%. This is a defensible working assumption, not a measurement. Resolve it properly by recording the lens on set.",
+    "derivation": "Z = fx*IPD/ipd_px, fx = 1920*50/36 = 2666.7 px, IPD prior 63 mm, measured ipd_px 129.7",
+    "ipd_source": "adult prior 63 mm (SD 3.5 mm, ~5.5% 1-sigma distance error). Measure the performer with a ruler to remove this."
+  },
+  "selection": {
+    "start_frame": 0,
+    "frame_count": 1200,
+    "duration_seconds": 20.02,
+    "reason": "Round 38: the artist asked to see the eye removal on the entire clip.",
+    "local_frame_zero_is_source_frame": 0,
+    "overlap_with_reporter_a": "local 700-849 == reporter_a local 0-149"
+  },
+  "creative_brief": {
+    "status": "awaiting direction",
+    "environment": null,
+    "mood": null,
+    "lighting": null
+  },
+  "delivery": {
+    "note": "Inherits the video-level delivery spec unless overridden. At 60000/1001 the mov timescale must be 60000 with 1001 ticks per frame; hdr_mux.py derives this from source_frame_rate.",
+    "conform_decision": "Resolved: preserve native 59.94 for this shot. It is a technical test bed for relighting, not a creative deliverable, so no retime is applied and no resampling artefacts are introduced into the comparison. The 24/1 project default does not apply here. NOTE 59.94 -> 24 is not an integer ratio (2.4975:1) and would require frame resampling at 1:1 speed; the artist shoots 24 natively so his own footage is unaffected.",
+    "frame_rate": "60000/1001",
+    "conform": "preserve"
+  },
+  "pipeline_status": {
+    "ingested": true,
+    "frames_extracted": false,
+    "keyed": false,
+    "camera_matched": "assumed",
+    "depth": false,
+    "relit": false,
+    "composited": false,
+    "face_tracked": false
+  },
+  "keying": {
+    "hint": {
+      "green_min": 0.6871,
+      "green_dominance_min": 0.3733
+    },
+    "note": "Inherited proof-of-concept thresholds as a STARTING POINT only. This plate has a brighter, more saturated backing and, critically, no green wardrobe (dark suit, white shirt), so despill may be applied globally here unlike the proof of concept. Verify on the test frames before the full run.",
+    "hint_source": "Copied unchanged from reporter_a (same plate); derived there by scripts/calibrate_key.py. Deliberately NOT recalibrated.",
+    "despill_mode": "global",
+    "despill_note": "All despill is the manual pass: CorridorKey's despill_strength affects only result['processed'], not the result['fg'] this pipeline reads. Round 4: the gate was max(R,B), so despill only fired where green beat RED. Her hair is dark brown (R .141 G .113 B .070), so green sat 8% above (R+B)/2 and read plainly olive while never approaching red -- 0.0% of subject pixels around her ear tripped the gate and 11.8% were green-leaning, and the artist saw it before any measurement did. despill_limit 'average' is the standard green-limit gate; it corrects 8.3% of subject pixels here for a mean green change of -0.46%, leaving skin and the neutral suit untouched because both are fixed points of it. Gain 1000 reaches the full cap on any green-leaning pixel; the correction cannot push green past (R+B)/2, so it cannot overshoot into magenta.",
+    "engine_despill_strength": 0.0,
+    "despill_offset_abs": 0.003,
+    "despill_offset_rel": 0.01,
+    "despill_gain": 1000.0,
+    "despill_max": 1.0,
+    "despill_limit": "average"
+  },
+  "environment": {
+    "dir": "scene_library/night_restaurant",
+    "hdri_strength": 1.0,
+    "note": "Photographic HDRI environment rather than the modelled listening room."
+  }
+}

@@ -234,6 +234,15 @@ def main():
     ap.add_argument('--free-curvature', action='store_true',
                     help='fit the parabola curvature per frame instead of holding one '
                          'per eye for the shot. A lid moves; its shape does not.')
+    ap.add_argument('--curvature-window', type=float, default=0.0,
+                    help="SECONDS of footage each frame's curvature is pooled from, instead "
+                         "of one per eye for the whole shot. 0 is the shot constant. Over "
+                         "the 20 s reporter clip the free upper-lid curvature runs from "
+                         "~0.003 to ~0.02 in 100-frame stretches as her head turns and her "
+                         "gaze moves, so the shot median (0.011) is 2-3x the 0.004-0.005 of "
+                         "the stretch round 37 was accepted on. The window is shifted, not "
+                         "cut, at the ends of the shot, so a shot shorter than the window "
+                         "gets its own median back (of the anatomically possible fits).")
     args = ap.parse_args()
     shot = from_args(args)
     track = lf.Track.load(shot.relight / args.track)
@@ -261,18 +270,48 @@ def main():
 
     # One curvature per eye for the shot, from the frames that fit it freely and well.
     curvature = {}
+    votes = {}
     if not args.free_curvature:
         for side in r32.SIDES:
             for name in ('upper', 'lower'):
-                got = []
+                got = {}
                 for (i, s), (rec, centre, radius, _) in raw_fits.items():
                     if s != side or 'samples' not in rec:
                         continue
                     d = rec['samples'][name]
                     f = fit_parabola(d['xs'], d['ys'], d['ss'], rec['local_centre'])
                     if f and f['rms'] <= 1.2 and f['columns'] >= 24:
-                        got.append(f['coef'][0])
-                curvature[(side, name)] = float(np.median(got)) if len(got) >= 10 else None
+                        got[i] = f['coef'][0]
+                votes[(side, name)] = got
+                curvature[(side, name)] = (float(np.median(list(got.values())))
+                                           if len(got) >= 10 else None)
+    # --- optionally, the curvature of the frames AROUND each frame --------------------
+    # Only anatomically possible shapes vote: an upper margin arches UP (a > 0 with y
+    # down) and a lower one down. Measured on the reporter clip, source 800-899 left: half
+    # the free upper-lid fits that pass the quality gate curve the wrong way (p25 -0.014)
+    # -- they are on something else -- and a windowed median of them came out NEGATIVE,
+    # which would have bent every lid in the stretch inside out. The shot constant hid that
+    # only because the other 1100 frames outvoted it.
+    local = {}
+    if args.curvature_window > 0 and not args.free_curvature:
+        frames_all = sorted(int(row['frame']) for row in data['rows'])
+        first, last = frames_all[0], frames_all[-1]
+        half = max(1, int(round(0.5 * args.curvature_window * float(shot.frame_rate))))
+        for key, got in votes.items():
+            sign = 1.0 if key[1] == 'upper' else -1.0
+            ok = sorted((j, a) for j, a in got.items() if a * sign > 0)
+            js = np.array([j for j, _ in ok], int)
+            vals = np.array([a for _, a in ok], float)
+            for i in frames_all:
+                h = half
+                while True:
+                    lo = max(first, min(i - h, last - 2 * h))
+                    hi = min(last, lo + 2 * h)
+                    sel = vals[(js >= lo) & (js <= hi)]
+                    if sel.size >= 10 or (lo <= first and hi >= last):
+                        break
+                    h *= 2
+                local[(key, i)] = float(np.median(sel)) if sel.size >= 10 else curvature[key]
 
     rows, stats = [], {s: {'upper': [], 'lower': []} for s in r32.SIDES}
     for row in data['rows']:
@@ -290,10 +329,14 @@ def main():
             entry = dict(side=side, fitted=True, reason=None,
                          centre=[round(float(c), 4) for c in centre],
                          radius=round(float(radius), 4))
+            if local:
+                entry['curvature'] = {name: local.get(((side, name), i))
+                                      for name in ('upper', 'lower')}
             for name in ('upper', 'lower'):
                 d = rec['samples'][name]
                 f = fit_parabola(d['xs'], d['ys'], d['ss'], rec['local_centre'],
-                                 curvature=curvature.get((side, name)))
+                                 curvature=local.get(((side, name), i),
+                                                     curvature.get((side, name))))
                 # A lid cannot be in her eyebrow. The fitted edge above the iris centre
                 # has to sit in a band a lid can actually occupy; on a few near-blink
                 # frames the first strong step outward is the brow and the parabola
@@ -322,6 +365,13 @@ def main():
     payload = dict(rows=rows, frames=len(rows), fitted=fitted,
                    curvature={'%s_%s' % k: v for k, v in curvature.items()},
                    free_curvature=bool(args.free_curvature),
+                   curvature_window_s=args.curvature_window,
+                   curvature_local_range=({'%s_%s' % key: [
+                       round(min(v for (k, _), v in local.items() if k == key and v is not None), 5),
+                       round(max(v for (k, _), v in local.items() if k == key and v is not None), 5)]
+                       for key in votes if any(k == key and v is not None
+                                               for (k, _), v in local.items())}
+                       if local else None),
                    min_step=MIN_STEP, column_step=COLUMN_STEP,
                    method='per-column dark-to-bright step below the lash minimum, robust '
                           'parabola per lid, curvature held per eye for the shot',

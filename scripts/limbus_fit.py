@@ -64,6 +64,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from color_pipeline import linear_to_srgb
 from shot_paths import add_shot_argument, from_args
 import eye_reflection_repair as r32
+import frame_store
 
 # Rec.709 luma. Round 34's audit used the max channel; luma is the full-resolution
 # component of 4:2:0 footage, and the limbus edge is a luminance edge. The audit keeps
@@ -538,7 +539,8 @@ def main():
     if min(indices) < 0 or max(indices) >= shot.frame_count:
         raise ValueError('Requested interval leaves the shot')
 
-    values = {}
+    # Packed, bit exact (frame_store): as float32 the 1200-frame clip is ~30 GB.
+    values = frame_store.half()
     for i in indices:
         raw = cv2.imread(str(shot.fg(i)), cv2.IMREAD_UNCHANGED)
         if raw is None or raw.dtype != np.float32 or raw.ndim != 3:
@@ -681,8 +683,10 @@ def main():
         print('        calibration (%d frames): median %.3f px  p5 %.3f  p95 %.3f  sd %.3f'
               % (f['calibration_frames'], f['calibration_median'], f['calibration_p5'],
                  f['calibration_p95'], f['calibration_sd']))
+        # A BRIDGED eye is fitted but has no edge residual of its own (bridge_gaps); the
+        # first shot with a bridge in it (reporter_full) crashed here after writing.
         rms = [e['rms'] for row in rows for e in row['eyes']
-               if e['side'] == side and e.get('fitted')]
+               if e['side'] == side and e.get('fitted') and 'rms' in e]
         sh = [e['smoothing_shift_px'] for row in rows for e in row['eyes']
               if e['side'] == side and 'smoothing_shift_px' in e]
         print('        edge residual rms: median %.3f px  p95 %.3f  max %.3f'

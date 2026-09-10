@@ -86,12 +86,14 @@ def main():
     ap.add_argument('--out', default='r37_eyes_audit.json')
     ap.add_argument('--lid-inset', type=float, default=2.0)
     ap.add_argument('--lid-inset-rms', type=float, default=2.0)
+    ap.add_argument('--eyelid-track', default='eyelid_track.json',
+                    help='relight/<file>: the lid track the audited run was painted with')
     args = ap.parse_args()
     shot = from_args(args)
     names = [n.strip() for n in args.names.split(',') if n.strip()]
     track = LimbusTrack.load(shot.relight / 'limbus_track.json')
     lids = {}
-    for row in json.loads((shot.relight / 'eyelid_track.json').read_text())['rows']:
+    for row in json.loads((shot.relight / args.eyelid_track).read_text())['rows']:
         for e in row['eyes']:
             if e.get('fitted'):
                 lids[(int(row['frame']), e['side'])] = dict(

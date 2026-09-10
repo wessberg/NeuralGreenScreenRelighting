@@ -33,6 +33,21 @@ and **rejected**, for colour AND shape flicker and a sometimes-brown pupil, beca
 every term of the fill was refit per frame from a few dozen pixels. **No per-frame-refit
 fill can be temporally stable at a 24-pixel iris.** See `rounds/round32.md`.
 
+**Round 38 — the whole 20 s clip (`reporter_full`, 1200 frames): "really, really close to
+perfect overall", with failures "here and there across the full 1:40". Read
+`rounds/round38.md` §2 and §6 and `rounds/evidence/round38/evidence.json` FIRST.** The
+artist's evidence frames are 137 (whole disc painted over a squint: the upper bound sits on
+the brow crease), 243 (double iris: a SEVEN-frame limbus slide the one-frame gate cannot
+fix) and 304 (iris over the lid: a lash line that cut nothing), all on her LEFT eye. Round 39
+**moves the eye pass to the GPU first** (it ran at 1 % GPU, single-threaded numpy, 21 min per
+1200 frames), gated on reproducing `reporter_full/composite/r38_full_own`, then fixes those
+classes over all 2400 eyes. Also logged, not in scope yet: a second capture-room glint on the
+white of the eye (`audit_r38_sclera.py`). Per-shot constants that do not scale with clip
+length were found and replaced by flags: `--canonical-votes-frac`, `eyelid_fit.py
+--curvature-window`; `--fill-residual-gate 8` catches a lid fit on the crease at a blink edge.
+`--canonical-from` is DIAGNOSTIC ONLY — the tool is generic and may not borrow another
+run's iris.
+
 **Round 37 — accepted "based on just the presented frames" (source 700–849, 150 of the
 clip's 1200). Round 38 runs the whole 20 s clip. Read `rounds/round37.md` §0, §5, §6.**
 The command is in round37.md §7; every piece is a flag and defaults are unchanged. What it
@@ -519,6 +534,15 @@ Consequences, which are the opposite of the intuition:
 
 ## House rules
 
+- **GPU first.** The artist, round 38: *"Never run stuff on the CPU when it can be avoided."*
+  New per-pixel or per-frame maths goes in torch on CUDA (`scripts/gpu_image.py` is the
+  pattern; `cv2.cuda` has 0 devices in this wheel). A stage that is CPU-bound gets ported or
+  parallelised when it is touched, and never grows a new single-threaded per-frame loop
+  silently. He plans ~10 takes × 10 angles × 3-minute songs; at CPU speed that is days.
+- **It is a generic tool.** *"It can accept any kind of input video."* Nothing may depend on
+  this clip's earlier runs (an accepted canonical, a hand-set frame range) or on a constant
+  that only held at one clip length — express it relative to the input (a fraction of frames,
+  a window in SECONDS, not frames).
 - **Verify conventions, never assume them.** Axis, handedness and sign errors in this domain are
   invisible in a single frame and ungradeable afterwards. Test several directions, not one — a
   reflection error leaves the diagonal invariant and passes a single-direction check.
@@ -554,7 +578,7 @@ Every stage takes `--shot`. Interpreter is the pipeline venv unless the row says
 | 5 | face track | `face_track.py` (facetrack venv) | `relight/face_track.json`, `relight/face_landmarks.npz` + `.json` | mediapipe; needs its own venv. Also stores ALL 478 landmarks, blink, eyelid aperture, head pose |
 | 5b | **corneal geometry** | `eye_geometry.py` | `relight/eye_geometry.json` | corneal sphere per eye, and the PLATE's key light solved from its own catchlights |
 | 5c | **limbus track** | `limbus_fit.py` | `relight/limbus_track.json` | the limbus fitted to the IMAGE EDGE, one radius per shot, no smoothing. Audited by `audit_r35_limbus.py`; drawn on every frame by `review_r35_track.py` |
-| 5d | **eyelid track** | `eyelid_fit.py` | `relight/eyelid_track.json` | both lid margins fitted to the IMAGE, robust parabola per lid, curvature one per eye per shot. **Not the paint bound** — see `lash_ceiling()` |
+| 5d | **eyelid track** | `eyelid_fit.py` | `relight/eyelid_track.json` | both lid margins fitted to the IMAGE, robust parabola per lid, curvature one per eye per shot — or pooled over `--curvature-window` SECONDS with anatomical sign only, which a long clip needs (round 38 §0). **Not the paint bound** — see `lash_ceiling()` |
 | 6 | **normals** | `neural_normals.py` | `relight/normals/*.npz` | see below |
 | 7 | **albedo + skin mask** | `make_albedo.py` | `relight/albedo/`, `relight/skin_mask/` | plate ÷ `E_source(normals)`; needed before the plate can be re-lit, or it is lit twice |
 | 7b | **proxy geometry** | `make_proxy_mesh.py` | `relight/proxy/*.npz` | see below; carries UVs |
@@ -566,7 +590,7 @@ Every stage takes `--shot`. Interpreter is the pipeline venv unless the row says
 | 11c | **ratio irradiance** | `stress_proxy.py --ratio` (Blender) | `composite/ratio_render/*.exr` | neutral albedo at PLATE resolution and the PLATE lens |
 | 11d | ~~catchlight~~ | `stress_proxy.py --catchlight` (Blender) | `composite/catchlight_render/*.exr` | renderer looks sound and its validator passes; **the compositing of it is rejected and `--catchlight` defaults to 0** |
 | 11e | **corneal catchlight** | `render_eye_catchlight.py` (Blender) | `composite/r34_catchlight/*.exr` | the scene's own reflection in a corneal cap; validated by `validate_eye_catchlight.py`. PARKED by the artist |
-| 11f | **eye: one canonical iris** | `eye_soft_removal.py --fill-iris` | `composite/<name>/` | built once in the registered eye frame. **Round 37's accepted command is in `rounds/round37.md` §7** (softbox region, parabola lash line, rebuilt canonical, temporally filtered edge shading, limbus gate, lid bridging rules). `--lid-shadow` is DEFAULT OFF (round 36 §4). Holds every frame in RAM (≈50 MB/frame), so it needs eye-window storage before a full clip. Audited by `audit_r37_eyes.py` + `audit_r37_flicker.py`; **looked at** with `review_r37_sheets.py`, `review_r37_temporal.py`, `review_r37_panel.py` |
+| 11f | **eye: one canonical iris** | `eye_soft_removal.py --fill-iris` | `composite/<name>/` | built once in the registered eye frame. **Round 37's accepted command is in `rounds/round37.md` §7** (softbox region, parabola lash line, rebuilt canonical, temporally filtered edge shading, limbus gate, lid bridging rules). `--lid-shadow` is DEFAULT OFF (round 36 §4). Holds every frame in RAM packed by `frame_store.py` (≈12 MB/frame, bit exact); the full-clip command is `rounds/round38.md` §7. Audited by `audit_r37_eyes.py` + `audit_r37_flicker.py`; **looked at** with `review_r37_sheets.py`, `review_r37_temporal.py`, `review_r37_panel.py` |
 | 12 | **ratio composite** | `composite_ratio.py` | `composite/ratio/` | `out = plate × R` by default. `--plate-specular remove` and `--catchlight` are rejected experiments |
 | 12b | composite (gain map) | `composite_shot.py` | `composite/`, `intermediate/linear_4k/` | legacy path; loads background **per frame** |
 | 12c | **review video** | `review_video.py` | `final/*.mp4` | what the artist watches; `--compare` puts the before on the LEFT with both halves labelled |
