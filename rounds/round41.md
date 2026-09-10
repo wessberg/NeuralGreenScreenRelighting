@@ -10,7 +10,11 @@ built: nothing here is a stock shape. Round 40's ellipse-fit plan is superseded;
 **Shown to the artist:** `reporter_a/final/r41_tour_compare.mp4` (before = the tour with the
 capture room's softbox relit, LEFT; after = removal + corneal reflection, RIGHT),
 `final/r41_tour_eyes.mp4` (four rows at eye scale: source / before / removal only / final, every
-frame), `final/r41_tour_panel.mp4` (face scale). **No verdict recorded yet.**
+frame), `final/r41_tour_panel.mp4` (face scale). **Verdict (2026-09-11):** *"looks decent enough. Maybe slightly
+unrealistic? Maybe the eye didn't become 'wet' enough?"* — accepted as a step, not as done; the
+wet look is round 42's target (§6 items 2–3: the reflection stops at the cornea, the sclera and
+the tear film along the lids do not respond to the new light, and the capture room's own
+scleral glint is still in the photograph).
 
 ---
 

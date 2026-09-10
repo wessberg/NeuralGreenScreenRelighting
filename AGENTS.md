@@ -46,7 +46,8 @@ that at 1.31 px rms against 1.87 for a camera-axis gaze, `validate_tour_catchlig
 the fitted lids and the limbus in the ratio's own anchor units, softened to the plate's PSF
 measured on its glint by `measure_glint_psf.py`). Render vs an independent numpy reflection:
 0.20 px median, wrong conventions 1.3–5.5 px. Videos `reporter_a/final/r41_tour_compare.mp4`,
-`r41_tour_eyes.mp4`, `r41_tour_panel.mp4`. **Verdict not yet recorded.** Two things to ask
+`r41_tour_eyes.mp4`, `r41_tour_panel.mp4`. **Verdict:** *"looks decent enough. Maybe slightly
+unrealistic? Maybe the eye didn't become 'wet' enough?"* — the wet look is round 42's job. Two things to ask
 about first: the 60 cm fill panel reflects as a soft grey square when it is in front (behind
 rim, frame 127) and as a pink crescent CUT AT THE LIMBUS at camera left/right (52–85) — a real
 eye carries it onto the sclera and hides part of it behind the nose; neither is built. The
