@@ -247,6 +247,345 @@ def local_gain(patch, base, ring, lo=0.5, hi=2.0):
     return k
 
 
+def lash_ceiling(patch, geom, state, footprint=None, clamp_to_footprint=False,
+                 guard=2.0, smooth=9, pupil_rho=0.42, spec_level=0.45,
+                 spec_reach=1.05, ring_px=3.0, ring_level=0.10):
+    """The highest row the paint may touch, per column, read off HER OWN image.
+
+    **The artist's rule, and it is a statement about physics rather than a tolerance:**
+    *"the softbox reflection will never be present in the eyelashes or along the eyelid
+    itself ... we should prevent us from drawing on her eyelid and lashes."* A corneal
+    specular is on the cornea; the lash and the lid margin are opaque things in front of
+    it. So nothing -- neither the iris fill nor the highlight removal -- has any business
+    above the lash, and everything up there stays the photograph.
+
+    **Why this is not another lid anchor.** `eyelid_fit.py` is fitted to the image and
+    audited to 0.43 px, and it is still confidently wrong on some frames: measured on
+    `r35_final`, source 727 left puts the fitted margin about seven pixels above the lash,
+    up on the LID CREASE, and source 723 left abstains altogether. On both, round 35
+    painted straight through her lashes -- which is what the artist is looking at. A bound
+    that is sometimes wrong in the permissive direction cannot be the only thing standing
+    between the fill and her lashes.
+
+    This is a GUARD, not an anchor. It can only ever remove paint, never add any, so the
+    worst case is that it gives up a pixel of iris; it cannot reintroduce a wrong-anchor
+    artefact the way a new tracker could. It is combined with the fitted lid by taking
+    whichever is more conservative.
+
+    **The rule, per column: the lash is the DARKEST row above the eye's interior.** That
+    is not a guess, it is what her columns say. Reading one down from the crop top at
+    source 727 left, four pixels right of the iris centre:
+
+        skin  .73 .73 .73 .71 .67 .61 .64 .64 .63    lid, then the crease
+        fall  .55 .42                                the lid margin
+        LASH  .24 .23 .19 .13 .13                    the darkest run in the column
+        iris  .15 .18 .19 .21 .23                    rising monotonically below it
+
+    The shadowed upper iris (.15-.23) and the lash (.13) are close enough in LEVEL that no
+    threshold separates them -- which is why the first version of this guard, anchored on
+    finding skin above, latched onto the corneal specular instead: at .78 it is brighter
+    than her eyelid. What does separate them is that the lash is a MINIMUM and the iris
+    below it only rises. So the ceiling is the argmin of the column, and the paint may
+    start one pixel below it.
+
+    Three things are excluded from the search or it finds them instead of the lash, and
+    all three cost a pass: the corneal specular (brighter than skin), its coding
+    undershoot (which reaches legal black, .00-.04, far darker than any lash), and the
+    pupil (also darker than the lash). The first two are excluded together, by level, in
+    the SOURCE; the pupil by radius.
+
+    The per-column minima are median-filtered along x -- not fitted to a parabola. A fit
+    is what `eyelid_fit.py` does and its failure mode is being confidently wrong on the
+    crease; a median filter can only ever move the ceiling to a value one of its own
+    neighbours actually measured.
+    """
+    lum = np.clip(linear_to_srgb(np.clip(patch, 0, 1)), 0, 1).max(-1)
+    rho = state['rho']
+    h, w = lum.shape
+    centre_row = float(geom['limbus'][1] - geom['window'][0].start)
+    # The specular and its undershoot ring, located in the SOURCE by level exactly as
+    # `audit_r35_defects.py` locates them, so this shares nothing with the repair's own
+    # footprint detector.
+    spec = (lum > spec_level) & (rho < spec_reach)
+    k = int(2 * np.ceil(ring_px) + 1)
+    near = cv2.dilate(spec.astype(np.uint8),
+                      cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (k, k))) > 0
+    # `ring_level` is LEGAL BLACK, not merely dark, and the difference cost a pass. The
+    # coding undershoot beside the highlight clips green and blue at exactly 0 with red
+    # surviving at 8-26, so it sits at 0.02-0.09 display. Excluding everything under 0.22
+    # within reach of the specular instead excluded HER LASH -- which is dark and, on a
+    # 24-pixel iris, three pixels from the highlight -- so the walk stepped straight over
+    # the thing it exists to find and put the ceiling down in the lower iris. That was
+    # visible on the review sheet as the ceiling collapsing beside the highlight and in
+    # no number anywhere.
+    blocked = spec | (near & (lum < ring_level)) | (rho < pupil_rho)
+    rows = np.arange(h)[:, None]
+    # Search from the crop top to a little past the iris centre: on a half-closed eye the
+    # lid margin is BELOW the centre, and stopping at the centre would miss the lash on
+    # exactly the frames where the fill is most likely to run onto it.
+    floor_row = int(np.ceil(centre_row + 0.45 * geom['ay']))
+    band = rows <= floor_row
+    search = np.where(band & ~blocked, lum, np.inf)
+    # Only the columns that actually cross the iris get a ceiling. Outside them the fill
+    # is already bounded by the limbus, and the nasal corner carries her tear line and
+    # the canthal shadow -- both darker than any lash, and both pulling the argmin down
+    # into the eye, which showed up on the review sheet as the ceiling giving away iris.
+    p = (geom['xx'][0, :] - geom['limbus'][0]) / geom['ax']
+    ceiling = np.full(w, np.inf, np.float32)
+    for x in range(w):
+        if abs(float(p[x])) > 1.0:
+            continue
+        rowsx = np.nonzero(np.isfinite(search[:, x]))[0]
+        if rowsx.size < 6:
+            continue
+        # **Walk DOWN from the lid skin at the top of the crop.** Two earlier versions
+        # searched from the eye outward -- the column's global minimum, then the first
+        # minimum walking up -- and both kept landing on the pupil's own edge or on the
+        # canthal shadow, several pixels below the lash, which the review sheet showed as
+        # the ceiling stepping down across the middle of the iris. Nothing inside the eye
+        # is as bright as her eyelid, so the skin above is the one unambiguous anchor;
+        # the reason the FIRST version of this failed on it is that the corneal specular
+        # is brighter still, and that is now masked out before the walk starts.
+        skin_ref = float(np.median(lum[rowsx[:3], x]))
+        if skin_ref <= 0.15:
+            continue
+        entry, floor_v = skin_ref * 0.60, skin_ref * 0.45
+        got = None
+        for n, t in enumerate(rowsx):
+            if lum[int(t), x] >= entry:
+                continue
+            run = rowsx[n:n + 9]
+            vals = lum[run, x]
+            # A lid CREASE is a dark line with skin under it; a lash is far darker than
+            # any crease and the eye is what lies below it. Requiring the run to reach
+            # `floor_v` is what tells them apart, and it is why the fitted lid margin --
+            # which takes an edge and cannot ask this question -- lands on the crease on
+            # frames like source 727 left.
+            if float(vals.min()) > floor_v:
+                continue
+            got = int(run[int(np.argmin(vals))])
+            break
+        if got is None:
+            continue
+        ceiling[x] = float(got)
+    if not np.isfinite(ceiling).any():
+        return None
+    # Median-filtered along x over the columns that reported, then held flat outward.
+    known = np.nonzero(np.isfinite(ceiling))[0]
+    vals = ceiling[known]
+    out = np.full(w, np.inf, np.float32)
+    pad = smooth // 2
+    for n, x in enumerate(known):
+        win = vals[max(0, n - pad):n + pad + 1]
+        out[x] = float(np.median(win))
+    if known.size:
+        out[:known[0]] = out[known[0]]
+        out[known[-1] + 1:] = out[known[-1]]
+        # Any column between two reporting columns that abstained takes the more
+        # conservative of its neighbours rather than no ceiling at all.
+        last = known[0]
+        for x in range(known[0], known[-1] + 1):
+            if np.isfinite(out[x]):
+                last = x
+            else:
+                nxt = known[known > x]
+                out[x] = max(out[last], out[nxt[0]]) if nxt.size else out[last]
+    out = out + guard
+    # **The ceiling may never cut below the specular, and this is the artist's own rule
+    # read backwards.** He is right that a corneal reflection is never on a lash -- which
+    # also means that wherever the reflection IS, that is cornea, and the repair must be
+    # allowed to reach it. Without this the guard clipped the top of the softbox on the
+    # frames where it sits high under a half-closed lid and left a light speck standing
+    # at the top of the pupil, which is visible on the contact sheet at source 723 and
+    # 736 left and is exactly the artefact the round exists to remove.
+    #
+    # The clamp is one pixel ABOVE the specular's own top row so its coding ringing goes
+    # with it, which round 34 established has to happen: deleting the bright lobe and
+    # keeping the black one leaves a hard crescent.
+    # The clamp takes the specular as a COMPACT BLOB, not as "bright pixels", and it
+    # lifts the ceiling by ONE value across the blob's whole column span. Both halves of
+    # that cost a pass and are visible only in pixels:
+    #
+    # * `lum > spec_level` inside the limbus is not the specular. Her LID SKIN sits at
+    #   0.71-0.77 and overlaps the iris disc whenever the lid is low, so at source 727
+    #   left the clamp took the eyelid for the reflection, lifted the ceiling above the
+    #   lash and painted canonical iris at 0.40 over lash pixels at 0.13 -- the exact
+    #   thing the guard exists to stop. A corneal specular is a few pixels across; a lid
+    #   is not, so the discriminator is SIZE, not level.
+    # * A PER-COLUMN lift punches one-column holes through the fill wherever a column of
+    #   the blob is a row shorter than its neighbours -- measured as `w = 255 255 0 255`
+    #   across three adjacent columns, which reads as a comb. One value for the blob
+    #   cannot do that.
+    # **The ceiling may not cut below the specular, and the specular is supplied by the
+    # repair's OWN tracked footprint rather than re-detected here.** Wherever the
+    # reflection is, that is cornea -- the artist's rule read backwards -- so the repair
+    # must be allowed to reach it. Without this the guard clips the top of a softbox
+    # sitting high under a half-closed lid: measured on the specular core (rho < 0.6),
+    # source 736 left goes from clean at 0.26 display to a **0.59 remnant**, and 845, 846
+    # and 848 left keep 5-11 bright pixels each.
+    #
+    # **Re-detecting the specular inside this function was tried twice and both versions
+    # painted her eyelid.** By level (`lum > 0.45` inside the limbus) it took her LID SKIN
+    # at 0.71-0.77, lifted the ceiling above the lash and painted canonical iris at 0.40
+    # over lash pixels at 0.13 -- source 727 left. Narrowed to compact blobs it then took
+    # her WET LID MARGIN highlight, which is also compact, and reached seven rows into the
+    # lid -- source 723 left. The footprint has neither failure mode because it is the
+    # thing the round-32 detector already decided to remove: lifting the ceiling over it
+    # only permits what the repair was going to do anyway.
+    #
+    # The lift is ONE value across the footprint's column span. Applied per column it
+    # punched one-column holes through the fill -- measured as `w = 255 255 255 0 255 255`
+    # across six adjacent columns, which reads as a comb.
+    # **Growing the clamp to the footprint's whole BRIGHT COMPONENT was tried and it
+    # broke the guard outright: eyes painting above the lash went from 0 to 164.** On a
+    # half-closed eye the specular touches the bright sclera, so the component runs out
+    # of the cornea, along the sclera and up under the lid, and the clamp then lifts the
+    # ceiling across that entire span. The footprint alone has no such path -- it is a
+    # bounded blob the round-32 detector fitted to the highlight -- so the clamp uses it
+    # and nothing more. The cost is a few fringe pixels of specular left standing on
+    # squinting frames, recorded in round36.md; the alternative was her eyelid.
+    # **The clamp is OFF, and `footprint` is accepted only so this stays measurable.**
+    # Even bounded to the round-32 footprint it puts paint back on her lashes: measured
+    # over all 300 eyes, 56 eyes painted above the lash line, median 24 px and up to 80,
+    # concentrated on exactly the half-closed frames (715-718, 826, 836-838) where the
+    # lid fit is least reliable and the specular sits closest to the lash. Grown to the
+    # footprint's bright component it was 164 eyes.
+    #
+    # The artist's rule is not a tolerance -- *"we do not draw our own pixels ON or above
+    # that eyelid arc"* -- so the guard wins and the residue is reported instead: a few
+    # fringe pixels of specular survive on squinting frames (source 843, 845, 846, 848
+    # left, 5-11 px each at 0.66-0.81 display). That is round 37's problem, and the way
+    # in is a lash line that is right on a squint, not a licence to paint over it.
+    if footprint is not None and clamp_to_footprint and np.any(footprint):
+        cols = np.nonzero(footprint.any(axis=0))[0]
+        rows_f = np.nonzero(footprint.any(axis=1))[0]
+        if cols.size and rows_f.size:
+            out[cols.min():cols.max() + 1] = np.minimum(
+                out[cols.min():cols.max() + 1], float(rows_f.min()) - 1.0)
+    # A COMB is the failure mode of a per-column bound, and it is what a one-row
+    # difference between neighbouring columns looks like once the fill starts at the
+    # ceiling: measured at source 727 left as `w = 255 255 255 0 255 255` across six
+    # adjacent columns -- single columns of untouched source standing inside the fill.
+    # A morphological close along x removes a one-column spike without letting the
+    # ceiling rise anywhere it was not already.
+    if out.size >= 3:
+        pad = np.pad(out, 1, mode='edge')
+        closed = np.array([max(pad[i:i + 3]) for i in range(out.size)], np.float32)
+        pad2 = np.pad(closed, 1, mode='edge')
+        out = np.array([min(pad2[i:i + 3]) for i in range(out.size)], np.float32)
+    return out.astype(np.float32)
+
+
+def lid_depth(cfg, geom):
+    """Native pixels BELOW the fitted upper lid margin, per pixel of the eye patch.
+
+    The lid shadow is cast by the lid, so its natural coordinate is depth under the lid
+    edge -- not eye-radial distance, which is what every gain model in rounds 32-35 used.
+    A lid moves and an iris does not, so a shadow written in iris coordinates has to be
+    refit every frame (round 33's ramp: it flickered) or be constant (round 34's scalar:
+    it cannot bend). Written in lid coordinates it is neither -- ONE shape for the shot,
+    riding on a margin that round 35 measures to 0.43 px.
+    """
+    if not cfg or not cfg.get('upper'):
+        return None
+    a, b, c = cfg['upper']
+    u = geom['xx'] - cfg['centre'][0]
+    return (geom['yy'] - (a * u ** 2 + b * u + c)).astype(np.float32)
+
+
+def fit_lid_shadow(samples, lo=-0.6, hi=0.6, tau_lo=1.0, tau_hi=10.0, min_bin=120):
+    """One bounded, monotone lid-shadow correction per eye, from pooled observations.
+
+    `samples` is a list of (depth, ratio) arrays -- her own observed iris divided by the
+    canonical iris painted at the same place, with THIS FRAME's scalar gain already
+    divided out. So a ratio of 1 means the scalar was enough and anything else is the
+    shape the scalar cannot carry.
+
+    **Why this exists.** Measured on `r35_final`, pooled over 150 frames with the
+    specular and its coding ring excluded, her iris and the repair diverge in a band
+    three to six pixels below the lash and agree everywhere below it:
+
+        depth   3     4     5     6     7
+        left    .81   .86   .90   .91   .92    source
+                .66   .65   .77   .89   .93    R35 result
+        right   .80   .85   .91   .95   .95    source
+                .86   .93   .96   .98   .99    R35 result
+
+    -- a step of up to 0.20 display on the left and 0.09 the other way on the right,
+    switching on exactly where the fill's weight does. That is the artist's "not
+    seamless around the upper eyelid", and no eyelid mask removes it: moving the
+    boundary moves the step, it does not close it.
+
+    **The form is `1 + A * exp(-d / tau)`.** Bounded by construction (it can only
+    approach 1 + A at the lash and 1 in the open iris), monotone in depth, two
+    parameters fitted on thousands of pooled samples -- so it cannot do what round 33's
+    unconstrained per-frame linear ramp did, which was extrapolate 12-fold into a region
+    it had no evidence for. A is SIGNED: the measurement above says the canonical iris
+    is too dark near the lash on one eye and too bright on the other, so a model that
+    could only darken would be fitting half the defect.
+
+    The fit is on per-depth MEDIANS, not on the samples, so a lash pixel that survives
+    the level guard is outvoted rather than averaged in, and bins are weighted by count.
+    """
+    if not samples:
+        return None
+    d = np.concatenate([s[0] for s in samples])
+    r = np.concatenate([s[1] for s in samples])
+    ok = np.isfinite(d) & np.isfinite(r) & (r > 0.2) & (r < 5.0)
+    d, r = d[ok], r[ok]
+    if d.size < 2000:
+        return None
+    bins, meds, counts = [], [], []
+    for b in range(0, 24):
+        sel = (d >= b) & (d < b + 1)
+        n = int(sel.sum())
+        if n >= min_bin:
+            bins.append(b + 0.5)
+            meds.append(float(np.median(r[sel])))
+            counts.append(n)
+    if len(bins) < 6:
+        return None
+    bins = np.asarray(bins); meds = np.asarray(meds); counts = np.asarray(counts, float)
+    w = counts / counts.sum()
+    best = None
+    for tau in np.linspace(tau_lo, tau_hi, 46):
+        basis = np.exp(-bins / tau)
+        # Least squares in A alone at this tau, weighted by how many pixels voted.
+        denom = float(np.sum(w * basis * basis))
+        if denom < 1e-9:
+            continue
+        A = float(np.sum(w * basis * (meds - 1.0)) / denom)
+        A = float(np.clip(A, lo, hi))
+        resid = float(np.sum(w * (meds - (1.0 + A * basis)) ** 2))
+        if best is None or resid < best[2]:
+            best = (A, float(tau), resid)
+    if best is None:
+        return None
+    A, tau, resid = best
+    flat = float(np.sum(w * (meds - 1.0) ** 2))
+    return dict(amplitude=round(A, 5), tau_px=round(tau, 4),
+                weighted_rms=round(float(np.sqrt(resid)), 5),
+                weighted_rms_if_flat=round(float(np.sqrt(flat)), 5),
+                samples=int(d.size), bins=len(bins),
+                observed=[[round(float(b), 1), int(c), round(float(m), 4)]
+                          for b, c, m in zip(bins, counts, meds)])
+
+
+def lid_shadow_field(shadow, depth, strength=1.0):
+    """`1 + A exp(-d/tau)` evaluated on this frame's depth map, held flat above the lid.
+
+    Above the margin (d < 0) the correction is HELD at its d = 0 value rather than
+    allowed to keep growing: the exponential runs away upward and there is no evidence
+    up there anyway -- it is lash. The fill is bounded by the lid, so this only matters
+    for the few pixels the removal is allowed past it.
+    """
+    if shadow is None or depth is None:
+        return None
+    d = np.maximum(depth, 0.0)
+    return (1.0 + strength * shadow['amplitude']
+            * np.exp(-d / max(shadow['tau_px'], 1e-3))).astype(np.float32)
+
+
 def hf_scale(values, mask):
     """Scale of the plate's own high-frequency content, per channel, over `mask`.
 
@@ -468,6 +807,32 @@ def main():
                          "flicker; it exists because the atlas rim pools lid margin and "
                          "lash specular on the few frames those cells are visible, and "
                          "the fitted eyelid is what finally renders them.")
+    ap.add_argument('--no-lash-guard', dest='lash_guard', action='store_false',
+                    help='disable the image-derived LASH CEILING. It is on by default: '
+                         "the artist's rule is that a corneal specular is never on a lash "
+                         'or a lid, so nothing may be painted there, and the fitted lid '
+                         'margin alone does not enforce it -- it abstains on some frames '
+                         'and lands on the lid crease on others. See lash_ceiling().')
+    ap.add_argument('--lid-shadow', type=float, default=1.0,
+                    help='strength of the fitted LID SHADOW, one shape per eye for the '
+                         'shot, as a multiple of the fitted amplitude. 0 disables it and '
+                         "restores round 34's scalar-only fill. The canonical iris is "
+                         'painted with one scalar gain per frame, so it cannot carry the '
+                         "shadow her lid casts on her own iris; round 35 measured the "
+                         'resulting step at up to 0.20 display three to six pixels below '
+                         'the lash, which is the artist\'s "not seamless around the upper '
+                         'eyelid". See fit_lid_shadow().')
+    ap.add_argument('--shadow-inset', type=float, default=1.0,
+                    help='native px inside the fitted opening that the lid-shadow '
+                         'evidence is pooled from. Smaller than --atlas-lid-inset on '
+                         'purpose: the shape has to be measured where the shadow IS, and '
+                         'the per-depth median over thousands of samples is what rejects '
+                         'a lash rather than a wide margin.')
+    ap.add_argument('--shadow-reference', type=float, default=8.0,
+                    help='depth below the lid margin, native px, beyond which the iris '
+                         'is taken to be out of lid shadow. Each frame is normalised by '
+                         'its own level there before pooling, so what is fitted is only '
+                         'the part the per-frame scalar cannot represent.')
     ap.add_argument('--lid-inset', type=float, default=2.0,
                     help="native pixels to pull the FITTED eye opening in before filling. "
                          "The upper-lid fit's own column residual is 0.43 px median and "
@@ -764,6 +1129,87 @@ def main():
                             by_frame={f['frame']: f for f in frames})
         print('R34_ATLAS_READY', side, len(frames), 'frames', flush=True)
 
+    # --- pass A0: pool the LID SHADOW, once per eye for the shot -----------------------
+    # Round 34 painted the canonical iris with one scalar per frame and round 35 measured
+    # what that costs: a step of up to 0.20 display three to six pixels below the lash,
+    # on essentially every treated frame, because a scalar cannot carry a gradient. The
+    # shape is pooled here from every frame at once -- exactly as the canonical iris
+    # itself is -- so nothing about it can move between frames. See fit_lid_shadow().
+    prepass = {s: {} for s in r32.SIDES}
+    shadow_samples = {s: [] for s in r32.SIDES}
+    for side in r32.SIDES:
+        fit = fitted[side]
+        if fit is None:
+            continue
+        for i, f in fit['by_frame'].items():
+            geom = geoms[(i, side)]
+            patch = sources[i][geom['window']]
+            state = r32.solve_eye(patch, geom)
+            base0, support, _ = predict(geom, fit['atlas'], fit['aw'],
+                                        f['du'], f['dv'], f['scale'], np.zeros((3, 3)))
+            anomaly, _, _ = r32.detect_anomaly(patch, state['rho'], state['theta'],
+                                               state['inside'])
+            foot = (anomaly if anomaly is not None
+                    else np.zeros(state['inside'].shape, bool))
+            near_foot = cv2.dilate(foot.astype(np.uint8), np.ones((9, 9), np.uint8)) > 0
+            ring = state['inside'] & support & ~near_foot & (state['rho'] < 0.85)
+            k0 = local_gain(patch, base0, ring)
+            prepass[side][i] = dict(base0=base0, support=support, state=state, foot=foot,
+                                    near_foot=near_foot, ring=ring, k0=k0)
+            if k0 is None or args.lid_shadow <= 0:
+                continue
+            depth = lid_depth(lids.get((i, side)), geom)
+            if depth is None:
+                continue
+            # The evidence: HER iris over the canonical one, on pixels that are neither
+            # the specular, nor its coding ring, nor a lash.
+            #
+            # `near_foot` takes out both lobes of the artefact, which matters more here
+            # than anywhere else: the softbox sits high on the iris on the frames where
+            # the lid is low, which is precisely where the small depths are sampled, so
+            # leaving it in would fit the highlight and call it a shadow.
+            #
+            # The lash guard is on LEVEL and it is deliberately loose -- a lash is far
+            # darker than any shadowed iris -- because the per-bin median over thousands
+            # of samples is what actually rejects contamination. A tight guard here would
+            # instead select the brightest pixels at each depth and bias the shape.
+            lum_s = np.clip(linear_to_srgb(np.clip(patch, 0, 1)), 0, 1).max(-1)
+            lum_b = np.clip(linear_to_srgb(np.clip(base0 * k0[None, None, :], 0, 1)),
+                            0, 1).max(-1)
+            clean = (support & ~near_foot & (state['rho'] < 0.95)
+                     & (lum_s > 0.12) & (lum_b > 0.05) & (depth > 0.0))
+            if lids.get((i, side)) is not None:
+                lid_cfg = lids[(i, side)]
+                poly = np.asarray(landmarks['points'][i])[topology['eyelid_' + side], :2]
+                clean &= r32.parabola_opening(
+                    lid_cfg.get('upper'), lid_cfg.get('lower'), lid_cfg['centre'],
+                    geom['window'], (float(poly[:, 0].min()), float(poly[:, 0].max())),
+                    inset=args.shadow_inset) > 0.5
+            if clean.sum() < 60:
+                continue
+            # Normalise by THIS FRAME's own level before pooling. What is left is only
+            # the part the scalar gain cannot represent, which is the thing being fitted;
+            # without it the pool would be dominated by exposure differences between
+            # frames and the shape would come out of the wrong signal.
+            ratio = lum_s[clean] / np.maximum(lum_b[clean], 1e-4)
+            deep = clean & (depth > args.shadow_reference)
+            if deep.sum() < 40:
+                continue
+            level = float(np.median(lum_s[deep] / np.maximum(lum_b[deep], 1e-4)))
+            if not (0.2 < level < 5.0):
+                continue
+            shadow_samples[side].append((depth[clean].astype(np.float32),
+                                         (ratio / level).astype(np.float32)))
+    shadow = {}
+    for side in r32.SIDES:
+        shadow[side] = (fit_lid_shadow(shadow_samples[side])
+                        if args.lid_shadow > 0 else None)
+        print('R36_LID_SHADOW', side,
+              None if shadow[side] is None else
+              {k: v for k, v in shadow[side].items() if k != 'observed'}, flush=True)
+        if shadow[side]:
+            print('R36_LID_SHADOW_BINS', side, shadow[side]['observed'], flush=True)
+
     # --- pass A: predict once per frame, and pool ONE residual scale per eye -----------
     detail = {s: {} for s in r32.SIDES}
     scales = {s: [] for s in r32.SIDES}
@@ -774,19 +1220,21 @@ def main():
         for i, f in fit['by_frame'].items():
             geom = geoms[(i, side)]
             patch = sources[i][geom['window']]
-            state = r32.solve_eye(patch, geom)
+            pre = prepass[side][i]
+            state = pre['state']
             if args.gain_model == 'local':
-                # Un-gained atlas first, then ONE robust ratio per channel from the
-                # observed iris ring around the footprint. See local_gain().
-                base0, support, (p, q) = predict(geom, fit['atlas'], fit['aw'],
-                                                 f['du'], f['dv'], f['scale'],
-                                                 np.zeros((3, 3)))
-                anomaly, _, _ = r32.detect_anomaly(patch, state['rho'], state['theta'],
-                                                   state['inside'])
-                foot = (anomaly if anomaly is not None
-                        else np.zeros(state['inside'].shape, bool))
-                near_foot = cv2.dilate(foot.astype(np.uint8), np.ones((9, 9), np.uint8)) > 0
-                ring = state['inside'] & support & ~near_foot & (state['rho'] < 0.85)
+                # Un-gained atlas first, then the shot's ONE lid-shadow shape, then ONE
+                # robust ratio per channel from the observed iris ring around the
+                # footprint. The order matters: the scalar is fitted AFTER the shape, so
+                # it is levelling a prediction that already bends the right way and the
+                # ring's own ratio is flat. Fitting it first and bending afterwards would
+                # move the level of the whole fill every time the shape changed.
+                base0, support = pre['base0'], pre['support']
+                foot, near_foot, ring = pre['foot'], pre['near_foot'], pre['ring']
+                shadow_field = lid_shadow_field(
+                    shadow[side], lid_depth(lids.get((i, side)), geom), args.lid_shadow)
+                if shadow_field is not None:
+                    base0 = np.maximum(base0 * shadow_field[..., None], 0.0)
                 k = local_gain(patch, base0, ring)
                 if k is None:
                     # Not enough observed ring -- fall back to round 33's fitted field
@@ -806,6 +1254,7 @@ def main():
                                                    state['inside'])
                 foot = (anomaly if anomaly is not None
                         else np.zeros(state['inside'].shape, bool))
+                shadow_field = None
                 k, gain_used = None, 'ramp'
             signed = (patch - base).max(axis=-1)
             # The other lobe of the same artefact: where the plate is DARKER than the
@@ -817,12 +1266,16 @@ def main():
             if s is not None:
                 scales[side].append(s)
             detail[side][i] = dict(base=base, support=support, inside=state['inside'],
-                                   visible=geom['visible'],
+                                   visible=geom['visible'], state=state,
                                    lid_signed=signed_lid_distance(
                                        landmarks['points'][i], topology, side,
                                        geom['window']),
                                    signed=signed, under=under, geom=geom, frame_scale=s,
                                    footprint=foot, gain_used=gain_used,
+                                   lid_shadow_range=(
+                                       None if shadow_field is None else
+                                       [round(float(shadow_field.min()), 4),
+                                        round(float(shadow_field.max()), 4)]),
                                    local_gain=None if k is None else [round(float(x), 4) for x in k])
     # ONE sigma per eye for the whole shot. Round 33 recomputed this per frame and its
     # footprint breathed with it.
@@ -898,10 +1351,31 @@ def main():
                           else round(d['frame_scale'], 6))
             ncc_floor = (args.min_ncc_frozen if args.freeze_registration
                          else args.min_ncc)
-            if not f['registered'] or f['ncc'] < ncc_floor:
-                record.update(repaired=False, reason='registration_below_threshold')
+            # **A frame that failed to register is not vetoed once the registration is
+            # FROZEN, and this is the artist's "glimpses of the softbox in the last
+            # seconds".** `atl.build` returns None from `register()` when it finds no
+            # candidate with enough overlap and then leaves `ncc` at its initialiser,
+            # which is 0.0 -- not a measured correlation, a placeholder. Source 843, 846
+            # and 848 left all carry exactly 0.0 while their neighbours sit at 0.985,
+            # 0.988 and 0.975, so the eye was declined outright, the whole softbox stayed
+            # in the photograph, and it reads as a glint appearing for a frame.
+            #
+            # The veto made sense when the offset was per frame: an unregistered frame
+            # then had no offset worth using. Frozen, every frame is placed by the SAME
+            # median offset, so an unregistered frame is placed exactly as well as its
+            # neighbours and there is nothing to distrust. What still guards these frames
+            # is everything that reads the image: the limbus and eyelid fits abstain, the
+            # prediction must be darker than the source, the support mask must reach, and
+            # the lash ceiling bounds the paint.
+            registered_veto = (not f['registered']) and not args.freeze_registration
+            if registered_veto or (f['registered'] and f['ncc'] < ncc_floor):
+                record.update(repaired=False, reason='registration_below_threshold',
+                              registration_frozen=bool(args.freeze_registration))
                 eyes.append(record)
                 continue
+            ceil_map = (lash_ceiling(sources[i][geom['window']], geom, d['state'],
+                                     footprint=d.get('footprint'))
+                        if args.lash_guard else None)
             if args.fill_iris > 0:
                 # The whole iris, as one image. No detection at all: there is nothing to
                 # detect when every pixel of the disc is being replaced.
@@ -1020,6 +1494,27 @@ def main():
                     fw = np.maximum(fw, foot.astype(np.float32))
                     fw = np.rint(fw * 255.0).astype(np.float32) / 255.0
                     w = np.maximum(w, fw)
+            # **The lash ceiling has the last word on where paint may land.** The
+            # artist's rule: *"the softbox reflection will never be present in the
+            # eyelashes or along the eyelid itself ... we should prevent us from drawing
+            # on her eyelid and lashes"*, and *"we do not draw our own pixels ON or above
+            # that eyelid arc"*.
+            #
+            # It is applied HERE, after the fill, after the removal's excursion past the
+            # fitted lid and after the union with the tracked footprint, because each of
+            # those can put weight on a lash and the guard has to outrank all three.
+            # Round 35 painted through her lashes wherever the fitted lid abstained
+            # (source 723 left) or landed on the lid crease seven pixels high (source 727
+            # left), and both of those frames are in the set the artist flagged. See
+            # lash_ceiling().
+            lash_px = 0
+            if w is not None and ceil_map is not None:
+                rows_here = np.arange(w.shape[0], dtype=np.float32)[:, None]
+                allow = np.clip(rows_here - ceil_map[None, :], 0.0, 1.0)
+                lash_px = int(((w > 0) & (allow < 1.0)).sum())
+                w = np.rint(np.clip(w * allow, 0, 1) * 255.0).astype(np.float32) / 255.0
+            if info is not None:
+                info['lash_guard_pixels'] = lash_px
             if w is None or w.max() <= 0:
                 record.update(repaired=False, reason='no_reflection_found')
                 eyes.append(record)
@@ -1093,6 +1588,7 @@ def main():
                 peak_removed_display=round(float(linear_to_srgb(np.clip(
                     blended[bright].max(), 0, 1))), 4),
                 highlight_pixels_above_lid=info.get('highlight_pixels_above_lid'),
+                lash_guard_pixels=info.get('lash_guard_pixels'),
                 rim_pixels_removed=int(((d['under'] > args.k_lo * sigma[side]) & (w > 0.5)).sum()),
                 floor_pixels_removed=int((((patch <= 1e-6).sum(axis=-1) >= 2) & (w > 0.5)).sum()),
                 grain_scale=None if grain is None else [round(float(g), 6) for g in grain],
@@ -1205,6 +1701,21 @@ def main():
         lid_extend_px=args.lid_extend,
         lid_inset_px=args.lid_inset,
         atlas_lid_inset_px=args.atlas_lid_inset,
+        lash_guard=bool(args.lash_guard),
+        lash_guard_rule='no paint on or above the lash: per-column ceiling read from the '
+                        'SOURCE by walking down from lid skin to the first dark run that '
+                        'reaches legal-lash level, masked against the specular, its '
+                        'legal-black undershoot and the pupil. It can only ever REMOVE '
+                        'paint, so it cannot introduce a wrong-anchor artefact.',
+        lid_shadow_strength=args.lid_shadow,
+        lid_shadow_inset_px=args.shadow_inset,
+        lid_shadow_reference_px=args.shadow_reference,
+        lid_shadow_model='1 + A * exp(-depth_below_fitted_upper_lid / tau); ONE per eye '
+                         'for the shot, fitted on pooled observed-over-canonical ratios '
+                         'with each frame normalised by its own level beyond the '
+                         'reference depth, so only the part the per-frame scalar cannot '
+                         'represent is fitted',
+        lid_shadow=shadow,
         atlas_grid=atlas_grid_config, sample_reach=args.sample_reach,
         atlas_cap_percentile=args.atlas_cap,
         atlas_cap_level={k: (v.get('atlas_cap') if v else None)

@@ -1,0 +1,3449 @@
+{
+  "rows": [
+    {
+      "frame": 0,
+      "source_frame": 700,
+      "source_sha256": "c444e294f77eee3028a7c2a9978e3989ca4107fbd7212cc3f7430b57794a861a",
+      "changed_pixels": 607,
+      "weighted_pixels": 495.388,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1068.525,
+            279.962
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.98764,
+          "frame_residual_scale": 0.006799,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.027198,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 104.579,
+          "weighted_pixels": 252.549,
+          "pixels_touched": 307,
+          "pixels_full_weight": 226,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.4638,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8823,
+          "peak_removed_display": 0.4177,
+          "highlight_pixels_above_lid": 59,
+          "rim_pixels_removed": 34,
+          "floor_pixels_removed": 2,
+          "grain_scale": null,
+          "fill_display": [
+            84,
+            52,
+            35
+          ]
+        },
+        {
+          "side": "right",
+          "limbus_centre": [
+            938.3,
+            290.878
+          ],
+          "limbus_axes": [
+            12.271,
+            12.271
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.97045,
+          "frame_residual_scale": 0.011733,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.0124,
+          "r33_threshold_linear": 0.04693,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 54.687,
+          "weighted_pixels": 242.839,
+          "pixels_touched": 300,
+          "pixels_full_weight": 219,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.5802,
+          "surround_peak_display": null,
+          "peak_source_display": 0.851,
+          "peak_removed_display": 0.4194,
+          "highlight_pixels_above_lid": 54,
+          "rim_pixels_removed": 141,
+          "floor_pixels_removed": 2,
+          "grain_scale": null,
+          "fill_display": [
+            107,
+            69,
+            41
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 1,
+      "source_frame": 701,
+      "source_sha256": "0fbafd73ef82e1887f2265873b20f8947ef257c15246e75cce30d46cf5dbb3d2",
+      "changed_pixels": 592,
+      "weighted_pixels": 489.396,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1068.394,
+            278.789
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.98411,
+          "frame_residual_scale": 0.006856,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.027424,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 106.367,
+          "weighted_pixels": 248.067,
+          "pixels_touched": 295,
+          "pixels_full_weight": 225,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.4646,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8785,
+          "peak_removed_display": 0.267,
+          "highlight_pixels_above_lid": 44,
+          "rim_pixels_removed": 36,
+          "floor_pixels_removed": 4,
+          "grain_scale": null,
+          "fill_display": [
+            84,
+            53,
+            35
+          ]
+        },
+        {
+          "side": "right",
+          "limbus_centre": [
+            938.22,
+            289.638
+          ],
+          "limbus_axes": [
+            12.271,
+            12.271
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.95814,
+          "frame_residual_scale": 0.010994,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.0124,
+          "r33_threshold_linear": 0.043977,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 58.448,
+          "weighted_pixels": 241.329,
+          "pixels_touched": 297,
+          "pixels_full_weight": 214,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.5157,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8706,
+          "peak_removed_display": 0.4095,
+          "highlight_pixels_above_lid": 55,
+          "rim_pixels_removed": 89,
+          "floor_pixels_removed": 0,
+          "grain_scale": null,
+          "fill_display": [
+            95,
+            62,
+            39
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 2,
+      "source_frame": 702,
+      "source_sha256": "13ac2682b79c839c1457d66f0a9922d5d6d7674e3cc2fe6c1fc4d14c2669cd40",
+      "changed_pixels": 559,
+      "weighted_pixels": 478.337,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1068.138,
+            276.892
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.98593,
+          "frame_residual_scale": 0.006282,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.025128,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 94.191,
+          "weighted_pixels": 243.549,
+          "pixels_touched": 279,
+          "pixels_full_weight": 220,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.4503,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8313,
+          "peak_removed_display": 0.2642,
+          "highlight_pixels_above_lid": 30,
+          "rim_pixels_removed": 29,
+          "floor_pixels_removed": 3,
+          "grain_scale": null,
+          "fill_display": [
+            82,
+            53,
+            33
+          ]
+        },
+        {
+          "side": "right",
+          "limbus_centre": [
+            937.932,
+            288.072
+          ],
+          "limbus_axes": [
+            12.271,
+            12.271
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.93594,
+          "frame_residual_scale": 0.010587,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.0124,
+          "r33_threshold_linear": 0.042347,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 58.017,
+          "weighted_pixels": 234.788,
+          "pixels_touched": 280,
+          "pixels_full_weight": 210,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.5019,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8706,
+          "peak_removed_display": 0.3815,
+          "highlight_pixels_above_lid": 34,
+          "rim_pixels_removed": 89,
+          "floor_pixels_removed": 1,
+          "grain_scale": null,
+          "fill_display": [
+            93,
+            64,
+            36
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 3,
+      "source_frame": 703,
+      "source_sha256": "f80960f662e59e26eb3d17846a4021a1bd176d1998effcb3e868801c60e1b643",
+      "changed_pixels": 498,
+      "weighted_pixels": 440.071,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1067.814,
+            274.91
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.9849,
+          "frame_residual_scale": 0.007033,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.02813,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 70.275,
+          "weighted_pixels": 217.686,
+          "pixels_touched": 246,
+          "pixels_full_weight": 195,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.4321,
+          "surround_peak_display": null,
+          "peak_source_display": 0.7255,
+          "peak_removed_display": 0.3753,
+          "highlight_pixels_above_lid": 22,
+          "rim_pixels_removed": 40,
+          "floor_pixels_removed": 1,
+          "grain_scale": null,
+          "fill_display": [
+            80,
+            52,
+            31
+          ]
+        },
+        {
+          "side": "right",
+          "limbus_centre": [
+            937.438,
+            286.302
+          ],
+          "limbus_axes": [
+            12.271,
+            12.271
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.93567,
+          "frame_residual_scale": 0.008867,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.0124,
+          "r33_threshold_linear": 0.035468,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 58.061,
+          "weighted_pixels": 222.384,
+          "pixels_touched": 252,
+          "pixels_full_weight": 200,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.5196,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8706,
+          "peak_removed_display": 0.3855,
+          "highlight_pixels_above_lid": 20,
+          "rim_pixels_removed": 96,
+          "floor_pixels_removed": 5,
+          "grain_scale": null,
+          "fill_display": [
+            93,
+            56,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 4,
+      "source_frame": 704,
+      "source_sha256": "5bda3df9daa8e9ee95f8bf97d60eb42071923a70931e5d801da73f42f90b9a01",
+      "changed_pixels": 399,
+      "weighted_pixels": 374.733,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1067.596,
+            272.455
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.86576,
+          "frame_residual_scale": 0.005819,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.023278,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 33.784,
+          "weighted_pixels": 197.788,
+          "pixels_touched": 212,
+          "pixels_full_weight": 172,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.3334,
+          "surround_peak_display": null,
+          "peak_source_display": 0.6079,
+          "peak_removed_display": 0.436,
+          "highlight_pixels_above_lid": 0,
+          "rim_pixels_removed": 48,
+          "floor_pixels_removed": 0,
+          "grain_scale": null,
+          "fill_display": [
+            67,
+            42,
+            31
+          ]
+        },
+        {
+          "side": "right",
+          "limbus_centre": [
+            936.944,
+            283.888
+          ],
+          "limbus_axes": [
+            12.271,
+            12.271
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.58002,
+          "frame_residual_scale": 0.017797,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.0124,
+          "r33_threshold_linear": 0.071189,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 17.156,
+          "weighted_pixels": 176.945,
+          "pixels_touched": 187,
+          "pixels_full_weight": 159,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.3328,
+          "surround_peak_display": null,
+          "peak_source_display": 0.5373,
+          "peak_removed_display": 0.3103,
+          "highlight_pixels_above_lid": 0,
+          "rim_pixels_removed": 40,
+          "floor_pixels_removed": 0,
+          "grain_scale": null,
+          "fill_display": [
+            63,
+            40,
+            30
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 5,
+      "source_frame": 705,
+      "source_sha256": "34c7325f068839301f63f03dee69df85af1749236e94ae6301cb722647b1259d",
+      "changed_pixels": 184,
+      "weighted_pixels": 170.043,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1065.186,
+            272.153
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.52868,
+          "frame_residual_scale": 0.011347,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.045387,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 37.669,
+          "weighted_pixels": 170.043,
+          "pixels_touched": 184,
+          "pixels_full_weight": 155,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.4225,
+          "surround_peak_display": null,
+          "peak_source_display": 0.647,
+          "peak_removed_display": 0.5447,
+          "highlight_pixels_above_lid": 11,
+          "rim_pixels_removed": 103,
+          "floor_pixels_removed": 0,
+          "grain_scale": null,
+          "fill_display": [
+            83,
+            56,
+            36
+          ]
+        },
+        {
+          "side": "right",
+          "repaired": false,
+          "reason": "no_eye_frame"
+        }
+      ]
+    },
+    {
+      "frame": 6,
+      "source_frame": 706,
+      "source_sha256": "8f3ada2efd8f8f1cb70c98df936e66ebe893d9e3120da9e94cbbd293edd3744c",
+      "changed_pixels": 0,
+      "weighted_pixels": 0.0,
+      "eyes": [
+        {
+          "side": "left",
+          "repaired": false,
+          "reason": "no_eye_frame"
+        },
+        {
+          "side": "right",
+          "repaired": false,
+          "reason": "no_eye_frame"
+        }
+      ]
+    },
+    {
+      "frame": 7,
+      "source_frame": 707,
+      "source_sha256": "4d011c28cbadc6ea71e3cfd19c29a10f497c7f8bcbebfbb022b4ade4785a9fe6",
+      "changed_pixels": 0,
+      "weighted_pixels": 0.0,
+      "eyes": [
+        {
+          "side": "left",
+          "repaired": false,
+          "reason": "no_eye_frame"
+        },
+        {
+          "side": "right",
+          "repaired": false,
+          "reason": "no_eye_frame"
+        }
+      ]
+    },
+    {
+      "frame": 8,
+      "source_frame": 708,
+      "source_sha256": "7c4d5b20bfd0f011996b8061193f8ac2878135f2ea886ed7526fe7228fc87bdc",
+      "changed_pixels": 0,
+      "weighted_pixels": 0.0,
+      "eyes": [
+        {
+          "side": "left",
+          "repaired": false,
+          "reason": "no_eye_frame"
+        },
+        {
+          "side": "right",
+          "repaired": false,
+          "reason": "no_eye_frame"
+        }
+      ]
+    },
+    {
+      "frame": 9,
+      "source_frame": 709,
+      "source_sha256": "67719d8d55e79aa524eac936a851344a282c3ffed10256104cb17a5096d4ca3e",
+      "changed_pixels": 0,
+      "weighted_pixels": 0.0,
+      "eyes": [
+        {
+          "side": "left",
+          "repaired": false,
+          "reason": "no_eye_frame"
+        },
+        {
+          "side": "right",
+          "repaired": false,
+          "reason": "no_eye_frame"
+        }
+      ]
+    },
+    {
+      "frame": 10,
+      "source_frame": 710,
+      "source_sha256": "263149a726a4abeb3cef5117f594217c8dac4a3c918d914ca3df2a3ead066d40",
+      "changed_pixels": 0,
+      "weighted_pixels": 0.0,
+      "eyes": [
+        {
+          "side": "left",
+          "repaired": false,
+          "reason": "no_eye_frame"
+        },
+        {
+          "side": "right",
+          "repaired": false,
+          "reason": "no_eye_frame"
+        }
+      ]
+    },
+    {
+      "frame": 11,
+      "source_frame": 711,
+      "source_sha256": "b7d6e84725180fab5fe9f4bf1a7bb561674e582d9ee0050599254958b984daaa",
+      "changed_pixels": 0,
+      "weighted_pixels": 0.0,
+      "eyes": [
+        {
+          "side": "left",
+          "repaired": false,
+          "reason": "no_eye_frame"
+        },
+        {
+          "side": "right",
+          "repaired": false,
+          "reason": "no_eye_frame"
+        }
+      ]
+    },
+    {
+      "frame": 12,
+      "source_frame": 712,
+      "source_sha256": "0e9b732d763e715ef82470169b1e3a27f6d66174ba7d4e2677a3e05209afc38a",
+      "changed_pixels": 172,
+      "weighted_pixels": 153.467,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1062.677,
+            260.214
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.69351,
+          "frame_residual_scale": 0.004192,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.016769,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 11.112,
+          "weighted_pixels": 153.467,
+          "pixels_touched": 172,
+          "pixels_full_weight": 137,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.4053,
+          "surround_peak_display": null,
+          "peak_source_display": 0.5412,
+          "peak_removed_display": 0.4879,
+          "highlight_pixels_above_lid": 9,
+          "rim_pixels_removed": 123,
+          "floor_pixels_removed": 0,
+          "grain_scale": null,
+          "fill_display": [
+            84,
+            56,
+            35
+          ]
+        },
+        {
+          "side": "right",
+          "repaired": false,
+          "reason": "no_eye_frame"
+        }
+      ]
+    },
+    {
+      "frame": 13,
+      "source_frame": 713,
+      "source_sha256": "c2b920399b4a589840159e86a17aa87c2ee60b27e9bfd39fd5975a3eb50b94e7",
+      "changed_pixels": 375,
+      "weighted_pixels": 351.224,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1061.894,
+            260.926
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.8248,
+          "frame_residual_scale": 0.01524,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.060959,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 41.117,
+          "weighted_pixels": 201.094,
+          "pixels_touched": 214,
+          "pixels_full_weight": 185,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.3227,
+          "surround_peak_display": null,
+          "peak_source_display": 0.6432,
+          "peak_removed_display": 0.452,
+          "highlight_pixels_above_lid": 10,
+          "rim_pixels_removed": 27,
+          "floor_pixels_removed": 0,
+          "grain_scale": null,
+          "fill_display": [
+            64,
+            41,
+            31
+          ]
+        },
+        {
+          "side": "right",
+          "limbus_centre": [
+            931.641,
+            273.568
+          ],
+          "limbus_axes": [
+            12.271,
+            12.271
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.55191,
+          "frame_residual_scale": 0.019561,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.0124,
+          "r33_threshold_linear": 0.078246,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 28.386,
+          "weighted_pixels": 150.129,
+          "pixels_touched": 161,
+          "pixels_full_weight": 131,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.3395,
+          "surround_peak_display": null,
+          "peak_source_display": 0.6627,
+          "peak_removed_display": 0.3616,
+          "highlight_pixels_above_lid": 11,
+          "rim_pixels_removed": 18,
+          "floor_pixels_removed": 0,
+          "grain_scale": null,
+          "fill_display": [
+            65,
+            43,
+            28
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 14,
+      "source_frame": 714,
+      "source_sha256": "78e8d8f7c08015881ec9e77e013d1ce7fddf1faf23629542cb114702fc88e35f",
+      "changed_pixels": 442,
+      "weighted_pixels": 407.071,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1061.071,
+            262.15
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.89761,
+          "frame_residual_scale": 0.016371,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.065482,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 31.298,
+          "weighted_pixels": 225.361,
+          "pixels_touched": 240,
+          "pixels_full_weight": 209,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.3244,
+          "surround_peak_display": null,
+          "peak_source_display": 0.5882,
+          "peak_removed_display": 0.4501,
+          "highlight_pixels_above_lid": 10,
+          "rim_pixels_removed": 20,
+          "floor_pixels_removed": 0,
+          "grain_scale": null,
+          "fill_display": [
+            61,
+            41,
+            28
+          ]
+        },
+        {
+          "side": "right",
+          "limbus_centre": [
+            930.691,
+            274.842
+          ],
+          "limbus_axes": [
+            12.271,
+            12.271
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.66468,
+          "frame_residual_scale": 0.009839,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.0124,
+          "r33_threshold_linear": 0.039356,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 22.7,
+          "weighted_pixels": 181.71,
+          "pixels_touched": 202,
+          "pixels_full_weight": 167,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.4196,
+          "surround_peak_display": null,
+          "peak_source_display": 0.5725,
+          "peak_removed_display": 0.3423,
+          "highlight_pixels_above_lid": 9,
+          "rim_pixels_removed": 55,
+          "floor_pixels_removed": 1,
+          "grain_scale": null,
+          "fill_display": [
+            77,
+            48,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 15,
+      "source_frame": 715,
+      "source_sha256": "e9a12d3d688601ac5aa43bc716ef76f976322935969dc025ad6144f9653fc7ca",
+      "changed_pixels": 506,
+      "weighted_pixels": 459.471,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1060.158,
+            263.934
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.94384,
+          "frame_residual_scale": 0.012735,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.050941,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 36.172,
+          "weighted_pixels": 242.549,
+          "pixels_touched": 268,
+          "pixels_full_weight": 221,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.3461,
+          "surround_peak_display": null,
+          "peak_source_display": 0.5452,
+          "peak_removed_display": 0.348,
+          "highlight_pixels_above_lid": 18,
+          "rim_pixels_removed": 22,
+          "floor_pixels_removed": 0,
+          "grain_scale": null,
+          "fill_display": [
+            60,
+            42,
+            27
+          ]
+        },
+        {
+          "side": "right",
+          "limbus_centre": [
+            929.753,
+            276.526
+          ],
+          "limbus_axes": [
+            12.271,
+            12.271
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.72929,
+          "frame_residual_scale": 0.01066,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.0124,
+          "r33_threshold_linear": 0.042641,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 33.386,
+          "weighted_pixels": 216.922,
+          "pixels_touched": 238,
+          "pixels_full_weight": 200,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.4229,
+          "surround_peak_display": null,
+          "peak_source_display": 0.6824,
+          "peak_removed_display": 0.3732,
+          "highlight_pixels_above_lid": 10,
+          "rim_pixels_removed": 56,
+          "floor_pixels_removed": 1,
+          "grain_scale": null,
+          "fill_display": [
+            76,
+            48,
+            31
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 16,
+      "source_frame": 716,
+      "source_sha256": "118845a3a54c257bd02482b58ea8d087225c3b3bdca57f960c3f577b2e53b431",
+      "changed_pixels": 542,
+      "weighted_pixels": 478.816,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1059.275,
+            266.006
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.94505,
+          "frame_residual_scale": 0.015085,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.060339,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 46.026,
+          "weighted_pixels": 248.533,
+          "pixels_touched": 270,
+          "pixels_full_weight": 230,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.3583,
+          "surround_peak_display": null,
+          "peak_source_display": 0.6079,
+          "peak_removed_display": 0.3486,
+          "highlight_pixels_above_lid": 10,
+          "rim_pixels_removed": 19,
+          "floor_pixels_removed": 1,
+          "grain_scale": null,
+          "fill_display": [
+            60,
+            41,
+            28
+          ]
+        },
+        {
+          "side": "right",
+          "limbus_centre": [
+            929.196,
+            280.726
+          ],
+          "limbus_axes": [
+            12.271,
+            12.271
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.63188,
+          "frame_residual_scale": 0.032181,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.0124,
+          "r33_threshold_linear": 0.128724,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 35.382,
+          "weighted_pixels": 230.282,
+          "pixels_touched": 272,
+          "pixels_full_weight": 207,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.4898,
+          "surround_peak_display": null,
+          "peak_source_display": 0.7099,
+          "peak_removed_display": 0.514,
+          "highlight_pixels_above_lid": 40,
+          "rim_pixels_removed": 73,
+          "floor_pixels_removed": 1,
+          "grain_scale": null,
+          "fill_display": [
+            91,
+            63,
+            43
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 17,
+      "source_frame": 717,
+      "source_sha256": "5f7e289c8d45a95ef19a61453598f07ddb9cb6b0222654ece6c00f62c146f77c",
+      "changed_pixels": 529,
+      "weighted_pixels": 479.875,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1058.33,
+            268.124
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.94301,
+          "frame_residual_scale": 0.010829,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.043318,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 54.203,
+          "weighted_pixels": 256.8,
+          "pixels_touched": 276,
+          "pixels_full_weight": 237,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.3766,
+          "surround_peak_display": null,
+          "peak_source_display": 0.6549,
+          "peak_removed_display": 0.3681,
+          "highlight_pixels_above_lid": 20,
+          "rim_pixels_removed": 19,
+          "floor_pixels_removed": 2,
+          "grain_scale": null,
+          "fill_display": [
+            59,
+            39,
+            26
+          ]
+        },
+        {
+          "side": "right",
+          "limbus_centre": [
+            928.639,
+            284.926
+          ],
+          "limbus_axes": [
+            12.271,
+            12.271
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.58839,
+          "frame_residual_scale": 0.04123,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.0124,
+          "r33_threshold_linear": 0.164921,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 37.455,
+          "weighted_pixels": 223.075,
+          "pixels_touched": 253,
+          "pixels_full_weight": 197,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.5682,
+          "surround_peak_display": null,
+          "peak_source_display": 0.7137,
+          "peak_removed_display": 0.5958,
+          "highlight_pixels_above_lid": 16,
+          "rim_pixels_removed": 89,
+          "floor_pixels_removed": 0,
+          "grain_scale": null,
+          "fill_display": [
+            102,
+            69,
+            47
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 18,
+      "source_frame": 718,
+      "source_sha256": "0c06de31d3b44454e9c0ce45942ccda2969cc61c756b10581facbf2666b39c3e",
+      "changed_pixels": 508,
+      "weighted_pixels": 433.451,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1057.377,
+            270.217
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.96264,
+          "frame_residual_scale": 0.015402,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.061606,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 63.292,
+          "weighted_pixels": 297.471,
+          "pixels_touched": 315,
+          "pixels_full_weight": 279,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.3861,
+          "surround_peak_display": null,
+          "peak_source_display": 0.7019,
+          "peak_removed_display": 0.3713,
+          "highlight_pixels_above_lid": 14,
+          "rim_pixels_removed": 6,
+          "floor_pixels_removed": 3,
+          "grain_scale": null,
+          "fill_display": [
+            60,
+            40,
+            29
+          ]
+        },
+        {
+          "side": "right",
+          "limbus_centre": [
+            927.145,
+            282.472
+          ],
+          "limbus_axes": [
+            12.271,
+            12.271
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.89267,
+          "frame_residual_scale": 0.015387,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.0124,
+          "r33_threshold_linear": 0.061546,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 42.721,
+          "weighted_pixels": 135.98,
+          "pixels_touched": 193,
+          "pixels_full_weight": 121,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.4218,
+          "surround_peak_display": null,
+          "peak_source_display": 0.7608,
+          "peak_removed_display": 0.3862,
+          "highlight_pixels_above_lid": 80,
+          "rim_pixels_removed": 15,
+          "floor_pixels_removed": 0,
+          "grain_scale": null,
+          "fill_display": [
+            77,
+            51,
+            31
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 19,
+      "source_frame": 719,
+      "source_sha256": "7605646c11079295155ab28fb4147c0bc967cd2cad0c53133c3287233f92ce26",
+      "changed_pixels": 615,
+      "weighted_pixels": 529.161,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1056.475,
+            271.71
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.98216,
+          "frame_residual_scale": 0.014316,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.057266,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 67.878,
+          "weighted_pixels": 299.098,
+          "pixels_touched": 320,
+          "pixels_full_weight": 278,
+          "residual_pixels_above_2sigma": 2,
+          "residual_peak_display": 0.3914,
+          "surround_peak_display": null,
+          "peak_source_display": 0.7411,
+          "peak_removed_display": 0.4297,
+          "highlight_pixels_above_lid": 1,
+          "rim_pixels_removed": 13,
+          "floor_pixels_removed": 4,
+          "grain_scale": null,
+          "fill_display": [
+            66,
+            44,
+            30
+          ]
+        },
+        {
+          "side": "right",
+          "limbus_centre": [
+            926.189,
+            284.357
+          ],
+          "limbus_axes": [
+            12.271,
+            12.271
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.88968,
+          "frame_residual_scale": 0.014691,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.0124,
+          "r33_threshold_linear": 0.058765,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 46.059,
+          "weighted_pixels": 230.063,
+          "pixels_touched": 295,
+          "pixels_full_weight": 201,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.5078,
+          "surround_peak_display": null,
+          "peak_source_display": 0.7882,
+          "peak_removed_display": 0.4122,
+          "highlight_pixels_above_lid": 61,
+          "rim_pixels_removed": 95,
+          "floor_pixels_removed": 2,
+          "grain_scale": null,
+          "fill_display": [
+            94,
+            64,
+            42
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 20,
+      "source_frame": 720,
+      "source_sha256": "ab742ee1992efcf80d95961a84077f87ed1659cb1b4d7d91e47acba93dd071b6",
+      "changed_pixels": 663,
+      "weighted_pixels": 583.188,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1055.634,
+            273.148
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.98214,
+          "frame_residual_scale": 0.011165,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.04466,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 67.309,
+          "weighted_pixels": 354.89,
+          "pixels_touched": 380,
+          "pixels_full_weight": 328,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.4041,
+          "surround_peak_display": null,
+          "peak_source_display": 0.7177,
+          "peak_removed_display": 0.4041,
+          "highlight_pixels_above_lid": 6,
+          "rim_pixels_removed": 13,
+          "floor_pixels_removed": 2,
+          "grain_scale": null,
+          "fill_display": [
+            68,
+            43,
+            30
+          ]
+        },
+        {
+          "side": "right",
+          "limbus_centre": [
+            925.295,
+            286.117
+          ],
+          "limbus_axes": [
+            12.271,
+            12.271
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.90599,
+          "frame_residual_scale": 0.013797,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.0124,
+          "r33_threshold_linear": 0.05519,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 49.693,
+          "weighted_pixels": 228.298,
+          "pixels_touched": 283,
+          "pixels_full_weight": 201,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.5376,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8157,
+          "peak_removed_display": 0.3961,
+          "highlight_pixels_above_lid": 51,
+          "rim_pixels_removed": 110,
+          "floor_pixels_removed": 1,
+          "grain_scale": null,
+          "fill_display": [
+            100,
+            69,
+            41
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 21,
+      "source_frame": 721,
+      "source_sha256": "1c886db373c35c3a79962a998b6867a4f3644a880e7d80b48945141c6d06e6de",
+      "changed_pixels": 664,
+      "weighted_pixels": 582.137,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1054.909,
+            274.453
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.9895,
+          "frame_residual_scale": 0.010251,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.041004,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 77.127,
+          "weighted_pixels": 354.776,
+          "pixels_touched": 384,
+          "pixels_full_weight": 328,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.414,
+          "surround_peak_display": null,
+          "peak_source_display": 0.7766,
+          "peak_removed_display": 0.414,
+          "highlight_pixels_above_lid": 3,
+          "rim_pixels_removed": 17,
+          "floor_pixels_removed": 1,
+          "grain_scale": null,
+          "fill_display": [
+            70,
+            45,
+            31
+          ]
+        },
+        {
+          "side": "right",
+          "limbus_centre": [
+            924.523,
+            287.244
+          ],
+          "limbus_axes": [
+            12.271,
+            12.271
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.93135,
+          "frame_residual_scale": 0.016103,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.0124,
+          "r33_threshold_linear": 0.064413,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 52.841,
+          "weighted_pixels": 227.361,
+          "pixels_touched": 280,
+          "pixels_full_weight": 201,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.5714,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8392,
+          "peak_removed_display": 0.4345,
+          "highlight_pixels_above_lid": 47,
+          "rim_pixels_removed": 131,
+          "floor_pixels_removed": 0,
+          "grain_scale": null,
+          "fill_display": [
+            106,
+            69,
+            43
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 22,
+      "source_frame": 722,
+      "source_sha256": "f7e60667f6ce9265c8510fa315e4902090743c0c4170e4eeaa2b6b7b6f3a8c9d",
+      "changed_pixels": 670,
+      "weighted_pixels": 585.886,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1054.126,
+            275.55
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.97814,
+          "frame_residual_scale": 0.007477,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.029909,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 77.774,
+          "weighted_pixels": 353.718,
+          "pixels_touched": 389,
+          "pixels_full_weight": 323,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.4284,
+          "surround_peak_display": null,
+          "peak_source_display": 0.7843,
+          "peak_removed_display": 0.415,
+          "highlight_pixels_above_lid": 9,
+          "rim_pixels_removed": 32,
+          "floor_pixels_removed": 5,
+          "grain_scale": null,
+          "fill_display": [
+            72,
+            46,
+            31
+          ]
+        },
+        {
+          "side": "right",
+          "limbus_centre": [
+            923.669,
+            288.631
+          ],
+          "limbus_axes": [
+            12.271,
+            12.271
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.93942,
+          "frame_residual_scale": 0.010388,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.0124,
+          "r33_threshold_linear": 0.041553,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 49.112,
+          "weighted_pixels": 232.169,
+          "pixels_touched": 281,
+          "pixels_full_weight": 207,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.536,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8118,
+          "peak_removed_display": 0.386,
+          "highlight_pixels_above_lid": 42,
+          "rim_pixels_removed": 116,
+          "floor_pixels_removed": 0,
+          "grain_scale": null,
+          "fill_display": [
+            100,
+            64,
+            39
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 23,
+      "source_frame": 723,
+      "source_sha256": "678afe847a423ba42f3c23952c7426085c70922ea65aefe1e0bad7bb209ee4db",
+      "changed_pixels": 683,
+      "weighted_pixels": 592.549,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1053.386,
+            276.55
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.9779,
+          "frame_residual_scale": 0.0062,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.024799,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 79.796,
+          "weighted_pixels": 356.686,
+          "pixels_touched": 397,
+          "pixels_full_weight": 325,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.4395,
+          "surround_peak_display": null,
+          "peak_source_display": 0.7923,
+          "peak_removed_display": 0.3671,
+          "highlight_pixels_above_lid": 15,
+          "rim_pixels_removed": 53,
+          "floor_pixels_removed": 3,
+          "grain_scale": null,
+          "fill_display": [
+            75,
+            48,
+            31
+          ]
+        },
+        {
+          "side": "right",
+          "limbus_centre": [
+            922.968,
+            289.664
+          ],
+          "limbus_axes": [
+            12.271,
+            12.271
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.97039,
+          "frame_residual_scale": 0.013749,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.0124,
+          "r33_threshold_linear": 0.054995,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 51.689,
+          "weighted_pixels": 235.863,
+          "pixels_touched": 286,
+          "pixels_full_weight": 213,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.5631,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8313,
+          "peak_removed_display": 0.2883,
+          "highlight_pixels_above_lid": 44,
+          "rim_pixels_removed": 135,
+          "floor_pixels_removed": 1,
+          "grain_scale": null,
+          "fill_display": [
+            105,
+            70,
+            43
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 24,
+      "source_frame": 724,
+      "source_sha256": "de4104068330662ee9c63369d7ae3fc1a2bb7488d3b4b5b7fb9cffd4f575eb0e",
+      "changed_pixels": 546,
+      "weighted_pixels": 454.004,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1052.672,
+            277.543
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.99212,
+          "frame_residual_scale": 0.00546,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.021838,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 93.606,
+          "weighted_pixels": 214.643,
+          "pixels_touched": 255,
+          "pixels_full_weight": 197,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.4505,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8313,
+          "peak_removed_display": 0.2452,
+          "highlight_pixels_above_lid": 43,
+          "rim_pixels_removed": 20,
+          "floor_pixels_removed": 0,
+          "grain_scale": null,
+          "fill_display": [
+            82,
+            51,
+            33
+          ]
+        },
+        {
+          "side": "right",
+          "limbus_centre": [
+            922.206,
+            290.849
+          ],
+          "limbus_axes": [
+            12.271,
+            12.271
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.97689,
+          "frame_residual_scale": 0.010822,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.0124,
+          "r33_threshold_linear": 0.043286,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 54.754,
+          "weighted_pixels": 239.361,
+          "pixels_touched": 291,
+          "pixels_full_weight": 215,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.4765,
+          "surround_peak_display": null,
+          "peak_source_display": 0.847,
+          "peak_removed_display": 0.3947,
+          "highlight_pixels_above_lid": 51,
+          "rim_pixels_removed": 3,
+          "floor_pixels_removed": 1,
+          "grain_scale": null,
+          "fill_display": [
+            83,
+            54,
+            34
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 25,
+      "source_frame": 725,
+      "source_sha256": "c5ffd8ea6ea6ebeef84171ff156c77680043d14e5bf4b83ffa992f2360b4902a",
+      "changed_pixels": 672,
+      "weighted_pixels": 584.494,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1052.004,
+            278.497
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.97377,
+          "frame_residual_scale": 0.007039,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.028158,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 88.902,
+          "weighted_pixels": 343.114,
+          "pixels_touched": 383,
+          "pixels_full_weight": 313,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.446,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8157,
+          "peak_removed_display": 0.4692,
+          "highlight_pixels_above_lid": 12,
+          "rim_pixels_removed": 44,
+          "floor_pixels_removed": 2,
+          "grain_scale": null,
+          "fill_display": [
+            76,
+            49,
+            32
+          ]
+        },
+        {
+          "side": "right",
+          "limbus_centre": [
+            921.467,
+            291.656
+          ],
+          "limbus_axes": [
+            12.271,
+            12.271
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.97822,
+          "frame_residual_scale": 0.010705,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.0124,
+          "r33_threshold_linear": 0.04282,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 51.235,
+          "weighted_pixels": 241.38,
+          "pixels_touched": 289,
+          "pixels_full_weight": 220,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.5791,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8274,
+          "peak_removed_display": 0.4003,
+          "highlight_pixels_above_lid": 42,
+          "rim_pixels_removed": 135,
+          "floor_pixels_removed": 0,
+          "grain_scale": null,
+          "fill_display": [
+            107,
+            68,
+            42
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 26,
+      "source_frame": 726,
+      "source_sha256": "0f8c0c31305396904d72d627ec284baade69db4fbd3a6cc8f0bd6baff9c13e4a",
+      "changed_pixels": 651,
+      "weighted_pixels": 575.569,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1051.194,
+            279.203
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.97782,
+          "frame_residual_scale": 0.007031,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.028124,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 81.886,
+          "weighted_pixels": 334.722,
+          "pixels_touched": 365,
+          "pixels_full_weight": 307,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.4565,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8038,
+          "peak_removed_display": 0.3074,
+          "highlight_pixels_above_lid": 5,
+          "rim_pixels_removed": 49,
+          "floor_pixels_removed": 3,
+          "grain_scale": null,
+          "fill_display": [
+            78,
+            50,
+            33
+          ]
+        },
+        {
+          "side": "right",
+          "limbus_centre": [
+            920.716,
+            292.479
+          ],
+          "limbus_axes": [
+            12.271,
+            12.271
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.97897,
+          "frame_residual_scale": 0.013502,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.0124,
+          "r33_threshold_linear": 0.054009,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 58.217,
+          "weighted_pixels": 240.847,
+          "pixels_touched": 286,
+          "pixels_full_weight": 217,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.461,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8706,
+          "peak_removed_display": 0.4434,
+          "highlight_pixels_above_lid": 47,
+          "rim_pixels_removed": 2,
+          "floor_pixels_removed": 2,
+          "grain_scale": null,
+          "fill_display": [
+            83,
+            53,
+            34
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 27,
+      "source_frame": 727,
+      "source_sha256": "f29865beefb84a3acfc57418c006d9538a73842400ad61071a86a9c42c71f9a9",
+      "changed_pixels": 686,
+      "weighted_pixels": 597.902,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1050.47,
+            279.839
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.98297,
+          "frame_residual_scale": 0.007107,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.028428,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 95.855,
+          "weighted_pixels": 346.961,
+          "pixels_touched": 383,
+          "pixels_full_weight": 317,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.4449,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8392,
+          "peak_removed_display": 0.3882,
+          "highlight_pixels_above_lid": 6,
+          "rim_pixels_removed": 59,
+          "floor_pixels_removed": 2,
+          "grain_scale": null,
+          "fill_display": [
+            78,
+            50,
+            33
+          ]
+        },
+        {
+          "side": "right",
+          "limbus_centre": [
+            920.017,
+            293.169
+          ],
+          "limbus_axes": [
+            12.271,
+            12.271
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.97969,
+          "frame_residual_scale": 0.017242,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.0124,
+          "r33_threshold_linear": 0.068966,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 51.688,
+          "weighted_pixels": 250.941,
+          "pixels_touched": 303,
+          "pixels_full_weight": 223,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.5792,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8313,
+          "peak_removed_display": 0.4065,
+          "highlight_pixels_above_lid": 40,
+          "rim_pixels_removed": 138,
+          "floor_pixels_removed": 2,
+          "grain_scale": null,
+          "fill_display": [
+            106,
+            68,
+            45
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 28,
+      "source_frame": 728,
+      "source_sha256": "98d25a95bab43083400d8242d6afaee85577d9d959f384dad97708f9811fc408",
+      "changed_pixels": 669,
+      "weighted_pixels": 578.973,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1049.664,
+            280.364
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.97721,
+          "frame_residual_scale": 0.006866,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.027462,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 89.922,
+          "weighted_pixels": 345.443,
+          "pixels_touched": 382,
+          "pixels_full_weight": 311,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.4488,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8157,
+          "peak_removed_display": 0.4649,
+          "highlight_pixels_above_lid": 7,
+          "rim_pixels_removed": 51,
+          "floor_pixels_removed": 2,
+          "grain_scale": null,
+          "fill_display": [
+            78,
+            50,
+            33
+          ]
+        },
+        {
+          "side": "right",
+          "limbus_centre": [
+            919.236,
+            293.779
+          ],
+          "limbus_axes": [
+            12.271,
+            12.271
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.97813,
+          "frame_residual_scale": 0.01188,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.0124,
+          "r33_threshold_linear": 0.047518,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 51.865,
+          "weighted_pixels": 233.529,
+          "pixels_touched": 287,
+          "pixels_full_weight": 209,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.5774,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8274,
+          "peak_removed_display": 0.4177,
+          "highlight_pixels_above_lid": 54,
+          "rim_pixels_removed": 135,
+          "floor_pixels_removed": 1,
+          "grain_scale": null,
+          "fill_display": [
+            107,
+            69,
+            43
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 29,
+      "source_frame": 729,
+      "source_sha256": "a9689db706019d330de6ec0a80fbc3459b08ba8bd6272d94dfbf8f481404d2c0",
+      "changed_pixels": 577,
+      "weighted_pixels": 473.251,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1048.485,
+            281.299
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.99466,
+          "frame_residual_scale": 0.005921,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.023684,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 90.711,
+          "weighted_pixels": 237.2,
+          "pixels_touched": 292,
+          "pixels_full_weight": 217,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.4622,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8157,
+          "peak_removed_display": 0.3305,
+          "highlight_pixels_above_lid": 55,
+          "rim_pixels_removed": 20,
+          "floor_pixels_removed": 0,
+          "grain_scale": null,
+          "fill_display": [
+            82,
+            52,
+            32
+          ]
+        },
+        {
+          "side": "right",
+          "limbus_centre": [
+            918.264,
+            294.485
+          ],
+          "limbus_axes": [
+            12.271,
+            12.271
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.98134,
+          "frame_residual_scale": 0.010104,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.0124,
+          "r33_threshold_linear": 0.040414,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 57.528,
+          "weighted_pixels": 236.051,
+          "pixels_touched": 285,
+          "pixels_full_weight": 213,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.5767,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8706,
+          "peak_removed_display": 0.3121,
+          "highlight_pixels_above_lid": 44,
+          "rim_pixels_removed": 138,
+          "floor_pixels_removed": 1,
+          "grain_scale": null,
+          "fill_display": [
+            106,
+            69,
+            43
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 30,
+      "source_frame": 730,
+      "source_sha256": "bab173b53ecd5da94ad335124767a72d3d03a4bda30b38c20f48201e48bd9670",
+      "changed_pixels": 594,
+      "weighted_pixels": 488.333,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1047.919,
+            281.617
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.99356,
+          "frame_residual_scale": 0.006362,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.025448,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 87.17,
+          "weighted_pixels": 244.012,
+          "pixels_touched": 298,
+          "pixels_full_weight": 222,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.4653,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8001,
+          "peak_removed_display": 0.2662,
+          "highlight_pixels_above_lid": 54,
+          "rim_pixels_removed": 19,
+          "floor_pixels_removed": 2,
+          "grain_scale": null,
+          "fill_display": [
+            83,
+            53,
+            34
+          ]
+        },
+        {
+          "side": "right",
+          "limbus_centre": [
+            917.674,
+            294.69
+          ],
+          "limbus_axes": [
+            12.271,
+            12.271
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.98112,
+          "frame_residual_scale": 0.01647,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.0124,
+          "r33_threshold_linear": 0.065879,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 56.32,
+          "weighted_pixels": 244.322,
+          "pixels_touched": 296,
+          "pixels_full_weight": 222,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.4727,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8589,
+          "peak_removed_display": 0.4436,
+          "highlight_pixels_above_lid": 50,
+          "rim_pixels_removed": 3,
+          "floor_pixels_removed": 3,
+          "grain_scale": null,
+          "fill_display": [
+            83,
+            53,
+            33
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 31,
+      "source_frame": 731,
+      "source_sha256": "8ce26ae23910b8647478879796cfb92a19035e04ab2a0f33b83f558694c64717",
+      "changed_pixels": 588,
+      "weighted_pixels": 478.431,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1047.357,
+            281.606
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.9908,
+          "frame_residual_scale": 0.005217,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.02087,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 91.751,
+          "weighted_pixels": 237.808,
+          "pixels_touched": 294,
+          "pixels_full_weight": 215,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.4703,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8313,
+          "peak_removed_display": 0.3501,
+          "highlight_pixels_above_lid": 54,
+          "rim_pixels_removed": 26,
+          "floor_pixels_removed": 2,
+          "grain_scale": null,
+          "fill_display": [
+            85,
+            54,
+            35
+          ]
+        },
+        {
+          "side": "right",
+          "limbus_centre": [
+            917.151,
+            294.56
+          ],
+          "limbus_axes": [
+            12.271,
+            12.271
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.98853,
+          "frame_residual_scale": 0.006689,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.0124,
+          "r33_threshold_linear": 0.026758,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 55.464,
+          "weighted_pixels": 240.624,
+          "pixels_touched": 294,
+          "pixels_full_weight": 217,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.5417,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8549,
+          "peak_removed_display": 0.4314,
+          "highlight_pixels_above_lid": 50,
+          "rim_pixels_removed": 109,
+          "floor_pixels_removed": 1,
+          "grain_scale": null,
+          "fill_display": [
+            99,
+            64,
+            38
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 32,
+      "source_frame": 732,
+      "source_sha256": "fa01d42b55c6f5d0822e5f9bd09bc700d3ec3a0547ae17bc004bcb8e323cc02a",
+      "changed_pixels": 579,
+      "weighted_pixels": 481.102,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1046.914,
+            281.47
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.98884,
+          "frame_residual_scale": 0.006586,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.026343,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 94.117,
+          "weighted_pixels": 242.173,
+          "pixels_touched": 290,
+          "pixels_full_weight": 219,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.4619,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8274,
+          "peak_removed_display": 0.3493,
+          "highlight_pixels_above_lid": 52,
+          "rim_pixels_removed": 27,
+          "floor_pixels_removed": 3,
+          "grain_scale": null,
+          "fill_display": [
+            83,
+            53,
+            34
+          ]
+        },
+        {
+          "side": "right",
+          "limbus_centre": [
+            916.639,
+            294.511
+          ],
+          "limbus_axes": [
+            12.271,
+            12.271
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.98285,
+          "frame_residual_scale": 0.011047,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.0124,
+          "r33_threshold_linear": 0.04419,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 60.206,
+          "weighted_pixels": 238.929,
+          "pixels_touched": 289,
+          "pixels_full_weight": 219,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.5111,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8864,
+          "peak_removed_display": 0.4282,
+          "highlight_pixels_above_lid": 47,
+          "rim_pixels_removed": 61,
+          "floor_pixels_removed": 3,
+          "grain_scale": null,
+          "fill_display": [
+            94,
+            62,
+            38
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 33,
+      "source_frame": 733,
+      "source_sha256": "a8ee83052af9ea89653e371cacbba27a0d0c781ad1db10e398fde1f4c7e7b70f",
+      "changed_pixels": 572,
+      "weighted_pixels": 471.694,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1046.436,
+            281.271
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.99236,
+          "frame_residual_scale": 0.005843,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.02337,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 90.556,
+          "weighted_pixels": 233.643,
+          "pixels_touched": 283,
+          "pixels_full_weight": 210,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.4643,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8236,
+          "peak_removed_display": 0.2602,
+          "highlight_pixels_above_lid": 55,
+          "rim_pixels_removed": 16,
+          "floor_pixels_removed": 3,
+          "grain_scale": null,
+          "fill_display": [
+            82,
+            53,
+            34
+          ]
+        },
+        {
+          "side": "right",
+          "limbus_centre": [
+            916.153,
+            294.311
+          ],
+          "limbus_axes": [
+            12.271,
+            12.271
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.98061,
+          "frame_residual_scale": 0.014741,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.0124,
+          "r33_threshold_linear": 0.058962,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 57.653,
+          "weighted_pixels": 238.051,
+          "pixels_touched": 289,
+          "pixels_full_weight": 215,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.5521,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8706,
+          "peak_removed_display": 0.423,
+          "highlight_pixels_above_lid": 44,
+          "rim_pixels_removed": 123,
+          "floor_pixels_removed": 1,
+          "grain_scale": null,
+          "fill_display": [
+            101,
+            69,
+            43
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 34,
+      "source_frame": 734,
+      "source_sha256": "7f62e95df32dfd88536da396ebd9e1078c8906b23360398ace6fbbabebbf84ad",
+      "changed_pixels": 575,
+      "weighted_pixels": 479.098,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1046.02,
+            281.069
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.9745,
+          "frame_residual_scale": 0.006025,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.024099,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 92.159,
+          "weighted_pixels": 247.318,
+          "pixels_touched": 298,
+          "pixels_full_weight": 220,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.4652,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8313,
+          "peak_removed_display": 0.2875,
+          "highlight_pixels_above_lid": 49,
+          "rim_pixels_removed": 24,
+          "floor_pixels_removed": 2,
+          "grain_scale": null,
+          "fill_display": [
+            83,
+            53,
+            33
+          ]
+        },
+        {
+          "side": "right",
+          "limbus_centre": [
+            915.725,
+            294.103
+          ],
+          "limbus_axes": [
+            12.271,
+            12.271
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.9825,
+          "frame_residual_scale": 0.01277,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.0124,
+          "r33_threshold_linear": 0.051081,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 54.634,
+          "weighted_pixels": 231.78,
+          "pixels_touched": 277,
+          "pixels_full_weight": 209,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.4747,
+          "surround_peak_display": null,
+          "peak_source_display": 0.847,
+          "peak_removed_display": 0.4315,
+          "highlight_pixels_above_lid": 48,
+          "rim_pixels_removed": 1,
+          "floor_pixels_removed": 3,
+          "grain_scale": null,
+          "fill_display": [
+            83,
+            53,
+            33
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 35,
+      "source_frame": 735,
+      "source_sha256": "1bdfdee3da8f475df594313aac19ac68376095e8c4921c7deb7a011707841275",
+      "changed_pixels": 592,
+      "weighted_pixels": 490.337,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1045.568,
+            280.876
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.9811,
+          "frame_residual_scale": 0.007094,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.028375,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 98.374,
+          "weighted_pixels": 244.325,
+          "pixels_touched": 298,
+          "pixels_full_weight": 222,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.4523,
+          "surround_peak_display": null,
+          "peak_source_display": 0.851,
+          "peak_removed_display": 0.4484,
+          "highlight_pixels_above_lid": 55,
+          "rim_pixels_removed": 16,
+          "floor_pixels_removed": 1,
+          "grain_scale": null,
+          "fill_display": [
+            83,
+            54,
+            32
+          ]
+        },
+        {
+          "side": "right",
+          "limbus_centre": [
+            915.301,
+            293.888
+          ],
+          "limbus_axes": [
+            12.271,
+            12.271
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.9882,
+          "frame_residual_scale": 0.014435,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.0124,
+          "r33_threshold_linear": 0.057739,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 55.672,
+          "weighted_pixels": 246.012,
+          "pixels_touched": 294,
+          "pixels_full_weight": 220,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.4784,
+          "surround_peak_display": null,
+          "peak_source_display": 0.851,
+          "peak_removed_display": 0.406,
+          "highlight_pixels_above_lid": 47,
+          "rim_pixels_removed": 5,
+          "floor_pixels_removed": 0,
+          "grain_scale": null,
+          "fill_display": [
+            83,
+            52,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 36,
+      "source_frame": 736,
+      "source_sha256": "4c3882362e6f4619ecfff2f46ddf8367b844a5349bc18d3edff9dcf3e409873e",
+      "changed_pixels": 584,
+      "weighted_pixels": 487.263,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1045.151,
+            280.655
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.9842,
+          "frame_residual_scale": 0.006595,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.02638,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 96.426,
+          "weighted_pixels": 244.553,
+          "pixels_touched": 297,
+          "pixels_full_weight": 220,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.4648,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8392,
+          "peak_removed_display": 0.3158,
+          "highlight_pixels_above_lid": 54,
+          "rim_pixels_removed": 22,
+          "floor_pixels_removed": 1,
+          "grain_scale": null,
+          "fill_display": [
+            84,
+            53,
+            33
+          ]
+        },
+        {
+          "side": "right",
+          "limbus_centre": [
+            914.819,
+            293.664
+          ],
+          "limbus_axes": [
+            12.271,
+            12.271
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.98471,
+          "frame_residual_scale": 0.01203,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.0124,
+          "r33_threshold_linear": 0.048121,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 59.553,
+          "weighted_pixels": 242.71,
+          "pixels_touched": 287,
+          "pixels_full_weight": 219,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.5662,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8864,
+          "peak_removed_display": 0.4002,
+          "highlight_pixels_above_lid": 38,
+          "rim_pixels_removed": 134,
+          "floor_pixels_removed": 2,
+          "grain_scale": null,
+          "fill_display": [
+            105,
+            69,
+            42
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 37,
+      "source_frame": 737,
+      "source_sha256": "d0e3381268600b95f1361ce72e3fd1a6a7d80c8c424930fc58041dc2fae996f6",
+      "changed_pixels": 582,
+      "weighted_pixels": 486.008,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1044.71,
+            280.462
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.98838,
+          "frame_residual_scale": 0.006197,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.02479,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 94.56,
+          "weighted_pixels": 246.365,
+          "pixels_touched": 295,
+          "pixels_full_weight": 221,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.4646,
+          "surround_peak_display": null,
+          "peak_source_display": 0.851,
+          "peak_removed_display": 0.3276,
+          "highlight_pixels_above_lid": 53,
+          "rim_pixels_removed": 34,
+          "floor_pixels_removed": 1,
+          "grain_scale": null,
+          "fill_display": [
+            84,
+            53,
+            34
+          ]
+        },
+        {
+          "side": "right",
+          "limbus_centre": [
+            914.474,
+            293.508
+          ],
+          "limbus_axes": [
+            12.271,
+            12.271
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.98845,
+          "frame_residual_scale": 0.011305,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.0124,
+          "r33_threshold_linear": 0.045222,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 61.972,
+          "weighted_pixels": 239.643,
+          "pixels_touched": 287,
+          "pixels_full_weight": 219,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.5422,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8981,
+          "peak_removed_display": 0.4251,
+          "highlight_pixels_above_lid": 42,
+          "rim_pixels_removed": 109,
+          "floor_pixels_removed": 1,
+          "grain_scale": null,
+          "fill_display": [
+            100,
+            69,
+            41
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 38,
+      "source_frame": 738,
+      "source_sha256": "47c53bb75d475ac6baac2a071d0487cf1f047bac94035cb73e2edc7adb9e1f20",
+      "changed_pixels": 580,
+      "weighted_pixels": 481.412,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1044.294,
+            280.408
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.99382,
+          "frame_residual_scale": 0.006865,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.027461,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 93.284,
+          "weighted_pixels": 246.145,
+          "pixels_touched": 290,
+          "pixels_full_weight": 220,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.4686,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8392,
+          "peak_removed_display": 0.4538,
+          "highlight_pixels_above_lid": 54,
+          "rim_pixels_removed": 16,
+          "floor_pixels_removed": 1,
+          "grain_scale": null,
+          "fill_display": [
+            83,
+            54,
+            34
+          ]
+        },
+        {
+          "side": "right",
+          "limbus_centre": [
+            914.04,
+            293.419
+          ],
+          "limbus_axes": [
+            12.271,
+            12.271
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.98828,
+          "frame_residual_scale": 0.012976,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.0124,
+          "r33_threshold_linear": 0.051904,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 57.195,
+          "weighted_pixels": 235.267,
+          "pixels_touched": 290,
+          "pixels_full_weight": 213,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.5262,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8667,
+          "peak_removed_display": 0.4251,
+          "highlight_pixels_above_lid": 49,
+          "rim_pixels_removed": 93,
+          "floor_pixels_removed": 2,
+          "grain_scale": null,
+          "fill_display": [
+            97,
+            66,
+            39
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 39,
+      "source_frame": 739,
+      "source_sha256": "ac1a1c4fd28071b3ca5eb692a72e81025610cc98e0fef93de92abbda189868fb",
+      "changed_pixels": 593,
+      "weighted_pixels": 494.11,
+      "eyes": [
+        {
+          "side": "left",
+          "limbus_centre": [
+            1043.953,
+            280.298
+          ],
+          "limbus_axes": [
+            12.303,
+            12.303
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.99217,
+          "frame_residual_scale": 0.005871,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.006865,
+          "r33_threshold_linear": 0.023483,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 90.668,
+          "weighted_pixels": 258.29,
+          "pixels_touched": 305,
+          "pixels_full_weight": 232,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.4732,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8236,
+          "peak_removed_display": 0.3823,
+          "highlight_pixels_above_lid": 48,
+          "rim_pixels_removed": 26,
+          "floor_pixels_removed": 1,
+          "grain_scale": null,
+          "fill_display": [
+            85,
+            54,
+            35
+          ]
+        },
+        {
+          "side": "right",
+          "limbus_centre": [
+            913.613,
+            293.211
+          ],
+          "limbus_axes": [
+            12.271,
+            12.271
+          ],
+          "registration_shift_px": [
+            0.0,
+            0.0
+          ],
+          "registration_ncc": 0.98637,
+          "frame_residual_scale": 0.010395,
+          "repaired": true,
+          "reason": null,
+          "sequence_residual_scale": 0.0124,
+          "r33_threshold_linear": 0.041578,
+          "residual_pixels_above_r33_threshold": 0,
+          "peak_excess_sigmas": 58.176,
+          "weighted_pixels": 235.82,
+          "pixels_touched": 288,
+          "pixels_full_weight": 210,
+          "residual_pixels_above_2sigma": 0,
+          "residual_peak_display": 0.4701,
+          "surround_peak_display": null,
+          "peak_source_display": 0.8706,
+          "peak_removed_display": 0.3952,
+          "highlight_pixels_above_lid": 58,
+          "rim_pixels_removed": 3,
+          "floor_pixels_removed": 4,
+          "grain_scale": null,
+          "fill_display": [
+            83,
+            52,
+            32
+          ]
+        }
+      ]
+    }
+  ],
+  "contact_sheets": [
+    "contact_000.jpg",
+    "contact_025.jpg"
+  ],
+  "frames": 40,
+  "frames_repaired": 34,
+  "frames_exact_source": 6,
+  "total_changed_pixels": 18848,
+  "sequence_residual_scale": {
+    "left": 0.006865458481129944,
+    "right": 0.012400192548516136
+  },
+  "weight_ramp_sigmas": [
+    2.0,
+    4.0
+  ],
+  "reach_px": 8.0,
+  "gain_model": "local",
+  "union_footprint": true,
+  "fill_iris": 0.99,
+  "pupil_target": 0.34,
+  "pupil_level": {
+    "left": [
+      0.01878,
+      0.00432
+    ],
+    "right": [
+      0.03116,
+      0.00793
+    ]
+  },
+  "grain_fraction": 0.0,
+  "atlas": {
+    "left": {
+      "frames": 34,
+      "iterations": [
+        {
+          "iteration": 0,
+          "unregistered_frames": 0,
+          "mean_ncc": 0.95146,
+          "min_ncc": 0.55934,
+          "atlas_cells": 4922,
+          "sharpness": 4.16009,
+          "shift_rms_norm": 0.04084
+        },
+        {
+          "iteration": 1,
+          "unregistered_frames": 0,
+          "mean_ncc": 0.9495,
+          "min_ncc": 0.51708,
+          "atlas_cells": 4890,
+          "sharpness": 4.14833,
+          "shift_rms_norm": 0.04335
+        },
+        {
+          "iteration": 2,
+          "unregistered_frames": 0,
+          "mean_ncc": 0.94935,
+          "min_ncc": 0.52846,
+          "atlas_cells": 4903,
+          "sharpness": 4.15425,
+          "shift_rms_norm": 0.04279
+        },
+        {
+          "iteration": 3,
+          "unregistered_frames": 0,
+          "mean_ncc": 0.94882,
+          "min_ncc": 0.52974,
+          "atlas_cells": 4900,
+          "sharpness": 4.16404,
+          "shift_rms_norm": 0.04413
+        },
+        {
+          "iteration": 4,
+          "unregistered_frames": 0,
+          "mean_ncc": 0.94811,
+          "min_ncc": 0.52868,
+          "atlas_cells": 4899,
+          "sharpness": 4.17057,
+          "shift_rms_norm": 0.04452
+        }
+      ],
+      "sharpness": 4.78539,
+      "unregistered_seed_sharpness": 3.99139,
+      "holes_interpolated": 2539,
+      "holes_remaining": 0
+    },
+    "right": {
+      "frames": 32,
+      "iterations": [
+        {
+          "iteration": 0,
+          "unregistered_frames": 0,
+          "mean_ncc": 0.93751,
+          "min_ncc": 0.64339,
+          "atlas_cells": 2404,
+          "sharpness": 4.08975,
+          "shift_rms_norm": 0.03597
+        },
+        {
+          "iteration": 1,
+          "unregistered_frames": 0,
+          "mean_ncc": 0.92723,
+          "min_ncc": 0.62057,
+          "atlas_cells": 2347,
+          "sharpness": 4.12601,
+          "shift_rms_norm": 0.0398
+        },
+        {
+          "iteration": 2,
+          "unregistered_frames": 0,
+          "mean_ncc": 0.91886,
+          "min_ncc": 0.61431,
+          "atlas_cells": 2354,
+          "sharpness": 4.14222,
+          "shift_rms_norm": 0.04128
+        },
+        {
+          "iteration": 3,
+          "unregistered_frames": 0,
+          "mean_ncc": 0.91102,
+          "min_ncc": 0.60348,
+          "atlas_cells": 2367,
+          "sharpness": 4.19432,
+          "shift_rms_norm": 0.042
+        },
+        {
+          "iteration": 4,
+          "unregistered_frames": 0,
+          "mean_ncc": 0.90002,
+          "min_ncc": 0.55191,
+          "atlas_cells": 2394,
+          "sharpness": 4.11324,
+          "shift_rms_norm": 0.04119
+        }
+      ],
+      "sharpness": 3.87679,
+      "unregistered_seed_sharpness": 3.33046,
+      "holes_interpolated": 3971,
+      "holes_remaining": 1794
+    }
+  },
+  "method": "round 33 sequence atlas, with a CONTINUOUS removal weight on the excess over it and ONE residual scale per eye for the whole shot; no mask",
+  "atlas_frames": "music_videos\\reporter_test\\shots\\reporter_a\\composite\\r34_gen_wide\\inpaint",
+  "atlas_mode": "replace",
+  "generated_cells": {
+    "left": 0,
+    "right": 0
+  },
+  "material_source": "a generative video inpainter, pooled into ONE sequence-wide atlas so the fill is identical in every frame",
+  "generated_material_used": true,
+  "scene_reflection_added": false,
+  "catchlight_render": null,
+  "catchlight_gain": null,
+  "catchlight_gain_source": null,
+  "catchlight_matte": "tracked eyelid polygon AND the limbus, both feathered ~1 px",
+  "dark_rim_repaired": true,
+  "rim_reach_px": 4.0,
+  "production_enabled": false,
+  "artist_accepted": false,
+  "source_outside_weight_exact": true,
+  "lid_extend_px": 0.0,
+  "lid_inset_px": 2.0,
+  "atlas_lid_inset_px": 3.0,
+  "lid_shadow_strength": 1.0,
+  "lid_shadow_inset_px": 1.0,
+  "lid_shadow_reference_px": 8.0,
+  "lid_shadow_model": "1 + A * exp(-depth_below_fitted_upper_lid / tau); ONE per eye for the shot, fitted on pooled observed-over-canonical ratios with each frame normalised by its own level beyond the reference depth, so only the part the per-frame scalar cannot represent is fitted",
+  "lid_shadow": {
+    "left": {
+      "amplitude": 0.55393,
+      "tau_px": 2.0,
+      "weighted_rms": 0.0267,
+      "weighted_rms_if_flat": 0.08719,
+      "samples": 2537,
+      "bins": 15,
+      "observed": [
+        [
+          1.5,
+          148,
+          1.2314
+        ],
+        [
+          2.5,
+          153,
+          1.1985
+        ],
+        [
+          3.5,
+          157,
+          1.1286
+        ],
+        [
+          4.5,
+          161,
+          1.062
+        ],
+        [
+          5.5,
+          158,
+          1.0131
+        ],
+        [
+          6.5,
+          156,
+          0.9896
+        ],
+        [
+          7.5,
+          149,
+          0.9906
+        ],
+        [
+          8.5,
+          142,
+          0.9894
+        ],
+        [
+          9.5,
+          147,
+          0.988
+        ],
+        [
+          10.5,
+          135,
+          0.9862
+        ],
+        [
+          11.5,
+          173,
+          0.987
+        ],
+        [
+          12.5,
+          202,
+          0.9912
+        ],
+        [
+          13.5,
+          202,
+          1.0096
+        ],
+        [
+          14.5,
+          163,
+          1.0212
+        ],
+        [
+          15.5,
+          120,
+          1.0684
+        ]
+      ]
+    },
+    "right": {
+      "amplitude": -0.11435,
+      "tau_px": 10.0,
+      "weighted_rms": 0.11427,
+      "weighted_rms_if_flat": 0.12791,
+      "samples": 2685,
+      "bins": 14,
+      "observed": [
+        [
+          1.5,
+          161,
+          1.0696
+        ],
+        [
+          2.5,
+          166,
+          1.06
+        ],
+        [
+          3.5,
+          171,
+          1.0243
+        ],
+        [
+          4.5,
+          169,
+          0.8042
+        ],
+        [
+          5.5,
+          166,
+          0.7553
+        ],
+        [
+          6.5,
+          159,
+          0.7751
+        ],
+        [
+          7.5,
+          150,
+          0.7905
+        ],
+        [
+          8.5,
+          139,
+          0.8061
+        ],
+        [
+          9.5,
+          147,
+          0.8584
+        ],
+        [
+          10.5,
+          165,
+          0.9673
+        ],
+        [
+          11.5,
+          249,
+          0.9779
+        ],
+        [
+          12.5,
+          303,
+          1.0183
+        ],
+        [
+          13.5,
+          251,
+          1.0505
+        ],
+        [
+          14.5,
+          175,
+          1.043
+        ]
+      ]
+    }
+  },
+  "atlas_grid": {
+    "reach": 1.25,
+    "cells": 121,
+    "step": 0.020833333333333332
+  },
+  "sample_reach": 1.1,
+  "atlas_cap_percentile": 0.0,
+  "atlas_cap_level": {
+    "left": null,
+    "right": null
+  },
+  "ncc_floor": 0.2,
+  "eyelid_track": "eyelid_track.json",
+  "eyelid_track_sha256": "4dc901e8f9202398027c1cd71d9dc8f28b0bbd9c03245da2f90dd03d58489a04",
+  "eyelid_source": "image_fit",
+  "eyelid_fitted_eyes": 232,
+  "freeze_registration": true,
+  "frozen_registration": {
+    "left": {
+      "du": 0.0,
+      "dv": 0.0,
+      "scale": 1.0,
+      "du_p95": 0.05304001392796633,
+      "dv_p95": 0.078
+    },
+    "right": {
+      "du": 0.0,
+      "dv": 0.0,
+      "scale": 1.0,
+      "du_p95": 0.05518501596525311,
+      "dv_p95": 0.06629999752342701
+    }
+  },
+  "limbus_track": "limbus_track.json",
+  "limbus_track_sha256": "8d90c7eddf86f09d2dea9993f39645e9de02a4c5b308c4a96fafda91e056741e",
+  "limbus_source": "image_fit",
+  "code_sha256": "87dbfad949e58e81b418f4651343a364183668c08c4a717ef05a0eb6869f4f3d",
+  "atlas_code_sha256": "0ba68bb8a45f08259e0c8966303acb9f7be1f8a35b6842e8e48b81b8c38df0ef",
+  "limbus_code_sha256": "ccab90e73df6a383089aecabcef0a0739feec9ee9f7b12dc8f0e205db250ecbe",
+  "track_sha256": "02fdfd69899a74440f53a57fd3b09b4e6f33309b20191860d8f1dc34ce745f53"
+}

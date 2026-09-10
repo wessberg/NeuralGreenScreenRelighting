@@ -1,7 +1,7 @@
 {
   "frames_checked": 150,
-  "exact_source_pixels_outside_weight": 310955604,
-  "removed_eyes_darker_than_source": 268,
+  "exact_source_pixels_outside_weight": 310965765,
+  "removed_eyes_darker_than_source": 271,
   "removed_eyes_not_darker": [],
   "source_outside_weight_exact": true,
   "replace_frames_checked": 0,
@@ -9,7 +9,7 @@
   "reflection_pixels_outside_eyelid": 0,
   "exact_keyed_eye_fallbacks": 300,
   "protected_hashes_unchanged": 304,
-  "removal_code_sha256": "3ba290358e1e92408fd807c20ba17c6365641e943718ebfbd159aa02eae04fc9",
+  "removal_code_sha256": "14bfc0f90f0703b90c8ef56890aa2d04e0de101f9d8d1adcec947d9664f9d6d5",
   "atlas_code_sha256": "0ba68bb8a45f08259e0c8966303acb9f7be1f8a35b6842e8e48b81b8c38df0ef",
   "code_sha256": "febbc3fbbe6f387c4b00704fa1a40d840dace9f9ea138daf1083c69755ad96ac",
   "production_enabled": false,
