@@ -8,8 +8,9 @@ flag; the full command is in §7.
 found only afterwards, while writing this handoff: at source 1049–1055 left (a fast glance)
 and 848–853 left it paints a displaced iris — grey blotches, a second pupil, dark smears on
 the sclera — on frames R38 had left alone.** Cause and fix in §2a; the corrected run is
-`r39_fixF`, video `final/r39_fixF_eyes.mp4`. **No verdict yet** — get it on r39_fixF before
-building on §1.
+`r39_fixF`, video `final/r39_fixF_eyes.mp4`.
+**Artist verdict on `r39_fixF_eyes.mp4`: *"looks good, commit and hand off."*** r39_fixF is
+the round's result; its command is §7.
 
 His one instruction this round, mid-way, when I proposed CPU shortcuts to the eye pass:
 *"Port it to the GPU instead of optimizing it on the CPU."* It is in AGENTS.md and memory.
@@ -218,8 +219,7 @@ probe, held by `eye_gpu.py --selftest`:
 
 ## 6. Still open — the round 40 list
 
-1. **The artist's verdict on `r39_fixF_eyes.mp4`** (tell him fixE's 1049–1055 L was mine and
-   is gone). Nothing below outranks it.
+1. Nothing he has pointed at: r39_fixF "looks good". Whatever he raises next outranks this list.
 2. **Off-axis gaze (e4)**: the canonical is painted as a circle. A foreshortened iris needs
    the canonical projected as an ellipse (the eye's own limbus shape — fit an ellipse to the
    same edge points where the arc allows, or derive the squash from head pose and gaze).
@@ -276,11 +276,11 @@ $base = @('--shot', $F, '--count', '1200', '--canonical-votes-frac', '0.44', '--
 > (§0, §3) — iterate with `eye_removal_gpu.py`, never the CPU script, and keep `--selftest`
 > and `validate_eye_gpu.py` green when touching a primitive.
 >
-> **First, get the artist's verdict on `reporter_full/final/r39_fixF_eyes.mp4`** (SOURCE /
-> R38 / R39). Round 38's evidence frames 137, 243 and 304 L are fixed at their causes, and
-> 49 eyes that painted iris over her skin are now 0. He was first sent `r39_fixE_eyes.mp4`,
-> which had a displaced iris at 1049–1055 L that I introduced (§2a); if he reports that, it
-> is fixed. If he finds new failures, take his frames as evidence (as in
+> The artist's verdict on `reporter_full/final/r39_fixF_eyes.mp4` (SOURCE / R38 / R39):
+> *"looks good"*. Round 38's evidence frames 137, 243 and 304 L are fixed at their causes, and
+> 49 eyes that painted iris over her skin are now 0. `r39_fixF` (round39.md §7) is the
+> baseline: gate every change on `validate_eye_gpu.py --ref r39_fixF` and put the two runs in
+> the same tile. If he finds new failures, take his frames as evidence (as in
 > `rounds/evidence/round38/`), find every eye of that class with `audit_r39_classes.py`, and
 > look at them with `review_r39_classes.py` — **and look at every eye a change touches,
 > against the previous run, BEFORE sending a video**; that is how §2a should have been caught.

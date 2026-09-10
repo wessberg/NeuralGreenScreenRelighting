@@ -48,8 +48,9 @@ Painted-skin eyes 49 → 0 (`audit_r39_classes.py`; look with `review_r39_classe
 glance painted a displaced iris at 1049–1055 L.** A high limbus SE is motion blur as often
 as a slide; only the image can say which answer is wrong, so `limbus_trust.py` now keeps a
 bridge only where the fit's own edge objective prefers it, per bridged run (§2a). Corrected
-run `r39_fixF`. **Look at every eye a new stage changes, against the previous run, before
-sending a video** — the audit's flicker max pointed at it and no class caught it.
+run `r39_fixF` — **artist: *"looks good"*; it is the baseline for round 40.** **Look at
+every eye a new stage changes, against the previous run, before sending a video** — the
+audit's flicker max pointed at it and no class caught it.
 
 **Round 38 — the whole 20 s clip (`reporter_full`, 1200 frames): "really, really close to
 perfect overall", with failures "here and there across the full 1:40". Read
