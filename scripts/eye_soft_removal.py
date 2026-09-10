@@ -1434,7 +1434,9 @@ def load_canonical(run, grid_config):
     return dict(run=str(src), eyes=out, code_sha256=record.get('code_sha256'))
 
 
-def main():
+def build_parser():
+    """The command line, shared with the GPU port (`eye_removal_gpu.py`) so the two cannot
+    drift apart on a flag."""
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     add_shot_argument(ap)
@@ -1766,7 +1768,11 @@ def main():
     ap.add_argument('--sheet-zoom', type=int, default=4)
     ap.add_argument('--sheet-frames', type=int, default=25)
     ap.add_argument('--seed', type=int, default=20340909)
-    args = ap.parse_args()
+    return ap
+
+
+def main():
+    args = build_parser().parse_args()
     shot = from_args(args)
     track = (LimbusTrack.load(shot.relight / args.limbus_track)
              if getattr(args, 'limbus_track', '') else None)
