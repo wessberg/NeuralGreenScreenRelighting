@@ -1234,8 +1234,248 @@ def _srgb_scalar(x):
     return round(float(linear_to_srgb(np.clip(x, 0, 1))), 4)
 
 
+# =========================================================================== limbus placement
+def refine_limbus(eyes, cut, fitted, args):
+    """Re-place an eye where the CANONICAL EYE says the limbus fit slid off her iris.
+
+    Round 38's e2 (source 243 left, the "double iris") and the audit's class B: the limbus
+    fit converges on the wrong circle for runs of frames -- +8 px sideways at 493-497
+    left, 3.5 px vertical wander over 933-955 right -- confidently enough that no temporal
+    rule can tell a slide from a saccade, and round 37's one-frame gate then "repairs" the
+    good neighbours toward the slid frames (241, 242, 246, 247 left).
+
+    The pass already holds the one model of her eye that does not look at the limbus edge:
+    the canonical iris, pupil and limbal ring, built once from ~1000 frames. So every eye
+    is matched against it over +/-`--refine-span` px around its tracked centre (NCC of
+    log display luminance against the canonical rendered at each candidate, frozen
+    registration), and moved only when the canonical fits CLEARLY better somewhere else:
+    at least `--refine-min-shift` px away and `--refine-min-gain` higher correlation.
+
+    **Only the lower part of the eye is compared** (below `--refine-low` radii above the
+    centre). Compared over the whole opening, the canonical -- which has no lid shadow --
+    is pulled UP into the dark lash band at a turned head: at source 238/240 left it sat
+    4 px high on the lid while the track was right. The lower limbus, the sclera either
+    side and the lower pupil carry the position without the lash.
+    """
+    offs = np.arange(-args.refine_span, args.refine_span + 1e-9, args.refine_step)
+    n1 = len(offs)
+    DX, DY = np.meshgrid(offs, offs)
+    K = DX.size
+    c0k = K // 2
+    assert DX.ravel()[c0k] == 0 and DY.ravel()[c0k] == 0
+    dxt, dyt = as_t(DX.ravel()), as_t(DY.ravel())
+    step = G.dev_scalar(atl.ATLAS_STEP)
+    half = float(np.float32((atl.ATLAS_N - 1) / 2))
+    moved, report = {}, []
+    for side in r32.SIDES:
+        fit = fitted[side]
+        if fit is None:
+            continue
+        reg = fit['frozen_registration']
+        atlas = as_t(fit['atlas'])
+        aw = as_t(fit['aw'].astype(np.float32))[..., None]
+        du, dv = np.float32(reg['du']), np.float32(reg['dv'])
+        sc = G.dev_scalar(float(np.float32(reg['scale'])))
+        shapes = {}
+        for (i, sd), e in sorted(eyes.items()):
+            if sd == side:
+                shapes.setdefault((e.h, e.w), []).append(e)
+        for shape, lst in sorted(shapes.items()):
+            g = Group(side, lst)
+            g.patch = torch.stack([cut(e) for e in lst])
+            eye_frame(g)
+            solve_eye(g)
+            lum = display_lum(g.patch)
+            core, _ = corneal_specular(lum, g.rho)
+            spec = G.dilate(core, np.ones((9, 9), bool))
+            vrel = div(g.yy - g.ly, g.ay)
+            mask = g.visible & (g.rho < 1.2) & ~spec & (vrel > args.refine_low)
+            ls = torch.log(torch.clamp_min(lum, 1e-3)).to(F64)
+            B, h, w = g.B, g.h, g.w
+            per = max(1, int(args.refine_chunk // (K * h * w)))
+            for s0 in range(0, B, per):
+                s1 = min(B, s0 + per)
+                b = s1 - s0
+                cx = g.lx[s0:s1].view(b, 1, 1, 1) + dxt.view(1, K, 1, 1)
+                cy = g.ly[s0:s1].view(b, 1, 1, 1) + dyt.view(1, K, 1, 1)
+                p = ((g.xx[s0:s1][:, None] - cx) / g.ax[s0:s1].view(b, 1, 1, 1)).to(F32)
+                q = ((g.yy[s0:s1][:, None] - cy) / g.ay[s0:s1].view(b, 1, 1, 1)).to(F32)
+                ai = ((p - du) / sc) / step + half
+                aj = ((q - dv) / sc) / step + half
+                pred = G.remap_single(atlas, ai, aj)
+                sup = G.remap_single(aw, ai, aj)[..., 0] > 0.98
+                disp = torch.pow(torch.clamp(pred, 0, 1), 1 / 2.4) * 1.055 - 0.055
+                pl = torch.log(torch.clamp(disp.max(-1).values, 1e-3, 1.0)).to(F64)
+                mf = (mask[s0:s1][:, None] & sup).to(F64)
+                n = mf.sum((2, 3))
+                a = ls[s0:s1][:, None] * mf
+                bb = pl * mf
+                nn = n.clamp_min(1)
+                sa, sb = a.sum((2, 3)), bb.sum((2, 3))
+                vab = (a * bb).sum((2, 3)) - sa * sb / nn
+                vaa = (a * a).sum((2, 3)) - sa * sa / nn
+                vbb = (bb * bb).sum((2, 3)) - sb * sb / nn
+                c = vab / torch.sqrt(torch.clamp_min(vaa * vbb, 1e-18))
+                valid = n >= 0.6 * n.max(1, keepdim=True).values
+                c = torch.where(valid, c, torch.full_like(c, -2.0))
+                cn = c.cpu().numpy()
+                nn_np = n.cpu().numpy()
+                for r in range(b):
+                    e = g.eyes[s0 + r]
+                    k = int(np.argmax(cn[r]))
+                    iy, ix = divmod(k, n1)
+                    surf = cn[r].reshape(n1, n1)
+                    dx, dy = float(offs[ix]), float(offs[iy])
+                    for axis in (0, 1):
+                        j = ix if axis == 0 else iy
+                        if 0 < j < n1 - 1:
+                            if axis == 0:
+                                l_, m_, r_ = surf[iy, j - 1], surf[iy, j], surf[iy, j + 1]
+                            else:
+                                l_, m_, r_ = surf[j - 1, ix], surf[j, ix], surf[j + 1, ix]
+                            den = l_ - 2 * m_ + r_
+                            if den < 0:
+                                sft = float(np.clip(0.5 * (l_ - r_) / den, -0.5, 0.5)) * args.refine_step
+                                if axis == 0:
+                                    dx += sft
+                                else:
+                                    dy += sft
+                    best, at0 = float(cn[r, k]), float(cn[r, c0k])
+                    shift = float(np.hypot(dx, dy))
+                    ok = (shift >= args.refine_min_shift and best - at0 >= args.refine_min_gain
+                          and best >= args.refine_min_ncc and nn_np[r, k] >= args.refine_min_px)
+                    if ok:
+                        moved[(e.i, side)] = (float(e.limbus[0]) + dx, float(e.limbus[1]) + dy)
+                        report.append(dict(frame=e.i, side=side, dx=round(dx, 2), dy=round(dy, 2),
+                                           ncc=round(best, 3), ncc_at_track=round(at0, 3),
+                                           mask_px=int(nn_np[r, k])))
+    return moved, report
+
+
+class _Centres:
+    """A limbus track with some centres replaced, for `esr.gate_limbus`."""
+
+    def __init__(self, track, fixed):
+        self.track, self.fixed = track, fixed
+
+    def get(self, frame, side):
+        got = self.track.get(frame, side)
+        if got is None:
+            return None
+        key = (int(frame), side)
+        if key in self.fixed:
+            return (tuple(self.fixed[key]), got[1], got[2])
+        return got
+
+
+def gate_limbus_trusted(track, corners, se, rate, gate=1.0, ratio=2.5, window_s=1.0,
+                        max_gap_s=0.25):
+    """Round 37's limbus gate, made to respect the fit's OWN uncertainty.
+
+    Round 38's e2 (the "double iris", source 241-247 left) was two failures stacked. The
+    limbus fit slid +6..+8 px on 243-245 -- and said so: its centre standard error rose to
+    0.24-0.31 px against 0.04 either side. Then the one-frame gate, which replaces a frame
+    that breaks from the MEAN OF ITS TWO NEIGHBOURS, took those slid frames as the
+    neighbours of 242 and 246 and "repaired" the good frames toward the slide by 3.8 px,
+    and 241 and 247 by 1.9 -- seven frames of double iris from three bad fits.
+
+    So first, a frame whose standard error exceeds `ratio` times the median of its eye
+    over +/-`window_s` seconds is not trusted: its centre is re-derived from the nearest
+    TRUSTED frames either side (their offset from the eye corners, interpolated in time,
+    carried by the corners here), when both lie within `max_gap_s` seconds. Then the
+    one-frame gate runs on that track, so a distrusted frame can never be anyone's
+    reference. Returns the gate's usual dict, entries carrying 'trust' or 'gate'.
+    """
+    half = max(1, int(round(window_s * float(rate))))
+    gap = max(1, int(round(max_gap_s * float(rate))))
+    fixed = {}
+    info = {}
+    for side in r32.SIDES:
+        frames = sorted(i for (i, s) in se if s == side and track.get(i, side) is not None)
+        vals = {i: se[(i, side)] for i in frames if se[(i, side)] is not None}
+        trusted = {}
+        for i in frames:
+            s = vals.get(i)
+            near = [vals[j] for j in range(i - half, i + half + 1) if j in vals]
+            med = float(np.median(near)) if near else None
+            trusted[i] = (s is not None and med is not None and s <= ratio * med
+                          and (i, side) in corners)
+        good = [i for i in frames if trusted[i]]
+        for i in frames:
+            if trusted[i] or (i, side) not in corners:
+                continue
+            prev = [j for j in good if i - gap <= j < i]
+            nxt = [j for j in good if i < j <= i + gap]
+            if not prev or not nxt:
+                continue
+            a, b = prev[-1], nxt[0]
+            oa = np.asarray(track.get(a, side)[0], float) - corners[(a, side)]
+            ob = np.asarray(track.get(b, side)[0], float) - corners[(b, side)]
+            t = (i - a) / float(b - a)
+            pred = corners[(i, side)] + (1 - t) * oa + t * ob
+            here = np.asarray(track.get(i, side)[0], float)
+            moved = float(np.hypot(*(pred - here)))
+            if moved > gate:
+                fixed[(i, side)] = pred
+                info[(i, side)] = moved
+    wrapped = _Centres(track, fixed)
+    out = esr.gate_limbus(wrapped, corners, 0, gate)
+    result = {}
+    for k, c in fixed.items():
+        got = track.get(*k)
+        result[k] = (c, got[1], got[2], info[k], 'trust')
+    for k, v in out.items():
+        result[k] = (v[0], v[1], v[2], v[3], 'gate')
+    return result
+
+
+def lid_height(lid, limbus, ay):
+    """The fitted upper lid's height above the limbus centre, in limbus radii, or None."""
+    if not lid or lid.get('upper') is None:
+        return None
+    a, b, c = lid['upper']
+    u = float(limbus[0]) - float(lid['centre'][0])
+    return (float(limbus[1]) - (a * u * u + b * u + c)) / ay
+
+
 # =========================================================================== final pass
-def final_weights(g, side, fit, reg, sg, args, ceil_dict, lids, store):
+def skin_runs(counts, high, low, max_neutral=2):
+    """Which eyes the skin gate takes, with HYSTERESIS IN TIME.
+
+    A per-frame count threshold toggles inside a run: at source 933-955 right (sideways
+    gaze, the circular canonical larger than her foreshortened iris) the count moves
+    between 3 and 21 frame to frame, and gating only the frames above 6 switched her eye
+    between the canonical and her own iris every few frames. So an eye at or above `high`
+    gates, and the gate spreads to the frames either side for as long as they still show
+    at least `low` skin pixels under the fill -- one decision per run. Frames with no
+    count (untreated, or already softbox-only) are passed over, up to `max_neutral` in a
+    row.
+    """
+    gate = set()
+    for side in r32.SIDES:
+        c = {i: v for (i, s), v in counts.items() if s == side}
+        for i, v in c.items():
+            if v < high:
+                continue
+            gate.add((i, side))
+            for step in (-1, 1):
+                j, neutral = i + step, 0
+                while True:
+                    if j in c:
+                        if c[j] < low:
+                            break
+                        gate.add((j, side))
+                        neutral = 0
+                    else:
+                        neutral += 1
+                        if neutral > max_neutral:
+                            break
+                    j += step
+    return gate
+
+
+def final_weights(g, side, fit, reg, sg, args, ceil_dict, lids, store, measure=False,
+                  gate_set=None):
     """The per-eye body of eye_soft_removal's last loop, up to the shading, batched: the
     whole-iris fill bounded by the lids, the excess-based removal, the lash line, the
     specular region replaced whole, the gates, and the edge / region shading. Eyes that
@@ -1247,14 +1487,18 @@ def final_weights(g, side, fit, reg, sg, args, ceil_dict, lids, store):
     recs = []
     active = []
     for n, e in enumerate(g.eyes):
-        ncc = fit['ncc'][e.i]
+        # An eye first collected after --refine-limbus moved it was never registered: it
+        # carries the build's initialiser, as an unregistered frame does.
+        ncc = fit['ncc'].get(e.i, 0.0)
         fs = g.frame_scale[n]
         rec = dict(side=side, limbus_centre=[round(float(c), 3) for c in e.limbus],
                    limbus_axes=[round(e.ax, 3), round(e.ay, 3)],
                    registration_shift_px=[round(float(du * e.ax), 4), round(float(dv * e.ay), 4)],
                    registration_ncc=round(float(ncc), 5),
                    frame_residual_scale=None if fs is None else round(fs, 6))
-        if fit['registered'][e.i] and ncc < args.min_ncc_frozen:
+        if getattr(args, '_moved', None) and (e.i, side) in args._moved:
+            rec['limbus_refined_px'] = args._moved[(e.i, side)]
+        if fit['registered'].get(e.i, False) and ncc < args.min_ncc_frozen:
             rec.update(repaired=False, reason='registration_below_threshold',
                        registration_frozen=True)
             active.append(False)
@@ -1282,6 +1526,21 @@ def final_weights(g, side, fit, reg, sg, args, ceil_dict, lids, store):
         # A vetoed eye never reaches the fill in the reference, so it gets no note.
         if no_up and active[n]:
             recs[n]['fill_abstained'] = 'no_upper_bound'
+        # **A lid fit the image does not confirm is not a bound.** Round 38's e1/e3 and
+        # every whole-disc-over-a-squint frame the round 39 audit found (137, 293, 301-304,
+        # 617, 624-626, 651-653, 859, 1099 left, 302 right): the lash walk finds no lash
+        # line, while the fitted upper lid -- on the lid crease, or bridged from frames
+        # where it was -- claims more than `--lid-claim` limbus radii of open iris above
+        # the centre. An eye that open has a lash above its iris for the walk to find, so
+        # the two contradict each other, and the fill painted the whole disc over her lid.
+        # Measured on the clip: of 128 treated eyes with no lash line, exactly these 15
+        # have a lid above 0.8 radii, and all 15 paint lid skin.
+        if (not no_up and args.lid_claim > 0 and c is None):
+            hgt = lid_height(lid_here, e.limbus, e.ay)
+            if hgt is not None and hgt > args.lid_claim:
+                no_up = True
+                if active[n]:
+                    recs[n]['fill_abstained'] = 'lid_unconfirmed_%.2fr' % hgt
         fs = g.frame_scale[n]
         off = (args.fill_residual_gate > 0 and fs is not None
                and fs > args.fill_residual_gate * sg)
@@ -1326,15 +1585,57 @@ def final_weights(g, side, fit, reg, sg, args, ceil_dict, lids, store):
     lash_px = ((wt > 0) & (allow < 1.0)).sum((1, 2))
     wt = torch.where(has_ceil_t.view(B, 1, 1), quantize(wt * allow), wt)
     lash_px = torch.where(has_ceil_t, lash_px, torch.zeros_like(lash_px))
-    # the specular's own region, replaced whole
-    w_fill = wt
+    # the specular's own region (replaced whole below)
     spec_px = torch.zeros(B, dtype=torch.int64, device=DEV)
     wb = torch.zeros_like(wt)
     sfound = torch.zeros(B, dtype=torch.bool, device=DEV)
+    core_s = torch.zeros_like(g.visible)
     if args.specular_reach > 0:
         core_s, sfound = corneal_specular(lum, g.rho)
         wb = specular_region(core_s, sfound, g.rho, args.specular_reach)
         wb = wb * sup
+    # **Never paint iris over skin or sclera.** The safety net under --lid-claim and
+    # --refine-limbus: an eye whose fill would still cover `--skin-gate` pixels that HER
+    # photograph shows brighter than halfway between her iris and her lid skin (the
+    # softbox's own region excepted) gets only the softbox's region, like a frame with no
+    # upper bound. Iris, pupil and lash are dark on this plate and skin and sclera
+    # bright, so painting canonical iris over one is a wrong bound (class A) or a slid
+    # limbus (class B) -- measured, every eye at >= 6 px was one; the eyes the artist
+    # accepted in round 37 reach 5.
+    skin_px = torch.zeros(B, dtype=torch.int64, device=DEV)
+    if args.skin_gate > 0:
+        near_s = G.dilate(core_s, np.ones((5, 5), bool))
+        iris_sel = g.visible & (g.rho > 0.45) & (g.rho < 0.85) & ~near_s
+        iris_lv, n_iris = G.median(lum.reshape(B, -1), iris_sel.reshape(B, -1), dim=1)
+        band = (g.rho > 1.3) & (g.rho < 1.65) & (g.yy < g.ly)
+        skin_lv, n_band = G.percentile(lum, band, 75)
+        iris_lv = torch.where(n_iris > 20, iris_lv, torch.full_like(iris_lv, 0.25))
+        skin_lv = torch.where(n_band > 20, skin_lv, torch.full_like(skin_lv, 0.7))
+        thr = (0.5 * (iris_lv + skin_lv)).view(B, 1, 1)
+        skin_px = ((wt >= 0.5) & ~(wb > 0) & (lum > thr)).sum((1, 2))
+        act_t = torch.as_tensor(active, device=DEV)
+        if measure:
+            eligible = (~nub_t & act_t).cpu().numpy()
+            sp = skin_px.cpu().numpy()
+            return {(e.i, side): int(sp[n]) for n, e in enumerate(g.eyes) if eligible[n]}
+        if gate_set is None:
+            gate = (skin_px >= args.skin_gate) & ~nub_t & act_t
+        else:
+            gate = torch.as_tensor([(e.i, side) in gate_set for e in g.eyes], device=DEV)
+            gate = gate & ~nub_t & act_t
+        if gate.any():
+            gv = gate.view(B, 1, 1)
+            wt = torch.where(gv, torch.zeros_like(wt), wt)
+            wsok = wsok & ~gate
+            lash_px = torch.where(gate, torch.zeros_like(lash_px), lash_px)
+            for n in torch.nonzero(gate)[:, 0].tolist():
+                tag = '' if gate_set is None or skin_px[n] >= args.skin_gate else '_run'
+                recs[n]['fill_abstained'] = 'skin_%dpx%s' % (int(skin_px[n]), tag)
+        g.skin_px = skin_px.cpu().numpy()
+    elif measure:
+        return {}
+    w_fill = wt
+    if args.specular_reach > 0:
         spec_px = torch.where(sfound, (wb > wt).sum((1, 2)), spec_px)
         wt = torch.where(sfound.view(B, 1, 1), quantize(torch.maximum(wt, wb)), wt)
     # gates
@@ -1524,7 +1825,7 @@ def blend_group(g, side, sg, args, results, shade_filtered):
 
 
 def write_record(root, shot, args, rows, sheets, sigma, fitted, lids, lid_curvature,
-                 lid_curv_frame, limbus_fix):
+                 lid_curv_frame, limbus_fix, refine_report=None):
     """removal.json with the reference's keys, plus which implementation made it."""
     repaired = [r for r in rows if r['changed_pixels']]
     here = Path(__file__).resolve().parent
@@ -1593,6 +1894,16 @@ def write_record(root, shot, args, rows, sheets, sigma, fitted, lids, lid_curvat
         limbus_track=args.limbus_track,
         limbus_track_sha256=r32.sha(shot.relight / args.limbus_track),
         limbus_source='image_fit',
+        lid_claim_radii=args.lid_claim, skin_gate_px=args.skin_gate,
+        skin_gate_low_px=args.skin_gate_low,
+        skin_counts=getattr(args, '_skin_counts', None) or None,
+        limbus_trust_ratio=args.limbus_trust,
+        limbus_gate_kind={'%d_%s' % (i + int(shot.source_start_frame), sd):
+                          (v[4] if len(v) > 4 else 'gate') for (i, sd), v in limbus_fix.items()},
+        refine_limbus=None if refine_report is None else dict(
+            span_px=args.refine_span, step_px=args.refine_step, low_radii=args.refine_low,
+            min_shift_px=args.refine_min_shift, min_gain=args.refine_min_gain,
+            min_ncc=args.refine_min_ncc, min_px=args.refine_min_px, moved=refine_report),
         implementation='gpu', device=(torch.cuda.get_device_name(0) if DEV.type == 'cuda'
                                       else 'cpu'),
         code_sha256=r32.sha(__file__), gpu_primitives_sha256=r32.sha(here / 'eye_gpu.py'),
@@ -1605,11 +1916,108 @@ def write_record(root, shot, args, rows, sheets, sigma, fitted, lids, lid_curvat
     r32.write_json(shot.log(args.name + '.json'), record)
 
 
+def dump_state(root, groups, fitted, sigma, ceilings, lids):
+    """diag.npz: what the pass believed about every eye it treated (see --dump)."""
+    keys, win, ceil, lidc, status = [], [], [], [], []
+    planes = {k: [] for k in ('w_final', 'w_fill', 'wb', 'visible', 'support')}
+    codes = {None: 0, 'shade': 1}
+    for side in r32.SIDES:
+        if fitted[side] is None or sigma[side] is None:
+            continue
+        for g in groups[side]:
+            if not hasattr(g, 'w_final'):
+                continue
+            wf = (quantize(g.w_final) * 255).round().to(torch.uint8).cpu().numpy()
+            wl = (quantize(g.w_fill) * 255).round().to(torch.uint8).cpu().numpy()
+            wbb = (torch.clamp(g.wb, 0, 1) * 255).round().to(torch.uint8).cpu().numpy()
+            vis = g.visible.cpu().numpy()
+            sup = g.support.cpu().numpy()
+            for n, e in enumerate(g.eyes):
+                keys.append((e.i, 0 if side == 'left' else 1))
+                win.append((e.x0, e.y0, e.w, e.h, float(e.limbus[0]), float(e.limbus[1]), e.ax))
+                c = ceilings[side].get(e.i)
+                ceil.append(np.full(e.w, np.nan, np.float32) if c is None else c)
+                lid = lids.get((e.i, side)) or {}
+                up, lo = lid.get('upper'), lid.get('lower')
+                lidc.append(list(up if up is not None else (np.nan,) * 3)
+                            + list(lo if lo is not None else (np.nan,) * 3)
+                            + list(lid.get('centre', (np.nan, np.nan))))
+                status.append(codes.get(g.status[n], 0))
+                for name, arr in (('w_final', wf), ('w_fill', wl), ('wb', wbb),
+                                  ('visible', vis), ('support', sup)):
+                    planes[name].append(arr[n].ravel())
+    np.savez_compressed(
+        root / 'diag.npz', keys=np.array(keys, np.int32), window=np.array(win, np.float64),
+        ceiling=np.concatenate(ceil), status=np.array(status, np.int8),
+        lids=np.array(lidc, np.float64),
+        **{k: np.concatenate(v) for k, v in planes.items()})
+    log('dumped', len(keys), 'eyes to diag.npz')
+
+
+def load_diag(path):
+    """Read diag.npz back into {(frame, side): dict of per-eye arrays}."""
+    z = np.load(path)
+    out = {}
+    po = co = 0
+    for n, (i, s) in enumerate(z['keys']):
+        x0, y0, w, h, lx, ly, ax = z['window'][n]
+        w, h = int(w), int(h)
+        rec = dict(x0=int(x0), y0=int(y0), w=w, h=h, limbus=(lx, ly), ax=ax,
+                   ceiling=z['ceiling'][co:co + w], lids=z['lids'][n],
+                   status=int(z['status'][n]))
+        for k in ('w_final', 'w_fill', 'wb', 'visible', 'support'):
+            rec[k] = z[k][po:po + w * h].reshape(h, w)
+        po += w * h
+        co += w
+        out[(int(i), 'left' if s == 0 else 'right')] = rec
+    return out
+
+
 # =========================================================================== main
 def main():
     ap = esr.build_parser()
     ap.add_argument('--io-workers', type=int, default=12,
                     help='threads for EXR reading and PNG writing (I/O, not maths)')
+    ap.add_argument('--dump', action='store_true',
+                    help="write diag.npz: every treated eye's window, lid fits, lash line, "
+                         "fill / softbox / final weights and status, for the audits")
+    ap.add_argument('--lid-claim', type=float, default=0.0,
+                    help="limbus radii of open iris above the centre that a fitted upper lid "
+                         "may claim when the image shows NO lash line; above it the lid is "
+                         "not a bound and the eye gets only the softbox's region. 0 is off. "
+                         "See final_weights().")
+    ap.add_argument('--skin-gate', type=int, default=0,
+                    help="pixels of the fill over HER skin or sclera (source brighter than "
+                         "halfway between her iris and her lid skin, outside the softbox's "
+                         "region) at which an eye gets only the softbox's region. 0 is off.")
+    ap.add_argument('--skin-gate-low', type=int, default=0,
+                    help="with --skin-gate: the gate spreads in time from a gated eye to its "
+                         "neighbours while they still show at least this many skin pixels "
+                         "under the fill (hysteresis, so a run is treated one way). 0 is a "
+                         "per-frame gate. See skin_runs().")
+    ap.add_argument('--limbus-trust', type=float, default=0.0,
+                    help="with --limbus-gate: a frame whose limbus fit reports a centre "
+                         "standard error above this multiple of its eye's local median is "
+                         "re-derived from the trusted frames either side before the one-frame "
+                         "gate runs, and never serves as a neighbour. 0 is round 37's gate. "
+                         "See gate_limbus_trusted().")
+    ap.add_argument('--refine-limbus', action='store_true',
+                    help="after building the canonical eye, re-place every eye where the "
+                         "canonical fits her iris clearly better than at the tracked limbus, "
+                         "then run the passes again (the canonical is kept). See "
+                         "refine_limbus().")
+    ap.add_argument('--refine-span', type=float, default=8.0, help='search half-width, px')
+    ap.add_argument('--refine-step', type=float, default=0.5, help='search step, px')
+    ap.add_argument('--refine-low', type=float, default=-0.3,
+                    help='compare only rows below this many radii above the centre')
+    ap.add_argument('--refine-min-shift', type=float, default=1.5,
+                    help='px the canonical must want to move an eye before it is moved')
+    ap.add_argument('--refine-min-gain', type=float, default=0.10,
+                    help='NCC the canonical must gain there over the tracked position')
+    ap.add_argument('--refine-min-ncc', type=float, default=0.6)
+    ap.add_argument('--refine-min-px', type=int, default=100)
+    ap.add_argument('--refine-chunk', type=float, default=16e6,
+                    help='candidate samples per GPU batch (memory)')
     args = ap.parse_args()
     if args.canonical_votes <= 0 and args.canonical_votes_frac <= 0:
         raise SystemExit('eye_removal_gpu.py needs --canonical-votes or --canonical-votes-frac')
@@ -1630,7 +2038,21 @@ def main():
             if e.get('open_arc') is not None:
                 open_arc[(int(row['frame']), e['side'])] = float(e['open_arc'])
     limbus_fix = {}
-    if args.limbus_gate > 0:
+    if args.limbus_gate > 0 and args.limbus_trust > 0:
+        se = {}
+        for row in limbus_payload['rows']:
+            for e in row['eyes']:
+                if e.get('fitted'):
+                    se[(int(row['frame']), e['side'])] = e.get('centre_se_px')
+        limbus_fix = gate_limbus_trusted(track, corners, se, shot.frame_rate, args.limbus_gate,
+                                         args.limbus_trust)
+        log('R39_LIMBUS_TRUST', {s: sum(1 for k, v in limbus_fix.items()
+                                        if k[1] == s and v[4] == 'trust') for s in r32.SIDES},
+            'distrusted frames re-derived')
+        log('R37_LIMBUS_GATE', {s: sorted((i + int(shot.source_start_frame), round(v[3], 2), v[4][0])
+                                          for (i, sd), v in limbus_fix.items() if sd == s)
+                                for s in r32.SIDES})
+    elif args.limbus_gate > 0:
         limbus_fix = esr.gate_limbus(track, corners, shot.frame_count, args.limbus_gate)
         log('R37_LIMBUS_GATE', {s: sorted((i + int(shot.source_start_frame), round(v[3], 2))
                                           for (i, sd), v in limbus_fix.items() if sd == s)
@@ -1663,38 +2085,47 @@ def main():
     # ---- geometry: every eye's window before any pixel is read -------------------------
     probe = cv2.imread(str(shot.fg(indices[0])), cv2.IMREAD_UNCHANGED)
     H, W = probe.shape[:2]
-    eyes = {}
-    for i in indices:
-        if not (landmarks['found'][i] and np.isfinite(landmarks['points'][i]).all()):
-            continue
-        for side in r32.SIDES:
-            override = track.get(i, side)
-            if (i, side) in limbus_fix:
-                override = limbus_fix[(i, side)][:3]
-            if override is None:
+
+    def make_eyes(moved):
+        """Every eye's scalar geometry; `moved[(i, side)]` re-places a limbus centre."""
+        eyes = {}
+        for i in indices:
+            if not (landmarks['found'][i] and np.isfinite(landmarks['points'][i]).all()):
                 continue
-            lid = lids.get((i, side))
-            poly = np.asarray(landmarks['points'][i])[topology['eyelid_' + side], :2]
-            e = scalar_eye(i, side, override, lid, esr.lid_inset_for(lid, args), poly, (H, W))
-            if e is not None:
-                eyes[(i, side)] = e
-    by_frame_eyes = {}
-    for (i, side), e in eyes.items():
-        by_frame_eyes.setdefault(i, []).append(e)
-    for i, lst in by_frame_eyes.items():
-        if len(lst) == 2:
-            a, b = lst
-            if not (a.x0 + a.w <= b.x0 or b.x0 + b.w <= a.x0
-                    or a.y0 + a.h <= b.y0 or b.y0 + b.h <= a.y0):
-                raise ValueError('eye windows overlap at frame %d; the port assumes they '
-                                 'do not' % i)
+            for side in r32.SIDES:
+                override = track.get(i, side)
+                if (i, side) in limbus_fix:
+                    override = limbus_fix[(i, side)][:3]
+                if override is None:
+                    continue
+                if (i, side) in moved:
+                    override = (tuple(moved[(i, side)]), override[1], override[2])
+                lid = lids.get((i, side))
+                poly = np.asarray(landmarks['points'][i])[topology['eyelid_' + side], :2]
+                e = scalar_eye(i, side, override, lid, esr.lid_inset_for(lid, args), poly, (H, W))
+                if e is not None:
+                    eyes[(i, side)] = e
+        for i in indices:
+            lst = [eyes[(i, s)] for s in r32.SIDES if (i, s) in eyes]
+            if len(lst) == 2:
+                a, b = lst
+                if not (a.x0 + a.w <= b.x0 or b.x0 + b.w <= a.x0
+                        or a.y0 + a.h <= b.y0 or b.y0 + b.h <= a.y0):
+                    raise ValueError('eye windows overlap at frame %d; the port assumes they '
+                                     'do not' % i)
+        return eyes
+
+    eyes = make_eyes({})
     log('geometry', len(eyes), 'eye windows')
 
     # ---- frames: read, check, 8-bit source on the GPU, keep the eye windows -------------
+    # Each eye's window is kept with a MARGIN px border, so an eye re-placed later
+    # (--refine-limbus) is cut from memory rather than read again.
+    MARGIN = 12
     writer = Writer(args.io_workers)
     frames8 = {}
     shas = {}
-    patches = {}
+    bigs = {}
     with ThreadPoolExecutor(max_workers=args.io_workers) as pool:
         futures = {i: pool.submit(read_exr, shot.fg(i)) for i in indices}
         for i in indices:
@@ -1707,37 +2138,51 @@ def main():
             src8 = G.rgb8_half(h16).cpu().numpy()
             frames8[i] = src8
             writer.write(root / 'source' / ('%06d.png' % i), src8[..., ::-1])
-            f32 = h16.float()
-            for e in by_frame_eyes.get(i, []):
-                patches[(i, e.side)] = f32[e.window].clone()
-            del t, h16, f32
-    log('frames read', len(indices), 'windows', len(patches))
+            for side in r32.SIDES:
+                e = eyes.get((i, side))
+                if e is None:
+                    continue
+                bx0, by0 = max(0, e.x0 - MARGIN), max(0, e.y0 - MARGIN)
+                bx1, by1 = min(W, e.x0 + e.w + MARGIN), min(H, e.y0 + e.h + MARGIN)
+                bigs[(i, side)] = (h16[by0:by1, bx0:bx1].clone(), bx0, by0)
+            del t, h16
+    log('frames read', len(indices), 'eye crops', len(bigs))
 
-    # ---- collect: eye frame, polar frame, footprint, sampling into the canonical grid ----
-    groups = {s: [] for s in r32.SIDES}
-    for side in r32.SIDES:
-        shapes = {}
-        for (i, sd), e in sorted(eyes.items()):
-            if sd == side:
-                shapes.setdefault((e.h, e.w), []).append(e)
-        for shape, lst in sorted(shapes.items()):
-            g = Group(side, lst)
-            g.patch = torch.stack([patches[(e.i, side)] for e in lst])
-            keep = eye_frame(g)
-            g = g.subset(keep)
-            if not g.B:
-                continue
-            keep = solve_eye(g)
-            g = g.subset(keep)
-            if not g.B:
-                continue
-            anomaly, alive = detect_anomaly(g.patch, g.rho, g.theta, g.inside)
-            g.anomaly = anomaly
-            g = g.subset(alive.tolist())
-            if not g.B:
-                continue
-            groups[side].append(g)
-    del patches
+    def cut(e):
+        big, bx0, by0 = bigs[(e.i, e.side)]
+        ox, oy = e.x0 - bx0, e.y0 - by0
+        if ox < 0 or oy < 0 or ox + e.w > big.shape[1] or oy + e.h > big.shape[0]:
+            raise ValueError('eye %d %s moved outside its kept crop' % (e.i, e.side))
+        return big[oy:oy + e.h, ox:ox + e.w].float()
+
+    def collect_groups(eyes):
+        """Eye frame, polar frame and footprint for every eye, batched per window shape."""
+        groups = {s: [] for s in r32.SIDES}
+        for side in r32.SIDES:
+            shapes = {}
+            for (i, sd), e in sorted(eyes.items()):
+                if sd == side:
+                    shapes.setdefault((e.h, e.w), []).append(e)
+            for shape, lst in sorted(shapes.items()):
+                g = Group(side, lst)
+                g.patch = torch.stack([cut(e) for e in lst])
+                keep = eye_frame(g)
+                g = g.subset(keep)
+                if not g.B:
+                    continue
+                keep = solve_eye(g)
+                g = g.subset(keep)
+                if not g.B:
+                    continue
+                anomaly, alive = detect_anomaly(g.patch, g.rho, g.theta, g.inside)
+                g.anomaly = anomaly
+                g = g.subset(alive.tolist())
+                if not g.B:
+                    continue
+                groups[side].append(g)
+        return groups
+
+    groups = collect_groups(eyes)
     collected = {}
     for side in r32.SIDES:
         rgbs, ws, order = [], [], []
@@ -1857,6 +2302,20 @@ def main():
         log('R34_ATLAS_READY', side, N, 'frames')
         del b
 
+    # ---- optional: re-place slid eyes on the canonical, then run the passes on them ------
+    refine_report = None
+    args._moved = {}
+    if args.refine_limbus:
+        moved, refine_report = refine_limbus(eyes, cut, fitted, args)
+        log('R39_REFINE moved', {s: sum(1 for k in moved if k[1] == s) for s in r32.SIDES},
+            'eyes')
+        if moved:
+            args._moved = {k: [round(v[0] - float(eyes[k].limbus[0]), 2),
+                               round(v[1] - float(eyes[k].limbus[1]), 2)]
+                           for k, v in moved.items()}
+            eyes = make_eyes(moved)
+            groups = collect_groups(eyes)
+
     # ---- prepass: prediction and the per-frame level --------------------------------------
     for side in r32.SIDES:
         fit = fitted[side]
@@ -1931,7 +2390,8 @@ def main():
                             for r, k in zip(use_ramp, ks)]
             if ur.any():
                 reg = fit['frozen_registration']
-                coef = as_t(np.stack([fit['gain_coef'][e.i] for e in g.eyes]))
+                coef = as_t(np.stack([fit['gain_coef'].get(e.i, np.zeros((3, 3)))
+                                      for e in g.eyes]))
                 rb, rs = predict(g, fit['atlas'], fit['aw'], [reg['du']] * B, [reg['dv']] * B,
                                  [reg['scale']] * B, coef=coef)
                 base = torch.where(ur.view(B, 1, 1, 1), rb, base)
@@ -2047,6 +2507,19 @@ def main():
     # ---- the weight, the gates and the shading, for every eye at once -------------------
     results = {}          # (i, side) -> record, and for repaired eyes the window + weight
     store = {}
+    gate_set, skin_counts = None, {}
+    if args.skin_gate > 0 and args.skin_gate_low > 0:
+        for side in r32.SIDES:
+            fit = fitted[side]
+            if fit is None or sigma[side] is None:
+                continue
+            for g in groups[side]:
+                skin_counts.update(final_weights(g, side, fit, fit['frozen_registration'],
+                                                 sigma[side], args, ceilings[side], lids, {},
+                                                 measure=True))
+        gate_set = skin_runs(skin_counts, args.skin_gate, args.skin_gate_low)
+        log('R39_SKIN_GATE', {s: sum(1 for k in gate_set if k[1] == s) for s in r32.SIDES},
+            'eyes gated (hysteresis %d/%d)' % (args.skin_gate, args.skin_gate_low))
     for side in r32.SIDES:
         fit = fitted[side]
         if fit is None or sigma[side] is None:
@@ -2055,7 +2528,7 @@ def main():
         sg = sigma[side]
         for g in groups[side]:
             results.update(final_weights(g, side, fit, reg, sg, args, ceilings[side], lids,
-                                         store))
+                                         store, gate_set=gate_set))
     log('dry pass', len(store), 'eye-frames stored for the temporal shading')
     shade_filtered = filter_shading(store, args.shading_temporal) if (
         args.shading_temporal > 0 and args.top_shading > 0) else None
@@ -2068,6 +2541,8 @@ def main():
             continue
         for g in groups[side]:
             blend_group(g, side, sigma[side], args, results, shade_filtered)
+    if args.dump:
+        dump_state(root, groups, fitted, sigma, ceilings, lids)
 
     # ---- write -----------------------------------------------------------------------------
     rows, sheet_tiles = [], []
@@ -2119,8 +2594,9 @@ def main():
         sheets.append(path.name)
     writer.close()
     log('written', len(rows), 'frames')
+    args._skin_counts = {'%d_%s' % k: v for k, v in sorted(skin_counts.items())}
     write_record(root, shot, args, rows, sheets, sigma, fitted, lids, lid_curvature,
-                 lid_curv_frame, limbus_fix)
+                 lid_curv_frame, limbus_fix, refine_report)
     log('R34_REMOVE_DONE', len(rows), 'frames,', sum(1 for r in rows if r['changed_pixels']),
         'repaired')
 

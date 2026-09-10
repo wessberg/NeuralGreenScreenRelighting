@@ -160,6 +160,30 @@ def remap_separable(src, mx, my, pad=8):
     return out
 
 
+def remap_single(src, mx, my):
+    """`remap_linear` (BORDER_CONSTANT) of ONE source image at many maps of any shape:
+    src (H, W, C), mx/my (...) -> (..., C). No per-map copy of the source."""
+    H, W, C = src.shape
+    flat = src.reshape(H * W, C)
+    ix = torch.round(mx * 32).to(torch.int64)
+    iy = torch.round(my * 32).to(torch.int64)
+    x0, y0 = ix >> 5, iy >> 5
+    ax = ((ix & 31).to(F32) * (1.0 / 32))[..., None]
+    ay = ((iy & 31).to(F32) * (1.0 / 32))[..., None]
+    one = torch.ones((), dtype=F32, device=DEV)
+
+    def tap(x, y):
+        ok = ((x >= 0) & (x < W) & (y >= 0) & (y < H))[..., None]
+        v = flat[(y.clamp(0, H - 1) * W + x.clamp(0, W - 1))]
+        return torch.where(ok, v, torch.zeros((), dtype=v.dtype, device=DEV))
+
+    out = tap(x0, y0) * ((one - ay) * (one - ax))
+    out = out + tap(x0 + 1, y0) * ((one - ay) * ax)
+    out = out + tap(x0, y0 + 1) * (ay * (one - ax))
+    out = out + tap(x0 + 1, y0 + 1) * (ay * ax)
+    return out
+
+
 def remap_nearest(src, mx, my):
     """cv2.remap(..., INTER_NEAREST, BORDER_CONSTANT): cvRound of the map, 0 outside."""
     squeeze = src.dim() == 3

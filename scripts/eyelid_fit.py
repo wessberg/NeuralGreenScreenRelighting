@@ -225,6 +225,84 @@ def fit_eye(values, centre, radius, corners, margin=14):
     return rec
 
 
+def fit_lids(rec, radius, curv_upper, curv_lower):
+    """Both parabolas for one eye's samples at the given curvatures, as main() makes them."""
+    entry = {}
+    reason = None
+    for name, curv in (('upper', curv_upper), ('lower', curv_lower)):
+        d = rec['samples'][name]
+        f = fit_parabola(d['xs'], d['ys'], d['ss'], rec['local_centre'], curvature=curv)
+        height = None
+        if f is not None:
+            height = (f['coef'][2] - rec['local_centre'][1]) / radius
+        if (f is None or f['rms'] > MAX_RESIDUAL or height is None
+                or not (LID_BAND[0] <= (height if name == 'lower' else -height)
+                        <= LID_BAND[1])):
+            entry[name] = None
+            reason = '%s_lid_unfitted' % name
+            continue
+        a, b, c = f['coef']
+        x0, y0 = rec['window'][0], rec['window'][1]
+        entry[name] = dict(coef=[a, b, float(c + y0)], columns=f['columns'],
+                           rms=round(f['rms'], 4))
+    return entry, reason
+
+
+def update_track(args, shot, track, data, topology, points):
+    """--update: refit only the eyes whose limbus centre moved (see the flag's help)."""
+    base = json.loads((shot.relight / args.update).read_text(encoding='utf-8'))
+    base_rows = {int(r['frame']): r for r in base['rows']}
+    rows, refit = [], []
+    cache = {}
+    for row in data['rows']:
+        i = int(row['frame'])
+        brow = base_rows[i]
+        eyes = []
+        for be in brow['eyes']:
+            side = be['side']
+            got = track.get(i, side)
+            same = (got is not None and be.get('centre') is not None
+                    and np.allclose([round(float(c), 4) for c in got[0]], be['centre']))
+            if got is None or same:
+                eyes.append(be)
+                continue
+            if i not in cache:
+                img = cv2.imread(str(shot.fg(i)), cv2.IMREAD_UNCHANGED)
+                cache.clear()
+                cache[i] = img[..., ::-1].astype(np.float32)
+            centre, radius = got[0], got[1]
+            poly = np.asarray(points[i])[topology['eyelid_' + side], :2]
+            corners = (float(poly[:, 0].min()), float(poly[:, 0].max()))
+            rec = fit_eye(cache[i], centre, radius, corners)
+            if 'samples' not in rec:
+                eyes.append(dict(side=side, fitted=False, reason=rec['reason'], refit=True))
+                refit.append((i, side, 'abstained'))
+                continue
+            curv = be.get('curvature') or {}
+            cu = curv.get('upper', (base.get('curvature') or {}).get('%s_upper' % side))
+            cl = curv.get('lower', (base.get('curvature') or {}).get('%s_lower' % side))
+            lids, reason = fit_lids(rec, radius, cu, cl)
+            entry = dict(side=side, fitted=reason is None, reason=reason,
+                         centre=[round(float(c), 4) for c in centre],
+                         radius=round(float(radius), 4), refit=True)
+            if 'curvature' in be:
+                entry['curvature'] = be['curvature']
+            entry.update(lids)
+            eyes.append(entry)
+            refit.append((i, side, 'fitted' if reason is None else reason))
+        rows.append(dict(frame=i, source_frame=row['source_frame'], eyes=eyes))
+    payload = dict(base, rows=rows, limbus_track=args.track,
+                   updated_from=args.update,
+                   updated_from_sha256=r32.sha(shot.relight / args.update),
+                   refit_eyes=len(refit), code_sha256=r32.sha(Path(__file__)))
+    payload['fitted'] = {s: sum(1 for row in rows for e in row['eyes']
+                                if e['side'] == s and e.get('fitted')) for s in r32.SIDES}
+    r32.write_json(shot.relight / args.out, payload)
+    print('refit %d eyes whose limbus centre moved; copied the rest' % len(refit))
+    print(refit)
+    print('wrote %s' % (shot.relight / args.out))
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -243,6 +321,13 @@ def main():
                          "the stretch round 37 was accepted on. The window is shifted, not "
                          "cut, at the ends of the shot, so a shot shorter than the window "
                          "gets its own median back (of the anatomically possible fits).")
+    ap.add_argument('--update', default=None,
+                    help="an existing eyelid track (relight/<file>) to UPDATE rather than "
+                         "refit: only the eyes whose limbus centre in --track differs from the "
+                         "centre that track was fitted around are refitted, with the curvature "
+                         "it recorded for them; every other eye is copied unchanged. Round 39: "
+                         "a full refit after limbus_trust.py moved 88 centres changed the "
+                         "window-pooled curvature, and so the lids, on 1333 eyes.")
     args = ap.parse_args()
     shot = from_args(args)
     track = lf.Track.load(shot.relight / args.track)
@@ -250,6 +335,9 @@ def main():
     topology = json.loads((shot.relight / 'face_landmarks.json').read_text())['topology']
     with np.load(shot.relight / 'face_landmarks.npz') as z:
         points = z['points']
+    if args.update:
+        update_track(args, shot, track, data, topology, points)
+        return
 
     raw_fits = {}
     for row in data['rows']:
