@@ -33,65 +33,56 @@ and **rejected**, for colour AND shape flicker and a sometimes-brown pupil, beca
 every term of the fill was refit per frame from a few dozen pixels. **No per-frame-refit
 fill can be temporally stable at a 24-pixel iris.** See `rounds/round32.md`.
 
-**Round 36 — the lash guard works and it CANNOT separate lash from specular. Read
-`rounds/round36.md` §0 before touching the eye path.** The artist wants two things and on
-this plate they conflict: *"we do not draw our own pixels ON or above that eyelid arc"* and
-*"you replace less of the softbox than you did before"*. Measured at source 740 left, the
-lash and the lid-shadowed upper iris are **ONE continuous dark run** at 0.16-0.22, and the
-specular's fringe reaches down to 0.30 — lashes 0.13-0.35, shadowed iris 0.15-0.30,
-specular 0.30-0.90. **No threshold separates them**, so a photometric lash line lands
-anywhere in that run; on 740 it landed inside the specular and blocked the reflection.
-Five variants are tabulated in round36.md §0 with what each cost; every one trades one
-complaint for the other. **Do not build a sixth. The way out is a geometrically correct
-lash line** — `eyelid_fit.py` right on the frames where it now sits on the LID CREASE
-(seven pixels high at source 727 left, abstaining at 723 left).
+**Round 36 was REJECTED, and its most important finding is about the AGENT, not the code.
+Read `rounds/round36.md` §1 first.** The artist's closing words were *"Apparently you can't
+see it. Hand off the round, I'll tackle it fresh in the next one."* Round 36 repeatedly
+declared frames clean that he could see were not — at 18x, after being told to look, twice
+about its own fixes. **Treat round 36's visual assessments as unverified; its numbers are
+reproducible and its adjectives are not.** Put the previous result and the new one in the
+SAME tile, one above the other, at high zoom, and step every frame: differences that are
+invisible in isolation are obvious in comparison, and that is what finally exposed the
+defect he was pointing at.
 
-**The LID SHADOW model is DEFAULT OFF, rejected on sight.** Round 35 §7 asked for it,
-round 36 fitted it (`1 + A·exp(-depth/tau)`, one shape per eye, A = +0.44 left / -0.115
-right), and one look at the face-scale panel killed it: at +0.44 it puts a light washed
-band across the top of the iris and **erases the lid shadow the artist explicitly asked to
-keep**, and the bright band above the pupil makes the pupil read as displaced. The pooled
-depth profile that motivated it is real; applying it as a per-eye constant over-brightens
-every frame that was already right. **Validate a correction like this at FACE SCALE on
-frames before believing it** -- a pooled profile cannot see a halo.
+**Lash, lid-shadowed iris and the specular's falloff OVERLAP IN LEVEL on this plate, so no
+photometric lash line can work.** At source 740 left her lash and her shadowed upper iris
+are ONE continuous dark run at 0.16-0.22; lashes are 0.13-0.35, shadowed iris 0.15-0.30,
+the specular's falloff 0.30-0.45. Six guard variants are tabulated in round36.md §0 with
+what each cost, and every one trades "don't paint my lashes" against "the softbox is still
+there". **Do not build a seventh.** The way out is a geometrically correct lash line:
+`eyelid_fit.py` is audited to 0.43 px and still sits **seven pixels high on the LID CREASE**
+at source 727 left and **abstains entirely** at 723 left. Round 35 §3 believed it had fixed
+the crease failure; it had not.
+
+**The LID SHADOW model is DEFAULT OFF, rejected on sight.** Fitted as
+`1 + A·exp(-depth/tau)` per eye (A = +0.44 left), it put a light washed band across the top
+of the iris and **erased the lid shadow the artist explicitly asked to keep**, and the
+bright band above the pupil made the pupil read as displaced. The pooled depth profile
+behind it is real; applying it as a per-eye constant over-brightens every frame that was
+already right. **Validate a correction like this at FACE SCALE on frames — a pooled profile
+cannot see a halo.**
 
 **A metric must be built from what the EYE does, not from what the repair believes.** The
 atlas's softbox test located the specular in the SOURCE by a threshold and checked those
 pixels in the result, so when the guard sheared off the highlight's corner it reported
-**zero eyes worse on every frame** while the artist could see a white block in her eye. It
-now reads the RESULT alone — a bright blob against a smooth iris — and reproduced him at
-once (137 eyes vs 199). AGENTS.md already warned about this and it happened anyway.
-
-**LOOK at the frames.** Every bug this round was invisible in the numbers and obvious at
-18x, including two fixes that the numbers liked: exempting the round-32 footprint from the
-guard put **939 lash pixels** back (the argument that "a lash is darker than the canonical
-iris" is FALSE once the lid shadow is modelled — the shadowed canonical iris is darker than
-a lash), and moving the ceiling to the lash's inner edge produced a large white blob at
-source 736-745.
-
-**The limbus error is VERTICAL and the fit is confidently wrong when the lid covers the
-iris top.** Median |offset_x| 0.05 px against |offset_y| 0.42-0.50, excursions to −4.94 px,
-every one on a frame with 15-24 edge points instead of 41. With the radius held at the shot
-constant a side-only arc carries almost no information about the centre's HEIGHT, so the
-circle slides down and snaps back — the artist's *"the iris didn't follow along at the
-exact right time"*. `--trust-se` shrinks a frame toward its neighbours by its own reported
-standard error and **barely fires (6 and 21 frames)**, because the fit does not know it is
-wrong. Same failure mode as the eyelid fit on the crease; likely the same fix.
+**zero eyes worse on every frame** while the artist could see a white block. It now reads
+the RESULT alone — a bright blob against a smooth iris — and reproduced him at once.
 
 **`ncc = 0.0` out of `atl.build` is an initialiser, not a correlation.** `register()`
 returns None when it finds no overlap; source 843, 846 and 848 left carried exactly 0.0
-between neighbours at 0.985/0.988/0.975 and were declined outright, leaving the whole
-softbox in frame. With the registration FROZEN every frame uses the same median offset, so
-an unregistered frame is no longer vetoed.
+between neighbours at 0.985/0.988/0.975, were declined outright, and kept the whole softbox
+— the *"glimpses in the last seconds"*. Frozen registration places every frame by the same
+median offset, so an unregistered frame is no longer vetoed.
+
+**The limbus error is VERTICAL and the fit does not know it is wrong.** Median |offset_x|
+0.05 px against |offset_y| 0.42-0.50, excursions to −4.94 px, every one on a frame with
+15-24 edge points instead of 41: with the radius fixed, a side-only arc says almost nothing
+about the centre's HEIGHT, so the circle slides down and snaps back. `--trust-se` shrinks a
+frame toward its neighbours by its own reported standard error and **barely fires (6 and 21
+frames)**. Same failure mode as the eyelid fit on the crease; likely the same fix.
 
 **Anything refit per frame moves.** The lash ceiling, read per frame, jumped up to **0.8-0.9
 iris radii (10 px) between adjacent frames**; it is now stabilised by a three-frame median
 in the eye's own coordinates, which adds no lag on smooth motion.
-
-**The lid shadow is modelled and about a quarter corrected.** `fit_lid_shadow()` fits
-`1 + A·exp(−depth/tau)` below the fitted lid margin, ONE shape per eye for the shot with
-only a scalar amplitude per frame; A is signed (+0.44 left, −0.115 right). The residual is
-a DIP, which one exponential cannot make.
 
 **Round 35 — all three eye anchors now fit the IMAGE; the remaining seam is the LID
 SHADOW, not the mask.** The limbus (`limbus_fit.py`) and both eyelid margins
@@ -539,7 +530,7 @@ Every stage takes `--shot`. Interpreter is the pipeline venv unless the row says
 | 11c | **ratio irradiance** | `stress_proxy.py --ratio` (Blender) | `composite/ratio_render/*.exr` | neutral albedo at PLATE resolution and the PLATE lens |
 | 11d | ~~catchlight~~ | `stress_proxy.py --catchlight` (Blender) | `composite/catchlight_render/*.exr` | renderer looks sound and its validator passes; **the compositing of it is rejected and `--catchlight` defaults to 0** |
 | 11e | **corneal catchlight** | `render_eye_catchlight.py` (Blender) | `composite/r34_catchlight/*.exr` | the scene's own reflection in a corneal cap; validated by `validate_eye_catchlight.py`. PARKED by the artist |
-| 11f | **eye: one canonical iris** | `eye_soft_removal.py --fill-iris` | `composite/<name>/` | built once in the registered eye frame; the LASH CEILING (`lash_ceiling()`) has the last word on where paint may land and the LID SHADOW (`fit_lid_shadow()`) gives it her lid's gradient. Audited by `review_r36_atlas.py` (all 300 eyes), `audit_r35_defects.py`, `audit_r36_seam.py`, `audit_r34_track.py`, `audit_r34_flicker.py` |
+| 11f | **eye: one canonical iris** | `eye_soft_removal.py --fill-iris` | `composite/<name>/` | built once in the registered eye frame; the LASH CEILING (`lash_ceiling()`) has the last word on where paint may land. `--lid-shadow` is DEFAULT OFF (round 36 §4). Audited by `review_r36_atlas.py` (all 300 eyes) and **looked at** with `review_r36_ab.py`, which is the only round-36 tool that found anything |
 | 12 | **ratio composite** | `composite_ratio.py` | `composite/ratio/` | `out = plate × R` by default. `--plate-specular remove` and `--catchlight` are rejected experiments |
 | 12b | composite (gain map) | `composite_shot.py` | `composite/`, `intermediate/linear_4k/` | legacy path; loads background **per frame** |
 | 12c | **review video** | `review_video.py` | `final/*.mp4` | what the artist watches; `--compare` puts the before on the LEFT with both halves labelled |
