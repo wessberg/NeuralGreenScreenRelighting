@@ -74,6 +74,8 @@ Defaults are unchanged: every piece is a flag. The runs:
 | `r44_meso` | light passes + meso-shading, `--specular 0` |
 | `r44_meso_spec` | + physical specular, roughness 0.5, texture², albedo scale, clamp 8 — **the candidate** |
 | `r44_meso_lh` | `r44_meso` + lips/hair shine subtracted |
+| `r44_meso_spec_lo` | as `r44_meso_spec` with F0 0.028 (measured skin, IOR 1.4) and roughness 0.55 |
+| `r44_meso_spec_half` | `_lo` with `--specular 0.6` — **his "turn it down a little more" (§2b)** |
 | `r44_smoke*` | frame 73 only, bulb pass only — the sheets he rejected; not results |
 
 ## 1. Measured, before anything was built
@@ -130,6 +132,24 @@ cheek, and a smooth highlight is what plastic has. The texture multiplication is
 thing here that breaks it up, and it is a proxy for micro-normals nobody has measured.
 Round 5's separation warning applies in reverse: the plate's texture is albedo AND softbox
 shading; using it as micro-geometry double-counts the albedo.
+
+## 2b. "Turn down the specular a little more still ... a little like an NPC"
+
+His words on `r44_meso_spec`, after the sheet. Two steps, both shown on frames 73 / 30 / 10
+(`composite/panels/r44_spec_levels_73_30_10.png`, video `final/r44_spec_levels_panel.mp4`):
+
+| variant | F0 skin | roughness | gain | spec energy / skin luminance, p50 / p95 / max |
+|---|---|---|---|---|
+| `r44_meso_spec` | 0.040 | 0.50 | 1.0 | 0.117 / 0.406 / 0.588 |
+| `r44_meso_spec_lo` | 0.028 | 0.55 | 1.0 | 0.094 / 0.379 / 0.571 |
+| `r44_meso_spec_half` | 0.028 | 0.55 | 0.6 | 0.059 / 0.269 / 0.459 |
+
+F0 0.028 is measured skin (IOR 1.4, Donner & Jensen); it takes 30 % off at normal incidence
+but only 20 % off the energy, because past ~60° Schlick's Fresnel climbs to 1 whatever F0
+is — the fill's broad grazing lobe and the neck/jaw rim dominate the total. The gain is not
+physics; it is the artist's request, and `--specular 0.6` is how it is recorded. The p95/max
+frames are the "front close" station (bulb 0.5 m in front): the whole face sheens there in
+every variant. Video for his verdict: `final/r44_meso_spec_half_compare.mp4` (R42 left).
 
 ## 3. The meso-shading, seen
 
@@ -216,6 +236,7 @@ $S = "music_videos/reporter_test/shots/reporter_a"
 $C = "--shot $S --eye-removal r42_wet_removal --corneal-dir r42_eye_pass --corneal-blur 0.35 --corneal-matte lids --light-passes bulb=r44_light_bulb,fill=r44_light_fill --meso-sigma 0"
 & $P -B scripts/composite_ratio.py $C.Split() --name r44_meso --specular 0
 & $P -B scripts/composite_ratio.py $C.Split() --name r44_meso_spec --specular-model physical --roughness-skin 0.5 --specular-texture 2 --specular-clamp 8
+& $P -B scripts/composite_ratio.py $C.Split() --name r44_meso_spec_half --specular-model physical --roughness-skin 0.55 --f0-skin 0.028 --specular 0.6 --specular-texture 2 --specular-clamp 8
 & $P -B scripts/face_delight.py --shot $S --name r43_delight --stage separate --regions lips,hair --separate-name separate_lh
 & $P -B scripts/composite_ratio.py $C.Split() --name r44_meso_lh --specular 0 --face-delight r43_delight --face-delight-sub separate_lh
 & $P -B scripts/probe_r44_relief.py --shot $S --frames 30,73,97,120 --dirs r43_nospec,r44_meso,r44_meso_spec
@@ -230,9 +251,11 @@ $C = "--shot $S --eye-removal r42_wet_removal --corneal-dir r42_eye_pass --corne
 ## 8. Starter prompt for round 45
 
 > **Round 44 built the meso-shading from the neural normals and a physical specular per
-> light source; the artist saw an improvement on the frame-73/30 sheet of `r44_meso_spec`
-> but has not judged the video. Read round44.md §2, §3, §5, §6 first.** Get his verdict on
-> `final/r44_meso_spec_compare.mp4` and `r44_panel.mp4` before building anything, and ask
+> light source; the artist saw an improvement on the frame-73/30 sheet of `r44_meso_spec`,
+> then asked for the specular "a little" lower ("a little like an NPC") → `r44_meso_spec_half`
+> (F0 0.028, roughness 0.55, gain 0.6; §2b). He has not judged a video. Read round44.md §2,
+> §2b, §3, §5, §6 first.** Get his verdict on `final/r44_meso_spec_half_compare.mp4`,
+> `r44_spec_levels_panel.mp4` and `r44_panel.mp4` before building anything, and ask
 > specifically about crawl: the 12 px high-passed step rose 23 % (median) / 54 % (p95) over
 > R43 because the meso term rides the raw per-frame normals. If he sees it, filter the
 > normals in time in a head-stabilised frame (symmetric window in SECONDS, as round 37's

@@ -40,7 +40,8 @@ artist on the first specular sheet: *"Jesus christ this looks awful ... Now THAT
 and *"'plastic' meaning the skin lacked depth, imperfections ... now it looks like a shiny
 barbie doll"*; on `r44_meso_spec` (meso + specular at roughness 0.5, scaled by the plate's
 measured skin albedo 0.241 / an ASSUMED 0.40, times the plate's pore texture squared): *"I see
-an improvement"*. Built: `stress_proxy.py --ratio --only-light bulb|fill` (per-source
+an improvement"*, then *"turn down the specular a little more still ... a little like an NPC"* →
+`r44_meso_spec_half` (F0 0.028, roughness 0.55, `--specular 0.6`; round44.md §2b). Built: `stress_proxy.py --ratio --only-light bulb|fill` (per-source
 irradiance passes; they sum to the full pass to ≤ 1.2 %), `light_geometry.py` (world position
 under every pixel from the proxy shell → per-pixel light and view vectors), `meso_specular.py`
 + `composite_ratio.py --light-passes ... --meso-sigma 0` (`E_k' = E_k × cos / lowpass_σ(cos)`
