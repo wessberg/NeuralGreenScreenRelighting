@@ -26,6 +26,31 @@ replacement.** So:
   sheen carries essentially all of the hair's visible form; delete it and the hair is a black
   mass, which is a worse artefact than the one being named"* -- and round 45 read that as an
   argument for building a replacement rather than as an argument against removing at all.
+* **THE ACTUAL MECHANISM, and it is sharper than "the band is the form".** He sent a zoom of
+  column 2 (`Screenshot 2026-09-11 170602.png`): *"You made it look like someone took a razor and
+  cut into the middle of her hair. The shine I wanted you to work on reducing wasn't at all in
+  the middle of her head."* He is right on both counts and both are my errors, not the model's.
+
+  1. **The detector found her PARTING, not the shine he named.** The removal keys on level
+     against the region-wide dark hair, and the brightest thing in a hair region is not
+     necessarily the shiniest thing -- it is her part line, which is scalp, genuinely bright
+     material. **A level test cannot tell "bright because shiny" from "bright because it is
+     skin".** Measured on the shipped run: only 7 % of the removed energy sits at true skin
+     chroma (> 25 deg from the illuminant), but **27-34 % sits in the 15-25 deg MIXED band** --
+     which is exactly the sparse-hair-over-scalp transition fanning out from the part line. That
+     is the wedge.
+  2. **And I widened it on purpose.** Round 45's first pass left a bright strip down the parting
+     that he called a bald gap, so I added `close_scalp` (a 0.08-face-radius morphological
+     closing that deliberately pulls the parting INTO the region) and opened the chroma gate from
+     12/25 deg to 20/45 deg. Both changes were aimed at the strip and both did the opposite of
+     what was wanted: instead of protecting the parting they started subtracting the shine that
+     was making the sparse hair AROUND it read as hair at all. Strip the shine off thin hair over
+     scalp and what is left is scalp. **The razor cut is those two "fixes", not the fibre model.**
+
+  The shine he actually meant is on the top ARC of the head -- *"the very top of her hair. Very
+  clearly from a light hanging above her head"* -- and a future attempt must be able to say where
+  the shine is by something other than brightness, because on this head the brightest pixels are
+  her scalp.
 * **There is therefore no safe middle.** Attenuating the band partway (`--hair-sheen-gain 0.3`)
   is the same operation at a third of the strength: it takes away form, and form is what the
   band carries. Do not offer it as a compromise, which an earlier draft of the round-46 starter

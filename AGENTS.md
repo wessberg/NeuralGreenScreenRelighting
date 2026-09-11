@@ -21,7 +21,13 @@ its own with nothing added, he rejected that too -- *"everything in r45_three_wa
 completely ridiculous, like she's partly bald"*, then *"your work this round is entirely
 rejected"* -- while confirming the accepted R44 column *"looks fine"*. **The band IS the hair's
 visible form, not a layer on top of it**, so every subtractive method takes the form with it and
-attenuation is the same subtraction at a third of the strength. Leave the hair alone and mark
+attenuation is the same subtraction at a third of the strength. **And the detector found the
+wrong thing**: a level test cannot tell "bright because shiny" from "bright because it is skin",
+and the brightest thing in her hair is her PARTING, which is scalp. 27-34 % of the removed energy
+landed in the sparse-hair-over-scalp transition fanning out from the part line, which is why he
+said *"you made it look like someone took a razor and cut into the middle of her hair. The shine
+I wanted you to work on reducing wasn't at all in the middle of her head."* The shine he means is
+the top ARC of the head. Any future attempt must locate it by something other than brightness. Leave the hair alone and mark
 row 5 unmet there. The one untried direction that is NOT a subtraction is a level-only gain map
 on the photographed hair driven by the rendered irradiance: it cannot move the band, so row 5
 stays unmet, but it removes no form. The LIP GLOSS is the better next target and is a different problem (a surface
