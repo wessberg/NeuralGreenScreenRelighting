@@ -290,6 +290,53 @@ On the half of the face the bulb actually reaches, 128 is within 0.045 stops of 
 * Cryptomatte (object / material / asset) and custom AOVs, both available on the view layer.
 * 32-bit float EXR and the DWAA/HTJ2K codecs.
 
+## 4c. "Render it at the highest path-traced fidelity" — built the reference, and we already match it
+
+§4b answered a question about scene setup that he had not asked. The question was about the
+RENDERER: what does turning every path-tracing quality knob to maximum actually change here.
+So it was built and measured rather than argued.
+
+**`stress_proxy.py --max-fidelity`** turns off the three biases Cycles ships ON by default and
+raises the ceilings — and every render in this repo before now inherited all three silently:
+
+| default | what it does | max-fidelity |
+|---|---|---|
+| `sample_clamp_indirect = 10` | discards indirect energy above a threshold, to kill fireflies | 0 (off) |
+| `blur_glossy = 1.0` | blurs glossy on indirect rays, to kill caustic noise | 0 (off) |
+| OpenImageDenoise, ACCURATE | a NEURAL denoiser: it invents plausible detail | off |
+| 12 / 4 / 4 / 12 bounces | total / diffuse / glossy / transmission | 32 each |
+| adaptive threshold 0.01 | stops sampling a pixel when it looks converged | 0.002 |
+| half-float EXR | | 32-bit float |
+
+None of those defaults is wrong for a PICTURE. All three biases are wrong for a MEASUREMENT,
+and this pass is a measurement: its output is a multiplier on a photograph.
+
+Reference: frame 73 of the bulb pass, **8192 samples, no denoiser, no clamps, 32 bounces,
+32-bit — 53 s for the one frame.** Against it, on the half of the face the bulb reaches:
+
+| render | \|dlog2\| p50 | p95 | max | total energy ratio |
+|---|---|---|---|---|
+| **the SHIPPED pass (128 samples, all defaults)** | **0.018** | **0.066** | 0.316 | **1.0015** |
+| 4096 samples, denoised, defaults | 0.018 | 0.066 | 0.305 | 1.0012 |
+
+**We already match the maximum-fidelity reference**: 0.018 stops at the median and 0.15 % of
+total energy. And 4096 samples is no closer than 128, so the residual is the DENOISER's own
+signature, not sampling noise and not the clamps. **Do not spend a round on render settings
+for this scene.**
+
+**Why the defaults cost nothing here, and when they will start to:** the tour is a void with
+one small bright source (§4b item 1). There is almost no indirect, so a clamp on indirect
+discards almost nothing and extra diffuse bounces find nothing to bounce off. **In a real
+environment with walls and a floor, `sample_clamp_indirect = 10` and 4 diffuse bounces will
+bite** — most of the shadow-side fill there IS the indirect these settings limit. `--max-fidelity`
+exists so that can be re-measured the day the environment stages come in, instead of argued.
+
+**Cycles on OPTIX is NOT bit-reproducible run to run.** The same command twice differs by max
+abs 0.0195 on this pass (patched vs pre-patch: 0.0234 — the same order, which is how the flag
+was shown not to have touched the default path). Elsewhere in this repo a port is gated on bit
+exactness (`validate_eye_gpu.py`); **a Blender render can never be gated that way** — use an
+energy ratio and a log-difference percentile, as above.
+
 ## 5. Lips and hair: measured his complaint, built a partial, not a fix
 
 `audit_r44_sheen.py` on `r42_wet` (`logs/r44_sheen_r43.json`): lip vermilion sheen p95/p50
@@ -370,6 +417,7 @@ $C = "--shot $S --eye-removal r42_wet_removal --corneal-dir r42_eye_pass --corne
 & $P -B scripts/review_r44_face.py --shot $S --dirs r43_nospec,r44_meso,r44_meso_spec --labels "R43 nospec|R44 meso|R44 meso + spec r.50 tex" --frames 73,30 --half-w 1.0 --half-h 1.2 --out r44_spec_73_30.png
 & $P -B scripts/review_video.py --shot $S --name r44_meso_spec --compare r42_wet --label "R44: meso-shading + specular" --compare-label "R42: wet eye (accepted)" --out r44_meso_spec_compare.mp4
 & $P -B scripts/review_r37_panel.py --shot $S --name r44_panel --dirs "r42_wet/.,r44_meso/.,r44_meso_spec/." --labels "R42|R44 meso|R44 meso+spec"
+& $B -b --factory-startup --python scripts/stress_proxy.py -- --shot $S --ratio --length 150 --samples 8192 --max-fidelity --only-light bulb --only-output 73 --name r44_maxfid   # 4c reference, 53 s
 ```
 
 ## 8. Starter prompt for round 45

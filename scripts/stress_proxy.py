@@ -46,6 +46,14 @@ ap.add_argument('--shot', default=None)
 ap.add_argument('--frames', type=int, default=0)
 ap.add_argument('--start', type=int, default=0)
 ap.add_argument('--samples', type=int, default=64)
+ap.add_argument('--max-fidelity', action='store_true',
+                help='round 44: turn OFF the three biases Cycles ships on by default and raise '
+                     'the bounce ceilings -- no indirect clamp, no glossy filtering, no neural '
+                     'denoiser, 32 bounces, adaptive threshold 0.002, 32-bit EXR. This is what '
+                     '"render it at the highest path-traced fidelity" actually means; it is a '
+                     'REFERENCE for measuring whether the defaults bias this scene, not a '
+                     'production setting (it needs many more samples to be clean without the '
+                     'denoiser). See rounds/round44.md 4c')
 ap.add_argument('--width', type=int, default=960)
 ap.add_argument('--bpm', type=float, default=120.0)
 ap.add_argument('--demo-lens', type=float, default=35.0,
@@ -200,6 +208,19 @@ scn.cycles.samples = args.samples
 # No denoiser on the corneal pass: a bulb reflects in a 7.8 mm cornea as a spot under a
 # pixel wide, and a denoiser treats exactly that as noise.
 scn.cycles.use_denoising = not args.corneal
+# Cycles ships three BIASES on by default, and every render in this repo before round 44
+# inherited all three silently: `sample_clamp_indirect = 10` discards indirect energy above a
+# threshold to kill fireflies, `blur_glossy = 1` blurs glossy for indirect rays to kill caustic
+# noise, and the OpenImageDenoise pass is a neural network that invents plausible detail. None
+# of them is wrong for a picture; all three are wrong for a MEASUREMENT, and this pass is a
+# measurement -- its output is a multiplier on a photograph.
+FIDELITY = {'sample_clamp_indirect': 0.0, 'sample_clamp_direct': 0.0, 'blur_glossy': 0.0,
+            'max_bounces': 32, 'diffuse_bounces': 32, 'glossy_bounces': 32,
+            'transmission_bounces': 32, 'adaptive_threshold': 0.002}
+if args.max_fidelity:
+    for _k, _v in FIDELITY.items():
+        setattr(scn.cycles, _k, _v)
+    scn.cycles.use_denoising = False
 # Stepping frames in one process is exactly the case where persistent data serves stale lighting.
 scn.render.use_persistent_data = False
 
@@ -388,7 +409,7 @@ if _linear_pass:
     # the shadow end of it into banding exactly where the shadows are.
     scn.render.image_settings.file_format = 'OPEN_EXR'
     scn.render.image_settings.color_mode = 'RGBA'
-    scn.render.image_settings.color_depth = '16'
+    scn.render.image_settings.color_depth = '32' if args.max_fidelity else '16'
     scn.render.film_transparent = True
 else:
     scn.render.image_settings.file_format = 'PNG'
@@ -912,6 +933,12 @@ report = {'shot': shot.name, 'frames': len(frames), 'fps': str(shot.frame_rate),
                                       'the actor -- near-silhouette with a rim'},
           'textured': args.textured, 'ratio': args.ratio, 'catchlight': args.catchlight,
           'only_light': args.only_light,
+          'max_fidelity': (FIDELITY if args.max_fidelity else False),
+          'cycles': {_k: getattr(scn.cycles, _k) for _k in
+                     ('samples', 'use_adaptive_sampling', 'adaptive_threshold', 'max_bounces',
+                      'diffuse_bounces', 'glossy_bounces', 'transmission_bounces', 'volume_bounces',
+                      'sample_clamp_direct', 'sample_clamp_indirect', 'blur_glossy',
+                      'use_light_tree', 'use_denoising')},
           'corneal': args.corneal,
           'corneal_pass': ({
               'model': 'dielectric corneal CAP truncated at the limbus (sin theta = 5.85/7.8), '

@@ -82,6 +82,18 @@ Blender has LIGHT GROUPS (`view_layer.lightgroups` + `object.lightgroup`, confir
 which give one pass per light from ONE render — round 44 hand-rolled that as `--only-light`;
 port it and gate the port on reproducing `--only-light`.**
 
+**Cycles ships THREE BIASES ON by default and every render here inherited them:
+`sample_clamp_indirect` 10 (discards indirect energy), `blur_glossy` 1.0 (blurs glossy on
+indirect rays) and the OIDN neural denoiser. `stress_proxy.py --max-fidelity` turns all three
+off, raises the bounces to 32 and writes 32-bit; against an 8192-sample reference of it the
+SHIPPED 128-sample default matches to 0.018 stops p50 / 0.066 p95 and 0.15 % of total energy,
+and 4096 samples is no closer (the residual is the denoiser, not noise). So render settings are
+NOT a lever for the bulb tour -- but it is a VOID, and in a real environment the indirect clamp
+and the 4 diffuse bounces WILL bite; re-measure with `--max-fidelity` then. Also: Cycles on
+OPTIX is NOT bit-reproducible run to run (max abs 0.02 on this pass, same command twice), so a
+Blender render can never be gated on bit exactness the way `validate_eye_gpu.py` gates the GPU
+port.** (round44.md 4c)
+
 **Round 43 — the capture room's shine on her SKIN is ~2 % and removing it is invisible; the
 "plastic skin" he sees is the SHADING, measured. Read `rounds/round43.md` §3, §3b, §5 first.**
 `face_delight.py` (DiffusionRenderer basecolor as a diffuse reference, an SH-L1 + falloff
