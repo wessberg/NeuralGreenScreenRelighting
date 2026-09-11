@@ -1,4 +1,4 @@
-# Round 45 handoff — REJECTED. Every number went the right way and the picture got worse. **"What you did to the hair really doesn't look good. The source is way better."**
+# Round 45 handoff — ENTIRELY REJECTED. **"Your work this round is entirely rejected."** The band IS the hair's form; every number went the right way and she looked partly bald
 
 **Date:** 2026-09-11. Starts from round 44's accepted baseline `r44_m50_s05`, which **remains
 the baseline**: nothing here ships. `--hair-sheen` is opt-in and a composite run without it is
@@ -17,6 +17,19 @@ replacement.** So:
   the wrong thing. It is not evidence that he is wrong.
 * **A photographed band in the WRONG PLACE beats a synthesised band in the right one**, on this
   material at this quality. That finding is worth more than the code.
+* **And it is the REMOVAL, not the replacement, that does the damage.** Shown the three columns
+  side by side (`composite/panels/r45_three_ways.png`: the accepted R44, the band taken off with
+  nothing added, and that plus the new highlight), his verdict was *"everything in
+  r45_three_ways looks completely ridiculous, like she's partly bald. Rejected entirely"* -- and,
+  asked directly about the first column, *"No, the accepted looks fine."* **So R44 is fine and
+  BOTH round-45 columns read as partly bald.** Round 44 SS5 predicted exactly this -- *"the crown
+  sheen carries essentially all of the hair's visible form; delete it and the hair is a black
+  mass, which is a worse artefact than the one being named"* -- and round 45 read that as an
+  argument for building a replacement rather than as an argument against removing at all.
+* **There is therefore no safe middle.** Attenuating the band partway (`--hair-sheen-gain 0.3`)
+  is the same operation at a third of the strength: it takes away form, and form is what the
+  band carries. Do not offer it as a compromise, which an earlier draft of the round-46 starter
+  did before his second verdict.
 * **The starter's framing was itself the trap.** "Remove AND replace" was written as the
   construction before anyone had seen a replacement. Round 44 §5 said *"delete it and she has a
   black mass, which is a worse artefact"* — true — and then concluded that the answer was to
@@ -229,19 +242,24 @@ $C = "--shot $S --eye-removal r42_wet_removal --corneal-dir r42_eye_pass --corne
 > is not a result here** — and the untouched photograph beat both the removal alone and the
 > removal plus a synthesised highlight.
 >
-> **Do not start a hair round on your own judgement.** If he wants one, the honest options, in
-> the order I would recommend them:
+> **Do not start a hair round on your own judgement, and do NOT offer "attenuate it a bit" as a
+> compromise.** He was shown the removal WITHOUT any replacement, on its own, and rejected it in
+> the same breath as the replacement: *"everything in r45_three_ways looks completely ridiculous,
+> like she's partly bald"*, and then, on the whole round, *"your work this round is entirely
+> rejected"* — while confirming that the accepted R44 column *"looks fine"*. Attenuation is that
+> same subtraction at a third of the strength. **The band is the hair's visible form, not a layer
+> on top of it**, and any method that takes it off takes the form with it.
 >
-> 1. **ATTENUATE ONLY, no replacement.** `hair_sheen.py --gain 0.3`, or `composite_ratio.py
->    --hair-sheen-gain 0.3 --hair-specular 0`, takes a third of the band off and leaves every
->    hair pixel photographic. It cannot make the shine RESPOND to the new light — row 5 stays
->    unmet on hair — but it makes the room's band less assertive without synthesising anything.
->    It is the only option that does not trade photographed material for model.
-> 2. **Nothing.** Leave the band in the plate and mark row 5 unmet on hair, with this round as
->    the evidence. Defensible, and what *"the source is way better"* literally says.
-> 3. Another round of synthesis. **I would argue against it**, and §6 is why: no strand geometry,
->    so no self-shadowing and no shape change; the primary lobe only; and the single physical fit
->    explains a fifth of the band's envelope.
+> So the position to hold, unless he says otherwise, is: **leave the hair alone.** Mark
+> constraint row 5 as unmet on hair, with this round as the evidence — that is what *"the source
+> is way better"* literally says, and he has now said it three times.
+>
+> If he ever does want it revisited, the only direction that is not a subtraction is to leave
+> every photographed pixel where it is and change only its LEVEL as a function of the new light:
+> a gain map on the hair driven by the rendered irradiance, so the band dims when the light
+> leaves and brightens when it returns while staying exactly where the photograph put it. It
+> cannot MOVE the band, so row 5 stays formally unmet, but it removes no form. That is the one
+> idea round 45 did not try, and it is cheap.
 >
 > **THE LIP GLOSS IS A DIFFERENT PROBLEM AND IS PROBABLY THE BETTER TARGET.** It is the other
 > surface he named (round 44 §5: sheen 2.1 at the dark stations against 1.4 at the bright, corr

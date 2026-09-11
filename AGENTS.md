@@ -16,9 +16,15 @@ replacement.** So: **an inherited numeric target is a hypothesis, not a definiti
 **a photographed highlight in the wrong place beats a synthesised one in the right place** on
 hair at this quality. Nothing shipped; `--hair-sheen` is opt-in and a run without it is
 byte-identical to `r44_m50_s05`, which remains the baseline. **Do not re-attempt the hair without
-asking him first** -- and if he wants it, attenuation with NO replacement
-(`--hair-sheen-gain 0.3 --hair-specular 0`) is the only option that does not trade photographed
-material for model. The LIP GLOSS is the better next target and is a different problem (a surface
+asking him first, and do NOT offer partial attenuation as a compromise.** Shown the removal on
+its own with nothing added, he rejected that too -- *"everything in r45_three_ways looks
+completely ridiculous, like she's partly bald"*, then *"your work this round is entirely
+rejected"* -- while confirming the accepted R44 column *"looks fine"*. **The band IS the hair's
+visible form, not a layer on top of it**, so every subtractive method takes the form with it and
+attenuation is the same subtraction at a third of the strength. Leave the hair alone and mark
+row 5 unmet there. The one untried direction that is NOT a subtraction is a level-only gain map
+on the photographed hair driven by the rendered irradiance: it cannot move the band, so row 5
+stays unmet, but it removes no form. The LIP GLOSS is the better next target and is a different problem (a surface
 with a normal, a DiffusionRenderer basecolor to fit against, and a 2-4 px band), but show him an
 attenuation-only version FIRST. What round 45 leaves that is worth keeping: `hair_region.py`
 measures a strand tangent and its confidence from any plate (coherence 0.70 over her hair, 0.79
