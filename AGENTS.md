@@ -33,6 +33,23 @@ and **rejected**, for colour AND shape flicker and a sometimes-brown pupil, beca
 every term of the fill was refit per frame from a few dozen pixels. **No per-frame-refit
 fill can be temporally stable at a 24-pixel iris.** See `rounds/round32.md`.
 
+**Round 43 — the capture room's shine on her SKIN is ~2 % and removing it is invisible; the
+"plastic skin" he sees is the SHADING, measured. Read `rounds/round43.md` §3, §3b, §5 first.**
+`face_delight.py` (DiffusionRenderer basecolor as a diffuse reference, an SH-L1 + falloff
+shading refit, the dichromatic split against her measured illuminant, face oval only) and
+`composite_ratio.py --face-delight` exist and cost nothing, but `audit_r43_shine.py` does not
+move and neither does `--specular 0`: the composite's additive GGX term is normalised to peak 1
+then multiplied by Fresnel 0.04, so it tops out at 0.03 — **there is no specular on her skin at
+all**; and the proxy's irradiance carries 40–60 % of the meso-shading relief a Lambert of the
+neural normals has, while the plate keeps 100 % of the softbox's (two lights describe her form
+at once). Round 44: a physically scaled specular from the bulb's direction and solid angle, then
+meso-shading from the neural normals with `E_source` divided at the same scale, the proxy for
+occlusion only. **PBR maps are not the lever** (the model's roughness is flat, 0.35–0.44).
+UnReflectAnything finds nothing on skin — do not re-evaluate it there. DiffusionRenderer is
+non-commercial (NVIDIA licence §3.3). `shot.resolution` is the DELIVERY size, not the plate's.
+The hair edge he zoomed into is the matte (1-px alpha ramp, 98.5 % of alpha exactly 0/1), rows
+11/13, not the light.
+
 **Round 42 — the WET EYE is ACCEPTED: *"Yeah, it's a huge improvement! Looks super good."* `r42_wet` is the eye baseline. The bulb is a sub-pixel speck because it is 4 cm at 0.5–2.4 m (1–5°); the softbox subtended ~35° — a catchlight's size is the source's angular size, so a big soft reflection needs a big source in the scene, not a setting. Read `rounds/round42.md` §1, §4, §5,
 §6 first.** The eye is now ONE surface of revolution per eye (`stress_proxy.py --corneal --globe
 --socket`): the 7.8 mm cornea, a 1 mm concave limbal fillet, the 12 mm scleral globe (tear film

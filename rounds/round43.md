@@ -145,6 +145,20 @@ occlusion and the far field. `relight_sh.py` (stage 10, the gain map) is the nor
 half of that and was measured to have a ceiling on SHADOWS, not on shading; the proxy is
 the shadows half. They have never been combined.
 
+## 3b. The hair edge he zoomed into (screenshots 2026-09-11 12:57)
+
+Two crops of the review at frame 73 show a hard, stair-stepped hair silhouette with a
+one-pixel dark fringe and no partial coverage on flyaways. That is the MATTE, not the light.
+Measured on `key/alpha/000073.exr`: 98.5 % of all alpha pixels are exactly 0 or 1; along the
+hair silhouette there are 1.13 fractional pixels per edge pixel (skin edge 1.47), i.e. a
+one-pixel ramp. Strand-level alpha does not exist in this key, so under any relight the hair
+sits on the background like a cut-out. This is constraints row 13 (edge integration) and row
+11 (the plate is 4:2:0 and was keyed at 1080p); on his own footage the answer is the one
+AGENTS.md already gives: all-intra transcode, chroma upsampled, key at native 6K and
+downscale after. On this stock plate there is no native 6K to key. The hair's SHEEN also
+still says softbox (round 5's first complaint); hair is outside the skin mask and outside
+this round's face oval, and gets the proxy's ratio as a mass.
+
 ## 4. Subsurface scattering
 
 Not a network's job. Cycles folds subsurface into the diffuse passes the ratio is built from
