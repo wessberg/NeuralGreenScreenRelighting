@@ -420,34 +420,64 @@ $C = "--shot $S --eye-removal r42_wet_removal --corneal-dir r42_eye_pass --corne
 & $B -b --factory-startup --python scripts/stress_proxy.py -- --shot $S --ratio --length 150 --samples 8192 --max-fidelity --only-light bulb --only-output 73 --name r44_maxfid   # 4c reference, 53 s
 ```
 
-## 8. Starter prompt for round 45
+## 8. Starter prompt for round 45 — THE HAIR
 
-> **Round 44 built the meso-shading from the neural normals and a physical specular per
-> light source, and `r44_m50_s05` (`--meso-strength 0.5 --specular 0.5`) is ACCEPTED:
-> *"Improved and accepted. It still doesn't look entirely 'human', but is better than
-> before."* It is the new baseline composite and the thing to build the next comparison
-> against. Read round44.md §2c, §5, §6 first.** He says it is still not human, so do not
-> report the bar as met. Crawl is not yet ruled out by his eye: the 12 px high-passed step is
-> +8 % over R42 at his setting (it was +23 % at full meso), so if he ever reports it, filter
-> the neural normals in time in a head-stabilised frame (symmetric window in SECONDS, as
-> round 37's edge shading), never the modulation. **The two hard lessons of this round, do
-> not relearn them:** "plastic" means
-> missing depth and imperfections, so the lever is SHADING RELIEF and a smooth specular makes
-> it worse; and when he says an effect is too strong, DECOMPOSE before you tune — he asked
-> twice for the specular to come down when the term he was reacting to was the meso, 1.75
-> stops against the specular's 0.18.
+> **Round 45 is the HAIR SHEEN. The artist named it the moment the skin landed:** *"we still
+> have the shine in the very top of her hair. Very clearly from a light hanging above her
+> head."* **Read round44.md §5 first — the measurement is already done and must not be
+> re-derived.** On the crown, over the whole tour: the bright band is **23× the dark hair
+> beside it** (0.235 vs 0.010) and the two sit at the **SAME chroma** (8.0–9.0° and 7.4–8.9°
+> from the measured plate illuminant). So:
 >
-> **Then the hair, which he raised the moment the skin landed** (*"we still have the shine in
-> the very top of her hair. Very clearly from a light hanging above her head"*). §5 has the
-> measurement: the crown band is 23× the dark hair beside it and at the SAME chroma, so no
-> dichromatic split can touch it, but on near-black hair a level test is enough to find it.
-> Build remove-AND-replace — the room's band off against a local dark-hair baseline with the
-> strand texture kept and the footprint held in time (`sclera_glint_removal.py` is the
-> pattern), then an anisotropic hair specular (Kajiya-Kay/Marschner) from the tour's own
-> sources along a tracked strand direction. Removing without replacing turns her hair into a
-> black mass: that band carries nearly all of its form. The lip gloss is the same family and
-> smaller (§5). And the fill panel reflecting in a shadowed eye is the RIG parking the fill
-> behind her face plane at the side stations (§6) — fixing it re-renders the tour and the
-> accepted eye pass; ask him. Keep: GENERIC tool, GPU first, plate pixels outside the passes
-> exact, p95 and max for anything temporal, a face-scale sheet in front of him before a full
-> run, a video before a verdict.
+> * **No dichromatic split can touch it.** Her hair's own diffuse colour is as close to the
+>   room's illuminant as the specular is, so `I = a·b̂ + s·ĝ` is degenerate there. This is
+>   round 5's near-neutral case. `face_delight.py --regions hair` takes only 15–18 % off the
+>   brightest decile and `audit_r44_sheen.py` does not move. **Do not tune it, and do not
+>   re-evaluate UnReflectAnything on hair** (round 43 already ruled it out on skin).
+> * **A LEVEL test finds it outright.** At 23×, a pixel in the band is ≥ 95 % specular on
+>   near-black hair, which is the one thing that IS easy here.
+> * **Removing it is not the job — the band carries nearly all of the hair's visible form.**
+>   Delete it and she has a black mass, which is a worse artefact than the one he is naming.
+>   The construction is **remove AND replace**: the room's band off against a local dark-hair
+>   baseline with the strand texture kept and the footprint held in time
+>   (`sclera_glint_removal.py` is the pattern — footprint held, fill from the surrounding
+>   material, flicker matched to the untouched neighbourhood), then an **anisotropic hair
+>   specular** (Kajiya-Kay or Marschner) from the tour's own sources along a tracked strand
+>   direction. `--light-passes` already gives you each source separately with its world
+>   position, and `light_geometry.py` gives a per-pixel direction to it.
+> * The hair is OUTSIDE the skin mask, the face oval and the ratio's per-material weights, and
+>   the crown is where `--specular-other 0.15` and `--roughness-other 0.8` currently apply.
+>
+> **Baseline: `r44_m50_s05`** (`--meso-strength 0.5 --specular 0.5` on the R42 eye work),
+> ACCEPTED — *"Improved and accepted. It still doesn't look entirely 'human', but is better
+> than before."* Build every comparison against it. **He says it is still not human, so do not
+> report the bar as met.** Command in §7.
+>
+> **The lip gloss is the same family and smaller** (§5: sheen 2.1 at the dark stations vs 1.4
+> at the bright, corr −0.39, and the delight separation takes 9–15 %). It needs the band
+> itself — no low-pass, the DiffusionRenderer vermilion as the diffuse reference, and a check
+> that the a-term is not eating lip colour. Do it after the hair, or hand it off.
+>
+> **Also open, both needing him to decide:** the fill panel reflecting in a shadowed eye is
+> the RIG parking the fill BEHIND her face plane at the side stations (§6) — fixing it
+> re-renders the tour, both light passes AND the accepted eye pass, so ask. And porting
+> `--only-light` to Blender's native LIGHT GROUPS (§4b) halves the render cost and makes the
+> passes sum exactly; gate the port on reproducing `--only-light`, not on bit exactness
+> (§4c: Cycles on OPTIX is not bit-reproducible run to run).
+>
+> **Do not spend a round on render settings** (§4c): the shipped 128-sample default already
+> matches an 8192-sample, denoiser-off, clamp-off reference to 0.018 stops p50 and 0.15 % of
+> total energy. `--max-fidelity` exists to re-measure that when a real environment with walls
+> replaces the void, not before.
+>
+> **Three lessons from round 44, do not relearn them:** "plastic" means missing depth and
+> imperfections, so the lever is SHADING RELIEF and a smooth specular makes it WORSE; when he
+> says an effect is too strong, DECOMPOSE before you tune (he asked twice for the specular to
+> come down when the term he was reacting to was the meso, 1.75 stops against 0.18); and crawl
+> is not ruled out by his eye — the 12 px high-passed step is +8 % over R42 at his setting, so
+> if he reports it, filter the neural normals in time in a head-stabilised frame (symmetric
+> window in SECONDS, as round 37's edge shading), never the modulation.
+>
+> Keep: GENERIC tool, GPU first, plate pixels outside the passes exact, p95 and max for
+> anything temporal, a labelled face-scale sheet in front of him before a full run, and a
+> video before a verdict.
