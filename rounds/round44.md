@@ -431,16 +431,30 @@ Round 43 opened with *"her skin is shining equally even as we reduce the light o
 away"* and continued *"still a kind of 'plastic skin'"* — one complaint, not two. Round 44's
 *"now it looks like a shiny barbie doll"* was the same word with the cause spelled out.
 
-What went wrong is subtler than a vocabulary slip, and worth keeping: **round 43 measured the
-shine on her SKIN, found it at 2 % of skin luminance, showed that removing it was invisible,
-and concluded "it is the SHADING, not the shine". The measurement was right and the SURFACE
-was wrong.** The shine he can actually see is on her HAIR and her LIPS, and nobody measured
-those until round 44 §5 — where the hair crown sheen is **10.9×** the local median and the lip
-gloss **2.1×**, neither of which follows the new light at all.
+What went wrong is subtler than a vocabulary slip: **round 43 measured the shine on her SKIN,
+found it at 2 % of skin luminance, showed that removing it was invisible, and concluded "it is
+the SHADING, not the shine". The measurement was right; the surfaces where he can actually SEE
+shine — her lips, and later her hair — went unmeasured until round 44 §5**, where the lip gloss
+is **2.1×** the local median and the hair crown **10.9×**, neither following the new light.
 
-**So the hair and lip work is not a side quest. It IS the "plastic" complaint, and has been
-since round 43.** It is constraint row 5: `plate × R` can recolour a photographed highlight
-but cannot move or delete one, so the capture room's speculars survive every relight.
+**AND THE FIRST DRAFT OF THIS SECTION THEN OVERCORRECTED, which he caught immediately.** It
+said the hair and lip work "IS the plastic complaint". His reply: *"I don't know about that, it
+was the skin too. You've improved it quite a bit by adding depth to the lips, for example. And
+the hair wasn't part of that diagnosis."* So, accurately:
+
+* **The doll impression had more than one cause.** The skin's missing mid-scale shading was a
+  real part of it, and §2c's meso term genuinely helped — he names the added depth in the lips
+  as an example of what worked. Do not treat the relief work as having answered the wrong
+  question.
+* **The word still points at SHINE.** That is the correction that matters: never read "plastic"
+  or "Barbie" as "add more texture", and check the shiny surfaces before concluding anything
+  about shading.
+* **The hair is a SEPARATE, LATER observation.** He raised it after accepting the skin, and it
+  was never part of the round-43 diagnosis. It is the next named defect, not the root cause of
+  the earlier one.
+
+The lip and hair sheen are still constraint row 5: `plate × R` can recolour a photographed
+highlight but cannot move or delete one, so the capture room's speculars survive every relight.
 
 **"Natural, authentic skin response" already has a test, and it is already built.** Real
 specular RESPONDS to its source: move the light and the highlight moves and changes level.
@@ -461,15 +475,60 @@ along with the skin under it. **Round 45's acceptance criterion is that this cor
 POSITIVE on hair and lips** — the highlight brightening at the bright stations and going away
 at the dark ones — not merely that the band gets dimmer.
 
-The meso-shading of §2c is still real and still accepted; it answered a different complaint
-from the one the word names, and he graded it *"improved"* on its own terms. Nothing here
-reverses it.
+**Where he says we stand:** *"it looks OK now. We're not fully out of the barbie doll valley
+yet though."* So the meso-shading of §2c is real, accepted and part of the answer — and it is
+not the whole of it.
+
+
+### 8a. "Isn't skin pretty matte?" — no, but we are deliberately running BELOW physics
+
+He asked this after the correction, and said it was why he had been against the specular work
+from the start. The honest answer is that his instinct was right about the PICTURE and wrong
+about the physics, and the gap between those two is the interesting part.
+
+**Skin is a dielectric, not a matte surface.** Its surface reflectance at normal incidence is
+about **2.8 %** (IOR ~1.4) — among the lowest of any dielectric, and the value
+`--f0-skin 0.028` already uses. Two things make that 2.8 % visible rather than negligible:
+
+* it is **concentrated** into a narrow lobe instead of spread over the hemisphere, so inside
+  the lobe it can stand well above the diffuse even though its total energy is tiny;
+* **Fresnel** takes it from 2.8 % toward 100 % at grazing angles, which is why real skin shine
+  lives on a cheek turning away, the bridge of the nose seen obliquely, the brow and the lower
+  lip — and why the accepted run's specular peaks on the jaw and neck rather than face-on.
+
+A face with NO specular at all is a Lambertian solid, which reads as chalk or clay. So the
+term earns its place; the question is only how much.
+
+**Where we actually sit, measured:**
+
+| | value | physical reference |
+|---|---|---|
+| F0 skin | 0.028 | 0.028 (IOR 1.4) — matched |
+| roughness skin | **0.55** | **0.38** measured on HER skin by DiffusionRenderer (round 43; p10/p50/p90 0.36/0.40/0.44) |
+| gain | **0.5** | 1.0 |
+| specular / skin luminance, `r44_m50_s05` | p50 **0.048**, p95 0.209, max 0.377 | — |
+
+**We are rougher AND weaker than her own skin measures.** That is not a physical correction,
+it is a workaround, and it should be recorded as one: **the neural normals are smooth at pore
+scale** (they resolve ~2.5 plate px; a pore is 0.2–0.5 px), so a physically correct lobe on
+them is a physically correct SMOOTH BAND — and a smooth band is the Barbie signature itself.
+`--specular-texture 2` breaks it up using the plate's own texture as a stand-in for
+micro-normals, which is a HEURISTIC (round 44 §2: the plate's texture is albedo and softbox
+shading, not geometry).
+
+**So the lever for going back to physical values is real micro-structure, not a bigger gain.**
+If a round ever gets true pore-scale normals — or a better-founded breakup than the texture
+heuristic — raising roughness back to 0.38 and the gain to 1.0 should look MORE real, not
+less. Until then, sub-physical is the right call and the numbers above say by how much.
 
 ## 9. Starter prompt for round 45 — THE HAIR
 
-> **Round 45 is the HAIR SHEEN, and §8 says why that is the MAIN event rather than a tidy-up:
-> when he says "plastic" he means SHINY, he has meant that since round 43, and the shine he
-> can see is on her HAIR and LIPS.** He named it the moment the skin landed: *"we still have
+> **Round 45 is the HAIR SHEEN — the next named defect, with §8 and §8a behind it.** Read §8
+> first for the vocabulary: when he says "plastic" / "Barbie" / "NPC" he means SHINY, not
+> missing texture. But do not overcorrect the way the first draft of §8 did and he corrected:
+> the doll impression had SEVERAL causes, the skin's missing relief was genuinely one of them,
+> and §2c's meso term helped (*"you've improved it quite a bit by adding depth to the lips"*).
+> The hair is a separate, later observation. He named it the moment the skin landed: *"we still have
 > the shine in the very top of her hair. Very clearly from a light hanging above her head."*
 > His goal, verbatim: *"We don't want barbie doll. We want natural, authentic skin response."*
 > **The acceptance criterion is therefore not "dimmer" but "responds"**: `audit_r44_sheen.py`

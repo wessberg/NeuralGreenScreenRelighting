@@ -48,6 +48,16 @@ HAIR (crown sheen 10.9x the local median) and her LIPS (2.1x), first measured in
 DIMMEST). **Round 45 must drive it POSITIVE, not merely make the band dimmer.** Check the shiny
 surfaces before concluding anything about shading. See `rounds/round44.md` §8.
 
+**Skin is NOT matte, and we are deliberately BELOW physics (round44.md §8a).** Skin's surface
+reflectance is ~2.8 % at normal incidence (IOR 1.4) — low, but concentrated into a lobe and
+driven toward 100 % by Fresnel at grazing angles, which is where real skin shine lives. We use
+F0 0.028 (matched) but **roughness 0.55 against the 0.38 DiffusionRenderer measured on HER
+skin, and gain 0.5** — specular is 4.8 % of skin luminance at p50 in `r44_m50_s05`. The reason
+is NOT physics: **the neural normals are smooth at pore scale, so a physically correct lobe on
+them is a smooth BAND, which is the Barbie signature itself.** `--specular-texture` breaks it up
+with the plate's own texture as a stand-in for micro-normals, and that is a HEURISTIC. The lever
+for returning to physical values is real micro-structure, never a bigger gain.
+
 **Round 44 — ACCEPTED: `r44_m50_s05` is the new BASELINE composite (`--meso-strength 0.5
 --specular 0.5`), superseding `r42_wet` as the picture while `r42_wet` remains the accepted eye
 work under it. *"Improved and accepted. It still doesn't look entirely 'human', but is better
