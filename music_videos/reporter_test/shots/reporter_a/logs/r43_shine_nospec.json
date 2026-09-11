@@ -1,0 +1,5924 @@
+{
+  "summary": {
+    "r43_delight_comp_forehead": {
+      "sheen_p50": 1.1456969380378723,
+      "sheen_p95": 2.0143242895603164,
+      "sheen_dark_stations": 1.1574207544326782,
+      "sheen_bright_stations": 1.1441586017608643,
+      "corr_sheen_logE": 0.031017497467929863,
+      "E_range_stops": 9.475828565840704
+    },
+    "r43_nospec_forehead": {
+      "sheen_p50": 1.1457889676094055,
+      "sheen_p95": 2.0143242895603164,
+      "sheen_dark_stations": 1.1574207544326782,
+      "sheen_bright_stations": 1.1441586017608643,
+      "corr_sheen_logE": 0.031020546349085375,
+      "E_range_stops": 9.475828565840704
+    },
+    "r43_delight_comp_nose_bridge": {
+      "sheen_p50": 1.2891229391098022,
+      "sheen_p95": 3.3139938235282873,
+      "sheen_dark_stations": 1.27259361743927,
+      "sheen_bright_stations": 1.2978166341781616,
+      "corr_sheen_logE": 0.044725919021401654,
+      "E_range_stops": 9.370942999947385
+    },
+    "r43_nospec_nose_bridge": {
+      "sheen_p50": 1.2891229391098022,
+      "sheen_p95": 3.3139938235282873,
+      "sheen_dark_stations": 1.27259361743927,
+      "sheen_bright_stations": 1.2978166341781616,
+      "corr_sheen_logE": 0.04565375750283377,
+      "E_range_stops": 9.370942999947385
+    },
+    "r43_delight_comp_cheek_l": {
+      "sheen_p50": 1.2642828822135925,
+      "sheen_p95": 2.900238811969756,
+      "sheen_dark_stations": 1.179212212562561,
+      "sheen_bright_stations": 1.0776634812355042,
+      "corr_sheen_logE": -0.19700117793567423,
+      "E_range_stops": 10.273555623192031
+    },
+    "r43_nospec_cheek_l": {
+      "sheen_p50": 1.2640422582626343,
+      "sheen_p95": 2.902777469158172,
+      "sheen_dark_stations": 1.179212212562561,
+      "sheen_bright_stations": 1.0797174572944641,
+      "corr_sheen_logE": -0.1963393085206828,
+      "E_range_stops": 10.273555623192031
+    },
+    "r43_delight_comp_chin": {
+      "sheen_p50": 1.476088285446167,
+      "sheen_p95": 3.254988896846771,
+      "sheen_dark_stations": 1.760029375553131,
+      "sheen_bright_stations": 1.2946444153785706,
+      "corr_sheen_logE": -0.22848339205342666,
+      "E_range_stops": 10.077748802344779
+    },
+    "r43_nospec_chin": {
+      "sheen_p50": 1.476088285446167,
+      "sheen_p95": 3.254988896846771,
+      "sheen_dark_stations": 1.760029375553131,
+      "sheen_bright_stations": 1.2946444153785706,
+      "corr_sheen_logE": -0.22658212080202988,
+      "E_range_stops": 10.077748802344779
+    }
+  },
+  "per_frame": [
+    {
+      "frame": 0,
+      "E_forehead": 0.0798567682504654,
+      "r43_delight_comp_forehead": {
+        "level": 0.40584659576416016,
+        "sheen": 1.0708318948745728
+      },
+      "r43_nospec_forehead": {
+        "level": 0.40584659576416016,
+        "sheen": 1.0708318948745728
+      },
+      "E_nose_bridge": 0.07148037850856781,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.38033416867256165,
+        "sheen": 1.1047018766403198
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.38033416867256165,
+        "sheen": 1.1047018766403198
+      },
+      "E_cheek_l": 0.03468933701515198,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.1795760989189148,
+        "sheen": 1.3116925954818726
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.1795760989189148,
+        "sheen": 1.3116925954818726
+      },
+      "E_chin": 0.05971642583608627,
+      "r43_delight_comp_chin": {
+        "level": 0.27694129943847656,
+        "sheen": 1.2787623405456543
+      },
+      "r43_nospec_chin": {
+        "level": 0.27694129943847656,
+        "sheen": 1.2787623405456543
+      }
+    },
+    {
+      "frame": 1,
+      "E_forehead": 0.07097221910953522,
+      "r43_delight_comp_forehead": {
+        "level": 0.37268534302711487,
+        "sheen": 1.0889792442321777
+      },
+      "r43_nospec_forehead": {
+        "level": 0.37268534302711487,
+        "sheen": 1.0889792442321777
+      },
+      "E_nose_bridge": 0.06373089551925659,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.3593699336051941,
+        "sheen": 1.1090742349624634
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.3593699336051941,
+        "sheen": 1.1090742349624634
+      },
+      "E_cheek_l": 0.030851321294903755,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.16041752696037292,
+        "sheen": 1.29705011844635
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.16041752696037292,
+        "sheen": 1.29705011844635
+      },
+      "E_chin": 0.05207107588648796,
+      "r43_delight_comp_chin": {
+        "level": 0.24143753945827484,
+        "sheen": 1.3489612340927124
+      },
+      "r43_nospec_chin": {
+        "level": 0.24143753945827484,
+        "sheen": 1.3489612340927124
+      }
+    },
+    {
+      "frame": 2,
+      "E_forehead": 0.0636209100484848,
+      "r43_delight_comp_forehead": {
+        "level": 0.3331913650035858,
+        "sheen": 1.1175380945205688
+      },
+      "r43_nospec_forehead": {
+        "level": 0.3331913650035858,
+        "sheen": 1.1175380945205688
+      },
+      "E_nose_bridge": 0.05671928822994232,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.33529841899871826,
+        "sheen": 1.1343153715133667
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.33529841899871826,
+        "sheen": 1.1343153715133667
+      },
+      "E_cheek_l": 0.02728929929435253,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.13909956812858582,
+        "sheen": 1.311454176902771
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.13909956812858582,
+        "sheen": 1.311454176902771
+      },
+      "E_chin": 0.04520883411169052,
+      "r43_delight_comp_chin": {
+        "level": 0.20949465036392212,
+        "sheen": 1.333980917930603
+      },
+      "r43_nospec_chin": {
+        "level": 0.20949465036392212,
+        "sheen": 1.333980917930603
+      }
+    },
+    {
+      "frame": 3,
+      "E_forehead": 0.05724672973155975,
+      "r43_delight_comp_forehead": {
+        "level": 0.30016300082206726,
+        "sheen": 1.1109910011291504
+      },
+      "r43_nospec_forehead": {
+        "level": 0.30016300082206726,
+        "sheen": 1.1109910011291504
+      },
+      "E_nose_bridge": 0.05110058933496475,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.30386483669281006,
+        "sheen": 1.1409612894058228
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.30386483669281006,
+        "sheen": 1.1409612894058228
+      },
+      "E_cheek_l": 0.024571694433689117,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.12506608664989471,
+        "sheen": 1.3065431118011475
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.12506608664989471,
+        "sheen": 1.3065431118011475
+      },
+      "E_chin": 0.0401134192943573,
+      "r43_delight_comp_chin": {
+        "level": 0.187539741396904,
+        "sheen": 1.3357348442077637
+      },
+      "r43_nospec_chin": {
+        "level": 0.187539741396904,
+        "sheen": 1.3357348442077637
+      }
+    },
+    {
+      "frame": 4,
+      "E_forehead": 0.05209151655435562,
+      "r43_delight_comp_forehead": {
+        "level": 0.2709171175956726,
+        "sheen": 1.1148794889450073
+      },
+      "r43_nospec_forehead": {
+        "level": 0.2709171175956726,
+        "sheen": 1.1148794889450073
+      },
+      "E_nose_bridge": 0.04668322950601578,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.26972728967666626,
+        "sheen": 1.144855260848999
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.26972728967666626,
+        "sheen": 1.144855260848999
+      },
+      "E_cheek_l": 0.022120965644717216,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.11128836870193481,
+        "sheen": 1.3289718627929688
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.11128836870193481,
+        "sheen": 1.3289718627929688
+      },
+      "E_chin": 0.036253672093153,
+      "r43_delight_comp_chin": {
+        "level": 0.16887792944908142,
+        "sheen": 1.347162127494812
+      },
+      "r43_nospec_chin": {
+        "level": 0.16887792944908142,
+        "sheen": 1.347162127494812
+      }
+    },
+    {
+      "frame": 5,
+      "E_forehead": 0.04790685698390007,
+      "r43_delight_comp_forehead": {
+        "level": 0.24841590225696564,
+        "sheen": 1.1190556287765503
+      },
+      "r43_nospec_forehead": {
+        "level": 0.24841590225696564,
+        "sheen": 1.1190556287765503
+      },
+      "E_nose_bridge": 0.04265039786696434,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.24600550532341003,
+        "sheen": 1.1446244716644287
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.24600550532341003,
+        "sheen": 1.1446244716644287
+      },
+      "E_cheek_l": 0.02071349322795868,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.10322470963001251,
+        "sheen": 1.340279221534729
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.10322470963001251,
+        "sheen": 1.340279221534729
+      },
+      "E_chin": 0.033479005098342896,
+      "r43_delight_comp_chin": {
+        "level": 0.1549122929573059,
+        "sheen": 1.359623670578003
+      },
+      "r43_nospec_chin": {
+        "level": 0.1548658013343811,
+        "sheen": 1.3600318431854248
+      }
+    },
+    {
+      "frame": 6,
+      "E_forehead": 0.04433254525065422,
+      "r43_delight_comp_forehead": {
+        "level": 0.2321181744337082,
+        "sheen": 1.1088781356811523
+      },
+      "r43_nospec_forehead": {
+        "level": 0.23204699158668518,
+        "sheen": 1.1092182397842407
+      },
+      "E_nose_bridge": 0.03939594328403473,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.22767755389213562,
+        "sheen": 1.141233205795288
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.22767755389213562,
+        "sheen": 1.141233205795288
+      },
+      "E_cheek_l": 0.019624441862106323,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.09753664582967758,
+        "sheen": 1.3225204944610596
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.09753664582967758,
+        "sheen": 1.3225204944610596
+      },
+      "E_chin": 0.031897056847810745,
+      "r43_delight_comp_chin": {
+        "level": 0.1465904712677002,
+        "sheen": 1.376331090927124
+      },
+      "r43_nospec_chin": {
+        "level": 0.1465904712677002,
+        "sheen": 1.376331090927124
+      }
+    },
+    {
+      "frame": 7,
+      "E_forehead": 0.04151156544685364,
+      "r43_delight_comp_forehead": {
+        "level": 0.2175181806087494,
+        "sheen": 1.1121264696121216
+      },
+      "r43_nospec_forehead": {
+        "level": 0.2175181806087494,
+        "sheen": 1.1121264696121216
+      },
+      "E_nose_bridge": 0.03662344068288803,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.2146390974521637,
+        "sheen": 1.1470845937728882
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.2146390974521637,
+        "sheen": 1.1470845937728882
+      },
+      "E_cheek_l": 0.0183209590613842,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.09089601039886475,
+        "sheen": 1.3300901651382446
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.09089601039886475,
+        "sheen": 1.3300901651382446
+      },
+      "E_chin": 0.030580760911107063,
+      "r43_delight_comp_chin": {
+        "level": 0.13973256945610046,
+        "sheen": 1.3472129106521606
+      },
+      "r43_nospec_chin": {
+        "level": 0.13973256945610046,
+        "sheen": 1.3472129106521606
+      }
+    },
+    {
+      "frame": 8,
+      "E_forehead": 0.03904900699853897,
+      "r43_delight_comp_forehead": {
+        "level": 0.2035965621471405,
+        "sheen": 1.1155259609222412
+      },
+      "r43_nospec_forehead": {
+        "level": 0.2035965621471405,
+        "sheen": 1.1155259609222412
+      },
+      "E_nose_bridge": 0.034377604722976685,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.20031693577766418,
+        "sheen": 1.1331000328063965
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.20031693577766418,
+        "sheen": 1.1331000328063965
+      },
+      "E_cheek_l": 0.01722835935652256,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.08519615978002548,
+        "sheen": 1.322616696357727
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.08519615978002548,
+        "sheen": 1.322616696357727
+      },
+      "E_chin": 0.03001176193356514,
+      "r43_delight_comp_chin": {
+        "level": 0.13539175689220428,
+        "sheen": 1.3347328901290894
+      },
+      "r43_nospec_chin": {
+        "level": 0.13539175689220428,
+        "sheen": 1.3347328901290894
+      }
+    },
+    {
+      "frame": 9,
+      "E_forehead": 0.03697466477751732,
+      "r43_delight_comp_forehead": {
+        "level": 0.19140034914016724,
+        "sheen": 1.1213804483413696
+      },
+      "r43_nospec_forehead": {
+        "level": 0.19140034914016724,
+        "sheen": 1.1213804483413696
+      },
+      "E_nose_bridge": 0.03242490440607071,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.18643805384635925,
+        "sheen": 1.1445106267929077
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.18643805384635925,
+        "sheen": 1.1445106267929077
+      },
+      "E_cheek_l": 0.016123171895742416,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.07915148138999939,
+        "sheen": 1.3400100469589233
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.07915148138999939,
+        "sheen": 1.3400100469589233
+      },
+      "E_chin": 0.02890710160136223,
+      "r43_delight_comp_chin": {
+        "level": 0.13003669679164886,
+        "sheen": 1.334563136100769
+      },
+      "r43_nospec_chin": {
+        "level": 0.13003669679164886,
+        "sheen": 1.334563136100769
+      }
+    },
+    {
+      "frame": 10,
+      "E_forehead": 0.03528248518705368,
+      "r43_delight_comp_forehead": {
+        "level": 0.18135589361190796,
+        "sheen": 1.1182764768600464
+      },
+      "r43_nospec_forehead": {
+        "level": 0.18135589361190796,
+        "sheen": 1.1182764768600464
+      },
+      "E_nose_bridge": 0.031145289540290833,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.17844700813293457,
+        "sheen": 1.1381043195724487
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.17844700813293457,
+        "sheen": 1.1381043195724487
+      },
+      "E_cheek_l": 0.014995827339589596,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.07330704480409622,
+        "sheen": 1.3695343732833862
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.07330704480409622,
+        "sheen": 1.3695343732833862
+      },
+      "E_chin": 0.027812547981739044,
+      "r43_delight_comp_chin": {
+        "level": 0.12460725009441376,
+        "sheen": 1.3308082818984985
+      },
+      "r43_nospec_chin": {
+        "level": 0.12460725009441376,
+        "sheen": 1.3308082818984985
+      }
+    },
+    {
+      "frame": 11,
+      "E_forehead": 0.033838964998722076,
+      "r43_delight_comp_forehead": {
+        "level": 0.17411205172538757,
+        "sheen": 1.1323580741882324
+      },
+      "r43_nospec_forehead": {
+        "level": 0.17411205172538757,
+        "sheen": 1.1323580741882324
+      },
+      "E_nose_bridge": 0.03004288859665394,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.17201437056064606,
+        "sheen": 1.1611459255218506
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.17201437056064606,
+        "sheen": 1.1611459255218506
+      },
+      "E_cheek_l": 0.014173774048686028,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.0694616436958313,
+        "sheen": 1.3720430135726929
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.0694616436958313,
+        "sheen": 1.3720430135726929
+      },
+      "E_chin": 0.026916800066828728,
+      "r43_delight_comp_chin": {
+        "level": 0.11829958111047745,
+        "sheen": 1.345856785774231
+      },
+      "r43_nospec_chin": {
+        "level": 0.11829958111047745,
+        "sheen": 1.345856785774231
+      }
+    },
+    {
+      "frame": 12,
+      "E_forehead": 0.03241314738988876,
+      "r43_delight_comp_forehead": {
+        "level": 0.16545161604881287,
+        "sheen": 1.1265511512756348
+      },
+      "r43_nospec_forehead": {
+        "level": 0.16545161604881287,
+        "sheen": 1.1265511512756348
+      },
+      "E_nose_bridge": 0.02930644154548645,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.1657923310995102,
+        "sheen": 1.1502591371536255
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.1657923310995102,
+        "sheen": 1.1502591371536255
+      },
+      "E_cheek_l": 0.013524431735277176,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.0650167465209961,
+        "sheen": 1.3660368919372559
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.0650167465209961,
+        "sheen": 1.3660368919372559
+      },
+      "E_chin": 0.025195928290486336,
+      "r43_delight_comp_chin": {
+        "level": 0.11057623475790024,
+        "sheen": 1.3577502965927124
+      },
+      "r43_nospec_chin": {
+        "level": 0.11057623475790024,
+        "sheen": 1.3577502965927124
+      }
+    },
+    {
+      "frame": 13,
+      "E_forehead": 0.03128143399953842,
+      "r43_delight_comp_forehead": {
+        "level": 0.15943540632724762,
+        "sheen": 1.1326663494110107
+      },
+      "r43_nospec_forehead": {
+        "level": 0.15942920744419098,
+        "sheen": 1.1327104568481445
+      },
+      "E_nose_bridge": 0.028708187863230705,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.16227294504642487,
+        "sheen": 1.1546649932861328
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.16227294504642487,
+        "sheen": 1.1546649932861328
+      },
+      "E_cheek_l": 0.013570358045399189,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.06462385505437851,
+        "sheen": 1.2793636322021484
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.06462385505437851,
+        "sheen": 1.2793636322021484
+      },
+      "E_chin": 0.02428567036986351,
+      "r43_delight_comp_chin": {
+        "level": 0.10739325731992722,
+        "sheen": 1.3548702001571655
+      },
+      "r43_nospec_chin": {
+        "level": 0.10739325731992722,
+        "sheen": 1.3548702001571655
+      }
+    },
+    {
+      "frame": 14,
+      "E_forehead": 0.030325308442115784,
+      "r43_delight_comp_forehead": {
+        "level": 0.15182210505008698,
+        "sheen": 1.1480743885040283
+      },
+      "r43_nospec_forehead": {
+        "level": 0.15182210505008698,
+        "sheen": 1.1480205059051514
+      },
+      "E_nose_bridge": 0.028620939701795578,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.15856558084487915,
+        "sheen": 1.1518266201019287
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.15856558084487915,
+        "sheen": 1.1518266201019287
+      },
+      "E_cheek_l": 0.015700606629252434,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.0732833743095398,
+        "sheen": 1.8249253034591675
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.0732833743095398,
+        "sheen": 1.8249253034591675
+      },
+      "E_chin": 0.02276425063610077,
+      "r43_delight_comp_chin": {
+        "level": 0.0979146957397461,
+        "sheen": 1.4120993614196777
+      },
+      "r43_nospec_chin": {
+        "level": 0.0979146957397461,
+        "sheen": 1.4120993614196777
+      }
+    },
+    {
+      "frame": 15,
+      "E_forehead": 0.02993955835700035,
+      "r43_delight_comp_forehead": {
+        "level": 0.14916932582855225,
+        "sheen": 1.1457539796829224
+      },
+      "r43_nospec_forehead": {
+        "level": 0.14916932582855225,
+        "sheen": 1.1457539796829224
+      },
+      "E_nose_bridge": 0.028547149151563644,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.15743659436702728,
+        "sheen": 1.1517231464385986
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.15743659436702728,
+        "sheen": 1.1517231464385986
+      },
+      "E_cheek_l": 0.018013449385762215,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.08371228724718094,
+        "sheen": 2.0209295749664307
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.08371228724718094,
+        "sheen": 2.0209295749664307
+      },
+      "E_chin": 0.022206395864486694,
+      "r43_delight_comp_chin": {
+        "level": 0.09574101865291595,
+        "sheen": 1.4138367176055908
+      },
+      "r43_nospec_chin": {
+        "level": 0.09574101865291595,
+        "sheen": 1.4138367176055908
+      }
+    },
+    {
+      "frame": 16,
+      "E_forehead": 0.030003678053617477,
+      "r43_delight_comp_forehead": {
+        "level": 0.14858049154281616,
+        "sheen": 1.1439363956451416
+      },
+      "r43_nospec_forehead": {
+        "level": 0.1485455334186554,
+        "sheen": 1.1442055702209473
+      },
+      "E_nose_bridge": 0.028677549213171005,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.15562258660793304,
+        "sheen": 1.1440857648849487
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.15562258660793304,
+        "sheen": 1.1440857648849487
+      },
+      "E_cheek_l": 0.01700744405388832,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.07766776531934738,
+        "sheen": 2.0150651931762695
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.07766776531934738,
+        "sheen": 2.0150651931762695
+      },
+      "E_chin": 0.02232814021408558,
+      "r43_delight_comp_chin": {
+        "level": 0.09575428068637848,
+        "sheen": 1.3936554193496704
+      },
+      "r43_nospec_chin": {
+        "level": 0.09575428068637848,
+        "sheen": 1.3936554193496704
+      }
+    },
+    {
+      "frame": 17,
+      "E_forehead": 0.02995136007666588,
+      "r43_delight_comp_forehead": {
+        "level": 0.1480191946029663,
+        "sheen": 1.1421399116516113
+      },
+      "r43_nospec_forehead": {
+        "level": 0.1480191946029663,
+        "sheen": 1.1421399116516113
+      },
+      "E_nose_bridge": 0.028825905174016953,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.15776421129703522,
+        "sheen": 1.1413886547088623
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.15776421129703522,
+        "sheen": 1.1413886547088623
+      },
+      "E_cheek_l": 0.01687532849609852,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.07727663218975067,
+        "sheen": 2.0242221355438232
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.07727663218975067,
+        "sheen": 2.0242221355438232
+      },
+      "E_chin": 0.022203354164958,
+      "r43_delight_comp_chin": {
+        "level": 0.09593110531568527,
+        "sheen": 1.3904716968536377
+      },
+      "r43_nospec_chin": {
+        "level": 0.09593110531568527,
+        "sheen": 1.3904716968536377
+      }
+    },
+    {
+      "frame": 18,
+      "E_forehead": 0.02998139150440693,
+      "r43_delight_comp_forehead": {
+        "level": 0.14595581591129303,
+        "sheen": 1.1420015096664429
+      },
+      "r43_nospec_forehead": {
+        "level": 0.14595581591129303,
+        "sheen": 1.1420015096664429
+      },
+      "E_nose_bridge": 0.02929723635315895,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.15754646062850952,
+        "sheen": 1.128941297531128
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.15754646062850952,
+        "sheen": 1.128941297531128
+      },
+      "E_cheek_l": 0.01641545258462429,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.07547901570796967,
+        "sheen": 1.93027925491333
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.07547901570796967,
+        "sheen": 1.93027925491333
+      },
+      "E_chin": 0.02256178669631481,
+      "r43_delight_comp_chin": {
+        "level": 0.09487854689359665,
+        "sheen": 1.401336669921875
+      },
+      "r43_nospec_chin": {
+        "level": 0.09487854689359665,
+        "sheen": 1.401336669921875
+      }
+    },
+    {
+      "frame": 19,
+      "E_forehead": 0.030116671696305275,
+      "r43_delight_comp_forehead": {
+        "level": 0.14543157815933228,
+        "sheen": 1.1418464183807373
+      },
+      "r43_nospec_forehead": {
+        "level": 0.14540323615074158,
+        "sheen": 1.1420689821243286
+      },
+      "E_nose_bridge": 0.028966056182980537,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.15493761003017426,
+        "sheen": 1.1410582065582275
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.15493761003017426,
+        "sheen": 1.1410582065582275
+      },
+      "E_cheek_l": 0.01654757931828499,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.07634837925434113,
+        "sheen": 2.051182508468628
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.07634837925434113,
+        "sheen": 2.051182508468628
+      },
+      "E_chin": 0.022203460335731506,
+      "r43_delight_comp_chin": {
+        "level": 0.09349072724580765,
+        "sheen": 1.4208266735076904
+      },
+      "r43_nospec_chin": {
+        "level": 0.09349072724580765,
+        "sheen": 1.4208266735076904
+      }
+    },
+    {
+      "frame": 20,
+      "E_forehead": 0.03052600845694542,
+      "r43_delight_comp_forehead": {
+        "level": 0.1478995382785797,
+        "sheen": 1.1356159448623657
+      },
+      "r43_nospec_forehead": {
+        "level": 0.14784656465053558,
+        "sheen": 1.1360228061676025
+      },
+      "E_nose_bridge": 0.028867483139038086,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.15707390010356903,
+        "sheen": 1.150417685508728
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.15707390010356903,
+        "sheen": 1.150417685508728
+      },
+      "E_cheek_l": 0.016867319121956825,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.07721251249313354,
+        "sheen": 2.0826048851013184
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.07721251249313354,
+        "sheen": 2.0826048851013184
+      },
+      "E_chin": 0.02221136912703514,
+      "r43_delight_comp_chin": {
+        "level": 0.09312507510185242,
+        "sheen": 1.4356753826141357
+      },
+      "r43_nospec_chin": {
+        "level": 0.09312507510185242,
+        "sheen": 1.4356753826141357
+      }
+    },
+    {
+      "frame": 21,
+      "E_forehead": 0.03093596175312996,
+      "r43_delight_comp_forehead": {
+        "level": 0.15000367164611816,
+        "sheen": 1.1348973512649536
+      },
+      "r43_nospec_forehead": {
+        "level": 0.14992885291576385,
+        "sheen": 1.1354635953903198
+      },
+      "E_nose_bridge": 0.02929452806711197,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.15873071551322937,
+        "sheen": 1.1559022665023804
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.15873071551322937,
+        "sheen": 1.1559022665023804
+      },
+      "E_cheek_l": 0.016834907233715057,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.07779903709888458,
+        "sheen": 2.1695878505706787
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.07779903709888458,
+        "sheen": 2.1695878505706787
+      },
+      "E_chin": 0.022486837580800056,
+      "r43_delight_comp_chin": {
+        "level": 0.09446398913860321,
+        "sheen": 1.4423352479934692
+      },
+      "r43_nospec_chin": {
+        "level": 0.09446398913860321,
+        "sheen": 1.4423352479934692
+      }
+    },
+    {
+      "frame": 22,
+      "E_forehead": 0.03121539205312729,
+      "r43_delight_comp_forehead": {
+        "level": 0.1504884660243988,
+        "sheen": 1.141800880432129
+      },
+      "r43_nospec_forehead": {
+        "level": 0.1504884660243988,
+        "sheen": 1.141800880432129
+      },
+      "E_nose_bridge": 0.02937849424779415,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.1570706069469452,
+        "sheen": 1.156305193901062
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.1570706069469452,
+        "sheen": 1.156305193901062
+      },
+      "E_cheek_l": 0.017349988222122192,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.07943476736545563,
+        "sheen": 2.1058356761932373
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.07943476736545563,
+        "sheen": 2.1058356761932373
+      },
+      "E_chin": 0.022248275578022003,
+      "r43_delight_comp_chin": {
+        "level": 0.09237305819988251,
+        "sheen": 1.4363874197006226
+      },
+      "r43_nospec_chin": {
+        "level": 0.09237305819988251,
+        "sheen": 1.4363874197006226
+      }
+    },
+    {
+      "frame": 23,
+      "E_forehead": 0.030435897409915924,
+      "r43_delight_comp_forehead": {
+        "level": 0.14598886668682098,
+        "sheen": 1.1456398963928223
+      },
+      "r43_nospec_forehead": {
+        "level": 0.14596092700958252,
+        "sheen": 1.1458239555358887
+      },
+      "E_nose_bridge": 0.028534067794680595,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.15214410424232483,
+        "sheen": 1.1729575395584106
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.15214410424232483,
+        "sheen": 1.1729575395584106
+      },
+      "E_cheek_l": 0.017825014889240265,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.08206655085086823,
+        "sheen": 2.044496774673462
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.08206655085086823,
+        "sheen": 2.044496774673462
+      },
+      "E_chin": 0.024542436003684998,
+      "r43_delight_comp_chin": {
+        "level": 0.10017970204353333,
+        "sheen": 1.3972569704055786
+      },
+      "r43_nospec_chin": {
+        "level": 0.10017970204353333,
+        "sheen": 1.3972569704055786
+      }
+    },
+    {
+      "frame": 24,
+      "E_forehead": 0.028466494753956795,
+      "r43_delight_comp_forehead": {
+        "level": 0.13631725311279297,
+        "sheen": 1.1487181186676025
+      },
+      "r43_nospec_forehead": {
+        "level": 0.13631725311279297,
+        "sheen": 1.1487181186676025
+      },
+      "E_nose_bridge": 0.026308055967092514,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.1413695216178894,
+        "sheen": 1.2092472314834595
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.1413695216178894,
+        "sheen": 1.2092472314834595
+      },
+      "E_cheek_l": 0.018503841012716293,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.08473721891641617,
+        "sheen": 2.0120604038238525
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.08473721891641617,
+        "sheen": 2.0120604038238525
+      },
+      "E_chin": 0.027824629098176956,
+      "r43_delight_comp_chin": {
+        "level": 0.1148039698600769,
+        "sheen": 1.3405401706695557
+      },
+      "r43_nospec_chin": {
+        "level": 0.11477947235107422,
+        "sheen": 1.3373863697052002
+      }
+    },
+    {
+      "frame": 25,
+      "E_forehead": 0.02533550001680851,
+      "r43_delight_comp_forehead": {
+        "level": 0.12131191045045853,
+        "sheen": 1.1523152589797974
+      },
+      "r43_nospec_forehead": {
+        "level": 0.12131191045045853,
+        "sheen": 1.1523152589797974
+      },
+      "E_nose_bridge": 0.022934062406420708,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.12212054431438446,
+        "sheen": 1.2886992692947388
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.12212054431438446,
+        "sheen": 1.2886992692947388
+      },
+      "E_cheek_l": 0.0187603160738945,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.08610450476408005,
+        "sheen": 1.9323902130126953
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.08610450476408005,
+        "sheen": 1.9323902130126953
+      },
+      "E_chin": 0.032270535826683044,
+      "r43_delight_comp_chin": {
+        "level": 0.1328742802143097,
+        "sheen": 1.2354904413223267
+      },
+      "r43_nospec_chin": {
+        "level": 0.13241246342658997,
+        "sheen": 1.2397994995117188
+      }
+    },
+    {
+      "frame": 26,
+      "E_forehead": 0.021385589614510536,
+      "r43_delight_comp_forehead": {
+        "level": 0.10228070616722107,
+        "sheen": 1.1649192571640015
+      },
+      "r43_nospec_forehead": {
+        "level": 0.10228070616722107,
+        "sheen": 1.1649192571640015
+      },
+      "E_nose_bridge": 0.018430907279253006,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.09563197940587997,
+        "sheen": 1.4301730394363403
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.09563197940587997,
+        "sheen": 1.4301730394363403
+      },
+      "E_cheek_l": 0.01809639297425747,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.08257139474153519,
+        "sheen": 1.9087460041046143
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.08257139474153519,
+        "sheen": 1.9087460041046143
+      },
+      "E_chin": 0.03607327491044998,
+      "r43_delight_comp_chin": {
+        "level": 0.14555488526821136,
+        "sheen": 1.2169358730316162
+      },
+      "r43_nospec_chin": {
+        "level": 0.1452987790107727,
+        "sheen": 1.2184803485870361
+      }
+    },
+    {
+      "frame": 27,
+      "E_forehead": 0.018531354144215584,
+      "r43_delight_comp_forehead": {
+        "level": 0.08830554783344269,
+        "sheen": 1.1668648719787598
+      },
+      "r43_nospec_forehead": {
+        "level": 0.08830554783344269,
+        "sheen": 1.1668648719787598
+      },
+      "E_nose_bridge": 0.014793964102864265,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.07554057240486145,
+        "sheen": 1.5761995315551758
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.07554057240486145,
+        "sheen": 1.5761995315551758
+      },
+      "E_cheek_l": 0.017620384693145752,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.08053869754076004,
+        "sheen": 1.9770758152008057
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.08053869754076004,
+        "sheen": 1.9770758152008057
+      },
+      "E_chin": 0.032830849289894104,
+      "r43_delight_comp_chin": {
+        "level": 0.1291988492012024,
+        "sheen": 1.340742826461792
+      },
+      "r43_nospec_chin": {
+        "level": 0.1291598677635193,
+        "sheen": 1.3409241437911987
+      }
+    },
+    {
+      "frame": 28,
+      "E_forehead": 0.01653900370001793,
+      "r43_delight_comp_forehead": {
+        "level": 0.07804202288389206,
+        "sheen": 1.1580350399017334
+      },
+      "r43_nospec_forehead": {
+        "level": 0.07804202288389206,
+        "sheen": 1.1580350399017334
+      },
+      "E_nose_bridge": 0.011564284563064575,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.05731327831745148,
+        "sheen": 1.7986152172088623
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.05731327831745148,
+        "sheen": 1.7986152172088623
+      },
+      "E_cheek_l": 0.017178066074848175,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.07949681580066681,
+        "sheen": 2.0047740936279297
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.07949681580066681,
+        "sheen": 2.0047740936279297
+      },
+      "E_chin": 0.0019044443033635616,
+      "r43_delight_comp_chin": {
+        "level": 0.008998433127999306,
+        "sheen": 10.836319923400879
+      },
+      "r43_nospec_chin": {
+        "level": 0.008900312706828117,
+        "sheen": 10.95578384399414
+      }
+    },
+    {
+      "frame": 29,
+      "E_forehead": 0.015535661950707436,
+      "r43_delight_comp_forehead": {
+        "level": 0.07306590676307678,
+        "sheen": 1.168492317199707
+      },
+      "r43_nospec_forehead": {
+        "level": 0.07306590676307678,
+        "sheen": 1.168492317199707
+      },
+      "E_nose_bridge": 0.010046522133052349,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.04923141002655029,
+        "sheen": 1.9838248491287231
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.04923141002655029,
+        "sheen": 1.9838248491287231
+      },
+      "E_cheek_l": 0.016437921673059464,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.07512195408344269,
+        "sheen": 2.018332004547119
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.07512195408344269,
+        "sheen": 2.018332004547119
+      },
+      "E_chin": 0.0008631492964923382,
+      "r43_delight_comp_chin": {
+        "level": 0.0036904821172356606,
+        "sheen": 2.8369650840759277
+      },
+      "r43_nospec_chin": {
+        "level": 0.0036904821172356606,
+        "sheen": 2.8331053256988525
+      }
+    },
+    {
+      "frame": 30,
+      "E_forehead": 0.05967612564563751,
+      "r43_delight_comp_forehead": {
+        "level": 0.28136372566223145,
+        "sheen": 1.1558070182800293
+      },
+      "r43_nospec_forehead": {
+        "level": 0.28136372566223145,
+        "sheen": 1.1558070182800293
+      },
+      "E_nose_bridge": 0.03747722506523132,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.1840277761220932,
+        "sheen": 2.00295090675354
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.1840277761220932,
+        "sheen": 2.00295090675354
+      },
+      "E_cheek_l": 0.04593773931264877,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.21194280683994293,
+        "sheen": 1.2006556987762451
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.21194280683994293,
+        "sheen": 1.2006556987762451
+      },
+      "E_chin": 0.00177550979424268,
+      "r43_delight_comp_chin": {
+        "level": 0.007870018482208252,
+        "sheen": 3.800732374191284
+      },
+      "r43_nospec_chin": {
+        "level": 0.007870018482208252,
+        "sheen": 3.726829767227173
+      }
+    },
+    {
+      "frame": 31,
+      "E_forehead": 0.05159151181578636,
+      "r43_delight_comp_forehead": {
+        "level": 0.2432565987110138,
+        "sheen": 1.1486715078353882
+      },
+      "r43_nospec_forehead": {
+        "level": 0.2432565987110138,
+        "sheen": 1.1486715078353882
+      },
+      "E_nose_bridge": 0.03268728777766228,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.1598791778087616,
+        "sheen": 1.99787437915802
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.1598791778087616,
+        "sheen": 1.99787437915802
+      },
+      "E_cheek_l": 0.04081343114376068,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.18805170059204102,
+        "sheen": 1.2751755714416504
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.18805170059204102,
+        "sheen": 1.2751755714416504
+      },
+      "E_chin": 0.0017908464651554823,
+      "r43_delight_comp_chin": {
+        "level": 0.007695657666772604,
+        "sheen": 3.1423630714416504
+      },
+      "r43_nospec_chin": {
+        "level": 0.007695657666772604,
+        "sheen": 3.119739055633545
+      }
+    },
+    {
+      "frame": 32,
+      "E_forehead": 0.0448688268661499,
+      "r43_delight_comp_forehead": {
+        "level": 0.2096032351255417,
+        "sheen": 1.168093204498291
+      },
+      "r43_nospec_forehead": {
+        "level": 0.2096032351255417,
+        "sheen": 1.168093204498291
+      },
+      "E_nose_bridge": 0.02698792703449726,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.13037294149398804,
+        "sheen": 2.078270673751831
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.13037294149398804,
+        "sheen": 2.078270673751831
+      },
+      "E_cheek_l": 0.03580508753657341,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.16352444887161255,
+        "sheen": 1.3286418914794922
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.16352444887161255,
+        "sheen": 1.3286418914794922
+      },
+      "E_chin": 0.0015873505035415292,
+      "r43_delight_comp_chin": {
+        "level": 0.006729956716299057,
+        "sheen": 3.2340266704559326
+      },
+      "r43_nospec_chin": {
+        "level": 0.006729956716299057,
+        "sheen": 3.220111846923828
+      }
+    },
+    {
+      "frame": 33,
+      "E_forehead": 0.039031341671943665,
+      "r43_delight_comp_forehead": {
+        "level": 0.18182185292243958,
+        "sheen": 1.1586781740188599
+      },
+      "r43_nospec_forehead": {
+        "level": 0.18182185292243958,
+        "sheen": 1.1586781740188599
+      },
+      "E_nose_bridge": 0.023728296160697937,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.11535000801086426,
+        "sheen": 2.0557684898376465
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.11535000801086426,
+        "sheen": 2.0557684898376465
+      },
+      "E_cheek_l": 0.032299499958753586,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.1472349613904953,
+        "sheen": 1.4190763235092163
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.1472349613904953,
+        "sheen": 1.4190763235092163
+      },
+      "E_chin": 0.0015678294003009796,
+      "r43_delight_comp_chin": {
+        "level": 0.006608458235859871,
+        "sheen": 3.055617094039917
+      },
+      "r43_nospec_chin": {
+        "level": 0.0065975007601082325,
+        "sheen": 3.0127549171447754
+      }
+    },
+    {
+      "frame": 34,
+      "E_forehead": 0.03407534584403038,
+      "r43_delight_comp_forehead": {
+        "level": 0.15974733233451843,
+        "sheen": 1.1685543060302734
+      },
+      "r43_nospec_forehead": {
+        "level": 0.15974733233451843,
+        "sheen": 1.1685543060302734
+      },
+      "E_nose_bridge": 0.019144367426633835,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.09160502254962921,
+        "sheen": 2.1395514011383057
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.09160502254962921,
+        "sheen": 2.1395514011383057
+      },
+      "E_cheek_l": 0.02940266765654087,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.13235950469970703,
+        "sheen": 1.493464708328247
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.13235950469970703,
+        "sheen": 1.493464708328247
+      },
+      "E_chin": 0.0014027225552126765,
+      "r43_delight_comp_chin": {
+        "level": 0.005928183440119028,
+        "sheen": 2.856031894683838
+      },
+      "r43_nospec_chin": {
+        "level": 0.005928183440119028,
+        "sheen": 2.8267414569854736
+      }
+    },
+    {
+      "frame": 35,
+      "E_forehead": 0.030650408938527107,
+      "r43_delight_comp_forehead": {
+        "level": 0.1426141858100891,
+        "sheen": 1.17540442943573
+      },
+      "r43_nospec_forehead": {
+        "level": 0.1426141858100891,
+        "sheen": 1.17540442943573
+      },
+      "E_nose_bridge": 0.01778004691004753,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.08507207036018372,
+        "sheen": 2.1141417026519775
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.08507207036018372,
+        "sheen": 2.1141417026519775
+      },
+      "E_cheek_l": 0.02709304727613926,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.12189945578575134,
+        "sheen": 1.5951249599456787
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.12189945578575134,
+        "sheen": 1.5951249599456787
+      },
+      "E_chin": 0.0012420332059264183,
+      "r43_delight_comp_chin": {
+        "level": 0.0051841712556779385,
+        "sheen": 2.8952033519744873
+      },
+      "r43_nospec_chin": {
+        "level": 0.0051841712556779385,
+        "sheen": 2.8347091674804688
+      }
+    },
+    {
+      "frame": 36,
+      "E_forehead": 0.02690793201327324,
+      "r43_delight_comp_forehead": {
+        "level": 0.12589101493358612,
+        "sheen": 1.1878184080123901
+      },
+      "r43_nospec_forehead": {
+        "level": 0.12589101493358612,
+        "sheen": 1.1878184080123901
+      },
+      "E_nose_bridge": 0.015430823899805546,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.07435542345046997,
+        "sheen": 2.1286892890930176
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.07435542345046997,
+        "sheen": 2.1286892890930176
+      },
+      "E_cheek_l": 0.02546529844403267,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.1163567304611206,
+        "sheen": 1.5986353158950806
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.1163567304611206,
+        "sheen": 1.5986353158950806
+      },
+      "E_chin": 0.0011404815595597029,
+      "r43_delight_comp_chin": {
+        "level": 0.004807688295841217,
+        "sheen": 2.880284547805786
+      },
+      "r43_nospec_chin": {
+        "level": 0.004807688295841217,
+        "sheen": 2.8585636615753174
+      }
+    },
+    {
+      "frame": 37,
+      "E_forehead": 0.025038942694664,
+      "r43_delight_comp_forehead": {
+        "level": 0.11683562397956848,
+        "sheen": 1.1778676509857178
+      },
+      "r43_nospec_forehead": {
+        "level": 0.11683562397956848,
+        "sheen": 1.1778676509857178
+      },
+      "E_nose_bridge": 0.014580007642507553,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.06980922818183899,
+        "sheen": 2.084984064102173
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.06980922818183899,
+        "sheen": 2.084984064102173
+      },
+      "E_cheek_l": 0.023725707083940506,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.10833374410867691,
+        "sheen": 1.6559791564941406
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.10833374410867691,
+        "sheen": 1.6559791564941406
+      },
+      "E_chin": 0.0011867976281791925,
+      "r43_delight_comp_chin": {
+        "level": 0.005101998336613178,
+        "sheen": 2.6585466861724854
+      },
+      "r43_nospec_chin": {
+        "level": 0.005091041326522827,
+        "sheen": 2.661226511001587
+      }
+    },
+    {
+      "frame": 38,
+      "E_forehead": 0.025341995060443878,
+      "r43_delight_comp_forehead": {
+        "level": 0.11782688647508621,
+        "sheen": 1.171868920326233
+      },
+      "r43_nospec_forehead": {
+        "level": 0.11782688647508621,
+        "sheen": 1.171868920326233
+      },
+      "E_nose_bridge": 0.017193563282489777,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.08250640332698822,
+        "sheen": 1.8240976333618164
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.08250640332698822,
+        "sheen": 1.8240976333618164
+      },
+      "E_cheek_l": 0.023635515943169594,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.10749217867851257,
+        "sheen": 1.7523400783538818
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.10749217867851257,
+        "sheen": 1.7523400783538818
+      },
+      "E_chin": 0.002573747653514147,
+      "r43_delight_comp_chin": {
+        "level": 0.01257573813199997,
+        "sheen": 10.077950477600098
+      },
+      "r43_nospec_chin": {
+        "level": 0.012563826516270638,
+        "sheen": 10.087505340576172
+      }
+    },
+    {
+      "frame": 39,
+      "E_forehead": 0.02911682240664959,
+      "r43_delight_comp_forehead": {
+        "level": 0.13495641946792603,
+        "sheen": 1.1791467666625977
+      },
+      "r43_nospec_forehead": {
+        "level": 0.13495641946792603,
+        "sheen": 1.1791467666625977
+      },
+      "E_nose_bridge": 0.024591095745563507,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.11852318793535233,
+        "sheen": 1.4705990552902222
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.11852318793535233,
+        "sheen": 1.4705990552902222
+      },
+      "E_cheek_l": 0.024109935387969017,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.1104254275560379,
+        "sheen": 1.6926825046539307
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.1104254275560379,
+        "sheen": 1.6926825046539307
+      },
+      "E_chin": 0.050280749797821045,
+      "r43_delight_comp_chin": {
+        "level": 0.19810651242733002,
+        "sheen": 1.2545371055603027
+      },
+      "r43_nospec_chin": {
+        "level": 0.19782701134681702,
+        "sheen": 1.2538588047027588
+      }
+    },
+    {
+      "frame": 40,
+      "E_forehead": 0.036739856004714966,
+      "r43_delight_comp_forehead": {
+        "level": 0.16952085494995117,
+        "sheen": 1.1539336442947388
+      },
+      "r43_nospec_forehead": {
+        "level": 0.16952085494995117,
+        "sheen": 1.1539336442947388
+      },
+      "E_nose_bridge": 0.035625964403152466,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.17277368903160095,
+        "sheen": 1.2153520584106445
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.17277368903160095,
+        "sheen": 1.2153520584106445
+      },
+      "E_cheek_l": 0.024556539952754974,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.11370335519313812,
+        "sheen": 1.778578519821167
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.11370335519313812,
+        "sheen": 1.778578519821167
+      },
+      "E_chin": 0.033091627061367035,
+      "r43_delight_comp_chin": {
+        "level": 0.1329154670238495,
+        "sheen": 1.2969807386398315
+      },
+      "r43_nospec_chin": {
+        "level": 0.1329154670238495,
+        "sheen": 1.2969807386398315
+      }
+    },
+    {
+      "frame": 41,
+      "E_forehead": 0.04190380126237869,
+      "r43_delight_comp_forehead": {
+        "level": 0.19289308786392212,
+        "sheen": 1.117510199546814
+      },
+      "r43_nospec_forehead": {
+        "level": 0.19289308786392212,
+        "sheen": 1.117510199546814
+      },
+      "E_nose_bridge": 0.039136260747909546,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.1883728802204132,
+        "sheen": 1.2010835409164429
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.1883728802204132,
+        "sheen": 1.2010835409164429
+      },
+      "E_cheek_l": 0.024649519473314285,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.11400499194860458,
+        "sheen": 1.8892021179199219
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.11400499194860458,
+        "sheen": 1.8892021179199219
+      },
+      "E_chin": 0.016922034323215485,
+      "r43_delight_comp_chin": {
+        "level": 0.06806229799985886,
+        "sheen": 1.4334659576416016
+      },
+      "r43_nospec_chin": {
+        "level": 0.06806229799985886,
+        "sheen": 1.4334659576416016
+      }
+    },
+    {
+      "frame": 42,
+      "E_forehead": 0.034441832453012466,
+      "r43_delight_comp_forehead": {
+        "level": 0.15895602107048035,
+        "sheen": 1.0821136236190796
+      },
+      "r43_nospec_forehead": {
+        "level": 0.15895602107048035,
+        "sheen": 1.0821136236190796
+      },
+      "E_nose_bridge": 0.03414570167660713,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.16615886986255646,
+        "sheen": 1.246073603630066
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.16615886986255646,
+        "sheen": 1.246073603630066
+      },
+      "E_cheek_l": 0.025939270853996277,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.1223820298910141,
+        "sheen": 2.0755581855773926
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.1223820298910141,
+        "sheen": 2.0755581855773926
+      },
+      "E_chin": 0.010300842113792896,
+      "r43_delight_comp_chin": {
+        "level": 0.04454987123608589,
+        "sheen": 1.3796048164367676
+      },
+      "r43_nospec_chin": {
+        "level": 0.04454987123608589,
+        "sheen": 1.3796048164367676
+      }
+    },
+    {
+      "frame": 43,
+      "E_forehead": 0.02659403532743454,
+      "r43_delight_comp_forehead": {
+        "level": 0.12254195660352707,
+        "sheen": 1.082934856414795
+      },
+      "r43_nospec_forehead": {
+        "level": 0.12254195660352707,
+        "sheen": 1.082934856414795
+      },
+      "E_nose_bridge": 0.02830214984714985,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.13337191939353943,
+        "sheen": 1.3576576709747314
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.13337191939353943,
+        "sheen": 1.3576576709747314
+      },
+      "E_cheek_l": 0.027506940066814423,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.13066387176513672,
+        "sheen": 2.066114902496338
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.13066387176513672,
+        "sheen": 2.066114902496338
+      },
+      "E_chin": 0.009664194658398628,
+      "r43_delight_comp_chin": {
+        "level": 0.03967210650444031,
+        "sheen": 1.5975189208984375
+      },
+      "r43_nospec_chin": {
+        "level": 0.03967210650444031,
+        "sheen": 1.5975189208984375
+      }
+    },
+    {
+      "frame": 44,
+      "E_forehead": 0.022345859557390213,
+      "r43_delight_comp_forehead": {
+        "level": 0.10292242467403412,
+        "sheen": 1.0855623483657837
+      },
+      "r43_nospec_forehead": {
+        "level": 0.10292242467403412,
+        "sheen": 1.0855623483657837
+      },
+      "E_nose_bridge": 0.025623075664043427,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.120722196996212,
+        "sheen": 1.3929139375686646
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.120722196996212,
+        "sheen": 1.3929139375686646
+      },
+      "E_cheek_l": 0.029075298458337784,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.14100281894207,
+        "sheen": 2.114410161972046
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.14100281894207,
+        "sheen": 2.114410161972046
+      },
+      "E_chin": 0.008695809170603752,
+      "r43_delight_comp_chin": {
+        "level": 0.03714364022016525,
+        "sheen": 1.8745869398117065
+      },
+      "r43_nospec_chin": {
+        "level": 0.03714364022016525,
+        "sheen": 1.8745869398117065
+      }
+    },
+    {
+      "frame": 45,
+      "E_forehead": 0.021251920610666275,
+      "r43_delight_comp_forehead": {
+        "level": 0.09844682365655899,
+        "sheen": 1.0756675004959106
+      },
+      "r43_nospec_forehead": {
+        "level": 0.09844682365655899,
+        "sheen": 1.0756675004959106
+      },
+      "E_nose_bridge": 0.02463298663496971,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.11817237734794617,
+        "sheen": 1.3762201070785522
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.11817237734794617,
+        "sheen": 1.3762201070785522
+      },
+      "E_cheek_l": 0.029827160760760307,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.14456333220005035,
+        "sheen": 2.0334126949310303
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.14456333220005035,
+        "sheen": 2.0334126949310303
+      },
+      "E_chin": 0.008778074756264687,
+      "r43_delight_comp_chin": {
+        "level": 0.037959542125463486,
+        "sheen": 1.956731915473938
+      },
+      "r43_nospec_chin": {
+        "level": 0.037959542125463486,
+        "sheen": 1.956731915473938
+      }
+    },
+    {
+      "frame": 46,
+      "E_forehead": 0.02081543393433094,
+      "r43_delight_comp_forehead": {
+        "level": 0.09633469581604004,
+        "sheen": 1.0701169967651367
+      },
+      "r43_nospec_forehead": {
+        "level": 0.09633469581604004,
+        "sheen": 1.0701169967651367
+      },
+      "E_nose_bridge": 0.024088216945528984,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.1146199032664299,
+        "sheen": 1.383786678314209
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.1146199032664299,
+        "sheen": 1.383786678314209
+      },
+      "E_cheek_l": 0.030915124341845512,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.14978274703025818,
+        "sheen": 2.088865280151367
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.14978274703025818,
+        "sheen": 2.088865280151367
+      },
+      "E_chin": 0.009082449600100517,
+      "r43_delight_comp_chin": {
+        "level": 0.0373760387301445,
+        "sheen": 2.099777936935425
+      },
+      "r43_nospec_chin": {
+        "level": 0.0373760387301445,
+        "sheen": 2.099777936935425
+      }
+    },
+    {
+      "frame": 47,
+      "E_forehead": 0.020405367016792297,
+      "r43_delight_comp_forehead": {
+        "level": 0.09392745792865753,
+        "sheen": 1.0717812776565552
+      },
+      "r43_nospec_forehead": {
+        "level": 0.09392745792865753,
+        "sheen": 1.0717812776565552
+      },
+      "E_nose_bridge": 0.02384168654680252,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.1105881854891777,
+        "sheen": 1.4038065671920776
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.11011378467082977,
+        "sheen": 1.4098546504974365
+      },
+      "E_cheek_l": 0.03011058270931244,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.14669279754161835,
+        "sheen": 2.0410733222961426
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.14669279754161835,
+        "sheen": 2.0410733222961426
+      },
+      "E_chin": 0.00938943587243557,
+      "r43_delight_comp_chin": {
+        "level": 0.036935459822416306,
+        "sheen": 2.1368014812469482
+      },
+      "r43_nospec_chin": {
+        "level": 0.036935459822416306,
+        "sheen": 2.1368014812469482
+      }
+    },
+    {
+      "frame": 48,
+      "E_forehead": 0.020359069108963013,
+      "r43_delight_comp_forehead": {
+        "level": 0.09297803789377213,
+        "sheen": 1.0732769966125488
+      },
+      "r43_nospec_forehead": {
+        "level": 0.09297803789377213,
+        "sheen": 1.0732769966125488
+      },
+      "E_nose_bridge": 0.02311907894909382,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.10886415839195251,
+        "sheen": 1.407759189605713
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.10886415839195251,
+        "sheen": 1.407759189605713
+      },
+      "E_cheek_l": 0.029714815318584442,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.14542114734649658,
+        "sheen": 2.0058250427246094
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.14542114734649658,
+        "sheen": 2.0058250427246094
+      },
+      "E_chin": 0.009395603090524673,
+      "r43_delight_comp_chin": {
+        "level": 0.03622421622276306,
+        "sheen": 2.085657835006714
+      },
+      "r43_nospec_chin": {
+        "level": 0.03622421622276306,
+        "sheen": 2.085657835006714
+      }
+    },
+    {
+      "frame": 49,
+      "E_forehead": 0.019985316321253777,
+      "r43_delight_comp_forehead": {
+        "level": 0.09048737585544586,
+        "sheen": 1.0758378505706787
+      },
+      "r43_nospec_forehead": {
+        "level": 0.09048737585544586,
+        "sheen": 1.0758378505706787
+      },
+      "E_nose_bridge": 0.02205147221684456,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.09995153546333313,
+        "sheen": 1.4766261577606201
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.09995153546333313,
+        "sheen": 1.4766261577606201
+      },
+      "E_cheek_l": 0.02920776978135109,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.14324623346328735,
+        "sheen": 2.001262903213501
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.14324623346328735,
+        "sheen": 2.001262903213501
+      },
+      "E_chin": 0.009331552311778069,
+      "r43_delight_comp_chin": {
+        "level": 0.03554414212703705,
+        "sheen": 1.9424846172332764
+      },
+      "r43_nospec_chin": {
+        "level": 0.03554414212703705,
+        "sheen": 1.9424846172332764
+      }
+    },
+    {
+      "frame": 50,
+      "E_forehead": 0.019442729651927948,
+      "r43_delight_comp_forehead": {
+        "level": 0.08699814230203629,
+        "sheen": 1.0783700942993164
+      },
+      "r43_nospec_forehead": {
+        "level": 0.08699814230203629,
+        "sheen": 1.0783700942993164
+      },
+      "E_nose_bridge": 0.02074330672621727,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.09408444166183472,
+        "sheen": 1.4714360237121582
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.09408444166183472,
+        "sheen": 1.4714360237121582
+      },
+      "E_cheek_l": 0.02845645695924759,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.1403891146183014,
+        "sheen": 1.9721755981445312
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.1403891146183014,
+        "sheen": 1.9721755981445312
+      },
+      "E_chin": 0.006761864293366671,
+      "r43_delight_comp_chin": {
+        "level": 0.027318550273776054,
+        "sheen": 2.3949286937713623
+      },
+      "r43_nospec_chin": {
+        "level": 0.027318550273776054,
+        "sheen": 2.3949286937713623
+      }
+    },
+    {
+      "frame": 51,
+      "E_forehead": 0.019232846796512604,
+      "r43_delight_comp_forehead": {
+        "level": 0.08443588018417358,
+        "sheen": 1.0736333131790161
+      },
+      "r43_nospec_forehead": {
+        "level": 0.08443588018417358,
+        "sheen": 1.0736333131790161
+      },
+      "E_nose_bridge": 0.019814155995845795,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.09153638780117035,
+        "sheen": 1.4410921335220337
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.09153638780117035,
+        "sheen": 1.4410921335220337
+      },
+      "E_cheek_l": 0.026457829400897026,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.13048683106899261,
+        "sheen": 1.974648118019104
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.13048683106899261,
+        "sheen": 1.974648118019104
+      },
+      "E_chin": 0.005675927735865116,
+      "r43_delight_comp_chin": {
+        "level": 0.022625964134931564,
+        "sheen": 2.3219523429870605
+      },
+      "r43_nospec_chin": {
+        "level": 0.022625964134931564,
+        "sheen": 2.3219523429870605
+      }
+    },
+    {
+      "frame": 52,
+      "E_forehead": 0.018531091511249542,
+      "r43_delight_comp_forehead": {
+        "level": 0.08159758150577545,
+        "sheen": 1.0858932733535767
+      },
+      "r43_nospec_forehead": {
+        "level": 0.08159758150577545,
+        "sheen": 1.0858932733535767
+      },
+      "E_nose_bridge": 0.02043195068836212,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.0922326073050499,
+        "sheen": 1.4147707223892212
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.0922326073050499,
+        "sheen": 1.4147707223892212
+      },
+      "E_cheek_l": 0.019739456474781036,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.09669659286737442,
+        "sheen": 2.0522098541259766
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.09669659286737442,
+        "sheen": 2.0522098541259766
+      },
+      "E_chin": 0.005021299701184034,
+      "r43_delight_comp_chin": {
+        "level": 0.018971938639879227,
+        "sheen": 1.714277982711792
+      },
+      "r43_nospec_chin": {
+        "level": 0.018971938639879227,
+        "sheen": 1.714277982711792
+      }
+    },
+    {
+      "frame": 53,
+      "E_forehead": 0.01925657130777836,
+      "r43_delight_comp_forehead": {
+        "level": 0.08424225449562073,
+        "sheen": 1.099138617515564
+      },
+      "r43_nospec_forehead": {
+        "level": 0.08424225449562073,
+        "sheen": 1.099138617515564
+      },
+      "E_nose_bridge": 0.02173640765249729,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.09459410607814789,
+        "sheen": 1.3123618364334106
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.09459410607814789,
+        "sheen": 1.3123618364334106
+      },
+      "E_cheek_l": 0.005639298353344202,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.024675633758306503,
+        "sheen": 1.8104206323623657
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.024675633758306503,
+        "sheen": 1.8104206323623657
+      },
+      "E_chin": 0.004169267602264881,
+      "r43_delight_comp_chin": {
+        "level": 0.014048110693693161,
+        "sheen": 1.8057807683944702
+      },
+      "r43_nospec_chin": {
+        "level": 0.014048110693693161,
+        "sheen": 1.8057807683944702
+      }
+    },
+    {
+      "frame": 54,
+      "E_forehead": 0.021444890648126602,
+      "r43_delight_comp_forehead": {
+        "level": 0.09529779851436615,
+        "sheen": 1.0928666591644287
+      },
+      "r43_nospec_forehead": {
+        "level": 0.09529779851436615,
+        "sheen": 1.0928666591644287
+      },
+      "E_nose_bridge": 0.02260782942175865,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.09624031186103821,
+        "sheen": 1.2146672010421753
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.09624031186103821,
+        "sheen": 1.2146672010421753
+      },
+      "E_cheek_l": 0.009717309847474098,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.04000253975391388,
+        "sheen": 1.492071270942688
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.04000253975391388,
+        "sheen": 1.492071270942688
+      },
+      "E_chin": 0.006084450054913759,
+      "r43_delight_comp_chin": {
+        "level": 0.021678680554032326,
+        "sheen": 1.8543550968170166
+      },
+      "r43_nospec_chin": {
+        "level": 0.021678680554032326,
+        "sheen": 1.8543550968170166
+      }
+    },
+    {
+      "frame": 55,
+      "E_forehead": 0.02326902002096176,
+      "r43_delight_comp_forehead": {
+        "level": 0.10024408251047134,
+        "sheen": 1.1668890714645386
+      },
+      "r43_nospec_forehead": {
+        "level": 0.10024408251047134,
+        "sheen": 1.1668890714645386
+      },
+      "E_nose_bridge": 0.024715060368180275,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.10440406203269958,
+        "sheen": 1.1236822605133057
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.10440406203269958,
+        "sheen": 1.1236822605133057
+      },
+      "E_cheek_l": 0.016456231474876404,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.06662419438362122,
+        "sheen": 1.254234790802002
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.06662419438362122,
+        "sheen": 1.254234790802002
+      },
+      "E_chin": 0.009503797627985477,
+      "r43_delight_comp_chin": {
+        "level": 0.03753863647580147,
+        "sheen": 2.037147045135498
+      },
+      "r43_nospec_chin": {
+        "level": 0.03753863647580147,
+        "sheen": 2.037147045135498
+      }
+    },
+    {
+      "frame": 56,
+      "E_forehead": 0.02358604222536087,
+      "r43_delight_comp_forehead": {
+        "level": 0.09891542792320251,
+        "sheen": 1.2706761360168457
+      },
+      "r43_nospec_forehead": {
+        "level": 0.09891542792320251,
+        "sheen": 1.2706761360168457
+      },
+      "E_nose_bridge": 0.02561293914914131,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.11138780415058136,
+        "sheen": 1.0822277069091797
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.11138780415058136,
+        "sheen": 1.0822277069091797
+      },
+      "E_cheek_l": 0.023456035181879997,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.0946739912033081,
+        "sheen": 1.1493589878082275
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.0946739912033081,
+        "sheen": 1.1493589878082275
+      },
+      "E_chin": 0.019749043509364128,
+      "r43_delight_comp_chin": {
+        "level": 0.06955567747354507,
+        "sheen": 1.5219624042510986
+      },
+      "r43_nospec_chin": {
+        "level": 0.06955567747354507,
+        "sheen": 1.5219624042510986
+      }
+    },
+    {
+      "frame": 57,
+      "E_forehead": 0.02312573790550232,
+      "r43_delight_comp_forehead": {
+        "level": 0.09428036212921143,
+        "sheen": 1.3401764631271362
+      },
+      "r43_nospec_forehead": {
+        "level": 0.09428036212921143,
+        "sheen": 1.3401764631271362
+      },
+      "E_nose_bridge": 0.025352131575345993,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.10839937627315521,
+        "sheen": 1.1292965412139893
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.10839937627315521,
+        "sheen": 1.1292965412139893
+      },
+      "E_cheek_l": 0.02975919283926487,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.11846597492694855,
+        "sheen": 1.0659877061843872
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.11846597492694855,
+        "sheen": 1.0659877061843872
+      },
+      "E_chin": 0.023678459227085114,
+      "r43_delight_comp_chin": {
+        "level": 0.08435560762882233,
+        "sheen": 1.7646042108535767
+      },
+      "r43_nospec_chin": {
+        "level": 0.08435560762882233,
+        "sheen": 1.7646042108535767
+      }
+    },
+    {
+      "frame": 58,
+      "E_forehead": 0.022384362295269966,
+      "r43_delight_comp_forehead": {
+        "level": 0.0894400030374527,
+        "sheen": 1.343489646911621
+      },
+      "r43_nospec_forehead": {
+        "level": 0.0894400030374527,
+        "sheen": 1.343489646911621
+      },
+      "E_nose_bridge": 0.024908743798732758,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.10361942648887634,
+        "sheen": 1.208069086074829
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.10361942648887634,
+        "sheen": 1.208069086074829
+      },
+      "E_cheek_l": 0.03293825685977936,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.12873078882694244,
+        "sheen": 1.0543934106826782
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.12873078882694244,
+        "sheen": 1.0543934106826782
+      },
+      "E_chin": 0.021493487060070038,
+      "r43_delight_comp_chin": {
+        "level": 0.08358769118785858,
+        "sheen": 1.7321096658706665
+      },
+      "r43_nospec_chin": {
+        "level": 0.08358769118785858,
+        "sheen": 1.7321096658706665
+      }
+    },
+    {
+      "frame": 59,
+      "E_forehead": 0.021458406001329422,
+      "r43_delight_comp_forehead": {
+        "level": 0.08477954566478729,
+        "sheen": 1.372087001800537
+      },
+      "r43_nospec_forehead": {
+        "level": 0.08477954566478729,
+        "sheen": 1.372087001800537
+      },
+      "E_nose_bridge": 0.02418525516986847,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.09854194521903992,
+        "sheen": 1.253342628479004
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.09854194521903992,
+        "sheen": 1.253342628479004
+      },
+      "E_cheek_l": 0.03408856317400932,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.13488063216209412,
+        "sheen": 1.0390750169754028
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.13488063216209412,
+        "sheen": 1.0390750169754028
+      },
+      "E_chin": 0.019335631281137466,
+      "r43_delight_comp_chin": {
+        "level": 0.08283820748329163,
+        "sheen": 1.6053028106689453
+      },
+      "r43_nospec_chin": {
+        "level": 0.08283820748329163,
+        "sheen": 1.6053028106689453
+      }
+    },
+    {
+      "frame": 60,
+      "E_forehead": 0.08209047466516495,
+      "r43_delight_comp_forehead": {
+        "level": 0.32303017377853394,
+        "sheen": 1.387197494506836
+      },
+      "r43_nospec_forehead": {
+        "level": 0.32303017377853394,
+        "sheen": 1.387197494506836
+      },
+      "E_nose_bridge": 0.09231351315975189,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.36823880672454834,
+        "sheen": 1.3050090074539185
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.36823880672454834,
+        "sheen": 1.3050090074539185
+      },
+      "E_cheek_l": 0.13413065671920776,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.5237768888473511,
+        "sheen": 1.0404953956604004
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.5237768888473511,
+        "sheen": 1.0404953956604004
+      },
+      "E_chin": 0.02465755119919777,
+      "r43_delight_comp_chin": {
+        "level": 0.10779113322496414,
+        "sheen": 1.3211541175842285
+      },
+      "r43_nospec_chin": {
+        "level": 0.10779113322496414,
+        "sheen": 1.3211541175842285
+      }
+    },
+    {
+      "frame": 61,
+      "E_forehead": 0.06952138245105743,
+      "r43_delight_comp_forehead": {
+        "level": 0.2748129069805145,
+        "sheen": 1.4140695333480835
+      },
+      "r43_nospec_forehead": {
+        "level": 0.2748129069805145,
+        "sheen": 1.4140695333480835
+      },
+      "E_nose_bridge": 0.0854346752166748,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.32630330324172974,
+        "sheen": 1.3095946311950684
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.32630330324172974,
+        "sheen": 1.3095946311950684
+      },
+      "E_cheek_l": 0.11564972996711731,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.45683443546295166,
+        "sheen": 1.0503393411636353
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.45683443546295166,
+        "sheen": 1.0503393411636353
+      },
+      "E_chin": 0.02467406541109085,
+      "r43_delight_comp_chin": {
+        "level": 0.10475434362888336,
+        "sheen": 1.3589471578598022
+      },
+      "r43_nospec_chin": {
+        "level": 0.10475434362888336,
+        "sheen": 1.3589471578598022
+      }
+    },
+    {
+      "frame": 62,
+      "E_forehead": 0.06010185182094574,
+      "r43_delight_comp_forehead": {
+        "level": 0.24000006914138794,
+        "sheen": 1.4021064043045044
+      },
+      "r43_nospec_forehead": {
+        "level": 0.24000006914138794,
+        "sheen": 1.4021064043045044
+      },
+      "E_nose_bridge": 0.0754409059882164,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.28644120693206787,
+        "sheen": 1.2995153665542603
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.28644120693206787,
+        "sheen": 1.2995153665542603
+      },
+      "E_cheek_l": 0.10112164914608002,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.3982942998409271,
+        "sheen": 1.05699622631073
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.3982942998409271,
+        "sheen": 1.05699622631073
+      },
+      "E_chin": 0.024500463157892227,
+      "r43_delight_comp_chin": {
+        "level": 0.10741259902715683,
+        "sheen": 1.3220798969268799
+      },
+      "r43_nospec_chin": {
+        "level": 0.10741259902715683,
+        "sheen": 1.3220798969268799
+      }
+    },
+    {
+      "frame": 63,
+      "E_forehead": 0.05204154551029205,
+      "r43_delight_comp_forehead": {
+        "level": 0.2089572250843048,
+        "sheen": 1.4069982767105103
+      },
+      "r43_nospec_forehead": {
+        "level": 0.2089572250843048,
+        "sheen": 1.4069982767105103
+      },
+      "E_nose_bridge": 0.06594285368919373,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.2524823546409607,
+        "sheen": 1.288893699645996
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.2524823546409607,
+        "sheen": 1.288893699645996
+      },
+      "E_cheek_l": 0.08917965739965439,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.3515077531337738,
+        "sheen": 1.0650025606155396
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.3515077531337738,
+        "sheen": 1.0650025606155396
+      },
+      "E_chin": 0.028697391971945763,
+      "r43_delight_comp_chin": {
+        "level": 0.11777511984109879,
+        "sheen": 1.7881519794464111
+      },
+      "r43_nospec_chin": {
+        "level": 0.11777511984109879,
+        "sheen": 1.7881519794464111
+      }
+    },
+    {
+      "frame": 64,
+      "E_forehead": 0.04544496536254883,
+      "r43_delight_comp_forehead": {
+        "level": 0.1839514970779419,
+        "sheen": 1.418683648109436
+      },
+      "r43_nospec_forehead": {
+        "level": 0.1839514970779419,
+        "sheen": 1.418683648109436
+      },
+      "E_nose_bridge": 0.059300683438777924,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.22762459516525269,
+        "sheen": 1.2963460683822632
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.22762459516525269,
+        "sheen": 1.2963460683822632
+      },
+      "E_cheek_l": 0.0790804773569107,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.3119426965713501,
+        "sheen": 1.064717173576355
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.3119426965713501,
+        "sheen": 1.064717173576355
+      },
+      "E_chin": 0.030382979661226273,
+      "r43_delight_comp_chin": {
+        "level": 0.1152980700135231,
+        "sheen": 1.9306083917617798
+      },
+      "r43_nospec_chin": {
+        "level": 0.1152980700135231,
+        "sheen": 1.9306083917617798
+      }
+    },
+    {
+      "frame": 65,
+      "E_forehead": 0.03930330649018288,
+      "r43_delight_comp_forehead": {
+        "level": 0.16170544922351837,
+        "sheen": 1.436387062072754
+      },
+      "r43_nospec_forehead": {
+        "level": 0.16170544922351837,
+        "sheen": 1.436387062072754
+      },
+      "E_nose_bridge": 0.05239173769950867,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.20149876177310944,
+        "sheen": 1.2893521785736084
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.20149876177310944,
+        "sheen": 1.2893521785736084
+      },
+      "E_cheek_l": 0.07081164419651031,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.28049758076667786,
+        "sheen": 1.0702974796295166
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.28049758076667786,
+        "sheen": 1.0702974796295166
+      },
+      "E_chin": 0.02935972809791565,
+      "r43_delight_comp_chin": {
+        "level": 0.10917338728904724,
+        "sheen": 1.7705296277999878
+      },
+      "r43_nospec_chin": {
+        "level": 0.10917338728904724,
+        "sheen": 1.7705296277999878
+      }
+    },
+    {
+      "frame": 66,
+      "E_forehead": 0.03541223704814911,
+      "r43_delight_comp_forehead": {
+        "level": 0.14813482761383057,
+        "sheen": 1.4590346813201904
+      },
+      "r43_nospec_forehead": {
+        "level": 0.14813482761383057,
+        "sheen": 1.4590346813201904
+      },
+      "E_nose_bridge": 0.04884081333875656,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.18722081184387207,
+        "sheen": 1.2681440114974976
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.18722081184387207,
+        "sheen": 1.2681440114974976
+      },
+      "E_cheek_l": 0.0644172951579094,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.25657838582992554,
+        "sheen": 1.086321234703064
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.25657838582992554,
+        "sheen": 1.086321234703064
+      },
+      "E_chin": 0.028270719572901726,
+      "r43_delight_comp_chin": {
+        "level": 0.10400120913982391,
+        "sheen": 1.737750768661499
+      },
+      "r43_nospec_chin": {
+        "level": 0.10400120913982391,
+        "sheen": 1.737750768661499
+      }
+    },
+    {
+      "frame": 67,
+      "E_forehead": 0.032502681016922,
+      "r43_delight_comp_forehead": {
+        "level": 0.13522538542747498,
+        "sheen": 1.4687517881393433
+      },
+      "r43_nospec_forehead": {
+        "level": 0.13522538542747498,
+        "sheen": 1.4687517881393433
+      },
+      "E_nose_bridge": 0.04746108502149582,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.1782858669757843,
+        "sheen": 1.267011046409607
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.1782858669757843,
+        "sheen": 1.267011046409607
+      },
+      "E_cheek_l": 0.059391602873802185,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.23641063272953033,
+        "sheen": 1.0815129280090332
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.23641063272953033,
+        "sheen": 1.0815129280090332
+      },
+      "E_chin": 0.029055621474981308,
+      "r43_delight_comp_chin": {
+        "level": 0.10691981017589569,
+        "sheen": 1.6667969226837158
+      },
+      "r43_nospec_chin": {
+        "level": 0.10691981017589569,
+        "sheen": 1.6667969226837158
+      }
+    },
+    {
+      "frame": 68,
+      "E_forehead": 0.03395119309425354,
+      "r43_delight_comp_forehead": {
+        "level": 0.14519724249839783,
+        "sheen": 1.4098894596099854
+      },
+      "r43_nospec_forehead": {
+        "level": 0.14519724249839783,
+        "sheen": 1.4098894596099854
+      },
+      "E_nose_bridge": 0.04389284551143646,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.1699996292591095,
+        "sheen": 1.226251482963562
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.1699996292591095,
+        "sheen": 1.226251482963562
+      },
+      "E_cheek_l": 0.05433742702007294,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.21768739819526672,
+        "sheen": 1.0714777708053589
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.21768739819526672,
+        "sheen": 1.0714777708053589
+      },
+      "E_chin": 0.030432771891355515,
+      "r43_delight_comp_chin": {
+        "level": 0.11836337298154831,
+        "sheen": 1.6142746210098267
+      },
+      "r43_nospec_chin": {
+        "level": 0.11836337298154831,
+        "sheen": 1.6142746210098267
+      }
+    },
+    {
+      "frame": 69,
+      "E_forehead": 0.04208504408597946,
+      "r43_delight_comp_forehead": {
+        "level": 0.17910811305046082,
+        "sheen": 1.3081865310668945
+      },
+      "r43_nospec_forehead": {
+        "level": 0.17910811305046082,
+        "sheen": 1.3081865310668945
+      },
+      "E_nose_bridge": 0.04619713872671127,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.18004387617111206,
+        "sheen": 1.136582612991333
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.18004387617111206,
+        "sheen": 1.136582612991333
+      },
+      "E_cheek_l": 0.0472663976252079,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.18775975704193115,
+        "sheen": 1.0994287729263306
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.18775975704193115,
+        "sheen": 1.0994287729263306
+      },
+      "E_chin": 0.029882241040468216,
+      "r43_delight_comp_chin": {
+        "level": 0.12742513418197632,
+        "sheen": 1.308043122291565
+      },
+      "r43_nospec_chin": {
+        "level": 0.12742513418197632,
+        "sheen": 1.308043122291565
+      }
+    },
+    {
+      "frame": 70,
+      "E_forehead": 0.05571804568171501,
+      "r43_delight_comp_forehead": {
+        "level": 0.23780646920204163,
+        "sheen": 1.0856332778930664
+      },
+      "r43_nospec_forehead": {
+        "level": 0.23780646920204163,
+        "sheen": 1.0856332778930664
+      },
+      "E_nose_bridge": 0.04787773638963699,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.18733251094818115,
+        "sheen": 1.158771276473999
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.18733251094818115,
+        "sheen": 1.158771276473999
+      },
+      "E_cheek_l": 0.023057617247104645,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.08992893248796463,
+        "sheen": 1.4524002075195312
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.08992893248796463,
+        "sheen": 1.4524002075195312
+      },
+      "E_chin": 0.026196632534265518,
+      "r43_delight_comp_chin": {
+        "level": 0.09538716077804565,
+        "sheen": 1.7678966522216797
+      },
+      "r43_nospec_chin": {
+        "level": 0.09538716077804565,
+        "sheen": 1.7678966522216797
+      }
+    },
+    {
+      "frame": 71,
+      "E_forehead": 0.03656798601150513,
+      "r43_delight_comp_forehead": {
+        "level": 0.1583949327468872,
+        "sheen": 1.123427391052246
+      },
+      "r43_nospec_forehead": {
+        "level": 0.1583949327468872,
+        "sheen": 1.123427391052246
+      },
+      "E_nose_bridge": 0.03935346007347107,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.16794657707214355,
+        "sheen": 1.3400392532348633
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.16794657707214355,
+        "sheen": 1.3400392532348633
+      },
+      "E_cheek_l": 0.1088268831372261,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.4693245589733124,
+        "sheen": 1.3370897769927979
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.4693245589733124,
+        "sheen": 1.3370897769927979
+      },
+      "E_chin": 0.023765835911035538,
+      "r43_delight_comp_chin": {
+        "level": 0.09401051700115204,
+        "sheen": 1.8629142045974731
+      },
+      "r43_nospec_chin": {
+        "level": 0.09401051700115204,
+        "sheen": 1.8629142045974731
+      }
+    },
+    {
+      "frame": 72,
+      "E_forehead": 0.024764422327280045,
+      "r43_delight_comp_forehead": {
+        "level": 0.11175433546304703,
+        "sheen": 1.5168663263320923
+      },
+      "r43_nospec_forehead": {
+        "level": 0.11175433546304703,
+        "sheen": 1.5168663263320923
+      },
+      "E_nose_bridge": 0.032921202480793,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.14446115493774414,
+        "sheen": 2.6785194873809814
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.14446115493774414,
+        "sheen": 2.6785194873809814
+      },
+      "E_cheek_l": 0.1684422343969345,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.605212390422821,
+        "sheen": 1.2839444875717163
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.6048722267150879,
+        "sheen": 1.2846665382385254
+      },
+      "E_chin": 0.024880114942789078,
+      "r43_delight_comp_chin": {
+        "level": 0.10878610610961914,
+        "sheen": 2.652569055557251
+      },
+      "r43_nospec_chin": {
+        "level": 0.10878610610961914,
+        "sheen": 2.652569055557251
+      }
+    },
+    {
+      "frame": 73,
+      "E_forehead": 0.018774712458252907,
+      "r43_delight_comp_forehead": {
+        "level": 0.08662517368793488,
+        "sheen": 1.7963947057724
+      },
+      "r43_nospec_forehead": {
+        "level": 0.08662517368793488,
+        "sheen": 1.7963947057724
+      },
+      "E_nose_bridge": 0.028717154636979103,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.12756113708019257,
+        "sheen": 3.0818746089935303
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.12756113708019257,
+        "sheen": 3.0818746089935303
+      },
+      "E_cheek_l": 0.1663782298564911,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.6002176403999329,
+        "sheen": 1.2743195295333862
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.6002176403999329,
+        "sheen": 1.2743195295333862
+      },
+      "E_chin": 0.022838590666651726,
+      "r43_delight_comp_chin": {
+        "level": 0.10294165462255478,
+        "sheen": 3.047732353210449
+      },
+      "r43_nospec_chin": {
+        "level": 0.10294165462255478,
+        "sheen": 3.047732353210449
+      }
+    },
+    {
+      "frame": 74,
+      "E_forehead": 0.01604289747774601,
+      "r43_delight_comp_forehead": {
+        "level": 0.07347366213798523,
+        "sheen": 1.9398107528686523
+      },
+      "r43_nospec_forehead": {
+        "level": 0.07347366213798523,
+        "sheen": 1.9398107528686523
+      },
+      "E_nose_bridge": 0.02670949324965477,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.11816147714853287,
+        "sheen": 3.1423470973968506
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.11816147714853287,
+        "sheen": 3.1423470973968506
+      },
+      "E_cheek_l": 0.15510790050029755,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.5711014866828918,
+        "sheen": 1.2518413066864014
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.5696631669998169,
+        "sheen": 1.2550020217895508
+      },
+      "E_chin": 0.02135687693953514,
+      "r43_delight_comp_chin": {
+        "level": 0.09761397540569305,
+        "sheen": 2.9000303745269775
+      },
+      "r43_nospec_chin": {
+        "level": 0.09761397540569305,
+        "sheen": 2.9000303745269775
+      }
+    },
+    {
+      "frame": 75,
+      "E_forehead": 0.015513382852077484,
+      "r43_delight_comp_forehead": {
+        "level": 0.07132518291473389,
+        "sheen": 1.9688688516616821
+      },
+      "r43_nospec_forehead": {
+        "level": 0.07132518291473389,
+        "sheen": 1.9688688516616821
+      },
+      "E_nose_bridge": 0.025769606232643127,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.11323399841785431,
+        "sheen": 3.390688180923462
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.11323399841785431,
+        "sheen": 3.390688180923462
+      },
+      "E_cheek_l": 0.15135310590267181,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.558107852935791,
+        "sheen": 1.2605401277542114
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.558107852935791,
+        "sheen": 1.2605401277542114
+      },
+      "E_chin": 0.02121565118432045,
+      "r43_delight_comp_chin": {
+        "level": 0.09576253592967987,
+        "sheen": 2.9657328128814697
+      },
+      "r43_nospec_chin": {
+        "level": 0.09576253592967987,
+        "sheen": 2.9657328128814697
+      }
+    },
+    {
+      "frame": 76,
+      "E_forehead": 0.01538785919547081,
+      "r43_delight_comp_forehead": {
+        "level": 0.06978849321603775,
+        "sheen": 2.0515151023864746
+      },
+      "r43_nospec_forehead": {
+        "level": 0.06978849321603775,
+        "sheen": 2.0515151023864746
+      },
+      "E_nose_bridge": 0.02558376081287861,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.11107339709997177,
+        "sheen": 3.2264537811279297
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.11107339709997177,
+        "sheen": 3.2264537811279297
+      },
+      "E_cheek_l": 0.15519654750823975,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.5678672194480896,
+        "sheen": 1.2458418607711792
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.5657998323440552,
+        "sheen": 1.2503939867019653
+      },
+      "E_chin": 0.02075106091797352,
+      "r43_delight_comp_chin": {
+        "level": 0.09309031069278717,
+        "sheen": 3.145127534866333
+      },
+      "r43_nospec_chin": {
+        "level": 0.09309031069278717,
+        "sheen": 3.145127534866333
+      }
+    },
+    {
+      "frame": 77,
+      "E_forehead": 0.015347518026828766,
+      "r43_delight_comp_forehead": {
+        "level": 0.07031886279582977,
+        "sheen": 2.067662477493286
+      },
+      "r43_nospec_forehead": {
+        "level": 0.07031886279582977,
+        "sheen": 2.067662477493286
+      },
+      "E_nose_bridge": 0.024818088859319687,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.10850054025650024,
+        "sheen": 3.48478627204895
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.10850054025650024,
+        "sheen": 3.48478627204895
+      },
+      "E_cheek_l": 0.15501652657985687,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.5608532428741455,
+        "sheen": 1.261301875114441
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.5608532428741455,
+        "sheen": 1.2608206272125244
+      },
+      "E_chin": 0.020500831305980682,
+      "r43_delight_comp_chin": {
+        "level": 0.08976452052593231,
+        "sheen": 3.0151021480560303
+      },
+      "r43_nospec_chin": {
+        "level": 0.08976452052593231,
+        "sheen": 3.0151021480560303
+      }
+    },
+    {
+      "frame": 78,
+      "E_forehead": 0.015234984457492828,
+      "r43_delight_comp_forehead": {
+        "level": 0.06969931721687317,
+        "sheen": 2.1614348888397217
+      },
+      "r43_nospec_forehead": {
+        "level": 0.06969931721687317,
+        "sheen": 2.1614348888397217
+      },
+      "E_nose_bridge": 0.024267610162496567,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.1060752123594284,
+        "sheen": 3.38561749458313
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.1060752123594284,
+        "sheen": 3.38561749458313
+      },
+      "E_cheek_l": 0.15976482629776,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.5693312287330627,
+        "sheen": 1.248618721961975
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.5693312287330627,
+        "sheen": 1.2485326528549194
+      },
+      "E_chin": 0.01967734843492508,
+      "r43_delight_comp_chin": {
+        "level": 0.08351685106754303,
+        "sheen": 3.1886496543884277
+      },
+      "r43_nospec_chin": {
+        "level": 0.08351685106754303,
+        "sheen": 3.1886496543884277
+      }
+    },
+    {
+      "frame": 79,
+      "E_forehead": 0.01486033946275711,
+      "r43_delight_comp_forehead": {
+        "level": 0.06885910034179688,
+        "sheen": 2.1488702297210693
+      },
+      "r43_nospec_forehead": {
+        "level": 0.06885910034179688,
+        "sheen": 2.1488702297210693
+      },
+      "E_nose_bridge": 0.02381596714258194,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.10333811491727829,
+        "sheen": 3.6474051475524902
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.10333811491727829,
+        "sheen": 3.641113042831421
+      },
+      "E_cheek_l": 0.16091394424438477,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.5772161483764648,
+        "sheen": 1.2518912553787231
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.5772161483764648,
+        "sheen": 1.2518912553787231
+      },
+      "E_chin": 0.019970431923866272,
+      "r43_delight_comp_chin": {
+        "level": 0.08480319380760193,
+        "sheen": 3.3455328941345215
+      },
+      "r43_nospec_chin": {
+        "level": 0.08480319380760193,
+        "sheen": 3.3455328941345215
+      }
+    },
+    {
+      "frame": 80,
+      "E_forehead": 0.014643164351582527,
+      "r43_delight_comp_forehead": {
+        "level": 0.06732116639614105,
+        "sheen": 2.2339205741882324
+      },
+      "r43_nospec_forehead": {
+        "level": 0.06732116639614105,
+        "sheen": 2.2339205741882324
+      },
+      "E_nose_bridge": 0.02324378304183483,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.10221126675605774,
+        "sheen": 3.8035671710968018
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.10221126675605774,
+        "sheen": 3.8035671710968018
+      },
+      "E_cheek_l": 0.1608874350786209,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.5809904932975769,
+        "sheen": 1.2585418224334717
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.5809904932975769,
+        "sheen": 1.2585418224334717
+      },
+      "E_chin": 0.020722679793834686,
+      "r43_delight_comp_chin": {
+        "level": 0.08597069978713989,
+        "sheen": 3.4727063179016113
+      },
+      "r43_nospec_chin": {
+        "level": 0.08597069978713989,
+        "sheen": 3.4727063179016113
+      }
+    },
+    {
+      "frame": 81,
+      "E_forehead": 0.01444441918283701,
+      "r43_delight_comp_forehead": {
+        "level": 0.06659567356109619,
+        "sheen": 2.1592788696289062
+      },
+      "r43_nospec_forehead": {
+        "level": 0.06659567356109619,
+        "sheen": 2.1592788696289062
+      },
+      "E_nose_bridge": 0.022779308259487152,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.1001889556646347,
+        "sheen": 3.6752448081970215
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.1001889556646347,
+        "sheen": 3.6752448081970215
+      },
+      "E_cheek_l": 0.1670084148645401,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.5989306569099426,
+        "sheen": 1.2566770315170288
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.5989306569099426,
+        "sheen": 1.2561284303665161
+      },
+      "E_chin": 0.020960524678230286,
+      "r43_delight_comp_chin": {
+        "level": 0.08992745727300644,
+        "sheen": 3.403671979904175
+      },
+      "r43_nospec_chin": {
+        "level": 0.08992745727300644,
+        "sheen": 3.403671979904175
+      }
+    },
+    {
+      "frame": 82,
+      "E_forehead": 0.016249295324087143,
+      "r43_delight_comp_forehead": {
+        "level": 0.07568348944187164,
+        "sheen": 2.2825796604156494
+      },
+      "r43_nospec_forehead": {
+        "level": 0.07568348944187164,
+        "sheen": 2.2825796604156494
+      },
+      "E_nose_bridge": 0.022322149947285652,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.09675149619579315,
+        "sheen": 4.345875263214111
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.09675149619579315,
+        "sheen": 4.34412145614624
+      },
+      "E_cheek_l": 0.18405675888061523,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.6391299962997437,
+        "sheen": 1.2143726348876953
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.6391299962997437,
+        "sheen": 1.2143726348876953
+      },
+      "E_chin": 0.023822247982025146,
+      "r43_delight_comp_chin": {
+        "level": 0.10307665169239044,
+        "sheen": 3.4379003047943115
+      },
+      "r43_nospec_chin": {
+        "level": 0.10307665169239044,
+        "sheen": 3.4379003047943115
+      }
+    },
+    {
+      "frame": 83,
+      "E_forehead": 0.026462696492671967,
+      "r43_delight_comp_forehead": {
+        "level": 0.12805357575416565,
+        "sheen": 2.2321298122406006
+      },
+      "r43_nospec_forehead": {
+        "level": 0.12805357575416565,
+        "sheen": 2.2321298122406006
+      },
+      "E_nose_bridge": 0.025880329310894012,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.1109279990196228,
+        "sheen": 4.680699825286865
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.1109279990196228,
+        "sheen": 4.680699825286865
+      },
+      "E_cheek_l": 0.23190495371818542,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.7419018745422363,
+        "sheen": 1.1876821517944336
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.741412341594696,
+        "sheen": 1.1884663105010986
+      },
+      "E_chin": 0.03643573075532913,
+      "r43_delight_comp_chin": {
+        "level": 0.16294336318969727,
+        "sheen": 2.914621353149414
+      },
+      "r43_nospec_chin": {
+        "level": 0.16294336318969727,
+        "sheen": 2.914621353149414
+      }
+    },
+    {
+      "frame": 84,
+      "E_forehead": 0.05788329616189003,
+      "r43_delight_comp_forehead": {
+        "level": 0.28439879417419434,
+        "sheen": 1.7704954147338867
+      },
+      "r43_nospec_forehead": {
+        "level": 0.28439879417419434,
+        "sheen": 1.7704954147338867
+      },
+      "E_nose_bridge": 0.04318610578775406,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.23888787627220154,
+        "sheen": 2.7186198234558105
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.23888787627220154,
+        "sheen": 2.7178752422332764
+      },
+      "E_cheek_l": 0.3042508661746979,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.8871455192565918,
+        "sheen": 1.0829710960388184
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.883783221244812,
+        "sheen": 1.087091088294983
+      },
+      "E_chin": 0.07632123678922653,
+      "r43_delight_comp_chin": {
+        "level": 0.3449844717979431,
+        "sheen": 1.8360720872879028
+      },
+      "r43_nospec_chin": {
+        "level": 0.3449844717979431,
+        "sheen": 1.8360720872879028
+      }
+    },
+    {
+      "frame": 85,
+      "E_forehead": 0.11226984858512878,
+      "r43_delight_comp_forehead": {
+        "level": 0.5246710181236267,
+        "sheen": 1.3497141599655151
+      },
+      "r43_nospec_forehead": {
+        "level": 0.5246710181236267,
+        "sheen": 1.3497141599655151
+      },
+      "E_nose_bridge": 0.093467116355896,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.4637342095375061,
+        "sheen": 1.7832400798797607
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.4637342095375061,
+        "sheen": 1.7832400798797607
+      },
+      "E_cheek_l": 0.34687912464141846,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.9603467583656311,
+        "sheen": 1.003024935722351
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.9603467583656311,
+        "sheen": 1.003024935722351
+      },
+      "E_chin": 0.13139116764068604,
+      "r43_delight_comp_chin": {
+        "level": 0.4963657259941101,
+        "sheen": 1.497593879699707
+      },
+      "r43_nospec_chin": {
+        "level": 0.4963657259941101,
+        "sheen": 1.497593879699707
+      }
+    },
+    {
+      "frame": 86,
+      "E_forehead": 0.16191887855529785,
+      "r43_delight_comp_forehead": {
+        "level": 0.6595504879951477,
+        "sheen": 1.2597094774246216
+      },
+      "r43_nospec_forehead": {
+        "level": 0.6595504879951477,
+        "sheen": 1.2597094774246216
+      },
+      "E_nose_bridge": 0.13004639744758606,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.5633903741836548,
+        "sheen": 1.593551754951477
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.5633903741836548,
+        "sheen": 1.593551754951477
+      },
+      "E_cheek_l": 0.31983935832977295,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.9425822496414185,
+        "sheen": 1.0188466310501099
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.9393681883811951,
+        "sheen": 1.021903395652771
+      },
+      "E_chin": 0.18457065522670746,
+      "r43_delight_comp_chin": {
+        "level": 0.5909785032272339,
+        "sheen": 1.3911784887313843
+      },
+      "r43_nospec_chin": {
+        "level": 0.5909785032272339,
+        "sheen": 1.3911784887313843
+      }
+    },
+    {
+      "frame": 87,
+      "E_forehead": 0.18366944789886475,
+      "r43_delight_comp_forehead": {
+        "level": 0.7247832417488098,
+        "sheen": 1.1872377395629883
+      },
+      "r43_nospec_forehead": {
+        "level": 0.7247832417488098,
+        "sheen": 1.1872377395629883
+      },
+      "E_nose_bridge": 0.15999004244804382,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.6378655433654785,
+        "sheen": 1.406866192817688
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.6378655433654785,
+        "sheen": 1.406866192817688
+      },
+      "E_cheek_l": 0.2657891511917114,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.8378897905349731,
+        "sheen": 1.0444109439849854
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.8328530192375183,
+        "sheen": 1.0459332466125488
+      },
+      "E_chin": 0.20783153176307678,
+      "r43_delight_comp_chin": {
+        "level": 0.6273791790008545,
+        "sheen": 1.2684059143066406
+      },
+      "r43_nospec_chin": {
+        "level": 0.6273791790008545,
+        "sheen": 1.2684059143066406
+      }
+    },
+    {
+      "frame": 88,
+      "E_forehead": 0.179271399974823,
+      "r43_delight_comp_forehead": {
+        "level": 0.7187449932098389,
+        "sheen": 1.1522924900054932
+      },
+      "r43_nospec_forehead": {
+        "level": 0.7187449932098389,
+        "sheen": 1.15181303024292
+      },
+      "E_nose_bridge": 0.15499380230903625,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.6240580677986145,
+        "sheen": 1.3395479917526245
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.6240580677986145,
+        "sheen": 1.3395479917526245
+      },
+      "E_cheek_l": 0.2235114872455597,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.7507949471473694,
+        "sheen": 1.0643020868301392
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.7452173233032227,
+        "sheen": 1.0713210105895996
+      },
+      "E_chin": 0.19831281900405884,
+      "r43_delight_comp_chin": {
+        "level": 0.6182252764701843,
+        "sheen": 1.2059195041656494
+      },
+      "r43_nospec_chin": {
+        "level": 0.6182252764701843,
+        "sheen": 1.2059195041656494
+      }
+    },
+    {
+      "frame": 89,
+      "E_forehead": 0.17516624927520752,
+      "r43_delight_comp_forehead": {
+        "level": 0.708014965057373,
+        "sheen": 1.1301349401474
+      },
+      "r43_nospec_forehead": {
+        "level": 0.708014965057373,
+        "sheen": 1.1301349401474
+      },
+      "E_nose_bridge": 0.15487289428710938,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.6277748942375183,
+        "sheen": 1.3102829456329346
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.6277748942375183,
+        "sheen": 1.3102829456329346
+      },
+      "E_cheek_l": 0.20023615658283234,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.6989286541938782,
+        "sheen": 1.0769743919372559
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.6968351006507874,
+        "sheen": 1.079737663269043
+      },
+      "E_chin": 0.192592054605484,
+      "r43_delight_comp_chin": {
+        "level": 0.6122405529022217,
+        "sheen": 1.1814849376678467
+      },
+      "r43_nospec_chin": {
+        "level": 0.6122405529022217,
+        "sheen": 1.1814849376678467
+      }
+    },
+    {
+      "frame": 90,
+      "E_forehead": 0.17774805426597595,
+      "r43_delight_comp_forehead": {
+        "level": 0.7138211727142334,
+        "sheen": 1.1355249881744385
+      },
+      "r43_nospec_forehead": {
+        "level": 0.7138211727142334,
+        "sheen": 1.1355249881744385
+      },
+      "E_nose_bridge": 0.1630304455757141,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.6388442516326904,
+        "sheen": 1.315602421760559
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.6388442516326904,
+        "sheen": 1.3151121139526367
+      },
+      "E_cheek_l": 0.20200850069522858,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.7068347930908203,
+        "sheen": 1.0728908777236938
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.7021105289459229,
+        "sheen": 1.0796374082565308
+      },
+      "E_chin": 0.1961696594953537,
+      "r43_delight_comp_chin": {
+        "level": 0.6169536113739014,
+        "sheen": 1.1882034540176392
+      },
+      "r43_nospec_chin": {
+        "level": 0.6169536113739014,
+        "sheen": 1.1882034540176392
+      }
+    },
+    {
+      "frame": 91,
+      "E_forehead": 0.18195712566375732,
+      "r43_delight_comp_forehead": {
+        "level": 0.7280880808830261,
+        "sheen": 1.1365381479263306
+      },
+      "r43_nospec_forehead": {
+        "level": 0.7280880808830261,
+        "sheen": 1.1365381479263306
+      },
+      "E_nose_bridge": 0.16414427757263184,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.6481086611747742,
+        "sheen": 1.343891978263855
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.6481086611747742,
+        "sheen": 1.343891978263855
+      },
+      "E_cheek_l": 0.20496684312820435,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.7172496318817139,
+        "sheen": 1.0783525705337524
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.7124658823013306,
+        "sheen": 1.0796972513198853
+      },
+      "E_chin": 0.20200729370117188,
+      "r43_delight_comp_chin": {
+        "level": 0.6302865147590637,
+        "sheen": 1.180145263671875
+      },
+      "r43_nospec_chin": {
+        "level": 0.6302865147590637,
+        "sheen": 1.180145263671875
+      }
+    },
+    {
+      "frame": 92,
+      "E_forehead": 0.1844882369041443,
+      "r43_delight_comp_forehead": {
+        "level": 0.7283871173858643,
+        "sheen": 1.1366901397705078
+      },
+      "r43_nospec_forehead": {
+        "level": 0.7283871173858643,
+        "sheen": 1.1366901397705078
+      },
+      "E_nose_bridge": 0.16678406298160553,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.6561056971549988,
+        "sheen": 1.3438915014266968
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.6561056971549988,
+        "sheen": 1.3438915014266968
+      },
+      "E_cheek_l": 0.20802262425422668,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.7326689958572388,
+        "sheen": 1.06395423412323
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.727352499961853,
+        "sheen": 1.0712785720825195
+      },
+      "E_chin": 0.20637255907058716,
+      "r43_delight_comp_chin": {
+        "level": 0.6448853015899658,
+        "sheen": 1.1695979833602905
+      },
+      "r43_nospec_chin": {
+        "level": 0.6448853015899658,
+        "sheen": 1.1695979833602905
+      }
+    },
+    {
+      "frame": 93,
+      "E_forehead": 0.011357385665178299,
+      "r43_delight_comp_forehead": {
+        "level": 0.054170817136764526,
+        "sheen": 1.1555639505386353
+      },
+      "r43_nospec_forehead": {
+        "level": 0.054170817136764526,
+        "sheen": 1.1555639505386353
+      },
+      "E_nose_bridge": 0.01046399213373661,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.05026635527610779,
+        "sheen": 1.3360412120819092
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.05026635527610779,
+        "sheen": 1.3360412120819092
+      },
+      "E_cheek_l": 0.012655023485422134,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.055764343589544296,
+        "sheen": 1.0877231359481812
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.05564890801906586,
+        "sheen": 1.0898520946502686
+      },
+      "E_chin": 0.012949300929903984,
+      "r43_delight_comp_chin": {
+        "level": 0.0536247156560421,
+        "sheen": 1.2446630001068115
+      },
+      "r43_nospec_chin": {
+        "level": 0.0536247156560421,
+        "sheen": 1.2446630001068115
+      }
+    },
+    {
+      "frame": 94,
+      "E_forehead": 0.011603180319070816,
+      "r43_delight_comp_forehead": {
+        "level": 0.05461881309747696,
+        "sheen": 1.1592775583267212
+      },
+      "r43_nospec_forehead": {
+        "level": 0.05461881309747696,
+        "sheen": 1.1592775583267212
+      },
+      "E_nose_bridge": 0.01061592809855938,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.0504852756857872,
+        "sheen": 1.3327245712280273
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.0504852756857872,
+        "sheen": 1.3327245712280273
+      },
+      "E_cheek_l": 0.012824974954128265,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.05625741928815842,
+        "sheen": 1.0878933668136597
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.055764343589544296,
+        "sheen": 1.0881986618041992
+      },
+      "E_chin": 0.013165956363081932,
+      "r43_delight_comp_chin": {
+        "level": 0.0536247156560421,
+        "sheen": 1.2553073167800903
+      },
+      "r43_nospec_chin": {
+        "level": 0.0536247156560421,
+        "sheen": 1.2553073167800903
+      }
+    },
+    {
+      "frame": 95,
+      "E_forehead": 0.011750197038054466,
+      "r43_delight_comp_forehead": {
+        "level": 0.05461881309747696,
+        "sheen": 1.167507529258728
+      },
+      "r43_nospec_forehead": {
+        "level": 0.05461881309747696,
+        "sheen": 1.167507529258728
+      },
+      "E_nose_bridge": 0.010751418769359589,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.051462311297655106,
+        "sheen": 1.3176897764205933
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.051462311297655106,
+        "sheen": 1.3176897764205933
+      },
+      "E_cheek_l": 0.01304659340530634,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.05680222436785698,
+        "sheen": 1.0860815048217773
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.05668678879737854,
+        "sheen": 1.079659342765808
+      },
+      "E_chin": 0.01360846683382988,
+      "r43_delight_comp_chin": {
+        "level": 0.05458442494273186,
+        "sheen": 1.254287600517273
+      },
+      "r43_nospec_chin": {
+        "level": 0.05458442494273186,
+        "sheen": 1.254287600517273
+      }
+    },
+    {
+      "frame": 96,
+      "E_forehead": 0.011995811015367508,
+      "r43_delight_comp_forehead": {
+        "level": 0.05571357160806656,
+        "sheen": 1.1720142364501953
+      },
+      "r43_nospec_forehead": {
+        "level": 0.05571357160806656,
+        "sheen": 1.1720142364501953
+      },
+      "E_nose_bridge": 0.011043479666113853,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.052441392093896866,
+        "sheen": 1.3060742616653442
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.052441392093896866,
+        "sheen": 1.3060742616653442
+      },
+      "E_cheek_l": 0.013247736729681492,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.05680222436785698,
+        "sheen": 1.0864511728286743
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.05674366652965546,
+        "sheen": 1.0872023105621338
+      },
+      "E_chin": 0.013745777308940887,
+      "r43_delight_comp_chin": {
+        "level": 0.055137261748313904,
+        "sheen": 1.2627228498458862
+      },
+      "r43_nospec_chin": {
+        "level": 0.055137261748313904,
+        "sheen": 1.2627228498458862
+      }
+    },
+    {
+      "frame": 97,
+      "E_forehead": 0.19312074780464172,
+      "r43_delight_comp_forehead": {
+        "level": 0.7507949471473694,
+        "sheen": 1.1378250122070312
+      },
+      "r43_nospec_forehead": {
+        "level": 0.7507949471473694,
+        "sheen": 1.1378250122070312
+      },
+      "E_nose_bridge": 0.18475812673568726,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.7009624242782593,
+        "sheen": 1.29928719997406
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.7009624242782593,
+        "sheen": 1.29928719997406
+      },
+      "E_cheek_l": 0.21766391396522522,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.7601853609085083,
+        "sheen": 1.067539930343628
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.7577061653137207,
+        "sheen": 1.070905327796936
+      },
+      "E_chin": 0.22257661819458008,
+      "r43_delight_comp_chin": {
+        "level": 0.6679542660713196,
+        "sheen": 1.1773300170898438
+      },
+      "r43_nospec_chin": {
+        "level": 0.6679542660713196,
+        "sheen": 1.1773300170898438
+      }
+    },
+    {
+      "frame": 98,
+      "E_forehead": 0.1715845763683319,
+      "r43_delight_comp_forehead": {
+        "level": 0.704602062702179,
+        "sheen": 1.1366416215896606
+      },
+      "r43_nospec_forehead": {
+        "level": 0.704602062702179,
+        "sheen": 1.1366416215896606
+      },
+      "E_nose_bridge": 0.16380101442337036,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.654271125793457,
+        "sheen": 1.2952148914337158
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.654271125793457,
+        "sheen": 1.2952148914337158
+      },
+      "E_cheek_l": 0.19733870029449463,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.7149957418441772,
+        "sheen": 1.0702764987945557
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.7110241055488586,
+        "sheen": 1.075066328048706
+      },
+      "E_chin": 0.19781939685344696,
+      "r43_delight_comp_chin": {
+        "level": 0.6220449209213257,
+        "sheen": 1.183017373085022
+      },
+      "r43_nospec_chin": {
+        "level": 0.6220449209213257,
+        "sheen": 1.183017373085022
+      }
+    },
+    {
+      "frame": 99,
+      "E_forehead": 0.1399502158164978,
+      "r43_delight_comp_forehead": {
+        "level": 0.6204786896705627,
+        "sheen": 1.1396456956863403
+      },
+      "r43_nospec_forehead": {
+        "level": 0.6204786896705627,
+        "sheen": 1.1396456956863403
+      },
+      "E_nose_bridge": 0.13274599611759186,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.5801568031311035,
+        "sheen": 1.281451940536499
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.5801568031311035,
+        "sheen": 1.281451940536499
+      },
+      "E_cheek_l": 0.16591697931289673,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.6407491564750671,
+        "sheen": 1.0609996318817139
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.6387656331062317,
+        "sheen": 1.0642105340957642
+      },
+      "E_chin": 0.15713393688201904,
+      "r43_delight_comp_chin": {
+        "level": 0.5524733662605286,
+        "sheen": 1.1735039949417114
+      },
+      "r43_nospec_chin": {
+        "level": 0.5524733662605286,
+        "sheen": 1.1735039949417114
+      }
+    },
+    {
+      "frame": 100,
+      "E_forehead": 0.10108266770839691,
+      "r43_delight_comp_forehead": {
+        "level": 0.4756159782409668,
+        "sheen": 1.1897135972976685
+      },
+      "r43_nospec_forehead": {
+        "level": 0.4756159782409668,
+        "sheen": 1.1897135972976685
+      },
+      "E_nose_bridge": 0.09754298627376556,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.45710986852645874,
+        "sheen": 1.3137826919555664
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.45710986852645874,
+        "sheen": 1.3137826919555664
+      },
+      "E_cheek_l": 0.12489944696426392,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.5347580909729004,
+        "sheen": 1.0531721115112305
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.5313920974731445,
+        "sheen": 1.0582458972930908
+      },
+      "E_chin": 0.11258719861507416,
+      "r43_delight_comp_chin": {
+        "level": 0.44720470905303955,
+        "sheen": 1.2260478734970093
+      },
+      "r43_nospec_chin": {
+        "level": 0.44720470905303955,
+        "sheen": 1.2260478734970093
+      }
+    },
+    {
+      "frame": 101,
+      "E_forehead": 0.06435586512088776,
+      "r43_delight_comp_forehead": {
+        "level": 0.3013569116592407,
+        "sheen": 1.2053319215774536
+      },
+      "r43_nospec_forehead": {
+        "level": 0.3013569116592407,
+        "sheen": 1.2053319215774536
+      },
+      "E_nose_bridge": 0.062282487750053406,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.2862386405467987,
+        "sheen": 1.3350439071655273
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.2862386405467987,
+        "sheen": 1.3350439071655273
+      },
+      "E_cheek_l": 0.08201472461223602,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.3521221876144409,
+        "sheen": 1.0507893562316895
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.35062846541404724,
+        "sheen": 1.0522243976593018
+      },
+      "E_chin": 0.07142506539821625,
+      "r43_delight_comp_chin": {
+        "level": 0.2900424003601074,
+        "sheen": 1.2923080921173096
+      },
+      "r43_nospec_chin": {
+        "level": 0.2900424003601074,
+        "sheen": 1.2923080921173096
+      }
+    },
+    {
+      "frame": 102,
+      "E_forehead": 0.033868249505758286,
+      "r43_delight_comp_forehead": {
+        "level": 0.1583690047264099,
+        "sheen": 1.2049319744110107
+      },
+      "r43_nospec_forehead": {
+        "level": 0.1583690047264099,
+        "sheen": 1.2049319744110107
+      },
+      "E_nose_bridge": 0.032204411923885345,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.1502145230770111,
+        "sheen": 1.3015183210372925
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.1502145230770111,
+        "sheen": 1.3015183210372925
+      },
+      "E_cheek_l": 0.043604809790849686,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.18632254004478455,
+        "sheen": 1.0463957786560059
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.18575827777385712,
+        "sheen": 1.0489225387573242
+      },
+      "E_chin": 0.037176817655563354,
+      "r43_delight_comp_chin": {
+        "level": 0.15272435545921326,
+        "sheen": 1.3180675506591797
+      },
+      "r43_nospec_chin": {
+        "level": 0.15272435545921326,
+        "sheen": 1.3180675506591797
+      }
+    },
+    {
+      "frame": 103,
+      "E_forehead": 0.011674361303448677,
+      "r43_delight_comp_forehead": {
+        "level": 0.054257262498140335,
+        "sheen": 1.2084767818450928
+      },
+      "r43_nospec_forehead": {
+        "level": 0.054257262498140335,
+        "sheen": 1.2084767818450928
+      },
+      "E_nose_bridge": 0.011170433834195137,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.05194557085633278,
+        "sheen": 1.3077377080917358
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.05194557085633278,
+        "sheen": 1.3077377080917358
+      },
+      "E_cheek_l": 0.01539290975779295,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.06515342742204666,
+        "sheen": 1.05544912815094
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.06515342742204666,
+        "sheen": 1.05544912815094
+      },
+      "E_chin": 0.012887882068753242,
+      "r43_delight_comp_chin": {
+        "level": 0.05334099009633064,
+        "sheen": 1.2913401126861572
+      },
+      "r43_nospec_chin": {
+        "level": 0.05334099009633064,
+        "sheen": 1.2913401126861572
+      }
+    },
+    {
+      "frame": 104,
+      "E_forehead": 0.0009523809421807528,
+      "r43_delight_comp_forehead": {
+        "level": 0.004333305172622204,
+        "sheen": 1.1487715244293213
+      },
+      "r43_nospec_forehead": {
+        "level": 0.004333305172622204,
+        "sheen": 1.1487715244293213
+      },
+      "E_nose_bridge": 0.000929608941078186,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.0041868314146995544,
+        "sheen": 1.1889606714248657
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.0041868314146995544,
+        "sheen": 1.1889606714248657
+      },
+      "E_cheek_l": 0.001158422906883061,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.004809634294360876,
+        "sheen": 1.0545326471328735
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.004809634294360876,
+        "sheen": 1.0545326471328735
+      },
+      "E_chin": 0.00099539989605546,
+      "r43_delight_comp_chin": {
+        "level": 0.003942299634218216,
+        "sheen": 1.181796669960022
+      },
+      "r43_nospec_chin": {
+        "level": 0.003942299634218216,
+        "sheen": 1.181796669960022
+      }
+    },
+    {
+      "frame": 105,
+      "E_forehead": 0.0003040835144929588,
+      "r43_delight_comp_forehead": {
+        "level": 0.0014283980708569288,
+        "sheen": 1.015342116355896
+      },
+      "r43_nospec_forehead": {
+        "level": 0.0014283980708569288,
+        "sheen": 1.015342116355896
+      },
+      "E_nose_bridge": 0.00030250573763623834,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.0014283980708569288,
+        "sheen": 1.170451045036316
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.0014283980708569288,
+        "sheen": 1.170451045036316
+      },
+      "E_cheek_l": 0.00028615290648303926,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.0012113155098631978,
+        "sheen": 1.179212212562561
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.0012113155098631978,
+        "sheen": 1.179212212562561
+      },
+      "E_chin": 0.0002545983297750354,
+      "r43_delight_comp_chin": {
+        "level": 0.0009077885188162327,
+        "sheen": 1.3102179765701294
+      },
+      "r43_nospec_chin": {
+        "level": 0.0009077885188162327,
+        "sheen": 1.3102179765701294
+      }
+    },
+    {
+      "frame": 106,
+      "E_forehead": 0.0003039801958948374,
+      "r43_delight_comp_forehead": {
+        "level": 0.0014283980708569288,
+        "sheen": 1.015342116355896
+      },
+      "r43_nospec_forehead": {
+        "level": 0.0014283980708569288,
+        "sheen": 1.015342116355896
+      },
+      "E_nose_bridge": 0.0003017755807377398,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.001384635572321713,
+        "sheen": 1.2074440717697144
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.001384635572321713,
+        "sheen": 1.2074440717697144
+      },
+      "E_cheek_l": 0.0002863353583961725,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.0012113155098631978,
+        "sheen": 1.179212212562561
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.0012113155098631978,
+        "sheen": 1.179212212562561
+      },
+      "E_chin": 0.00025398272555321455,
+      "r43_delight_comp_chin": {
+        "level": 0.0009077885188162327,
+        "sheen": 1.3102179765701294
+      },
+      "r43_nospec_chin": {
+        "level": 0.0009077885188162327,
+        "sheen": 1.3102179765701294
+      }
+    },
+    {
+      "frame": 107,
+      "E_forehead": 0.00030387830338440835,
+      "r43_delight_comp_forehead": {
+        "level": 0.0014283980708569288,
+        "sheen": 1.015342116355896
+      },
+      "r43_nospec_forehead": {
+        "level": 0.0014283980708569288,
+        "sheen": 1.015342116355896
+      },
+      "E_nose_bridge": 0.0003016743576154113,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.0013184604467824101,
+        "sheen": 1.2314611673355103
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.0013184604467824101,
+        "sheen": 1.2314611673355103
+      },
+      "E_cheek_l": 0.0002864952548407018,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.0012113155098631978,
+        "sheen": 1.179212212562561
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.0012113155098631978,
+        "sheen": 1.179212212562561
+      },
+      "E_chin": 0.00025185936829075217,
+      "r43_delight_comp_chin": {
+        "level": 0.0009077885188162327,
+        "sheen": 1.3102179765701294
+      },
+      "r43_nospec_chin": {
+        "level": 0.0009077885188162327,
+        "sheen": 1.3102179765701294
+      }
+    },
+    {
+      "frame": 108,
+      "E_forehead": 0.0003037768474314362,
+      "r43_delight_comp_forehead": {
+        "level": 0.0012758454540744424,
+        "sheen": 1.1367464065551758
+      },
+      "r43_nospec_forehead": {
+        "level": 0.0012758454540744424,
+        "sheen": 1.1367464065551758
+      },
+      "E_nose_bridge": 0.0003013154782820493,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.0013184604467824101,
+        "sheen": 1.2314611673355103
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.0013184604467824101,
+        "sheen": 1.2314611673355103
+      },
+      "E_cheek_l": 0.00028669513994827867,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.0012113155098631978,
+        "sheen": 1.179212212562561
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.0012113155098631978,
+        "sheen": 1.179212212562561
+      },
+      "E_chin": 0.000252353900577873,
+      "r43_delight_comp_chin": {
+        "level": 0.0009077885188162327,
+        "sheen": 1.3102179765701294
+      },
+      "r43_nospec_chin": {
+        "level": 0.0009077885188162327,
+        "sheen": 1.3102179765701294
+      }
+    },
+    {
+      "frame": 109,
+      "E_forehead": 0.00030360452365130186,
+      "r43_delight_comp_forehead": {
+        "level": 0.0013638681266456842,
+        "sheen": 1.0633819103240967
+      },
+      "r43_nospec_forehead": {
+        "level": 0.0013638681266456842,
+        "sheen": 1.0633819103240967
+      },
+      "E_nose_bridge": 0.0003004205645993352,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.0012758454540744424,
+        "sheen": 1.27259361743927
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.0012758454540744424,
+        "sheen": 1.27259361743927
+      },
+      "E_cheek_l": 0.0002869140589609742,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.0012113155098631978,
+        "sheen": 1.179212212562561
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.0012113155098631978,
+        "sheen": 1.179212212562561
+      },
+      "E_chin": 0.0002533417718950659,
+      "r43_delight_comp_chin": {
+        "level": 0.0009077885188162327,
+        "sheen": 1.3102179765701294
+      },
+      "r43_nospec_chin": {
+        "level": 0.0009077885188162327,
+        "sheen": 1.3102179765701294
+      }
+    },
+    {
+      "frame": 110,
+      "E_forehead": 0.00030394515488296747,
+      "r43_delight_comp_forehead": {
+        "level": 0.0014283980708569288,
+        "sheen": 1.015342116355896
+      },
+      "r43_nospec_forehead": {
+        "level": 0.0014283980708569288,
+        "sheen": 1.015342116355896
+      },
+      "E_nose_bridge": 0.000299583887681365,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.0013184604467824101,
+        "sheen": 1.2314611673355103
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.0013184604467824101,
+        "sheen": 1.2314611673355103
+      },
+      "E_cheek_l": 0.0002869128074962646,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.0012113155098631978,
+        "sheen": 1.179212212562561
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.0012113155098631978,
+        "sheen": 1.179212212562561
+      },
+      "E_chin": 0.000249884178629145,
+      "r43_delight_comp_chin": {
+        "level": 0.0009077885188162327,
+        "sheen": 1.3102179765701294
+      },
+      "r43_nospec_chin": {
+        "level": 0.0009077885188162327,
+        "sheen": 1.3102179765701294
+      }
+    },
+    {
+      "frame": 111,
+      "E_forehead": 0.0003040166920982301,
+      "r43_delight_comp_forehead": {
+        "level": 0.0014283980708569288,
+        "sheen": 1.015342116355896
+      },
+      "r43_nospec_forehead": {
+        "level": 0.0014283980708569288,
+        "sheen": 1.015342116355896
+      },
+      "E_nose_bridge": 0.00029853120213374496,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.0012758454540744424,
+        "sheen": 1.27259361743927
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.0012758454540744424,
+        "sheen": 1.27259361743927
+      },
+      "E_cheek_l": 0.0002869848976843059,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.0012113155098631978,
+        "sheen": 1.179212212562561
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.0012113155098631978,
+        "sheen": 1.179212212562561
+      },
+      "E_chin": 0.00024835558724589646,
+      "r43_delight_comp_chin": {
+        "level": 0.0009077885188162327,
+        "sheen": 1.3102179765701294
+      },
+      "r43_nospec_chin": {
+        "level": 0.0009077885188162327,
+        "sheen": 1.3102179765701294
+      }
+    },
+    {
+      "frame": 112,
+      "E_forehead": 0.0003004391910508275,
+      "r43_delight_comp_forehead": {
+        "level": 0.0014283980708569288,
+        "sheen": 1.015342116355896
+      },
+      "r43_nospec_forehead": {
+        "level": 0.0014283980708569288,
+        "sheen": 1.015342116355896
+      },
+      "E_nose_bridge": 0.00029599855770356953,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.0012758454540744424,
+        "sheen": 1.27259361743927
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.0012758454540744424,
+        "sheen": 1.27259361743927
+      },
+      "E_cheek_l": 0.00028440848109312356,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.0012113155098631978,
+        "sheen": 1.179212212562561
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.0012113155098631978,
+        "sheen": 1.179212212562561
+      },
+      "E_chin": 0.0002430222521070391,
+      "r43_delight_comp_chin": {
+        "level": 0.0009077885188162327,
+        "sheen": 1.3102179765701294
+      },
+      "r43_nospec_chin": {
+        "level": 0.0009077885188162327,
+        "sheen": 1.3102179765701294
+      }
+    },
+    {
+      "frame": 113,
+      "E_forehead": 0.00028901430778205395,
+      "r43_delight_comp_forehead": {
+        "level": 0.0014283980708569288,
+        "sheen": 1.015342116355896
+      },
+      "r43_nospec_forehead": {
+        "level": 0.0014283980708569288,
+        "sheen": 1.015342116355896
+      },
+      "E_nose_bridge": 0.00028566864784806967,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.0012113155098631978,
+        "sheen": 1.3403880596160889
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.0012113155098631978,
+        "sheen": 1.3403880596160889
+      },
+      "E_cheek_l": 0.00028023976483382285,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.0012113155098631978,
+        "sheen": 1.179212212562561
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.0012113155098631978,
+        "sheen": 1.179212212562561
+      },
+      "E_chin": 0.00022605087724514306,
+      "r43_delight_comp_chin": {
+        "level": 0.0008432586910203099,
+        "sheen": 1.3339571952819824
+      },
+      "r43_nospec_chin": {
+        "level": 0.0008432586910203099,
+        "sheen": 1.3339571952819824
+      }
+    },
+    {
+      "frame": 114,
+      "E_forehead": 0.0002750390849541873,
+      "r43_delight_comp_forehead": {
+        "level": 0.0014283980708569288,
+        "sheen": 1.015342116355896
+      },
+      "r43_nospec_forehead": {
+        "level": 0.0014283980708569288,
+        "sheen": 1.015342116355896
+      },
+      "E_nose_bridge": 0.0002790413855109364,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.0012113155098631978,
+        "sheen": 1.179212212562561
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.0012113155098631978,
+        "sheen": 1.179212212562561
+      },
+      "E_cheek_l": 0.0002836652274709195,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.0012113155098631978,
+        "sheen": 1.179212212562561
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.0012113155098631978,
+        "sheen": 1.179212212562561
+      },
+      "E_chin": 0.00021002025459893048,
+      "r43_delight_comp_chin": {
+        "level": 0.0008432586910203099,
+        "sheen": 1.3339571952819824
+      },
+      "r43_nospec_chin": {
+        "level": 0.0008432586910203099,
+        "sheen": 1.3339571952819824
+      }
+    },
+    {
+      "frame": 115,
+      "E_forehead": 0.0002712191198952496,
+      "r43_delight_comp_forehead": {
+        "level": 0.0014283980708569288,
+        "sheen": 1.015342116355896
+      },
+      "r43_nospec_forehead": {
+        "level": 0.0014283980708569288,
+        "sheen": 1.015342116355896
+      },
+      "E_nose_bridge": 0.00028309322078712285,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.0012113155098631978,
+        "sheen": 1.179212212562561
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.0012113155098631978,
+        "sheen": 1.179212212562561
+      },
+      "E_cheek_l": 0.0003091201651841402,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.0012758454540744424,
+        "sheen": 1.1701478958129883
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.0012758454540744424,
+        "sheen": 1.1701478958129883
+      },
+      "E_chin": 0.00020595619571395218,
+      "r43_delight_comp_chin": {
+        "level": 0.0008432586910203099,
+        "sheen": 1.3339571952819824
+      },
+      "r43_nospec_chin": {
+        "level": 0.0008432586910203099,
+        "sheen": 1.3339571952819824
+      }
+    },
+    {
+      "frame": 116,
+      "E_forehead": 0.0002864805865101516,
+      "r43_delight_comp_forehead": {
+        "level": 0.0014283980708569288,
+        "sheen": 1.015342116355896
+      },
+      "r43_nospec_forehead": {
+        "level": 0.0014283980708569288,
+        "sheen": 1.015342116355896
+      },
+      "E_nose_bridge": 0.00029875856125727296,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.0012113155098631978,
+        "sheen": 1.179212212562561
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.0012113155098631978,
+        "sheen": 1.179212212562561
+      },
+      "E_cheek_l": 0.000581475265789777,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.0025136589538306,
+        "sheen": 2.2497377395629883
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.0025136589538306,
+        "sheen": 2.2497377395629883
+      },
+      "E_chin": 0.00022190363961271942,
+      "r43_delight_comp_chin": {
+        "level": 0.0008432586910203099,
+        "sheen": 1.5129941701889038
+      },
+      "r43_nospec_chin": {
+        "level": 0.0008432586910203099,
+        "sheen": 1.5129941701889038
+      }
+    },
+    {
+      "frame": 117,
+      "E_forehead": 0.00031777145341038704,
+      "r43_delight_comp_forehead": {
+        "level": 0.0014283980708569288,
+        "sheen": 1.060518503189087
+      },
+      "r43_nospec_forehead": {
+        "level": 0.0014283980708569288,
+        "sheen": 1.060518503189087
+      },
+      "E_nose_bridge": 0.00032195221865549684,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.0013184604467824101,
+        "sheen": 1.1812700033187866
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.0013184604467824101,
+        "sheen": 1.1812700033187866
+      },
+      "E_cheek_l": 0.0008390785078518093,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.00371164595708251,
+        "sheen": 8.436079978942871
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.00371164595708251,
+        "sheen": 8.41988468170166
+      },
+      "E_chin": 0.0014357492327690125,
+      "r43_delight_comp_chin": {
+        "level": 0.006128211505711079,
+        "sheen": 3.1403417587280273
+      },
+      "r43_nospec_chin": {
+        "level": 0.006128211505711079,
+        "sheen": 3.1403417587280273
+      }
+    },
+    {
+      "frame": 118,
+      "E_forehead": 0.0003397691762074828,
+      "r43_delight_comp_forehead": {
+        "level": 0.0014929278986528516,
+        "sheen": 1.2179888486862183
+      },
+      "r43_nospec_forehead": {
+        "level": 0.0014929278986528516,
+        "sheen": 1.2179888486862183
+      },
+      "E_nose_bridge": 0.0003309562453068793,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.0014929278986528516,
+        "sheen": 1.1022284030914307
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.0014929278986528516,
+        "sheen": 1.0875494480133057
+      },
+      "E_cheek_l": 0.0034882784821093082,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.016805285587906837,
+        "sheen": 6.509616374969482
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.016805285587906837,
+        "sheen": 6.509616374969482
+      },
+      "E_chin": 0.0027811946347355843,
+      "r43_delight_comp_chin": {
+        "level": 0.012785925529897213,
+        "sheen": 3.1430511474609375
+      },
+      "r43_nospec_chin": {
+        "level": 0.012785925529897213,
+        "sheen": 3.1430511474609375
+      }
+    },
+    {
+      "frame": 119,
+      "E_forehead": 0.00034803617745637894,
+      "r43_delight_comp_forehead": {
+        "level": 0.0014929278986528516,
+        "sheen": 1.2476354837417603
+      },
+      "r43_nospec_forehead": {
+        "level": 0.0014929278986528516,
+        "sheen": 1.2476354837417603
+      },
+      "E_nose_bridge": 0.00033672829158604145,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.0014929278986528516,
+        "sheen": 1.1492178440093994
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.0014929278986528516,
+        "sheen": 1.1492178440093994
+      },
+      "E_cheek_l": 0.010702146217226982,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.05080271512269974,
+        "sheen": 2.9925332069396973
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.05080271512269974,
+        "sheen": 2.9925332069396973
+      },
+      "E_chin": 0.002891263458877802,
+      "r43_delight_comp_chin": {
+        "level": 0.012951516546308994,
+        "sheen": 3.262223243713379
+      },
+      "r43_nospec_chin": {
+        "level": 0.012951516546308994,
+        "sheen": 3.262223243713379
+      }
+    },
+    {
+      "frame": 120,
+      "E_forehead": 0.00042340942309238017,
+      "r43_delight_comp_forehead": {
+        "level": 0.00195469637401402,
+        "sheen": 1.454329013824463
+      },
+      "r43_nospec_forehead": {
+        "level": 0.00195469637401402,
+        "sheen": 1.454329013824463
+      },
+      "E_nose_bridge": 0.0003386137541383505,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.0015574577264487743,
+        "sheen": 1.8857957124710083
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.0015574577264487743,
+        "sheen": 1.8857957124710083
+      },
+      "E_cheek_l": 0.039898015558719635,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.19067543745040894,
+        "sheen": 2.546027183532715
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.19067543745040894,
+        "sheen": 2.546027183532715
+      },
+      "E_chin": 0.010869471356272697,
+      "r43_delight_comp_chin": {
+        "level": 0.04973737522959709,
+        "sheen": 3.2461469173431396
+      },
+      "r43_nospec_chin": {
+        "level": 0.04973737522959709,
+        "sheen": 3.2461469173431396
+      }
+    },
+    {
+      "frame": 121,
+      "E_forehead": 0.0004072243464179337,
+      "r43_delight_comp_forehead": {
+        "level": 0.0018626298988237977,
+        "sheen": 1.4778327941894531
+      },
+      "r43_nospec_forehead": {
+        "level": 0.0018626298988237977,
+        "sheen": 1.4778327941894531
+      },
+      "E_nose_bridge": 0.00033272255677729845,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.0015574577264487743,
+        "sheen": 1.599879264831543
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.0015574577264487743,
+        "sheen": 1.599879264831543
+      },
+      "E_cheek_l": 0.032712891697883606,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.15565219521522522,
+        "sheen": 2.86510968208313
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.1553463190793991,
+        "sheen": 2.870751142501831
+      },
+      "E_chin": 0.009221693500876427,
+      "r43_delight_comp_chin": {
+        "level": 0.04193190485239029,
+        "sheen": 3.2301130294799805
+      },
+      "r43_nospec_chin": {
+        "level": 0.04193190485239029,
+        "sheen": 3.2301130294799805
+      }
+    },
+    {
+      "frame": 122,
+      "E_forehead": 0.0004022529174108058,
+      "r43_delight_comp_forehead": {
+        "level": 0.0018626298988237977,
+        "sheen": 1.3033447265625
+      },
+      "r43_nospec_forehead": {
+        "level": 0.0018626298988237977,
+        "sheen": 1.3033447265625
+      },
+      "E_nose_bridge": 0.0003374905791133642,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.0015574577264487743,
+        "sheen": 1.7203822135925293
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.0015574577264487743,
+        "sheen": 1.7203822135925293
+      },
+      "E_cheek_l": 0.029971115291118622,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.14441236853599548,
+        "sheen": 2.928980827331543
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.14441236853599548,
+        "sheen": 2.928980827331543
+      },
+      "E_chin": 0.008047614246606827,
+      "r43_delight_comp_chin": {
+        "level": 0.03613274544477463,
+        "sheen": 3.1179208755493164
+      },
+      "r43_nospec_chin": {
+        "level": 0.03613274544477463,
+        "sheen": 3.1179208755493164
+      }
+    },
+    {
+      "frame": 123,
+      "E_forehead": 0.00039185810601338744,
+      "r43_delight_comp_forehead": {
+        "level": 0.0016455474542453885,
+        "sheen": 1.425476312637329
+      },
+      "r43_nospec_forehead": {
+        "level": 0.0016455474542453885,
+        "sheen": 1.425476312637329
+      },
+      "E_nose_bridge": 0.0003321586409583688,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.0015574577264487743,
+        "sheen": 1.4052717685699463
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.0015574577264487743,
+        "sheen": 1.4052717685699463
+      },
+      "E_cheek_l": 0.0238809771835804,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.1163293719291687,
+        "sheen": 3.3882832527160645
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.1163293719291687,
+        "sheen": 3.3882832527160645
+      },
+      "E_chin": 0.007307570427656174,
+      "r43_delight_comp_chin": {
+        "level": 0.032583966851234436,
+        "sheen": 3.097170352935791
+      },
+      "r43_nospec_chin": {
+        "level": 0.032583966851234436,
+        "sheen": 3.097170352935791
+      }
+    },
+    {
+      "frame": 124,
+      "E_forehead": 0.00038486713310703635,
+      "r43_delight_comp_forehead": {
+        "level": 0.0016455474542453885,
+        "sheen": 1.3780964612960815
+      },
+      "r43_nospec_forehead": {
+        "level": 0.0016455474542453885,
+        "sheen": 1.3780964612960815
+      },
+      "E_nose_bridge": 0.00033593818079680204,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.0015574577264487743,
+        "sheen": 1.4052717685699463
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.0015574577264487743,
+        "sheen": 1.4052717685699463
+      },
+      "E_cheek_l": 0.025378331542015076,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.1256711781024933,
+        "sheen": 2.95674991607666
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.1256711781024933,
+        "sheen": 2.956402540206909
+      },
+      "E_chin": 0.0066901808604598045,
+      "r43_delight_comp_chin": {
+        "level": 0.03042289987206459,
+        "sheen": 3.115675926208496
+      },
+      "r43_nospec_chin": {
+        "level": 0.03042289987206459,
+        "sheen": 3.115675926208496
+      }
+    },
+    {
+      "frame": 125,
+      "E_forehead": 0.00038088520523160696,
+      "r43_delight_comp_forehead": {
+        "level": 0.0016455474542453885,
+        "sheen": 1.2802375555038452
+      },
+      "r43_nospec_forehead": {
+        "level": 0.0016455474542453885,
+        "sheen": 1.2802375555038452
+      },
+      "E_nose_bridge": 0.00033160537714138627,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.0015574577264487743,
+        "sheen": 1.3385769128799438
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.0015574577264487743,
+        "sheen": 1.3079866170883179
+      },
+      "E_cheek_l": 0.02241118811070919,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.10939086973667145,
+        "sheen": 3.015956163406372
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.10939086973667145,
+        "sheen": 3.015956163406372
+      },
+      "E_chin": 0.006154101341962814,
+      "r43_delight_comp_chin": {
+        "level": 0.027520431205630302,
+        "sheen": 3.0767457485198975
+      },
+      "r43_nospec_chin": {
+        "level": 0.027520431205630302,
+        "sheen": 3.0767457485198975
+      }
+    },
+    {
+      "frame": 126,
+      "E_forehead": 0.000437576905824244,
+      "r43_delight_comp_forehead": {
+        "level": 0.0018626298988237977,
+        "sheen": 1.2475769519805908
+      },
+      "r43_nospec_forehead": {
+        "level": 0.0018626298988237977,
+        "sheen": 1.2475769519805908
+      },
+      "E_nose_bridge": 0.00038642939762212336,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.0017745401710271835,
+        "sheen": 1.1185413599014282
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.0017745401710271835,
+        "sheen": 1.1185413599014282
+      },
+      "E_cheek_l": 0.020897362381219864,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.10198834538459778,
+        "sheen": 3.044299602508545
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.10198834538459778,
+        "sheen": 3.044299602508545
+      },
+      "E_chin": 0.005519009195268154,
+      "r43_delight_comp_chin": {
+        "level": 0.02546532079577446,
+        "sheen": 3.0285072326660156
+      },
+      "r43_nospec_chin": {
+        "level": 0.02546532079577446,
+        "sheen": 3.0285072326660156
+      }
+    },
+    {
+      "frame": 127,
+      "E_forehead": 0.008457563817501068,
+      "r43_delight_comp_forehead": {
+        "level": 0.03729362040758133,
+        "sheen": 1.3090380430221558
+      },
+      "r43_nospec_forehead": {
+        "level": 0.03729362040758133,
+        "sheen": 1.3090380430221558
+      },
+      "E_nose_bridge": 0.005830748938024044,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.02732456848025322,
+        "sheen": 2.10958194732666
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.02732456848025322,
+        "sheen": 2.10958194732666
+      },
+      "E_cheek_l": 0.024113986641168594,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.11696063727140427,
+        "sheen": 2.553143262863159
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.11696063727140427,
+        "sheen": 2.553143262863159
+      },
+      "E_chin": 0.01778596267104149,
+      "r43_delight_comp_chin": {
+        "level": 0.07414272427558899,
+        "sheen": 1.4720369577407837
+      },
+      "r43_nospec_chin": {
+        "level": 0.07414272427558899,
+        "sheen": 1.4720369577407837
+      }
+    },
+    {
+      "frame": 128,
+      "E_forehead": 0.001552235335111618,
+      "r43_delight_comp_forehead": {
+        "level": 0.006794643122702837,
+        "sheen": 1.40174400806427
+      },
+      "r43_nospec_forehead": {
+        "level": 0.006794643122702837,
+        "sheen": 1.40174400806427
+      },
+      "E_nose_bridge": 0.00112002226524055,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.005199864972382784,
+        "sheen": 2.36061954498291
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.005199864972382784,
+        "sheen": 2.36061954498291
+      },
+      "E_cheek_l": 0.0021484498865902424,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.010287569835782051,
+        "sheen": 1.9405864477157593
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.010287569835782051,
+        "sheen": 1.9405864477157593
+      },
+      "E_chin": 0.0029077876824885607,
+      "r43_delight_comp_chin": {
+        "level": 0.010968737304210663,
+        "sheen": 1.373633861541748
+      },
+      "r43_nospec_chin": {
+        "level": 0.010968737304210663,
+        "sheen": 1.373633861541748
+      }
+    },
+    {
+      "frame": 129,
+      "E_forehead": 0.002463776618242264,
+      "r43_delight_comp_forehead": {
+        "level": 0.010767828673124313,
+        "sheen": 1.5728803873062134
+      },
+      "r43_nospec_forehead": {
+        "level": 0.010767828673124313,
+        "sheen": 1.5728803873062134
+      },
+      "E_nose_bridge": 0.001978915184736252,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.009253286756575108,
+        "sheen": 2.7921440601348877
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.009253286756575108,
+        "sheen": 2.7921440601348877
+      },
+      "E_cheek_l": 0.0025051019620150328,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.011979972943663597,
+        "sheen": 1.4482938051223755
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.011979972943663597,
+        "sheen": 1.4482938051223755
+      },
+      "E_chin": 0.005135980434715748,
+      "r43_delight_comp_chin": {
+        "level": 0.019433457404375076,
+        "sheen": 1.5753988027572632
+      },
+      "r43_nospec_chin": {
+        "level": 0.019433457404375076,
+        "sheen": 1.5753988027572632
+      }
+    },
+    {
+      "frame": 130,
+      "E_forehead": 0.0021585607901215553,
+      "r43_delight_comp_forehead": {
+        "level": 0.009855306707322598,
+        "sheen": 1.7251588106155396
+      },
+      "r43_nospec_forehead": {
+        "level": 0.009855306707322598,
+        "sheen": 1.7251588106155396
+      },
+      "E_nose_bridge": 0.002642248757183552,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.012946872040629387,
+        "sheen": 2.2645492553710938
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.012946872040629387,
+        "sheen": 2.2645492553710938
+      },
+      "E_cheek_l": 0.0022331837099045515,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.010557419620454311,
+        "sheen": 1.1954118013381958
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.010557419620454311,
+        "sheen": 1.1954118013381958
+      },
+      "E_chin": 0.00536775216460228,
+      "r43_delight_comp_chin": {
+        "level": 0.0207396000623703,
+        "sheen": 1.8079986572265625
+      },
+      "r43_nospec_chin": {
+        "level": 0.0207396000623703,
+        "sheen": 1.8079986572265625
+      }
+    },
+    {
+      "frame": 131,
+      "E_forehead": 0.021978219971060753,
+      "r43_delight_comp_forehead": {
+        "level": 0.11346396058797836,
+        "sheen": 1.5391901731491089
+      },
+      "r43_nospec_forehead": {
+        "level": 0.11346396058797836,
+        "sheen": 1.5391901731491089
+      },
+      "E_nose_bridge": 0.029583733528852463,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.15393631160259247,
+        "sheen": 2.2436630725860596
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.15393631160259247,
+        "sheen": 2.2436630725860596
+      },
+      "E_cheek_l": 0.02181401289999485,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.10743866115808487,
+        "sheen": 1.0778429508209229
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.10743866115808487,
+        "sheen": 1.0778429508209229
+      },
+      "E_chin": 0.04978581890463829,
+      "r43_delight_comp_chin": {
+        "level": 0.19717414677143097,
+        "sheen": 1.9001384973526
+      },
+      "r43_nospec_chin": {
+        "level": 0.19717414677143097,
+        "sheen": 1.9001384973526
+      }
+    },
+    {
+      "frame": 132,
+      "E_forehead": 0.017507871612906456,
+      "r43_delight_comp_forehead": {
+        "level": 0.09525926411151886,
+        "sheen": 1.2522995471954346
+      },
+      "r43_nospec_forehead": {
+        "level": 0.09525926411151886,
+        "sheen": 1.2522995471954346
+      },
+      "E_nose_bridge": 0.025065496563911438,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.13741150498390198,
+        "sheen": 1.3548009395599365
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.13741150498390198,
+        "sheen": 1.3548009395599365
+      },
+      "E_cheek_l": 0.017932884395122528,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.08613186329603195,
+        "sheen": 1.1477892398834229
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.08613186329603195,
+        "sheen": 1.1477892398834229
+      },
+      "E_chin": 0.01108231395483017,
+      "r43_delight_comp_chin": {
+        "level": 0.052487220615148544,
+        "sheen": 1.7613719701766968
+      },
+      "r43_nospec_chin": {
+        "level": 0.052487220615148544,
+        "sheen": 1.7613719701766968
+      }
+    },
+    {
+      "frame": 133,
+      "E_forehead": 0.020621592178940773,
+      "r43_delight_comp_forehead": {
+        "level": 0.11304129660129547,
+        "sheen": 1.1385862827301025
+      },
+      "r43_nospec_forehead": {
+        "level": 0.11304129660129547,
+        "sheen": 1.1385862827301025
+      },
+      "E_nose_bridge": 0.023203345015645027,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.13284488022327423,
+        "sheen": 1.1310175657272339
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.13284488022327423,
+        "sheen": 1.1310175657272339
+      },
+      "E_cheek_l": 0.016822095960378647,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.08246645331382751,
+        "sheen": 1.215413212776184
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.08246645331382751,
+        "sheen": 1.215413212776184
+      },
+      "E_chin": 0.005734782665967941,
+      "r43_delight_comp_chin": {
+        "level": 0.032542407512664795,
+        "sheen": 1.9392989873886108
+      },
+      "r43_nospec_chin": {
+        "level": 0.032542407512664795,
+        "sheen": 1.9392989873886108
+      }
+    },
+    {
+      "frame": 134,
+      "E_forehead": 0.021146537736058235,
+      "r43_delight_comp_forehead": {
+        "level": 0.11791170388460159,
+        "sheen": 1.1191481351852417
+      },
+      "r43_nospec_forehead": {
+        "level": 0.11791170388460159,
+        "sheen": 1.1191481351852417
+      },
+      "E_nose_bridge": 0.02294795773923397,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.13066670298576355,
+        "sheen": 1.1357917785644531
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.13066670298576355,
+        "sheen": 1.1357917785644531
+      },
+      "E_cheek_l": 0.016921035945415497,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.08235766738653183,
+        "sheen": 1.2342053651809692
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.08235766738653183,
+        "sheen": 1.2342053651809692
+      },
+      "E_chin": 0.0072373622097074986,
+      "r43_delight_comp_chin": {
+        "level": 0.03506948798894882,
+        "sheen": 2.0574350357055664
+      },
+      "r43_nospec_chin": {
+        "level": 0.03506948798894882,
+        "sheen": 2.0574350357055664
+      }
+    },
+    {
+      "frame": 135,
+      "E_forehead": 0.020767515525221825,
+      "r43_delight_comp_forehead": {
+        "level": 0.11729281395673752,
+        "sheen": 1.1093113422393799
+      },
+      "r43_nospec_forehead": {
+        "level": 0.11729281395673752,
+        "sheen": 1.1093113422393799
+      },
+      "E_nose_bridge": 0.022614318877458572,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.12818022072315216,
+        "sheen": 1.1612080335617065
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.12818022072315216,
+        "sheen": 1.1612080335617065
+      },
+      "E_cheek_l": 0.0166839137673378,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.08179792761802673,
+        "sheen": 1.2396392822265625
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.08179792761802673,
+        "sheen": 1.2396392822265625
+      },
+      "E_chin": 0.00936351902782917,
+      "r43_delight_comp_chin": {
+        "level": 0.045758314430713654,
+        "sheen": 1.828261375427246
+      },
+      "r43_nospec_chin": {
+        "level": 0.045758314430713654,
+        "sheen": 1.828261375427246
+      }
+    },
+    {
+      "frame": 136,
+      "E_forehead": 0.020485904067754745,
+      "r43_delight_comp_forehead": {
+        "level": 0.11691315472126007,
+        "sheen": 1.1083801984786987
+      },
+      "r43_nospec_forehead": {
+        "level": 0.11691315472126007,
+        "sheen": 1.1083801984786987
+      },
+      "E_nose_bridge": 0.02232944406569004,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.1259094923734665,
+        "sheen": 1.177626132965088
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.1259094923734665,
+        "sheen": 1.177626132965088
+      },
+      "E_cheek_l": 0.0167098268866539,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.08242448419332504,
+        "sheen": 1.2427058219909668
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.08242448419332504,
+        "sheen": 1.2427058219909668
+      },
+      "E_chin": 0.011955147609114647,
+      "r43_delight_comp_chin": {
+        "level": 0.05773389711976051,
+        "sheen": 1.6693079471588135
+      },
+      "r43_nospec_chin": {
+        "level": 0.05773389711976051,
+        "sheen": 1.6693079471588135
+      }
+    },
+    {
+      "frame": 137,
+      "E_forehead": 0.020077310502529144,
+      "r43_delight_comp_forehead": {
+        "level": 0.11503142863512039,
+        "sheen": 1.1028099060058594
+      },
+      "r43_nospec_forehead": {
+        "level": 0.11503142863512039,
+        "sheen": 1.1028099060058594
+      },
+      "E_nose_bridge": 0.021736223250627518,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.12380345165729523,
+        "sheen": 1.1537219285964966
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.12380345165729523,
+        "sheen": 1.1537219285964966
+      },
+      "E_cheek_l": 0.016746189445257187,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.08235766738653183,
+        "sheen": 1.2296427488327026
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.08235766738653183,
+        "sheen": 1.2296427488327026
+      },
+      "E_chin": 0.012647879309952259,
+      "r43_delight_comp_chin": {
+        "level": 0.06285892426967621,
+        "sheen": 1.5750410556793213
+      },
+      "r43_nospec_chin": {
+        "level": 0.06285892426967621,
+        "sheen": 1.5750410556793213
+      }
+    },
+    {
+      "frame": 138,
+      "E_forehead": 0.01955127716064453,
+      "r43_delight_comp_forehead": {
+        "level": 0.11246003955602646,
+        "sheen": 1.1131935119628906
+      },
+      "r43_nospec_forehead": {
+        "level": 0.11246003955602646,
+        "sheen": 1.1131935119628906
+      },
+      "E_nose_bridge": 0.02121516317129135,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.12155960500240326,
+        "sheen": 1.1479113101959229
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.12155960500240326,
+        "sheen": 1.1479113101959229
+      },
+      "E_cheek_l": 0.016703912988305092,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.0827295184135437,
+        "sheen": 1.2332011461257935
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.0827295184135437,
+        "sheen": 1.2332011461257935
+      },
+      "E_chin": 0.012648800387978554,
+      "r43_delight_comp_chin": {
+        "level": 0.06277912855148315,
+        "sheen": 1.5607866048812866
+      },
+      "r43_nospec_chin": {
+        "level": 0.06277912855148315,
+        "sheen": 1.5607866048812866
+      }
+    },
+    {
+      "frame": 139,
+      "E_forehead": 0.019310489296913147,
+      "r43_delight_comp_forehead": {
+        "level": 0.11183354258537292,
+        "sheen": 1.1173150539398193
+      },
+      "r43_nospec_forehead": {
+        "level": 0.11183354258537292,
+        "sheen": 1.1173150539398193
+      },
+      "E_nose_bridge": 0.020570535212755203,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.12021413445472717,
+        "sheen": 1.150622010231018
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.12021413445472717,
+        "sheen": 1.150622010231018
+      },
+      "E_cheek_l": 0.01664828509092331,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.08295080065727234,
+        "sheen": 1.2252966165542603
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.08295080065727234,
+        "sheen": 1.2252966165542603
+      },
+      "E_chin": 0.012506351806223392,
+      "r43_delight_comp_chin": {
+        "level": 0.061836689710617065,
+        "sheen": 1.585841178894043
+      },
+      "r43_nospec_chin": {
+        "level": 0.061836689710617065,
+        "sheen": 1.585841178894043
+      }
+    },
+    {
+      "frame": 140,
+      "E_forehead": 0.018659230321645737,
+      "r43_delight_comp_forehead": {
+        "level": 0.10879144072532654,
+        "sheen": 1.135402798652649
+      },
+      "r43_nospec_forehead": {
+        "level": 0.10879144072532654,
+        "sheen": 1.135402798652649
+      },
+      "E_nose_bridge": 0.020243123173713684,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.12024351209402084,
+        "sheen": 1.1513651609420776
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.12024351209402084,
+        "sheen": 1.1513651609420776
+      },
+      "E_cheek_l": 0.01672869175672531,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.08368837088346481,
+        "sheen": 1.2162525653839111
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.08368837088346481,
+        "sheen": 1.2162525653839111
+      },
+      "E_chin": 0.012685294263064861,
+      "r43_delight_comp_chin": {
+        "level": 0.06237529218196869,
+        "sheen": 1.5547138452529907
+      },
+      "r43_nospec_chin": {
+        "level": 0.06237529218196869,
+        "sheen": 1.5547138452529907
+      }
+    },
+    {
+      "frame": 141,
+      "E_forehead": 0.018679793924093246,
+      "r43_delight_comp_forehead": {
+        "level": 0.11079688370227814,
+        "sheen": 1.1234352588653564
+      },
+      "r43_nospec_forehead": {
+        "level": 0.11079688370227814,
+        "sheen": 1.1234352588653564
+      },
+      "E_nose_bridge": 0.019432909786701202,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.11822841316461563,
+        "sheen": 1.1571773290634155
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.11822841316461563,
+        "sheen": 1.1571773290634155
+      },
+      "E_cheek_l": 0.016552573069930077,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.0832996666431427,
+        "sheen": 1.204796314239502
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.0832996666431427,
+        "sheen": 1.204796314239502
+      },
+      "E_chin": 0.012308495119214058,
+      "r43_delight_comp_chin": {
+        "level": 0.06076795980334282,
+        "sheen": 1.5646734237670898
+      },
+      "r43_nospec_chin": {
+        "level": 0.06076795980334282,
+        "sheen": 1.5646734237670898
+      }
+    },
+    {
+      "frame": 142,
+      "E_forehead": 0.01959870755672455,
+      "r43_delight_comp_forehead": {
+        "level": 0.11536303907632828,
+        "sheen": 1.1013916730880737
+      },
+      "r43_nospec_forehead": {
+        "level": 0.11536303907632828,
+        "sheen": 1.1013916730880737
+      },
+      "E_nose_bridge": 0.019494397565722466,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.11636659502983093,
+        "sheen": 1.1670897006988525
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.11636659502983093,
+        "sheen": 1.1670897006988525
+      },
+      "E_cheek_l": 0.016694318503141403,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.08349654823541641,
+        "sheen": 1.2220818996429443
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.08349654823541641,
+        "sheen": 1.2220818996429443
+      },
+      "E_chin": 0.013013011775910854,
+      "r43_delight_comp_chin": {
+        "level": 0.06702779978513718,
+        "sheen": 1.4801396131515503
+      },
+      "r43_nospec_chin": {
+        "level": 0.06702779978513718,
+        "sheen": 1.4801396131515503
+      }
+    },
+    {
+      "frame": 143,
+      "E_forehead": 0.020608022809028625,
+      "r43_delight_comp_forehead": {
+        "level": 0.12186113744974136,
+        "sheen": 1.0893001556396484
+      },
+      "r43_nospec_forehead": {
+        "level": 0.12186113744974136,
+        "sheen": 1.0893001556396484
+      },
+      "E_nose_bridge": 0.020063331350684166,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.12124288082122803,
+        "sheen": 1.1546159982681274
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.1210830956697464,
+        "sheen": 1.1561397314071655
+      },
+      "E_cheek_l": 0.01658983901143074,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.08359148353338242,
+        "sheen": 1.2308826446533203
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.08359148353338242,
+        "sheen": 1.2308826446533203
+      },
+      "E_chin": 0.015298626385629177,
+      "r43_delight_comp_chin": {
+        "level": 0.07858877629041672,
+        "sheen": 1.347975254058838
+      },
+      "r43_nospec_chin": {
+        "level": 0.07858877629041672,
+        "sheen": 1.347975254058838
+      }
+    },
+    {
+      "frame": 144,
+      "E_forehead": 0.02077307552099228,
+      "r43_delight_comp_forehead": {
+        "level": 0.12261350452899933,
+        "sheen": 1.0839537382125854
+      },
+      "r43_nospec_forehead": {
+        "level": 0.12261350452899933,
+        "sheen": 1.0839537382125854
+      },
+      "E_nose_bridge": 0.019389759749174118,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.11862784624099731,
+        "sheen": 1.1438066959381104
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.11862784624099731,
+        "sheen": 1.1438066959381104
+      },
+      "E_cheek_l": 0.01610611379146576,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.08155886083841324,
+        "sheen": 1.2399194240570068
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.08155886083841324,
+        "sheen": 1.2383959293365479
+      },
+      "E_chin": 0.017694827169179916,
+      "r43_delight_comp_chin": {
+        "level": 0.09191258996725082,
+        "sheen": 1.204026460647583
+      },
+      "r43_nospec_chin": {
+        "level": 0.09191258996725082,
+        "sheen": 1.204026460647583
+      }
+    },
+    {
+      "frame": 145,
+      "E_forehead": 0.020193956792354584,
+      "r43_delight_comp_forehead": {
+        "level": 0.12028895318508148,
+        "sheen": 1.0909669399261475
+      },
+      "r43_nospec_forehead": {
+        "level": 0.1202874556183815,
+        "sheen": 1.0909805297851562
+      },
+      "E_nose_bridge": 0.01849588006734848,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.11481848359107971,
+        "sheen": 1.1599793434143066
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.11481848359107971,
+        "sheen": 1.1599793434143066
+      },
+      "E_cheek_l": 0.015383856371045113,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.07821979373693466,
+        "sheen": 1.2443592548370361
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.07821979373693466,
+        "sheen": 1.2443592548370361
+      },
+      "E_chin": 0.019402816891670227,
+      "r43_delight_comp_chin": {
+        "level": 0.10048270970582962,
+        "sheen": 1.1362932920455933
+      },
+      "r43_nospec_chin": {
+        "level": 0.10048270970582962,
+        "sheen": 1.1362932920455933
+      }
+    },
+    {
+      "frame": 146,
+      "E_forehead": 0.019682999700307846,
+      "r43_delight_comp_forehead": {
+        "level": 0.11760564893484116,
+        "sheen": 1.1014671325683594
+      },
+      "r43_nospec_forehead": {
+        "level": 0.11745977401733398,
+        "sheen": 1.1018191576004028
+      },
+      "E_nose_bridge": 0.017528854310512543,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.10894110798835754,
+        "sheen": 1.2106480598449707
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.10894110798835754,
+        "sheen": 1.2106480598449707
+      },
+      "E_cheek_l": 0.01449115015566349,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.07358959317207336,
+        "sheen": 1.2524890899658203
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.07358959317207336,
+        "sheen": 1.2524890899658203
+      },
+      "E_chin": 0.019974585622549057,
+      "r43_delight_comp_chin": {
+        "level": 0.10409999638795853,
+        "sheen": 1.112802267074585
+      },
+      "r43_nospec_chin": {
+        "level": 0.10409999638795853,
+        "sheen": 1.112802267074585
+      }
+    },
+    {
+      "frame": 147,
+      "E_forehead": 0.019409220665693283,
+      "r43_delight_comp_forehead": {
+        "level": 0.11460138857364655,
+        "sheen": 1.1102374792099
+      },
+      "r43_nospec_forehead": {
+        "level": 0.11460138857364655,
+        "sheen": 1.109288215637207
+      },
+      "E_nose_bridge": 0.016980532556772232,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.10677911341190338,
+        "sheen": 1.2145365476608276
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.10677911341190338,
+        "sheen": 1.2145365476608276
+      },
+      "E_cheek_l": 0.013712677173316479,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.06967268139123917,
+        "sheen": 1.2672638893127441
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.06967268139123917,
+        "sheen": 1.2672638893127441
+      },
+      "E_chin": 0.02017906866967678,
+      "r43_delight_comp_chin": {
+        "level": 0.10652761161327362,
+        "sheen": 1.0864968299865723
+      },
+      "r43_nospec_chin": {
+        "level": 0.10652761161327362,
+        "sheen": 1.0864968299865723
+      }
+    },
+    {
+      "frame": 148,
+      "E_forehead": 0.01921940967440605,
+      "r43_delight_comp_forehead": {
+        "level": 0.11216670274734497,
+        "sheen": 1.1129034757614136
+      },
+      "r43_nospec_forehead": {
+        "level": 0.11216670274734497,
+        "sheen": 1.1129034757614136
+      },
+      "E_nose_bridge": 0.01676202565431595,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.10718666762113571,
+        "sheen": 1.2047932147979736
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.10718666762113571,
+        "sheen": 1.2047932147979736
+      },
+      "E_cheek_l": 0.013188423588871956,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.0668870136141777,
+        "sheen": 1.2767584323883057
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.0668870136141777,
+        "sheen": 1.2767584323883057
+      },
+      "E_chin": 0.020237136632204056,
+      "r43_delight_comp_chin": {
+        "level": 0.10706028342247009,
+        "sheen": 1.0757198333740234
+      },
+      "r43_nospec_chin": {
+        "level": 0.10706028342247009,
+        "sheen": 1.0757198333740234
+      }
+    },
+    {
+      "frame": 149,
+      "E_forehead": 0.019231226295232773,
+      "r43_delight_comp_forehead": {
+        "level": 0.11112283915281296,
+        "sheen": 1.1170296669006348
+      },
+      "r43_nospec_forehead": {
+        "level": 0.11112283915281296,
+        "sheen": 1.1170296669006348
+      },
+      "E_nose_bridge": 0.01682211086153984,
+      "r43_delight_comp_nose_bridge": {
+        "level": 0.10631995648145676,
+        "sheen": 1.1923846006393433
+      },
+      "r43_nospec_nose_bridge": {
+        "level": 0.10631995648145676,
+        "sheen": 1.1923846006393433
+      },
+      "E_cheek_l": 0.012822877615690231,
+      "r43_delight_comp_cheek_l": {
+        "level": 0.06518504023551941,
+        "sheen": 1.267888069152832
+      },
+      "r43_nospec_cheek_l": {
+        "level": 0.06518504023551941,
+        "sheen": 1.267888069152832
+      },
+      "E_chin": 0.02009144239127636,
+      "r43_delight_comp_chin": {
+        "level": 0.10697489976882935,
+        "sheen": 1.091153860092163
+      },
+      "r43_nospec_chin": {
+        "level": 0.10697489976882935,
+        "sheen": 1.091153860092163
+      }
+    }
+  ],
+  "runs": [
+    "r43_delight_comp",
+    "r43_nospec"
+  ]
+}

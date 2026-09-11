@@ -1,8 +1,13 @@
 {
   "shot": "reporter_a",
   "frames": 150,
-  "output": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r42_wet",
+  "output": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r43_nospec",
   "eye_removal": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r42_wet_removal",
+  "face_delight": {
+    "dir": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r43_delight",
+    "gain": 1.0,
+    "what": "estimated capture-room shine on the face (face_delight.py --stage separate) subtracted from the plate before the ratio; exact fg outside its weight"
+  },
   "corneal": {
     "dir": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r42_eye_pass",
     "limbus_track": "limbus_track_tv_import.json",
@@ -59,7 +64,7 @@
   },
   "output_resolution": "plate resolution",
   "specular": {
-    "gain": 1.0,
+    "gain": 0.0,
     "mean_fraction_of_image": null,
     "model": "GGX + Schlick Fresnel on the NEURAL normals, added not multiplied",
     "light_direction": "estimated per frame from the L1 moment of the rendered irradiance field, so it also works for environments",
@@ -122,6 +127,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31421,
+      "face_delight_energy_removed": 0.04168567795958711,
       "station": "front far",
       "ratio_luma_median": 0.9991422891616821,
       "ratio_luma_p5": 0.3406946659088135,
@@ -154,6 +161,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31882,
+      "face_delight_energy_removed": 0.04147541638813412,
       "station": "front far",
       "ratio_luma_median": 0.8869973421096802,
       "ratio_luma_p5": 0.3013909161090851,
@@ -186,6 +195,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32056,
+      "face_delight_energy_removed": 0.04209883420934235,
       "station": "front far",
       "ratio_luma_median": 0.7932160496711731,
       "ratio_luma_p5": 0.2667924463748932,
@@ -218,6 +229,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32285,
+      "face_delight_energy_removed": 0.04202434539321531,
       "station": "front far",
       "ratio_luma_median": 0.7178107500076294,
       "ratio_luma_p5": 0.2403413951396942,
@@ -250,6 +263,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32574,
+      "face_delight_energy_removed": 0.0441546573773165,
       "station": "front far",
       "ratio_luma_median": 0.6529985070228577,
       "ratio_luma_p5": 0.21859429776668549,
@@ -274,6 +289,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32812,
+      "face_delight_energy_removed": 0.0450995621543826,
       "station": "front far",
       "ratio_luma_median": 0.601966381072998,
       "ratio_luma_p5": 0.19938088953495026,
@@ -298,6 +315,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32956,
+      "face_delight_energy_removed": 0.04575269828583173,
       "station": "front far",
       "ratio_luma_median": 0.5599601864814758,
       "ratio_luma_p5": 0.18472474813461304,
@@ -322,6 +341,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 33118,
+      "face_delight_energy_removed": 0.045093494545889956,
       "station": "front far",
       "ratio_luma_median": 0.5242465138435364,
       "ratio_luma_p5": 0.17187772691249847,
@@ -346,6 +367,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 33283,
+      "face_delight_energy_removed": 0.045764656758080835,
       "station": "front far",
       "ratio_luma_median": 0.49260014295578003,
       "ratio_luma_p5": 0.16173267364501953,
@@ -370,6 +393,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 33586,
+      "face_delight_energy_removed": 0.04891504893701348,
       "station": "front far",
       "ratio_luma_median": 0.46528127789497375,
       "ratio_luma_p5": 0.1520376205444336,
@@ -394,6 +419,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 33381,
+      "face_delight_energy_removed": 0.04876161355896891,
       "station": "front far",
       "ratio_luma_median": 0.44174841046333313,
       "ratio_luma_p5": 0.14330925047397614,
@@ -418,6 +445,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 33338,
+      "face_delight_energy_removed": 0.04762156138622975,
       "station": "front close",
       "ratio_luma_median": 0.4180658459663391,
       "ratio_luma_p5": 0.13570864498615265,
@@ -446,6 +475,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 33298,
+      "face_delight_energy_removed": 0.04823026110322881,
       "station": "front close",
       "ratio_luma_median": 0.3941519856452942,
       "ratio_luma_p5": 0.13407282531261444,
@@ -478,6 +509,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 33300,
+      "face_delight_energy_removed": 0.047026194091409956,
       "station": "front close",
       "ratio_luma_median": 0.3604171872138977,
       "ratio_luma_p5": 0.14538991451263428,
@@ -510,6 +543,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 33225,
+      "face_delight_energy_removed": 0.04768204387153552,
       "station": "front close",
       "ratio_luma_median": 0.3301568925380707,
       "ratio_luma_p5": 0.12735949456691742,
@@ -542,6 +577,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 33136,
+      "face_delight_energy_removed": 0.04761702910541976,
       "station": "front close",
       "ratio_luma_median": 0.3114522695541382,
       "ratio_luma_p5": 0.11726395785808563,
@@ -574,6 +611,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32928,
+      "face_delight_energy_removed": 0.04719153002702059,
       "station": "front close",
       "ratio_luma_median": 0.3099786341190338,
       "ratio_luma_p5": 0.11714731901884079,
@@ -606,6 +645,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32810,
+      "face_delight_energy_removed": 0.04412568952844664,
       "station": "front close",
       "ratio_luma_median": 0.3080587387084961,
       "ratio_luma_p5": 0.11669688671827316,
@@ -638,6 +679,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32670,
+      "face_delight_energy_removed": 0.04464307325210126,
       "station": "front close",
       "ratio_luma_median": 0.3102041482925415,
       "ratio_luma_p5": 0.11836248636245728,
@@ -670,6 +713,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32421,
+      "face_delight_energy_removed": 0.044459080631039205,
       "station": "front close",
       "ratio_luma_median": 0.31050610542297363,
       "ratio_luma_p5": 0.11886375397443771,
@@ -702,6 +747,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32191,
+      "face_delight_energy_removed": 0.04344629773246722,
       "station": "front close",
       "ratio_luma_median": 0.3126510977745056,
       "ratio_luma_p5": 0.12003906816244125,
@@ -734,6 +781,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32139,
+      "face_delight_energy_removed": 0.042528051363596386,
       "station": "front close",
       "ratio_luma_median": 0.31473350524902344,
       "ratio_luma_p5": 0.1204356923699379,
@@ -766,6 +815,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32087,
+      "face_delight_energy_removed": 0.04274390073469658,
       "station": "front close",
       "ratio_luma_median": 0.3165295720100403,
       "ratio_luma_p5": 0.12068512290716171,
@@ -798,6 +849,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32101,
+      "face_delight_energy_removed": 0.04019030712829064,
       "station": "front close",
       "ratio_luma_median": 0.33418703079223633,
       "ratio_luma_p5": 0.12379933148622513,
@@ -830,6 +883,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32475,
+      "face_delight_energy_removed": 0.0409690436528124,
       "station": "front close",
       "ratio_luma_median": 0.3649510443210602,
       "ratio_luma_p5": 0.12205628305673599,
@@ -862,6 +917,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32543,
+      "face_delight_energy_removed": 0.03952098421571115,
       "station": "front close",
       "ratio_luma_median": 0.41006842255592346,
       "ratio_luma_p5": 0.09861204773187637,
@@ -894,6 +951,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32489,
+      "face_delight_energy_removed": 0.038935200047170104,
       "station": "below chin",
       "ratio_luma_median": 0.4325389862060547,
       "ratio_luma_p5": 0.05143576115369797,
@@ -926,6 +985,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32539,
+      "face_delight_energy_removed": 0.04021920181419514,
       "station": "below chin",
       "ratio_luma_median": 0.40825411677360535,
       "ratio_luma_p5": 0.01920819655060768,
@@ -958,6 +1019,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32535,
+      "face_delight_energy_removed": 0.04148472421025329,
       "station": "below chin",
       "ratio_luma_median": 0.3498705327510834,
       "ratio_luma_p5": 0.007964815013110638,
@@ -990,6 +1053,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32481,
+      "face_delight_energy_removed": 0.0390742493998969,
       "station": "below chin",
       "ratio_luma_median": 0.3005066514015198,
       "ratio_luma_p5": 0.004863128997385502,
@@ -1022,6 +1087,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32496,
+      "face_delight_energy_removed": 0.039349987995468516,
       "station": "below chin",
       "ratio_luma_median": 1.003951907157898,
       "ratio_luma_p5": 0.007563471794128418,
@@ -1054,6 +1121,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32534,
+      "face_delight_energy_removed": 0.03945649885648128,
       "station": "below chin",
       "ratio_luma_median": 0.8717283606529236,
       "ratio_luma_p5": 0.006559223867952824,
@@ -1086,6 +1155,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32523,
+      "face_delight_energy_removed": 0.03907531847743584,
       "station": "below chin",
       "ratio_luma_median": 0.7598235607147217,
       "ratio_luma_p5": 0.005909327417612076,
@@ -1118,6 +1189,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32528,
+      "face_delight_energy_removed": 0.03905835820584003,
       "station": "below chin",
       "ratio_luma_median": 0.6689660549163818,
       "ratio_luma_p5": 0.005382927600294352,
@@ -1150,6 +1223,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32574,
+      "face_delight_energy_removed": 0.040268890509395305,
       "station": "below chin",
       "ratio_luma_median": 0.6013462543487549,
       "ratio_luma_p5": 0.005105447955429554,
@@ -1182,6 +1257,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32540,
+      "face_delight_energy_removed": 0.04084652477288131,
       "station": "below chin",
       "ratio_luma_median": 0.5404232740402222,
       "ratio_luma_p5": 0.00498162629082799,
@@ -1214,6 +1291,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32583,
+      "face_delight_energy_removed": 0.03842244249729254,
       "station": "below chin",
       "ratio_luma_median": 0.493610680103302,
       "ratio_luma_p5": 0.004894026089459658,
@@ -1246,6 +1325,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32592,
+      "face_delight_energy_removed": 0.03611999013083089,
       "station": "below chin",
       "ratio_luma_median": 0.466447651386261,
       "ratio_luma_p5": 0.0049350871704518795,
@@ -1278,6 +1359,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32667,
+      "face_delight_energy_removed": 0.03499902834715807,
       "station": "below chin",
       "ratio_luma_median": 0.5452497601509094,
       "ratio_luma_p5": 0.011490333825349808,
@@ -1310,6 +1393,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32584,
+      "face_delight_energy_removed": 0.035123463958304346,
       "station": "below chin",
       "ratio_luma_median": 0.5830424427986145,
       "ratio_luma_p5": 0.06505705416202545,
@@ -1342,6 +1427,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32580,
+      "face_delight_energy_removed": 0.03085805060893243,
       "station": "below chin",
       "ratio_luma_median": 0.41779834032058716,
       "ratio_luma_p5": 0.14641675353050232,
@@ -1374,6 +1461,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32604,
+      "face_delight_energy_removed": 0.032395011295183296,
       "station": "above head",
       "ratio_luma_median": 0.29413679242134094,
       "ratio_luma_p5": 0.10861468315124512,
@@ -1406,6 +1495,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32573,
+      "face_delight_energy_removed": 0.03215037816142052,
       "station": "above head",
       "ratio_luma_median": 0.2581295967102051,
       "ratio_luma_p5": 0.07384701818227768,
@@ -1438,6 +1529,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32609,
+      "face_delight_energy_removed": 0.03316772095288245,
       "station": "above head",
       "ratio_luma_median": 0.251303493976593,
       "ratio_luma_p5": 0.05444669350981712,
@@ -1470,6 +1563,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32533,
+      "face_delight_energy_removed": 0.03270076940078237,
       "station": "above head",
       "ratio_luma_median": 0.25578027963638306,
       "ratio_luma_p5": 0.04633873701095581,
@@ -1502,6 +1597,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32549,
+      "face_delight_energy_removed": 0.035239187915741876,
       "station": "above head",
       "ratio_luma_median": 0.25588861107826233,
       "ratio_luma_p5": 0.04400060325860977,
@@ -1534,6 +1631,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32608,
+      "face_delight_energy_removed": 0.03590435161453842,
       "station": "above head",
       "ratio_luma_median": 0.25496694445610046,
       "ratio_luma_p5": 0.0441708117723465,
@@ -1566,6 +1665,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32525,
+      "face_delight_energy_removed": 0.036212617223267296,
       "station": "above head",
       "ratio_luma_median": 0.2495591640472412,
       "ratio_luma_p5": 0.04243040084838867,
@@ -1598,6 +1699,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32594,
+      "face_delight_energy_removed": 0.03692538751515939,
       "station": "above head",
       "ratio_luma_median": 0.24597564339637756,
       "ratio_luma_p5": 0.041708722710609436,
@@ -1630,6 +1733,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32638,
+      "face_delight_energy_removed": 0.03588375196779792,
       "station": "above head",
       "ratio_luma_median": 0.24086692929267883,
       "ratio_luma_p5": 0.041889533400535583,
@@ -1662,6 +1767,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32705,
+      "face_delight_energy_removed": 0.035515170270558394,
       "station": "above head",
       "ratio_luma_median": 0.236527681350708,
       "ratio_luma_p5": 0.03977501392364502,
@@ -1694,6 +1801,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32706,
+      "face_delight_energy_removed": 0.03702892004720215,
       "station": "above head",
       "ratio_luma_median": 0.2282903790473938,
       "ratio_luma_p5": 0.03921615332365036,
@@ -1726,6 +1835,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32448,
+      "face_delight_energy_removed": 0.037530233976597716,
       "station": "above head",
       "ratio_luma_median": 0.20762069523334503,
       "ratio_luma_p5": 0.03793206438422203,
@@ -1758,6 +1869,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31855,
+      "face_delight_energy_removed": 0.037343833503070356,
       "station": "above head",
       "ratio_luma_median": 0.17707811295986176,
       "ratio_luma_p5": 0.030396563932299614,
@@ -1790,6 +1903,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31214,
+      "face_delight_energy_removed": 0.03614907646630017,
       "station": "above head",
       "ratio_luma_median": 0.21894897520542145,
       "ratio_luma_p5": 0.03090849332511425,
@@ -1822,6 +1937,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 30358,
+      "face_delight_energy_removed": 0.03511801849477936,
       "station": "above head",
       "ratio_luma_median": 0.24205657839775085,
       "ratio_luma_p5": 0.03325575962662697,
@@ -1854,6 +1971,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 29691,
+      "face_delight_energy_removed": 0.034821528763591125,
       "station": "camera left",
       "ratio_luma_median": 0.2677769958972931,
       "ratio_luma_p5": 0.03250438719987869,
@@ -1886,6 +2005,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 28995,
+      "face_delight_energy_removed": 0.032800793461905675,
       "station": "camera left",
       "ratio_luma_median": 0.3175148367881775,
       "ratio_luma_p5": 0.027169112116098404,
@@ -1918,6 +2039,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 28189,
+      "face_delight_energy_removed": 0.03166817061007898,
       "station": "camera left",
       "ratio_luma_median": 0.3429265022277832,
       "ratio_luma_p5": 0.02153713069856167,
@@ -1950,6 +2073,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 27801,
+      "face_delight_energy_removed": 0.03264980866499834,
       "station": "camera left",
       "ratio_luma_median": 0.3424395024776459,
       "ratio_luma_p5": 0.018088441342115402,
@@ -1982,6 +2107,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 27481,
+      "face_delight_energy_removed": 0.03307093610749279,
       "station": "camera left",
       "ratio_luma_median": 0.9538066387176514,
       "ratio_luma_p5": 0.022735269740223885,
@@ -2014,6 +2141,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 27376,
+      "face_delight_energy_removed": 0.03020810550809483,
       "station": "camera left",
       "ratio_luma_median": 0.8768088221549988,
       "ratio_luma_p5": 0.02280629612505436,
@@ -2046,6 +2175,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 27534,
+      "face_delight_energy_removed": 0.030768071102058814,
       "station": "camera left",
       "ratio_luma_median": 0.8061217665672302,
       "ratio_luma_p5": 0.021994195878505707,
@@ -2078,6 +2209,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 27807,
+      "face_delight_energy_removed": 0.031510128959553185,
       "station": "camera left",
       "ratio_luma_median": 0.7419833540916443,
       "ratio_luma_p5": 0.022173479199409485,
@@ -2110,6 +2243,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 28367,
+      "face_delight_energy_removed": 0.03338782103002691,
       "station": "camera left",
       "ratio_luma_median": 0.6808054447174072,
       "ratio_luma_p5": 0.022313248366117477,
@@ -2142,6 +2277,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 28785,
+      "face_delight_energy_removed": 0.03358873363084802,
       "station": "camera left",
       "ratio_luma_median": 0.6259030699729919,
       "ratio_luma_p5": 0.02273610606789589,
@@ -2174,6 +2311,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 29138,
+      "face_delight_energy_removed": 0.0323349717642859,
       "station": "camera left",
       "ratio_luma_median": 0.5846213102340698,
       "ratio_luma_p5": 0.02282342128455639,
@@ -2206,6 +2345,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 29274,
+      "face_delight_energy_removed": 0.0330235968808541,
       "station": "camera left",
       "ratio_luma_median": 0.5498169660568237,
       "ratio_luma_p5": 0.023755596950650215,
@@ -2238,6 +2379,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 29589,
+      "face_delight_energy_removed": 0.03185015970565641,
       "station": "camera left",
       "ratio_luma_median": 0.5419518947601318,
       "ratio_luma_p5": 0.03195279836654663,
@@ -2270,6 +2413,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 30107,
+      "face_delight_energy_removed": 0.03276858553391171,
       "station": "camera left",
       "ratio_luma_median": 0.4792633652687073,
       "ratio_luma_p5": 0.0572187565267086,
@@ -2302,6 +2447,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 30452,
+      "face_delight_energy_removed": 0.0334115357711785,
       "station": "camera left",
       "ratio_luma_median": 0.35569652915000916,
       "ratio_luma_p5": 0.0826401636004448,
@@ -2334,6 +2481,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 30762,
+      "face_delight_energy_removed": 0.033716823554004405,
       "station": "camera right",
       "ratio_luma_median": 0.5621436238288879,
       "ratio_luma_p5": 0.11846949905157089,
@@ -2366,6 +2515,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 30992,
+      "face_delight_energy_removed": 0.032937114704076786,
       "station": "camera right",
       "ratio_luma_median": 0.696841835975647,
       "ratio_luma_p5": 0.06464191526174545,
@@ -2398,6 +2549,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31081,
+      "face_delight_energy_removed": 0.03279488534887254,
       "station": "camera right",
       "ratio_luma_median": 0.6331700682640076,
       "ratio_luma_p5": 0.04076758399605751,
@@ -2430,6 +2583,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31201,
+      "face_delight_energy_removed": 0.03329526619635548,
       "station": "camera right",
       "ratio_luma_median": 0.581451952457428,
       "ratio_luma_p5": 0.0328461229801178,
@@ -2462,6 +2617,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31314,
+      "face_delight_energy_removed": 0.033888598673809,
       "station": "camera right",
       "ratio_luma_median": 0.5667121410369873,
       "ratio_luma_p5": 0.031936921179294586,
@@ -2494,6 +2651,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31250,
+      "face_delight_energy_removed": 0.03491108290853939,
       "station": "camera right",
       "ratio_luma_median": 0.5517021417617798,
       "ratio_luma_p5": 0.030558904632925987,
@@ -2526,6 +2685,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31269,
+      "face_delight_energy_removed": 0.036388163358673675,
       "station": "camera right",
       "ratio_luma_median": 0.5408227443695068,
       "ratio_luma_p5": 0.029989143833518028,
@@ -2558,6 +2719,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31257,
+      "face_delight_energy_removed": 0.038916222676910306,
       "station": "camera right",
       "ratio_luma_median": 0.5350748300552368,
       "ratio_luma_p5": 0.029222451150417328,
@@ -2590,6 +2753,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31329,
+      "face_delight_energy_removed": 0.03763431863407163,
       "station": "camera right",
       "ratio_luma_median": 0.5334606766700745,
       "ratio_luma_p5": 0.02878451719880104,
@@ -2622,6 +2787,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31251,
+      "face_delight_energy_removed": 0.03651623581059249,
       "station": "camera right",
       "ratio_luma_median": 0.521479606628418,
       "ratio_luma_p5": 0.027914732694625854,
@@ -2654,6 +2821,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31347,
+      "face_delight_energy_removed": 0.03820600474568148,
       "station": "camera right",
       "ratio_luma_median": 0.5153133273124695,
       "ratio_luma_p5": 0.027241630479693413,
@@ -2686,6 +2855,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31407,
+      "face_delight_energy_removed": 0.03883683762040169,
       "station": "camera right",
       "ratio_luma_median": 0.5330880880355835,
       "ratio_luma_p5": 0.026461632922291756,
@@ -2718,6 +2889,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31546,
+      "face_delight_energy_removed": 0.039707179117577374,
       "station": "camera right",
       "ratio_luma_median": 0.6505362391471863,
       "ratio_luma_p5": 0.028573444113135338,
@@ -2750,6 +2923,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31732,
+      "face_delight_energy_removed": 0.03997951050567283,
       "station": "camera right",
       "ratio_luma_median": 0.9375516176223755,
       "ratio_luma_p5": 0.03716116398572922,
@@ -2782,6 +2957,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31849,
+      "face_delight_energy_removed": 0.038986961349135374,
       "station": "camera right",
       "ratio_luma_median": 1.2755892276763916,
       "ratio_luma_p5": 0.06412243843078613,
@@ -2814,6 +2991,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31850,
+      "face_delight_energy_removed": 0.03980530944299765,
       "station": "behind rim",
       "ratio_luma_median": 1.7099446058273315,
       "ratio_luma_p5": 0.2132895290851593,
@@ -2846,6 +3025,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31837,
+      "face_delight_energy_removed": 0.0412379831300842,
       "station": "behind rim",
       "ratio_luma_median": 2.017345666885376,
       "ratio_luma_p5": 0.38152799010276794,
@@ -2878,6 +3059,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31862,
+      "face_delight_energy_removed": 0.039622629965209044,
       "station": "behind rim",
       "ratio_luma_median": 2.0609607696533203,
       "ratio_luma_p5": 0.4497826099395752,
@@ -2910,6 +3093,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31865,
+      "face_delight_energy_removed": 0.04045518707990292,
       "station": "behind rim",
       "ratio_luma_median": 2.031111240386963,
       "ratio_luma_p5": 0.47010982036590576,
@@ -2942,6 +3127,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31889,
+      "face_delight_energy_removed": 0.04204057449595899,
       "station": "behind rim",
       "ratio_luma_median": 2.1003265380859375,
       "ratio_luma_p5": 0.5663279891014099,
@@ -2974,6 +3161,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31868,
+      "face_delight_energy_removed": 0.03985869525761221,
       "station": "behind rim",
       "ratio_luma_median": 2.114348888397217,
       "ratio_luma_p5": 0.5563061237335205,
@@ -3006,6 +3195,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31765,
+      "face_delight_energy_removed": 0.03961247224704878,
       "station": "behind rim",
       "ratio_luma_median": 2.1304285526275635,
       "ratio_luma_p5": 0.5534037351608276,
@@ -3038,6 +3229,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31720,
+      "face_delight_energy_removed": 0.03863257411026899,
       "station": "behind rim",
       "ratio_luma_median": 0.13207386434078217,
       "ratio_luma_p5": 0.032978978008031845,
@@ -3070,6 +3263,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31671,
+      "face_delight_energy_removed": 0.039238518827963254,
       "station": "behind rim",
       "ratio_luma_median": 0.13380871713161469,
       "ratio_luma_p5": 0.033129580318927765,
@@ -3102,6 +3297,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31588,
+      "face_delight_energy_removed": 0.038789588430901745,
       "station": "behind rim",
       "ratio_luma_median": 0.13576284050941467,
       "ratio_luma_p5": 0.03288782015442848,
@@ -3134,6 +3331,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31597,
+      "face_delight_energy_removed": 0.04041953355340977,
       "station": "behind rim",
       "ratio_luma_median": 0.13731059432029724,
       "ratio_luma_p5": 0.03255757316946983,
@@ -3166,6 +3365,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31624,
+      "face_delight_energy_removed": 0.03990593465704917,
       "station": "behind rim",
       "ratio_luma_median": 2.1656789779663086,
       "ratio_luma_p5": 0.5238094925880432,
@@ -3198,6 +3399,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31599,
+      "face_delight_energy_removed": 0.0393761772688096,
       "station": "behind rim",
       "ratio_luma_median": 1.9378674030303955,
       "ratio_luma_p5": 0.4476502239704132,
@@ -3230,6 +3433,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31677,
+      "face_delight_energy_removed": 0.04015493941690751,
       "station": "behind rim",
       "ratio_luma_median": 1.586687445640564,
       "ratio_luma_p5": 0.34890490770339966,
@@ -3262,6 +3467,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31706,
+      "face_delight_energy_removed": 0.04181986300574714,
       "station": "behind rim",
       "ratio_luma_median": 1.1659400463104248,
       "ratio_luma_p5": 0.2505490183830261,
@@ -3294,6 +3501,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31805,
+      "face_delight_energy_removed": 0.040931233654540766,
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.7645524740219116,
       "ratio_luma_p5": 0.15243275463581085,
@@ -3326,6 +3535,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31841,
+      "face_delight_energy_removed": 0.04301144176730842,
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.4147590100765228,
       "ratio_luma_p5": 0.07534295320510864,
@@ -3358,6 +3569,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31874,
+      "face_delight_energy_removed": 0.04308322754643801,
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.1512891948223114,
       "ratio_luma_p5": 0.027270767837762833,
@@ -3390,6 +3603,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31956,
+      "face_delight_energy_removed": 0.044586037016591806,
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.01361779309809208,
       "ratio_luma_p5": 0.0059834751300513744,
@@ -3422,6 +3637,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31957,
+      "face_delight_energy_removed": 0.04414181163104425,
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.004561122972518206,
       "ratio_luma_p5": 0.003999999724328518,
@@ -3454,6 +3671,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31933,
+      "face_delight_energy_removed": 0.04185994127327963,
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.004555745981633663,
       "ratio_luma_p5": 0.003999999724328518,
@@ -3486,6 +3705,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31938,
+      "face_delight_energy_removed": 0.042108046008657585,
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.004565503913909197,
       "ratio_luma_p5": 0.003999999724328518,
@@ -3518,6 +3739,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31936,
+      "face_delight_energy_removed": 0.044403033025186334,
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.004543012008070946,
       "ratio_luma_p5": 0.003999999724328518,
@@ -3550,6 +3773,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31873,
+      "face_delight_energy_removed": 0.042884757825674025,
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.004557862877845764,
       "ratio_luma_p5": 0.003999999724328518,
@@ -3582,6 +3807,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31864,
+      "face_delight_energy_removed": 0.041537097791611854,
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.004549606703221798,
       "ratio_luma_p5": 0.003999999724328518,
@@ -3614,6 +3841,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31856,
+      "face_delight_energy_removed": 0.04147309385356224,
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.004581335466355085,
       "ratio_luma_p5": 0.003999999724328518,
@@ -3646,6 +3875,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31872,
+      "face_delight_energy_removed": 0.039613325700914026,
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.0044911750592291355,
       "ratio_luma_p5": 0.003999999724328518,
@@ -3678,6 +3909,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31935,
+      "face_delight_energy_removed": 0.04157915610547913,
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.004258367232978344,
       "ratio_luma_p5": 0.003999999724328518,
@@ -3710,6 +3943,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31874,
+      "face_delight_energy_removed": 0.04178871539270279,
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.004044775385409594,
       "ratio_luma_p5": 0.003999999724328518,
@@ -3742,6 +3977,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31860,
+      "face_delight_energy_removed": 0.03865758169376532,
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.004027064424008131,
       "ratio_luma_p5": 0.003999999724328518,
@@ -3774,6 +4011,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31845,
+      "face_delight_energy_removed": 0.03842354983989349,
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.004350111819803715,
       "ratio_luma_p5": 0.003999999724328518,
@@ -3806,6 +4045,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31911,
+      "face_delight_energy_removed": 0.03724304766290076,
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.005047551356256008,
       "ratio_luma_p5": 0.003999999724328518,
@@ -3838,6 +4079,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31820,
+      "face_delight_energy_removed": 0.03697987038266881,
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.005827285815030336,
       "ratio_luma_p5": 0.003999999724328518,
@@ -3870,6 +4113,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31789,
+      "face_delight_energy_removed": 0.037025681087320406,
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.006206880323588848,
       "ratio_luma_p5": 0.003999999724328518,
@@ -3902,6 +4147,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31843,
+      "face_delight_energy_removed": 0.03838553746200135,
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.006825490854680538,
       "ratio_luma_p5": 0.003999999724328518,
@@ -3934,6 +4181,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31778,
+      "face_delight_energy_removed": 0.03792624875652273,
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.006730697117745876,
       "ratio_luma_p5": 0.003999999724328518,
@@ -3966,6 +4215,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31792,
+      "face_delight_energy_removed": 0.03632599645479351,
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.006626449525356293,
       "ratio_luma_p5": 0.003999999724328518,
@@ -3998,6 +4249,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31793,
+      "face_delight_energy_removed": 0.036656158822868545,
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.0066342540085315704,
       "ratio_luma_p5": 0.003999999724328518,
@@ -4030,6 +4283,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31775,
+      "face_delight_energy_removed": 0.0357408709742425,
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.006552969571202993,
       "ratio_luma_p5": 0.003999999724328518,
@@ -4062,6 +4317,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31831,
+      "face_delight_energy_removed": 0.03632492460826808,
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.006521238945424557,
       "ratio_luma_p5": 0.003999999724328518,
@@ -4094,6 +4351,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 31821,
+      "face_delight_energy_removed": 0.035376807671724575,
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.009035047143697739,
       "ratio_luma_p5": 0.004000003449618816,
@@ -4126,6 +4385,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32023,
+      "face_delight_energy_removed": 0.03882680711488895,
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.24928903579711914,
       "ratio_luma_p5": 0.033393796533346176,
@@ -4150,6 +4411,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32298,
+      "face_delight_energy_removed": 0.036144990141811606,
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.04318494349718094,
       "ratio_luma_p5": 0.00586690241470933,
@@ -4174,6 +4437,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32553,
+      "face_delight_energy_removed": 0.03625521853686031,
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.057553041726350784,
       "ratio_luma_p5": 0.01048417016863823,
@@ -4198,6 +4463,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32639,
+      "face_delight_energy_removed": 0.0381689995255311,
       "station": "KEY OFF: back only",
       "ratio_luma_median": 0.047576092183589935,
       "ratio_luma_p5": 0.011447420343756676,
@@ -4222,6 +4489,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32608,
+      "face_delight_energy_removed": 0.03948260246548485,
       "station": "high three-quarter",
       "ratio_luma_median": 0.3970634639263153,
       "ratio_luma_p5": 0.11982133239507675,
@@ -4246,6 +4515,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32734,
+      "face_delight_energy_removed": 0.04492714314837343,
       "station": "high three-quarter",
       "ratio_luma_median": 0.2335997074842453,
       "ratio_luma_p5": 0.03617088869214058,
@@ -4270,6 +4541,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32675,
+      "face_delight_energy_removed": 0.042995181078185785,
       "station": "high three-quarter",
       "ratio_luma_median": 0.21334296464920044,
       "ratio_luma_p5": 0.012694728560745716,
@@ -4298,6 +4571,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32509,
+      "face_delight_energy_removed": 0.04633769146111688,
       "station": "high three-quarter",
       "ratio_luma_median": 0.20650959014892578,
       "ratio_luma_p5": 0.011721421033143997,
@@ -4330,6 +4605,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32437,
+      "face_delight_energy_removed": 0.045490717345211595,
       "station": "high three-quarter",
       "ratio_luma_median": 0.19904440641403198,
       "ratio_luma_p5": 0.010705159045755863,
@@ -4362,6 +4639,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32438,
+      "face_delight_energy_removed": 0.043060620430765084,
       "station": "high three-quarter",
       "ratio_luma_median": 0.19263115525245667,
       "ratio_luma_p5": 0.0098392553627491,
@@ -4394,6 +4673,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32450,
+      "face_delight_energy_removed": 0.04273301655413886,
       "station": "high three-quarter",
       "ratio_luma_median": 0.18911665678024292,
       "ratio_luma_p5": 0.009439343586564064,
@@ -4426,6 +4707,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32507,
+      "face_delight_energy_removed": 0.04219175169022038,
       "station": "high three-quarter",
       "ratio_luma_median": 0.18663623929023743,
       "ratio_luma_p5": 0.008662828244268894,
@@ -4458,6 +4741,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32456,
+      "face_delight_energy_removed": 0.042166427495412884,
       "station": "high three-quarter",
       "ratio_luma_median": 0.18442317843437195,
       "ratio_luma_p5": 0.008377589285373688,
@@ -4490,6 +4775,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32445,
+      "face_delight_energy_removed": 0.04091400453815364,
       "station": "high three-quarter",
       "ratio_luma_median": 0.18308597803115845,
       "ratio_luma_p5": 0.007778520695865154,
@@ -4522,6 +4809,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32416,
+      "face_delight_energy_removed": 0.04192849891656936,
       "station": "high three-quarter",
       "ratio_luma_median": 0.18174907565116882,
       "ratio_luma_p5": 0.00771815050393343,
@@ -4554,6 +4843,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32465,
+      "face_delight_energy_removed": 0.04376876173232502,
       "station": "high three-quarter",
       "ratio_luma_median": 0.18466098606586456,
       "ratio_luma_p5": 0.009876064024865627,
@@ -4586,6 +4877,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32471,
+      "face_delight_energy_removed": 0.04187485976788341,
       "station": "high three-quarter",
       "ratio_luma_median": 0.19404855370521545,
       "ratio_luma_p5": 0.021448049694299698,
@@ -4618,6 +4911,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32511,
+      "face_delight_energy_removed": 0.04120840713942142,
       "station": "high three-quarter",
       "ratio_luma_median": 0.21281808614730835,
       "ratio_luma_p5": 0.05988568812608719,
@@ -4650,6 +4945,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32966,
+      "face_delight_energy_removed": 0.04229027137453245,
       "station": "front far",
       "ratio_luma_median": 0.23146548867225647,
       "ratio_luma_p5": 0.1001068502664566,
@@ -4682,6 +4979,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32981,
+      "face_delight_energy_removed": 0.041909769258202556,
       "station": "front far",
       "ratio_luma_median": 0.2461138218641281,
       "ratio_luma_p5": 0.10737030953168869,
@@ -4714,6 +5013,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 33032,
+      "face_delight_energy_removed": 0.04288465664593255,
       "station": "front far",
       "ratio_luma_median": 0.25164568424224854,
       "ratio_luma_p5": 0.09807439148426056,
@@ -4746,6 +5047,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 33051,
+      "face_delight_energy_removed": 0.044143064865705184,
       "station": "front far",
       "ratio_luma_median": 0.25166070461273193,
       "ratio_luma_p5": 0.08977875113487244,
@@ -4778,6 +5081,8 @@
         },
         "scale": 10.224953391950688
       },
+      "face_delight_px": 32647,
+      "face_delight_energy_removed": 0.04499754700973391,
       "station": "front far",
       "ratio_luma_median": 0.25044509768486023,
       "ratio_luma_p5": 0.08620018512010574,
