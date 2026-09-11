@@ -166,6 +166,10 @@ Not a network's job. Cycles folds subsurface into the diffuse passes the ratio i
 softening and the red shift at a shadow edge in principle. Whether it is visible is bounded by
 item 3: at 40–60 % relief there is no terminator to soften.
 
+**Artist decision (2026-09-11), after reading §3: *"OK, hand off the round to that, then."* Round 44
+builds the specular magnitude and the normals-based meso-shading, in that order, and shows
+frame 73 first. The shine removal stays as an optional flag and is not presented as a fix.**
+
 ## 5. Still open — the round 44 list
 
 1. **Specular magnitude** (`composite_ratio.specular_term`): a physically scaled lobe —
