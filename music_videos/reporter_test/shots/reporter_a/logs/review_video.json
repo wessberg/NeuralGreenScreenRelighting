@@ -1,13 +1,13 @@
 {
   "shot": "reporter_a",
-  "output": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\final\\r44_meso_spec_half_compare.mp4",
+  "output": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\final\\r44_spec_full_vs_half.mp4",
   "frames": 150,
   "fps": 24.0,
   "crf": 12,
-  "bytes": 14023307,
+  "bytes": 15296544,
   "crop": null,
   "zoom": 1,
   "source": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r44_meso_spec_half",
-  "compare": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r42_wet",
+  "compare": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a\\composite\\r44_meso_spec",
   "purpose": "REVIEW ONLY, display-referred sRGB. Delivery is master_export + hdr_mux."
 }

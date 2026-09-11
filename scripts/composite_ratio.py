@@ -439,6 +439,11 @@ def main():
                          'NEURAL normals cosine to that source per pixel, below this scale in plate '
                          'px. 0 = measure the crossover where the proxy stops resolving what the '
                          'normals resolve (on the anchor frame, bulb pass); negative = off')
+    ap.add_argument('--meso-strength', type=float, default=1.0,
+                    help='round 44: exponent on the meso modulation. 1 = the normals fully, 0 = off, '
+                         '0.6 = six tenths of the relief in stops. NOT physics -- it is the artist dial '
+                         'for how much of the neural normals relief the new light gets, and the meso term '
+                         'is 1.3-2.1 stops at p95 against R42 where the specular is 0.1-0.3')
     ap.add_argument('--meso-max', type=float, default=4.0,
                     help='upper clamp on the meso modulation (1 = no change); the low end is free')
     ap.add_argument('--meso-eps', type=float, default=0.02,
@@ -764,7 +769,8 @@ def main():
                         wrap = (args.meso_wrap_fill if args.meso_wrap_fill >= 0 else
                                 float(np.clip(np.median(f_['lp']['radius_m'] / np.maximum(f_['d'][core0], 1e-3)), 0.0, 1.0)))
                     E_m, mod = meso_specular.meso_modulate(f_['E'], nrm_full, f_['l'], alpha > 0.5, meso_sigma,
-                                                            wrap=wrap, eps=args.meso_eps, mod_max=args.meso_max)
+                                                            wrap=wrap, eps=args.meso_eps, mod_max=args.meso_max,
+                                                            strength=args.meso_strength)
                     mm = mod[core0]
                     meso_log['lights'][f_['lp']['name']] = {'wrap': wrap, 'mod_p5': float(np.percentile(mm, 5)),
                                                             'mod_p95': float(np.percentile(mm, 95)), 'mod_max': float(mm.max()),
@@ -1048,7 +1054,7 @@ def main():
         'light_passes': ([{'name': lp['name'], 'source': lp['source'], 'dir': str(lp['dir']), 'radius_m': lp['radius_m']} for lp in light_passes] or None),
         'light_pass_check': pass_check,
         'specular_albedo_scale': albedo_scale,
-        'meso_shading': ({'sigma_px': meso_sigma, 'source': ('MEASURED crossover, anchor frame, bulb pass' if args.meso_sigma == 0 else '--meso-sigma'),
+        'meso_shading': ({'sigma_px': meso_sigma, 'strength': args.meso_strength, 'source': ('MEASURED crossover, anchor frame, bulb pass' if args.meso_sigma == 0 else '--meso-sigma'),
                           'crossover_table': meso_table, 'max': args.meso_max, 'eps': args.meso_eps,
                           'model': 'per light pass k: E_k x c_k / lowpass_sigma(c_k), c_k = max(n_neural . l_k(pixel), 0) '
                                    '(fill: wrapped by sin of its angular radius); above sigma the proxy stands, '

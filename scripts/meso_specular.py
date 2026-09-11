@@ -80,7 +80,7 @@ def crossover_sigma(E_lum, c, mask, scales=(2, 4, 8, 16, 32, 64)):
     return cross, table
 
 
-def meso_modulate(E_k, n, l, mask, sigma, wrap=0.0, eps=0.02, mod_max=4.0):
+def meso_modulate(E_k, n, l, mask, sigma, wrap=0.0, eps=0.02, mod_max=4.0, strength=1.0):
     """E_k' = E_k x c / lowpass(c): the neural normals' cosine relief below `sigma`.
 
     `wrap` widens the cosine for a large source (a 60 cm panel is not a point): c = clamp((n.l +
@@ -95,7 +95,12 @@ def meso_modulate(E_k, n, l, mask, sigma, wrap=0.0, eps=0.02, mod_max=4.0):
     c = c * mm
     c_np = gpu_image.to_cpu(c, squeeze=True)
     lo = masked_blur(c_np, mask.astype(np.float32), sigma)
-    mod = np.clip((c_np + eps) / (lo + eps), 0.0, mod_max).astype(np.float32)
+    mod = np.clip((c_np + eps) / (lo + eps), 0.0, mod_max)
+    # `strength` is an exponent, so it scales the relief in STOPS and leaves 1 (no change)
+    # fixed: 0 is the proxy alone, 1 is the neural normals in full.
+    if strength != 1.0:
+        mod = np.clip(mod ** strength, 0.0, mod_max)
+    mod = mod.astype(np.float32)
     mod = np.where(mask, mod, 1.0).astype(np.float32)
     return E_k * mod[..., None], mod
 
