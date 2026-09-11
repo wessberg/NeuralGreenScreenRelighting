@@ -1,0 +1,104 @@
+{
+  "name": "r45_sheen_test",
+  "frames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "tex_scale": 4.0,
+  "illuminant_rgb_unit_luma": [
+    1.0470117330551147,
+    0.9900438189506531,
+    0.9601934552192688
+  ],
+  "room_light_fit": null,
+  "temporal_window_frames": 31,
+  "fps": 59.94005994005994,
+  "settings": {
+    "shot": "C:\\Users\\Frede\\Developer\\blender-virtual-production-experiment\\music_videos\\reporter_test\\shots\\reporter_a",
+    "name": "r45_sheen_test",
+    "start": 0,
+    "length": 12,
+    "envelope_sigma": 0.022,
+    "baseline_pct": 20.0,
+    "level_lo": 1.5,
+    "level_hi": 4.0,
+    "window": 0.5,
+    "chroma_full": 20.0,
+    "chroma_none": 45.0,
+    "feather": 0.012,
+    "hair_radius": 1.55,
+    "skin_grow": 0.025,
+    "gain": 1.0,
+    "fit_frames": 0,
+    "fit_samples": 60000,
+    "fit_coherence": 0.45,
+    "f0": 0.0465
+  },
+  "device": {
+    "backend": "torch",
+    "device": "cuda",
+    "gpu": "NVIDIA GeForce RTX 5080",
+    "capability": [
+      12,
+      0
+    ]
+  },
+  "summary": {
+    "removed_energy_frac_hair": {
+      "p50": 0.5674268007278442,
+      "p95": 0.5724567621946335,
+      "max": 0.5739114880561829
+    },
+    "removed_energy_frac_crown": {
+      "p50": 0.6264112591743469,
+      "p95": 0.638581195473671,
+      "max": 0.6398314237594604
+    },
+    "acting_px": {
+      "p50": 33894.0,
+      "p95": 37214.95,
+      "max": 37903.0
+    },
+    "clipped_frac": {
+      "p50": 0.0,
+      "p95": 0.0,
+      "max": 0.0
+    },
+    "coherence_p50": {
+      "p50": 0.7318708896636963,
+      "p95": 0.7467306196689606,
+      "max": 0.7495919466018677
+    },
+    "step_p95_stops": {
+      "p50": 1.3943581581115723,
+      "p95": 1.7633167505264282,
+      "max": 1.8354783058166504
+    },
+    "step_max_stops": {
+      "p50": 8.699838638305664,
+      "p95": 9.660398960113525,
+      "max": 10.061471939086914
+    },
+    "plate_step_p95_stops": {
+      "p50": 1.3222736120224,
+      "p95": 1.675820231437683,
+      "max": 1.7517118453979492
+    },
+    "plate_step_max_stops": {
+      "p50": 8.15354061126709,
+      "p95": 8.9836106300354,
+      "max": 8.989805221557617
+    }
+  },
+  "why": "the capture room's overhead band, taken off the photograph as an ENVELOPE over the region-wide dark hair with the strand texture kept and the envelope filtered in time; removal only, the replacement is composite_ratio.py --hair-sheen"
+}

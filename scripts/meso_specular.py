@@ -136,3 +136,59 @@ def ggx_specular(E_k, n, l, v, dist, radius, rough, f0):
     fr = F * D * V
     L = fr * np.pi * _dev(E_k)
     return gpu_image.to_cpu(L), gpu_image.to_cpu(fr, squeeze=True)
+
+
+def kajiya_kay_specular(E_k, t, n, l, v, dist, radius, exponent, f0, azimuthal=2.0):
+    """Anisotropic fibre highlight from source k, in the same units as ggx_specular.
+
+    Round 45. Hair is not a surface with a normal, it is a bundle of cylinders: a fibre reflects
+    a source into a CONE about its own axis, which is why a head of hair carries a band that
+    runs ACROSS the strands and moves when the light moves rather than when the head turns. The
+    lobe used here is Kajiya-Kay in its half-vector form -- `sin(T, H) ** p`, maximal where the
+    half-vector is perpendicular to the fibre, which is exactly the reflection-cone condition --
+    with a Schlick Fresnel on the cuticle and the Blinn-Phong normalisation `(p + 2) / (8 pi)`.
+
+    Two honest caveats, because this is not a fibre BCSDF. The normalisation constant is a
+    SURFACE lobe's, borrowed: a fibre's lobe is one-dimensional, so the constant is an
+    approximation and the magnitude is cross-checked against the room's own measured band rather
+    than asserted (composite_ratio logs `hair_specular.fr_peak_model` beside
+    `fr_peak_measured`). And this is the primary (R) highlight only -- Marschner's TT and the
+    coloured TRT, and the cuticle tilt that shifts them, are not modelled; on near-black hair
+    the R lobe carries nearly all of the visible sheen because so little light returns from
+    inside the fibre.
+
+    `exponent` and `radius` combine the way the GGX lobe's roughness and source size do: the
+    lobe's half-width in `sin(T, H)` units is widened by half the source's angular radius, so a
+    60 cm panel at 0.5 m gives a broad sheen and a 4 cm bulb a tight one from one exponent.
+
+    `azimuthal` is not decoration, it is what makes this a BAND. Kajiya-Kay has no azimuthal term
+    at all: `sin(T, H)` is 1 for EVERY tangent lying in the surface whenever the half-vector is
+    near the surface normal, so a front-lit, front-viewed head glows all over -- measured here on
+    the first build, where the added highlight hit its clamp on the median hair pixel and the
+    crown read as a lit wig. A real fibre is a cylinder, and only the part of it whose own normal
+    faces the half-vector reflects: `max(n . h, 0) ** azimuthal` on the surface normal is the
+    cheap stand-in for that (Marschner's azimuthal term done properly needs the fibre's offset
+    from the cylinder axis, which a plate cannot give). 0 restores textbook Kajiya-Kay.
+    """
+    t_ = _t()
+    tt, nn, ll, vv = _dev(t), _dev(n), _dev(l), _dev(v)
+    d = _dev(dist)
+    h = ll + vv
+    h = h / t_.clamp(t_.linalg.norm(h, dim=1, keepdim=True), min=1e-6)
+    th = t_.clamp(t_.sum(tt * h, dim=1, keepdim=True), min=-1.0, max=1.0)
+    sin_th = t_.sqrt(t_.clamp(1.0 - th * th, min=0.0))
+    # Half-width of sin^p about the peak, widened by the source's angular radius, back to p.
+    p0 = t_.as_tensor(float(exponent), device=th.device, dtype=th.dtype)
+    w = t_.sqrt(2.0 * np.log(2.0) / t_.clamp(p0, min=1.0))
+    w = w + radius / (2.0 * t_.clamp(d, min=1e-3))
+    p = t_.clamp(2.0 * np.log(2.0) / t_.clamp(w * w, min=1e-9), min=1.0)
+    lobe = t_.pow(t_.clamp(sin_th, min=1e-6), p)
+    vdh = t_.clamp(t_.sum(vv * h, dim=1, keepdim=True), min=0.0)
+    F = _dev(f0)
+    F = F + (1.0 - F) * (1.0 - vdh) ** 5
+    fr = F * (p + 2.0) / (8.0 * np.pi) * lobe
+    if azimuthal > 0:
+        ndh = t_.clamp(t_.sum(nn * h, dim=1, keepdim=True), min=0.0)
+        fr = fr * t_.pow(ndh, azimuthal)
+    L = fr * np.pi * _dev(E_k)
+    return gpu_image.to_cpu(L), gpu_image.to_cpu(fr, squeeze=True)

@@ -147,6 +147,7 @@ from ratio_edges import extend_irradiance
 from separate_specular import load_layers, specular_dir
 from light_geometry import position_map, light_vectors, camera_world
 import meso_specular
+import hair_region as hair_region_mod
 
 LUMA = np.array([.2126, .7152, .0722], np.float32)
 # Must match scripts/stress_proxy.py --ratio and scripts/make_albedo.py.
@@ -184,6 +185,19 @@ def source_irradiance_measured(normals, C):
     from sh_project import sh_basis
     Y = sh_basis(normals[..., 0], normals[..., 1], normals[..., 2])
     return np.maximum(np.einsum('hwk,kc->hwc', Y, C), 1e-4)
+
+
+def face_radius_px(shot, fi, lm_points, lm_topology):
+    """Her own face-oval radius at this frame -- the unit every hair scale is quoted in."""
+    if lm_points is None or lm_topology is None:
+        return 180.0
+    _, r, _ = hair_region_mod.face_frame(lm_points[fi], lm_topology)
+    return r
+
+
+def smoothstep_np(x, a, b):
+    t = np.clip((x - a) / max(b - a, 1e-9), 0.0, 1.0)
+    return t * t * (3.0 - 2.0 * t)
 
 
 def ldir_colour(E, mask):
@@ -474,6 +488,51 @@ def main():
                          'the plate exposure is unknown (no grey card, by '
                          'rule) and its skin sits at plate/E_source ~ 0.25, so a specular in scene '
                          'units is scaled by (measured plate skin albedo) / (this). 0 = no scaling')
+    ap.add_argument('--hair-sheen', default='',
+                    help='name of a hair_sheen.py run under composite/. Its sheen/ (16-bit linear) '
+                         'is SUBTRACTED from the plate before the ratio (the capture room overhead '
+                         'band, which plate x R can only rescale, never move) and an anisotropic '
+                         'Kajiya-Kay highlight from the tour own sources is added '
+                         'back along the strand tangent the same run measured. Removal without '
+                         'replacement leaves a black mass; the two halves are one change')
+    ap.add_argument('--hair-sheen-gain', type=float, default=1.0,
+                    help='scale on the subtracted room sheen; 1 removes the estimate as measured, '
+                         '0 removes nothing (for isolating the added highlight)')
+    ap.add_argument('--hair-specular', type=float, default=0.55,
+                    help='gain on the added fibre highlight; 0 isolates the removal. The default is '
+                         'MEASURED, not chosen: the room band this replaces implies a peak hair '
+                         'reflectance of S / (pi E_source) ~ 0.080 on this plate (hair_sheen logs it '
+                         'as fr_peak_measured), against a model peak of f0 (p+2)/(8 pi) = 0.144 at '
+                         'f0 0.0465 and p 76, and 0.080 / 0.144 = 0.55')
+    ap.add_argument('--hair-roughness', type=float, default=0.40,
+                    help='longitudinal width of the fibre lobe. Mapped to the Kajiya-Kay exponent '
+                         'p = 2 / roughness^4 - 2, the same alpha = roughness^2 convention the GGX '
+                         'term uses; 0.40 is p = 80, a half-width of 9.5 deg, inside the 5-10 deg '
+                         'a real cuticle measures and NOT tighter than the estimated tangent can '
+                         'support')
+    ap.add_argument('--hair-f0', type=float, default=0.0465,
+                    help='normal-incidence reflectance of the cuticle: IOR 1.55')
+    ap.add_argument('--hair-texture', type=float, default=1.5,
+                    help='exponent on the plate own strand modulation (hair_sheen field G). '
+                         'The lobe is smooth because the tangent field is; a real head of hair is '
+                         'thousands of fibres at slightly different angles, and this is the same '
+                         'stand-in --specular-texture is for skin. 0 leaves the lobe smooth')
+    ap.add_argument('--hair-coherence', type=float, default=0.35,
+                    help='structure-tensor coherence below which the tangent is not trusted and the '
+                         'highlight fades out. The direction is measured, so its confidence is too')
+    ap.add_argument('--hair-lobe-blur', type=float, default=0.008,
+                    help='confidence-weighted spatial average of the fibre lobe, in FACE RADII. A '
+                         'pixel covers many fibres and the structure tensor returns one direction '
+                         'for it, so the lobe is averaged over a small neighbourhood weighted by '
+                         'the tensor coherence. 0 falls back to gating on coherence, which punches '
+                         'holes in the highlight')
+    ap.add_argument('--hair-azimuthal', type=float, default=2.0,
+                    help='exponent of the (n.h) azimuthal term that turns the fibre lobe into a '
+                         'BAND. Kajiya-Kay has none, so without it every in-plane tangent is on '
+                         'the reflection cone wherever h is near the surface normal and the whole '
+                         'head glows -- measured, not guessed. 0 is textbook Kajiya-Kay')
+    ap.add_argument('--hair-clamp', type=float, default=8.0,
+                    help='ceiling on the added highlight, in multiples of the local diffuse')
     ap.add_argument('--resolution', default='',
                     help='WxH output; defaults to the shot delivery resolution, then the plate')
     ap.add_argument('--only-output', default='', help='comma-separated output frames, plus exposure anchor')
@@ -559,6 +618,13 @@ def main():
 
     eye_tracks, removal_dir, corneal_dir = None, None, None
     delight_dir = None
+    # The landmarks are shared: the corneal matte needs them and so does every hair scale, which
+    # is quoted in HER OWN face radii rather than pixels so the stage travels between framings.
+    lm_points, lm_found, lm_topology = None, None, None
+    if (shot.relight / 'face_landmarks.npz').exists():
+        with np.load(shot.relight / 'face_landmarks.npz') as z:
+            lm_points, lm_found = z['points'], z['found']
+        lm_topology = json.loads((shot.relight / 'face_landmarks.json').read_text())['topology']
     if args.face_delight:
         delight_dir = Path(args.face_delight)
         if not delight_dir.is_absolute():
@@ -566,6 +632,17 @@ def main():
         if not (delight_dir / args.face_delight_sub / 'S').is_dir():
             raise SystemExit('No %s/S under %s. Run face_delight.py --stage separate.' % (args.face_delight_sub, delight_dir))
         print('face delight: subtracting %s x %.2f before the ratio' % (delight_dir.name, args.face_delight_gain), flush=True)
+    hair_dir, hair_man = None, None
+    if args.hair_sheen:
+        hair_dir = Path(args.hair_sheen)
+        if not hair_dir.is_absolute():
+            hair_dir = shot.composite / args.hair_sheen
+        if not (hair_dir / 'sheen').is_dir() or not (hair_dir / 'field').is_dir():
+            raise SystemExit('No sheen/ and field/ under %s. Run hair_sheen.py first.' % hair_dir)
+        hair_man = json.loads((hair_dir / 'manifest.json').read_text())
+        print('hair sheen: -%.2f x %s, + Kajiya-Kay gain %.2f roughness %.2f f0 %.4f texture^%.1f' % (
+            args.hair_sheen_gain, hair_dir.name, args.hair_specular, args.hair_roughness,
+            args.hair_f0, args.hair_texture), flush=True)
     if args.eye_removal:
         removal_dir = Path(args.eye_removal)
         if not removal_dir.is_absolute():
@@ -579,11 +656,6 @@ def main():
         if not corneal_dir.is_dir():
             raise SystemExit('No corneal pass at %s. Run stress_proxy.py --corneal.' % corneal_dir)
         eye_tracks = load_eye_tracks(shot, args.limbus_track, args.eyelid_track)
-        lm_points, lm_found, lm_topology = None, None, None
-        if (shot.relight / 'face_landmarks.npz').exists():
-            with np.load(shot.relight / 'face_landmarks.npz') as z:
-                lm_points, lm_found = z['points'], z['found']
-            lm_topology = json.loads((shot.relight / 'face_landmarks.json').read_text())['topology']
         print('corneal pass: %s through %s + %s, blur sigma %.2f px, gain %.2f' % (
             corneal_dir.name, args.limbus_track, args.eyelid_track, args.corneal_blur,
             args.corneal_gain), flush=True)
@@ -664,6 +736,23 @@ def main():
                 fg = fg.copy()
                 fg[sel] = np.maximum(fg[sel] - S_lin[sel], 0.0)
                 delight_energy = 1.0 - float(fg[sel].sum()) / max(before, 1e-6)
+        hair_px, hair_energy, hair_field = 0, 0.0, None
+        if hair_dir is not None:
+            S_h = cv2.imread(str(hair_dir / 'sheen' / ('%06d.png' % fi)), -1)
+            W_h = cv2.imread(str(hair_dir / 'weight' / ('%06d.png' % fi)), -1)
+            F_h = cv2.imread(str(hair_dir / 'field' / ('%06d.png' % fi)), -1)
+            if S_h is None or W_h is None or F_h is None:
+                raise SystemExit('No hair sheen frame %06d under %s' % (fi, hair_dir))
+            S_lin = S_h[..., ::-1].astype(np.float32) / 65535.0 * args.hair_sheen_gain
+            hair_field = F_h[..., ::-1].astype(np.float32) / 65535.0
+            hair_w = (W_h[..., 0] if W_h.ndim == 3 else W_h).astype(np.float32) / 255.0
+            sel = hair_w > 0
+            hair_px = int(sel.sum())
+            if hair_px and args.hair_sheen_gain > 0:
+                before = float(fg[sel].sum())
+                fg = fg.copy()
+                fg[sel] = np.maximum(fg[sel] - S_lin[sel], 0.0)
+                hair_energy = 1.0 - float(fg[sel].sum()) / max(before, 1e-6)
         alpha = cv2.imread(str(shot.alpha(fi)), -1)
         if alpha.ndim == 3:
             alpha = alpha[..., 0]
@@ -831,6 +920,11 @@ def main():
             # exactly how it looked. Wool is rough and its specular is weak and broad; skin is
             # the only strongly specular surface here.
             spec_w = args.specular_other + (1.0 - args.specular_other) * skin
+            if hair_field is not None and args.hair_specular > 0:
+                # Hair gets a FIBRE lobe below, not a surface one. Without this the crown carries
+                # both and the replacement is double-counted -- and a GGX lobe on the neural
+                # normals is precisely the smooth band that reads as a doll.
+                spec_w = spec_w * (1.0 - np.clip(hair_w, 0.0, 1.0))
             spec = specular_term(nrm_full, ldir, vdir, rough, ndl) if args.specular_model == 'normalised' else None
             # G = normalised lobe x THE ACTUAL IRRADIANCE x gain. E_t already carries both the
             # magnitude and the colour of the light AND the renderer's occlusion, so a point in
@@ -863,6 +957,73 @@ def main():
             clamp_hit = float(((G @ LUMA) > args.specular_clamp * np.maximum(lit @ LUMA, 1e-4))[core].mean()) if core.any() else 0.0
             G = np.minimum(G, args.specular_clamp * np.maximum(lit, 1e-4))
             lit = lit + G
+        # ---- the hair's own highlight, from the tour's sources along her measured strands ----
+        if hair_field is not None and args.hair_specular > 0 and light_fields:
+            # The tangent is stored as an ANGLE in the image plane, so it is lifted here with this
+            # frame's normals rather than baked: the same 2D direction on a different surface is a
+            # different fibre in the world.
+            ang = hair_field[..., 0] * np.pi                      # 0..180 deg, stored / 180
+            t2 = np.stack([np.cos(ang), np.sin(ang)], -1).astype(np.float32)
+            T_h = hair_region_mod.tangent_world(t2, nrm_full)
+            tex_h = hair_field[..., 1] * float(hair_man.get('tex_scale', 4.0))
+            coh_h = hair_field[..., 2]
+            # The direction is MEASURED, so its confidence is too: where the structure tensor finds
+            # no orientation the fibre model has nothing to stand on and the highlight fades out.
+            conf = smoothstep_np(coh_h, args.hair_coherence, args.hair_coherence + 0.15)
+            w_h = np.clip(hair_w, 0.0, 1.0)
+            rad_px = face_radius_px(shot, fi, lm_points, lm_topology)
+            if args.hair_texture > 0:
+                # The lobe is smooth because the tangent field is, and a smooth addition on dark
+                # hair reads as HAZE rather than as hair catching light -- the artist would call
+                # it exactly what round 44 called a smooth band on skin. The plate's own strand
+                # modulation breaks it up. Unlike --specular-texture on skin, this one is
+                # NORMALISED by its own low-pass, so the exponent changes the CONTRAST of the
+                # streaks and not their level: the measured gain above stays the calibration.
+                mt = np.clip(tex_h, 0.0, 4.0) ** args.hair_texture
+                mt = mt / np.maximum(gpu_image.gaussian_blur(mt, max(0.022 * rad_px, 0.6)), 1e-3)
+                w_h = w_h * np.clip(mt, 0.0, 6.0)
+            # p = 2 / alpha^2 - 2 with alpha = roughness^2, the Blinn-Phong <-> GGX width identity,
+            # so --hair-roughness means the same kind of thing as --roughness-skin.
+            p_hair = max(2.0 / max(args.hair_roughness, 1e-3) ** 4 - 2.0, 1.0)
+            f0_h = np.full((h, w), args.hair_f0, np.float32)
+            G_h = np.zeros_like(lit)
+            hair_spec_log = {'exponent': p_hair, 'azimuthal': args.hair_azimuthal,
+                             'lobe_half_width_deg': float(np.degrees(np.arcsin(min(np.sqrt(2 * np.log(2) / p_hair), 1.0))))}
+            for f_ in light_fields:
+                L_k, fr_k = meso_specular.kajiya_kay_specular(
+                    f_['E'], T_h, nrm_full, f_['l'], f_['v'], f_['d'], f_['lp']['radius_m'],
+                    p_hair, f0_h, args.hair_azimuthal)
+                G_h += L_k
+                hm = w_h > 0.5
+                hair_spec_log[f_['lp']['name']] = {
+                    'fr_p50_hair': float(np.percentile(fr_k[hm], 50)) if hm.any() else 0.0,
+                    'fr_p95_hair': float(np.percentile(fr_k[hm], 95)) if hm.any() else 0.0,
+                    'fr_max_hair': float(fr_k[hm].max()) if hm.any() else 0.0}
+            # A pixel covers many fibres at slightly different angles, and the structure tensor
+            # returns ONE direction for it -- with a confidence. So the lobe is averaged over a
+            # small neighbourhood WEIGHTED BY THAT CONFIDENCE before it is applied: confident
+            # neighbours fill in for pixels where the direction is unknown. Gating on coherence
+            # instead punched holes in the highlight, which read as dark blobs in the crown.
+            if args.hair_lobe_blur > 0:
+                _s = max(args.hair_lobe_blur * rad_px, 0.6)
+                num = gpu_image.gaussian_blur(G_h * conf[..., None], _s)
+                den = np.maximum(gpu_image.gaussian_blur(conf, _s), 1e-4)
+                G_h = num / den[..., None]
+            else:
+                G_h = G_h * conf[..., None]
+            G_h = G_h * (w_h * args.hair_specular * anchor * args.exposure
+                         * albedo_scale['scale'])[..., None]
+            G_h = np.minimum(G_h, args.hair_clamp * np.maximum(lit, 1e-4))
+            lit = lit + G_h
+            hm = w_h > 0.5
+            hair_spec_log.update(
+                acting_px=int(hm.sum()),
+                added_over_diffuse_p50=float(np.median((G_h[hm] @ LUMA) / np.maximum(lit[hm] @ LUMA, 1e-6))) if hm.any() else 0.0,
+                added_over_diffuse_p95=float(np.percentile((G_h[hm] @ LUMA) / np.maximum(lit[hm] @ LUMA, 1e-6), 95)) if hm.any() else 0.0,
+                removed_energy_frac=hair_energy)
+        else:
+            hair_spec_log = None
+        if args.specular > 0:
             spec_energy = float(np.mean(G[core] @ LUMA) / max(float(np.mean(lit[core] @ LUMA)), 1e-9)) if core.any() else 0.0
             _gl = G @ LUMA
             _pk = np.unravel_index(int(np.argmax(_gl)), _gl.shape)
@@ -1008,6 +1169,8 @@ def main():
                           'eye_removal_px': removal_px, 'corneal': corneal_log,
                           'face_delight_px': delight_px, 'face_delight_energy_removed': delight_energy,
                           'specular_frame': spec_frame, 'meso': meso_log,
+                          'hair_sheen_px': hair_px, 'hair_sheen_energy_removed': hair_energy,
+                          'hair_specular': hair_spec_log,
                           'station': pf[n]['station'] if n in pf else None,
                           'ratio_luma_median': float(np.median(rl)),
                           'ratio_luma_p5': float(np.percentile(rl, 5)),
@@ -1091,6 +1254,23 @@ def main():
                      'clamped_to': '3x the local diffuse level',
                      'roughness': {'skin': args.roughness_skin, 'other': args.roughness_other},
                      'weight': {'skin': 1.0, 'other': args.specular_other}},
+        'hair_sheen': (None if hair_dir is None else {
+            'run': str(hair_dir), 'sheen_gain': args.hair_sheen_gain,
+            'room_light_fit': (hair_man or {}).get('room_light_fit'),
+            'specular': {'gain': args.hair_specular, 'roughness': args.hair_roughness,
+                         'f0': args.hair_f0, 'texture_power': args.hair_texture,
+                         'coherence_floor': args.hair_coherence, 'clamp_over_diffuse': args.hair_clamp},
+            'model': 'Kajiya-Kay sin(T,H)^p with Schlick Fresnel and the Blinn-Phong normalisation, '
+                     'per light pass, driven by pi x that source rendered irradiance; T is the '
+                     'strand tangent MEASURED by a structure tensor on the plate and lifted onto the '
+                     'neural normal, and the lobe is broken up by the plate own strand texture',
+            'why': 'constraint row 5 -- plate x R can recolour a photographed highlight but cannot '
+                   'move or delete one, so the capture room band in her hair survived every relight. '
+                   'It is subtracted from the photograph and re-made from the scene sources',
+            'not_modelled': ['hair-on-hair self shadowing (the proxy shell has no strand geometry)',
+                             'flyaway strands at the silhouette (sub-pixel, in the matte alpha ramp)',
+                             'the hair changing SHAPE with the light',
+                             'Marschner TT and TRT lobes -- this is the primary (R) highlight only']}),
         'catchlight': {
             'gain': args.catchlight,
             'render_dir': str(cdir), 'render_present': cdir.exists(),
