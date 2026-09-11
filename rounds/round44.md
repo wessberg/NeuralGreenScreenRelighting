@@ -237,6 +237,59 @@ treatment: symmetric window, seconds not frames) is the fix, not a lower `--meso
   environment, not the bulb). "Key off" stations (fill_scale 0) have neither.
 * The exposure anchor is unchanged by construction: 10.22 → 10.22 (median ratio on frame 0).
 
+## 4b. Is the Cycles lighting production grade? The sampler is not the limit; the SCENE is
+
+He asked mid-round whether the shadows and lighting are path traced at full fidelity or are
+prototype lighting, and whether Blender has production-grade lighting exports we are not
+using. Probed and measured (`composite/r44_conv_{128,1024,4096}`, one frame of the bulb pass).
+
+**It is genuine path tracing.** Cycles through OPTIX on the GPU, ray-traced shadows,
+random-walk subsurface, light tree on, caustics on, OpenImageDenoise with albedo+normal
+inputs and the ACCURATE prefilter, adaptive sampling on at threshold 0.01. `stress_proxy.py`
+overrides exactly three factory settings — device, `samples`, `use_denoising` — so everything
+else is the Blender 5.2.1 default: 12 total bounces, 4 diffuse, 4 glossy, 12 transmission,
+**0 volume**, indirect clamp 10, `BLACKMAN_HARRIS` filter at width 1.5.
+
+**128 samples is already converged for this purpose, measured.** Frame 73 of the bulb pass
+rendered at 128 / 1024 / 4096, compared as |delta log2| of irradiance luminance on the skin:
+
+| pair | all skin p50 / p95 | the LIT half p50 / p95 / max |
+|---|---|---|
+| 128 vs 4096 | 0.018 / 0.513 | **0.011 / 0.045 / 0.310** |
+| 1024 vs 4096 | 0.017 / 0.513 | 0.011 / 0.042 / 0.183 |
+| 128 vs 1024 | 0.017 / 0.569 | 0.011 / 0.043 / 0.213 |
+
+The all-skin p95 of 0.51 is NOT sampling noise — 1024 shows the same figure as 128, so it is
+the floor of the shadow side, where the irradiance is ~0 and log2 of a near-zero is unstable.
+On the half of the face the bulb actually reaches, 128 is within 0.045 stops of 4096 at p95.
+**Do not spend a round raising samples.**
+
+**What IS the fidelity limit, in order:**
+
+1. **The scene is a black void.** The tour is a 4 cm emissive sphere plus a 60 cm emissive
+   panel with a world background at 0.012 — no walls, no floor, no ceiling. So there is
+   nothing to bounce off, `diffuse_bounces = 4` costs nothing and buys nothing, and the
+   shadow side gets only the fill panel. In a real room most of the shadow-side fill IS
+   bounce. The delivery path for this is the environment stages that already exist
+   (`build_hdri_scene.py`, `bake_light_probes.py`, `scene_library/`); the bulb tour is a
+   stress demo and was never meant to be a room.
+2. **The proxy.** A displaced silhouette shell on a stride-2 grid with a flat back cap, no
+   eye sockets, no separate hair, nothing behind her. Every shadow in the composite is cast
+   by that shell (constraint rows 1-3).
+3. `volume_bounces = 0`: no atmosphere, no haze, no visible beam.
+4. The EXR passes are **half float** (`color_depth = '16'`); 32 is available.
+
+**Production features Blender has that we are NOT using, one of which we hand-rolled:**
+
+* **LIGHT GROUPS** (`view_layer.lightgroups`, `object.lightgroup`, `world.lightgroup` — all
+  confirmed present in 5.2.1). Cycles writes one pass PER LIGHT GROUP from a SINGLE render.
+  Round 44's `--only-light bulb|fill` renders the tour twice with one emitter zeroed each
+  time to get the same thing. Light groups would halve that cost and make the passes sum
+  EXACTLY instead of to within 1.2 %. **Round 45 should port `--only-light` to light groups**
+  and keep `--only-light` as the reference the port is gated against.
+* Cryptomatte (object / material / asset) and custom AOVs, both available on the view layer.
+* 32-bit float EXR and the DWAA/HTJ2K codecs.
+
 ## 5. Lips and hair: measured his complaint, built a partial, not a fix
 
 `audit_r44_sheen.py` on `r42_wet` (`logs/r44_sheen_r43.json`): lip vermilion sheen p95/p50

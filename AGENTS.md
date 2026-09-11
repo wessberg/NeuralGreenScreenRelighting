@@ -72,7 +72,15 @@ near-neutral case applies; but a LEVEL test finds it, and round 45 must remove A
 of the hair's form**; the fill panel reflecting in a shadowed eye is the RIG parking the
 fill BEHIND her face plane at the side stations (107° off the head axis at frame 73; fixing
 it re-renders the tour and the accepted eye pass — his call). E_source's own 12 px relief is
-0.21: most of the plate's relief is texture, not shading.
+0.21: most of the plate's relief is texture, not shading. **Render fidelity, probed and
+measured (round44.md §4b): the tour IS real path tracing (OPTIX, ray-traced shadows,
+random-walk SSS, light tree, OIDN with albedo+normal, adaptive sampling) and 128 samples is
+CONVERGED — 4096 moves the lit face by 0.011 stops p50 / 0.045 p95, so never spend a round on
+samples. The limits are that the tour scene is a BLACK VOID (no walls/floor, so no bounce;
+`diffuse_bounces` buys nothing), the proxy shell, `volume_bounces = 0`, and half-float EXR.
+Blender has LIGHT GROUPS (`view_layer.lightgroups` + `object.lightgroup`, confirmed in 5.2.1)
+which give one pass per light from ONE render — round 44 hand-rolled that as `--only-light`;
+port it and gate the port on reproducing `--only-light`.**
 
 **Round 43 — the capture room's shine on her SKIN is ~2 % and removing it is invisible; the
 "plastic skin" he sees is the SHADING, measured. Read `rounds/round43.md` §3, §3b, §5 first.**
