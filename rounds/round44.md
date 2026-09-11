@@ -1,4 +1,4 @@
-# Round 44 handoff — meso-shading from the neural normals is the lever; a specular on those normals is a Barbie doll unless it is scaled to the plate, broadened and broken up by her own pores
+# Round 44 handoff — ACCEPTED (`r44_m50_s05`). Meso-shading from the neural normals is the lever for "plastic"; a specular on those normals is a Barbie doll unless it is scaled to the plate, broadened and broken up by her own pores
 
 **Date:** 2026-09-11. Starts from round 43 (`r43_nospec`; the eye baseline `r42_wet` is
 still the accepted one). The starter prompt asked for two things in order: a physically
@@ -11,13 +11,24 @@ it looks like a shiny barbie doll."* The meso-shading term on its own reads as a
 a hard side light (§3). With the specular scaled to the plate's exposure, broadened to the
 roughness real skin measures, and multiplied by the plate's own pore-scale texture, he then
 said of the `r44_meso_spec` sheet: *"OK, yeah, I see an improvement in r44_spec_73_30 in the
-meso + spec frames."* **No verdict on the video yet.** Mid-round he also raised three things
-that are recorded below: lips and hair still carry the capture room's shine (§5), and the
-fill panel's reflection in a shadowed eye (§6).
+meso + spec frames."*
 
-Videos: `final/r44_meso_spec_compare.mp4` (R42 left, R44 meso + specular right),
-`final/r44_meso_compare.mp4` (meso only), `final/r44_panel.mp4` (face scale, R42 | R44 meso
-| R44 meso+spec). Sheets in `composite/panels/r44_*.png`.
+**VERDICT: ACCEPTED.** After two rounds of dialling (§2b, §2c) he picked
+`--meso-strength 0.5 --specular 0.5` and, on the videos:
+*"Improved and accepted. It still doesn't look entirely 'human', but is better than before."*
+**`r44_m50_s05` is the new baseline composite**, superseding `r42_wet` (which stays the
+accepted EYE work that it is built on). Note the second half of his sentence: the
+photorealism bar is NOT met and nothing here should be reported as meeting it.
+
+Mid-round he also raised three things that are recorded below: lips and hair still carry the
+capture room's shine (§5, and he raised the hair again after accepting), and the fill panel's
+reflection in a shadowed eye (§6).
+
+Videos: **`final/r44_m50_s05_compare.mp4` (R42 left, the accepted run right) and
+`final/r44_m50_s05_panel.mp4` (face scale) are the accepted pair.** Also
+`final/r44_meso_spec_compare.mp4`, `final/r44_meso_compare.mp4` (meso only, no specular),
+`final/r44_spec_isolate.mp4` (meso vs meso+specular, which isolates the specular) and
+`final/r44_spec_levels_panel.mp4`. Sheets in `composite/panels/r44_*.png`.
 
 ---
 
@@ -184,9 +195,10 @@ Mid-scale relief on skin (std of the 12 px high-passed log2 luminance), and the 
 at 0.5 against +23 % at 1.0. The temporal worry in §3 is much smaller at his setting, though
 still present (max frame-p95 2.05 vs R42's 1.50).
 
-**`r44_m50_s05` is the round's candidate**, full 150 frames, video
-`final/r44_m50_s05_compare.mp4` (R42 left) and `final/r44_m50_s05_panel.mp4`. His words:
-*"Yeah, meso 0.5, spec 0.5 is the one."* — on the stills; the video is not yet judged.
+**`r44_m50_s05` is the round's result and it is ACCEPTED**, full 150 frames, video
+`final/r44_m50_s05_compare.mp4` (R42 left) and `final/r44_m50_s05_panel.mp4`. His words on
+the stills: *"Yeah, meso 0.5, spec 0.5 is the one."* On the videos: *"Improved and accepted.
+It still doesn't look entirely 'human', but is better than before."*
 
 ## 3. The meso-shading, seen
 
@@ -310,14 +322,15 @@ $C = "--shot $S --eye-removal r42_wet_removal --corneal-dir r42_eye_pass --corne
 ## 8. Starter prompt for round 45
 
 > **Round 44 built the meso-shading from the neural normals and a physical specular per
-> light source. The artist picked `r44_m50_s05` (`--meso-strength 0.5 --specular 0.5`) ON
-> THE STILLS — *"Yeah, meso 0.5, spec 0.5 is the one"* — and has NOT judged the video. Read
-> round44.md §2c, §5, §6 first.** Get his verdict on `final/r44_m50_s05_compare.mp4` and
-> `r44_m50_s05_panel.mp4` before building anything, and ask specifically about crawl: the
-> 12 px high-passed step is +8 % over R42 at his setting (it was +23 % at full meso), so it
-> is much smaller but not gone — if he sees it, filter the neural normals in time in a
-> head-stabilised frame (symmetric window in SECONDS, as round 37's edge shading), never the
-> modulation. **The two hard lessons of this round, do not relearn them:** "plastic" means
+> light source, and `r44_m50_s05` (`--meso-strength 0.5 --specular 0.5`) is ACCEPTED:
+> *"Improved and accepted. It still doesn't look entirely 'human', but is better than
+> before."* It is the new baseline composite and the thing to build the next comparison
+> against. Read round44.md §2c, §5, §6 first.** He says it is still not human, so do not
+> report the bar as met. Crawl is not yet ruled out by his eye: the 12 px high-passed step is
+> +8 % over R42 at his setting (it was +23 % at full meso), so if he ever reports it, filter
+> the neural normals in time in a head-stabilised frame (symmetric window in SECONDS, as
+> round 37's edge shading), never the modulation. **The two hard lessons of this round, do
+> not relearn them:** "plastic" means
 > missing depth and imperfections, so the lever is SHADING RELIEF and a smooth specular makes
 > it worse; and when he says an effect is too strong, DECOMPOSE before you tune — he asked
 > twice for the specular to come down when the term he was reacting to was the meso, 1.75

@@ -33,9 +33,13 @@ and **rejected**, for colour AND shape flicker and a sometimes-brown pupil, beca
 every term of the fill was refit per frame from a few dozen pixels. **No per-frame-refit
 fill can be temporally stable at a 24-pixel iris.** See `rounds/round32.md`.
 
-**Round 44 — MESO-SHADING from the neural normals is the lever for "plastic"; a specular on
-those normals is a Barbie doll unless scaled to the plate, broadened and broken up by her own
-pores. Read `rounds/round44.md` §2, §3, §5, §6 first. Video verdict NOT yet recorded.** The
+**Round 44 — ACCEPTED: `r44_m50_s05` is the new BASELINE composite (`--meso-strength 0.5
+--specular 0.5`), superseding `r42_wet` as the picture while `r42_wet` remains the accepted eye
+work under it. *"Improved and accepted. It still doesn't look entirely 'human', but is better
+than before."* — so the bar is NOT met; do not report it as met. MESO-SHADING from the neural
+normals is the lever for "plastic"; a specular on those normals is a Barbie doll unless scaled
+to the plate, broadened and broken up by her own pores. Read `rounds/round44.md` §2c, §5, §6
+first.** The
 artist on the first specular sheet: *"Jesus christ this looks awful ... Now THAT's plastic"*
 and *"'plastic' meaning the skin lacked depth, imperfections ... now it looks like a shiny
 barbie doll"*; on `r44_meso_spec` (meso + specular at roughness 0.5, scaled by the plate's
