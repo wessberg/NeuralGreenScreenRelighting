@@ -33,7 +33,7 @@ and **rejected**, for colour AND shape flicker and a sometimes-brown pupil, beca
 every term of the fill was refit per frame from a few dozen pixels. **No per-frame-refit
 fill can be temporally stable at a 24-pixel iris.** See `rounds/round32.md`.
 
-**Round 42 — the WET EYE is built and awaits his verdict. Read `rounds/round42.md` §1, §4, §5,
+**Round 42 — the WET EYE is ACCEPTED: *"Yeah, it's a huge improvement! Looks super good."* `r42_wet` is the eye baseline. The bulb is a sub-pixel speck because it is 4 cm at 0.5–2.4 m (1–5°); the softbox subtended ~35° — a catchlight's size is the source's angular size, so a big soft reflection needs a big source in the scene, not a setting. Read `rounds/round42.md` §1, §4, §5,
 §6 first.** The eye is now ONE surface of revolution per eye (`stress_proxy.py --corneal --globe
 --socket`): the 7.8 mm cornea, a 1 mm concave limbal fillet, the 12 mm scleral globe (tear film
 over conjunctiva, `--sclera-roughness` ASSUMED 0.08 — measured: the capture room's softbox

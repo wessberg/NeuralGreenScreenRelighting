@@ -5,7 +5,7 @@ slightly unrealistic? Maybe the eye didn't become 'wet' enough?"*). This round b
 eye as ONE construction on the existing geometry and removes the capture room's reflections
 from the white of her eye. **Shown to the artist:** `reporter_a/final/r42_wet_compare.mp4`
 (round 41 LEFT, round 42 RIGHT), `final/r42_wet_eyes.mp4` (source / round 41 / round 42, every
-frame at eye scale), `final/r42_wet_panel.mp4` (face scale). **Verdict: not yet recorded.**
+frame at eye scale), `final/r42_wet_panel.mp4` (face scale). **Verdict (2026-09-11): *"Yeah, it's a huge improvement! Looks super good."* ACCEPTED. He asked why the bulb is a tiny speck when the softbox was enormous: a catchlight is a mirror image, its size is the source's angular size times half the corneal radius; a 4 cm bulb at 0.5–2.4 m subtends 1–5° and images sub-pixel (bright, not big), the ~1 m softbox subtended ~35° and imaged 3×4 px. A large soft reflection in his scene needs a large source in the scene, not a render setting.**
 
 ---
 
@@ -215,7 +215,7 @@ $S = "music_videos/reporter_test/shots/reporter_a"
 
 ## 8. Starter prompt for round 43
 
-> **The wet eye is built; his verdict decides what round 43 is.** Read round42.md §1, §3, §4,
+> **The wet eye is ACCEPTED** (*"a huge improvement! Looks super good"*), so round 43 starts from `r42_wet` as the eye baseline. Read round42.md §1, §3, §4,
 > §5 and §6 first. Round 42 made the eye ONE surface (cornea + 1 mm limbal fillet + 12 mm
 > globe, `stress_proxy.py --corneal --globe --socket`), put it in a head-attached socket cup so
 > it stops reflecting the room behind her head, removed the capture room's glints from the
