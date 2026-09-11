@@ -6,6 +6,27 @@ any model starts from the same state.
 
 ## Read the latest round first
 
+**Round 45 REJECTED, and its lesson outranks the metric that passed. The artist, on the hair
+work: *"what you did to the hair really doesn't look good. The source is way better."*** Round
+44's starter had set the acceptance criterion as a NUMBER -- *"round 45 must drive
+corr(sheen, log E) POSITIVE"* -- and round 45 drove it positive (-0.03 to +0.39 on that exact
+statistic, and -0.44 to +0.52 on a second, less circular test: the band's position against the
+rendered source's azimuth). **He preferred the untouched photograph to both the removal and the
+replacement.** So: **an inherited numeric target is a hypothesis, not a definition of done**, and
+**a photographed highlight in the wrong place beats a synthesised one in the right place** on
+hair at this quality. Nothing shipped; `--hair-sheen` is opt-in and a run without it is
+byte-identical to `r44_m50_s05`, which remains the baseline. **Do not re-attempt the hair without
+asking him first** -- and if he wants it, attenuation with NO replacement
+(`--hair-sheen-gain 0.3 --hair-specular 0`) is the only option that does not trade photographed
+material for model. The LIP GLOSS is the better next target and is a different problem (a surface
+with a normal, a DiffusionRenderer basecolor to fit against, and a 2-4 px band), but show him an
+attenuation-only version FIRST. What round 45 leaves that is worth keeping: `hair_region.py`
+measures a strand tangent and its confidence from any plate (coherence 0.70 over her hair, 0.79
+in the band); `audit_r45_hair.py`'s azimuth test is a general "does this highlight follow the
+light" probe; and round 44's p95/p50 sheen ratio is **invalidated by any stage that subtracts
+energy from a region the composite can floor** -- once the band was gone it read 15 000 at the
+dark stations. See `rounds/round45.md`.
+
 **Artist steering after round 30 (2026-09-09): selective generation is allowed.**
 The artist explicitly accepts generative repair for selected regions, especially
 after prolonged failure of an observed-pixel method, and reiterates a preference
@@ -45,7 +66,7 @@ HAIR (crown sheen 10.9x the local median) and her LIPS (2.1x), first measured in
 "authentic response" is built: real specular moves and brightens with its source, and
 `audit_r43_shine.py` / `audit_r44_sheen.py` report that as corr(sheen, log E) over the tour's
 9.5 stops — today **−0.47 on hair, −0.39 on lips** (relatively brighter where the new light is
-DIMMEST). **Round 45 must drive it POSITIVE, not merely make the band dimmer.** Check the shiny
+DIMMEST). ~~Round 45 must drive it POSITIVE~~ -- **SUPERSEDED: round 45 did drive it positive and the picture was rejected. The correlation is a diagnostic, never an acceptance test.** Check the shiny
 surfaces before concluding anything about shading. See `rounds/round44.md` §8.
 
 **Skin is NOT matte, and we are deliberately BELOW physics (round44.md §8a).** Skin's surface

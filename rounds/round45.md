@@ -1,27 +1,38 @@
-# Round 45 handoff — the capture room's band is OFF her hair and the tour's own light makes a new one. The band now MOVES with the light instead of against it. **Artist verdict not yet recorded.**
+# Round 45 handoff — REJECTED. Every number went the right way and the picture got worse. **"What you did to the hair really doesn't look good. The source is way better."**
 
-**Date:** 2026-09-11. Starts from round 44's accepted baseline `r44_m50_s05`. The named defect
-was the artist's, the moment the skin work landed: *"we still have the shine in the very top of
-her hair. Very clearly from a light hanging above her head."* Mid-round he added the two things
-that shaped the build: *"if we move one of our own lights up there, in principle it should be
-able to recreate a similar shine, just with our own light placed in the scene. So we still need
-to capture the nuanced hair details and so we can re-light the hair and preserve the specular
-response, and I guess self shadows, etc"* — and, on the first removal, *"'De-sheened' is alright,
-but the middle of her head has a gap like she's bald, and it still shines along the arc/edge of
-her head. It also needs to be temporally consistent."* Both of those were real bugs; both are
-fixed and the causes are recorded in §2.
+**Date:** 2026-09-11. Starts from round 44's accepted baseline `r44_m50_s05`, which **remains
+the baseline**: nothing here ships. `--hair-sheen` is opt-in and a composite run without it is
+**byte-identical to `r44_m50_s05`**, verified on four stations after the verdict.
 
-He also asked, fairly: *"Will it even be possible for us, in 2026? Hair is super difficult"*.
-The answer this round acts on, and §6 holds the evidence for: **general hair reconstruction is
-not on the table, and it is not what this needs.** Her hair here is pulled back and flat — a
-sheet, not a volume of flyaway strands — and it is a strongly ORIENTED texture, measured:
-structure-tensor coherence **0.70** over the region and **0.79** inside the band. That is the
-one thing a fibre highlight actually requires, a tangent direction per pixel, and it is there.
+**THE VERDICT IS THE MOST IMPORTANT THING IN THIS FILE.** Round 44's starter set the acceptance
+criterion as a number — *"the correlation must go POSITIVE"* — and round 45 drove it positive:
+§1 has round 44's own statistic going −0.03 to +0.39, and the least circular test available,
+the band's position against the rendered source's azimuth, going −0.44 to +0.52. **The artist
+rejected it on sight and preferred the untouched photograph to both the removal and the
+replacement.** So:
 
-**Candidate: `r45_tex15`** (`--hair-sheen r45_sheen --hair-specular 0.35 --hair-texture 1.5` on
-top of round 44's accepted command). Videos: **`final/r45_hair_compare.mp4`** (R44 left, R45
-right) and **`final/r45_panel.mp4`** (face scale, three ways: R44, removal only, removal +
-new highlight). Sheets in `composite/panels/r45_*.png`.
+* **The number was satisfied and the bar was not.** Do not re-attempt this because the audit
+  says it works — the audit said it worked. This is the standing rule in its sharpest form yet:
+  his eye is the acceptance test, and a metric that agrees with a rejected picture was measuring
+  the wrong thing. It is not evidence that he is wrong.
+* **A photographed band in the WRONG PLACE beats a synthesised band in the right one**, on this
+  material at this quality. That finding is worth more than the code.
+* **The starter's framing was itself the trap.** "Remove AND replace" was written as the
+  construction before anyone had seen a replacement. Round 44 §5 said *"delete it and she has a
+  black mass, which is a worse artefact"* — true — and then concluded that the answer was to
+  synthesise a new band, which does not follow from it.
+
+He asked for this work (*"if we move one of our own lights up there, in principle it should be
+able to recreate a similar shine"*) and then rejected the result. Both are true and neither
+cancels the other: the idea is sound, and the execution on monocular hair is below his bar.
+**Ask before spending another round on hair.**
+
+**Read §6 first if you are tempted to try again** — it is the list of what this class of
+approach cannot do, and it was written BEFORE the verdict, not as an excuse after it.
+
+Runs, all preserved: `r45_rmonly` (band removed, nothing added), `r45_tex15` (the candidate),
+`r45_hair35` / `r45_hair55` (other gains), `r45_dbg_*` (the ablations). Videos
+`final/r45_hair_compare.mp4` and `final/r45_panel.mp4`; sheets in `composite/panels/r45_*.png`.
 
 ---
 
@@ -211,44 +222,69 @@ $C = "--shot $S --eye-removal r42_wet_removal --corneal-dir r42_eye_pass --corne
 
 ## 8. Starter prompt for round 46
 
-> **Round 45's verdict is the first thing to get.** The hair work is built and measured but
-> **the artist has not judged the video** — `final/r45_hair_compare.mp4` and
-> `final/r45_panel.mp4`. Do not treat §1's numbers as acceptance. If he rejects it, read §4
-> before touching a knob: each of the three failures there was structural, and the fix was never
-> the gain. The levers, in the order they matter: `--hair-texture` (streakiness vs crawl, priced
-> in §5), `--hair-specular` (0.55 is the MEASURED value, 0.35 is the candidate),
-> `--hair-azimuthal` (how much of a band it is).
+> **Round 45 was REJECTED, and the hair is not to be re-attempted without asking him first.**
+> His words: *"what you did to the hair really doesn't look good. The source is way better."*
+> Read the top of this file before anything else. The short version: the round drove round 44's
+> stated acceptance number from −0.03 to +0.39 and the picture got worse, so **a passing metric
+> is not a result here** — and the untouched photograph beat both the removal alone and the
+> removal plus a synthesised highlight.
 >
-> **The LIP GLOSS is the same family and is still open**, and round 44 §5 has already measured
-> it: sheen 2.1 at the dark stations against 1.4 at the bright ones, corr −0.39, and the
-> face-delight separation takes only 9–15 % off. It needs the band itself — no low-pass, the
-> DiffusionRenderer vermilion as the diffuse reference, and a check that the a-term is not
-> eating lip colour. `hair_sheen.py`'s shape applies almost directly (an envelope over a
-> region-wide baseline, filtered in time, subtracted along each pixel's own chroma) but the
-> lip's specular is a SURFACE lobe, not a fibre one, so the replacement is the existing
-> `--specular-model physical` with a lip-specific roughness rather than Kajiya-Kay.
+> **Do not start a hair round on your own judgement.** If he wants one, the honest options, in
+> the order I would recommend them:
+>
+> 1. **ATTENUATE ONLY, no replacement.** `hair_sheen.py --gain 0.3`, or `composite_ratio.py
+>    --hair-sheen-gain 0.3 --hair-specular 0`, takes a third of the band off and leaves every
+>    hair pixel photographic. It cannot make the shine RESPOND to the new light — row 5 stays
+>    unmet on hair — but it makes the room's band less assertive without synthesising anything.
+>    It is the only option that does not trade photographed material for model.
+> 2. **Nothing.** Leave the band in the plate and mark row 5 unmet on hair, with this round as
+>    the evidence. Defensible, and what *"the source is way better"* literally says.
+> 3. Another round of synthesis. **I would argue against it**, and §6 is why: no strand geometry,
+>    so no self-shadowing and no shape change; the primary lobe only; and the single physical fit
+>    explains a fifth of the band's envelope.
+>
+> **THE LIP GLOSS IS A DIFFERENT PROBLEM AND IS PROBABLY THE BETTER TARGET.** It is the other
+> surface he named (round 44 §5: sheen 2.1 at the dark stations against 1.4 at the bright, corr
+> −0.39; the face-delight separation takes only 9–15 % off). Three reasons it is not the hair:
+> the lip is a SURFACE with a normal, so `--specular-model physical` applies directly and no
+> fibre model or tangent estimate is needed; the vermilion has a DiffusionRenderer basecolor to
+> use as a diffuse reference, which hair does not; and the band is 2–4 px, so far less
+> photographed material is at risk. `hair_sheen.py`'s *shape* still applies — an envelope over a
+> region-wide baseline, filtered in time in a head-stabilised frame, subtracted along each
+> pixel's own chroma — and §2 and §4 are the bug list for building it. **But put an
+> attenuation-only version in front of him FIRST, before any replacement.** That is this round's
+> lesson and it costs one render to obey.
+>
+> **Reusable whatever happens to the hair:** `hair_region.py` measures a strand tangent and its
+> confidence from any plate (coherence 0.70 over her hair, 0.79 in the band); `audit_r45_hair.py`'s
+> azimuth test is a general "does this highlight follow the light" probe, not a hair-specific one;
+> and §3's finding about round 44's statistic applies to ANY stage that subtracts energy from a
+> region the composite can floor.
 >
 > **Do not re-derive, and do not re-open:** the crown band is 23× the dark hair at the SAME
-> chroma so no dichromatic split can touch it (round 44 §5); `face_delight --regions hair` does
-> not move the audit; UnReflectAnything was ruled out on skin in round 43 and is not worth
-> re-evaluating on hair; render settings are not a lever for this void scene (round 44 §4c);
-> and the single-lobe physical fit explains only a fifth of the band (§6).
+> chroma, so no dichromatic split can touch it (round 44 §5); `face_delight --regions hair` does
+> not move the audit; UnReflectAnything was ruled out on skin in round 43; render settings are
+> not a lever for this void scene (round 44 §4c); the single-lobe physical fit explains only a
+> fifth of the band (§6); and every bug in §2 and §4 is fixed, so a re-attempt would start from a
+> working removal rather than from scratch.
 >
-> **Still open and still needing HIS decision, unchanged from round 44:** the fill panel
+> **Still open and still needing HIS decision, unchanged since round 44:** the fill panel
 > reflecting in a shadowed eye is the RIG parking the fill BEHIND her face plane at the side
 > stations (round44 §6) — fixing it re-renders the tour, both light passes AND the accepted eye
-> pass, so ask before doing it. And porting `--only-light` to Blender's native LIGHT GROUPS
-> halves the render cost; gate the port on reproducing `--only-light`, not on bit exactness.
+> pass, so ask. And porting `--only-light` to Blender's native LIGHT GROUPS halves the render
+> cost; gate that port on reproducing `--only-light`, not on bit exactness (round44 §4c).
 >
-> **Two lessons from round 45 worth keeping.** First: **a metric can be invalidated by the fix
-> it is judging.** Round 44's p95/p50 sheen ratio was the right statistic for a photographed
-> band and became a ratio of floor values the moment the band was subtracted — 15 000 at the
-> dark stations. When a number moves the wrong way after a change that visibly worked, check
-> whether the change broke the number's denominator before believing it. Second: **when an added
-> term crawls, decompose before filtering.** The tangent field was filtered in time at some cost
-> and moved the crawl by 0.011 stops; the whole of it was the strand-texture exponent, which one
-> ablation found.
+> **Three lessons from round 45.** First, and the hard one: **a metric handed down in a starter
+> prompt can be satisfied by a rejected picture.** Round 44 wrote "round 45 must drive it
+> POSITIVE"; it did, and he preferred the source. Put the picture in front of him before
+> optimising the number, and treat an inherited numeric target as a hypothesis rather than a
+> definition of done. Second: **a metric can be invalidated by the fix it is judging** — round
+> 44's p95/p50 sheen ratio became a ratio of floor values the moment the band was subtracted
+> (15 000 at the dark stations), so when a number moves oddly after a change, check its
+> denominator before believing it. Third: **when an added term crawls, decompose before
+> filtering.** The tangent field was filtered in time at real cost and moved the crawl by 0.011
+> stops; the whole of it was the strand-texture exponent, which one ablation found.
 >
 > Keep: GENERIC tool, GPU first, plate pixels outside the pass exact, p95 AND max for anything
-> temporal, a labelled crown-scale sheet in front of him before a full run, and a video before a
-> verdict.
+> temporal, a labelled crop at the scale of the defect in front of him before a full run, and a
+> video before a verdict.
