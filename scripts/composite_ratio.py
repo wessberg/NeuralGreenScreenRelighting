@@ -375,6 +375,13 @@ def main():
     ap.add_argument('--assumed-source', action='store_true',
                     help='fall back to the old hand-written frontal key instead of the measured '
                          'E_source, for comparison only')
+    ap.add_argument('--face-delight', default='',
+                    help='name of a face_delight.py run under composite/: its separate/S/*.png '
+                         '(16-bit linear) is SUBTRACTED from the plate inside separate/weight/ '
+                         'before the ratio, so the capture room\'s shine on her skin is not '
+                         'relit as if it were diffuse. Pixels outside the weight are the exact fg.')
+    ap.add_argument('--face-delight-gain', type=float, default=1.0,
+                    help='scale on the subtracted shine; 1 removes the estimate as fitted')
     ap.add_argument('--specular', type=float, default=1.0,
                     help='gain on the additive specular term; 0 disables it')
     ap.add_argument('--plate-specular', choices=('remove', 'keep'), default='keep',
@@ -499,6 +506,14 @@ def main():
                                                                   'catchlight_render')
 
     eye_tracks, removal_dir, corneal_dir = None, None, None
+    delight_dir = None
+    if args.face_delight:
+        delight_dir = Path(args.face_delight)
+        if not delight_dir.is_absolute():
+            delight_dir = shot.composite / args.face_delight
+        if not (delight_dir / 'separate' / 'S').is_dir():
+            raise SystemExit('No separate/S under %s. Run face_delight.py --stage separate.' % delight_dir)
+        print('face delight: subtracting %s x %.2f before the ratio' % (delight_dir.name, args.face_delight_gain), flush=True)
     if args.eye_removal:
         removal_dir = Path(args.eye_removal)
         if not removal_dir.is_absolute():
@@ -559,6 +574,20 @@ def main():
             if removal_px:
                 fg = fg.copy()
                 fg[changed] = srgb_to_linear(rem[..., ::-1].astype(np.float32) / 255.0)[changed]
+        delight_px, delight_energy = 0, 0.0
+        if delight_dir is not None:
+            S_png = cv2.imread(str(delight_dir / 'separate' / 'S' / ('%06d.png' % fi)), -1)
+            S_w = cv2.imread(str(delight_dir / 'separate' / 'weight' / ('%06d.png' % fi)), -1)
+            if S_png is None or S_w is None:
+                raise SystemExit('No face-delight frame %06d under %s' % (fi, delight_dir))
+            S_lin = S_png[..., ::-1].astype(np.float32) / 65535.0 * args.face_delight_gain
+            sel = S_w > 0
+            delight_px = int(sel.sum())
+            if delight_px:
+                before = float(fg[sel].sum())
+                fg = fg.copy()
+                fg[sel] = np.maximum(fg[sel] - S_lin[sel], 0.0)
+                delight_energy = 1.0 - float(fg[sel].sum()) / max(before, 1e-6)
         alpha = cv2.imread(str(shot.alpha(fi)), -1)
         if alpha.ndim == 3:
             alpha = alpha[..., 0]
@@ -808,6 +837,7 @@ def main():
             rl = R[m] @ LUMA
             stats.append({'frame': n, 'shot_frame': fi, 'catchlight': cl_log,
                           'eye_removal_px': removal_px, 'corneal': corneal_log,
+                          'face_delight_px': delight_px, 'face_delight_energy_removed': delight_energy,
                           'station': pf[n]['station'] if n in pf else None,
                           'ratio_luma_median': float(np.median(rl)),
                           'ratio_luma_p5': float(np.percentile(rl, 5)),
@@ -823,6 +853,9 @@ def main():
     summary = {
         'shot': shot.name, 'frames': len(stats), 'output': str(out_dir),
         'eye_removal': (str(removal_dir) if removal_dir is not None else None),
+        'face_delight': ({'dir': str(delight_dir), 'gain': args.face_delight_gain,
+                          'what': 'estimated capture-room shine on the face (face_delight.py --stage separate) subtracted from the plate before the ratio; exact fg outside its weight'}
+                         if delight_dir is not None else None),
         'corneal': ({'dir': str(corneal_dir), 'limbus_track': args.limbus_track,
                      'eyelid_track': args.eyelid_track, 'blur_sigma_px': args.corneal_blur,
                      'gain': args.corneal_gain, 'feather_px': args.corneal_feather,
