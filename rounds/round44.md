@@ -75,7 +75,8 @@ Defaults are unchanged: every piece is a flag. The runs:
 | `r44_meso_spec` | + physical specular, roughness 0.5, texture², albedo scale, clamp 8 — **the candidate** |
 | `r44_meso_lh` | `r44_meso` + lips/hair shine subtracted |
 | `r44_meso_spec_lo` | as `r44_meso_spec` with F0 0.028 (measured skin, IOR 1.4) and roughness 0.55 |
-| `r44_meso_spec_half` | `_lo` with `--specular 0.6` — **his "turn it down a little more" (§2b)** |
+| `r44_meso_spec_half` | `_lo` with `--specular 0.6` — his "turn it down a little more" (§2b) |
+| **`r44_m50_s05`** | **`--meso-strength 0.5 --specular 0.5` — THE ARTIST'S PICK (§2c)** |
 | `r44_smoke*` | frame 73 only, bulb pass only — the sheets he rejected; not results |
 
 ## 1. Measured, before anything was built
@@ -151,6 +152,42 @@ physics; it is the artist's request, and `--specular 0.6` is how it is recorded.
 frames are the "front close" station (bulb 0.5 m in front): the whole face sheens there in
 every variant. Video for his verdict: `final/r44_meso_spec_half_compare.mp4` (R42 left).
 
+## 2c. It was the MESO, not the specular — and his setting is 0.5 / 0.5
+
+He asked twice for the specular to come down and then said the reduction did not read. Both
+were right, and the reason is that the specular was never the big term. Decomposed at frame
+133 (the frame he screenshotted), on the eroded skin core:
+
+| term | size |
+|---|---|
+| meso-shading against R42 | 0.17 stops p50, **1.75 stops p95** |
+| low specular on top of the meso | +3.2 % p50, +17.8 % p95 |
+
+`composite/panels/r44_what_changed_133.png` settles it: the middle tile is MESO ONLY, no
+specular at all, and it already has the game-character look he named. His words: *"It might
+actually be the meso, and not the specular, I'm referring to here. On the 'what changed'
+image, 'MESO only' is the one that comes off as too strong."*
+
+`--meso-strength` is the dial: an exponent on the modulation, so it scales the relief in
+STOPS and leaves 1 (no change) fixed — 0 is the proxy alone, 1 the neural normals in full.
+Mid-scale relief on skin (std of the 12 px high-passed log2 luminance), and the flicker cost:
+
+| | relief f73 | relief f30 | hp12 median frame-p95 (stops) |
+|---|---|---|---|
+| plate | 0.564 | 0.551 | 0.142 (the control) |
+| R42 accepted | 0.809 | 0.773 | 0.312 |
+| **meso 0.5 (his pick)** | **0.867** | **0.842** | **0.338** |
+| meso 0.8 | 0.921 | 0.899 | — |
+| meso 1.0 | 0.959 | 0.937 | 0.386 |
+
+**Half strength costs most of the flicker too**: the 12 px high-passed step is +8 % over R42
+at 0.5 against +23 % at 1.0. The temporal worry in §3 is much smaller at his setting, though
+still present (max frame-p95 2.05 vs R42's 1.50).
+
+**`r44_m50_s05` is the round's candidate**, full 150 frames, video
+`final/r44_m50_s05_compare.mp4` (R42 left) and `final/r44_m50_s05_panel.mp4`. His words:
+*"Yeah, meso 0.5, spec 0.5 is the one."* — on the stills; the video is not yet judged.
+
 ## 3. The meso-shading, seen
 
 `composite/panels/r44_meso_73_30.png` and `r44_spec_73_30.png`. At 73 (bulb hard camera
@@ -202,11 +239,33 @@ and 15–18 % off the hair crown (`--smooth 0.006` for the finer band: `separate
 the sheen audit does not move (lips 2.03 → 2.10, hair 10.8 → 11.4 on the r44 runs: p50 and
 p95 drop together). **The lip gloss is a 2–4 px saturated band and the hair sheen is
 anisotropic; a term low-passed at 0.02 IPD with a skin-median floor was built for a broad
-2 % sheen on skin and cannot take either.** Round 45 should treat them as what they are:
-the lips need the band itself (no low-pass, the DiffusionRenderer vermilion as the diffuse
-reference, and a check that the a-term is not eating lip colour); the hair needs a strand-
-direction model or a generative fill under the selective-generation permission of round 30,
-and it is outside the skin mask, the face oval and the ratio's per-material weights.
+2 % sheen on skin and cannot take either.**
+
+**And on the hair the DICHROMATIC route is dead, measured.** He raised the crown again after
+accepting §2c (*"we still have the shine in the very top of her hair. Very clearly from a
+light hanging above her head"*). On the crown region, over the tour:
+
+| | luminance | chroma angle to the measured plate illuminant |
+|---|---|---|
+| the bright band (top 8 %) | 0.235 | 8.0–9.0° |
+| the dark hair beside it (p20–p50) | 0.010 | 7.4–8.9° |
+
+**The band is 23× the dark hair and they sit at the SAME chroma.** Her hair's own diffuse
+colour is as close to the room's illuminant as the specular is, so `I = a·b̂ + s·ĝ` is
+degenerate there — this is round 5's near-neutral case, and no dichromatic split (ours,
+UnReflectAnything, or another) can separate it. What CAN be used is exactly that 23× ratio:
+on near-black hair a pixel at 0.235 is at least 95 % specular, so the band is identifiable by
+level alone.
+
+But identifying it is not the job. **The crown sheen carries essentially all of the hair's
+visible form** — delete it and the hair is a black mass. The construction round 45 needs is
+remove-AND-replace: take the room's band off by level against a local dark-hair baseline
+(strand texture preserved, footprint held in time, as `sclera_glint_removal.py` does for the
+eye), then add an anisotropic hair specular (Kajiya-Kay or Marschner) from the tour's own
+sources along a tracked strand direction. The lips need the band itself (no low-pass, the
+DiffusionRenderer vermilion as the diffuse reference, and a check that the a-term is not
+eating lip colour). Both are outside the skin mask, the face oval and the ratio's
+per-material weights.
 
 ## 6. The fill panel in a shadowed eye (his screenshot, 13:22)
 
@@ -236,7 +295,7 @@ $S = "music_videos/reporter_test/shots/reporter_a"
 $C = "--shot $S --eye-removal r42_wet_removal --corneal-dir r42_eye_pass --corneal-blur 0.35 --corneal-matte lids --light-passes bulb=r44_light_bulb,fill=r44_light_fill --meso-sigma 0"
 & $P -B scripts/composite_ratio.py $C.Split() --name r44_meso --specular 0
 & $P -B scripts/composite_ratio.py $C.Split() --name r44_meso_spec --specular-model physical --roughness-skin 0.5 --specular-texture 2 --specular-clamp 8
-& $P -B scripts/composite_ratio.py $C.Split() --name r44_meso_spec_half --specular-model physical --roughness-skin 0.55 --f0-skin 0.028 --specular 0.6 --specular-texture 2 --specular-clamp 8
+& $P -B scripts/composite_ratio.py $C.Split() --name r44_m50_s05 --meso-strength 0.5 --specular-model physical --roughness-skin 0.55 --f0-skin 0.028 --specular 0.5 --specular-texture 2 --specular-clamp 8   # THE PICK
 & $P -B scripts/face_delight.py --shot $S --name r43_delight --stage separate --regions lips,hair --separate-name separate_lh
 & $P -B scripts/composite_ratio.py $C.Split() --name r44_meso_lh --specular 0 --face-delight r43_delight --face-delight-sub separate_lh
 & $P -B scripts/probe_r44_relief.py --shot $S --frames 30,73,97,120 --dirs r43_nospec,r44_meso,r44_meso_spec
@@ -251,22 +310,30 @@ $C = "--shot $S --eye-removal r42_wet_removal --corneal-dir r42_eye_pass --corne
 ## 8. Starter prompt for round 45
 
 > **Round 44 built the meso-shading from the neural normals and a physical specular per
-> light source; the artist saw an improvement on the frame-73/30 sheet of `r44_meso_spec`,
-> then asked for the specular "a little" lower ("a little like an NPC") → `r44_meso_spec_half`
-> (F0 0.028, roughness 0.55, gain 0.6; §2b). He has not judged a video. Read round44.md §2,
-> §2b, §3, §5, §6 first.** Get his verdict on `final/r44_meso_spec_half_compare.mp4`,
-> `r44_spec_levels_panel.mp4` and `r44_panel.mp4` before building anything, and ask
-> specifically about crawl: the 12 px high-passed step rose 23 % (median) / 54 % (p95) over
-> R43 because the meso term rides the raw per-frame normals. If he sees it, filter the
-> normals in time in a head-stabilised frame (symmetric window in SECONDS, as round 37's
-> edge shading), not the modulation. Remember his words: "plastic" means missing depth and
-> imperfections, and a smooth specular makes it worse — never add a specular he has not seen
-> broken up by texture, and never present the specular as the fix. Then the two things he
-> asked for that are not done: the lip gloss and the hair's crown sheen are the capture
-> room's (audit_r44_sheen.py: sheen 2.1 at dark stations vs 1.4 at bright, corr −0.39) and
-> the delight separation cannot take them (a 2–4 px band, an anisotropic sheen); they need
-> their own construction (§5). And the fill panel reflecting in a shadowed eye is the RIG
-> parking the fill behind her face plane at the side stations (§6) — fixing it re-renders
-> the tour and the accepted eye pass; ask him. Keep: GENERIC tool, GPU first, plate pixels
-> outside the passes exact, p95 and max for anything temporal, a face-scale sheet in front
-> of him before a full run, a video before a verdict.
+> light source. The artist picked `r44_m50_s05` (`--meso-strength 0.5 --specular 0.5`) ON
+> THE STILLS — *"Yeah, meso 0.5, spec 0.5 is the one"* — and has NOT judged the video. Read
+> round44.md §2c, §5, §6 first.** Get his verdict on `final/r44_m50_s05_compare.mp4` and
+> `r44_m50_s05_panel.mp4` before building anything, and ask specifically about crawl: the
+> 12 px high-passed step is +8 % over R42 at his setting (it was +23 % at full meso), so it
+> is much smaller but not gone — if he sees it, filter the neural normals in time in a
+> head-stabilised frame (symmetric window in SECONDS, as round 37's edge shading), never the
+> modulation. **The two hard lessons of this round, do not relearn them:** "plastic" means
+> missing depth and imperfections, so the lever is SHADING RELIEF and a smooth specular makes
+> it worse; and when he says an effect is too strong, DECOMPOSE before you tune — he asked
+> twice for the specular to come down when the term he was reacting to was the meso, 1.75
+> stops against the specular's 0.18.
+>
+> **Then the hair, which he raised the moment the skin landed** (*"we still have the shine in
+> the very top of her hair. Very clearly from a light hanging above her head"*). §5 has the
+> measurement: the crown band is 23× the dark hair beside it and at the SAME chroma, so no
+> dichromatic split can touch it, but on near-black hair a level test is enough to find it.
+> Build remove-AND-replace — the room's band off against a local dark-hair baseline with the
+> strand texture kept and the footprint held in time (`sclera_glint_removal.py` is the
+> pattern), then an anisotropic hair specular (Kajiya-Kay/Marschner) from the tour's own
+> sources along a tracked strand direction. Removing without replacing turns her hair into a
+> black mass: that band carries nearly all of its form. The lip gloss is the same family and
+> smaller (§5). And the fill panel reflecting in a shadowed eye is the RIG parking the fill
+> behind her face plane at the side stations (§6) — fixing it re-renders the tour and the
+> accepted eye pass; ask him. Keep: GENERIC tool, GPU first, plate pixels outside the passes
+> exact, p95 and max for anything temporal, a face-scale sheet in front of him before a full
+> run, a video before a verdict.

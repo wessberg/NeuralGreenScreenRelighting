@@ -41,7 +41,13 @@ and *"'plastic' meaning the skin lacked depth, imperfections ... now it looks li
 barbie doll"*; on `r44_meso_spec` (meso + specular at roughness 0.5, scaled by the plate's
 measured skin albedo 0.241 / an ASSUMED 0.40, times the plate's pore texture squared): *"I see
 an improvement"*, then *"turn down the specular a little more still ... a little like an NPC"* →
-`r44_meso_spec_half` (F0 0.028, roughness 0.55, `--specular 0.6`; round44.md §2b). Built: `stress_proxy.py --ratio --only-light bulb|fill` (per-source
+`r44_meso_spec_half` — and then the decomposition showed he was reacting to the MESO, not the
+specular: at his own frame the meso term is 1.75 stops p95 against R42 and the specular 0.18 on
+top of it, and the "MESO only, no specular" tile already has the game look. **His setting is
+`r44_m50_s05`: `--meso-strength 0.5 --specular 0.5`** (*"meso 0.5, spec 0.5 is the one"*, on
+the stills; the video is not yet judged). `--meso-strength` is an exponent on the modulation, so
+it scales relief in stops; at 0.5 the 12 px high-passed temporal step is +8 % over R42 instead
+of +23 %. **When he says an effect is too strong, DECOMPOSE before tuning.** Built: `stress_proxy.py --ratio --only-light bulb|fill` (per-source
 irradiance passes; they sum to the full pass to ≤ 1.2 %), `light_geometry.py` (world position
 under every pixel from the proxy shell → per-pixel light and view vectors), `meso_specular.py`
 + `composite_ratio.py --light-passes ... --meso-sigma 0` (`E_k' = E_k × cos / lowpass_σ(cos)`
@@ -55,7 +61,11 @@ round-43 specular gates (sheen tracks log E, hot spot on the nose bridge) are NO
 `audit_r43_shine.py`; the LIP GLOSS and HAIR CROWN SHEEN are the capture room's
 (`audit_r44_sheen.py`: sheen 2.1 at dark stations vs 1.4 at bright, corr −0.39) and the
 delight separation cannot take them (`--regions lips,hair` removes 9–18 % of the brightest
-decile, sheen unchanged); the fill panel reflecting in a shadowed eye is the RIG parking the
+decile, sheen unchanged) — **on the hair the dichromatic route is DEAD: the crown band is 23×
+the dark hair beside it and at the SAME chroma (8–9° from the illuminant, both), so round 5's
+near-neutral case applies; but a LEVEL test finds it, and round 45 must remove AND replace
+(an anisotropic Kajiya-Kay/Marschner sheen from the tour) because that band carries nearly all
+of the hair's form**; the fill panel reflecting in a shadowed eye is the RIG parking the
 fill BEHIND her face plane at the side stations (107° off the head axis at frame 73; fixing
 it re-renders the tour and the accepted eye pass — his call). E_source's own 12 px relief is
 0.21: most of the plate's relief is texture, not shading.
