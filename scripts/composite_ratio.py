@@ -145,6 +145,8 @@ from eye_reflection_repair import lid_distance as landmark_lid_distance
 import gpu_image
 from ratio_edges import extend_irradiance
 from separate_specular import load_layers, specular_dir
+from light_geometry import position_map, light_vectors, camera_world
+import meso_specular
 
 LUMA = np.array([.2126, .7152, .0722], np.float32)
 # Must match scripts/stress_proxy.py --ratio and scripts/make_albedo.py.
@@ -380,6 +382,8 @@ def main():
                          '(16-bit linear) is SUBTRACTED from the plate inside separate/weight/ '
                          'before the ratio, so the capture room\'s shine on her skin is not '
                          'relit as if it were diffuse. Pixels outside the weight are the exact fg.')
+    ap.add_argument('--face-delight-sub', default='separate',
+                    help='subfolder of the face_delight run holding S/ and weight/ (face_delight.py --separate-name)')
     ap.add_argument('--face-delight-gain', type=float, default=1.0,
                     help='scale on the subtracted shine; 1 removes the estimate as fitted')
     ap.add_argument('--specular', type=float, default=1.0,
@@ -422,6 +426,49 @@ def main():
     ap.add_argument('--specular-other', type=float, default=0.15,
                     help='specular weight for non-skin, as a fraction of skin. Specular does not '
                          'scale with albedo, so a dark jacket needs this or it reads as wet')
+    # ---- round 44: per-source passes, meso-shading from the neural normals, physical specular
+    ap.add_argument('--light-passes', default='',
+                    help='round 44: name=dir[,name=dir...] of stress_proxy.py --ratio --only-light '
+                         'passes under composite/ (e.g. bulb=r44_light_bulb,fill=r44_light_fill). '
+                         'Their sum REPLACES the full ratio render as E_target (linear transport; '
+                         'the mismatch is measured and logged), and each carries its source position '
+                         'from its render_manifest.json, so the meso-shading and the specular can '
+                         'point at the source per pixel')
+    ap.add_argument('--meso-sigma', type=float, default=-1.0,
+                    help='round 44 meso-shading: per light pass, E_k x c / lowpass(c) with c the '
+                         'NEURAL normals cosine to that source per pixel, below this scale in plate '
+                         'px. 0 = measure the crossover where the proxy stops resolving what the '
+                         'normals resolve (on the anchor frame, bulb pass); negative = off')
+    ap.add_argument('--meso-max', type=float, default=4.0,
+                    help='upper clamp on the meso modulation (1 = no change); the low end is free')
+    ap.add_argument('--meso-eps', type=float, default=0.02,
+                    help='cosine floor keeping the modulation finite past the terminator')
+    ap.add_argument('--meso-wrap-fill', type=float, default=-1.0,
+                    help='cosine wrap for a large source; negative = sin of its angular radius, '
+                         'per pixel')
+    ap.add_argument('--specular-model', choices=('normalised', 'physical'), default='normalised',
+                    help="'physical' (round 44): F D V per light pass from its world position and "
+                         'radius, driven by pi x its rendered irradiance, lobe widened by the '
+                         "source's angular size. Needs --light-passes. 'normalised' is the round-4 "
+                         'term: a GGX lobe scaled to peak 1 times Fresnel, which tops out at 0.03')
+    ap.add_argument('--specular-clamp', type=float, default=3.0,
+                    help='highlight ceiling as a multiple of the local diffuse level. 3 was set for '
+                         'the normalised term; a bulb on skin physically reaches ~10x')
+    ap.add_argument('--f0-skin', type=float, default=0.04, help='normal-incidence reflectance of skin')
+    ap.add_argument('--f0-other', type=float, default=0.04)
+    ap.add_argument('--specular-texture', type=float, default=0.0,
+                    help='round 44: break the specular up with the plate OWN pore-scale texture: '
+                         'G x clip(plate / lowpass(plate), 0, 2)^p at --specular-texture-sigma px. '
+                         'A pore or fine line is a cavity whose facets face away from the light, so '
+                         'it does not shine; the neural normals (768 px wide) cannot resolve it, the '
+                         'photograph can. p = 0 off. HEURISTIC: the plate texture is albedo and '
+                         'softbox shading, used here as a proxy for micro-normals')
+    ap.add_argument('--specular-texture-sigma', type=float, default=2.5)
+    ap.add_argument('--skin-albedo', type=float, default=0.40,
+                    help='ASSUMED luminance albedo of her skin, which sets the physical specular scale: '
+                         'the plate exposure is unknown (no grey card, by '
+                         'rule) and its skin sits at plate/E_source ~ 0.25, so a specular in scene '
+                         'units is scaled by (measured plate skin albedo) / (this). 0 = no scaling')
     ap.add_argument('--resolution', default='',
                     help='WxH output; defaults to the shot delivery resolution, then the plate')
     ap.add_argument('--only-output', default='', help='comma-separated output frames, plus exposure anchor')
@@ -511,8 +558,8 @@ def main():
         delight_dir = Path(args.face_delight)
         if not delight_dir.is_absolute():
             delight_dir = shot.composite / args.face_delight
-        if not (delight_dir / 'separate' / 'S').is_dir():
-            raise SystemExit('No separate/S under %s. Run face_delight.py --stage separate.' % delight_dir)
+        if not (delight_dir / args.face_delight_sub / 'S').is_dir():
+            raise SystemExit('No %s/S under %s. Run face_delight.py --stage separate.' % (args.face_delight_sub, delight_dir))
         print('face delight: subtracting %s x %.2f before the ratio' % (delight_dir.name, args.face_delight_gain), flush=True)
     if args.eye_removal:
         removal_dir = Path(args.eye_removal)
@@ -536,6 +583,30 @@ def main():
             corneal_dir.name, args.limbus_track, args.eyelid_track, args.corneal_blur,
             args.corneal_gain), flush=True)
 
+    light_passes = []
+    if args.light_passes:
+        for item in args.light_passes.split(','):
+            lname, ldir = item.split('=')
+            ldir = Path(ldir) if Path(ldir).is_absolute() else shot.composite / ldir
+            man = ldir / 'render_manifest.json'
+            if not man.exists():
+                raise SystemExit('No render_manifest.json under %s (stress_proxy.py --ratio --only-light)' % ldir)
+            mrec = json.loads(man.read_text())
+            if mrec.get('only_light') not in ('bulb', 'fill'):
+                raise SystemExit('%s is not a single-light pass (only_light=%s)' % (ldir, mrec.get('only_light')))
+            src = mrec['only_light']
+            lpf = {r['out_frame']: r for r in mrec['per_frame']}
+            # A panel of half-size s: the disc of equal area, radius 2 s / sqrt(pi).
+            radius = (0.04 if src == 'bulb' else 2.0 * 0.30 / np.sqrt(np.pi))
+            light_passes.append({'name': lname, 'source': src, 'dir': ldir, 'pf': lpf, 'radius_m': float(radius)})
+        print('light passes: %s' % ', '.join('%s=%s (%s, r %.3f m)' % (lp['name'], lp['dir'].name, lp['source'], lp['radius_m']) for lp in light_passes), flush=True)
+    if args.specular_model == 'physical' and not light_passes:
+        raise SystemExit('--specular-model physical needs --light-passes')
+    if args.meso_sigma >= 0 and not light_passes:
+        raise SystemExit('--meso-sigma needs --light-passes')
+    cam_pos = camera_world(shot)
+    meso_sigma, meso_table, pass_check = None, [], None
+    albedo_scale = None
     anchor, stats = None, []
     sigma = None if args.source_detail_sigma >= 0 else 0.0
     sigma_table = []
@@ -576,8 +647,8 @@ def main():
                 fg[changed] = srgb_to_linear(rem[..., ::-1].astype(np.float32) / 255.0)[changed]
         delight_px, delight_energy = 0, 0.0
         if delight_dir is not None:
-            S_png = cv2.imread(str(delight_dir / 'separate' / 'S' / ('%06d.png' % fi)), -1)
-            S_w = cv2.imread(str(delight_dir / 'separate' / 'weight' / ('%06d.png' % fi)), -1)
+            S_png = cv2.imread(str(delight_dir / args.face_delight_sub / 'S' / ('%06d.png' % fi)), -1)
+            S_w = cv2.imread(str(delight_dir / args.face_delight_sub / 'weight' / ('%06d.png' % fi)), -1)
             if S_png is None or S_w is None:
                 raise SystemExit('No face-delight frame %06d under %s' % (fi, delight_dir))
             S_lin = S_png[..., ::-1].astype(np.float32) / 65535.0 * args.face_delight_gain
@@ -645,6 +716,62 @@ def main():
         # in this wheel. The gap is a thin rim around the silhouette and the fill only has to be
         # plausible, so it is solved at quarter resolution and upsampled: visually identical,
         # about 16x less work.
+        # ---- round 44: per-source irradiance, meso-shading from the neural normals ---------
+        light_fields, meso_log = [], None
+        if light_passes:
+            core0 = (alpha > 0.99) & (cov > 0.5)
+            P = position_map(shot, fi, (h, w))
+            E_sum = np.zeros_like(E_t)
+            for lp in light_passes:
+                limg = cv2.imread(str(lp['dir'] / ('%06d.exr' % n)), -1)
+                if limg is None:
+                    raise SystemExit('No %s pass frame %06d under %s' % (lp['name'], n, lp['dir']))
+                E_k = limg[..., 2::-1].astype(np.float32) / RATIO_ALBEDO
+                if E_k.shape[:2] != (h, w):
+                    E_k = cv2.resize(E_k, (w, h), interpolation=cv2.INTER_LINEAR)
+                rec = lp['pf'][n]
+                pos = np.array(rec['bulb_world' if lp['source'] == 'bulb' else 'fill_world'], np.float32)
+                l_k, v_k, d_k = light_vectors(P, pos, cam_pos)
+                light_fields.append({'lp': lp, 'E': E_k, 'l': l_k, 'v': v_k, 'd': d_k, 'pos': pos})
+                E_sum += E_k
+            num = float(np.abs((E_sum - E_t)[core0] @ LUMA).mean())
+            den = max(float((E_t[core0] @ LUMA).mean()), 1e-9)
+            if pass_check is None:
+                pass_check = {'sum_vs_full_rel_mean_abs_per_frame': {},
+                              'note': 'bulb + fill passes against the full ratio render on the matte core, per frame; '
+                                      'the SUM is used as E_target'}
+            pass_check['sum_vs_full_rel_mean_abs_per_frame'][n] = num / den
+            if pass_check.get('max', 0.0) < num / den:
+                pass_check['max'] = num / den
+            if args.meso_sigma >= 0:
+                if meso_sigma is None:
+                    if args.meso_sigma > 0:
+                        meso_sigma = args.meso_sigma
+                    else:
+                        lf = next((f for f in light_fields if f['lp']['source'] == 'bulb'), light_fields[0])
+                        c0 = np.maximum(np.sum(nrm_full * lf['l'], -1), 0.0)
+                        meso_sigma, meso_table = meso_specular.crossover_sigma(lf['E'] @ LUMA, c0, core0 & (skin > 0.5))
+                        if meso_sigma <= 0:
+                            meso_sigma = 16.0
+                    print('meso-shading: sigma %.1f px (%s)' % (meso_sigma, 'MEASURED crossover' if args.meso_sigma == 0 else '--meso-sigma'), flush=True)
+                    for _row in meso_table:
+                        print('  crossover: %s' % json.dumps(_row), flush=True)
+                E_sum = np.zeros_like(E_t)
+                meso_log = {'sigma_px': meso_sigma, 'lights': {}}
+                for f_ in light_fields:
+                    wrap = 0.0
+                    if f_['lp']['source'] == 'fill':
+                        wrap = (args.meso_wrap_fill if args.meso_wrap_fill >= 0 else
+                                float(np.clip(np.median(f_['lp']['radius_m'] / np.maximum(f_['d'][core0], 1e-3)), 0.0, 1.0)))
+                    E_m, mod = meso_specular.meso_modulate(f_['E'], nrm_full, f_['l'], alpha > 0.5, meso_sigma,
+                                                            wrap=wrap, eps=args.meso_eps, mod_max=args.meso_max)
+                    mm = mod[core0]
+                    meso_log['lights'][f_['lp']['name']] = {'wrap': wrap, 'mod_p5': float(np.percentile(mm, 5)),
+                                                            'mod_p95': float(np.percentile(mm, 95)), 'mod_max': float(mm.max()),
+                                                            'clamped_frac': float((mm >= args.meso_max - 1e-6).mean())}
+                    f_['E'] = E_m
+                    E_sum += E_m
+            E_t = E_sum
         valid = (cov > 0.5)
         if args.extend_edges:
             E_t, valid = extend_irradiance(E_t, cov, args.edge_radius)
@@ -659,6 +786,15 @@ def main():
                               interpolation=cv2.INTER_LINEAR)
             E_t = np.where(valid[..., None], E_t, fill)
 
+        if anchor is None and light_passes:
+            _sk = (alpha > 0.99) & (cov > 0.5) & (skin > 0.5)
+            _rho = float(np.median((fg[_sk] @ LUMA) / np.maximum(E_s[_sk][:, 0], 1e-3))) if _sk.any() else 0.0
+            albedo_scale = {'plate_skin_albedo_p50': _rho, 'assumed_skin_albedo': args.skin_albedo,
+                            'scale': (_rho / args.skin_albedo if args.skin_albedo > 0 else 1.0),
+                            'why': 'the specular is computed in scene radiance units; the plate is a photograph at an '
+                                   'unknown exposure whose skin reads plate/E_source = %.3f. Real skin is ~0.35-0.45; '
+                                   'without this the highlight is 2-3x too strong against the diffuse it sits on' % _rho}
+            print('specular scale: plate skin albedo %.3f / assumed %.2f = %.3f' % (_rho, args.skin_albedo, albedo_scale['scale']), flush=True)
         if anchor is None:
             R0 = E_t / np.maximum(E_s, 1e-3)
             m = alpha > 0.99
@@ -670,7 +806,7 @@ def main():
         lit, R = gpu_image.ratio_composite(E_t, np.broadcast_to(E_s, E_t.shape).copy(), fg, alpha,
                                            anchor * args.exposure, args.max_stops, args.floor, 1.5)
 
-        spec_energy = 0.0
+        spec_energy, spec_frame = 0.0, None
         # The scene's dominant light direction is needed by the catchlight decision too, so it
         # is estimated whether or not the additive specular term is enabled.
         core = (alpha > 0.99) & valid
@@ -689,17 +825,44 @@ def main():
             # exactly how it looked. Wool is rough and its specular is weak and broad; skin is
             # the only strongly specular surface here.
             spec_w = args.specular_other + (1.0 - args.specular_other) * skin
-            spec = specular_term(nrm_full, ldir, vdir, rough, ndl)
+            spec = specular_term(nrm_full, ldir, vdir, rough, ndl) if args.specular_model == 'normalised' else None
             # G = normalised lobe x THE ACTUAL IRRADIANCE x gain. E_t already carries both the
             # magnitude and the colour of the light AND the renderer's occlusion, so a point in
             # shadow gets no highlight for free -- no separate gate, and no unit mismatch. The
             # first version normalised the colour to unit luminance and so discarded the
             # magnitude entirely, which is why it blew out.
-            G = (spec * spec_w * conc * args.specular)[..., None] * E_t * (anchor * args.exposure)
-            # A highlight brighter than a few times the local diffuse level is a bug, not a look.
-            G = np.minimum(G, 3.0 * np.maximum(lit, 1e-4))
+            if args.specular_model == 'normalised':
+                G = (spec * spec_w * conc * args.specular)[..., None] * E_t * (anchor * args.exposure)
+            else:
+                # Round 44: F D V per source, driven by pi x its own rendered irradiance (occlusion
+                # and the source's solid angle come from the render; the lobe's width from the
+                # roughness and the source's angular size). Units: the same anchor the plate is
+                # multiplied by, so a highlight and the diffuse it sits on are on one scale.
+                f0 = args.f0_other + (args.f0_skin - args.f0_other) * skin
+                G = np.zeros_like(lit)
+                spec_log = {}
+                for f_ in light_fields:
+                    L_k, fr_k = meso_specular.ggx_specular(f_['E'], nrm_full, f_['l'], f_['v'], f_['d'],
+                                                           f_['lp']['radius_m'], rough, f0)
+                    G_k = L_k * (spec_w * args.specular * anchor * args.exposure * albedo_scale['scale'])[..., None]
+                    spec_log[f_['lp']['name']] = {'peak_over_diffuse': float(np.max((G_k[core] @ LUMA) / np.maximum(lit[core] @ LUMA, 1e-4))) if core.any() else 0.0,
+                                                  'fr_max_skin': float(fr_k[core & (skin > 0.5)].max()) if (core & (skin > 0.5)).any() else 0.0}
+                    G += G_k
+            if args.specular_texture > 0 and args.specular_model == 'physical':
+                _pl = fg @ LUMA
+                _lo = gpu_image.gaussian_blur(_pl, args.specular_texture_sigma)
+                _tex = np.clip(_pl / np.maximum(_lo, 1e-4), 0.0, 2.0) ** args.specular_texture
+                G = G * _tex[..., None]
+            # A highlight brighter than --specular-clamp times the local diffuse is a bug, not a look.
+            clamp_hit = float(((G @ LUMA) > args.specular_clamp * np.maximum(lit @ LUMA, 1e-4))[core].mean()) if core.any() else 0.0
+            G = np.minimum(G, args.specular_clamp * np.maximum(lit, 1e-4))
             lit = lit + G
             spec_energy = float(np.mean(G[core] @ LUMA) / max(float(np.mean(lit[core] @ LUMA)), 1e-9)) if core.any() else 0.0
+            _gl = G @ LUMA
+            _pk = np.unravel_index(int(np.argmax(_gl)), _gl.shape)
+            spec_frame = {'energy_fraction': spec_energy, 'peak_added_display': float(linear_to_srgb(np.clip(_gl.max(), 0, 1))),
+                          'peak_xy': [int(_pk[1]), int(_pk[0])], 'peak_on_skin': float(skin[_pk]),
+                          'clamp_hit_frac': clamp_hit, 'per_light': (spec_log if args.specular_model == 'physical' else None)}
         # ---- corneal reflection -------------------------------------------------------------
         cl_log = None
         if args.catchlight > 0 and eye_geo:
@@ -838,6 +1001,7 @@ def main():
             stats.append({'frame': n, 'shot_frame': fi, 'catchlight': cl_log,
                           'eye_removal_px': removal_px, 'corneal': corneal_log,
                           'face_delight_px': delight_px, 'face_delight_energy_removed': delight_energy,
+                          'specular_frame': spec_frame, 'meso': meso_log,
                           'station': pf[n]['station'] if n in pf else None,
                           'ratio_luma_median': float(np.median(rl)),
                           'ratio_luma_p5': float(np.percentile(rl, 5)),
@@ -853,7 +1017,7 @@ def main():
     summary = {
         'shot': shot.name, 'frames': len(stats), 'output': str(out_dir),
         'eye_removal': (str(removal_dir) if removal_dir is not None else None),
-        'face_delight': ({'dir': str(delight_dir), 'gain': args.face_delight_gain,
+        'face_delight': ({'dir': str(delight_dir), 'sub': args.face_delight_sub, 'gain': args.face_delight_gain,
                           'what': 'estimated capture-room shine on the face (face_delight.py --stage separate) subtracted from the plate before the ratio; exact fg outside its weight'}
                          if delight_dir is not None else None),
         'corneal': ({'dir': str(corneal_dir), 'limbus_track': args.limbus_track,
@@ -881,6 +1045,15 @@ def main():
                                             'capping the whole map at 2.83:1, which is why it '
                                             'could never produce a terminator'},
         'exposure_anchor': anchor, 'compute': dev,
+        'light_passes': ([{'name': lp['name'], 'source': lp['source'], 'dir': str(lp['dir']), 'radius_m': lp['radius_m']} for lp in light_passes] or None),
+        'light_pass_check': pass_check,
+        'specular_albedo_scale': albedo_scale,
+        'meso_shading': ({'sigma_px': meso_sigma, 'source': ('MEASURED crossover, anchor frame, bulb pass' if args.meso_sigma == 0 else '--meso-sigma'),
+                          'crossover_table': meso_table, 'max': args.meso_max, 'eps': args.meso_eps,
+                          'model': 'per light pass k: E_k x c_k / lowpass_sigma(c_k), c_k = max(n_neural . l_k(pixel), 0) '
+                                   '(fill: wrapped by sin of its angular radius); above sigma the proxy stands, '
+                                   'below it the neural normals relief replaces the proxy (rounds/round43.md SS3 item 3)'}
+                         if (args.meso_sigma >= 0 and light_passes) else None),
         'plate_specular': {
             'mode': args.plate_specular,
             'layer': str(specular_dir(shot)),
@@ -900,7 +1073,11 @@ def main():
                     'R carries 1/E_source and brightens whatever the original key had shaded'},
         'output_resolution': list(out_res) if out_res else 'plate resolution',
         'specular': {'gain': args.specular, 'mean_fraction_of_image': None,
-                     'model': 'GGX + Schlick Fresnel on the NEURAL normals, added not multiplied',
+                     'model': ('GGX + Schlick Fresnel on the NEURAL normals, added not multiplied' if args.specular_model == 'normalised' else
+                               'round 44 PHYSICAL: F(v.h) D_GGX(n.h) V_Smith(n.l,n.v) x pi x E_k per light pass, source position per pixel, '
+                               'lobe widened by radius/(2 distance) for the source size, F0 skin %.3f, added not multiplied' % args.f0_skin),
+                     'clamp_over_diffuse': args.specular_clamp,
+                     'texture_modulation': ({'power': args.specular_texture, 'sigma_px': args.specular_texture_sigma} if args.specular_texture > 0 else None),
                      'light_direction': 'estimated per frame from the L1 moment of the rendered '
                                         'irradiance field, so it also works for environments',
                      'magnitude': 'normalised GGX lobe (peak 1) x the rendered irradiance, '

@@ -33,6 +33,32 @@ and **rejected**, for colour AND shape flicker and a sometimes-brown pupil, beca
 every term of the fill was refit per frame from a few dozen pixels. **No per-frame-refit
 fill can be temporally stable at a 24-pixel iris.** See `rounds/round32.md`.
 
+**Round 44 — MESO-SHADING from the neural normals is the lever for "plastic"; a specular on
+those normals is a Barbie doll unless scaled to the plate, broadened and broken up by her own
+pores. Read `rounds/round44.md` §2, §3, §5, §6 first. Video verdict NOT yet recorded.** The
+artist on the first specular sheet: *"Jesus christ this looks awful ... Now THAT's plastic"*
+and *"'plastic' meaning the skin lacked depth, imperfections ... now it looks like a shiny
+barbie doll"*; on `r44_meso_spec` (meso + specular at roughness 0.5, scaled by the plate's
+measured skin albedo 0.241 / an ASSUMED 0.40, times the plate's pore texture squared): *"I see
+an improvement"*. Built: `stress_proxy.py --ratio --only-light bulb|fill` (per-source
+irradiance passes; they sum to the full pass to ≤ 1.2 %), `light_geometry.py` (world position
+under every pixel from the proxy shell → per-pixel light and view vectors), `meso_specular.py`
++ `composite_ratio.py --light-passes ... --meso-sigma 0` (`E_k' = E_k × cos / lowpass_σ(cos)`
+on the neural normals per source, σ MEASURED as the crossover where the proxy stops
+resolving the Lambert: 14 px here) and `--specular-model physical` (F·D·V × π E_k', lobe
+widened by the source's angular size, `--skin-albedo`, `--specular-texture`, `--specular-clamp`).
+Candidate `r44_meso_spec`; defaults unchanged. **Measured and not solved:** the 12 px
+high-passed temporal step rose 23 % (median) / 54 % (p95) over R43 because the meso term
+rides the raw per-frame normals — if he sees crawl, filter the normals in time; the
+round-43 specular gates (sheen tracks log E, hot spot on the nose bridge) are NOT met by
+`audit_r43_shine.py`; the LIP GLOSS and HAIR CROWN SHEEN are the capture room's
+(`audit_r44_sheen.py`: sheen 2.1 at dark stations vs 1.4 at bright, corr −0.39) and the
+delight separation cannot take them (`--regions lips,hair` removes 9–18 % of the brightest
+decile, sheen unchanged); the fill panel reflecting in a shadowed eye is the RIG parking the
+fill BEHIND her face plane at the side stations (107° off the head axis at frame 73; fixing
+it re-renders the tour and the accepted eye pass — his call). E_source's own 12 px relief is
+0.21: most of the plate's relief is texture, not shading.
+
 **Round 43 — the capture room's shine on her SKIN is ~2 % and removing it is invisible; the
 "plastic skin" he sees is the SHADING, measured. Read `rounds/round43.md` §3, §3b, §5 first.**
 `face_delight.py` (DiffusionRenderer basecolor as a diffuse reference, an SH-L1 + falloff

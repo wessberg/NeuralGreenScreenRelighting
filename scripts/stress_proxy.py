@@ -135,6 +135,11 @@ ap.add_argument('--textured', action='store_true',
                 help='project the recovered albedo onto the proxy: her real skin, hair, suit '
                      'and microphone, lit by the rig instead of by the plate')
 ap.add_argument('--name', default='stress_proxy')
+ap.add_argument('--only-light', choices=('all', 'bulb', 'fill'), default='all',
+                help='round 44: render the irradiance of ONE source of the rig (the other, and '
+                     'the ambient trace, at zero). Light transport is linear, so bulb + fill = '
+                     'the full pass; composite_ratio.py --light-passes uses the two separately '
+                     'for a per-source specular and meso-shading. Writes stress_proxy_<light>.json')
 ap.add_argument('--only-output', default='',
                 help='comma-separated SOURCE FRAME NUMBERS to render, as named by the mesh files '
                      'and by composite_ratio.py --only-output. The tour still advances across the '
@@ -763,6 +768,11 @@ for n, fi in enumerate(frames):
     aim(fill_ob, target)
     fill_em.inputs['Strength'].default_value = 4.0 * (EXPOSURE / 900.0) * blackout * fill_scale
     fill_em.inputs['Color'].default_value = (fr, fg_, fb, 1.0)
+    if args.only_light == 'bulb':
+        fill_em.inputs['Strength'].default_value = 0.0
+        wbg.inputs['Strength'].default_value = 0.0
+    elif args.only_light == 'fill':
+        bulb_em.inputs['Strength'].default_value = 0.0
 
     corneal_rec = None
     if args.corneal:
@@ -874,7 +884,16 @@ for n, fi in enumerate(frames):
                     'bulb_distance_m': round(radius, 3),
                     'bulb_strength': round(strength, 1),
                     'hue': round(hue, 3), 'blackout': blackout != 1.0,
-                    'fill_scale': round(float(fill_scale), 3)})
+                    'fill_scale': round(float(fill_scale), 3),
+                    # Round 44: world positions, so a composite stage can point a lobe at
+                    # the source per pixel instead of reading one direction off the field.
+                    'target_world': [round(float(v), 4) for v in target],
+                    'bulb_world': [round(float(v), 4) for v in bulb_ob.location],
+                    'bulb_radius_m': 0.04, 'bulb_rgb': [r, g, b],
+                    'fill_world': [round(float(v), 4) for v in fill_ob.location],
+                    'fill_half_size_m': 0.30, 'fill_rgb': [fr, fg_, fb],
+                    'fill_strength': float(fill_em.inputs['Strength'].default_value),
+                    'only_light': args.only_light})
     if n % 10 == 0:
         print('PROXY %d/%d  %-20s d %.2f m  hue %.2f%s'
               % (n, len(frames), station, radius, hue,
@@ -892,6 +911,7 @@ report = {'shot': shot.name, 'frames': len(frames), 'fps': str(shot.frame_rate),
                   'key_off_stations': 'fill_scale 0: no front light at all, only a source behind '
                                       'the actor -- near-silhouette with a rim'},
           'textured': args.textured, 'ratio': args.ratio, 'catchlight': args.catchlight,
+          'only_light': args.only_light,
           'corneal': args.corneal,
           'corneal_pass': ({
               'model': 'dielectric corneal CAP truncated at the limbus (sin theta = 5.85/7.8), '
@@ -957,5 +977,6 @@ if not args.only_output:
     # reading a manifest whose 'ratio' flag says False.
     shot.log('stress_proxy_corneal.json' if args.corneal else
              'stress_proxy_catchlight.json' if args.catchlight
+             else 'stress_proxy_%s.json' % args.only_light if args.only_light != 'all'
              else 'stress_proxy.json').write_text(json.dumps(report, indent=2))
 print(json.dumps({k: report[k] for k in ('frames', 'output_dir', 'rig')}, indent=2))

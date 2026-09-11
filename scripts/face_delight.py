@@ -576,12 +576,30 @@ def stage_separate(shot, root, args):
             # the source and their shading is not the face's. The skin mask keeps them.
             core &= polygon_mask(pts, topo['face_oval'], core.shape, int(round(args.oval_grow * ipd)))
         fitmask = core & ~excl
+        # Round 44: the artist still sees the room's gloss on her LIPS and its sheen on her
+        # HAIR. The shading fit stays on skin; the PAINT footprint can take the lip vermilion
+        # (lips_outer minus a tight lips_inner) and the hair crown (matte, not skin, above the
+        # brows, within the crop). The model's basecolor is flat there as well.
+        paint = core & ~excl
+        if lm_found[f] and 'lips' in args.regions:
+            outer = polygon_mask(pts, topo['lips_outer'], core.shape, int(round(0.03 * ipd)))
+            inner = polygon_mask(pts, topo['lips_inner'], core.shape, int(round(0.015 * ipd)))
+            paint |= outer & ~inner
+        if lm_found[f] and 'hair' in args.regions:
+            al = cv2.imread(str(shot.alpha(f)), -1)
+            al = (al[..., 0] if al.ndim == 3 else al)[y0:y1, x0:x1]
+            yy, xx = np.mgrid[0:side, 0:side]
+            brow_y = float(min(pts[105, 1], pts[334, 1]))
+            fcx = float((pts[10, 0] + pts[152, 0]) / 2)
+            hair = (al > 0.5) & (skin < 0.5) & (yy < brow_y - 0.1 * ipd) & (np.abs(xx - fcx) < 1.6 * ipd)
+            hair = cv2.erode(hair.astype(np.uint8), np.ones((5, 5), np.uint8)) > 0
+            paint |= hair
         uv = np.stack(np.meshgrid((np.arange(side) - side / 2) / side, (np.arange(side) - side / 2) / side), -1).astype(np.float32)
         if fitmask.sum() > 500:
             C, P = fit_shading(Y, bc, fg, fitmask, order=args.sh_order, ridge=args.ridge, xy=uv if args.falloff else None)
         else:
             C, P = None, None
-        per[f] = dict(fg=fg, bc=bc, Y=Y, core=core, excl=excl, C=C, P=P, ipd=ipd, skin=skin, uv=uv)
+        per[f] = dict(fg=fg, bc=bc, Y=Y, core=core, excl=excl, C=C, P=P, ipd=ipd, skin=skin, uv=uv, paint=paint)
 
     # Temporal filter of the shading coefficients: symmetric median over `win` frames, so a
     # single frame's fit cannot flicker the whole face (round 37's lesson, applied to C).
@@ -622,7 +640,7 @@ def stage_separate(shot, root, args):
             # Clamp branches: if a < 0, refit s alone; if s < 0, nothing to remove.
             s_only = (rg / gg).clamp_min(0)
             s = torch.where(a < 0, s_only, s).clamp_min(0)
-            mask_np = (d['core'] & ~d['excl']).astype(np.uint8)
+            mask_np = d['paint'].astype(np.uint8)
             mask = torch.from_numpy(mask_np.astype(np.float32)).to(dev)
             # Feather: S fades to zero over `feather` IPD inside the mask edge, so the face
             # oval, the eye and mouth cut-outs and the skin mask never draw a step.
@@ -640,7 +658,7 @@ def stage_separate(shot, root, args):
                 x = torch.nn.functional.conv2d(x, gk.view(1, 1, -1, 1), padding=(ksz // 2, 0))
                 return x[0, 0]
             s_lp = blur(s) / blur(mask).clamp_min(1e-3) * (mask > 0)
-            inside = mask > 0
+            inside = torch.from_numpy((d['core'] & ~d['excl'])).to(dev)
             floor = float(s_lp[inside].median()) if inside.any() else 0.0
             s_lp = (s_lp - floor).clamp_min(0) * mask * feather
             S = s_lp[..., None] * gt
@@ -657,18 +675,18 @@ def stage_separate(shot, root, args):
                              C=Cf[k].tolist(), P=Pf[k].tolist()))
             S_stack.append(lum_s)
         for sub, arr in (('S', np.rint(np.clip(S_full, 0, 1) * 65535).astype(np.uint16)), ('weight', wfull)):
-            (root / 'separate' / sub).mkdir(parents=True, exist_ok=True)
-            cv2.imwrite(str(root / 'separate' / sub / ('%06d.png' % f)), np.ascontiguousarray(arr[..., ::-1]) if arr.ndim == 3 else arr)
+            (root / args.separate_name / sub).mkdir(parents=True, exist_ok=True)
+            cv2.imwrite(str(root / args.separate_name / sub / ('%06d.png' % f)), np.ascontiguousarray(arr[..., ::-1]) if arr.ndim == 3 else arr)
         # Review tiles: plate | plate - S | S x3, crop scale.
         prev = np.concatenate([np.rint(np.clip(linear_to_srgb(d['fg']), 0, 1) * 255),
                                np.rint(np.clip(linear_to_srgb(np.maximum(d['fg'] - S_full[y0:y1, x0:x1], 0)), 0, 1) * 255),
                                np.rint(np.clip(linear_to_srgb(S_full[y0:y1, x0:x1] * 3), 0, 1) * 255)], 1).astype(np.uint8)
-        save_rgb8(root / 'separate' / 'preview' / ('%06d.png' % f), prev)
+        save_rgb8(root / args.separate_name / 'preview' / ('%06d.png' % f), prev)
     st = np.stack(S_stack)
     skin_all = np.mean(np.stack([per[f]['core'] for f in frames]), 0) > 0.9
     step = np.abs(np.diff(st, axis=0))
     fitted = [r for r in rows if r['fitted']]
-    summary = dict(frames=len(frames), sigma_px=sigma, ipd_px=ipd_med, shading_window_frames=win,
+    summary = dict(frames=len(frames), sigma_px=sigma, ipd_px=ipd_med, shading_window_frames=win, regions=args.regions,
                    illuminant_rgb=g.tolist(),
                    S_over_plate_skin=dict(p50=float(np.median([r['S_over_plate_skin'] for r in fitted])),
                                           max=float(max(r['S_over_plate_skin'] for r in fitted))),
@@ -677,8 +695,8 @@ def stage_separate(shot, root, args):
                    S_temporal_spread_skin_p95=float(np.percentile(np.percentile(st, 95, 0)[skin_all] - np.percentile(st, 5, 0)[skin_all], 95)),
                    floor_p50=float(np.median([r['floor'] for r in fitted])),
                    code_sha256=sha(__file__))
-    write_json(root / 'separate' / 'separate.json', dict(summary=summary, per_frame=rows))
-    write_json(shot.logs / ('%s_separate.json' % root.name), dict(summary=summary, per_frame=rows))
+    write_json(root / args.separate_name / 'separate.json', dict(summary=summary, per_frame=rows))
+    write_json(shot.logs / ('%s_%s.json' % (root.name, args.separate_name)), dict(summary=summary, per_frame=rows))
     print(json.dumps(summary, indent=2))
 
 
@@ -709,6 +727,12 @@ def main():
     ap.add_argument('--ridge', type=float, default=0.05, help='ridge on the directional SH terms, in DC units')
     ap.add_argument('--smooth', type=float, default=0.02, help='low-pass sigma on the shine, as a fraction of the IPD')
     ap.add_argument('--shading-window', type=float, default=0.1, help='SECONDS of symmetric median on the shading fit')
+    ap.add_argument('--regions', default='',
+                    help="round 44: extra PAINT regions for --stage separate, comma-separated from 'lips' "
+                         '(the vermilion) and \'hair\' (the crown: matte, not skin, above the brows). The '
+                         'shading is still fitted on skin only')
+    ap.add_argument('--separate-name', default='separate',
+                    help='output subfolder of the separate stage (composite_ratio.py --face-delight-sub)')
     ap.add_argument('--exclude-grow', type=float, default=0.06, help='eye / mouth-interior exclusion growth, fraction of IPD')
     args = ap.parse_args()
     shot = from_args(args)
