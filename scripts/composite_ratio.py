@@ -303,7 +303,7 @@ def load_eye_tracks(shot, limbus_name, eyelid_name):
 
 
 def corneal_matte(shape, centre, radius, lid, feather=1.0, iris_feather=1.5, reach=2.9,
-                  landmarks=None):
+                  landmarks=None, limbus=True):
     """Soft matte of the OPEN CORNEA for one eye: inside the fitted lids AND inside the limbus.
 
     The lid matte is what got stage 11d rejected when it was missing (silver arcs on the upper
@@ -349,9 +349,12 @@ def corneal_matte(shape, centre, radius, lid, feather=1.0, iris_feather=1.5, rea
         d = landmark_lid_distance(points, lid_ids, (slice(y0, y1), slice(x0, x1)))
         m = np.clip(d / max(feather, 1e-6), 0.0, 1.0).astype(np.float32)
         source = 'mediapipe_polygon'
-    rho = np.hypot(xx - cx, yy - cy) / max(radius, 1e-6)
-    m *= np.clip((1.0 - rho) / max(iris_feather / max(radius, 1e-6), 1e-6), 0.0, 1.0
-                 ).astype(np.float32)
+    if limbus:
+        rho = np.hypot(xx - cx, yy - cy) / max(radius, 1e-6)
+        m *= np.clip((1.0 - rho) / max(iris_feather / max(radius, 1e-6), 1e-6), 0.0, 1.0
+                     ).astype(np.float32)
+    # Round 42 (`limbus=False`): the pass carries a scleral globe as well as the cap, so the
+    # matte is the fitted lids only and the fill's sheen continues past the limbus.
     return (slice(y0, y1), slice(x0, x1)), m, source
 
 
@@ -434,6 +437,10 @@ def main():
                          'added: the render is sharper than the photograph (measure_glint_psf.py)')
     ap.add_argument('--corneal-gain', type=float, default=1.0)
     ap.add_argument('--corneal-feather', type=float, default=1.0)
+    ap.add_argument('--corneal-matte', choices=('cornea', 'lids'), default='cornea',
+                    help='round 42: `lids` mattes the corneal pass by the fitted lids ONLY (no '
+                         'limbus gate), for a pass rendered with stress_proxy.py --corneal '
+                         '--globe, whose wet sclera reflects too. `cornea` is round 41')
     ap.add_argument('--extend-edges', action='store_true',
                     help='experimental: nearest-extend irradiance from the eroded reliable interior')
     ap.add_argument('--edge-radius', type=int, default=8,
@@ -775,7 +782,7 @@ def main():
                         and np.isfinite(lm_points[fi]).all()):
                     lm = (lm_points[fi], lm_topology['eyelid_' + side])
                 mt = corneal_matte((h, w), centre, radius, lid_rec, args.corneal_feather,
-                                   landmarks=lm)
+                                   landmarks=lm, limbus=(args.corneal_matte == 'cornea'))
                 if mt is None:
                     corneal_log['eyes'][side] = {'added': False, 'why': 'no lid fit or polygon'}
                     continue
@@ -819,6 +826,7 @@ def main():
         'corneal': ({'dir': str(corneal_dir), 'limbus_track': args.limbus_track,
                      'eyelid_track': args.eyelid_track, 'blur_sigma_px': args.corneal_blur,
                      'gain': args.corneal_gain, 'feather_px': args.corneal_feather,
+                     'matte_mode': args.corneal_matte,
                      'matte': 'tracked upper/lower(/lower_iris) parabolas AND the limbus disc, '
                               'feathered; without a lid fit the mediapipe eyelid polygon, as '
                               'the eye pass does; with neither, nothing',

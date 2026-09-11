@@ -33,6 +33,28 @@ and **rejected**, for colour AND shape flicker and a sometimes-brown pupil, beca
 every term of the fill was refit per frame from a few dozen pixels. **No per-frame-refit
 fill can be temporally stable at a 24-pixel iris.** See `rounds/round32.md`.
 
+**Round 42 — the WET EYE is built and awaits his verdict. Read `rounds/round42.md` §1, §4, §5,
+§6 first.** The eye is now ONE surface of revolution per eye (`stress_proxy.py --corneal --globe
+--socket`): the 7.8 mm cornea, a 1 mm concave limbal fillet, the 12 mm scleral globe (tear film
+over conjunctiva, `--sclera-roughness` ASSUMED 0.08 — measured: the capture room's softbox
+reflects in the globe UNDER the cornea on 100 % of open eyes, so the plate fits nothing here),
+inside a black head-attached SOCKET cup (mediapipe head pose, visual-field cuts nasal 60 /
+temporal 100 / up 60 / down 75°, 24 mm — 14 mm let the behind-rim bulb slip past). Without the
+socket the globe reflected the fill panel from BEHIND her head onto the sclera. The old room's
+glints on the white of her eye are removed on top of the accepted iris run
+(`sclera_glint_removal.py`, footprint held in time, fill from the surrounding sclera, flicker
+equal to the untouched sclera's); the corner tear-lake glint is left (`--corners`). Composite:
+`composite_ratio.py --eye-removal r42_wet_removal --corneal-dir r42_eye_pass --corneal-blur
+0.35 --corneal-matte lids` → `r42_wet`. Validated: bulb in the globe vs the nearest rendered
+peak 0.04 px median (p95 0.15) on the 25 socket-open eyes, wrong conventions 6–20 px, cap
+unchanged at 0.23 px. **Not built, and measured why:** a tear line (the plate's lower-lid band
+is ≤ 0.09 display above the sclera; a meniscus model predicts glints 9–19 px from where the
+band is brightest). **Physics he may reject on sight:** a source 60–80° off axis reflects TWICE
+at the limbus (cornea and globe, 5 px apart — the fillet cannot bridge it, a real sulcus does
+not either); the 60 cm fill at 0.6 m images as a flat clipped lobe on the sclera at camera
+left/right and as a second grey square beside the corneal one at 127. Videos
+`reporter_a/final/r42_wet_compare.mp4`, `r42_wet_eyes.mp4`, `r42_wet_panel.mp4`.
+
 **Round 41 — the softbox removal is ACCEPTED (`r40_floorB`), and the tour's bulb now reflects
 in her corneas on top of it. Read `rounds/round41.md` §4 and §6 first.** The artist: *"I'm
 pretty satisfied with our removal of the softbox reflection from the eyes now"*, then *"make
@@ -658,8 +680,10 @@ Every stage takes `--shot`. Interpreter is the pipeline venv unless the row says
 | 11d | ~~catchlight~~ | `stress_proxy.py --catchlight` (Blender) | `composite/catchlight_render/*.exr` | renderer looks sound and its validator passes; **the compositing of it is rejected and `--catchlight` defaults to 0** |
 | 11e | **corneal catchlight** | `render_eye_catchlight.py` (Blender) | `composite/r34_catchlight/*.exr` | the scene's own reflection in a corneal cap; validated by `validate_eye_catchlight.py`. Parked in round 34; UNPARKED in round 41 for the tour (below) |
 | 11e′ | **corneal reflection of the tour** | `stress_proxy.py --corneal` (Blender) | `composite/r41_corneal/*.exr` | round 41: the same cap lit by the bulb tour, anchored on the fitted iris centre behind the measured gaze (`corneal_anchor.anchor_limbus`). Checked by `validate_tour_catchlight.py` (`--plate-glint` grades the sphere against the plate's own softbox glint; `--render` against an independent reflection model with wrong-convention controls) and `measure_glint_psf.py` (plate vs render sharpness → `--corneal-blur`) |
+| 11e″ | **wet eye: globe + socket** | `stress_proxy.py --corneal --globe --socket` (Blender) | `composite/r42_eye_pass/*.exr` | round 42: ONE surface of revolution per eye -- the corneal sphere, a 1 mm concave limbal fillet, and the 12 mm scleral globe (tear film over conjunctiva, rougher lobe, `--sclera-roughness` ASSUMED 0.08: the plate's softbox reflects in the globe UNDER the cornea on every open eye, so nothing fits it) -- inside a black head-attached SOCKET cup (mediapipe head pose, visual-field limits nasal 60 / temporal 100 / up 60 / down 75 deg, 24 mm) so a source behind or beside her head stops reflecting. Validated by `validate_tour_catchlight.py --render <pass> --globe` (bulb reflected in the globe vs the nearest rendered peak outside the junction, wrong conventions alongside). Composited with `--corneal-matte lids` |
+| 11g | **scleral glint removal** | `sclera_glint_removal.py` (GPU) | `composite/<name>/` (eye-pass layout: removal/ weight/ source/) | round 42: the capture room's reflections on the WHITE of her eye (the blob `audit_r42_wet.py` finds outside the limbus, inside the fitted opening), footprint held in time, filled from the sclera around it, applied ON TOP of the accepted iris run and its weights unioned; corner (tear-lake) glints left unless `--corners`. `composite_ratio.py --eye-removal <name>` then substitutes both |
 | 11f | **eye: one canonical iris** | `eye_removal_gpu.py` (GPU, same CLI; `eye_soft_removal.py --fill-iris` is the CPU reference) | `composite/<name>/` | **Round 40's command is in `rounds/round40.md` §7** (round 39's plus `--lid-floor` on `eyelid_track_wtv40.json`; `removal.json` names each dropped eye's `drop_stage`). **Round 39's command is in `rounds/round39.md` §7** (adds `--lid-claim`, `--skin-gate`, the trusted tracks, `--dump` for `audit_r39_classes.py`); the GPU pass refuses flags it does not implement. Built once in the registered eye frame. **Round 37's accepted command is in `rounds/round37.md` §7** (softbox region, parabola lash line, rebuilt canonical, temporally filtered edge shading, limbus gate, lid bridging rules). `--lid-shadow` is DEFAULT OFF (round 36 §4). Holds every frame in RAM packed by `frame_store.py` (≈12 MB/frame, bit exact); the full-clip command is `rounds/round38.md` §7. Audited by `audit_r37_eyes.py` + `audit_r37_flicker.py`; **looked at** with `review_r37_sheets.py`, `review_r37_temporal.py`, `review_r37_panel.py` |
-| 12 | **ratio composite** | `composite_ratio.py` | `composite/ratio/` | `out = plate × R` by default. Round 41: `--eye-removal <run>` substitutes the eye pass's pixels under the ratio (exact fg outside its weight); `--corneal-dir <pass> --corneal-blur 0.35` ADDS the corneal reflection through the fitted lids and limbus (mediapipe polygon where no lid fit, nothing where no limbus fit) in the ratio's own anchor units. `--plate-specular remove` and the round-5 `--catchlight` are rejected experiments |
+| 12 | **ratio composite** | `composite_ratio.py` | `composite/ratio/` | `out = plate × R` by default. Round 41: `--eye-removal <run>` substitutes the eye pass's pixels under the ratio (exact fg outside its weight); `--corneal-dir <pass> --corneal-blur 0.35` ADDS the corneal reflection through the fitted lids and limbus (mediapipe polygon where no lid fit, nothing where no limbus fit) in the ratio's own anchor units. Round 42: `--corneal-matte lids` drops the limbus gate for a `--globe` pass, whose wet sclera reflects too (the matte is then the fitted lids only). `--plate-specular remove` and the round-5 `--catchlight` are rejected experiments |
 | 12b | composite (gain map) | `composite_shot.py` | `composite/`, `intermediate/linear_4k/` | legacy path; loads background **per frame** |
 | 12c | **review video** | `review_video.py` | `final/*.mp4` | what the artist watches; `--compare` puts the before on the LEFT with both halves labelled |
 | 13 | master | `master_export.py` | `master/*.mov` | ProRes 4444 / DNxHR 444, 4:4:4 10-bit |

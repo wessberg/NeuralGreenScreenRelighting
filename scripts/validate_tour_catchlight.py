@@ -247,6 +247,144 @@ def peak_of(rgb, cx, cy, r):
             'energy': float(L.sum())}
 
 
+def local_maxima_outside(rgb, cx, cy, r, lo=1.07, hi=2.0, floor=0.03):
+    """Every local maximum (3x3, above `floor`) OUTSIDE the corneo-scleral junction and inside
+    `hi` limbus radii, as sub-pixel centroids of its 3x3 neighbourhood, with its level. The
+    globe shows the bulb AND the fill panel's broad lobe at once, and at some stations the
+    lobe is the brighter, so the test is 'is there a peak where the model says', per
+    convention, not 'is the brightest peak there'."""
+    x0, x1 = int(cx - hi * r - 3), int(cx + hi * r + 4)
+    y0, y1 = int(cy - hi * r - 3), int(cy + hi * r + 4)
+    L = rgb[y0:y1, x0:x1] @ LUMA
+    yy, xx = np.mgrid[y0:y1, x0:x1]
+    rho = np.hypot(xx - cx, yy - cy) / r
+    mx = cv2.dilate(L, np.ones((3, 3), np.uint8))
+    ys, xs = np.where((L == mx) & (L > floor) & (rho > lo) & (rho < hi))
+    out = []
+    for y, x in zip(ys, xs):
+        w = L[max(y - 1, 0):y + 2, max(x - 1, 0):x + 2]
+        wy = yy[max(y - 1, 0):y + 2, max(x - 1, 0):x + 2]
+        wx = xx[max(y - 1, 0):y + 2, max(x - 1, 0):x + 2]
+        out.append((np.array([(wx * w).sum() / w.sum(), (wy * w).sum() / w.sum()]),
+                    float(L[y, x])))
+    return out
+
+
+def globe_check(shot, eye_geo, track, cam, render_dir, gaze_model, smooth_flag):
+    """Round 42: the bulb reflected in the scleral GLOBE, by the same Alhazen solve, against the
+    rendered peak outside the junction -- scored only on eyes where the prediction itself lands
+    outside the junction (elsewhere the globe is under the cornea and nothing of it renders).
+    Three wrong conventions alongside, as for the cap."""
+    man = json.loads((render_dir / 'render_manifest.json').read_text(encoding='utf-8'))
+    cp = man.get('corneal_pass') or {}
+    g = cp.get('globe')
+    if not g:
+        print('GLOBE: pass has no globe', flush=True)
+        return None
+    back, Rg = g['back_mm'] / 1000.0, g['radius_mm'] / 1000.0
+    junction_r = g['junction_mm'] / 5.85            # in iris radii
+    sock = cp.get('socket')
+
+    def socket_blocks(side, fwd, point, source):
+        """Does the head socket (as the renderer built it) hide `source` from `point`? The
+        cup is centred on the globe and the ray starts on its surface, so this is the
+        renderer's own rule applied from the surface point: a few degrees of parallax at
+        24 mm, none of the geometry."""
+        if sock is None:
+            return False
+        fwd = np.asarray(fwd, float)
+        fwd = fwd / np.linalg.norm(fwd)
+        up = np.array([0.0, 0.0, 1.0])
+        yv = up - (up @ fwd) * fwd
+        yv /= np.linalg.norm(yv)
+        xv = np.cross(yv, fwd)                       # Blender to_track_quat('Z', 'Y'): X = Y x Z
+        d = np.asarray(source, float) - np.asarray(point, float)
+        d /= np.linalg.norm(d)
+        theta = np.degrees(np.arccos(np.clip(d @ fwd, -1, 1)))
+        temporal_x = 1.0 if side == 'left' else -1.0
+        phi = np.arctan2(d @ yv, (d @ xv) * temporal_x)
+        cs, sn = np.cos(phi) ** 2, np.sin(phi) ** 2
+        th_h = sock['temporal_deg'] if np.cos(phi) >= 0 else sock['nasal_deg']
+        th_v = sock['up_deg'] if np.sin(phi) >= 0 else sock['down_deg']
+        return bool(theta > th_h * cs + th_v * sn)
+    smooth = smoothed_iris_centres(track) if smooth_flag else None
+    spheres = {(fi, side): (C, R, px, e) for fi, side, C, R, px, e in
+               eye_frames(shot, eye_geo, track, smooth, gaze_model, cam)}
+    rows = []
+    for rec in cp.get('per_frame') or []:
+        n, fi = rec['out_frame'], rec['shot_frame']
+        p = render_dir / ('%06d.exr' % n)
+        if not p.exists():
+            continue
+        rgb = None
+        S = np.asarray(rec['bulb_world'], float)
+        for side, e in rec['eyes'].items():
+            if not e.get('rendered') or not e.get('globe') or (fi, side) not in spheres:
+                continue
+            C, R, px, geo = spheres[(fi, side)]
+            gz = np.asarray(e['gaze_world'], float)
+            Cg = C - back * gz
+            drift = float(np.linalg.norm(Cg - np.asarray(e['globe']['centre_world'])))
+            r_px = float(e['iris_radius_px'])
+            q = project(reflect_point(Cg, Rg, cam['pos'], S)[0], cam['pos'], cam['fx'],
+                        cam['W'], cam['H'])
+            rho_pred = float(np.hypot(q[0] - px[0], q[1] - px[1]) / r_px)
+            p_ref = reflect_point(Cg, Rg, cam['pos'], S)[0]
+            blocked = (socket_blocks(side, e['socket']['head_forward_world'], p_ref, S)
+                       if e.get('socket') else False)
+            row = {'out_frame': n, 'shot_frame': fi, 'side': side, 'globe_drift_m': drift,
+                   'pred_rho': rho_pred, 'socket_blocks': blocked,
+                   'scored': rho_pred > junction_r and rho_pred < 2.0}
+            if row['scored']:
+                if rgb is None:
+                    rgb = cv2.imread(str(p), -1)[..., 2::-1].astype(np.float32)
+                peaks = local_maxima_outside(rgb, px[0], px[1], r_px, lo=junction_r)
+                row['rendered_peak'] = max([pk[1] for pk in peaks] or [None]) if peaks else None
+                if peaks:
+                    eye_z = Cg[2]
+                    conv = {
+                        'reflection': lambda: reflect_point(Cg, Rg, cam['pos'], S)[0],
+                        'bulb_x_mirrored': lambda: reflect_point(Cg, Rg, cam['pos'],
+                                                                 S * [-1, 1, 1])[0],
+                        'bulb_z_mirrored': lambda: reflect_point(
+                            Cg, Rg, cam['pos'], np.array([S[0], S[1], 2 * eye_z - S[2]]))[0],
+                        'normal_not_reflection': lambda: Cg + Rg * (S - Cg) / np.linalg.norm(S - Cg),
+                        'cap_not_globe': lambda: reflect_point(C, R, cam['pos'], S)[0],
+                    }
+                    for k, f in conv.items():
+                        v = project(f(), cam['pos'], cam['fx'], cam['W'], cam['H'])
+                        dists = [float(np.linalg.norm(v - c)) for c, _ in peaks]
+                        row['offset_px_' + k] = min(dists)          # nearest rendered peak
+                        row['peak_at_' + k] = float(peaks[int(np.argmin(dists))][1])
+            rows.append(row)
+    pf = {r['out_frame']: r for r in man['per_frame']}
+    for r in rows:
+        r['station'] = pf.get(r['out_frame'], {}).get('station')
+    cand = [r for r in rows if r['scored']]
+    open_ = [r for r in cand if not r['socket_blocks']]
+    blocked = [r for r in cand if r['socket_blocks']]
+    scored = [r for r in open_ if r.get('rendered_peak')]
+    summary = {'eyes_with_globe': len(rows), 'eyes_prediction_outside_junction': len(cand),
+               'eyes_socket_open': len(open_), 'eyes_socket_blocked': len(blocked),
+               'eyes_open_with_no_peak': len(open_) - len(scored),
+               'eyes_scored': len(scored),
+               # a blocked eye must NOT show a peak where the unblocked model says
+               'blocked_eyes_with_peak_within_1.5px': sum(
+                   1 for r in blocked if r.get('offset_px_reflection', 99) < 1.5),
+               'junction_iris_radii': junction_r,
+               'globe_drift_max_m': max([r['globe_drift_m'] for r in rows] or [0.0]),
+               'stations_scored': sorted({r['station'] for r in scored})}
+    for k in ('reflection', 'bulb_x_mirrored', 'bulb_z_mirrored', 'normal_not_reflection',
+              'cap_not_globe'):
+        v = np.array([r['offset_px_' + k] for r in scored if 'offset_px_' + k in r])
+        if v.size:
+            summary['offset_px_' + k] = {'median': float(np.median(v)),
+                                         'p95': float(np.percentile(v, 95)), 'max': float(v.max())}
+    for k, v in summary.items():
+        print('GLOBE', k, v, flush=True)
+    return {'summary': summary, 'rows': rows}
+
+
 def render_check(shot, eye_geo, track, cam, render_dir, gaze_model, smooth_flag):
     man = json.loads((render_dir / 'render_manifest.json').read_text(encoding='utf-8'))
     cp = man.get('corneal_pass') or {}
@@ -288,7 +426,10 @@ def render_check(shot, eye_geo, track, cam, render_dir, gaze_model, smooth_flag)
             n_ref = reflect_point(C, R, cam['pos'], S)[1]
             axis = cam['pos'] - C
             axis /= np.linalg.norm(axis)
-            in_cap = float(np.degrees(np.arccos(np.clip(n_ref @ axis, -1, 1)))) < 48.6
+            # The cap's half-angle: round 41's 48.6 deg (sin = 5.85/7.8), or the extended cap
+            # of a --globe pass, whose manifest records cap_cos.
+            cap_deg = float(np.degrees(np.arccos(cp['globe']['cap_cos']))) if cp.get('globe') else 48.6
+            in_cap = float(np.degrees(np.arccos(np.clip(n_ref @ axis, -1, 1)))) < cap_deg
             row = {'out_frame': n, 'shot_frame': fi, 'side': side, 'station': None,
                    'bulb_in_cap': in_cap, 'sphere_drift_m': drift,
                    'rendered_peak': None if pk is None else pk['peak'],
@@ -340,6 +481,10 @@ def main():
     ap.add_argument('--models', default='camera,geometry')
     ap.add_argument('--render', default='', help='composite/<dir> of a --corneal pass')
     ap.add_argument('--gaze', default='camera', help='gaze model the render used')
+    ap.add_argument('--globe', action='store_true',
+                    help='round 42: also score the bulb reflected in the scleral globe of a '
+                         '--corneal --globe pass, outside the junction, with wrong-convention '
+                         'controls')
     ap.add_argument('--raw-anchor', action='store_true')
     ap.add_argument('--out', default='')
     args = ap.parse_args()
@@ -358,6 +503,9 @@ def main():
         if not rd.is_absolute():
             rd = shot.dir / rd
         out['render'] = render_check(shot, eye_geo, track, cam, rd, args.gaze, not args.raw_anchor)
+        if args.globe:
+            out['globe'] = globe_check(shot, eye_geo, track, cam, rd, args.gaze,
+                                       not args.raw_anchor)
     if args.out:
         p = Path(args.out)
         p = p if p.is_absolute() else shot.log(args.out)

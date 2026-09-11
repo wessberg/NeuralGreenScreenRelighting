@@ -88,6 +88,44 @@ ap.add_argument('--gaze', choices=('geometry', 'camera'), default='geometry',
 ap.add_argument('--raw-anchor', action='store_true',
                 help='--corneal: anchor on the per-frame limbus centre instead of its local '
                      'quadratic (+/-2 frames)')
+ap.add_argument('--globe', action='store_true',
+                help='round 42: with --corneal, add the WET SCLERA -- a second dielectric sphere '
+                     'per eye (the globe, --globe-mm) centred --globe-back-mm behind the corneal '
+                     'centre along the gaze, tear film over conjunctiva so a rougher lobe '
+                     '(--sclera-roughness), and the corneal cap extended to where the two spheres '
+                     'meet. The fill and the bulb then continue past the limbus the way they do '
+                     'on a real eye. composite_ratio.py --corneal-matte lids adds it through the '
+                     'lids only')
+ap.add_argument('--globe-mm', type=float, default=12.0,
+                help='scleral globe radius, mm (ASSUMED anatomical, ~12)')
+ap.add_argument('--globe-back-mm', type=float, default=5.6,
+                help='globe centre this far behind the corneal centre along the gaze (ASSUMED; '
+                     'with 7.8 / 12 mm the spheres meet at 6.28 mm from the axis, 1.07 iris radii)')
+ap.add_argument('--socket', action='store_true',
+                help='round 42: with --globe, a black occluder CUP behind each eye, attached to '
+                     'the HEAD (mediapipe head pose from face_landmarks.npz, the convention '
+                     'eye_geometry.py verified), open only within the visual-field limits '
+                     '(--socket-*-deg), so a source behind or beside her head stops reflecting in '
+                     'the globe. Without it the globe sees backwards: at the front-far station '
+                     'the fill panel BEHIND her painted an arc on the lower-temporal sclera')
+ap.add_argument('--socket-nasal-deg', type=float, default=60.0)
+ap.add_argument('--socket-temporal-deg', type=float, default=100.0)
+ap.add_argument('--socket-up-deg', type=float, default=60.0)
+ap.add_argument('--socket-down-deg', type=float, default=75.0)
+ap.add_argument('--socket-mm', type=float, default=24.0,
+                help='cup radius about the globe centre. Not 14: a ray leaving the 12 mm globe at '
+                     'its edge exits a 14 mm cup well inside its own direction angle and slipped '
+                     'past the temporal rim (behind-rim bulb at 134 deg still glinted); at 24 mm, '
+                     'about the orbital rim, exit angle and direction agree')
+ap.add_argument('--fillet-mm', type=float, default=1.0,
+                help='--globe: radius of the concave fillet (the limbal sulcus) joining the '
+                     'corneal sphere to the globe, tangent to both. Two bare spheres meet at a '
+                     '22 deg crease and a source 60-80 deg off axis reflected TWICE, 5 px apart '
+                     '(cap and globe); through the fillet it is one streak. 0 = no fillet')
+ap.add_argument('--sclera-roughness', type=float, default=0.08,
+                help='GGX roughness of the tear film over the conjunctiva. ASSUMED: the plate '
+                     'offers nothing to fit it to (audit_r42_wet.py: the softbox reflects in the '
+                     'globe UNDER the cornea on every open eye)')
 ap.add_argument('--ratio', action='store_true',
                 help='render the IRRADIANCE FIELD for the ratio composite instead of a picture '
                      'of her: neutral albedo, linear EXR out. composite_ratio.py turns it into '
@@ -425,6 +463,72 @@ if args.catchlight:
 #     sin(theta) = iris_radius / cornea_radius = 5.85 / 7.8 = 0.75  ->  theta = 48.6 deg
 CAP_COS = math.cos(math.asin(min(0.999, 5.85 / 7.8)))
 IRIS_R = 0.00585
+
+
+def sphere_junction(r_c, r_g, back):
+    """Radial distance from the axis where the corneal sphere (radius r_c) meets the globe
+    (radius r_g, centre `back` behind the corneal centre): the corneo-scleral junction."""
+    t = (r_g * r_g - r_c * r_c - back * back) / (2.0 * back)     # axial offset from C_c
+    return math.sqrt(max(r_c * r_c - t * t, 0.0))
+
+
+if args.globe:
+    # Extend the cap to the junction so the two surfaces meet with no step; the composite's
+    # lids-only matte no longer needs the limbus gate the truncated cap wanted.
+    _junction = sphere_junction(7.8, args.globe_mm, args.globe_back_mm)
+    CAP_COS = math.cos(math.asin(min(0.999, _junction / 7.8)))
+
+
+def eye_profile(r_c, r_g, back, fillet, n_c=40, n_f=12, n_g=90):
+    """(rho, z) samples of ONE surface of revolution about the gaze axis, z measured from the
+    corneal centre toward the apex: the corneal sphere, a concave fillet tangent to both
+    spheres (the limbal sulcus), then the globe round to its back pole. Also returns the index
+    where the cornea ends (for the material split). Units as given (mm)."""
+    if fillet <= 0:
+        t = (r_g * r_g - r_c * r_c - back * back) / (2.0 * back)
+        th_j = math.acos(max(-1.0, min(1.0, t / r_c)))
+        ph_j = math.acos(max(-1.0, min(1.0, (t + back) / r_g)))
+        prof = [(r_c * math.sin(a), r_c * math.cos(a))
+                for a in [th_j * i / n_c for i in range(n_c + 1)]]
+        prof += [(r_g * math.sin(a), -back + r_g * math.cos(a))
+                 for a in [ph_j + (math.pi - ph_j) * (i + 1) / n_g for i in range(n_g)]]
+        return prof, n_c
+    # fillet circle F, externally tangent to both: |F-A| = r_c + f, |F-B| = r_g + f
+    ra, rb = r_c + fillet, r_g + fillet
+    zf = (rb * rb - ra * ra - back * back) / (2.0 * back)
+    xf = math.sqrt(max(ra * ra - zf * zf, 0.0))
+    ta = (xf * r_c / ra, zf * r_c / ra)                                   # tangent on cornea
+    tb = (xf * r_g / rb, -back + (zf + back) * r_g / rb)                  # tangent on globe
+    th_a = math.atan2(ta[0], ta[1])                                       # polar angle on cornea
+    ph_b = math.atan2(tb[0], tb[1] + back)                                # polar angle on globe
+    prof = [(r_c * math.sin(a), r_c * math.cos(a)) for a in [th_a * i / n_c for i in range(n_c + 1)]]
+    a0 = math.atan2(ta[1] - zf, ta[0] - xf)
+    a1 = math.atan2(tb[1] - zf, tb[0] - xf)
+    while a1 - a0 > math.pi:
+        a1 -= 2 * math.pi
+    while a0 - a1 > math.pi:
+        a1 += 2 * math.pi
+    prof += [(xf + fillet * math.cos(a), zf + fillet * math.sin(a))
+             for a in [a0 + (a1 - a0) * (i + 1) / (n_f + 1) for i in range(n_f)]]
+    prof += [(r_g * math.sin(a), -back + r_g * math.cos(a))
+             for a in [ph_b + (math.pi - ph_b) * i / n_g for i in range(n_g + 1)]]
+    return prof, n_c
+
+
+def revolve(prof, segments=96):
+    """Vertices and quad faces of the profile revolved about z (local Z = gaze)."""
+    verts, faces = [], []
+    n = len(prof)
+    for rho, z in prof:
+        for k in range(segments):
+            a = 2 * math.pi * k / segments
+            verts.append((rho * math.cos(a), rho * math.sin(a), z))
+    for i in range(n - 1):
+        for k in range(segments):
+            k2 = (k + 1) % segments
+            faces.append((i * segments + k, i * segments + k2,
+                          (i + 1) * segments + k2, (i + 1) * segments + k))
+    return verts, faces
 FX = SRC_W * LENS / SENSOR
 corneal_centres, corneal_raw = None, None
 if args.corneal:
@@ -465,23 +569,109 @@ if args.corneal:
             gl.inputs[_n].default_value = _v
     mnt.links.new(gl.outputs['BSDF'], next(n for n in mnt.nodes
                                            if n.type == 'OUTPUT_MATERIAL').inputs['Surface'])
+    wet = None
+    if args.globe:
+        wet = bpy.data.materials.new('sclera')
+        wet.use_nodes = True
+        wnt = wet.node_tree
+        for _n in list(wnt.nodes):
+            if _n.type != 'OUTPUT_MATERIAL':
+                wnt.nodes.remove(_n)
+        wg = wnt.nodes.new('ShaderNodeBsdfPrincipled')
+        wg.inputs['Base Color'].default_value = (0.0, 0.0, 0.0, 1.0)
+        wg.inputs['Metallic'].default_value = 0.0
+        wg.inputs['Roughness'].default_value = args.sclera_roughness
+        if 'IOR' in wg.inputs:
+            wg.inputs['IOR'].default_value = 1.376
+        for _n, _v in (('Subsurface Weight', 0.0), ('Sheen Weight', 0.0), ('Coat Weight', 0.0),
+                       ('Transmission Weight', 0.0), ('Emission Strength', 0.0)):
+            if _n in wg.inputs:
+                wg.inputs[_n].default_value = _v
+        wnt.links.new(wg.outputs['BSDF'], next(n for n in wnt.nodes
+                                               if n.type == 'OUTPUT_MATERIAL').inputs['Surface'])
     for _side in ('left', 'right'):
         _me = bpy.data.meshes.new('cornea_' + _side)
-        _bm = bmesh.new()
-        bmesh.ops.create_uvsphere(_bm, u_segments=64, v_segments=32, radius=1.0)
-        _drop = [f for f in _bm.faces
-                 if (sum((v.co.z for v in f.verts)) / len(f.verts)) < CAP_COS]
-        bmesh.ops.delete(_bm, geom=_drop, context='FACES')
-        _bm.to_mesh(_me)
-        _bm.free()
-        if len(_me.polygons) == 0:
-            raise SystemExit('Corneal cap came out empty; check CAP_COS')
-        _ob = bpy.data.objects.new('cornea_' + _side, _me)
-        scn.collection.objects.link(_ob)
-        _ob.data.materials.append(mirror)
+        if args.globe:
+            # ONE surface of revolution: cornea, limbal fillet, globe -- in metres, so the
+            # object is placed at the corneal centre with unit scale and the gaze as its Z.
+            _prof, _n_c = eye_profile(7.8, args.globe_mm, args.globe_back_mm, args.fillet_mm)
+            _v, _f = revolve([(r / 1000.0, z / 1000.0) for r, z in _prof])
+            _me.from_pydata(_v, [], _f)
+            _me.validate(verbose=False)
+            _me.update()
+            _ob = bpy.data.objects.new('cornea_' + _side, _me)
+            scn.collection.objects.link(_ob)
+            _ob.data.materials.append(mirror)
+            _ob.data.materials.append(wet)
+            _seg = 96
+            for _pi, _poly in enumerate(_me.polygons):
+                _poly.material_index = 0 if (_pi // _seg) < _n_c else 1
+        else:
+            _bm = bmesh.new()
+            bmesh.ops.create_uvsphere(_bm, u_segments=64, v_segments=32, radius=1.0)
+            _drop = [f for f in _bm.faces
+                     if (sum((v.co.z for v in f.verts)) / len(f.verts)) < CAP_COS]
+            bmesh.ops.delete(_bm, geom=_drop, context='FACES')
+            _bm.to_mesh(_me)
+            _bm.free()
+            if len(_me.polygons) == 0:
+                raise SystemExit('Corneal cap came out empty; check CAP_COS')
+            _ob = bpy.data.objects.new('cornea_' + _side, _me)
+            scn.collection.objects.link(_ob)
+            _ob.data.materials.append(mirror)
         with bpy.context.temp_override(object=_ob, selected_editable_objects=[_ob]):
             bpy.ops.object.shade_smooth()
         eye_obs.append((_side, _ob))
+    globe_obs = {}
+    socket_obs = {}
+    head_xform = None
+    if args.socket:
+        if not args.globe:
+            raise SystemExit('--socket needs --globe')
+        _npz = shot.relight / 'face_landmarks.npz'
+        if not _npz.exists():
+            raise SystemExit('--socket needs relight/face_landmarks.npz (head pose)')
+        with np.load(_npz) as _z:
+            head_xform = _z['xform'] if 'xform' in _z.files else None
+        if head_xform is None:
+            raise SystemExit('face_landmarks.npz has no xform (head pose); rerun face_track.py')
+        black = bpy.data.materials.new('socket')
+        black.use_nodes = True
+        bnt = black.node_tree
+        for _n in list(bnt.nodes):
+            if _n.type != 'OUTPUT_MATERIAL':
+                bnt.nodes.remove(_n)
+        bd = bnt.nodes.new('ShaderNodeBsdfDiffuse')
+        bd.inputs['Color'].default_value = (0.0, 0.0, 0.0, 1.0)
+        bnt.links.new(bd.outputs['BSDF'], next(n for n in bnt.nodes
+                                               if n.type == 'OUTPUT_MATERIAL').inputs['Surface'])
+        for _side in ('left', 'right'):
+            # Local frame: +Z forward (head), +Y up, +X image-right. Image-right is temporal for
+            # her LEFT eye (it sits on image right) and nasal for her right eye.
+            temporal_x = 1.0 if _side == 'left' else -1.0
+            _me = bpy.data.meshes.new('socket_' + _side)
+            _bm = bmesh.new()
+            bmesh.ops.create_uvsphere(_bm, u_segments=96, v_segments=48, radius=1.0)
+            _drop = []
+            for f in _bm.faces:
+                c = sum((v.co for v in f.verts), Vector((0, 0, 0))) / len(f.verts)
+                c.normalize()
+                theta = math.degrees(math.acos(max(-1.0, min(1.0, c.z))))
+                phi = math.atan2(c.y, c.x * temporal_x)         # 0 = temporal, pi = nasal
+                cs, sn = math.cos(phi) ** 2, math.sin(phi) ** 2
+                th_h = args.socket_temporal_deg if math.cos(phi) >= 0 else args.socket_nasal_deg
+                th_v = args.socket_up_deg if math.sin(phi) >= 0 else args.socket_down_deg
+                cut = th_h * cs + th_v * sn
+                if theta <= cut:
+                    _drop.append(f)
+            bmesh.ops.delete(_bm, geom=_drop, context='FACES')
+            _bm.to_mesh(_me)
+            _bm.free()
+            _ob = bpy.data.objects.new('socket_' + _side, _me)
+            scn.collection.objects.link(_ob)
+            _ob.data.materials.append(black)
+            _ob.visible_camera = False
+            socket_obs[_side] = _ob
 
 rig_log = []
 catch_log = []
@@ -594,6 +784,8 @@ for n, fi in enumerate(frames):
             tr = ((corneal_raw.get(fi) or {}).get('eyes') or {}).get(_side)
             if not e.get('visible') or tr is None:
                 _ob.hide_render = True
+                if args.socket:
+                    socket_obs[_side].hide_render = True
                 corneal_rec['eyes'][_side] = {'rendered': False,
                                               'why': ('no limbus fit' if tr is None
                                                       else 'eye_geometry not visible')}
@@ -618,7 +810,7 @@ for n, fi in enumerate(frames):
                                            (0.0, -DIST, CAM_H), FX, SRC_W, SRC_H)
             shift = float(np.linalg.norm(iris_w - depth_pt))
             _ob.location = tuple(centre)
-            _ob.scale = (c_radius,) * 3
+            _ob.scale = (1.0,) * 3 if args.globe else (c_radius,) * 3
             gv = (Vector(tuple(gaze)) if float(np.linalg.norm(gaze)) > 1e-6
                   else Vector((0.0, -1.0, 0.0)))
             _ob.rotation_mode = 'QUATERNION'
@@ -630,6 +822,31 @@ for n, fi in enumerate(frames):
                                           'anchor_px': [float(px), float(py)],
                                           'anchor_shift_m': float(shift),
                                           'iris_radius_px': tr['iris_radius_px']}
+            if args.globe:
+                g_centre = centre - (args.globe_back_mm / 1000.0) * gaze
+                corneal_rec['eyes'][_side]['globe'] = {
+                    'centre_world': [float(v) for v in g_centre],
+                    'radius_m': args.globe_mm / 1000.0,
+                    'roughness': args.sclera_roughness}
+                if args.socket:
+                    s_ob = socket_obs[_side]
+                    fwd = None
+                    if fi < len(head_xform) and np.all(np.isfinite(head_xform[fi])):
+                        f3 = np.asarray(head_xform[fi], float)[:3, 2]
+                        fwd = np.array([f3[0], -f3[2], f3[1]])      # eye_geometry.headpose_forward
+                        if np.linalg.norm(fwd) < 1e-9:
+                            fwd = None
+                    if fwd is None:
+                        fwd = np.array([0.0, -1.0, 0.0])
+                    fwd = fwd / np.linalg.norm(fwd)
+                    s_ob.hide_render = False
+                    s_ob.location = tuple(g_centre)
+                    s_ob.scale = (args.socket_mm / 1000.0,) * 3
+                    s_ob.rotation_mode = 'QUATERNION'
+                    s_ob.rotation_quaternion = Vector(tuple(fwd)).to_track_quat('Z', 'Y')
+                    corneal_rec['eyes'][_side]['socket'] = {
+                        'head_forward_world': [float(v) for v in fwd],
+                        'radius_m': args.socket_mm / 1000.0}
         catch_log.append(corneal_rec)
     if args.catchlight:
         # The head stays in the scene as an OCCLUDER -- brow, nose and cheek block part of the
@@ -686,6 +903,23 @@ report = {'shot': shot.name, 'frames': len(frames), 'fps': str(shot.frame_rate),
               'gaze': args.gaze,
               'occluder': 'proxy mesh, camera-invisible' if args.occluder else None,
               'visible_to_camera': 'the corneal caps only; bulb and fill hidden, proxy absent',
+              'globe': ({'radius_mm': args.globe_mm, 'back_mm': args.globe_back_mm,
+                         'roughness': args.sclera_roughness, 'ior': 1.376,
+                         'junction_mm': sphere_junction(7.8, args.globe_mm, args.globe_back_mm),
+                         'cap_cos': CAP_COS, 'fillet_mm': args.fillet_mm,
+                         'model': 'round 42: a dielectric globe per eye (tear film over the '
+                                  'conjunctiva, black base, rougher lobe), centred behind the '
+                                  'corneal centre along the gaze; the cap extended to where the '
+                                  'spheres meet. Roughness and radii are ASSUMED anatomy'}
+                        if args.globe else None),
+              'socket': ({'radius_mm': args.socket_mm, 'nasal_deg': args.socket_nasal_deg,
+                          'temporal_deg': args.socket_temporal_deg, 'up_deg': args.socket_up_deg,
+                          'down_deg': args.socket_down_deg,
+                          'model': 'black diffuse cup about the globe centre, oriented by the '
+                                   'mediapipe head pose, open within the visual-field limits '
+                                   '(ASSUMED anatomy: nasal 60, temporal 100, up 60, down 75); '
+                                   'hidden from camera rays, blocks reflection rays only'}
+                         if args.socket else None),
               'samples': args.samples, 'denoise': False,
               'cycles_filter': {'type': scn.cycles.pixel_filter_type,
                                 'width': scn.cycles.filter_width},

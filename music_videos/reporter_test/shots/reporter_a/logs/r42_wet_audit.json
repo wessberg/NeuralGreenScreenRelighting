@@ -1,0 +1,10135 @@
+{
+ "summary": {
+  "left": {
+   "open_eyes": 109,
+   "blobs_by_where": {
+    "bulk": {
+     "blobs": 22,
+     "frames": 22,
+     "nasal_fraction": 1.0,
+     "rho_median": 1.55,
+     "angle_median_deg": -156.2,
+     "angle_p5_p95": [
+      -161.8,
+      -155.1
+     ],
+     "above_lower_px_median": 2.98,
+     "excess_median": 0.238,
+     "area_median": 1.0
+    },
+    "lower_margin": {
+     "blobs": 36,
+     "frames": 36,
+     "nasal_fraction": 1.0,
+     "rho_median": 1.49,
+     "angle_median_deg": -145.5,
+     "angle_p5_p95": [
+      -154.1,
+      -142.2
+     ],
+     "above_lower_px_median": 1.23,
+     "excess_median": 0.216,
+     "area_median": 1.0
+    },
+    "corner": {
+     "blobs": 6,
+     "frames": 6,
+     "nasal_fraction": 1.0,
+     "rho_median": 1.58,
+     "angle_median_deg": -155.5,
+     "angle_p5_p95": [
+      -160.1,
+      -153.6
+     ],
+     "above_lower_px_median": 2.2,
+     "excess_median": 0.264,
+     "area_median": 1.0
+    }
+   },
+   "frames_with_any_blob": 45,
+   "frames_with_bulk_blob": 22,
+   "lower_band": {
+    "max_median": 0.789,
+    "excess_median": 0.094,
+    "excess_p95": 0.166,
+    "frames_bright": 48,
+    "bright_col_r_median": -1.27,
+    "bright_col_r_p5_p95": [
+     -1.27,
+     -1.19
+    ]
+   },
+   "globe_prediction": {
+    "rho_median": 0.628,
+    "rho_max": 0.697,
+    "under_cornea_fraction": 1.0
+   },
+   "meniscus_prediction": {
+    "eyes_with_solution": 109,
+    "bright_eyes_scored": 48,
+    "col_error_px_median": 9.36,
+    "col_error_px_p95": 10.52,
+    "col_error_px_max": 10.64
+   }
+  },
+  "right": {
+   "open_eyes": 103,
+   "blobs_by_where": {
+    "corner": {
+     "blobs": 95,
+     "frames": 95,
+     "nasal_fraction": 0.98,
+     "rho_median": 1.77,
+     "angle_median_deg": -13.0,
+     "angle_p5_p95": [
+      -20.3,
+      -5.5
+     ],
+     "above_lower_px_median": 2.0,
+     "excess_median": 0.278,
+     "area_median": 2.0
+    },
+    "bulk": {
+     "blobs": 142,
+     "frames": 142,
+     "nasal_fraction": 0.32,
+     "rho_median": 1.65,
+     "angle_median_deg": -150.8,
+     "angle_p5_p95": [
+      -160.5,
+      -4.0
+     ],
+     "above_lower_px_median": 6.87,
+     "excess_median": 0.274,
+     "area_median": 2.0
+    },
+    "lower_margin": {
+     "blobs": 1,
+     "frames": 1,
+     "nasal_fraction": 1.0,
+     "rho_median": 1.77,
+     "angle_median_deg": -11.3,
+     "angle_p5_p95": [
+      -11.3,
+      -11.3
+     ],
+     "above_lower_px_median": 2.44,
+     "excess_median": 0.269,
+     "area_median": 1.0
+    }
+   },
+   "frames_with_any_blob": 102,
+   "frames_with_bulk_blob": 100,
+   "lower_band": {
+    "max_median": 0.644,
+    "excess_median": 0.074,
+    "excess_p95": 0.18,
+    "frames_bright": 25,
+    "bright_col_r_median": 1.58,
+    "bright_col_r_p5_p95": [
+     -1.18,
+     1.58
+    ]
+   },
+   "globe_prediction": {
+    "rho_median": 0.356,
+    "rho_max": 0.578,
+    "under_cornea_fraction": 1.0
+   },
+   "meniscus_prediction": {
+    "eyes_with_solution": 103,
+    "bright_eyes_scored": 25,
+    "col_error_px_median": 19.26,
+    "col_error_px_p95": 20.34,
+    "col_error_px_max": 20.49
+   }
+  }
+ },
+ "softbox_dir": [
+  -0.4734097594427874,
+  -0.8055166058959976,
+  0.3564073474132012
+ ],
+ "globe_mm": 12.0,
+ "globe_back_mm": 5.6,
+ "margin_px": 2.5,
+ "rows": [
+  {
+   "frame": 0,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.258,
+     "peak": 0.826,
+     "rho": 1.52,
+     "angle_deg": -156.2,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 3.18,
+     "below_upper_px": 5.55,
+     "xy": [
+      1051.5,
+      287.5
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.24,
+     "peak": 0.863,
+     "rho": 1.44,
+     "angle_deg": -145.4,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 1.33,
+     "below_upper_px": 9.98,
+     "xy": [
+      1054.0,
+      290.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.846,
+    "col_r": -1.19,
+    "excess_over_sclera": 0.171,
+    "mean_excess": 0.097,
+    "bright_cols": 21
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1064.06,
+     280.04
+    ],
+    "globe_glint_rho": 0.366,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.45
+    ],
+    "meniscus_min_abs_dot": 0.01
+   }
+  },
+  {
+   "frame": 0,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.301,
+     "peak": 0.878,
+     "rho": 2.03,
+     "angle_deg": -7.4,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.78,
+     "below_upper_px": 5.55,
+     "xy": [
+      963.0,
+      294.0
+     ]
+    },
+    {
+     "area": 3,
+     "excess": 0.289,
+     "peak": 0.881,
+     "rho": 1.2,
+     "angle_deg": -149.2,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.43,
+     "below_upper_px": 9.9,
+     "xy": [
+      925.7,
+      298.3
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.641,
+    "col_r": 1.42,
+    "excess_over_sclera": 0.001,
+    "mean_excess": 0.048,
+    "bright_cols": 17
+   },
+   "predicted": {
+    "globe_glint_px": [
+     938.34,
+     289.88
+    ],
+    "globe_glint_rho": 0.075,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.27
+    ],
+    "meniscus_min_abs_dot": 0.005
+   }
+  },
+  {
+   "frame": 1,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.248,
+     "peak": 0.804,
+     "rho": 1.54,
+     "angle_deg": -157.6,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 3.23,
+     "below_upper_px": 3.03,
+     "xy": [
+      1051.0,
+      286.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.279,
+     "peak": 0.875,
+     "rho": 1.44,
+     "angle_deg": -144.7,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 1.04,
+     "below_upper_px": 8.46,
+     "xy": [
+      1054.0,
+      289.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.857,
+    "col_r": -1.19,
+    "excess_over_sclera": 0.178,
+    "mean_excess": 0.097,
+    "bright_cols": 21
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1064.32,
+     278.68
+    ],
+    "globe_glint_rho": 0.334,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.42
+    ],
+    "meniscus_min_abs_dot": 0.011
+   }
+  },
+  {
+   "frame": 1,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 3,
+     "excess": 0.301,
+     "peak": 0.87,
+     "rho": 2.01,
+     "angle_deg": -7.3,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.91,
+     "below_upper_px": 4.92,
+     "xy": [
+      962.7,
+      292.7
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.345,
+     "peak": 0.914,
+     "rho": 1.2,
+     "angle_deg": -149.6,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.52,
+     "below_upper_px": 9.6,
+     "xy": [
+      925.5,
+      297.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.644,
+    "col_r": 1.33,
+    "excess_over_sclera": -0.011,
+    "mean_excess": 0.051,
+    "bright_cols": 18
+   },
+   "predicted": {
+    "globe_glint_px": [
+     938.25,
+     288.5
+    ],
+    "globe_glint_rho": 0.085,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.27
+    ],
+    "meniscus_min_abs_dot": 0.007
+   }
+  },
+  {
+   "frame": 2,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.286,
+     "peak": 0.819,
+     "rho": 1.54,
+     "angle_deg": -155.4,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 2.38,
+     "below_upper_px": 4.37,
+     "xy": [
+      1051.0,
+      285.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.804,
+    "col_r": -1.19,
+    "excess_over_sclera": 0.132,
+    "mean_excess": 0.105,
+    "bright_cols": 22
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1064.11,
+     277.08
+    ],
+    "globe_glint_rho": 0.329,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.42
+    ],
+    "meniscus_min_abs_dot": 0.014
+   }
+  },
+  {
+   "frame": 2,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.329,
+     "peak": 0.862,
+     "rho": 2.02,
+     "angle_deg": -6.9,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.88,
+     "below_upper_px": 2.73,
+     "xy": [
+      962.5,
+      291.0
+     ]
+    },
+    {
+     "area": 3,
+     "excess": 0.352,
+     "peak": 0.888,
+     "rho": 1.2,
+     "angle_deg": -148.6,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.31,
+     "below_upper_px": 10.74,
+     "xy": [
+      925.3,
+      295.7
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.63,
+    "col_r": 1.25,
+    "excess_over_sclera": -0.016,
+    "mean_excess": 0.052,
+    "bright_cols": 16
+   },
+   "predicted": {
+    "globe_glint_px": [
+     937.93,
+     287.06
+    ],
+    "globe_glint_rho": 0.079,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.27
+    ],
+    "meniscus_min_abs_dot": 0.008
+   }
+  },
+  {
+   "frame": 18,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.271,
+     "peak": 0.808,
+     "rho": 1.55,
+     "angle_deg": -156.2,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.15,
+     "below_upper_px": 29.82,
+     "xy": [
+      1040.0,
+      278.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.808,
+    "col_r": -1.19,
+    "excess_over_sclera": 0.135,
+    "mean_excess": 0.131,
+    "bright_cols": 26
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1052.75,
+     271.31
+    ],
+    "globe_glint_rho": 0.389,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.48
+    ],
+    "meniscus_min_abs_dot": 0.001
+   }
+  },
+  {
+   "frame": 19,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.283,
+     "peak": 0.839,
+     "rho": 1.57,
+     "angle_deg": -155.3,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.18,
+     "below_upper_px": 29.11,
+     "xy": [
+      1039.0,
+      280.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.83,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.163,
+    "mean_excess": 0.122,
+    "bright_cols": 26
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1051.78,
+     273.07
+    ],
+    "globe_glint_rho": 0.396,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.47
+    ],
+    "meniscus_min_abs_dot": 0.001
+   }
+  },
+  {
+   "frame": 23,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.302,
+     "peak": 0.859,
+     "rho": 1.97,
+     "angle_deg": -6.7,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.8,
+     "below_upper_px": 4.85,
+     "xy": [
+      947.0,
+      292.5
+     ]
+    },
+    {
+     "area": 3,
+     "excess": 0.261,
+     "peak": 0.822,
+     "rho": 1.36,
+     "angle_deg": -148.8,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.74,
+     "below_upper_px": 10.67,
+     "xy": [
+      908.7,
+      298.3
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.64,
+    "col_r": 1.25,
+    "excess_over_sclera": -0.002,
+    "mean_excess": 0.055,
+    "bright_cols": 18
+   },
+   "predicted": {
+    "globe_glint_px": [
+     922.81,
+     289.34
+    ],
+    "globe_glint_rho": 0.029,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.26
+    ],
+    "meniscus_min_abs_dot": 0.002
+   }
+  },
+  {
+   "frame": 24,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.262,
+     "peak": 0.839,
+     "rho": 1.6,
+     "angle_deg": -154.8,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.21,
+     "below_upper_px": 5.81,
+     "xy": [
+      1035.0,
+      286.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.836,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.161,
+    "mean_excess": 0.119,
+    "bright_cols": 23
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1047.85,
+     278.12
+    ],
+    "globe_glint_rho": 0.4,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.47
+    ],
+    "meniscus_min_abs_dot": 0.0
+   }
+  },
+  {
+   "frame": 24,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.281,
+     "peak": 0.845,
+     "rho": 2.0,
+     "angle_deg": -7.7,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.33,
+     "below_upper_px": 6.02,
+     "xy": [
+      946.5,
+      294.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.274,
+     "peak": 0.859,
+     "rho": 1.36,
+     "angle_deg": -148.3,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.51,
+     "below_upper_px": 10.48,
+     "xy": [
+      908.0,
+      299.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.644,
+    "col_r": 1.33,
+    "excess_over_sclera": 0.0,
+    "mean_excess": 0.05,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     922.04,
+     290.34
+    ],
+    "globe_glint_rho": 0.035,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.25
+    ],
+    "meniscus_min_abs_dot": 0.001
+   }
+  },
+  {
+   "frame": 25,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.826,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.146,
+    "mean_excess": 0.115,
+    "bright_cols": 22
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1047.17,
+     278.87
+    ],
+    "globe_glint_rho": 0.396,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.47
+    ],
+    "meniscus_min_abs_dot": 0.003
+   }
+  },
+  {
+   "frame": 26,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.214,
+     "peak": 0.81,
+     "rho": 1.58,
+     "angle_deg": -153.2,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.13,
+     "below_upper_px": 10.04,
+     "xy": [
+      1034.0,
+      288.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.81,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.131,
+    "mean_excess": 0.116,
+    "bright_cols": 22
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1046.51,
+     279.45
+    ],
+    "globe_glint_rho": 0.39,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.46
+    ],
+    "meniscus_min_abs_dot": 0.008
+   }
+  },
+  {
+   "frame": 26,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.322,
+     "peak": 0.89,
+     "rho": 1.99,
+     "angle_deg": -7.1,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.57,
+     "below_upper_px": 6.52,
+     "xy": [
+      945.0,
+      295.5
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.267,
+     "peak": 0.859,
+     "rho": 1.39,
+     "angle_deg": -149.9,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.68,
+     "below_upper_px": 10.12,
+     "xy": [
+      906.0,
+      301.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.652,
+    "col_r": 1.25,
+    "excess_over_sclera": -0.002,
+    "mean_excess": 0.05,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     920.25,
+     291.95
+    ],
+    "globe_glint_rho": 0.058,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.23
+    ],
+    "meniscus_min_abs_dot": 0.014
+   }
+  },
+  {
+   "frame": 27,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.232,
+     "peak": 0.828,
+     "rho": 1.58,
+     "angle_deg": -155.1,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 2.78,
+     "below_upper_px": 9.74,
+     "xy": [
+      1033.0,
+      288.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.209,
+     "peak": 0.844,
+     "rho": 1.51,
+     "angle_deg": -146.9,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 1.27,
+     "below_upper_px": 12.78,
+     "xy": [
+      1035.0,
+      290.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.843,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.156,
+    "mean_excess": 0.114,
+    "bright_cols": 21
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1045.79,
+     279.91
+    ],
+    "globe_glint_rho": 0.387,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.45
+    ],
+    "meniscus_min_abs_dot": 0.011
+   }
+  },
+  {
+   "frame": 27,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.321,
+     "peak": 0.893,
+     "rho": 1.97,
+     "angle_deg": -6.8,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.89,
+     "below_upper_px": 6.43,
+     "xy": [
+      944.0,
+      296.0
+     ]
+    },
+    {
+     "area": 3,
+     "excess": 0.227,
+     "peak": 0.827,
+     "rho": 1.35,
+     "angle_deg": -147.7,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.15,
+     "below_upper_px": 11.07,
+     "xy": [
+      906.0,
+      302.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.648,
+    "col_r": 1.25,
+    "excess_over_sclera": 0.0,
+    "mean_excess": 0.051,
+    "bright_cols": 17
+   },
+   "predicted": {
+    "globe_glint_px": [
+     919.5,
+     292.53
+    ],
+    "globe_glint_rho": 0.065,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.22
+    ],
+    "meniscus_min_abs_dot": 0.017
+   }
+  },
+  {
+   "frame": 28,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.235,
+     "peak": 0.815,
+     "rho": 1.59,
+     "angle_deg": -154.5,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 2.39,
+     "below_upper_px": 10.28,
+     "xy": [
+      1032.0,
+      289.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.216,
+     "peak": 0.851,
+     "rho": 1.46,
+     "angle_deg": -144.6,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 1.11,
+     "below_upper_px": 13.79,
+     "xy": [
+      1035.0,
+      291.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.864,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.184,
+    "mean_excess": 0.108,
+    "bright_cols": 22
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1044.87,
+     280.45
+    ],
+    "globe_glint_rho": 0.387,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.45
+    ],
+    "meniscus_min_abs_dot": 0.012
+   }
+  },
+  {
+   "frame": 28,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 3,
+     "excess": 0.262,
+     "peak": 0.842,
+     "rho": 1.98,
+     "angle_deg": -6.7,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.79,
+     "below_upper_px": 6.28,
+     "xy": [
+      943.3,
+      296.7
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.247,
+     "peak": 0.847,
+     "rho": 1.33,
+     "angle_deg": -150.1,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.87,
+     "below_upper_px": 10.12,
+     "xy": [
+      905.0,
+      302.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.645,
+    "col_r": 1.33,
+    "excess_over_sclera": -0.006,
+    "mean_excess": 0.047,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     918.54,
+     293.05
+    ],
+    "globe_glint_rho": 0.083,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.21
+    ],
+    "meniscus_min_abs_dot": 0.019
+   }
+  },
+  {
+   "frame": 29,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.251,
+     "peak": 0.824,
+     "rho": 1.58,
+     "angle_deg": -156.5,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 3.05,
+     "below_upper_px": 9.94,
+     "xy": [
+      1031.0,
+      289.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.844,
+    "col_r": -1.19,
+    "excess_over_sclera": 0.149,
+    "mean_excess": 0.111,
+    "bright_cols": 23
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1044.3,
+     281.01
+    ],
+    "globe_glint_rho": 0.358,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.41
+    ],
+    "meniscus_min_abs_dot": 0.009
+   }
+  },
+  {
+   "frame": 29,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.31,
+     "peak": 0.874,
+     "rho": 1.98,
+     "angle_deg": -6.1,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.11,
+     "below_upper_px": 6.06,
+     "xy": [
+      942.5,
+      297.0
+     ]
+    },
+    {
+     "area": 3,
+     "excess": 0.307,
+     "peak": 0.907,
+     "rho": 1.26,
+     "angle_deg": -147.6,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.56,
+     "below_upper_px": 10.87,
+     "xy": [
+      905.3,
+      302.7
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.649,
+    "col_r": 1.25,
+    "excess_over_sclera": -0.006,
+    "mean_excess": 0.047,
+    "bright_cols": 15
+   },
+   "predicted": {
+    "globe_glint_px": [
+     917.79,
+     293.56
+    ],
+    "globe_glint_rho": 0.083,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.21
+    ],
+    "meniscus_min_abs_dot": 0.019
+   }
+  },
+  {
+   "frame": 30,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.223,
+     "peak": 0.811,
+     "rho": 1.54,
+     "angle_deg": -153.9,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 2.42,
+     "below_upper_px": 6.73,
+     "xy": [
+      1031.0,
+      290.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.18,
+     "peak": 0.808,
+     "rho": 1.41,
+     "angle_deg": -143.5,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 1.11,
+     "below_upper_px": 10.47,
+     "xy": [
+      1034.0,
+      292.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.869,
+    "col_r": -1.19,
+    "excess_over_sclera": 0.173,
+    "mean_excess": 0.107,
+    "bright_cols": 22
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1043.65,
+     281.4
+    ],
+    "globe_glint_rho": 0.349,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.4
+    ],
+    "meniscus_min_abs_dot": 0.005
+   }
+  },
+  {
+   "frame": 30,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.304,
+     "peak": 0.873,
+     "rho": 2.0,
+     "angle_deg": -6.7,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.79,
+     "below_upper_px": 6.78,
+     "xy": [
+      942.0,
+      297.5
+     ]
+    },
+    {
+     "area": 4,
+     "excess": 0.294,
+     "peak": 0.886,
+     "rho": 1.25,
+     "angle_deg": -149.2,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.05,
+     "below_upper_px": 10.03,
+     "xy": [
+      904.5,
+      302.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.641,
+    "col_r": 1.5,
+    "excess_over_sclera": 0.021,
+    "mean_excess": 0.044,
+    "bright_cols": 15
+   },
+   "predicted": {
+    "globe_glint_px": [
+     917.15,
+     293.77
+    ],
+    "globe_glint_rho": 0.083,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.22
+    ],
+    "meniscus_min_abs_dot": 0.016
+   }
+  },
+  {
+   "frame": 31,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.228,
+     "peak": 0.807,
+     "rho": 1.56,
+     "angle_deg": -155.9,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 2.99,
+     "below_upper_px": 5.72,
+     "xy": [
+      1030.0,
+      289.5
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.244,
+     "peak": 0.855,
+     "rho": 1.45,
+     "angle_deg": -144.5,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 1.19,
+     "below_upper_px": 10.0,
+     "xy": [
+      1033.0,
+      292.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.83,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.142,
+    "mean_excess": 0.1,
+    "bright_cols": 22
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1043.11,
+     281.38
+    ],
+    "globe_glint_rho": 0.354,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.4
+    ],
+    "meniscus_min_abs_dot": 0.004
+   }
+  },
+  {
+   "frame": 31,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 3,
+     "excess": 0.28,
+     "peak": 0.856,
+     "rho": 1.98,
+     "angle_deg": -6.4,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.0,
+     "below_upper_px": 6.57,
+     "xy": [
+      941.3,
+      297.3
+     ]
+    },
+    {
+     "area": 3,
+     "excess": 0.283,
+     "peak": 0.883,
+     "rho": 1.27,
+     "angle_deg": -150.2,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.21,
+     "below_upper_px": 10.33,
+     "xy": [
+      903.7,
+      302.3
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.643,
+    "col_r": 1.25,
+    "excess_over_sclera": -0.009,
+    "mean_excess": 0.046,
+    "bright_cols": 16
+   },
+   "predicted": {
+    "globe_glint_px": [
+     916.58,
+     293.72
+    ],
+    "globe_glint_rho": 0.087,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.22
+    ],
+    "meniscus_min_abs_dot": 0.018
+   }
+  },
+  {
+   "frame": 32,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.224,
+     "peak": 0.812,
+     "rho": 1.55,
+     "angle_deg": -153.5,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 2.37,
+     "below_upper_px": 7.2,
+     "xy": [
+      1030.0,
+      290.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.861,
+    "col_r": -1.19,
+    "excess_over_sclera": 0.165,
+    "mean_excess": 0.106,
+    "bright_cols": 22
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1042.57,
+     281.23
+    ],
+    "globe_glint_rho": 0.358,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.41
+    ],
+    "meniscus_min_abs_dot": 0.009
+   }
+  },
+  {
+   "frame": 32,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.329,
+     "peak": 0.897,
+     "rho": 2.0,
+     "angle_deg": -7.0,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.58,
+     "below_upper_px": 6.88,
+     "xy": [
+      941.0,
+      297.5
+     ]
+    },
+    {
+     "area": 3,
+     "excess": 0.309,
+     "peak": 0.909,
+     "rho": 1.24,
+     "angle_deg": -148.8,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.92,
+     "below_upper_px": 10.76,
+     "xy": [
+      903.7,
+      302.3
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.643,
+    "col_r": 1.25,
+    "excess_over_sclera": -0.008,
+    "mean_excess": 0.048,
+    "bright_cols": 15
+   },
+   "predicted": {
+    "globe_glint_px": [
+     916.05,
+     293.61
+    ],
+    "globe_glint_rho": 0.086,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.21
+    ],
+    "meniscus_min_abs_dot": 0.017
+   }
+  },
+  {
+   "frame": 33,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.259,
+     "peak": 0.835,
+     "rho": 1.56,
+     "angle_deg": -156.5,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 3.05,
+     "below_upper_px": 5.97,
+     "xy": [
+      1029.0,
+      289.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.218,
+     "peak": 0.818,
+     "rho": 1.49,
+     "angle_deg": -148.2,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 1.54,
+     "below_upper_px": 9.17,
+     "xy": [
+      1031.0,
+      291.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.829,
+    "col_r": -1.19,
+    "excess_over_sclera": 0.138,
+    "mean_excess": 0.103,
+    "bright_cols": 22
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1042.13,
+     281.01
+    ],
+    "globe_glint_rho": 0.359,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.41
+    ],
+    "meniscus_min_abs_dot": 0.009
+   }
+  },
+  {
+   "frame": 33,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.297,
+     "peak": 0.873,
+     "rho": 2.0,
+     "angle_deg": -6.2,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.71,
+     "below_upper_px": 6.55,
+     "xy": [
+      940.5,
+      297.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.314,
+     "peak": 0.918,
+     "rho": 1.24,
+     "angle_deg": -149.8,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.12,
+     "below_upper_px": 10.58,
+     "xy": [
+      903.0,
+      302.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.646,
+    "col_r": 1.17,
+    "excess_over_sclera": 0.0,
+    "mean_excess": 0.045,
+    "bright_cols": 16
+   },
+   "predicted": {
+    "globe_glint_px": [
+     915.48,
+     293.43
+    ],
+    "globe_glint_rho": 0.093,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.21
+    ],
+    "meniscus_min_abs_dot": 0.015
+   }
+  },
+  {
+   "frame": 34,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.223,
+     "peak": 0.815,
+     "rho": 1.53,
+     "angle_deg": -155.3,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 2.83,
+     "below_upper_px": 6.08,
+     "xy": [
+      1029.0,
+      289.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.253,
+     "peak": 0.873,
+     "rho": 1.47,
+     "angle_deg": -146.9,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 1.32,
+     "below_upper_px": 9.28,
+     "xy": [
+      1031.0,
+      291.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.807,
+    "col_r": -1.19,
+    "excess_over_sclera": 0.112,
+    "mean_excess": 0.105,
+    "bright_cols": 23
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1041.63,
+     280.84
+    ],
+    "globe_glint_rho": 0.361,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.42
+    ],
+    "meniscus_min_abs_dot": 0.013
+   }
+  },
+  {
+   "frame": 34,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.301,
+     "peak": 0.878,
+     "rho": 1.99,
+     "angle_deg": -5.7,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.0,
+     "below_upper_px": 6.55,
+     "xy": [
+      940.0,
+      296.5
+     ]
+    },
+    {
+     "area": 3,
+     "excess": 0.26,
+     "peak": 0.868,
+     "rho": 1.25,
+     "angle_deg": -150.5,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.34,
+     "below_upper_px": 9.74,
+     "xy": [
+      902.3,
+      301.7
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.644,
+    "col_r": 1.25,
+    "excess_over_sclera": -0.011,
+    "mean_excess": 0.044,
+    "bright_cols": 16
+   },
+   "predicted": {
+    "globe_glint_px": [
+     915.16,
+     293.17
+    ],
+    "globe_glint_rho": 0.088,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.22
+    ],
+    "meniscus_min_abs_dot": 0.016
+   }
+  },
+  {
+   "frame": 35,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.237,
+     "peak": 0.861,
+     "rho": 1.45,
+     "angle_deg": -145.6,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 1.19,
+     "below_upper_px": 9.93,
+     "xy": [
+      1031.0,
+      291.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.857,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.167,
+    "mean_excess": 0.106,
+    "bright_cols": 22
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1041.33,
+     280.61
+    ],
+    "globe_glint_rho": 0.352,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.41
+    ],
+    "meniscus_min_abs_dot": 0.007
+   }
+  },
+  {
+   "frame": 35,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 3,
+     "excess": 0.285,
+     "peak": 0.858,
+     "rho": 2.0,
+     "angle_deg": -5.8,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.88,
+     "below_upper_px": 6.41,
+     "xy": [
+      939.7,
+      296.3
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.299,
+     "peak": 0.895,
+     "rho": 1.25,
+     "angle_deg": -150.1,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.31,
+     "below_upper_px": 10.68,
+     "xy": [
+      902.0,
+      301.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.645,
+    "col_r": 1.25,
+    "excess_over_sclera": -0.007,
+    "mean_excess": 0.043,
+    "bright_cols": 15
+   },
+   "predicted": {
+    "globe_glint_px": [
+     914.81,
+     292.91
+    ],
+    "globe_glint_rho": 0.087,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.23
+    ],
+    "meniscus_min_abs_dot": 0.011
+   }
+  },
+  {
+   "frame": 36,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.217,
+     "peak": 0.814,
+     "rho": 1.56,
+     "angle_deg": -154.4,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 2.64,
+     "below_upper_px": 6.67,
+     "xy": [
+      1028.0,
+      289.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.313,
+     "peak": 0.909,
+     "rho": 1.46,
+     "angle_deg": -145.1,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 1.22,
+     "below_upper_px": 10.14,
+     "xy": [
+      1030.5,
+      291.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.82,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.131,
+    "mean_excess": 0.094,
+    "bright_cols": 21
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1040.79,
+     280.38
+    ],
+    "globe_glint_rho": 0.359,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.41
+    ],
+    "meniscus_min_abs_dot": 0.006
+   }
+  },
+  {
+   "frame": 36,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.323,
+     "peak": 0.899,
+     "rho": 1.98,
+     "angle_deg": -5.5,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.09,
+     "below_upper_px": 6.15,
+     "xy": [
+      939.0,
+      296.0
+     ]
+    },
+    {
+     "area": 3,
+     "excess": 0.277,
+     "peak": 0.881,
+     "rho": 1.24,
+     "angle_deg": -149.9,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.94,
+     "below_upper_px": 10.78,
+     "xy": [
+      901.7,
+      301.3
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.646,
+    "col_r": 1.25,
+    "excess_over_sclera": -0.01,
+    "mean_excess": 0.043,
+    "bright_cols": 15
+   },
+   "predicted": {
+    "globe_glint_px": [
+     914.4,
+     292.7
+    ],
+    "globe_glint_rho": 0.088,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.22
+    ],
+    "meniscus_min_abs_dot": 0.017
+   }
+  },
+  {
+   "frame": 37,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.247,
+     "peak": 0.835,
+     "rho": 1.55,
+     "angle_deg": -155.4,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 2.87,
+     "below_upper_px": 6.42,
+     "xy": [
+      1027.5,
+      288.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.866,
+    "col_r": -1.19,
+    "excess_over_sclera": 0.167,
+    "mean_excess": 0.099,
+    "bright_cols": 21
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1040.23,
+     280.24
+    ],
+    "globe_glint_rho": 0.369,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.42
+    ],
+    "meniscus_min_abs_dot": 0.013
+   }
+  },
+  {
+   "frame": 37,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.304,
+     "peak": 0.881,
+     "rho": 1.97,
+     "angle_deg": -5.9,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.08,
+     "below_upper_px": 6.45,
+     "xy": [
+      938.5,
+      296.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.323,
+     "peak": 0.923,
+     "rho": 1.22,
+     "angle_deg": -150.0,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.2,
+     "below_upper_px": 10.41,
+     "xy": [
+      901.5,
+      301.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.644,
+    "col_r": 1.25,
+    "excess_over_sclera": -0.014,
+    "mean_excess": 0.045,
+    "bright_cols": 15
+   },
+   "predicted": {
+    "globe_glint_px": [
+     913.89,
+     292.57
+    ],
+    "globe_glint_rho": 0.091,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.21
+    ],
+    "meniscus_min_abs_dot": 0.019
+   }
+  },
+  {
+   "frame": 38,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.247,
+     "peak": 0.835,
+     "rho": 1.54,
+     "angle_deg": -156.6,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 3.07,
+     "below_upper_px": 6.09,
+     "xy": [
+      1027.0,
+      288.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.213,
+     "peak": 0.817,
+     "rho": 1.47,
+     "angle_deg": -148.2,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 1.56,
+     "below_upper_px": 9.28,
+     "xy": [
+      1029.0,
+      290.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.828,
+    "col_r": -1.19,
+    "excess_over_sclera": 0.124,
+    "mean_excess": 0.103,
+    "bright_cols": 23
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1039.8,
+     280.12
+    ],
+    "globe_glint_rho": 0.372,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.43
+    ],
+    "meniscus_min_abs_dot": 0.017
+   }
+  },
+  {
+   "frame": 38,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.289,
+     "peak": 0.869,
+     "rho": 2.0,
+     "angle_deg": -6.1,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.55,
+     "below_upper_px": 6.34,
+     "xy": [
+      938.5,
+      296.0
+     ]
+    },
+    {
+     "area": 3,
+     "excess": 0.305,
+     "peak": 0.905,
+     "rho": 1.27,
+     "angle_deg": -149.3,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.78,
+     "below_upper_px": 10.78,
+     "xy": [
+      900.7,
+      301.3
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.646,
+    "col_r": 1.33,
+    "excess_over_sclera": -0.008,
+    "mean_excess": 0.044,
+    "bright_cols": 16
+   },
+   "predicted": {
+    "globe_glint_px": [
+     913.35,
+     292.4
+    ],
+    "globe_glint_rho": 0.099,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.21
+    ],
+    "meniscus_min_abs_dot": 0.016
+   }
+  },
+  {
+   "frame": 39,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.189,
+     "peak": 0.817,
+     "rho": 1.52,
+     "angle_deg": -155.8,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 3.11,
+     "below_upper_px": 6.15,
+     "xy": [
+      1027.0,
+      288.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.216,
+     "peak": 0.848,
+     "rho": 1.45,
+     "angle_deg": -147.2,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 1.58,
+     "below_upper_px": 9.35,
+     "xy": [
+      1029.0,
+      290.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.807,
+    "col_r": -1.19,
+    "excess_over_sclera": 0.099,
+    "mean_excess": 0.098,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1039.35,
+     280.0
+    ],
+    "globe_glint_rho": 0.376,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.43
+    ],
+    "meniscus_min_abs_dot": 0.017
+   }
+  },
+  {
+   "frame": 39,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.302,
+     "peak": 0.874,
+     "rho": 2.0,
+     "angle_deg": -5.3,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.85,
+     "below_upper_px": 6.49,
+     "xy": [
+      938.0,
+      295.5
+     ]
+    },
+    {
+     "area": 3,
+     "excess": 0.283,
+     "peak": 0.883,
+     "rho": 1.24,
+     "angle_deg": -150.8,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.31,
+     "below_upper_px": 9.82,
+     "xy": [
+      900.3,
+      300.7
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.649,
+    "col_r": 1.25,
+    "excess_over_sclera": -0.013,
+    "mean_excess": 0.04,
+    "bright_cols": 16
+   },
+   "predicted": {
+    "globe_glint_px": [
+     912.99,
+     292.24
+    ],
+    "globe_glint_rho": 0.097,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.22
+    ],
+    "meniscus_min_abs_dot": 0.019
+   }
+  },
+  {
+   "frame": 40,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.25,
+     "peak": 0.826,
+     "rho": 1.57,
+     "angle_deg": -156.2,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 2.68,
+     "below_upper_px": 6.14,
+     "xy": [
+      1026.0,
+      288.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.228,
+     "peak": 0.863,
+     "rho": 1.46,
+     "angle_deg": -147.1,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 1.29,
+     "below_upper_px": 9.65,
+     "xy": [
+      1028.5,
+      290.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.843,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.151,
+    "mean_excess": 0.105,
+    "bright_cols": 23
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1039.03,
+     279.89
+    ],
+    "globe_glint_rho": 0.369,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.43
+    ],
+    "meniscus_min_abs_dot": 0.016
+   }
+  },
+  {
+   "frame": 40,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 4,
+     "excess": 0.275,
+     "peak": 0.85,
+     "rho": 1.99,
+     "angle_deg": -5.7,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.75,
+     "below_upper_px": 6.46,
+     "xy": [
+      937.5,
+      295.5
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.3,
+     "peak": 0.896,
+     "rho": 1.24,
+     "angle_deg": -150.7,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.37,
+     "below_upper_px": 10.38,
+     "xy": [
+      900.0,
+      300.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.65,
+    "col_r": 1.25,
+    "excess_over_sclera": -0.01,
+    "mean_excess": 0.041,
+    "bright_cols": 15
+   },
+   "predicted": {
+    "globe_glint_px": [
+     912.68,
+     292.08
+    ],
+    "globe_glint_rho": 0.093,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.23
+    ],
+    "meniscus_min_abs_dot": 0.014
+   }
+  },
+  {
+   "frame": 41,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.244,
+     "peak": 0.856,
+     "rho": 1.54,
+     "angle_deg": -155.4,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 2.81,
+     "below_upper_px": 6.25,
+     "xy": [
+      1026.0,
+      288.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.263,
+     "peak": 0.886,
+     "rho": 1.47,
+     "angle_deg": -147.0,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 1.28,
+     "below_upper_px": 9.46,
+     "xy": [
+      1028.0,
+      290.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.806,
+    "col_r": -1.19,
+    "excess_over_sclera": 0.101,
+    "mean_excess": 0.102,
+    "bright_cols": 22
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1038.53,
+     279.8
+    ],
+    "globe_glint_rho": 0.374,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.43
+    ],
+    "meniscus_min_abs_dot": 0.017
+   }
+  },
+  {
+   "frame": 41,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.305,
+     "peak": 0.881,
+     "rho": 1.98,
+     "angle_deg": -6.1,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.84,
+     "below_upper_px": 6.55,
+     "xy": [
+      937.0,
+      295.5
+     ]
+    },
+    {
+     "area": 4,
+     "excess": 0.268,
+     "peak": 0.86,
+     "rho": 1.25,
+     "angle_deg": -150.4,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.25,
+     "below_upper_px": 10.6,
+     "xy": [
+      899.5,
+      300.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.649,
+    "col_r": 1.25,
+    "excess_over_sclera": -0.013,
+    "mean_excess": 0.04,
+    "bright_cols": 15
+   },
+   "predicted": {
+    "globe_glint_px": [
+     912.19,
+     291.92
+    ],
+    "globe_glint_rho": 0.098,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.22
+    ],
+    "meniscus_min_abs_dot": 0.019
+   }
+  },
+  {
+   "frame": 42,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.229,
+     "peak": 0.805,
+     "rho": 1.55,
+     "angle_deg": -155.1,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 2.72,
+     "below_upper_px": 6.21,
+     "xy": [
+      1025.5,
+      288.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.255,
+     "peak": 0.871,
+     "rho": 1.48,
+     "angle_deg": -146.7,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 1.19,
+     "below_upper_px": 9.44,
+     "xy": [
+      1027.5,
+      290.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.824,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.136,
+    "mean_excess": 0.097,
+    "bright_cols": 22
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1038.05,
+     279.67
+    ],
+    "globe_glint_rho": 0.378,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.43
+    ],
+    "meniscus_min_abs_dot": 0.018
+   }
+  },
+  {
+   "frame": 42,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.3,
+     "peak": 0.872,
+     "rho": 1.97,
+     "angle_deg": -5.4,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.28,
+     "below_upper_px": 6.41,
+     "xy": [
+      936.5,
+      295.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.313,
+     "peak": 0.917,
+     "rho": 1.26,
+     "angle_deg": -149.9,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.72,
+     "below_upper_px": 10.91,
+     "xy": [
+      899.0,
+      300.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.647,
+    "col_r": 1.25,
+    "excess_over_sclera": -0.014,
+    "mean_excess": 0.038,
+    "bright_cols": 14
+   },
+   "predicted": {
+    "globe_glint_px": [
+     911.76,
+     291.73
+    ],
+    "globe_glint_rho": 0.097,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.2
+    ],
+    "meniscus_min_abs_dot": 0.011
+   }
+  },
+  {
+   "frame": 43,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.247,
+     "peak": 0.824,
+     "rho": 1.54,
+     "angle_deg": -155.7,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.68,
+     "below_upper_px": 6.21,
+     "xy": [
+      1025.0,
+      287.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.829,
+    "col_r": -1.19,
+    "excess_over_sclera": 0.133,
+    "mean_excess": 0.103,
+    "bright_cols": 22
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1037.66,
+     279.37
+    ],
+    "globe_glint_rho": 0.371,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.43
+    ],
+    "meniscus_min_abs_dot": 0.018
+   }
+  },
+  {
+   "frame": 43,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.298,
+     "peak": 0.878,
+     "rho": 1.97,
+     "angle_deg": -6.0,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.86,
+     "below_upper_px": 6.53,
+     "xy": [
+      936.0,
+      295.0
+     ]
+    },
+    {
+     "area": 3,
+     "excess": 0.295,
+     "peak": 0.898,
+     "rho": 1.26,
+     "angle_deg": -149.3,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.72,
+     "below_upper_px": 10.87,
+     "xy": [
+      898.7,
+      300.3
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.648,
+    "col_r": 1.17,
+    "excess_over_sclera": -0.004,
+    "mean_excess": 0.04,
+    "bright_cols": 16
+   },
+   "predicted": {
+    "globe_glint_px": [
+     911.4,
+     291.46
+    ],
+    "globe_glint_rho": 0.092,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.22
+    ],
+    "meniscus_min_abs_dot": 0.019
+   }
+  },
+  {
+   "frame": 44,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.256,
+     "peak": 0.82,
+     "rho": 1.55,
+     "angle_deg": -155.8,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 2.86,
+     "below_upper_px": 6.61,
+     "xy": [
+      1024.5,
+      287.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.239,
+     "peak": 0.866,
+     "rho": 1.48,
+     "angle_deg": -147.4,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 1.35,
+     "below_upper_px": 9.81,
+     "xy": [
+      1026.5,
+      289.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.807,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.12,
+    "mean_excess": 0.1,
+    "bright_cols": 22
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1037.47,
+     278.91
+    ],
+    "globe_glint_rho": 0.354,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.41
+    ],
+    "meniscus_min_abs_dot": 0.006
+   }
+  },
+  {
+   "frame": 44,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.285,
+     "peak": 0.862,
+     "rho": 2.01,
+     "angle_deg": -5.8,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.63,
+     "below_upper_px": 6.7,
+     "xy": [
+      936.0,
+      294.5
+     ]
+    },
+    {
+     "area": 3,
+     "excess": 0.278,
+     "peak": 0.882,
+     "rho": 1.24,
+     "angle_deg": -149.8,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.12,
+     "below_upper_px": 10.93,
+     "xy": [
+      898.3,
+      299.7
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.644,
+    "col_r": 1.25,
+    "excess_over_sclera": -0.02,
+    "mean_excess": 0.038,
+    "bright_cols": 14
+   },
+   "predicted": {
+    "globe_glint_px": [
+     911.09,
+     291.04
+    ],
+    "globe_glint_rho": 0.086,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.23
+    ],
+    "meniscus_min_abs_dot": 0.011
+   }
+  },
+  {
+   "frame": 45,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.229,
+     "peak": 0.837,
+     "rho": 1.55,
+     "angle_deg": -156.6,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 2.93,
+     "below_upper_px": 6.05,
+     "xy": [
+      1024.0,
+      286.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.22,
+     "peak": 0.843,
+     "rho": 1.48,
+     "angle_deg": -148.2,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 1.42,
+     "below_upper_px": 9.26,
+     "xy": [
+      1026.0,
+      288.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.807,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.116,
+    "mean_excess": 0.096,
+    "bright_cols": 21
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1036.98,
+     278.14
+    ],
+    "globe_glint_rho": 0.36,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.42
+    ],
+    "meniscus_min_abs_dot": 0.012
+   }
+  },
+  {
+   "frame": 45,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 3,
+     "excess": 0.267,
+     "peak": 0.847,
+     "rho": 1.98,
+     "angle_deg": -5.6,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.92,
+     "below_upper_px": 7.21,
+     "xy": [
+      935.3,
+      293.7
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.302,
+     "peak": 0.906,
+     "rho": 1.22,
+     "angle_deg": -151.3,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.51,
+     "below_upper_px": 9.79,
+     "xy": [
+      898.0,
+      298.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.643,
+    "col_r": 1.33,
+    "excess_over_sclera": -0.018,
+    "mean_excess": 0.037,
+    "bright_cols": 14
+   },
+   "predicted": {
+    "globe_glint_px": [
+     910.66,
+     290.32
+    ],
+    "globe_glint_rho": 0.089,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.23
+    ],
+    "meniscus_min_abs_dot": 0.015
+   }
+  },
+  {
+   "frame": 46,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.212,
+     "peak": 0.839,
+     "rho": 1.52,
+     "angle_deg": -156.1,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 3.04,
+     "below_upper_px": 5.76,
+     "xy": [
+      1024.0,
+      285.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.208,
+     "peak": 0.839,
+     "rho": 1.45,
+     "angle_deg": -147.6,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 1.52,
+     "below_upper_px": 9.01,
+     "xy": [
+      1026.0,
+      287.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.802,
+    "col_r": -1.19,
+    "excess_over_sclera": 0.102,
+    "mean_excess": 0.096,
+    "bright_cols": 21
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1036.77,
+     277.12
+    ],
+    "globe_glint_rho": 0.348,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.4
+    ],
+    "meniscus_min_abs_dot": 0.005
+   }
+  },
+  {
+   "frame": 46,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.278,
+     "peak": 0.862,
+     "rho": 1.98,
+     "angle_deg": -4.9,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.13,
+     "below_upper_px": 6.38,
+     "xy": [
+      935.0,
+      292.5
+     ]
+    },
+    {
+     "area": 3,
+     "excess": 0.276,
+     "peak": 0.887,
+     "rho": 1.25,
+     "angle_deg": -148.9,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.69,
+     "below_upper_px": 11.0,
+     "xy": [
+      897.7,
+      298.3
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.643,
+    "col_r": 1.33,
+    "excess_over_sclera": -0.015,
+    "mean_excess": 0.035,
+    "bright_cols": 14
+   },
+   "predicted": {
+    "globe_glint_px": [
+     910.38,
+     289.42
+    ],
+    "globe_glint_rho": 0.088,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.23
+    ],
+    "meniscus_min_abs_dot": 0.013
+   }
+  },
+  {
+   "frame": 47,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.211,
+     "peak": 0.831,
+     "rho": 1.5,
+     "angle_deg": -156.4,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 3.07,
+     "below_upper_px": 5.68,
+     "xy": [
+      1024.0,
+      284.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.191,
+     "peak": 0.822,
+     "rho": 1.43,
+     "angle_deg": -147.8,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 1.55,
+     "below_upper_px": 8.94,
+     "xy": [
+      1026.0,
+      286.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.824,
+    "col_r": -1.19,
+    "excess_over_sclera": 0.125,
+    "mean_excess": 0.095,
+    "bright_cols": 21
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1036.61,
+     276.29
+    ],
+    "globe_glint_rho": 0.345,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.4
+    ],
+    "meniscus_min_abs_dot": 0.004
+   }
+  },
+  {
+   "frame": 47,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.29,
+     "peak": 0.875,
+     "rho": 2.0,
+     "angle_deg": -4.1,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.19,
+     "below_upper_px": 6.56,
+     "xy": [
+      935.0,
+      291.5
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.282,
+     "peak": 0.89,
+     "rho": 1.24,
+     "angle_deg": -149.2,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.63,
+     "below_upper_px": 11.1,
+     "xy": [
+      897.5,
+      297.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.643,
+    "col_r": 1.25,
+    "excess_over_sclera": -0.018,
+    "mean_excess": 0.034,
+    "bright_cols": 14
+   },
+   "predicted": {
+    "globe_glint_px": [
+     910.21,
+     288.67
+    ],
+    "globe_glint_rho": 0.09,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.23
+    ],
+    "meniscus_min_abs_dot": 0.012
+   }
+  },
+  {
+   "frame": 48,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.259,
+     "peak": 0.858,
+     "rho": 1.59,
+     "angle_deg": -159.2,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 3.17,
+     "below_upper_px": 5.19,
+     "xy": [
+      1023.5,
+      283.5
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.248,
+     "peak": 0.868,
+     "rho": 1.5,
+     "angle_deg": -149.0,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 1.27,
+     "below_upper_px": 9.25,
+     "xy": [
+      1026.0,
+      286.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.834,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.142,
+    "mean_excess": 0.089,
+    "bright_cols": 21
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1037.37,
+     276.14
+    ],
+    "globe_glint_rho": 0.355,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.4
+    ],
+    "meniscus_min_abs_dot": 0.002
+   }
+  },
+  {
+   "frame": 48,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.282,
+     "peak": 0.862,
+     "rho": 1.93,
+     "angle_deg": -3.7,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.1,
+     "below_upper_px": 6.44,
+     "xy": [
+      935.0,
+      291.5
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.246,
+     "peak": 0.858,
+     "rho": 1.32,
+     "angle_deg": -152.4,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.56,
+     "below_upper_px": 11.19,
+     "xy": [
+      897.0,
+      297.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.644,
+    "col_r": 1.25,
+    "excess_over_sclera": -0.022,
+    "mean_excess": 0.03,
+    "bright_cols": 12
+   },
+   "predicted": {
+    "globe_glint_px": [
+     910.91,
+     288.86
+    ],
+    "globe_glint_rho": 0.098,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.22
+    ],
+    "meniscus_min_abs_dot": 0.018
+   }
+  },
+  {
+   "frame": 49,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 3,
+     "excess": 0.266,
+     "peak": 0.839,
+     "rho": 1.62,
+     "angle_deg": -161.4,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.68,
+     "below_upper_px": 5.55,
+     "xy": [
+      1024.3,
+      283.7
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.754,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.056,
+    "mean_excess": 0.096,
+    "bright_cols": 14
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1038.57,
+     276.9
+    ],
+    "globe_glint_rho": 0.373,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.43
+    ],
+    "meniscus_min_abs_dot": 0.018
+   }
+  },
+  {
+   "frame": 49,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.278,
+     "peak": 0.85,
+     "rho": 1.87,
+     "angle_deg": -1.5,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 2.85,
+     "below_upper_px": 5.46,
+     "xy": [
+      936.0,
+      292.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.27,
+     "peak": 0.842,
+     "rho": 1.48,
+     "angle_deg": -155.2,
+     "where": "corner",
+     "nasal": false,
+     "above_lower_px": 6.02,
+     "below_upper_px": 11.82,
+     "xy": [
+      896.5,
+      299.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.817,
+    "col_r": -1.36,
+    "excess_over_sclera": 0.184,
+    "mean_excess": 0.056,
+    "bright_cols": 8
+   },
+   "predicted": {
+    "globe_glint_px": [
+     912.34,
+     290.21
+    ],
+    "globe_glint_rho": 0.11,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.18
+    ],
+    "meniscus_min_abs_dot": 0.004
+   }
+  },
+  {
+   "frame": 50,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.254,
+     "peak": 0.831,
+     "rho": 1.7,
+     "angle_deg": -163.2,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 2.85,
+     "below_upper_px": 5.82,
+     "xy": [
+      1024.0,
+      285.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.762,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.063,
+    "mean_excess": 0.098,
+    "bright_cols": 13
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1039.32,
+     278.46
+    ],
+    "globe_glint_rho": 0.381,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.43
+    ],
+    "meniscus_min_abs_dot": 0.016
+   }
+  },
+  {
+   "frame": 51,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.223,
+     "peak": 0.807,
+     "rho": 1.68,
+     "angle_deg": -161.9,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 2.96,
+     "below_upper_px": 6.4,
+     "xy": [
+      1024.0,
+      288.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.772,
+    "col_r": -1.35,
+    "excess_over_sclera": 0.077,
+    "mean_excess": 0.097,
+    "bright_cols": 13
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1038.48,
+     280.75
+    ],
+    "globe_glint_rho": 0.417,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.45
+    ],
+    "meniscus_min_abs_dot": 0.011
+   }
+  },
+  {
+   "frame": 52,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.792,
+    "col_r": -1.35,
+    "excess_over_sclera": 0.098,
+    "mean_excess": 0.099,
+    "bright_cols": 18
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1036.96,
+     283.93
+    ],
+    "globe_glint_rho": 0.473,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.48
+    ],
+    "meniscus_min_abs_dot": 0.004
+   }
+  },
+  {
+   "frame": 53,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.779,
+    "col_r": -1.35,
+    "excess_over_sclera": 0.088,
+    "mean_excess": 0.102,
+    "bright_cols": 20
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1035.43,
+     288.21
+    ],
+    "globe_glint_rho": 0.517,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.51
+    ],
+    "meniscus_min_abs_dot": 0.016
+   }
+  },
+  {
+   "frame": 53,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.208,
+     "peak": 0.812,
+     "rho": 1.64,
+     "angle_deg": -161.1,
+     "where": "corner",
+     "nasal": false,
+     "above_lower_px": 6.9,
+     "below_upper_px": 12.37,
+     "xy": [
+      893.0,
+      312.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.751,
+    "col_r": -1.52,
+    "excess_over_sclera": 0.12,
+    "mean_excess": 0.06,
+    "bright_cols": 14
+   },
+   "predicted": {
+    "globe_glint_px": [
+     909.97,
+     302.9
+    ],
+    "globe_glint_rho": 0.271,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.07
+    ],
+    "meniscus_min_abs_dot": 0.01
+   }
+  },
+  {
+   "frame": 54,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.748,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.049,
+    "mean_excess": 0.104,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1033.89,
+     293.59
+    ],
+    "globe_glint_rho": 0.561,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.53
+    ],
+    "meniscus_min_abs_dot": 0.009
+   }
+  },
+  {
+   "frame": 54,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.243,
+     "peak": 0.804,
+     "rho": 1.71,
+     "angle_deg": -3.5,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 4.72,
+     "below_upper_px": 3.29,
+     "xy": [
+      932.0,
+      313.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.2,
+     "peak": 0.807,
+     "rho": 1.63,
+     "angle_deg": -161.7,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.88,
+     "below_upper_px": 12.5,
+     "xy": [
+      892.0,
+      318.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.624,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.048,
+    "mean_excess": 0.058,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     908.23,
+     308.61
+    ],
+    "globe_glint_rho": 0.34,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.0
+    ],
+    "meniscus_min_abs_dot": 0.008
+   }
+  },
+  {
+   "frame": 55,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.726,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.028,
+    "mean_excess": 0.108,
+    "bright_cols": 20
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1032.3,
+     300.14
+    ],
+    "globe_glint_rho": 0.606,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.57
+    ],
+    "meniscus_min_abs_dot": 0.006
+   }
+  },
+  {
+   "frame": 55,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.257,
+     "peak": 0.814,
+     "rho": 1.73,
+     "angle_deg": -3.6,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 5.63,
+     "below_upper_px": 3.03,
+     "xy": [
+      931.0,
+      320.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.666,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.062,
+    "mean_excess": 0.061,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     906.67,
+     315.0
+    ],
+    "globe_glint_rho": 0.398,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.02
+    ],
+    "meniscus_min_abs_dot": 0.016
+   }
+  },
+  {
+   "frame": 56,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.716,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.025,
+    "mean_excess": 0.109,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1031.0,
+     306.96
+    ],
+    "globe_glint_rho": 0.634,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.55
+    ],
+    "meniscus_min_abs_dot": 0.003
+   }
+  },
+  {
+   "frame": 56,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.265,
+     "peak": 0.818,
+     "rho": 1.75,
+     "angle_deg": -5.5,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 5.49,
+     "below_upper_px": 4.58,
+     "xy": [
+      930.0,
+      328.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.702,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.11,
+    "mean_excess": 0.062,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     905.17,
+     321.57
+    ],
+    "globe_glint_rho": 0.455,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.01
+    ],
+    "meniscus_min_abs_dot": 0.011
+   }
+  },
+  {
+   "frame": 57,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.719,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.033,
+    "mean_excess": 0.107,
+    "bright_cols": 18
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1029.77,
+     313.28
+    ],
+    "globe_glint_rho": 0.652,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.49
+    ],
+    "meniscus_min_abs_dot": 0.007
+   }
+  },
+  {
+   "frame": 57,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.234,
+     "peak": 0.819,
+     "rho": 1.64,
+     "angle_deg": -21.8,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.82,
+     "below_upper_px": 10.04,
+     "xy": [
+      926.0,
+      340.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.733,
+    "col_r": 1.5,
+    "excess_over_sclera": 0.161,
+    "mean_excess": 0.065,
+    "bright_cols": 18
+   },
+   "predicted": {
+    "globe_glint_px": [
+     903.66,
+     327.63
+    ],
+    "globe_glint_rho": 0.5,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.01
+    ],
+    "meniscus_min_abs_dot": 0.003
+   }
+  },
+  {
+   "frame": 58,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.714,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.037,
+    "mean_excess": 0.088,
+    "bright_cols": 14
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1028.69,
+     318.1
+    ],
+    "globe_glint_rho": 0.661,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.45
+    ],
+    "meniscus_min_abs_dot": 0.012
+   }
+  },
+  {
+   "frame": 58,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.258,
+     "peak": 0.823,
+     "rho": 1.74,
+     "angle_deg": -10.3,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 5.28,
+     "below_upper_px": 6.03,
+     "xy": [
+      927.0,
+      341.5
+     ]
+    },
+    {
+     "area": 3,
+     "excess": 0.243,
+     "peak": 0.835,
+     "rho": 1.68,
+     "angle_deg": -20.7,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.42,
+     "below_upper_px": 9.93,
+     "xy": [
+      925.3,
+      345.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.757,
+    "col_r": 1.5,
+    "excess_over_sclera": 0.156,
+    "mean_excess": 0.049,
+    "bright_cols": 15
+   },
+   "predicted": {
+    "globe_glint_px": [
+     902.19,
+     332.4
+    ],
+    "globe_glint_rho": 0.534,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.04
+    ],
+    "meniscus_min_abs_dot": 0.013
+   }
+  },
+  {
+   "frame": 59,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.727,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.05,
+    "mean_excess": 0.08,
+    "bright_cols": 14
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1027.9,
+     321.17
+    ],
+    "globe_glint_rho": 0.655,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.39
+    ],
+    "meniscus_min_abs_dot": 0.001
+   }
+  },
+  {
+   "frame": 59,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.272,
+     "peak": 0.841,
+     "rho": 1.75,
+     "angle_deg": -10.4,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 5.19,
+     "below_upper_px": 6.26,
+     "xy": [
+      926.0,
+      345.0
+     ]
+    },
+    {
+     "area": 4,
+     "excess": 0.247,
+     "peak": 0.843,
+     "rho": 1.67,
+     "angle_deg": -21.1,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.48,
+     "below_upper_px": 10.21,
+     "xy": [
+      924.0,
+      348.5
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.211,
+     "peak": 0.831,
+     "rho": 1.64,
+     "angle_deg": -159.9,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 9.35,
+     "below_upper_px": 12.27,
+     "xy": [
+      886.0,
+      348.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.77,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.101,
+    "mean_excess": 0.046,
+    "bright_cols": 15
+   },
+   "predicted": {
+    "globe_glint_px": [
+     900.84,
+     335.58
+    ],
+    "globe_glint_rho": 0.557,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.04
+    ],
+    "meniscus_min_abs_dot": 0.013
+   }
+  },
+  {
+   "frame": 60,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.718,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.041,
+    "mean_excess": 0.083,
+    "bright_cols": 14
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1027.05,
+     322.46
+    ],
+    "globe_glint_rho": 0.662,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.39
+    ],
+    "meniscus_min_abs_dot": 0.003
+   }
+  },
+  {
+   "frame": 60,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 7,
+     "excess": 0.266,
+     "peak": 0.855,
+     "rho": 1.69,
+     "angle_deg": -17.6,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 3.53,
+     "below_upper_px": 9.13,
+     "xy": [
+      923.7,
+      349.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.205,
+     "peak": 0.82,
+     "rho": 1.63,
+     "angle_deg": -161.8,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 9.79,
+     "below_upper_px": 11.35,
+     "xy": [
+      885.0,
+      349.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.794,
+    "col_r": 1.5,
+    "excess_over_sclera": 0.182,
+    "mean_excess": 0.053,
+    "bright_cols": 16
+   },
+   "predicted": {
+    "globe_glint_px": [
+     899.94,
+     337.15
+    ],
+    "globe_glint_rho": 0.563,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.02
+    ],
+    "meniscus_min_abs_dot": 0.004
+   }
+  },
+  {
+   "frame": 61,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.714,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.037,
+    "mean_excess": 0.08,
+    "bright_cols": 13
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1026.21,
+     322.07
+    ],
+    "globe_glint_rho": 0.684,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.41
+    ],
+    "meniscus_min_abs_dot": 0.01
+   }
+  },
+  {
+   "frame": 61,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 5,
+     "excess": 0.259,
+     "peak": 0.855,
+     "rho": 1.71,
+     "angle_deg": -20.2,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.72,
+     "below_upper_px": 10.07,
+     "xy": [
+      923.0,
+      349.8
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.203,
+     "peak": 0.815,
+     "rho": 1.64,
+     "angle_deg": -159.9,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 9.16,
+     "below_upper_px": 11.95,
+     "xy": [
+      884.5,
+      349.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.78,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.092,
+    "mean_excess": 0.05,
+    "bright_cols": 14
+   },
+   "predicted": {
+    "globe_glint_px": [
+     899.12,
+     336.9
+    ],
+    "globe_glint_rho": 0.578,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.0
+    ],
+    "meniscus_min_abs_dot": 0.005
+   }
+  },
+  {
+   "frame": 62,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.714,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.041,
+    "mean_excess": 0.084,
+    "bright_cols": 14
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1025.73,
+     320.33
+    ],
+    "globe_glint_rho": 0.697,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.46
+    ],
+    "meniscus_min_abs_dot": 0.008
+   }
+  },
+  {
+   "frame": 62,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 5,
+     "excess": 0.283,
+     "peak": 0.871,
+     "rho": 1.72,
+     "angle_deg": -17.0,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 3.41,
+     "below_upper_px": 8.97,
+     "xy": [
+      923.2,
+      347.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.201,
+     "peak": 0.816,
+     "rho": 1.64,
+     "angle_deg": -160.7,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 9.44,
+     "below_upper_px": 11.58,
+     "xy": [
+      884.0,
+      347.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.798,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.151,
+    "mean_excess": 0.055,
+    "bright_cols": 16
+   },
+   "predicted": {
+    "globe_glint_px": [
+     898.8,
+     335.13
+    ],
+    "globe_glint_rho": 0.578,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.01
+    ],
+    "meniscus_min_abs_dot": 0.001
+   }
+  },
+  {
+   "frame": 63,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.719,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.044,
+    "mean_excess": 0.087,
+    "bright_cols": 14
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1025.75,
+     317.71
+    ],
+    "globe_glint_rho": 0.684,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.47
+    ],
+    "meniscus_min_abs_dot": 0.0
+   }
+  },
+  {
+   "frame": 63,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 6,
+     "excess": 0.271,
+     "peak": 0.863,
+     "rho": 1.74,
+     "angle_deg": -18.2,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.72,
+     "below_upper_px": 9.61,
+     "xy": [
+      923.2,
+      344.7
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.247,
+     "peak": 0.866,
+     "rho": 1.64,
+     "angle_deg": -159.7,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 9.15,
+     "below_upper_px": 11.43,
+     "xy": [
+      884.0,
+      345.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.814,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.205,
+    "mean_excess": 0.062,
+    "bright_cols": 16
+   },
+   "predicted": {
+    "globe_glint_px": [
+     898.67,
+     332.59
+    ],
+    "globe_glint_rho": 0.561,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.01
+    ],
+    "meniscus_min_abs_dot": 0.003
+   }
+  },
+  {
+   "frame": 64,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.732,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.063,
+    "mean_excess": 0.1,
+    "bright_cols": 15
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1025.82,
+     314.59
+    ],
+    "globe_glint_rho": 0.667,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.51
+    ],
+    "meniscus_min_abs_dot": 0.016
+   }
+  },
+  {
+   "frame": 64,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 4,
+     "excess": 0.26,
+     "peak": 0.848,
+     "rho": 1.73,
+     "angle_deg": -19.2,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.26,
+     "below_upper_px": 10.75,
+     "xy": [
+      923.0,
+      341.5
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.222,
+     "peak": 0.838,
+     "rho": 1.65,
+     "angle_deg": -159.8,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 8.96,
+     "below_upper_px": 11.14,
+     "xy": [
+      884.0,
+      341.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.818,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.218,
+    "mean_excess": 0.06,
+    "bright_cols": 16
+   },
+   "predicted": {
+    "globe_glint_px": [
+     898.97,
+     329.61
+    ],
+    "globe_glint_rho": 0.517,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.01
+    ],
+    "meniscus_min_abs_dot": 0.001
+   }
+  },
+  {
+   "frame": 65,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.746,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.079,
+    "mean_excess": 0.105,
+    "bright_cols": 16
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1025.7,
+     310.85
+    ],
+    "globe_glint_rho": 0.674,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.54
+    ],
+    "meniscus_min_abs_dot": 0.005
+   }
+  },
+  {
+   "frame": 65,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.272,
+     "peak": 0.833,
+     "rho": 1.82,
+     "angle_deg": -8.3,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 5.13,
+     "below_upper_px": 7.11,
+     "xy": [
+      925.0,
+      334.0
+     ]
+    },
+    {
+     "area": 3,
+     "excess": 0.279,
+     "peak": 0.863,
+     "rho": 1.74,
+     "angle_deg": -17.0,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.8,
+     "below_upper_px": 10.36,
+     "xy": [
+      923.3,
+      337.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.257,
+     "peak": 0.873,
+     "rho": 1.64,
+     "angle_deg": -160.5,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 9.01,
+     "below_upper_px": 10.48,
+     "xy": [
+      884.0,
+      337.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.763,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.167,
+    "mean_excess": 0.057,
+    "bright_cols": 16
+   },
+   "predicted": {
+    "globe_glint_px": [
+     899.07,
+     325.95
+    ],
+    "globe_glint_rho": 0.505,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.01
+    ],
+    "meniscus_min_abs_dot": 0.002
+   }
+  },
+  {
+   "frame": 66,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.756,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.083,
+    "mean_excess": 0.107,
+    "bright_cols": 16
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1025.73,
+     307.29
+    ],
+    "globe_glint_rho": 0.668,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.56
+    ],
+    "meniscus_min_abs_dot": 0.001
+   }
+  },
+  {
+   "frame": 66,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.271,
+     "peak": 0.832,
+     "rho": 1.82,
+     "angle_deg": -7.4,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 5.16,
+     "below_upper_px": 6.64,
+     "xy": [
+      925.0,
+      330.0
+     ]
+    },
+    {
+     "area": 3,
+     "excess": 0.255,
+     "peak": 0.843,
+     "rho": 1.76,
+     "angle_deg": -15.7,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.7,
+     "below_upper_px": 9.84,
+     "xy": [
+      923.7,
+      333.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.255,
+     "peak": 0.871,
+     "rho": 1.65,
+     "angle_deg": -158.7,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 8.01,
+     "below_upper_px": 11.05,
+     "xy": [
+      884.0,
+      334.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.74,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.161,
+    "mean_excess": 0.064,
+    "bright_cols": 17
+   },
+   "predicted": {
+    "globe_glint_px": [
+     899.19,
+     322.46
+    ],
+    "globe_glint_rho": 0.485,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.01
+    ],
+    "meniscus_min_abs_dot": 0.001
+   }
+  },
+  {
+   "frame": 67,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.748,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.075,
+    "mean_excess": 0.115,
+    "bright_cols": 18
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1025.49,
+     304.08
+    ],
+    "globe_glint_rho": 0.678,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.59
+    ],
+    "meniscus_min_abs_dot": 0.015
+   }
+  },
+  {
+   "frame": 67,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 3,
+     "excess": 0.259,
+     "peak": 0.843,
+     "rho": 1.75,
+     "angle_deg": -16.3,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.25,
+     "below_upper_px": 10.81,
+     "xy": [
+      923.3,
+      330.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.244,
+     "peak": 0.856,
+     "rho": 1.63,
+     "angle_deg": -159.4,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 8.18,
+     "below_upper_px": 10.93,
+     "xy": [
+      884.0,
+      331.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.726,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.161,
+    "mean_excess": 0.067,
+    "bright_cols": 18
+   },
+   "predicted": {
+    "globe_glint_px": [
+     899.19,
+     319.55
+    ],
+    "globe_glint_rho": 0.46,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     0.02
+    ],
+    "meniscus_min_abs_dot": 0.002
+   }
+  },
+  {
+   "frame": 68,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.761,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.085,
+    "mean_excess": 0.119,
+    "bright_cols": 18
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1025.11,
+     301.63
+    ],
+    "globe_glint_rho": 0.676,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.62
+    ],
+    "meniscus_min_abs_dot": 0.008
+   }
+  },
+  {
+   "frame": 68,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 3,
+     "excess": 0.27,
+     "peak": 0.855,
+     "rho": 1.78,
+     "angle_deg": -12.8,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 3.02,
+     "below_upper_px": 9.34,
+     "xy": [
+      923.7,
+      326.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.255,
+     "peak": 0.832,
+     "rho": 1.64,
+     "angle_deg": -160.1,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 8.06,
+     "below_upper_px": 10.25,
+     "xy": [
+      883.5,
+      328.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.717,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.151,
+    "mean_excess": 0.068,
+    "bright_cols": 18
+   },
+   "predicted": {
+    "globe_glint_px": [
+     898.87,
+     316.95
+    ],
+    "globe_glint_rho": 0.45,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.01
+    ],
+    "meniscus_min_abs_dot": 0.009
+   }
+  },
+  {
+   "frame": 69,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.173,
+     "peak": 0.804,
+     "rho": 1.58,
+     "angle_deg": -141.4,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 1.1,
+     "below_upper_px": 13.75,
+     "xy": [
+      1017.0,
+      315.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.785,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.097,
+    "mean_excess": 0.116,
+    "bright_cols": 18
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1024.58,
+     299.59
+    ],
+    "globe_glint_rho": 0.673,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.64
+    ],
+    "meniscus_min_abs_dot": 0.001
+   }
+  },
+  {
+   "frame": 69,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.274,
+     "peak": 0.835,
+     "rho": 1.8,
+     "angle_deg": -7.3,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 4.63,
+     "below_upper_px": 7.68,
+     "xy": [
+      924.0,
+      321.5
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.283,
+     "peak": 0.867,
+     "rho": 1.76,
+     "angle_deg": -14.2,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 2.54,
+     "below_upper_px": 10.3,
+     "xy": [
+      923.0,
+      324.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.282,
+     "peak": 0.87,
+     "rho": 1.65,
+     "angle_deg": -160.4,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 8.1,
+     "below_upper_px": 10.13,
+     "xy": [
+      883.0,
+      325.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.69,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.12,
+    "mean_excess": 0.066,
+    "bright_cols": 18
+   },
+   "predicted": {
+    "globe_glint_px": [
+     898.43,
+     314.76
+    ],
+    "globe_glint_rho": 0.437,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.02
+    ],
+    "meniscus_min_abs_dot": 0.013
+   }
+  },
+  {
+   "frame": 70,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.799,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.109,
+    "mean_excess": 0.117,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1024.09,
+     297.91
+    ],
+    "globe_glint_rho": 0.667,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.66
+    ],
+    "meniscus_min_abs_dot": 0.012
+   }
+  },
+  {
+   "frame": 70,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.253,
+     "peak": 0.817,
+     "rho": 1.83,
+     "angle_deg": -6.1,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 4.83,
+     "below_upper_px": 6.73,
+     "xy": [
+      924.0,
+      319.0
+     ]
+    },
+    {
+     "area": 3,
+     "excess": 0.247,
+     "peak": 0.827,
+     "rho": 1.77,
+     "angle_deg": -14.4,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.4,
+     "below_upper_px": 9.91,
+     "xy": [
+      922.7,
+      322.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.248,
+     "peak": 0.852,
+     "rho": 1.64,
+     "angle_deg": -158.4,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.65,
+     "below_upper_px": 11.05,
+     "xy": [
+      883.0,
+      324.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.704,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.149,
+    "mean_excess": 0.061,
+    "bright_cols": 18
+   },
+   "predicted": {
+    "globe_glint_px": [
+     898.08,
+     312.93
+    ],
+    "globe_glint_rho": 0.418,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.01
+    ],
+    "meniscus_min_abs_dot": 0.01
+   }
+  },
+  {
+   "frame": 71,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.769,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.083,
+    "mean_excess": 0.119,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1023.61,
+     296.77
+    ],
+    "globe_glint_rho": 0.661,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.68
+    ],
+    "meniscus_min_abs_dot": 0.018
+   }
+  },
+  {
+   "frame": 71,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 3,
+     "excess": 0.269,
+     "peak": 0.85,
+     "rho": 1.77,
+     "angle_deg": -14.0,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.41,
+     "below_upper_px": 9.87,
+     "xy": [
+      922.3,
+      320.3
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.26,
+     "peak": 0.832,
+     "rho": 1.63,
+     "angle_deg": -159.8,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.79,
+     "below_upper_px": 10.12,
+     "xy": [
+      882.5,
+      322.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.661,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.108,
+    "mean_excess": 0.066,
+    "bright_cols": 18
+   },
+   "predicted": {
+    "globe_glint_px": [
+     897.74,
+     311.64
+    ],
+    "globe_glint_rho": 0.4,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.02
+    ],
+    "meniscus_min_abs_dot": 0.017
+   }
+  },
+  {
+   "frame": 72,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.788,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.103,
+    "mean_excess": 0.118,
+    "bright_cols": 20
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1023.19,
+     295.95
+    ],
+    "globe_glint_rho": 0.657,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.67
+    ],
+    "meniscus_min_abs_dot": 0.014
+   }
+  },
+  {
+   "frame": 72,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.271,
+     "peak": 0.828,
+     "rho": 1.82,
+     "angle_deg": -5.2,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 5.08,
+     "below_upper_px": 6.43,
+     "xy": [
+      923.0,
+      316.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.294,
+     "peak": 0.874,
+     "rho": 1.78,
+     "angle_deg": -13.3,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 2.5,
+     "below_upper_px": 9.56,
+     "xy": [
+      922.0,
+      319.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.259,
+     "peak": 0.863,
+     "rho": 1.64,
+     "angle_deg": -159.6,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.61,
+     "below_upper_px": 10.14,
+     "xy": [
+      882.0,
+      321.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.654,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.095,
+    "mean_excess": 0.066,
+    "bright_cols": 17
+   },
+   "predicted": {
+    "globe_glint_px": [
+     897.31,
+     310.67
+    ],
+    "globe_glint_rho": 0.393,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.03
+    ],
+    "meniscus_min_abs_dot": 0.019
+   }
+  },
+  {
+   "frame": 73,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.757,
+    "col_r": -1.19,
+    "excess_over_sclera": 0.06,
+    "mean_excess": 0.116,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1022.6,
+     295.49
+    ],
+    "globe_glint_rho": 0.661,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.69
+    ],
+    "meniscus_min_abs_dot": 0.013
+   }
+  },
+  {
+   "frame": 73,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 3,
+     "excess": 0.263,
+     "peak": 0.844,
+     "rho": 1.77,
+     "angle_deg": -13.6,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.48,
+     "below_upper_px": 10.01,
+     "xy": [
+      921.3,
+      318.3
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.247,
+     "peak": 0.816,
+     "rho": 1.67,
+     "angle_deg": -160.7,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.69,
+     "below_upper_px": 9.79,
+     "xy": [
+      881.0,
+      320.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.648,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.097,
+    "mean_excess": 0.068,
+    "bright_cols": 17
+   },
+   "predicted": {
+    "globe_glint_px": [
+     896.76,
+     310.04
+    ],
+    "globe_glint_rho": 0.389,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.04
+    ],
+    "meniscus_min_abs_dot": 0.013
+   }
+  },
+  {
+   "frame": 74,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.186,
+     "peak": 0.81,
+     "rho": 1.56,
+     "angle_deg": -143.6,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 1.15,
+     "below_upper_px": 13.23,
+     "xy": [
+      1014.5,
+      309.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.801,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.117,
+    "mean_excess": 0.118,
+    "bright_cols": 20
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1022.13,
+     295.33
+    ],
+    "globe_glint_rho": 0.659,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.68
+    ],
+    "meniscus_min_abs_dot": 0.016
+   }
+  },
+  {
+   "frame": 74,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.296,
+     "peak": 0.853,
+     "rho": 1.82,
+     "angle_deg": -5.2,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 5.03,
+     "below_upper_px": 6.77,
+     "xy": [
+      922.0,
+      315.0
+     ]
+    },
+    {
+     "area": 3,
+     "excess": 0.299,
+     "peak": 0.875,
+     "rho": 1.75,
+     "angle_deg": -13.5,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.59,
+     "below_upper_px": 9.94,
+     "xy": [
+      920.7,
+      318.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.27,
+     "peak": 0.87,
+     "rho": 1.63,
+     "angle_deg": -159.5,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.41,
+     "below_upper_px": 10.54,
+     "xy": [
+      881.0,
+      320.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.64,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.088,
+    "mean_excess": 0.065,
+    "bright_cols": 17
+   },
+   "predicted": {
+    "globe_glint_px": [
+     896.24,
+     309.84
+    ],
+    "globe_glint_rho": 0.384,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.05
+    ],
+    "meniscus_min_abs_dot": 0.011
+   }
+  },
+  {
+   "frame": 75,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.766,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.08,
+    "mean_excess": 0.115,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1021.63,
+     295.57
+    ],
+    "globe_glint_rho": 0.656,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.68
+    ],
+    "meniscus_min_abs_dot": 0.018
+   }
+  },
+  {
+   "frame": 75,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 3,
+     "excess": 0.283,
+     "peak": 0.852,
+     "rho": 1.78,
+     "angle_deg": -13.9,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.02,
+     "below_upper_px": 10.0,
+     "xy": [
+      920.3,
+      318.3
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.279,
+     "peak": 0.863,
+     "rho": 1.66,
+     "angle_deg": -160.2,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.48,
+     "below_upper_px": 10.48,
+     "xy": [
+      880.0,
+      320.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.651,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.1,
+    "mean_excess": 0.068,
+    "bright_cols": 17
+   },
+   "predicted": {
+    "globe_glint_px": [
+     895.68,
+     309.98
+    ],
+    "globe_glint_rho": 0.382,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.04
+    ],
+    "meniscus_min_abs_dot": 0.015
+   }
+  },
+  {
+   "frame": 76,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.189,
+     "peak": 0.82,
+     "rho": 1.53,
+     "angle_deg": -142.0,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 1.07,
+     "below_upper_px": 13.6,
+     "xy": [
+      1014.0,
+      310.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.827,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.134,
+    "mean_excess": 0.117,
+    "bright_cols": 20
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1021.16,
+     296.11
+    ],
+    "globe_glint_rho": 0.647,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.66
+    ],
+    "meniscus_min_abs_dot": 0.012
+   }
+  },
+  {
+   "frame": 76,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.267,
+     "peak": 0.827,
+     "rho": 1.84,
+     "angle_deg": -6.1,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 4.6,
+     "below_upper_px": 6.93,
+     "xy": [
+      921.0,
+      316.0
+     ]
+    },
+    {
+     "area": 4,
+     "excess": 0.274,
+     "peak": 0.846,
+     "rho": 1.76,
+     "angle_deg": -14.4,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.23,
+     "below_upper_px": 10.15,
+     "xy": [
+      919.5,
+      319.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.218,
+     "peak": 0.822,
+     "rho": 1.62,
+     "angle_deg": -159.7,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.52,
+     "below_upper_px": 10.91,
+     "xy": [
+      880.0,
+      320.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.666,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.127,
+    "mean_excess": 0.065,
+    "bright_cols": 18
+   },
+   "predicted": {
+    "globe_glint_px": [
+     895.08,
+     310.49
+    ],
+    "globe_glint_rho": 0.384,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.05
+    ],
+    "meniscus_min_abs_dot": 0.01
+   }
+  },
+  {
+   "frame": 77,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.767,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.076,
+    "mean_excess": 0.115,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1020.61,
+     296.79
+    ],
+    "globe_glint_rho": 0.642,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.66
+    ],
+    "meniscus_min_abs_dot": 0.01
+   }
+  },
+  {
+   "frame": 77,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.267,
+     "peak": 0.828,
+     "rho": 1.8,
+     "angle_deg": -5.8,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 4.77,
+     "below_upper_px": 7.23,
+     "xy": [
+      920.0,
+      316.5
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.291,
+     "peak": 0.871,
+     "rho": 1.76,
+     "angle_deg": -14.0,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.19,
+     "below_upper_px": 10.36,
+     "xy": [
+      919.0,
+      319.5
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.278,
+     "peak": 0.875,
+     "rho": 1.66,
+     "angle_deg": -159.1,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.06,
+     "below_upper_px": 10.94,
+     "xy": [
+      879.0,
+      321.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.639,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.095,
+    "mean_excess": 0.068,
+    "bright_cols": 17
+   },
+   "predicted": {
+    "globe_glint_px": [
+     894.44,
+     311.13
+    ],
+    "globe_glint_rho": 0.387,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.05
+    ],
+    "meniscus_min_abs_dot": 0.008
+   }
+  },
+  {
+   "frame": 78,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.777,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.082,
+    "mean_excess": 0.118,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1020.09,
+     297.43
+    ],
+    "globe_glint_rho": 0.637,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.65
+    ],
+    "meniscus_min_abs_dot": 0.006
+   }
+  },
+  {
+   "frame": 78,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 3,
+     "excess": 0.258,
+     "peak": 0.835,
+     "rho": 1.76,
+     "angle_deg": -13.6,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.43,
+     "below_upper_px": 10.15,
+     "xy": [
+      918.3,
+      320.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.279,
+     "peak": 0.847,
+     "rho": 1.65,
+     "angle_deg": -159.5,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.36,
+     "below_upper_px": 11.24,
+     "xy": [
+      878.5,
+      322.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.681,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.133,
+    "mean_excess": 0.061,
+    "bright_cols": 18
+   },
+   "predicted": {
+    "globe_glint_px": [
+     893.76,
+     311.79
+    ],
+    "globe_glint_rho": 0.392,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.05
+    ],
+    "meniscus_min_abs_dot": 0.007
+   }
+  },
+  {
+   "frame": 79,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.186,
+     "peak": 0.817,
+     "rho": 1.54,
+     "angle_deg": -142.3,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 1.1,
+     "below_upper_px": 13.49,
+     "xy": [
+      1012.0,
+      312.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.819,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.126,
+    "mean_excess": 0.119,
+    "bright_cols": 20
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1019.53,
+     298.01
+    ],
+    "globe_glint_rho": 0.635,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.64
+    ],
+    "meniscus_min_abs_dot": 0.0
+   }
+  },
+  {
+   "frame": 79,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.258,
+     "peak": 0.815,
+     "rho": 1.82,
+     "angle_deg": -5.3,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 5.11,
+     "below_upper_px": 6.6,
+     "xy": [
+      919.0,
+      317.5
+     ]
+    },
+    {
+     "area": 3,
+     "excess": 0.286,
+     "peak": 0.862,
+     "rho": 1.76,
+     "angle_deg": -14.9,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.16,
+     "below_upper_px": 10.29,
+     "xy": [
+      917.7,
+      321.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.249,
+     "peak": 0.853,
+     "rho": 1.63,
+     "angle_deg": -159.4,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.23,
+     "below_upper_px": 11.01,
+     "xy": [
+      878.0,
+      322.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.653,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.101,
+    "mean_excess": 0.063,
+    "bright_cols": 18
+   },
+   "predicted": {
+    "globe_glint_px": [
+     893.09,
+     312.27
+    ],
+    "globe_glint_rho": 0.395,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.07
+    ],
+    "meniscus_min_abs_dot": 0.001
+   }
+  },
+  {
+   "frame": 80,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.773,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.076,
+    "mean_excess": 0.118,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1019.0,
+     298.34
+    ],
+    "globe_glint_rho": 0.638,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.64
+    ],
+    "meniscus_min_abs_dot": 0.001
+   }
+  },
+  {
+   "frame": 80,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.259,
+     "peak": 0.824,
+     "rho": 1.79,
+     "angle_deg": -6.1,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 4.9,
+     "below_upper_px": 7.07,
+     "xy": [
+      918.0,
+      318.0
+     ]
+    },
+    {
+     "area": 3,
+     "excess": 0.313,
+     "peak": 0.89,
+     "rho": 1.78,
+     "angle_deg": -14.2,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.18,
+     "below_upper_px": 10.16,
+     "xy": [
+      917.3,
+      321.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.29,
+     "peak": 0.867,
+     "rho": 1.66,
+     "angle_deg": -160.4,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.48,
+     "below_upper_px": 10.77,
+     "xy": [
+      877.0,
+      322.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.667,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.108,
+    "mean_excess": 0.066,
+    "bright_cols": 18
+   },
+   "predicted": {
+    "globe_glint_px": [
+     892.41,
+     312.47
+    ],
+    "globe_glint_rho": 0.402,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.07
+    ],
+    "meniscus_min_abs_dot": 0.001
+   }
+  },
+  {
+   "frame": 81,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.776,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.08,
+    "mean_excess": 0.118,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1018.53,
+     298.25
+    ],
+    "globe_glint_rho": 0.637,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.64
+    ],
+    "meniscus_min_abs_dot": 0.002
+   }
+  },
+  {
+   "frame": 81,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.259,
+     "peak": 0.824,
+     "rho": 1.83,
+     "angle_deg": -6.5,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 4.61,
+     "below_upper_px": 7.22,
+     "xy": [
+      918.0,
+      318.0
+     ]
+    },
+    {
+     "area": 4,
+     "excess": 0.294,
+     "peak": 0.87,
+     "rho": 1.76,
+     "angle_deg": -14.9,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.23,
+     "below_upper_px": 10.42,
+     "xy": [
+      916.5,
+      321.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.247,
+     "peak": 0.843,
+     "rho": 1.63,
+     "angle_deg": -159.3,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.36,
+     "below_upper_px": 10.94,
+     "xy": [
+      877.0,
+      322.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.638,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.087,
+    "mean_excess": 0.065,
+    "bright_cols": 17
+   },
+   "predicted": {
+    "globe_glint_px": [
+     891.91,
+     312.23
+    ],
+    "globe_glint_rho": 0.402,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.07
+    ],
+    "meniscus_min_abs_dot": 0.0
+   }
+  },
+  {
+   "frame": 82,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.788,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.083,
+    "mean_excess": 0.119,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1017.95,
+     297.71
+    ],
+    "globe_glint_rho": 0.65,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.66
+    ],
+    "meniscus_min_abs_dot": 0.01
+   }
+  },
+  {
+   "frame": 82,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 3,
+     "excess": 0.278,
+     "peak": 0.854,
+     "rho": 1.77,
+     "angle_deg": -13.8,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.37,
+     "below_upper_px": 10.36,
+     "xy": [
+      916.3,
+      320.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.287,
+     "peak": 0.867,
+     "rho": 1.67,
+     "angle_deg": -159.5,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.35,
+     "below_upper_px": 10.93,
+     "xy": [
+      876.0,
+      322.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.649,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.092,
+    "mean_excess": 0.062,
+    "bright_cols": 17
+   },
+   "predicted": {
+    "globe_glint_px": [
+     891.46,
+     311.62
+    ],
+    "globe_glint_rho": 0.401,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.06
+    ],
+    "meniscus_min_abs_dot": 0.005
+   }
+  },
+  {
+   "frame": 83,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.778,
+    "col_r": -1.19,
+    "excess_over_sclera": 0.077,
+    "mean_excess": 0.115,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1017.48,
+     296.79
+    ],
+    "globe_glint_rho": 0.651,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.67
+    ],
+    "meniscus_min_abs_dot": 0.014
+   }
+  },
+  {
+   "frame": 83,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.286,
+     "peak": 0.85,
+     "rho": 1.83,
+     "angle_deg": -5.6,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 5.01,
+     "below_upper_px": 7.13,
+     "xy": [
+      917.0,
+      316.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.301,
+     "peak": 0.881,
+     "rho": 1.78,
+     "angle_deg": -12.4,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 2.93,
+     "below_upper_px": 9.75,
+     "xy": [
+      916.0,
+      318.5
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.292,
+     "peak": 0.884,
+     "rho": 1.63,
+     "angle_deg": -159.0,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.26,
+     "below_upper_px": 10.82,
+     "xy": [
+      876.0,
+      321.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.634,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.08,
+    "mean_excess": 0.063,
+    "bright_cols": 17
+   },
+   "predicted": {
+    "globe_glint_px": [
+     891.0,
+     310.62
+    ],
+    "globe_glint_rho": 0.399,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.06
+    ],
+    "meniscus_min_abs_dot": 0.002
+   }
+  },
+  {
+   "frame": 84,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.787,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.084,
+    "mean_excess": 0.113,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1017.0,
+     295.7
+    ],
+    "globe_glint_rho": 0.654,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.67
+    ],
+    "meniscus_min_abs_dot": 0.017
+   }
+  },
+  {
+   "frame": 84,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 3,
+     "excess": 0.278,
+     "peak": 0.855,
+     "rho": 1.78,
+     "angle_deg": -14.3,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.3,
+     "below_upper_px": 10.58,
+     "xy": [
+      915.3,
+      318.0
+     ]
+    },
+    {
+     "area": 3,
+     "excess": 0.279,
+     "peak": 0.852,
+     "rho": 1.64,
+     "angle_deg": -159.5,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.21,
+     "below_upper_px": 10.72,
+     "xy": [
+      875.3,
+      319.7
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.636,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.078,
+    "mean_excess": 0.065,
+    "bright_cols": 17
+   },
+   "predicted": {
+    "globe_glint_px": [
+     890.57,
+     309.43
+    ],
+    "globe_glint_rho": 0.392,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.07
+    ],
+    "meniscus_min_abs_dot": 0.001
+   }
+  },
+  {
+   "frame": 85,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.189,
+     "peak": 0.829,
+     "rho": 1.53,
+     "angle_deg": -143.7,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 1.24,
+     "below_upper_px": 12.88,
+     "xy": [
+      1009.0,
+      308.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.802,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.101,
+    "mean_excess": 0.114,
+    "bright_cols": 20
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1016.43,
+     294.59
+    ],
+    "globe_glint_rho": 0.657,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.69
+    ],
+    "meniscus_min_abs_dot": 0.014
+   }
+  },
+  {
+   "frame": 85,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.253,
+     "peak": 0.818,
+     "rho": 1.83,
+     "angle_deg": -5.6,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 4.94,
+     "below_upper_px": 6.68,
+     "xy": [
+      916.0,
+      313.5
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.275,
+     "peak": 0.851,
+     "rho": 1.79,
+     "angle_deg": -13.7,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.35,
+     "below_upper_px": 9.82,
+     "xy": [
+      915.0,
+      316.5
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.274,
+     "peak": 0.851,
+     "rho": 1.63,
+     "angle_deg": -159.0,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.92,
+     "below_upper_px": 11.07,
+     "xy": [
+      875.0,
+      318.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.594,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.031,
+    "mean_excess": 0.067,
+    "bright_cols": 18
+   },
+   "predicted": {
+    "globe_glint_px": [
+     890.13,
+     308.26
+    ],
+    "globe_glint_rho": 0.383,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.07
+    ],
+    "meniscus_min_abs_dot": 0.0
+   }
+  },
+  {
+   "frame": 86,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.179,
+     "peak": 0.814,
+     "rho": 1.51,
+     "angle_deg": -142.5,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 1.1,
+     "below_upper_px": 13.49,
+     "xy": [
+      1009.0,
+      307.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.841,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.141,
+    "mean_excess": 0.113,
+    "bright_cols": 20
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1015.86,
+     293.62
+    ],
+    "globe_glint_rho": 0.661,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.7
+    ],
+    "meniscus_min_abs_dot": 0.008
+   }
+  },
+  {
+   "frame": 86,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.274,
+     "peak": 0.83,
+     "rho": 1.86,
+     "angle_deg": -4.6,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 4.64,
+     "below_upper_px": 6.63,
+     "xy": [
+      916.0,
+      312.0
+     ]
+    },
+    {
+     "area": 4,
+     "excess": 0.262,
+     "peak": 0.839,
+     "rho": 1.78,
+     "angle_deg": -12.8,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.29,
+     "below_upper_px": 9.82,
+     "xy": [
+      914.5,
+      315.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.291,
+     "peak": 0.856,
+     "rho": 1.67,
+     "angle_deg": -160.4,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.43,
+     "below_upper_px": 10.08,
+     "xy": [
+      874.0,
+      317.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.648,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.088,
+    "mean_excess": 0.065,
+    "bright_cols": 18
+   },
+   "predicted": {
+    "globe_glint_px": [
+     889.67,
+     307.26
+    ],
+    "globe_glint_rho": 0.376,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.05
+    ],
+    "meniscus_min_abs_dot": 0.007
+   }
+  },
+  {
+   "frame": 87,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.798,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.105,
+    "mean_excess": 0.114,
+    "bright_cols": 20
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1015.29,
+     292.76
+    ],
+    "globe_glint_rho": 0.661,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.71
+    ],
+    "meniscus_min_abs_dot": 0.003
+   }
+  },
+  {
+   "frame": 87,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.279,
+     "peak": 0.832,
+     "rho": 1.82,
+     "angle_deg": -4.8,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 4.94,
+     "below_upper_px": 6.79,
+     "xy": [
+      915.0,
+      311.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.292,
+     "peak": 0.869,
+     "rho": 1.77,
+     "angle_deg": -12.9,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.36,
+     "below_upper_px": 9.93,
+     "xy": [
+      914.0,
+      314.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.286,
+     "peak": 0.878,
+     "rho": 1.64,
+     "angle_deg": -158.6,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.78,
+     "below_upper_px": 11.16,
+     "xy": [
+      874.0,
+      316.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.621,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.061,
+    "mean_excess": 0.062,
+    "bright_cols": 18
+   },
+   "predicted": {
+    "globe_glint_px": [
+     889.25,
+     306.35
+    ],
+    "globe_glint_rho": 0.367,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.06
+    ],
+    "meniscus_min_abs_dot": 0.003
+   }
+  },
+  {
+   "frame": 88,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.166,
+     "peak": 0.801,
+     "rho": 1.5,
+     "angle_deg": -143.0,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 1.08,
+     "below_upper_px": 13.06,
+     "xy": [
+      1008.0,
+      305.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.83,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.136,
+    "mean_excess": 0.113,
+    "bright_cols": 20
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1014.8,
+     292.04
+    ],
+    "globe_glint_rho": 0.658,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.71
+    ],
+    "meniscus_min_abs_dot": 0.004
+   }
+  },
+  {
+   "frame": 88,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.246,
+     "peak": 0.807,
+     "rho": 1.86,
+     "angle_deg": -4.0,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 4.67,
+     "below_upper_px": 6.1,
+     "xy": [
+      915.0,
+      310.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.271,
+     "peak": 0.843,
+     "rho": 1.78,
+     "angle_deg": -13.5,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.81,
+     "below_upper_px": 9.82,
+     "xy": [
+      913.5,
+      313.5
+     ]
+    },
+    {
+     "area": 3,
+     "excess": 0.254,
+     "peak": 0.834,
+     "rho": 1.65,
+     "angle_deg": -159.0,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.72,
+     "below_upper_px": 11.1,
+     "xy": [
+      873.3,
+      315.7
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.638,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.074,
+    "mean_excess": 0.063,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     888.77,
+     305.65
+    ],
+    "globe_glint_rho": 0.363,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.06
+    ],
+    "meniscus_min_abs_dot": 0.004
+   }
+  },
+  {
+   "frame": 89,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.791,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.093,
+    "mean_excess": 0.113,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1014.31,
+     291.79
+    ],
+    "globe_glint_rho": 0.652,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.71
+    ],
+    "meniscus_min_abs_dot": 0.006
+   }
+  },
+  {
+   "frame": 89,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.27,
+     "peak": 0.831,
+     "rho": 1.82,
+     "angle_deg": -4.9,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 4.82,
+     "below_upper_px": 7.16,
+     "xy": [
+      914.0,
+      310.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.271,
+     "peak": 0.851,
+     "rho": 1.78,
+     "angle_deg": -13.0,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.24,
+     "below_upper_px": 10.28,
+     "xy": [
+      913.0,
+      313.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.287,
+     "peak": 0.88,
+     "rho": 1.64,
+     "angle_deg": -158.5,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.41,
+     "below_upper_px": 11.29,
+     "xy": [
+      873.0,
+      315.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.626,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.06,
+    "mean_excess": 0.062,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     888.38,
+     305.42
+    ],
+    "globe_glint_rho": 0.352,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.07
+    ],
+    "meniscus_min_abs_dot": 0.002
+   }
+  },
+  {
+   "frame": 90,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.834,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.132,
+    "mean_excess": 0.116,
+    "bright_cols": 20
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1013.93,
+     292.09
+    ],
+    "globe_glint_rho": 0.642,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.69
+    ],
+    "meniscus_min_abs_dot": 0.012
+   }
+  },
+  {
+   "frame": 90,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.264,
+     "peak": 0.836,
+     "rho": 1.77,
+     "angle_deg": -13.4,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.93,
+     "below_upper_px": 9.99,
+     "xy": [
+      912.5,
+      313.5
+     ]
+    },
+    {
+     "area": 3,
+     "excess": 0.263,
+     "peak": 0.835,
+     "rho": 1.66,
+     "angle_deg": -159.3,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.65,
+     "below_upper_px": 10.98,
+     "xy": [
+      872.3,
+      315.7
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.632,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.071,
+    "mean_excess": 0.063,
+    "bright_cols": 18
+   },
+   "predicted": {
+    "globe_glint_px": [
+     887.9,
+     305.83
+    ],
+    "globe_glint_rho": 0.354,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.06
+    ],
+    "meniscus_min_abs_dot": 0.003
+   }
+  },
+  {
+   "frame": 91,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.791,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.097,
+    "mean_excess": 0.115,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1013.77,
+     292.92
+    ],
+    "globe_glint_rho": 0.622,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.67
+    ],
+    "meniscus_min_abs_dot": 0.015
+   }
+  },
+  {
+   "frame": 91,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.242,
+     "peak": 0.803,
+     "rho": 1.8,
+     "angle_deg": -4.3,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 4.86,
+     "below_upper_px": 6.63,
+     "xy": [
+      913.0,
+      311.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.277,
+     "peak": 0.85,
+     "rho": 1.75,
+     "angle_deg": -12.5,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.28,
+     "below_upper_px": 9.78,
+     "xy": [
+      912.0,
+      314.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.287,
+     "peak": 0.875,
+     "rho": 1.65,
+     "angle_deg": -159.4,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.77,
+     "below_upper_px": 11.58,
+     "xy": [
+      872.0,
+      316.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.654,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.094,
+    "mean_excess": 0.061,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     887.49,
+     306.76
+    ],
+    "globe_glint_rho": 0.357,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.07
+    ],
+    "meniscus_min_abs_dot": 0.002
+   }
+  },
+  {
+   "frame": 92,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.166,
+     "peak": 0.809,
+     "rho": 1.5,
+     "angle_deg": -143.6,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 1.18,
+     "below_upper_px": 13.28,
+     "xy": [
+      1006.0,
+      307.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.815,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.116,
+    "mean_excess": 0.118,
+    "bright_cols": 20
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1013.63,
+     294.16
+    ],
+    "globe_glint_rho": 0.608,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.65
+    ],
+    "meniscus_min_abs_dot": 0.006
+   }
+  },
+  {
+   "frame": 92,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.267,
+     "peak": 0.827,
+     "rho": 1.82,
+     "angle_deg": -4.5,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 4.51,
+     "below_upper_px": 6.79,
+     "xy": [
+      913.0,
+      312.5
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.269,
+     "peak": 0.846,
+     "rho": 1.77,
+     "angle_deg": -11.3,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 2.44,
+     "below_upper_px": 9.42,
+     "xy": [
+      912.0,
+      315.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.267,
+     "peak": 0.855,
+     "rho": 1.62,
+     "angle_deg": -160.2,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.92,
+     "below_upper_px": 10.66,
+     "xy": [
+      872.0,
+      317.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.638,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.074,
+    "mean_excess": 0.067,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     887.16,
+     308.14
+    ],
+    "globe_glint_rho": 0.362,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.08
+    ],
+    "meniscus_min_abs_dot": 0.006
+   }
+  },
+  {
+   "frame": 93,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.786,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.086,
+    "mean_excess": 0.113,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1013.38,
+     295.45
+    ],
+    "globe_glint_rho": 0.61,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.65
+    ],
+    "meniscus_min_abs_dot": 0.008
+   }
+  },
+  {
+   "frame": 93,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.262,
+     "peak": 0.823,
+     "rho": 1.84,
+     "angle_deg": -4.6,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 4.54,
+     "below_upper_px": 6.83,
+     "xy": [
+      913.0,
+      314.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.247,
+     "peak": 0.816,
+     "rho": 1.72,
+     "angle_deg": -14.6,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.88,
+     "below_upper_px": 10.63,
+     "xy": [
+      911.0,
+      317.5
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.274,
+     "peak": 0.839,
+     "rho": 1.65,
+     "angle_deg": -160.3,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.95,
+     "below_upper_px": 11.23,
+     "xy": [
+      871.5,
+      319.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.658,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.105,
+    "mean_excess": 0.066,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     886.88,
+     309.49
+    ],
+    "globe_glint_rho": 0.371,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.09
+    ],
+    "meniscus_min_abs_dot": 0.008
+   }
+  },
+  {
+   "frame": 94,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.787,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.089,
+    "mean_excess": 0.118,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1013.17,
+     296.62
+    ],
+    "globe_glint_rho": 0.607,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.65
+    ],
+    "meniscus_min_abs_dot": 0.005
+   }
+  },
+  {
+   "frame": 94,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.263,
+     "peak": 0.836,
+     "rho": 1.73,
+     "angle_deg": -14.3,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.82,
+     "below_upper_px": 10.75,
+     "xy": [
+      911.0,
+      318.5
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.278,
+     "peak": 0.85,
+     "rho": 1.67,
+     "angle_deg": -160.8,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.2,
+     "below_upper_px": 10.95,
+     "xy": [
+      871.0,
+      320.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.674,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.114,
+    "mean_excess": 0.064,
+    "bright_cols": 18
+   },
+   "predicted": {
+    "globe_glint_px": [
+     886.71,
+     310.68
+    ],
+    "globe_glint_rho": 0.365,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.08
+    ],
+    "meniscus_min_abs_dot": 0.004
+   }
+  },
+  {
+   "frame": 95,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.781,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.087,
+    "mean_excess": 0.116,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1012.94,
+     297.22
+    ],
+    "globe_glint_rho": 0.611,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.66
+    ],
+    "meniscus_min_abs_dot": 0.01
+   }
+  },
+  {
+   "frame": 95,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.283,
+     "peak": 0.86,
+     "rho": 1.74,
+     "angle_deg": -13.1,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.34,
+     "below_upper_px": 9.95,
+     "xy": [
+      911.0,
+      318.5
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.275,
+     "peak": 0.855,
+     "rho": 1.66,
+     "angle_deg": -160.5,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.0,
+     "below_upper_px": 10.39,
+     "xy": [
+      871.0,
+      320.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.658,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.1,
+    "mean_excess": 0.069,
+    "bright_cols": 18
+   },
+   "predicted": {
+    "globe_glint_px": [
+     886.55,
+     311.18
+    ],
+    "globe_glint_rho": 0.364,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.09
+    ],
+    "meniscus_min_abs_dot": 0.01
+   }
+  },
+  {
+   "frame": 96,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.774,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.084,
+    "mean_excess": 0.116,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1012.74,
+     297.23
+    ],
+    "globe_glint_rho": 0.62,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.67
+    ],
+    "meniscus_min_abs_dot": 0.015
+   }
+  },
+  {
+   "frame": 96,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.246,
+     "peak": 0.807,
+     "rho": 1.79,
+     "angle_deg": -5.8,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 4.47,
+     "below_upper_px": 7.18,
+     "xy": [
+      912.0,
+      316.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.288,
+     "peak": 0.86,
+     "rho": 1.74,
+     "angle_deg": -12.7,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.39,
+     "below_upper_px": 9.82,
+     "xy": [
+      911.0,
+      318.5
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.278,
+     "peak": 0.862,
+     "rho": 1.65,
+     "angle_deg": -160.7,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.07,
+     "below_upper_px": 10.23,
+     "xy": [
+      871.0,
+      320.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.646,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.087,
+    "mean_excess": 0.069,
+    "bright_cols": 17
+   },
+   "predicted": {
+    "globe_glint_px": [
+     886.38,
+     311.23
+    ],
+    "globe_glint_rho": 0.37,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.1
+    ],
+    "meniscus_min_abs_dot": 0.013
+   }
+  },
+  {
+   "frame": 97,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.177,
+     "peak": 0.82,
+     "rho": 1.53,
+     "angle_deg": -143.4,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 1.07,
+     "below_upper_px": 13.2,
+     "xy": [
+      1005.0,
+      310.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.82,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.133,
+    "mean_excess": 0.119,
+    "bright_cols": 20
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1012.65,
+     296.9
+    ],
+    "globe_glint_rho": 0.625,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.68
+    ],
+    "meniscus_min_abs_dot": 0.018
+   }
+  },
+  {
+   "frame": 97,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.263,
+     "peak": 0.816,
+     "rho": 1.79,
+     "angle_deg": -4.0,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 5.02,
+     "below_upper_px": 6.67,
+     "xy": [
+      912.0,
+      315.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.284,
+     "peak": 0.856,
+     "rho": 1.76,
+     "angle_deg": -13.5,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.95,
+     "below_upper_px": 10.31,
+     "xy": [
+      911.0,
+      318.5
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.305,
+     "peak": 0.89,
+     "rho": 1.66,
+     "angle_deg": -159.8,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.97,
+     "below_upper_px": 10.69,
+     "xy": [
+      871.0,
+      320.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.66,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.099,
+    "mean_excess": 0.067,
+    "bright_cols": 17
+   },
+   "predicted": {
+    "globe_glint_px": [
+     886.33,
+     310.91
+    ],
+    "globe_glint_rho": 0.369,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.08
+    ],
+    "meniscus_min_abs_dot": 0.007
+   }
+  },
+  {
+   "frame": 98,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.781,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.094,
+    "mean_excess": 0.12,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1012.58,
+     296.24
+    ],
+    "globe_glint_rho": 0.626,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.69
+    ],
+    "meniscus_min_abs_dot": 0.015
+   }
+  },
+  {
+   "frame": 98,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.255,
+     "peak": 0.811,
+     "rho": 1.8,
+     "angle_deg": -5.8,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 4.45,
+     "below_upper_px": 7.06,
+     "xy": [
+      912.0,
+      315.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.275,
+     "peak": 0.848,
+     "rho": 1.75,
+     "angle_deg": -12.7,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.37,
+     "below_upper_px": 9.71,
+     "xy": [
+      911.0,
+      317.5
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.271,
+     "peak": 0.859,
+     "rho": 1.64,
+     "angle_deg": -160.5,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.06,
+     "below_upper_px": 10.64,
+     "xy": [
+      871.0,
+      319.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.638,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.079,
+    "mean_excess": 0.069,
+    "bright_cols": 18
+   },
+   "predicted": {
+    "globe_glint_px": [
+     886.23,
+     310.22
+    ],
+    "globe_glint_rho": 0.372,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.1
+    ],
+    "meniscus_min_abs_dot": 0.015
+   }
+  },
+  {
+   "frame": 99,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.777,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.088,
+    "mean_excess": 0.116,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1012.54,
+     295.34
+    ],
+    "globe_glint_rho": 0.626,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.68
+    ],
+    "meniscus_min_abs_dot": 0.018
+   }
+  },
+  {
+   "frame": 99,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.267,
+     "peak": 0.824,
+     "rho": 1.81,
+     "angle_deg": -5.6,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 4.45,
+     "below_upper_px": 7.12,
+     "xy": [
+      912.0,
+      314.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.274,
+     "peak": 0.843,
+     "rho": 1.76,
+     "angle_deg": -12.5,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.37,
+     "below_upper_px": 9.75,
+     "xy": [
+      911.0,
+      316.5
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.273,
+     "peak": 0.861,
+     "rho": 1.63,
+     "angle_deg": -160.6,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.42,
+     "below_upper_px": 10.06,
+     "xy": [
+      871.0,
+      318.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.629,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.067,
+    "mean_excess": 0.065,
+    "bright_cols": 17
+   },
+   "predicted": {
+    "globe_glint_px": [
+     886.21,
+     309.26
+    ],
+    "globe_glint_rho": 0.365,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.08
+    ],
+    "meniscus_min_abs_dot": 0.003
+   }
+  },
+  {
+   "frame": 100,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.773,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.078,
+    "mean_excess": 0.112,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1012.39,
+     294.47
+    ],
+    "globe_glint_rho": 0.632,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.69
+    ],
+    "meniscus_min_abs_dot": 0.012
+   }
+  },
+  {
+   "frame": 100,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.287,
+     "peak": 0.84,
+     "rho": 1.82,
+     "angle_deg": -5.3,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 4.48,
+     "below_upper_px": 6.94,
+     "xy": [
+      912.0,
+      313.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.281,
+     "peak": 0.854,
+     "rho": 1.78,
+     "angle_deg": -13.4,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.91,
+     "below_upper_px": 10.08,
+     "xy": [
+      911.0,
+      316.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.278,
+     "peak": 0.874,
+     "rho": 1.63,
+     "angle_deg": -159.4,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.14,
+     "below_upper_px": 10.58,
+     "xy": [
+      871.0,
+      318.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.62,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.054,
+    "mean_excess": 0.063,
+    "bright_cols": 17
+   },
+   "predicted": {
+    "globe_glint_px": [
+     886.13,
+     308.36
+    ],
+    "globe_glint_rho": 0.363,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.07
+    ],
+    "meniscus_min_abs_dot": 0.001
+   }
+  },
+  {
+   "frame": 101,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.789,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.094,
+    "mean_excess": 0.113,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1012.35,
+     293.7
+    ],
+    "globe_glint_rho": 0.633,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.69
+    ],
+    "meniscus_min_abs_dot": 0.013
+   }
+  },
+  {
+   "frame": 101,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.304,
+     "peak": 0.849,
+     "rho": 1.83,
+     "angle_deg": -4.8,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 4.75,
+     "below_upper_px": 6.54,
+     "xy": [
+      912.0,
+      312.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.297,
+     "peak": 0.87,
+     "rho": 1.78,
+     "angle_deg": -12.9,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.18,
+     "below_upper_px": 9.67,
+     "xy": [
+      911.0,
+      315.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.255,
+     "peak": 0.847,
+     "rho": 1.64,
+     "angle_deg": -158.5,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.92,
+     "below_upper_px": 10.33,
+     "xy": [
+      871.0,
+      317.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.63,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.073,
+    "mean_excess": 0.061,
+    "bright_cols": 17
+   },
+   "predicted": {
+    "globe_glint_px": [
+     886.14,
+     307.53
+    ],
+    "globe_glint_rho": 0.358,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.06
+    ],
+    "meniscus_min_abs_dot": 0.006
+   }
+  },
+  {
+   "frame": 102,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.168,
+     "peak": 0.808,
+     "rho": 1.51,
+     "angle_deg": -143.4,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 1.06,
+     "below_upper_px": 13.14,
+     "xy": [
+      1005.0,
+      306.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.808,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.111,
+    "mean_excess": 0.113,
+    "bright_cols": 20
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1012.42,
+     293.1
+    ],
+    "globe_glint_rho": 0.628,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.69
+    ],
+    "meniscus_min_abs_dot": 0.014
+   }
+  },
+  {
+   "frame": 102,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.256,
+     "peak": 0.805,
+     "rho": 1.82,
+     "angle_deg": -3.7,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 5.07,
+     "below_upper_px": 6.14,
+     "xy": [
+      912.0,
+      311.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.267,
+     "peak": 0.844,
+     "rho": 1.78,
+     "angle_deg": -13.1,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.0,
+     "below_upper_px": 9.78,
+     "xy": [
+      911.0,
+      314.5
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.278,
+     "peak": 0.862,
+     "rho": 1.63,
+     "angle_deg": -159.6,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.07,
+     "below_upper_px": 10.12,
+     "xy": [
+      871.0,
+      316.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.613,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.051,
+    "mean_excess": 0.064,
+    "bright_cols": 18
+   },
+   "predicted": {
+    "globe_glint_px": [
+     886.22,
+     306.95
+    ],
+    "globe_glint_rho": 0.355,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.06
+    ],
+    "meniscus_min_abs_dot": 0.003
+   }
+  },
+  {
+   "frame": 103,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.779,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.085,
+    "mean_excess": 0.115,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1012.51,
+     292.7
+    ],
+    "globe_glint_rho": 0.625,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.69
+    ],
+    "meniscus_min_abs_dot": 0.015
+   }
+  },
+  {
+   "frame": 103,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.289,
+     "peak": 0.838,
+     "rho": 1.82,
+     "angle_deg": -4.6,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 4.6,
+     "below_upper_px": 6.53,
+     "xy": [
+      912.0,
+      311.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.291,
+     "peak": 0.86,
+     "rho": 1.77,
+     "angle_deg": -12.7,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.04,
+     "below_upper_px": 9.67,
+     "xy": [
+      911.0,
+      314.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.287,
+     "peak": 0.871,
+     "rho": 1.64,
+     "angle_deg": -158.8,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.85,
+     "below_upper_px": 10.23,
+     "xy": [
+      871.0,
+      316.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.63,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.066,
+    "mean_excess": 0.064,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     886.31,
+     306.61
+    ],
+    "globe_glint_rho": 0.355,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.05
+    ],
+    "meniscus_min_abs_dot": 0.008
+   }
+  },
+  {
+   "frame": 104,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.79,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.096,
+    "mean_excess": 0.115,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1012.59,
+     292.64
+    ],
+    "globe_glint_rho": 0.623,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.68
+    ],
+    "meniscus_min_abs_dot": 0.018
+   }
+  },
+  {
+   "frame": 104,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.285,
+     "peak": 0.834,
+     "rho": 1.81,
+     "angle_deg": -4.6,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 4.55,
+     "below_upper_px": 6.73,
+     "xy": [
+      912.0,
+      311.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.287,
+     "peak": 0.856,
+     "rho": 1.77,
+     "angle_deg": -12.8,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.99,
+     "below_upper_px": 9.87,
+     "xy": [
+      911.0,
+      314.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.291,
+     "peak": 0.879,
+     "rho": 1.65,
+     "angle_deg": -158.8,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.85,
+     "below_upper_px": 10.5,
+     "xy": [
+      871.0,
+      316.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.632,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.064,
+    "mean_excess": 0.064,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     886.36,
+     306.62
+    ],
+    "globe_glint_rho": 0.355,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.05
+    ],
+    "meniscus_min_abs_dot": 0.008
+   }
+  },
+  {
+   "frame": 105,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.766,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.071,
+    "mean_excess": 0.117,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1012.72,
+     292.81
+    ],
+    "globe_glint_rho": 0.622,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.69
+    ],
+    "meniscus_min_abs_dot": 0.013
+   }
+  },
+  {
+   "frame": 105,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.267,
+     "peak": 0.839,
+     "rho": 1.75,
+     "angle_deg": -12.2,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.23,
+     "below_upper_px": 9.78,
+     "xy": [
+      911.0,
+      314.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.262,
+     "peak": 0.846,
+     "rho": 1.65,
+     "angle_deg": -159.6,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.96,
+     "below_upper_px": 9.91,
+     "xy": [
+      871.0,
+      316.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.642,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.081,
+    "mean_excess": 0.066,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     886.49,
+     306.82
+    ],
+    "globe_glint_rho": 0.355,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.05
+    ],
+    "meniscus_min_abs_dot": 0.007
+   }
+  },
+  {
+   "frame": 106,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.181,
+     "peak": 0.824,
+     "rho": 1.53,
+     "angle_deg": -144.3,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 1.07,
+     "below_upper_px": 12.4,
+     "xy": [
+      1005.0,
+      306.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.813,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.115,
+    "mean_excess": 0.119,
+    "bright_cols": 20
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1012.83,
+     293.19
+    ],
+    "globe_glint_rho": 0.621,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.68
+    ],
+    "meniscus_min_abs_dot": 0.018
+   }
+  },
+  {
+   "frame": 106,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.281,
+     "peak": 0.85,
+     "rho": 1.75,
+     "angle_deg": -13.8,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.88,
+     "below_upper_px": 10.48,
+     "xy": [
+      911.0,
+      315.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.295,
+     "peak": 0.875,
+     "rho": 1.66,
+     "angle_deg": -159.6,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.71,
+     "below_upper_px": 10.2,
+     "xy": [
+      871.0,
+      317.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.617,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.058,
+    "mean_excess": 0.067,
+    "bright_cols": 18
+   },
+   "predicted": {
+    "globe_glint_px": [
+     886.63,
+     307.27
+    ],
+    "globe_glint_rho": 0.356,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.07
+    ],
+    "meniscus_min_abs_dot": 0.001
+   }
+  },
+  {
+   "frame": 107,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.788,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.091,
+    "mean_excess": 0.115,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1012.95,
+     293.62
+    ],
+    "globe_glint_rho": 0.62,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.67
+    ],
+    "meniscus_min_abs_dot": 0.016
+   }
+  },
+  {
+   "frame": 107,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.26,
+     "peak": 0.828,
+     "rho": 1.74,
+     "angle_deg": -13.9,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.53,
+     "below_upper_px": 10.36,
+     "xy": [
+      911.0,
+      315.5
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.282,
+     "peak": 0.863,
+     "rho": 1.68,
+     "angle_deg": -159.7,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.97,
+     "below_upper_px": 10.13,
+     "xy": [
+      871.0,
+      317.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.65,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.085,
+    "mean_excess": 0.065,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     886.79,
+     307.76
+    ],
+    "globe_glint_rho": 0.356,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.05
+    ],
+    "meniscus_min_abs_dot": 0.011
+   }
+  },
+  {
+   "frame": 108,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.822,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.131,
+    "mean_excess": 0.116,
+    "bright_cols": 20
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1013.12,
+     293.88
+    ],
+    "globe_glint_rho": 0.619,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.68
+    ],
+    "meniscus_min_abs_dot": 0.018
+   }
+  },
+  {
+   "frame": 108,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.263,
+     "peak": 0.812,
+     "rho": 1.84,
+     "angle_deg": -3.5,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 4.7,
+     "below_upper_px": 6.37,
+     "xy": [
+      913.0,
+      312.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.255,
+     "peak": 0.823,
+     "rho": 1.76,
+     "angle_deg": -13.1,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.85,
+     "below_upper_px": 10.06,
+     "xy": [
+      911.5,
+      315.5
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.235,
+     "peak": 0.827,
+     "rho": 1.62,
+     "angle_deg": -158.2,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.65,
+     "below_upper_px": 10.79,
+     "xy": [
+      872.0,
+      318.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.658,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.096,
+    "mean_excess": 0.068,
+    "bright_cols": 18
+   },
+   "predicted": {
+    "globe_glint_px": [
+     886.96,
+     308.01
+    ],
+    "globe_glint_rho": 0.356,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.06
+    ],
+    "meniscus_min_abs_dot": 0.006
+   }
+  },
+  {
+   "frame": 109,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.804,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.113,
+    "mean_excess": 0.115,
+    "bright_cols": 20
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1013.42,
+     293.92
+    ],
+    "globe_glint_rho": 0.619,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.68
+    ],
+    "meniscus_min_abs_dot": 0.016
+   }
+  },
+  {
+   "frame": 109,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.283,
+     "peak": 0.832,
+     "rho": 1.82,
+     "angle_deg": -3.5,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 4.82,
+     "below_upper_px": 6.5,
+     "xy": [
+      913.0,
+      312.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.278,
+     "peak": 0.843,
+     "rho": 1.77,
+     "angle_deg": -11.6,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.26,
+     "below_upper_px": 9.63,
+     "xy": [
+      912.0,
+      315.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.269,
+     "peak": 0.857,
+     "rho": 1.63,
+     "angle_deg": -159.9,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.08,
+     "below_upper_px": 10.1,
+     "xy": [
+      872.0,
+      317.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.642,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.088,
+    "mean_excess": 0.069,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     887.26,
+     308.03
+    ],
+    "globe_glint_rho": 0.356,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.06
+    ],
+    "meniscus_min_abs_dot": 0.005
+   }
+  },
+  {
+   "frame": 110,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.79,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.091,
+    "mean_excess": 0.117,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1013.83,
+     293.76
+    ],
+    "globe_glint_rho": 0.619,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.68
+    ],
+    "meniscus_min_abs_dot": 0.018
+   }
+  },
+  {
+   "frame": 110,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.28,
+     "peak": 0.852,
+     "rho": 1.75,
+     "angle_deg": -13.6,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.73,
+     "below_upper_px": 10.4,
+     "xy": [
+      912.0,
+      315.5
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.296,
+     "peak": 0.868,
+     "rho": 1.66,
+     "angle_deg": -159.8,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.07,
+     "below_upper_px": 10.04,
+     "xy": [
+      872.0,
+      317.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.642,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.082,
+    "mean_excess": 0.07,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     887.68,
+     307.84
+    ],
+    "globe_glint_rho": 0.355,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.05
+    ],
+    "meniscus_min_abs_dot": 0.01
+   }
+  },
+  {
+   "frame": 111,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.785,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.081,
+    "mean_excess": 0.111,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1014.19,
+     293.47
+    ],
+    "globe_glint_rho": 0.628,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.69
+    ],
+    "meniscus_min_abs_dot": 0.012
+   }
+  },
+  {
+   "frame": 111,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.274,
+     "peak": 0.834,
+     "rho": 1.83,
+     "angle_deg": -4.7,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 4.28,
+     "below_upper_px": 7.07,
+     "xy": [
+      914.0,
+      312.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.256,
+     "peak": 0.825,
+     "rho": 1.78,
+     "angle_deg": -12.8,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.72,
+     "below_upper_px": 10.19,
+     "xy": [
+      913.0,
+      315.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.266,
+     "peak": 0.866,
+     "rho": 1.64,
+     "angle_deg": -158.6,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.87,
+     "below_upper_px": 10.74,
+     "xy": [
+      873.0,
+      317.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.629,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.064,
+    "mean_excess": 0.065,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     888.25,
+     307.55
+    ],
+    "globe_glint_rho": 0.352,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.04
+    ],
+    "meniscus_min_abs_dot": 0.014
+   }
+  },
+  {
+   "frame": 112,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.802,
+    "col_r": -1.19,
+    "excess_over_sclera": 0.094,
+    "mean_excess": 0.121,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1014.56,
+     293.05
+    ],
+    "globe_glint_rho": 0.64,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.71
+    ],
+    "meniscus_min_abs_dot": 0.003
+   }
+  },
+  {
+   "frame": 112,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.283,
+     "peak": 0.847,
+     "rho": 1.74,
+     "angle_deg": -13.0,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.0,
+     "below_upper_px": 10.19,
+     "xy": [
+      913.0,
+      314.5
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.286,
+     "peak": 0.851,
+     "rho": 1.67,
+     "angle_deg": -159.2,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.75,
+     "below_upper_px": 10.35,
+     "xy": [
+      873.0,
+      317.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.644,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.086,
+    "mean_excess": 0.069,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     888.82,
+     307.08
+    ],
+    "globe_glint_rho": 0.348,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.04
+    ],
+    "meniscus_min_abs_dot": 0.014
+   }
+  },
+  {
+   "frame": 113,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.762,
+    "col_r": -1.19,
+    "excess_over_sclera": 0.051,
+    "mean_excess": 0.115,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1015.01,
+     292.67
+    ],
+    "globe_glint_rho": 0.646,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.73
+    ],
+    "meniscus_min_abs_dot": 0.005
+   }
+  },
+  {
+   "frame": 113,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.28,
+     "peak": 0.837,
+     "rho": 1.82,
+     "angle_deg": -4.5,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 4.42,
+     "below_upper_px": 7.11,
+     "xy": [
+      915.0,
+      311.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.279,
+     "peak": 0.847,
+     "rho": 1.78,
+     "angle_deg": -12.6,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.86,
+     "below_upper_px": 10.22,
+     "xy": [
+      914.0,
+      314.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.248,
+     "peak": 0.848,
+     "rho": 1.63,
+     "angle_deg": -158.8,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.95,
+     "below_upper_px": 10.42,
+     "xy": [
+      874.0,
+      316.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.623,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.056,
+    "mean_excess": 0.064,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     889.34,
+     306.63
+    ],
+    "globe_glint_rho": 0.347,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.03
+    ],
+    "meniscus_min_abs_dot": 0.017
+   }
+  },
+  {
+   "frame": 114,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.766,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.069,
+    "mean_excess": 0.116,
+    "bright_cols": 20
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1015.5,
+     292.42
+    ],
+    "globe_glint_rho": 0.65,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.74
+    ],
+    "meniscus_min_abs_dot": 0.01
+   }
+  },
+  {
+   "frame": 114,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.267,
+     "peak": 0.836,
+     "rho": 1.75,
+     "angle_deg": -13.8,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.9,
+     "below_upper_px": 10.55,
+     "xy": [
+      914.0,
+      314.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.285,
+     "peak": 0.861,
+     "rho": 1.67,
+     "angle_deg": -159.7,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.71,
+     "below_upper_px": 10.1,
+     "xy": [
+      874.0,
+      316.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.618,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.057,
+    "mean_excess": 0.067,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     889.84,
+     306.24
+    ],
+    "globe_glint_rho": 0.348,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.05
+    ],
+    "meniscus_min_abs_dot": 0.007
+   }
+  },
+  {
+   "frame": 115,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.784,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.084,
+    "mean_excess": 0.118,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1016.12,
+     292.37
+    ],
+    "globe_glint_rho": 0.641,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.72
+    ],
+    "meniscus_min_abs_dot": 0.002
+   }
+  },
+  {
+   "frame": 115,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 2,
+     "excess": 0.247,
+     "peak": 0.82,
+     "rho": 1.78,
+     "angle_deg": -12.7,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.66,
+     "below_upper_px": 10.12,
+     "xy": [
+      915.0,
+      313.5
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.287,
+     "peak": 0.871,
+     "rho": 1.62,
+     "angle_deg": -160.1,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.2,
+     "below_upper_px": 9.9,
+     "xy": [
+      875.0,
+      315.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.64,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.074,
+    "mean_excess": 0.071,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     890.38,
+     306.11
+    ],
+    "globe_glint_rho": 0.347,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.04
+    ],
+    "meniscus_min_abs_dot": 0.014
+   }
+  },
+  {
+   "frame": 116,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.78,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.084,
+    "mean_excess": 0.116,
+    "bright_cols": 20
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1016.64,
+     292.4
+    ],
+    "globe_glint_rho": 0.639,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.72
+    ],
+    "meniscus_min_abs_dot": 0.001
+   }
+  },
+  {
+   "frame": 116,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.29,
+     "peak": 0.854,
+     "rho": 1.75,
+     "angle_deg": -14.5,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.41,
+     "below_upper_px": 10.85,
+     "xy": [
+      915.0,
+      314.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.274,
+     "peak": 0.847,
+     "rho": 1.67,
+     "angle_deg": -160.4,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.08,
+     "below_upper_px": 9.9,
+     "xy": [
+      875.0,
+      315.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.645,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.079,
+    "mean_excess": 0.07,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     890.79,
+     306.01
+    ],
+    "globe_glint_rho": 0.353,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.05
+    ],
+    "meniscus_min_abs_dot": 0.008
+   }
+  },
+  {
+   "frame": 117,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.774,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.074,
+    "mean_excess": 0.113,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1017.14,
+     292.59
+    ],
+    "globe_glint_rho": 0.637,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.71
+    ],
+    "meniscus_min_abs_dot": 0.002
+   }
+  },
+  {
+   "frame": 117,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.255,
+     "peak": 0.816,
+     "rho": 1.83,
+     "angle_deg": -5.7,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 3.9,
+     "below_upper_px": 7.47,
+     "xy": [
+      917.0,
+      311.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.235,
+     "peak": 0.807,
+     "rho": 1.78,
+     "angle_deg": -12.5,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.83,
+     "below_upper_px": 10.08,
+     "xy": [
+      916.0,
+      313.5
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.276,
+     "peak": 0.868,
+     "rho": 1.63,
+     "angle_deg": -158.9,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.71,
+     "below_upper_px": 10.45,
+     "xy": [
+      876.0,
+      316.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.628,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.067,
+    "mean_excess": 0.069,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     891.18,
+     306.16
+    ],
+    "globe_glint_rho": 0.357,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.06
+    ],
+    "meniscus_min_abs_dot": 0.004
+   }
+  },
+  {
+   "frame": 118,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.785,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.088,
+    "mean_excess": 0.119,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1017.58,
+     292.89
+    ],
+    "globe_glint_rho": 0.637,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.72
+    ],
+    "meniscus_min_abs_dot": 0.002
+   }
+  },
+  {
+   "frame": 118,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.274,
+     "peak": 0.843,
+     "rho": 1.75,
+     "angle_deg": -13.5,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.99,
+     "below_upper_px": 10.24,
+     "xy": [
+      916.0,
+      314.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.279,
+     "peak": 0.86,
+     "rho": 1.66,
+     "angle_deg": -159.9,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.97,
+     "below_upper_px": 10.07,
+     "xy": [
+      876.0,
+      316.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.621,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.064,
+    "mean_excess": 0.065,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     891.55,
+     306.37
+    ],
+    "globe_glint_rho": 0.362,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.07
+    ],
+    "meniscus_min_abs_dot": 0.0
+   }
+  },
+  {
+   "frame": 119,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.172,
+     "peak": 0.811,
+     "rho": 1.49,
+     "angle_deg": -143.3,
+     "where": "lower_margin",
+     "nasal": true,
+     "above_lower_px": 1.14,
+     "below_upper_px": 12.91,
+     "xy": [
+      1011.0,
+      306.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.818,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.122,
+    "mean_excess": 0.12,
+    "bright_cols": 20
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1018.05,
+     293.22
+    ],
+    "globe_glint_rho": 0.636,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.71
+    ],
+    "meniscus_min_abs_dot": 0.004
+   }
+  },
+  {
+   "frame": 119,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.306,
+     "peak": 0.859,
+     "rho": 1.83,
+     "angle_deg": -4.3,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 4.57,
+     "below_upper_px": 6.75,
+     "xy": [
+      918.0,
+      311.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.255,
+     "peak": 0.828,
+     "rho": 1.78,
+     "angle_deg": -12.4,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.0,
+     "below_upper_px": 9.86,
+     "xy": [
+      917.0,
+      314.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.259,
+     "peak": 0.859,
+     "rho": 1.63,
+     "angle_deg": -158.9,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.86,
+     "below_upper_px": 10.39,
+     "xy": [
+      877.0,
+      316.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.629,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.069,
+    "mean_excess": 0.062,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     892.03,
+     306.71
+    ],
+    "globe_glint_rho": 0.363,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.07
+    ],
+    "meniscus_min_abs_dot": 0.001
+   }
+  },
+  {
+   "frame": 120,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.779,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.085,
+    "mean_excess": 0.116,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1018.61,
+     293.48
+    ],
+    "globe_glint_rho": 0.63,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.71
+    ],
+    "meniscus_min_abs_dot": 0.004
+   }
+  },
+  {
+   "frame": 120,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.246,
+     "peak": 0.815,
+     "rho": 1.76,
+     "angle_deg": -14.7,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.35,
+     "below_upper_px": 10.79,
+     "xy": [
+      917.0,
+      315.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.263,
+     "peak": 0.84,
+     "rho": 1.66,
+     "angle_deg": -160.0,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.02,
+     "below_upper_px": 10.15,
+     "xy": [
+      877.0,
+      316.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.642,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.081,
+    "mean_excess": 0.065,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     892.57,
+     306.92
+    ],
+    "globe_glint_rho": 0.361,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.06
+    ],
+    "meniscus_min_abs_dot": 0.002
+   }
+  },
+  {
+   "frame": 121,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.792,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.093,
+    "mean_excess": 0.12,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1019.12,
+     293.69
+    ],
+    "globe_glint_rho": 0.63,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.71
+    ],
+    "meniscus_min_abs_dot": 0.005
+   }
+  },
+  {
+   "frame": 121,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.239,
+     "peak": 0.804,
+     "rho": 1.77,
+     "angle_deg": -11.4,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 2.4,
+     "below_upper_px": 9.47,
+     "xy": [
+      918.0,
+      314.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.262,
+     "peak": 0.854,
+     "rho": 1.62,
+     "angle_deg": -160.0,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.15,
+     "below_upper_px": 10.09,
+     "xy": [
+      878.0,
+      316.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.623,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.066,
+    "mean_excess": 0.068,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     893.1,
+     307.08
+    ],
+    "globe_glint_rho": 0.361,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.07
+    ],
+    "meniscus_min_abs_dot": 0.0
+   }
+  },
+  {
+   "frame": 122,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.227,
+     "peak": 0.807,
+     "rho": 1.68,
+     "angle_deg": -158.7,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 3.49,
+     "below_upper_px": 7.82,
+     "xy": [
+      1008.0,
+      303.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.772,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.072,
+    "mean_excess": 0.118,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1019.44,
+     293.7
+    ],
+    "globe_glint_rho": 0.646,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.73
+    ],
+    "meniscus_min_abs_dot": 0.006
+   }
+  },
+  {
+   "frame": 122,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.258,
+     "peak": 0.827,
+     "rho": 1.75,
+     "angle_deg": -14.6,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.58,
+     "below_upper_px": 10.59,
+     "xy": [
+      918.0,
+      315.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.247,
+     "peak": 0.819,
+     "rho": 1.66,
+     "angle_deg": -160.2,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.07,
+     "below_upper_px": 10.21,
+     "xy": [
+      878.0,
+      316.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.629,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.067,
+    "mean_excess": 0.069,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     893.71,
+     306.98
+    ],
+    "globe_glint_rho": 0.354,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.06
+    ],
+    "meniscus_min_abs_dot": 0.005
+   }
+  },
+  {
+   "frame": 123,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.822,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.114,
+    "mean_excess": 0.117,
+    "bright_cols": 20
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1019.82,
+     293.44
+    ],
+    "globe_glint_rho": 0.657,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.75
+    ],
+    "meniscus_min_abs_dot": 0.015
+   }
+  },
+  {
+   "frame": 123,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.292,
+     "peak": 0.841,
+     "rho": 1.82,
+     "angle_deg": -4.4,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 4.36,
+     "below_upper_px": 6.64,
+     "xy": [
+      920.0,
+      311.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.25,
+     "peak": 0.822,
+     "rho": 1.78,
+     "angle_deg": -12.5,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.8,
+     "below_upper_px": 9.76,
+     "xy": [
+      919.0,
+      314.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.258,
+     "peak": 0.85,
+     "rho": 1.63,
+     "angle_deg": -158.9,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.05,
+     "below_upper_px": 10.35,
+     "xy": [
+      879.0,
+      316.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.618,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.037,
+    "mean_excess": 0.065,
+    "bright_cols": 18
+   },
+   "predicted": {
+    "globe_glint_px": [
+     894.25,
+     306.7
+    ],
+    "globe_glint_rho": 0.352,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.04
+    ],
+    "meniscus_min_abs_dot": 0.014
+   }
+  },
+  {
+   "frame": 124,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.763,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.066,
+    "mean_excess": 0.121,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1020.22,
+     292.94
+    ],
+    "globe_glint_rho": 0.663,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.77
+    ],
+    "meniscus_min_abs_dot": 0.013
+   }
+  },
+  {
+   "frame": 124,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.27,
+     "peak": 0.835,
+     "rho": 1.75,
+     "angle_deg": -14.1,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.77,
+     "below_upper_px": 10.27,
+     "xy": [
+      919.0,
+      314.0
+     ]
+    },
+    {
+     "area": 1,
+     "excess": 0.281,
+     "peak": 0.838,
+     "rho": 1.67,
+     "angle_deg": -159.3,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 6.74,
+     "below_upper_px": 10.52,
+     "xy": [
+      879.0,
+      316.0
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.614,
+    "col_r": 1.58,
+    "excess_over_sclera": 0.053,
+    "mean_excess": 0.067,
+    "bright_cols": 19
+   },
+   "predicted": {
+    "globe_glint_px": [
+     894.75,
+     306.21
+    ],
+    "globe_glint_rho": 0.346,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.05
+    ],
+    "meniscus_min_abs_dot": 0.007
+   }
+  },
+  {
+   "frame": 125,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.753,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.071,
+    "mean_excess": 0.13,
+    "bright_cols": 20
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1020.53,
+     292.4
+    ],
+    "globe_glint_rho": 0.667,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.78
+    ],
+    "meniscus_min_abs_dot": 0.008
+   }
+  },
+  {
+   "frame": 125,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [
+    {
+     "area": 1,
+     "excess": 0.293,
+     "peak": 0.818,
+     "rho": 1.83,
+     "angle_deg": -4.8,
+     "where": "bulk",
+     "nasal": true,
+     "above_lower_px": 4.51,
+     "below_upper_px": 4.79,
+     "xy": [
+      921.0,
+      310.0
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.283,
+     "peak": 0.816,
+     "rho": 1.76,
+     "angle_deg": -14.5,
+     "where": "corner",
+     "nasal": true,
+     "above_lower_px": 1.66,
+     "below_upper_px": 8.56,
+     "xy": [
+      919.5,
+      313.5
+     ]
+    },
+    {
+     "area": 2,
+     "excess": 0.278,
+     "peak": 0.847,
+     "rho": 1.63,
+     "angle_deg": -158.4,
+     "where": "bulk",
+     "nasal": false,
+     "above_lower_px": 7.09,
+     "below_upper_px": 11.2,
+     "xy": [
+      880.0,
+      315.5
+     ]
+    }
+   ],
+   "lower_band": {
+    "max": 0.579,
+    "col_r": -0.05,
+    "excess_over_sclera": 0.259,
+    "mean_excess": 0.052,
+    "bright_cols": 17
+   },
+   "predicted": {
+    "globe_glint_px": [
+     895.24,
+     305.67
+    ],
+    "globe_glint_rho": 0.341,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.03
+    ],
+    "meniscus_min_abs_dot": 0.016
+   }
+  },
+  {
+   "frame": 126,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.727,
+    "col_r": -1.27,
+    "excess_over_sclera": 0.106,
+    "mean_excess": 0.144,
+    "bright_cols": 26
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1020.88,
+     291.56
+    ],
+    "globe_glint_rho": 0.664,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.8
+    ],
+    "meniscus_min_abs_dot": 0.0
+   }
+  },
+  {
+   "frame": 126,
+   "side": "right",
+   "iris_r": 12.27,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.591,
+    "col_r": -0.46,
+    "excess_over_sclera": 0.25,
+    "mean_excess": 0.024,
+    "bright_cols": 11
+   },
+   "predicted": {
+    "globe_glint_px": [
+     896.0,
+     305.08
+    ],
+    "globe_glint_rho": 0.304,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.28
+    ],
+    "meniscus_min_abs_dot": 0.019
+   }
+  },
+  {
+   "frame": 127,
+   "side": "left",
+   "iris_r": 12.23,
+   "blobs": [],
+   "lower_band": {
+    "max": 0.562,
+    "col_r": -1.52,
+    "excess_over_sclera": 0.066,
+    "mean_excess": 0.003,
+    "bright_cols": 5
+   },
+   "predicted": {
+    "globe_glint_px": [
+     1021.11,
+     290.49
+    ],
+    "globe_glint_rho": 0.655,
+    "globe_under_cornea": true,
+    "meniscus_cols_r": [
+     -0.93
+    ],
+    "meniscus_min_abs_dot": 0.02
+   }
+  }
+ ]
+}
