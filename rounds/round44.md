@@ -420,11 +420,63 @@ $C = "--shot $S --eye-removal r42_wet_removal --corneal-dir r42_eye_pass --corne
 & $B -b --factory-startup --python scripts/stress_proxy.py -- --shot $S --ratio --length 150 --samples 8192 --max-fidelity --only-light bulb --only-output 73 --name r44_maxfid   # 4c reference, 53 s
 ```
 
-## 8. Starter prompt for round 45 — THE HAIR
+## 8. CORRECTION, from the artist, after the round closed: "plastic" means SHINY
 
-> **Round 45 is the HAIR SHEEN. The artist named it the moment the skin landed:** *"we still
-> have the shine in the very top of her hair. Very clearly from a light hanging above her
-> head."* **Read round44.md §5 first — the measurement is already done and must not be
+His words, 2026-09-11: *"when I say 'plastic', what I MEAN is actually that it's shiny. I can
+see that plastic isn't really shiny. But when I say plastic, I mean barbie doll."* And the
+goal, in his words: ***"We don't want barbie doll. We want natural, authentic skin response."***
+
+**Two rounds misread that word, and the transcript shows the usage was consistent all along.**
+Round 43 opened with *"her skin is shining equally even as we reduce the light or move it
+away"* and continued *"still a kind of 'plastic skin'"* — one complaint, not two. Round 44's
+*"now it looks like a shiny barbie doll"* was the same word with the cause spelled out.
+
+What went wrong is subtler than a vocabulary slip, and worth keeping: **round 43 measured the
+shine on her SKIN, found it at 2 % of skin luminance, showed that removing it was invisible,
+and concluded "it is the SHADING, not the shine". The measurement was right and the SURFACE
+was wrong.** The shine he can actually see is on her HAIR and her LIPS, and nobody measured
+those until round 44 §5 — where the hair crown sheen is **10.9×** the local median and the lip
+gloss **2.1×**, neither of which follows the new light at all.
+
+**So the hair and lip work is not a side quest. It IS the "plastic" complaint, and has been
+since round 43.** It is constraint row 5: `plate × R` can recolour a photographed highlight
+but cannot move or delete one, so the capture room's speculars survive every relight.
+
+**"Natural, authentic skin response" already has a test, and it is already built.** Real
+specular RESPONDS to its source: move the light and the highlight moves and changes level.
+The capture room's does not — it is painted into the photograph. `audit_r43_shine.py` and
+`audit_r44_sheen.py` both report exactly that as the correlation of sheen with log E over the
+tour's 9.5-stop range. Where it stands now:
+
+| surface | sheen p50 | dark stations vs bright | corr(sheen, log E) |
+|---|---|---|---|
+| forehead skin | 1.18 | 1.21 / 1.15 | −0.07 |
+| nose bridge | 1.41 | 1.34 / 1.40 | 0.00 |
+| lip vermilion | 2.10 | **2.11 / 1.43** | **−0.39** |
+| hair crown | 10.9 | **934 / 10.7** | **−0.47** |
+
+**A NEGATIVE correlation is the signature of the wrong answer**: the sheen is relatively
+brighter where the new light is dimmest, because the ratio scales a photographed highlight
+along with the skin under it. **Round 45's acceptance criterion is that this correlation goes
+POSITIVE on hair and lips** — the highlight brightening at the bright stations and going away
+at the dark ones — not merely that the band gets dimmer.
+
+The meso-shading of §2c is still real and still accepted; it answered a different complaint
+from the one the word names, and he graded it *"improved"* on its own terms. Nothing here
+reverses it.
+
+## 9. Starter prompt for round 45 — THE HAIR
+
+> **Round 45 is the HAIR SHEEN, and §8 says why that is the MAIN event rather than a tidy-up:
+> when he says "plastic" he means SHINY, he has meant that since round 43, and the shine he
+> can see is on her HAIR and LIPS.** He named it the moment the skin landed: *"we still have
+> the shine in the very top of her hair. Very clearly from a light hanging above her head."*
+> His goal, verbatim: *"We don't want barbie doll. We want natural, authentic skin response."*
+> **The acceptance criterion is therefore not "dimmer" but "responds"**: `audit_r44_sheen.py`
+> reports the correlation of sheen with log irradiance over the tour's 9.5 stops, it is
+> **−0.47 on hair and −0.39 on lips today** (relatively BRIGHTER where the new light is
+> dimmest, because the ratio scales a photographed highlight with the skin under it), and it
+> must go POSITIVE.* **Read round44.md §5 first — the measurement is already done and must not be
 > re-derived.** On the crown, over the whole tour: the bright band is **23× the dark hair
 > beside it** (0.235 vs 0.010) and the two sit at the **SAME chroma** (8.0–9.0° and 7.4–8.9°
 > from the measured plate illuminant). So:
@@ -470,10 +522,15 @@ $C = "--shot $S --eye-removal r42_wet_removal --corneal-dir r42_eye_pass --corne
 > total energy. `--max-fidelity` exists to re-measure that when a real environment with walls
 > replaces the void, not before.
 >
-> **Three lessons from round 44, do not relearn them:** "plastic" means missing depth and
-> imperfections, so the lever is SHADING RELIEF and a smooth specular makes it WORSE; when he
-> says an effect is too strong, DECOMPOSE before you tune (he asked twice for the specular to
-> come down when the term he was reacting to was the meso, 1.75 stops against 0.18); and crawl
+> **Three lessons from round 44, do not relearn them. First and most important: when he says
+> "PLASTIC" he means SHINY** — *"I can see that plastic isn't really shiny. But when I say
+> plastic, I mean barbie doll"*, and *"we want natural, authentic skin response"* (§8). Two
+> rounds read it as missing texture and chased shading relief; the relief was worth having and
+> he accepted it, but the word names SPECULAR THAT DOES NOT BELONG, and the shine he can see is
+> on HAIR and LIPS. Treat "Barbie" / "NPC" / "game character" the same way, and check the shiny
+> surfaces before concluding anything about shading. Second: when he says an effect is too
+> strong, DECOMPOSE before you tune (he asked twice for the specular to come down when the term
+> he was reacting to was the meso, 1.75 stops against 0.18). Third: crawl
 > is not ruled out by his eye — the 12 px high-passed step is +8 % over R42 at his setting, so
 > if he reports it, filter the neural normals in time in a head-stabilised frame (symmetric
 > window in SECONDS, as round 37's edge shading), never the modulation.

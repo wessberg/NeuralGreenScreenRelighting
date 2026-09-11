@@ -33,6 +33,21 @@ and **rejected**, for colour AND shape flicker and a sometimes-brown pupil, beca
 every term of the fill was refit per frame from a few dozen pixels. **No per-frame-refit
 fill can be temporally stable at a 24-pixel iris.** See `rounds/round32.md`.
 
+**WHEN HE SAYS "PLASTIC" HE MEANS SHINY — corrected by the artist himself, 2026-09-11, after
+two rounds misread it.** *"I can see that plastic isn't really shiny. But when I say plastic, I
+mean barbie doll"*, and the goal: *"We don't want barbie doll. We want natural, authentic skin
+response."* "Barbie", "NPC" and "game character" mean the same thing: SPECULAR THAT DOES NOT
+BELONG, either one we added or the capture room's surviving in the photograph (constraint row
+5). Round 43 measured the shine on her SKIN at 2 %, found removing it invisible, and concluded
+"the SHADING, not the shine" — right measurement, WRONG SURFACE: the shine he can see is on her
+HAIR (crown sheen 10.9x the local median) and her LIPS (2.1x), first measured in round 44 §5.
+**So the hair/lip work is the "plastic" complaint itself, not a tidy-up.** The test for
+"authentic response" is built: real specular moves and brightens with its source, and
+`audit_r43_shine.py` / `audit_r44_sheen.py` report that as corr(sheen, log E) over the tour's
+9.5 stops — today **−0.47 on hair, −0.39 on lips** (relatively brighter where the new light is
+DIMMEST). **Round 45 must drive it POSITIVE, not merely make the band dimmer.** Check the shiny
+surfaces before concluding anything about shading. See `rounds/round44.md` §8.
+
 **Round 44 — ACCEPTED: `r44_m50_s05` is the new BASELINE composite (`--meso-strength 0.5
 --specular 0.5`), superseding `r42_wet` as the picture while `r42_wet` remains the accepted eye
 work under it. *"Improved and accepted. It still doesn't look entirely 'human', but is better
