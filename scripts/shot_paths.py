@@ -43,10 +43,10 @@ class Shot:
         self.dir = self.dir.resolve()
         if not self.dir.is_dir():
             raise SystemExit("No such shot directory: %s" % self.dir)
-        if ROOT not in self.dir.parents and self.dir != ROOT:
-            raise SystemExit("Shot directory must live inside the project: %s" % self.dir)
         self.is_legacy_root = self.dir == ROOT
         self.name = self.dir.name
+        if not (self.dir / "shot.json").is_file():
+            raise SystemExit("Missing shot.json: %s" % self.dir)
         self.config = self._load(self.dir / "shot.json")
         self.video_dir = self.dir.parents[1]
         self.video_config = self._load(self.video_dir / "project.json")
@@ -98,7 +98,10 @@ class Shot:
             raise SystemExit(
                 "%s does not name an environment; set environment.dir, e.g. "
                 "scene_library/night_restaurant" % (self.dir / "shot.json"))
-        return ROOT / named
+        p = Path(named)
+        if p.is_absolute():
+            return p
+        return (ROOT if ROOT in self.dir.parents else self.dir) / p
 
     @property
     def lighting_json(self):

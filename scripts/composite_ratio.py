@@ -1,4 +1,4 @@
-"""Relight the real photograph by a rendered ratio. The plate's own pixels are never replaced.
+"""Relight a photographed actor by rendered irradiance, with optional EyeClean corrections.
 
     dependencies/CorridorKey/.venv/Scripts/python.exe scripts/composite_ratio.py --shot <dir>
 
@@ -379,6 +379,10 @@ def main():
     add_shot_argument(ap)
     ap.add_argument('--render-dir', default='',
                     help='EXR irradiance renders; default composite/ratio_render')
+    ap.add_argument('--render-manifest', type=Path, default=None,
+                    help='Optional per_frame out_frame/shot_frame mapping for external Blender passes')
+    ap.add_argument('--render-albedo', type=float, default=RATIO_ALBEDO,
+                    help='Neutral diffuse reflectance used for the irradiance render (default 0.6)')
     ap.add_argument('--name', default='ratio')
     ap.add_argument('--max-stops', type=float, default=4.0,
                     help='upper clamp on the ratio, in stops. The lower end is NOT clamped: a '
@@ -563,8 +567,29 @@ def main():
                     help='experimental: nearest-extend irradiance from the eroded reliable interior')
     ap.add_argument('--edge-radius', type=int, default=8,
                     help='with --extend-edges: unreliable proxy rim in plate pixels')
+    ap.add_argument('--sclera-pass', default='', help='Optional sclera_glint_removal.py --eye-patches correction pass')
+    ap.add_argument('--eye-patches', default='', help='EyeClean run directory: float corrections in linear Rec.709')
+    ap.add_argument('--linear-output', action='store_true', help='Also write FLOAT scene-linear EXRs')
     args = ap.parse_args()
+    if args.eye_patches and (args.eye_removal or args.plate_specular != 'keep' or args.catchlight > 0):
+        ap.error('--eye-patches requires the untouched plate and cannot be combined with legacy eye removal/catchlights')
+    eye_patches = None
+    if args.eye_patches:
+        sys.path.insert(0, str(ROOT / 'src'))
+        from ngsr.eyes import EyeCleanPatches
+        eye_patches = EyeCleanPatches(args.eye_patches)
+    sclera_dir = Path(args.sclera_pass).resolve() if args.sclera_pass else None
+    if sclera_dir is not None:
+        if eye_patches is None:
+            ap.error('--sclera-pass requires --eye-patches')
+        from ngsr.engines import file_sha256
+        sclera_meta = json.loads((sclera_dir / 'removal.json').read_text())
+        if sclera_meta.get('correction_color') != 'linear-rec709' or sclera_meta.get('eye_binding_sha256') != file_sha256(eye_patches.path / 'ngsr.json'):
+            ap.error('Sclera pass belongs to a different EyeClean run or colour space')
     shot = from_args(args)
+    shot.logs.mkdir(parents=True, exist_ok=True)
+    if not 0 < args.render_albedo <= 1:
+        ap.error('--render-albedo must be in (0, 1]')
     if args.plate_specular == 'remove' or args.catchlight > 0:
         print('EXPERIMENTAL round-5 path: rejected for damaged teeth/sclera, unstable hair '
               'and catchlights over eyelids. See rounds/round6.md rejection addendum.',
@@ -576,7 +601,16 @@ def main():
     renders = sorted(rdir.glob('*.exr'))
     if not renders:
         raise SystemExit('No irradiance renders in %s. Run stress_proxy.py --ratio first.' % rdir)
-    tour = json.loads(shot.log('stress_proxy.json').read_text())
+    mapping_path = args.render_manifest
+    if mapping_path is None:
+        # Preserve legacy shot mappings; external passes can supply their own manifest,
+        # or use identity mapping when their filenames are shot-local frame numbers.
+        mapping_path = shot.log('stress_proxy.json')
+        if not mapping_path.exists():
+            mapping_path = rdir / 'render_manifest.json'
+    if args.render_manifest is not None and not mapping_path.exists():
+        raise SystemExit('Missing render manifest: %s' % mapping_path)
+    tour = json.loads(mapping_path.read_text()) if mapping_path.exists() else {'per_frame': []}
     pf = {r['out_frame']: r for r in tour['per_frame']}
 
     out_dir = shot.composite / args.name
@@ -694,7 +728,7 @@ def main():
         img = cv2.imread(str(r), -1)
         if img is None:
             raise SystemExit('cannot read %s' % r)
-        E_t = img[..., 2::-1].astype(np.float32) / RATIO_ALBEDO      # BGRA -> RGB, undo albedo
+        E_t = img[..., 2::-1].astype(np.float32) / args.render_albedo      # BGRA -> RGB, undo neutral reflectance
         cov = img[..., 3].astype(np.float32) if img.shape[2] == 4 else np.ones(img.shape[:2], np.float32)
 
         # D and S. Without a separation on disk this returns (plate, zeros), so an unseparated
@@ -708,6 +742,20 @@ def main():
             fg = cv2.imread(str(shot.fg(fi)), -1)[..., ::-1].astype(np.float32)
             S_plate = np.zeros_like(fg)
         removal_px = 0
+        repaired_sides = None
+        if eye_patches is not None:
+            fg, repaired_sides, removal_px = eye_patches.apply(fg, fi, shot.fg(fi))
+        if sclera_dir is not None:
+            correction = cv2.imread(str(sclera_dir / 'correction' / ('%06d.exr' % fi)), -1)
+            if correction is None or correction.shape != fg.shape or not np.isfinite(correction).all():
+                raise SystemExit('Missing or invalid sclera correction for %06d' % fi)
+            import torch
+            base = torch.as_tensor(fg.copy(), device='cuda')
+            sc = torch.as_tensor(correction[..., ::-1].copy(), device='cuda')
+            support = torch.any(sc != 0, dim=-1)
+            base[support] = base[support] + sc[support]
+            fg = base.cpu().numpy()
+            removal_px += int(support.sum().item())
         if removal_dir is not None:
             # The eye pass wrote 8-bit sRGB of the SAME linear fg (its removal.json records the
             # fg's sha256 per frame); where its weight is zero the pixel is the untouched fg.
@@ -820,7 +868,7 @@ def main():
                 limg = cv2.imread(str(lp['dir'] / ('%06d.exr' % n)), -1)
                 if limg is None:
                     raise SystemExit('No %s pass frame %06d under %s' % (lp['name'], n, lp['dir']))
-                E_k = limg[..., 2::-1].astype(np.float32) / RATIO_ALBEDO
+                E_k = limg[..., 2::-1].astype(np.float32) / args.render_albedo
                 if E_k.shape[:2] != (h, w):
                     E_k = cv2.resize(E_k, (w, h), interpolation=cv2.INTER_LINEAR)
                 rec = lp['pf'][n]
@@ -1131,6 +1179,9 @@ def main():
                 cr = cv2.GaussianBlur(cr, (0, 0), args.corneal_blur)
             corneal_log = {'eyes': {}, 'scale': float(anchor * args.exposure * args.corneal_gain)}
             for side in ('left', 'right'):
+                if repaired_sides is not None and side not in repaired_sides:
+                    corneal_log['eyes'][side] = {'added': False, 'why': 'EyeClean abstained: keep original reflection'}
+                    continue
                 tr = eye_tracks.get((fi, side))
                 if tr is None:
                     corneal_log['eyes'][side] = {'added': False, 'why': 'no limbus fit'}
@@ -1159,6 +1210,15 @@ def main():
             # Downscale AFTER compositing, so the matte's fractional alpha and the ratio's shadow
             # edges are both supersampled rather than decided at output resolution.
             out_rgb = cv2.resize(out_rgb, out_res, interpolation=cv2.INTER_AREA)
+        if args.linear_output:
+            flags = [cv2.IMWRITE_EXR_TYPE, cv2.IMWRITE_EXR_TYPE_FLOAT,
+                     cv2.IMWRITE_EXR_COMPRESSION, cv2.IMWRITE_EXR_COMPRESSION_ZIP]
+            out_alpha = alpha
+            if out_alpha.shape != out_rgb.shape[:2]:
+                out_alpha = cv2.resize(out_alpha, (out_rgb.shape[1], out_rgb.shape[0]), interpolation=cv2.INTER_AREA)
+            rgba = np.concatenate([out_rgb[..., ::-1], out_alpha[..., None]], axis=-1)
+            if not cv2.imwrite(str(out_dir / ('%06d.exr' % n)), rgba, flags):
+                raise RuntimeError('Failed writing linear composite')
         rgb = np.clip(linear_to_srgb(out_rgb), 0, 1)
         cv2.imwrite(str(out_dir / ('%06d.png' % n)), (rgb[..., ::-1] * 255).astype(np.uint8))
 
@@ -1171,7 +1231,7 @@ def main():
                           'specular_frame': spec_frame, 'meso': meso_log,
                           'hair_sheen_px': hair_px, 'hair_sheen_energy_removed': hair_energy,
                           'hair_specular': hair_spec_log,
-                          'station': pf[n]['station'] if n in pf else None,
+                          'station': pf[n].get('station') if n in pf else None,
                           'ratio_luma_median': float(np.median(rl)),
                           'ratio_luma_p5': float(np.percentile(rl, 5)),
                           'ratio_luma_p95': float(np.percentile(rl, 95)),
@@ -1186,6 +1246,13 @@ def main():
     summary = {
         'shot': shot.name, 'frames': len(stats), 'output': str(out_dir),
         'eye_removal': (str(removal_dir) if removal_dir is not None else None),
+        'eye_patches': (str(eye_patches.path) if eye_patches is not None else None),
+        'linear_output': args.linear_output,
+        'linear_color': 'linear-rec709',
+        'linear_alpha_mode': 'premultiplied RGBA',
+        'render_albedo': args.render_albedo,
+        'render_manifest': (str(mapping_path) if mapping_path.exists() else None),
+        'sclera_pass': (str(sclera_dir) if sclera_dir is not None else None),
         'face_delight': ({'dir': str(delight_dir), 'sub': args.face_delight_sub, 'gain': args.face_delight_gain,
                           'what': 'estimated capture-room shine on the face (face_delight.py --stage separate) subtracted from the plate before the ratio; exact fg outside its weight'}
                          if delight_dir is not None else None),

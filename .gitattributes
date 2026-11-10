@@ -1,0 +1,15 @@
+* text=auto
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.toml text eol=lf
+*.exr binary
+*.npz binary
+*.blend binary
+music_videos/ export-ignore
+scene_library/ export-ignore
+footage/ export-ignore
+logs/ export-ignore
+assets/ export-ignore
+docs/history/legacy-readme.md export-ignore
+docs/history/development-guide.md export-ignore

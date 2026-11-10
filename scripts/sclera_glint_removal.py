@@ -105,11 +105,21 @@ def main():
     ap.add_argument('--max-area', type=int, default=60)
     ap.add_argument('--device', default='cuda')
     ap.add_argument('--sheet-every', type=int, default=1, help='changed eyes per sheet stride')
+    ap.add_argument('--eye-patches', default='', help='EyeClean float run; retain its iris pixels and export sclera-only corrections')
     args = ap.parse_args()
     shot = from_args(args)
     dev = torch.device(args.device if torch.cuda.is_available() else 'cpu')
     t0 = time.time()
     run = shot.composite / args.run
+    patch_run = None
+    repaired = {}
+    if args.eye_patches:
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
+        from ngsr.eyes import EyeCleanPatches
+        patch_run = EyeCleanPatches(args.eye_patches)
+        if dev.type != 'cuda':
+            raise SystemExit('Float EyeClean/sclera integration requires CUDA')
+        run = patch_run.path
     out = shot.composite / args.name
     for sub in ('removal', 'weight', 'source'):
         (out / sub).mkdir(parents=True, exist_ok=True)
@@ -121,7 +131,10 @@ def main():
         with np.load(shot.relight / 'face_landmarks.npz') as z:
             lm_points, lm_found = z['points'], z['found']
         lm_topo = json.loads((shot.relight / 'face_landmarks.json').read_text())['topology']
-    frames = sorted(int(p.stem) for p in (run / 'removal').glob('*.png'))
+    frames = (sorted(patch_run.frames) if patch_run is not None else
+              sorted(int(p.stem) for p in (run / 'removal').glob('*.png')))
+    if patch_run is not None:
+        (out / 'correction').mkdir(parents=True, exist_ok=True)
     n_frames = len(frames)
     kern, kr = gauss_kernel(args.sigma, dev)
 
@@ -129,10 +142,19 @@ def main():
     eyes = {}          # (frame, side) -> dict(win, hot, warm, region, opening, cx, cy, r)
     imgs = {}
     for fi in frames:
-        img = cv2.imread(str(run / 'removal' / ('%06d.png' % fi)), -1)
+        if patch_run is not None:
+            fg = cv2.imread(str(shot.fg(fi)), -1)[..., ::-1].copy()
+            clean, repaired[fi], _ = patch_run.apply(fg, fi, shot.fg(fi))
+            disp = torch.as_tensor(clean, device=dev).clamp(min=0)
+            disp = torch.where(disp <= .0031308, disp*12.92, 1.055*disp.pow(1/2.4)-.055)
+            img = (disp.clamp(0,1)*255).round().byte().cpu().numpy()[..., ::-1].copy()
+        else:
+            img = cv2.imread(str(run / 'removal' / ('%06d.png' % fi)), -1)
         imgs[fi] = img
         t_img = torch.from_numpy(img[..., ::-1].copy()).to(dev).float() / 255.0     # RGB
         for side in ('left', 'right'):
+            if patch_run is not None and side not in repaired[fi]:
+                continue
             tr = (track.get(fi, {}).get('eyes') or {}).get(side)
             if tr is None:
                 continue
@@ -237,7 +259,8 @@ def main():
     changed_total = 0
     for fi in frames:
         img = imgs[fi]
-        wgt = cv2.imread(str(run / 'weight' / ('%06d.png' % fi)), -1)
+        wgt = (np.zeros(img.shape[:2], np.uint8) if patch_run is not None else
+               cv2.imread(str(run / 'weight' / ('%06d.png' % fi)), -1))
         if wgt.ndim == 3:
             wgt = wgt[..., 0]
         out_img = img.copy()
@@ -273,6 +296,8 @@ def main():
             w = dilate(fp, 1).float()
             w = F.avg_pool2d(w[None, None], 3, 1, 1)[0, 0]
             w = torch.where(have, w, torch.zeros_like(w))
+            if patch_run is not None:
+                w = w * e['region']  # float mode cannot quantize EyeClean iris or lids
             res = crop * (1 - w[None]) + fill * w[None]
             changed = w > 0
             n_changed = int(changed.sum())
@@ -301,6 +326,21 @@ def main():
                 cv2.putText(a, '%d %s' % (fi, side[0].upper()), (3, 14),
                             cv2.FONT_HERSHEY_SIMPLEX, 0.45, (0, 255, 255), 1)
                 sheet_tiles.append(np.concatenate([a, b], 0))
+        if patch_run is not None:
+            fg = cv2.imread(str(shot.fg(fi)), -1)[..., ::-1].copy()
+            clean, _, _ = patch_run.apply(fg, fi, shot.fg(fi))
+            target = torch.as_tensor(out_img[..., ::-1].copy(), device=dev).float()/255
+            target = torch.where(target <= .04045, target/12.92, ((target+.055)/1.055).pow(2.4))
+            base = torch.as_tensor(clean, device=dev)
+            support = torch.as_tensor(out_w > 0, device=dev)[..., None]
+            original = torch.as_tensor(fg, device=dev)
+            eye_edited = torch.any(base.view(torch.int32) != original.view(torch.int32), dim=-1)
+            support = support & ~eye_edited[..., None]
+            correction = torch.where(support, target-base, torch.zeros_like(base)).cpu().numpy()
+            flags = [cv2.IMWRITE_EXR_TYPE, cv2.IMWRITE_EXR_TYPE_FLOAT,
+                     cv2.IMWRITE_EXR_COMPRESSION, cv2.IMWRITE_EXR_COMPRESSION_ZIP]
+            if not cv2.imwrite(str(out / 'correction' / ('%06d.exr' % fi)), correction[..., ::-1], flags):
+                raise RuntimeError('Cannot write sclera float correction')
         cv2.imwrite(str(out / 'removal' / ('%06d.png' % fi)), out_img)
         cv2.imwrite(str(out / 'weight' / ('%06d.png' % fi)), out_w)
         src = run / 'source' / ('%06d.png' % fi)
@@ -364,6 +404,11 @@ def main():
                                                 if src_json.exists() else None),
                   changed_pixels_total=changed_total, summary=summary, per_eye=per_eye,
                   seconds=round(time.time() - t0, 1))
+    if patch_run is not None:
+        report['eye_patches'] = str(patch_run.path)
+        report['eye_binding_sha256'] = hashlib.sha256((patch_run.path / 'ngsr.json').read_bytes()).hexdigest()
+        report['correction_color'] = 'linear-rec709'
+        report['float_contract'] = 'ngsr.sclera/1: add correction/ EXRs after EyeClean; its float iris stays untouched'
     (out / 'removal.json').write_text(json.dumps(report, indent=1), encoding='utf-8')
     print(json.dumps(summary, indent=1))
     print('SCLERA_WROTE', out, '%.1f s' % (time.time() - t0))

@@ -1,0 +1,35 @@
+[build-system]
+requires = ["hatchling>=1.25", "editables>=0.5"]
+build-backend = "hatchling.build"
+
+[project]
+name = "neural-green-screen-relighting"
+version = "0.1.0"
+description = "Actor relighting with neural normals, Blender light transport and EyeClean"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+dependencies = ["eyeclean-client @ git+https://github.com/wessberg/eyeclean.git@a3efafd6d2794cace9647251791f411bbeaf626f#subdirectory=clients/python"]
+
+[project.urls]
+Source = "https://github.com/wessberg/NeuralGreenScreenRelighting"
+Issues = "https://github.com/wessberg/NeuralGreenScreenRelighting/issues"
+
+[project.optional-dependencies]
+pipeline = ["numpy==2.4.2", "opencv-python==4.13.0.92", "torch==2.8.0", "torchvision==0.23.0", "scipy>=1.16", "transformers>=5.16,<6", "Pillow>=11"]
+dev = ["pytest>=8", "build>=1.2"]
+
+[project.scripts]
+ngsr = "ngsr.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ngsr"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.sdist]
+include = ["/src", "/scripts", "/tests", "/configs", "/examples", "/docs/*.md", "/docs/history/README.md", "/README.md", "/AGENTS.md", "/LICENSE", "/CONTRIBUTING.md", "/THIRD_PARTY_NOTICES.md", "/pyproject.toml", "/dependencies.lock.json", "/capture_format.json", "/templates", "/.github"]

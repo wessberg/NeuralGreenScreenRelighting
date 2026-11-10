@@ -1,0 +1,36 @@
+{
+  "shot_id": "actor",
+  "source_frame_rate": "24/1",
+  "source_resolution": [
+    1920,
+    1080
+  ],
+  "selection": {
+    "start_frame": 0,
+    "frame_count": 48
+  },
+  "camera": {
+    "lens_mm": 50,
+    "sensor_width_mm": 36,
+    "actor_distance_m": 1.3,
+    "height_m": 1.55,
+    "status": "EXAMPLE assumptions; adapt to your plate"
+  },
+  "keying": {
+    "hint": {
+      "green_min": 0.68,
+      "green_dominance_min": 0.48
+    },
+    "despill_mode": "edge_only"
+  },
+  "environment": {
+    "dir": "/absolute/path/to/environment"
+  },
+  "delivery": {
+    "frame_rate": "24/1",
+    "resolution": [
+      1920,
+      1080
+    ]
+  }
+}

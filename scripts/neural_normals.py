@@ -41,6 +41,7 @@ from shot_paths import add_shot_argument, from_args
 from color_pipeline import linear_to_srgb
 
 MODEL_ID = 'facebook/sapiens2-normal-1b'
+MODEL_REVISION = '3480505c6690732dfdc91e7078213dba14844ab3'
 IN_H, IN_W = 1024, 768                  # the checkpoint's native inference resolution
 OUT_W = OUT_H = None                    # set per shot from the plate aspect
 MID_GREY_SRGB = 0.5                     # neutral, mid-range, and out of the green gamut
@@ -98,12 +99,14 @@ class Sapiens2Normals:
     MEAN = np.array([0.485, 0.456, 0.406], np.float32)
     STD = np.array([0.229, 0.224, 0.225], np.float32)
 
-    def __init__(self, model_id=MODEL_ID, device=None, dtype=torch.float16):
+    def __init__(self, model_id=MODEL_ID, device=None, dtype=torch.float16, revision=None):
         from transformers import Sapiens2ForNormalEstimation
         self.device = device or ('cuda' if torch.cuda.is_available() else 'cpu')
         self.dtype = dtype if self.device == 'cuda' else torch.float32
+        revision = revision or (MODEL_REVISION if model_id == MODEL_ID else None)
         self.model = Sapiens2ForNormalEstimation.from_pretrained(
-            model_id, dtype=self.dtype).to(self.device).eval()
+            model_id, revision=revision, dtype=self.dtype).to(self.device).eval()
+        self.revision = getattr(self.model.config, '_commit_hash', None)
 
     @torch.inference_mode()
     def __call__(self, img_srgb):
@@ -145,19 +148,23 @@ def main():
     ap.add_argument('--frames', type=int, default=0)
     ap.add_argument('--start', type=int, default=0)
     ap.add_argument('--model', default=MODEL_ID)
+    ap.add_argument('--revision', default=None)
+    ap.add_argument('--convention', type=Path, default=ROOT / 'configs/normals-convention.json')
     args = ap.parse_args()
     shot = from_args(args)
     global OUT_W, OUT_H
     OUT_W, OUT_H = shot.working_resolution
 
-    M, conv = load_convention(ROOT / 'logs' / 'normals_convention.json')
+    M, conv = load_convention(args.convention)
+    if conv.get('model') != args.model:
+        raise SystemExit('Convention record belongs to a different model; revalidate first')
     out = shot.relight / 'normals'
     out.mkdir(parents=True, exist_ok=True)
 
     n_frames = args.frames or shot.frame_count
     print('loading %s ...' % args.model, flush=True)
     t0 = time.time()
-    model = Sapiens2Normals(args.model)
+    model = Sapiens2Normals(args.model, revision=args.revision)
     print('loaded in %.1f s on %s (%s)' % (time.time() - t0, model.device, model.dtype), flush=True)
 
     stats, t_total = [], 0.0
@@ -207,7 +214,7 @@ def main():
 
     az = np.array([s['azimuth_spread_deg'] for s in stats])
     el = np.array([s['elevation_spread_deg'] for s in stats])
-    summary = {'shot': shot.name, 'model': args.model, 'frames': len(stats),
+    summary = {'shot': shot.name, 'model': args.model, 'model_revision': model.revision, 'frames': len(stats),
                'convention': conv, 'input': {'resolution': [IN_W, IN_H],
                                              'crop': 'matte bbox, 8% pad, expanded to 3:4',
                                              'background': 'neutral mid-grey %.2f sRGB' % MID_GREY_SRGB,
