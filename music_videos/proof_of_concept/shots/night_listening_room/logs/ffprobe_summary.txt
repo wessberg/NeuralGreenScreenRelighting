@@ -1,4 +1,0 @@
-HEVC Main 10 | 3840x2160 | 30/1 fps | yuv420p10le (10-bit) | 300 frames / 10.000000 s
-Rec.2020 primaries | bt2020nc matrix | smpte2084 PQ | TV/limited range
-Mastering: 1000 nits, Rec.2020/D65 | MaxCLL 336 | MaxFALL 22
-Full-file decode: PASS | Audio: aac 48000 Hz stereo
