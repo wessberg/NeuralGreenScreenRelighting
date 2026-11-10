@@ -1,10 +1,9 @@
 # Development history
 
-The numbered eye protocols/findings in docs/ and scripts/audit_r*.py document experiments.
-They are retained as research evidence, not setup instructions or the supported removal API.
-The current eye-removal integration is EyeClean; the accepted Blender wet-eye geometry and
-round-44 skin shading remain in use.
+The numbered `docs/r*.md` files and `scripts/audit_r*.py` record the eye-repair experiments
+that preceded EyeClean. The current pipeline still uses the Blender wet-eye geometry and
+round-44 skin shading.
 
-legacy-readme.md preserves the original music-video production log.
-development-guide.md preserves the previous long agent guide, including artist rejections.
-Its references to rounds/ describe session handoffs not present in this checkout.
+[legacy-readme.md](legacy-readme.md) contains the original music-video production log.
+[development-guide.md](development-guide.md) contains the previous agent guide and artist
+feedback. Its `rounds/` links refer to session handoffs absent from this checkout.

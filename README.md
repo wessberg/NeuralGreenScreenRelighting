@@ -1,99 +1,86 @@
 # Neural green-screen relighting
 
-Relight a photographed actor filmed against a green screen. **Neural surface normals drive
-the actor's shading, a dedicated skin shading/specular stage controls the skin response,
-and Blender supplies light transport, shadows and eye reflections.**
-[CorridorKey 2.0](https://github.com/nikopueringer/CorridorKey2.0) extracts the actor;
-[EyeClean](https://github.com/wessberg/eyeclean) removes the original eye reflections before
-the new scene's reflections are added.
+Relight actors filmed against a green screen using neural surface normals and Blender
+lights. [CorridorKey 2.0](https://github.com/nikopueringer/CorridorKey2.0) extracts the
+foreground and alpha. [EyeClean](https://github.com/wessberg/eyeclean) removes the studio
+reflections from the eyes, and Blender renders new ones from the scene lights.
 
-The performer remains a photograph. A proxy supplies lighting and occlusion; it is never
-the visible actor. This is a research pipeline being prepared for release, with known
-quality limits, rather than a finished photorealistic reconstruction system.
+The compositor changes the lighting on the photographed actor. A depth-and-normal proxy
+supplies shadows and occlusion, so the output keeps the plate's skin texture, hair and clothing.
 
-## Neural surface normals
+## Neural normals
 
-[Sapiens2](https://huggingface.co/facebook/sapiens2-normal-1b) estimates the orientation of
-the performer's surface: the nose, brow, cheeks, lips, clothing and other visible form.
-Those neural normal vectors make illumination respond to the direction of the Blender
-lights, including changes across a face when a light is close to it.
+[Sapiens2](https://huggingface.co/facebook/sapiens2-normal-1b) estimates surface directions
+across the face and body. These normals let a moving light shade the nose, brow, cheeks
+and clothing differently.
 
-The estimator sees the keyed actor cropped to its matte and placed against neutral grey,
-with the expected sRGB input. Its camera-to-Blender axis mapping is independently validated
-and recorded. The resulting unit normals drive source-light estimation, fine proxy relief,
-per-light surface shading and skin specular.
+The estimator receives an sRGB crop of the keyed actor against neutral grey. We validate
+the camera-to-Blender axis mapping before using the normals. They also supply fine relief
+for the proxy mesh and help estimate the lighting in the original plate.
 
-Implementation: [neural_normals.py](scripts/neural_normals.py),
+See [neural_normals.py](scripts/neural_normals.py),
 [make_proxy_mesh.py](scripts/make_proxy_mesh.py) and
 [light_geometry.py](scripts/light_geometry.py).
 
-## Skin shading and the specular fix
+## Skin shading and specular
 
-A coarse proxy cannot reproduce all of a face's relief. Its lighting ratio alone can leave
-the skin looking smooth or like a game character. The skin stage addresses that in two parts:
+The proxy misses some facial relief. Meso shading uses the neural normals to shade those
+smaller features under each scene light. The compositor measures where to blend between
+the proxy and normal detail.
 
-- **Normal-driven surface relief:** per-light meso shading restores the smaller variations
-  described by the neural normals, while the Blender proxy supplies shadows, falloff and
-  larger-scale form. The transition scale is measured from the proxy and normal fields.
-- **Restrained, textured specular:** a GGX/Smith/Schlick skin lobe follows the actual scene
-  light's direction, level, colour, angular size and occlusion. Its strength is scaled against
-  the photographed skin, broadened and broken up with the plate's own texture. This avoids
-  the smooth shiny band that previously gave the face a Barbie-like appearance.
+Skin specular uses GGX/Smith/Schlick shading with the light's direction, colour, size and
+occlusion. With smooth neural normals, the lobe can make skin look like a shiny Barbie doll.
+We broaden and reduce it, scale it against the photographed skin, and break it up with
+texture from the plate.
 
-The artist-accepted **R44 development preset** is:
+The accepted reporter setting, `r44_m50_s05`, uses:
 
 | Control | Setting |
 |---|---|
-| Meso shading strength | 0.5 |
+| Meso strength | 0.5 |
 | Skin specular gain | 0.5 |
 | Skin roughness | 0.55 |
 | Skin Fresnel F0 | 0.028 |
-| Photographic texture modulation | power 2 |
+| Texture modulation power | 2 |
 
-These are explicit preset settings, not universal material measurements or the raw CLI
-defaults. Neural normals do not recover pore-scale geometry; texture modulation is a
-heuristic. The accepted result improved the skin, but did not meet the full realism goal.
+These are artistic compromises for this shot; the raw CLI defaults differ. The texture
+factor stands in for pore detail that the normals cannot recover. The result improved
+the skin but still falls short of the realism we're after.
 
-Implementation: [meso_specular.py](scripts/meso_specular.py) and
-[composite_ratio.py](scripts/composite_ratio.py).
-The [integration guide](docs/INTEGRATION.md#accepted-skin--wet-eye-development-preset)
-contains the complete command.
+[meso_specular.py](scripts/meso_specular.py) implements the shading.
+The [integration guide](docs/INTEGRATION.md#accepted-skin-and-wet-eye-settings) has the full command.
 
-## EyeClean and Blender eye reflections
+## Eye reflections
 
-EyeClean runs in its own environment and returns signed float corrections in the keyed
-foreground's linear colour space. New reflections are rendered from Blender lights using
-the fitted cornea, wet sclera and socket geometry, then added through the tracked eyelids.
-An EyeClean-abstained eye retains its original reflection and receives no added one.
-The accepted scleral-glint cleanup is retained as a separate correction pass.
+EyeClean returns signed float corrections in the foreground's linear colour space.
+The compositor applies them before relighting and checks the source hashes, so patches
+from an old key cannot be applied after re-keying.
+
+Blender renders the new reflections using a fitted cornea, wet sclera and socket.
+The compositor adds them through the tracked eyelids. If EyeClean leaves an eye untouched,
+we keep its original reflection and skip the new one. A separate pass removes studio
+glints from the white of the eye.
 
 ## Pipeline
 
-1. Decode colour and desqueeze the plate before geometry estimation.
-2. Key with CorridorKey 2.0 into separate straight foreground and coverage alpha EXRs.
-   Preserve photographed pixels in the opaque core and apply the shot's despill settings.
-3. Estimate temporal depth, face/eye geometry and Sapiens2 surface normals.
-4. Run EyeClean in its own process on the keyed foreground. Keep its signed float corrections.
-5. Render neutral proxy irradiance and wet-eye reflections in Blender/Cycles.
-6. Apply EyeClean corrections, multiply by target/source irradiance, add restrained skin
-   specular and the new eye reflections, then composite and grade. The optional accepted
-   sclera cleanup is a separate float correction pass.
+1. Decode the plate's colour and desqueeze it before estimating geometry.
+2. Key with CorridorKey 2.0. Save straight foreground and coverage alpha as separate EXRs.
+3. Estimate depth, face and eye tracks, and neural normals.
+4. Run EyeClean on the keyed foreground.
+5. Render proxy irradiance and eye reflections in Blender/Cycles.
+6. Apply the eye corrections, lighting ratio, skin shading and new reflections in linear Rec.709.
 
-Corrections stay scene-linear Rec.709 until review/export. An EyeClean-abstained eye retains
-its original reflection and receives no new one. Source hashes prevent applying corrections
-made before a re-key.
+## Use it
 
-## Get started
-
-See [setup](docs/SETUP.md) for the three isolated environments, checkpoints and Blender.
-The lightweight adapter package installs separately from the GPU engines:
+Follow [setup](docs/SETUP.md) to install the model environments and Blender.
+The adapter package installs with:
 
 ```
 python -m pip install -e .
 ngsr --help
 ```
 
-Call it from another codebase:
+From another Python project:
 
 ```python
 from ngsr import run_eyeclean, run_stage
@@ -112,33 +99,28 @@ run_stage(
 )
 ```
 
-[Integration](docs/INTEGRATION.md) describes stage contracts and the Blender-tour preset.
-Geometry/render/composite stages currently require this source checkout; installing the
-wheel alone supplies the engine adapters and stage launcher.
+The wheel contains the adapters and stage launcher. Geometry, rendering and compositing
+still run from this checkout. See [integration](docs/INTEGRATION.md) for inputs and outputs,
+and [architecture](docs/ARCHITECTURE.md) for the code layout.
 
-## Examples and validation
+## Reporter example
 
-The [reporter example](examples/README.md) runs a fresh key, EyeClean and neural normals
-against the existing development shot and Blender passes. Media and model weights stay
-outside Git. It produces linear frames, labelled comparisons, close eye crops and a review
-video. Cached Blender geometry/passes are explicitly identified in its report.
-The reporter test demonstrates pipeline operation; it has not demonstrated a visible
-keying-quality improvement over CorridorKey 1, including an eight-frame native no-hint control.
+The [reporter example](examples/README.md) recomputes keying, EyeClean and normals, then
+uses the existing Blender geometry and light passes. It writes linear RGBA frames,
+labelled stills and comparison videos. Footage and weights are kept outside Git.
 
-Remaining limits include approximate single-view geometry, temporal noise in neural normals,
-capture-room hair/lip highlights, matte quality and incomplete camera-log ingest.
-Hair highlight removal was rejected and remains off. Still frames and numerical checks
-do not establish temporal or artistic acceptance.
+The v1 and v2 keys look very similar on this shot, including in an eight-frame v2 control
+without hints. We have not demonstrated a visible keying improvement here.
 
-## Documentation
-
-- [Setup](docs/SETUP.md) ? [Integration](docs/INTEGRATION.md) ? [Architecture](docs/ARCHITECTURE.md)
-- [Release checklist](docs/RELEASE.md) ? [Contributing](CONTRIBUTING.md)
-- [Third-party notices](THIRD_PARTY_NOTICES.md) ? [Development history](docs/history/README.md)
+Single-view geometry is approximate, normals can flicker, and the captured hair and lip
+highlights remain. Hair highlight removal was rejected and is off. Camera-log ingest is
+incomplete; V-Log/V-Gamut footage needs decoding upstream.
 
 ## Licence
 
-This repository's original code is MIT. Dependencies and weights have separate terms.
-In particular, CorridorKey uses a custom licence and Sapiens2 uses its own model licence.
-They are downloaded separately and are not included in the adapter package.
-See [third-party notices](THIRD_PARTY_NOTICES.md) before distributing a configured pipeline.
+The original code is MIT. Dependencies and weights have separate terms, including
+CorridorKey's custom licence and the Sapiens2 model licence.
+Read [third-party notices](THIRD_PARTY_NOTICES.md) before distributing a configured pipeline.
+
+[Contributing](CONTRIBUTING.md) | [Release checklist](docs/RELEASE.md) |
+[Development history](docs/history/README.md)

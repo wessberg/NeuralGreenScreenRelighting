@@ -1,30 +1,31 @@
-# Release preparation
+# Release checklist
 
-The code is prepared for review; this document does not authorize publishing or uploading media.
+## Checked
 
-- [x] Contract suite: 10 CPU/CUDA tests pass, including external-pass HDR/alpha and patch preservation.
-- [x] Wheel and source archive build; the wheel CLI starts in a clean environment without GPU engines.
-- [ ] Make the EyeClean r57 bundle available to new users: its pinned registry currently has no download URL.
-- [ ] Before PyPI publication, replace the direct Git client dependency with a published version (Git/checkout installs work).
-- [x] Complete the 150-frame reporter GPU smoke run; record exact dependencies, hashes and reused passes.
-      All linear RGBA frames are finite, retain key alpha, preserve EyeClean edits during sclera
-      cleanup, and add no scene reflections to unrepaired eyes. New artistic acceptance is pending.
-- [ ] Inspect every changed eye against source/accepted results and review the comparison video.
-- [ ] Obtain artistic acceptance of the new EyeClean/keyer combination. The round-44 approval
-      applies to the old baseline, not automatically to updated dependencies.
-- [ ] Review third-party licences for the intended distribution and use.
-- [ ] Confirm rights to every image/video included in a public example. The reporter source
-      is stock media; local processing permission does not by itself authorize redistribution.
-- [ ] Scan the tracked tree and full Git history for secrets, private media and machine paths.
-      Ignoring a file does not remove it from existing history.
-- [ ] Prefer a clean source export or new public repository over publishing the development
-      history, which contains local production metadata. No history rewrite has been performed.
-- [x] Inspect built artifacts: no dependencies, model weights, reporter footage or generated caches bundled.
-- [x] Document platform coverage: Windows/NVIDIA tested; Linux and other GPUs require validation.
+- [x] Ten CPU/CUDA tests pass, including HDR/alpha output and float patch preservation.
+- [x] Wheel and source archive build. The wheel CLI starts in a clean environment.
+- [x] The 150-frame reporter run completes with dependency hashes and reused passes recorded.
+      Linear RGBA output is finite and retains the key's alpha. Sclera cleanup preserves
+      EyeClean's edits; new reflections are skipped on unrepaired eyes.
+- [x] Built artifacts exclude dependencies, weights, reporter footage and generated caches.
+- [x] Platform coverage is documented: Windows/NVIDIA tested; Linux and other GPUs untested.
 
-Automated common-credential/private-key pattern scans found no matches in the tracked tree or
-93 reachable commits. This does not replace the broader media, machine-path and licence review.
+The credential-pattern scan found no matches in the tracked tree or 93 reachable commits.
+Private media and local paths still need review.
 
-The adapter wheel intentionally contains only `ngsr`. The source archive excludes development
-fixtures and historical logs via `.gitattributes`; the checkout retains them for reproducibility.
-Generated reporter media remains local until its redistribution rights are confirmed.
+## Before release
+
+- [ ] Provide a download for EyeClean r57; its pinned registry has no URL.
+- [ ] Replace the Git client dependency with a published version before publishing to PyPI.
+      Git and checkout installs work.
+- [ ] Review every changed eye and the comparison video, then get artistic acceptance.
+      The old R44 approval doesn't cover the updated models.
+- [ ] Check dependency licences for the intended distribution and use.
+- [ ] Check the stock-footage licence before publishing reporter stills or clips.
+- [ ] Review the tracked tree and history for private media, local paths and secrets.
+      Ignoring a file leaves it in history.
+- [ ] Choose how to publish the source. The development history contains local production
+      metadata; it has not been rewritten.
+
+The wheel contains `ngsr`. Both the source package and Git export exclude development
+fixtures and logs. Reporter renders stay local until their redistribution rights are confirmed.

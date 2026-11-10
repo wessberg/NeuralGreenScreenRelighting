@@ -1,26 +1,31 @@
-# Reporter development example
+# Reporter example
 
-Run from a configured checkout. The source reporter shot and accepted Blender caches must
-already be present; they are local development fixtures, not shipped media.
+This example needs the local reporter shot and its existing Blender caches.
+The repository doesn't include the footage or rendered passes.
 
 ```powershell
 $env:EYECLEAN_PYTHON = "$PWD/dependencies/eyeclean/.venv/Scripts/python.exe"
 dependencies/CorridorKey/.venv/Scripts/python.exe examples/reporter_smoke.py --ffmpeg dependencies/ffmpeg/ffmpeg-9.0.1-essentials_build/bin/ffmpeg.exe
 ```
 
-The script creates `runs/reporter-release/`, keys the selected contiguous excerpt with
-CorridorKey 2.0, runs EyeClean r57, regenerates normals, reuses the already accepted
-same-source proxy and Blender passes, and runs the skin/wet-eye compositor.
-It never writes the accepted shot's key, normals or composites.
+The script writes to `runs/reporter-release/`. It runs CorridorKey 2.0, EyeClean r57 and
+Sapiens2 again, then uses the existing proxy, eye tracks and Blender passes to composite
+the actor with the accepted skin settings. The original shot stays unchanged.
 
-Output includes `review/` stills, tight eye comparisons, a contact sheet, a short
-source/accepted/new comparison video, linear EXRs, and a JSON report.
-A separate eye comparison video uses the exact source frame rate for temporal inspection.
-A cached-pass smoke run proves the updated stages can be combined; it does not validate a
-fresh Blender scene build, every frame of the original 20-second clip, or artistic acceptance.
-Use `--frames` to shorten the excerpt. View consecutive frames to assess temporal changes.
+`review/` contains stills, eye crops, a contact sheet and two videos. The full comparison
+runs at 24 fps for the light tour; the eye comparison uses the source frame rate.
+Linear EXRs and a JSON report sit alongside the stage outputs.
 
-For keying comparisons without relighting, run `python examples/review_reporter_key.py`.
-It compares the old key, raw v2 and adapted v2 on white, grey and black, with edge crops.
-The reporter results look very similar to v1. A matched eight-frame native no-hint control
-also did not establish a visible quality gain. Changed pixel counts are not a quality verdict.
+Use `--frames` for a shorter excerpt or `--resume` to reuse completed stages.
+The run covers 150 frames from the 20-second clip and reuses rendered passes. A fresh scene
+build and the full clip still need testing.
+
+For unrelit keying comparisons:
+
+```
+python examples/review_reporter_key.py
+```
+
+This writes old-key, raw-v2 and adapted-v2 comparisons on white, grey and black, plus edge
+crops. The v1 and v2 results look very similar on this plate. An eight-frame v2 run without
+hints also showed no clear gain.

@@ -1,58 +1,63 @@
 # Architecture
 
-The pipeline changes illumination on observed pixels. Single-view depth and normal estimates
-supply geometry, not generated actor texture.
+The compositor multiplies the photographed foreground by a lighting ratio:
+
+```
+relit = foreground * E_target / E_source
+```
+
+`E_source` is estimated from the plate and neural normals. Blender renders `E_target`
+on a neutral proxy with diffuse/subsurface shading and shadows. The proxy's texture
+doesn't enter the composite.
 
 ```mermaid
 flowchart LR
     Plate[Decoded green-screen plate] --> Key[CorridorKey 2.0]
     Key --> FG[Straight foreground + alpha]
-    FG --> Eye[EyeClean float corrections]
+    FG --> Eye[EyeClean corrections]
     FG --> Geometry[Depth + neural normals + eye tracks]
-    Geometry --> Blender[Blender irradiance + wet-eye reflection]
-    FG --> Comp[Linear ratio compositor]
+    Geometry --> Blender[Blender irradiance + eye reflections]
+    FG --> Comp[Linear compositor]
     Eye --> Comp
     Blender --> Comp
-    Comp --> Export[Review PNG/video + linear EXR/master]
+    Comp --> Export[Review video + linear RGBA]
 ```
 
-The primary relation is `foreground ? E_target / E_source`. Source illumination is estimated
-from the actor and neural normals. The proxy renders neutral diffuse/subsurface transport
-and shadows; its visible texture never enters the composite.
+Where the proxy loses facial detail, per-light meso shading uses the neural normals.
+The compositor measures the scale at which the proxy and normal fields resolve the same
+amount of relief. A GGX/Smith/Schlick lobe adds skin specular; the light's size broadens it,
+and texture from the plate breaks up the smooth band.
 
-Below the proxy's measured spatial bandwidth, per-light normal modulation supplies surface
-relief. A physically scaled GGX/Smith/Schlick term adds skin specular, widened by source size,
-with the accepted conservative gain and photographic texture modulation.
+EyeClean runs in a separate process because its Python, PyTorch and CUDA versions differ
+from the keyer and normals pipeline. Its float corrections are applied before the ratio.
+Each run records the foreground hashes. The optional sclera pass adds corrections outside
+EyeClean's edited pixels.
 
-EyeClean executes separately because its Python/PyTorch/CUDA stack differs from both the
-keyer and the normals pipeline. Float corrections enter before relighting. Each patch run
-binds its frame indices to the exact foreground files. Scene reflections enter afterward in
-the ratio's exposure-anchor units, through fitted lids and wet-eye geometry. An abstaining
-eye keeps its original pixels and gets no added reflection.
+Blender renders eye reflections on a corneal cap, scleral globe and limbal transition,
+with a socket attached to the head for occlusion. The compositor adds these reflections
+after the ratio, using the same exposure scale and fitted eyelids. It skips eyes that
+EyeClean left untouched.
 
-The Blender tour uses a corneal cap, scleral globe, limbal transition and head-attached socket.
-They account for source size, direction and occlusion. Reflections are rendered images of
-scene sources, never painted dots.
+## Code layout
 
-## Boundaries
+| Location | Purpose |
+|---|---|
+| `src/ngsr/` | Engine adapters, float patch reader and stage launcher |
+| `scripts/key_plate.py` | CorridorKey 2.0 output, core preservation and despill |
+| `neural_normals.py`, `video_depth.py`, `make_proxy_mesh.py` in `scripts/` | Geometry |
+| `stress_proxy.py`, `render_eye_catchlight.py` in `scripts/` | Blender example renders |
+| `composite_ratio.py`, `meso_specular.py`, `gpu_image.py` in `scripts/` | Compositing and shading |
+| Older `scripts/eye_*.py`, numbered audits and `docs/r*.md` | Eye-repair experiments that preceded EyeClean |
+| `music_videos/`, `scene_library/`, `logs/` | Development shots, scenes and measurements |
 
-- `src/ngsr/`: installable adapters, patch application and stage launcher.
-- `scripts/key_plate.py`: CorridorKey 2.0 adaptation to the established shot layout.
-- `scripts/neural_normals.py`, `video_depth.py`, `make_proxy_mesh.py`: neural geometry.
-- `scripts/stress_proxy.py`, `render_eye_catchlight.py`: Blender example renderers.
-- `scripts/composite_ratio.py`, `meso_specular.py`, `gpu_image.py`: composition/shading.
-- `scripts/eye_*.py`, numbered audits/reviews and `docs/r*.md`: historical eye research;
-  not the new removal API.
-- `music_videos/`, `scene_library/`, `logs/`: development fixtures/evidence, not package data.
+The launcher calls scripts in the checkout. Keep the checkout alongside the adapter wheel
+to run geometry, rendering and compositing.
 
-The stage launcher exposes the existing implementation without copying it into another
-package. A future fully standalone compositor API can extract those kernels once the
-file contracts and artist comparison are accepted.
+## Limits
 
-## Limits that remain
+The proxy is a displaced shell. It approximates shadow shape, and the normals lack pore
+detail and can vary between frames. A diffuse lighting ratio leaves photographed hair
+and lip highlights in place.
 
-The proxy is a displaced shell, not a recovered actor. Normals are temporally noisy and
-lack microstructure. Captured hair/lip highlights cannot move under a diffuse lighting ratio.
-EyeClean can abstain; a separate, optional accepted sclera pass removes white-of-eye glints while preserving EyeClean's edited pixels.
-Camera match and source-light recovery retain assumptions. The bulb tour is a black void:
-its render convergence does not establish bounce-light accuracy in a furnished environment.
+Camera matching and source-light estimation retain assumptions. The bulb-tour scene has
+no walls or floor, so its convergence tests say little about bounce light in a furnished room.
